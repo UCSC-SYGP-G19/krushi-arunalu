@@ -1,0 +1,15 @@
+#!/bin/bash
+echo "Running Git hook to check commit message"
+
+# validate commit message using regex
+REGEX='^[A-Z].{6,50}\n*.*$'
+COMMIT_MSG=$(cat "$1")
+
+echo "Commit message: $COMMIT_MSG"
+
+if ! [[ $COMMIT_MSG =~ $REGEX ]]; then
+  echo "Aborting commit, the commit message should be in sentence case and in imperative mood. Also make sure that the length is between 6-50 chars"
+  exit 1
+fi
+
+echo "Commit message all good! :)"
