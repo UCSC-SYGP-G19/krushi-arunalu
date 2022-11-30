@@ -26,6 +26,7 @@ class Model
             $stmt->execute($args);
         } catch (PDOException $e) {
             Logger::log("PDOException", $e->getMessage());
+            return false;
         }
         return $stmt;
     }
@@ -35,5 +36,19 @@ class Model
     private function getDbCon(): ?PDO
     {
         return Database::getCon();
+    }
+
+    public function fillData(array $data): static
+    {
+        $this->setObjectVars($data);
+        return $this;
+    }
+
+    public function setObjectVars(array $vars): void
+    {
+        foreach (array_keys($vars) as $key) {
+            $setter = 'set' . ucfirst($key);
+            $this->$setter($vars[$key]);
+        }
     }
 }
