@@ -9,8 +9,8 @@ namespace app\core;
 
 class Controller
 {
-    protected mixed $model;
-    protected mixed $view;
+    protected mixed $model = null;
+    protected mixed $view = null;
 
     // Create a new instance of the specified model and assign to $model
     public function loadModel(string $modelName): void

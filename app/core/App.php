@@ -13,7 +13,7 @@ use app\helpers\Logger;
 class App
 {
     // URL format -> /controller/method/params
-    protected array $url;
+    protected array $url = [];
     protected mixed $controller = "IndexController";
     protected string $method = "index";
     protected array $params = [];
