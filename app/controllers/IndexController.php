@@ -8,13 +8,11 @@
 namespace app\controllers;
 
 use app\core\Controller;
-use app\helpers\Logger;
 
 class IndexController extends Controller
 {
     public function index(): void
     {
-        Logger::log("INFO", "IndexController -> index method");
         $this->loadView('IndexPage');
         $this->view->title = "Home";
         session_start();

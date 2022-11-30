@@ -20,7 +20,7 @@ class Logger
         }
 
         if ($file) {
-            $log = date('Y-m-d H:i:s') . " - " . "[$type]  - " . $message . "\n";
+            $log = date('Y-m-d H:i:s') . "  -  [$type]  " . $message . "\n";
             fwrite($file, $log);
             fclose($file);
         }

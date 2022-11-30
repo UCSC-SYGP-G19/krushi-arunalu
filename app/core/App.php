@@ -8,19 +8,21 @@
 namespace app\core;
 
 use app\controllers\IndexController;
+use app\helpers\Logger;
 
 class App
 {
     // URL format -> /controller/method/params
     protected array $url;
-    protected mixed $controller;
-    protected string $method;
+    protected mixed $controller = "IndexController";
+    protected string $method = "index";
     protected array $params = [];
 
     public function __construct()
     {
         // Split URL and store in $url
         $this->parseUrl();
+        Logger::log("INFO", $_SERVER['REQUEST_METHOD'] . ": " . URL_ROOT . implode("/", $this->url));
         if (empty($this->url[0])) {
             // Call default controller and default method if controller is not specified
             $this->loadDefaultControllerAndMethod();
@@ -49,6 +51,7 @@ class App
     {
         $this->controller = new IndexController();
         $this->method = 'index';
+        Logger::log("INFO", "Calling " . $this->method . " method in " . get_class($this->controller));
         call_user_func_array([$this->controller, $this->method], $this->params);
     }
 
@@ -68,6 +71,7 @@ class App
             unset($this->url[0]);
             return true;
         } else {
+            Logger::log("ERROR", "Requested controller (" . $this->url[0] . ") not found");
             echo "Requested controller (" . $this->url[0] . ") not found";
             return false;
         }
@@ -82,6 +86,7 @@ class App
                 // Destroy the element that stores the method name in the URL array
                 unset($this->url[1]);
             } else {
+                Logger::log("ERROR", "Requested method (" . $this->url[1] . ") not found");
                 echo "Requested method (" . $this->url[1] . ") not found";
                 exit;
             }
@@ -90,6 +95,7 @@ class App
         // Extract params from the remaining elements in the URL array
         $this->params = $this->url ? array_values($this->url) : [];
 
+        Logger::log("INFO", "Calling " . $this->method . " method in " . get_class($this->controller));
         // Call specified method in the specified controller with the given params
         call_user_func_array([$this->controller, $this->method], $this->params);
     }
