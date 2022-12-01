@@ -1,0 +1,22 @@
+@import "../variables";
+
+%flex-layout {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.navbar {
+  @extend %flex-layout;
+  padding: $base-padding $base-padding*2;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+
+  .site-title {
+    font-size: $font-size-lg
+  }
+
+  .container {
+    @extend %flex-layout;
+  }
+}
