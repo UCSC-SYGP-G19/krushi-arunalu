@@ -7,12 +7,24 @@
 
 namespace app\helpers;
 
+use DateTime;
+use DateTimeZone;
+use Exception;
+
 class Logger
 {
     // Function to log messages to a file
+    /**
+     * @throws Exception
+     */
     public static function log($type, $message): void
     {
-        $filePath = './logs/' . date('Y-m-d') . '.log';
+        $tz = 'Asia/Colombo';
+        $timestamp = time();
+        $dt = new DateTime("now", new DateTimeZone($tz)); // first argument "must" be a string
+        $dt->setTimestamp($timestamp); // adjust the object to correct timestamp
+
+        $filePath = './logs/' . $dt->format('Y-m-d') . '.log';
         if (file_exists($filePath)) {
             $file = fopen($filePath, 'a');
         } else {
@@ -20,7 +32,7 @@ class Logger
         }
 
         if ($file) {
-            $log = date('Y-m-d H:i:s') . "  -  [$type]  " . $message . "\n";
+            $log = $dt->format('Y-m-d H:i:s') . "  -  [$type]  " . $message . "\n";
             fwrite($file, $log);
             fclose($file);
         }
