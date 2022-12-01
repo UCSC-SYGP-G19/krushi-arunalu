@@ -1,0 +1,92 @@
+@import "variables";
+@import "breakpoints";
+
+$grid-columns: 12;
+$grid-gaps: (
+        "0": 0,
+        "1": 10px,
+        "2": 20px,
+        "3":30px,
+);
+$layout_values : ('start', 'center', 'end', 'space-between', 'space-around');
+
+.container {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 1rem;
+  box-sizing: border-box;
+}
+
+.row {
+  display: flex;
+  flex-flow: row wrap;
+}
+
+// grid gaps
+@each $key, $val in $grid-gaps {
+  .gap-#{$key} > * {
+    padding: $val;
+  }
+  .gap-#{$key} {
+    margin-left: -$val;
+    margin-right: -$val;
+  }
+}
+
+// justify-content classes
+@each $val in $layout_values {
+  .justify-content-#{$val} {
+    justify-content: $val;
+  }
+}
+
+// col classes
+.col {
+ @for $i from 1 through $grid-columns {
+   &-#{$i} {
+     flex: 0 0 (100% / $grid-columns) * $i;
+     max-width: (100% / $grid-columns) * $i;
+   }
+ }
+}
+
+@include xs {
+  @for $i from 1 through $grid-columns {
+    .col-#{$i}-xs {
+      flex: 0 0 (100% / $grid-columns) * $i;
+    }
+  }
+}
+
+@include sm {
+  @for $i from 1 through $grid-columns {
+    .col-#{$i}-sm {
+      flex: 0 0 (100% / $grid-columns) * $i;
+    }
+  }
+}
+
+@include md {
+  @for $i from 1 through $grid-columns {
+    .col-#{$i}-md {
+      flex: 0 0 (100% / $grid-columns) * $i;
+    }
+  }
+}
+
+@include lg {
+  @for $i from 1 through $grid-columns {
+    .col-#{$i}-lg {
+      flex: 0 0 (100% / $grid-columns) * $i;
+    }
+  }
+}
+
+@include xl {
+  @for $i from 1 through $grid-columns {
+    .col-#{$i}-xl {
+      flex: 0 0 (100% / $grid-columns) * $i;
+    }
+  }
+}

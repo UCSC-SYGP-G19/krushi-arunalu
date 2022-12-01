@@ -1,0 +1,17 @@
+@import "colors";
+
+// spacing
+$base-padding: 0.75rem;
+$base-margin: 0.75rem;
+
+// font-size
+$base-font-size: 1rem;
+$font-size-sm: $base-font-size * 0.75;
+$font-size-md: $base-font-size * 1.25;
+$font-size-lg: $base-font-size * 1.5;
+$font-size-xl: $base-font-size * 2;
+
+ // borders
+$base-border-radius: 20px;
+$base-border-weight: 1px;
+$base-border: 1px solid $primary-green-dark;
