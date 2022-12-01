@@ -6,14 +6,34 @@ use app\core\Model;
 
 class RegisteredUser extends Model
 {
-    private int $id;
-    private string $name;
-    private string $address;
-    private string $lastLogin;
-    private string $imageUrl;
-    private string $email;
-    private string $contactNo;
+    private ?int $id;
+    private ?string $name;
+    private ?string $address;
+    private ?string $lastLogin;
+    private ?string $imageUrl;
+    private ?string $email;
+    private ?string $contactNo;
     private ?string $password;
+
+    public function __construct(
+        $id = null,
+        $name = null,
+        $address = null,
+        $lastLogin = null,
+        $imageUrl = null,
+        $email = null,
+        $contactNo = null,
+        $password = null
+    ) {
+        $this->id = $id;
+        $this->name = $name;
+        $this->address = $address;
+        $this->lastLogin = $lastLogin;
+        $this->imageUrl = $imageUrl;
+        $this->email = $email;
+        $this->contactNo = $contactNo;
+        $this->password = $password;
+    }
 
     public function register(): bool
     {
