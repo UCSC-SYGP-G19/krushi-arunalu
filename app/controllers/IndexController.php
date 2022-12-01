@@ -8,6 +8,7 @@
 namespace app\controllers;
 
 use app\core\Controller;
+use app\helpers\Session;
 
 class IndexController extends Controller
 {
@@ -15,8 +16,7 @@ class IndexController extends Controller
     {
         $this->loadView('IndexPage');
         $this->view->title = "Home";
-        session_start();
-        if (isset($_SESSION['user'])) {
+        if (Session::isSessionSet()) {
             $user = unserialize($_SESSION["user"]);
             $this->view->user = $user;
         }
