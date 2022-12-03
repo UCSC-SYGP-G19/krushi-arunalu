@@ -53,8 +53,8 @@ form {
   .error {
     color: $error-red;
     font-weight: 500;
-    font-size: $font-size-md*0.75;
-    margin-top: -$base-margin*0.25;
+    font-size: $font-size-sm;
+    margin-top: $base-margin*0.5;
   }
 
   .card-input-element {

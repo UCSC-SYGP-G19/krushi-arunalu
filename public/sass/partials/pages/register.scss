@@ -35,4 +35,10 @@
         max-width: 1200px;
         height: fit-content;
     }
+
+    form {
+        .error {
+            font-size: $base-font-size*0.9;
+        }
+    }
 }

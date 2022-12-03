@@ -25,4 +25,11 @@
         font-size: $base-font-size;
         margin-bottom: $base-margin;
     }
+
+    form {
+        .error {
+            font-size: $base-font-size*0.9;
+            margin-top: -$base-margin*0.5;
+        }
+    }
 }

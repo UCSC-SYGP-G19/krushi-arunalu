@@ -680,8 +680,8 @@ form .alert {
 form .error {
   color: #CC3636;
   font-weight: 500;
-  font-size: 0.9375rem;
-  margin-top: -0.375rem;
+  font-size: 0.75rem;
+  margin-top: 0.75rem;
 }
 form .card-input-element {
   display: none;
@@ -1238,6 +1238,10 @@ h1.title {
   font-size: 1rem;
   margin-bottom: 1.5rem;
 }
+.login form .error {
+  font-size: 0.9rem;
+  margin-top: -0.75rem;
+}
 
 .register {
   height: 100%;
@@ -1269,6 +1273,9 @@ h1.title {
   width: 100%;
   max-width: 1200px;
   height: fit-content;
+}
+.register form .error {
+  font-size: 0.9rem;
 }
 
 * {
