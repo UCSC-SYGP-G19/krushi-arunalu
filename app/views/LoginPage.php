@@ -10,10 +10,15 @@ include APP_ROOT . "/views/inc/components/header.php"
             <h1 class="title pt-2 text-center">Login</h1>
             <br>
             <form class="mb-1" action="" method="post">
-                <label for="email">Email</label>
-                <input type="text" id="email" name="email" placeholder="Enter your email">
-                <?php if (isset($this->fieldErrors['email'])) { ?>
-                    <div class="error"><?php echo $this->fieldErrors['email']; ?></div>
+                <label for="email/phone">Email / Phone no.</label>
+                <input type="text" id="email/phone" name="email/phone" placeholder="Enter your email / phone no."
+                       value="<?php
+                        if (isset($this->fields['email/phone'])) {
+                            echo $this->fields['email/phone'];
+                        }
+                        ?>">
+                <?php if (isset($this->fieldErrors['email/phone'])) { ?>
+                    <div class="error"><?php echo $this->fieldErrors['email/phone']; ?></div>
                 <?php } ?>
                 <br>
                 <label for="password" class="mt-1">Password</label>
@@ -28,7 +33,8 @@ include APP_ROOT . "/views/inc/components/header.php"
                     <p class="pt-1 pb-2">No account?&nbsp;
                         <a href="./register" class="text-light-green">Register now</a>
                     </p>
-                    <button class="btn-primary-light mt-3 text-center text-white" type="submit" name="login">LOGIN
+                    <button class="btn-primary-light mt-3 text-center text-white" type="submit" name="login"
+                            value="login">LOGIN
                     </button>
                 </div>
             </form>

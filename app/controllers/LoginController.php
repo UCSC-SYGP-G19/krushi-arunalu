@@ -8,6 +8,7 @@
 namespace app\controllers;
 
 use app\core\Controller;
+use app\helpers\Logger;
 use app\helpers\Session;
 use app\helpers\Util;
 
@@ -27,39 +28,47 @@ class LoginController extends Controller
 
     private function login(): void
     {
-        $username = $this->validateEmail($_POST['email']);
-        $password = $this->validatePassword($_POST['password']);
-
-        if (empty($username)) {
-            $this->view->fieldErrors['email'] = "Email is required";
+        // Trim all text fields
+        foreach ($_POST as $key => $value) {
+            $_POST[$key] = stripslashes(trim($value));
         }
 
-        if (empty($password)) {
-            $this->view->fieldErrors['password'] = "Password is required";
+        // Apply custom validations
+        if (empty($_POST['email/phone'])) {
+            $this->view->fieldErrors['email/phone'] = "Please enter your email address or phone number";
+        }
+
+        if (empty($_POST['password'])) {
+            $this->view->fieldErrors['password'] = "Please enter your password";
+        }
+
+        if (!empty($this->view->fieldErrors)) {
+            $this->view->fields = $_POST;
+            return;
+        }
+
+        $this->loadModel('RegisteredUser');
+        if (str_contains($_POST['email/phone'], '@')) {
+            Logger::log("INFO", "Login attempt by email: {$_POST['email/phone']}");
+            $user = $this->model->loginByEmailOrPhone(
+                'email',
+                filter_var($_POST['email/phone'], FILTER_VALIDATE_EMAIL),
+                $_POST['password']
+            );
         } else {
-            $this->loadModel('RegisteredUser');
-            $user = $this->model->loginByEmail($username, $password);
-            if ($user) {
-                if ($user->getId() !== -1) {
-                    $this->view->errors = [];
-                    Session::createSession($user);
-                    Util::redirect('index');
-                } else {
-                    $this->view->error = "Password incorrect";
-                }
-            } else {
-                $this->view->error = "User not found";
-            }
+            Logger::log("INFO", "Login attempt by phone: {$_POST['email/phone']}");
+            $user = $this->model->loginByEmailOrPhone('phone', $_POST['email/phone'], $_POST['password']);
         }
-    }
 
-    private function validateEmail($email): string|bool
-    {
-        return filter_var(Util::validate($email), FILTER_SANITIZE_EMAIL);
-    }
-
-    private function validatePassword($password): string|bool
-    {
-        return filter_var(Util::validate($password), FILTER_SANITIZE_STRING);
+        if ($user) {
+            if ($user->getId() !== -1) {
+                Session::createSession($user);
+                Util::redirect('index');
+            } else {
+                $this->view->error = "Password incorrect";
+            }
+        } else {
+            $this->view->error = "User not found";
+        }
     }
 }

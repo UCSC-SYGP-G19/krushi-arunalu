@@ -23,15 +23,15 @@ class RegisteredUser extends Model
     private ?string $password;
 
     public function __construct(
-        $id,
-        $role,
-        $name,
-        $address,
-        $lastLogin,
-        $imageUrl,
-        $email,
-        $contactNo,
-        $password
+        $id = null,
+        $role = null,
+        $name = null,
+        $address = null,
+        $lastLogin = null,
+        $imageUrl = null,
+        $email = null,
+        $contactNo = null,
+        $password = null
     ) {
         $this->id = $id;
         $this->role = $role;
@@ -69,9 +69,16 @@ class RegisteredUser extends Model
         return $result == true;
     }
 
-    public function loginByEmail($email, $password): ?RegisteredUser
+    public function loginByEmailOrPhone($type, $emailOrPhone, $password): ?RegisteredUser
     {
-        $result = $this->runQuery("SELECT * FROM registered_user WHERE email=?", [$email])->fetch();
+        if ($type === 'email') {
+            $result = $this->runQuery("SELECT * FROM registered_user WHERE email=?", [$emailOrPhone])->fetch();
+        } elseif ($type === 'phone') {
+            $result = $this->runQuery("SELECT * FROM registered_user WHERE contact_no=?", [$emailOrPhone])->fetch();
+        } else {
+            return null;
+        }
+
         if ($result) {
             $hash = $result["hashed_password"];
             if (password_verify($password, $hash)) {
