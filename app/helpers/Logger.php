@@ -14,27 +14,28 @@ use Exception;
 class Logger
 {
     // Function to log messages to a file
-    /**
-     * @throws Exception
-     */
     public static function log($type, $message): void
     {
-        $tz = 'Asia/Colombo';
-        $timestamp = time();
-        $dt = new DateTime("now", new DateTimeZone($tz)); // first argument "must" be a string
-        $dt->setTimestamp($timestamp); // adjust the object to correct timestamp
+        try {
+            $tz = 'Asia/Colombo';
+            $timestamp = time();
+            $dt = new DateTime("now", new DateTimeZone($tz)); // first argument "must" be a string
+            $dt->setTimestamp($timestamp); // adjust the object to correct timestamp
 
-        $filePath = './logs/' . $dt->format('Y-m-d') . '.log';
-        if (file_exists($filePath)) {
-            $file = fopen($filePath, 'a');
-        } else {
-            $file = fopen($filePath, 'w');
-        }
+            $filePath = './logs/' . $dt->format('Y-m-d') . '.log';
+            if (file_exists($filePath)) {
+                $file = fopen($filePath, 'a');
+            } else {
+                $file = fopen($filePath, 'w');
+            }
 
-        if ($file) {
-            $log = $dt->format('Y-m-d H:i:s') . "  -  [$type]  " . $message . "\n";
-            fwrite($file, $log);
-            fclose($file);
+            if ($file) {
+                $log = $dt->format('Y-m-d H:i:s') . "  -  [$type]  " . $message . "\n";
+                fwrite($file, $log);
+                fclose($file);
+            }
+        } catch (Exception $e) {
+            echo $e->getMessage();
         }
     }
 }
