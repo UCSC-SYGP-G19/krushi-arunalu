@@ -14,9 +14,11 @@
 // components (buttons, forms, etc)
 @import "partials/components/button";
 @import "partials/components/navbar";
+@import "partials/components/form";
 
 // utilities (spacing, typography, etc)
 @import "partials/_utilities";
+@import "partials/_typography";
 
 // reset styles
 * {
@@ -34,13 +36,21 @@ body {
     padding: 0;
 }
 
+* {
+    box-sizing: border-box;
+    color: inherit;
+    margin: 0;
+    font-family: inherit;
+    transition: all 0.3s ease;
+}
+
 ul {
   padding: 0;
   list-style-type: none;
 }
 
 a {
-  text-decoration: none;
+  //text-decoration: none;
 }
 
 img {

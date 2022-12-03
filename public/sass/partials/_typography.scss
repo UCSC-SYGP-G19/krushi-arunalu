@@ -1,0 +1,53 @@
+@import "variables";
+
+$colors: (
+        "primary-light": $primary-green-light,
+        "primary-dark": $primary-green-dark,
+        "light-green": $header-green,
+        "secondary" : $secondary-grey,
+        "white" : $white,
+        "black" : $black,
+        "error" : $error-red,
+        "error-dark" : $error-red-dark,
+);
+
+$text_align_values: (center, left, right, justify);
+
+h1.title {
+  font-family: 'Poppins', serif;
+  font-style: normal;
+  font-weight: 600;
+  font-size: $base-font-size*2;
+  color: $primary-green-light;
+}
+
+.fw-light {
+  font-weight: 300;
+}
+
+.fw-normal {
+  font-weight: 400;
+}
+
+.fw-bold {
+  font-weight: 600;
+}
+
+// text-color classes
+@each $key, $val in $colors {
+  .text-#{$key} {
+    color: $val!important;
+
+    &:hover {
+      color: darken($val, 15)!important;
+    }
+  }
+}
+
+// text-align classes
+@each $val in $text_align_values {
+  .text-#{$val} {
+    text-align: $val;
+  }
+}
+

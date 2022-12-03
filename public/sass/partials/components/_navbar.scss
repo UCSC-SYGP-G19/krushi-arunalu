@@ -9,8 +9,12 @@
 
 .navbar {
   @extend %flex-layout;
-  padding: $base-padding $base-padding*2;
+  padding: $base-padding*0.75 $base-padding*2;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  position: fixed;
+  top: 0;
+  background: $white;
+  height: 100px;
 
   .site-title {
     font-size: $font-size-lg
@@ -18,5 +22,11 @@
 
   .container {
     @extend %flex-layout;
+    max-width: 100%;
+  }
+
+  .brand-logo {
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    border-radius: $base-border-radius*0.5;
   }
 }

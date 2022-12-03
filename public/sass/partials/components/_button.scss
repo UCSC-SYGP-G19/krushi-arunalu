@@ -1,8 +1,8 @@
 @import "../variables";
 
 $colors: (
-        "primary_light": $primary-green-light,
-        "primary_dark": $primary-green-dark,
+        "primary-light": $primary-green-light,
+        "primary-dark": $primary-green-dark,
         "secondary" : $secondary-grey,
         "white" : $white,
         "black" : $black,
@@ -15,7 +15,7 @@ $colors: (
   cursor: pointer;
   display: inline-block;
   border: 0;
-  padding: $base-padding $base-padding * 2;
+  padding: $base-padding*0.5 $base-padding;
   border-radius: $base-border-radius;
   background-color: $bg-color;
 }
