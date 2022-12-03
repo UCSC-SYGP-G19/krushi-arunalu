@@ -643,7 +643,6 @@ form label {
 form input {
   height: 42px;
   width: 100%;
-  margin-bottom: 1.5rem;
   padding: 12px;
   border-radius: 8px;
   outline: none;
@@ -654,8 +653,18 @@ form input::placeholder {
   color: #B1B1B1;
   padding: 6px;
 }
+form input[type=checkbox] {
+  height: 16px;
+  width: 16px;
+}
 form input:hover, form input:focus {
   border: 1.5px solid #15742D;
+}
+form .form-section-title {
+  color: #95C260;
+  font-weight: 500 !important;
+  padding-top: 1.8rem;
+  padding-bottom: 0.6rem;
 }
 form .alert {
   width: 100%;
@@ -673,6 +682,28 @@ form .error {
   font-weight: 500;
   font-size: 0.9375rem;
   margin-top: -0.375rem;
+}
+form .card-input-element {
+  display: none;
+}
+form .card-input {
+  text-align: center;
+  width: 100%;
+  margin: auto;
+  padding: 2.25rem;
+  border-radius: 8px;
+  background-color: #F2F2F2;
+  border: 1px solid #B1B1B1;
+  font-size: 1.1rem;
+  font-weight: 500;
+}
+form .card-input:hover {
+  cursor: pointer;
+}
+form .card-input-element:checked + .card-input {
+  border: 1px solid transparent;
+  box-shadow: 0 0 0 1.6px #15742D;
+  background-color: #E7F4D8;
 }
 
 .m-0 {
@@ -1073,16 +1104,36 @@ h1.title {
   color: #15742D;
 }
 
+.fs-1 {
+  font-size: 0.5rem !important;
+}
+
+.fs-2 {
+  font-size: 0.75rem !important;
+}
+
+.fs-3 {
+  font-size: 1rem !important;
+}
+
+.fs-4 {
+  font-size: 1.25rem !important;
+}
+
+.fs-5 {
+  font-size: 1.5rem !important;
+}
+
 .fw-light {
-  font-weight: 300;
+  font-weight: 300 !important;
 }
 
 .fw-normal {
-  font-weight: 400;
+  font-weight: 400 !important;
 }
 
 .fw-bold {
-  font-weight: 600;
+  font-weight: 600 !important;
 }
 
 .text-primary-light {
@@ -1141,6 +1192,13 @@ h1.title {
   color: #3f0000 !important;
 }
 
+.text-grey-dark {
+  color: #555555 !important;
+}
+.text-grey-dark:hover {
+  color: #2f2f2f !important;
+}
+
 .text-center {
   text-align: center;
 }
@@ -1178,6 +1236,39 @@ h1.title {
 .login input {
   height: 48px;
   font-size: 1rem;
+  margin-bottom: 1.5rem;
+}
+
+.register {
+  height: 100%;
+  width: 100%;
+  background-color: #F2F2F2;
+}
+.register h3 {
+  font-weight: normal;
+}
+.register button {
+  width: 200px;
+  height: 50px;
+  font-size: 1rem;
+  border-radius: 8px;
+}
+.register label {
+  font-size: 0.9rem;
+}
+.register input {
+  height: 45px;
+  font-size: 0.9rem;
+}
+.register .wrapper {
+  margin-top: 150px !important;
+  margin-bottom: 50px !important;
+  background: #FFFFFF;
+  box-shadow: 0 1px 20px rgba(0, 0, 0, 0.08);
+  border-radius: 16px;
+  width: 100%;
+  max-width: 1200px;
+  height: fit-content;
 }
 
 * {
