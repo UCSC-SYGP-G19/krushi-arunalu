@@ -22,7 +22,7 @@ class App
     {
         // Split URL and store in $url
         $this->parseUrl();
-        Logger::log("INFO", $_SERVER['REQUEST_METHOD'] . ": " . URL_ROOT . implode("/", $this->url));
+        Logger::log("INFO", $_SERVER['REQUEST_METHOD'] . ": " . URL_ROOT . '/' . implode("/", $this->url));
         if (empty($this->url[0])) {
             // Call default controller and default method if controller is not specified
             $this->loadDefaultControllerAndMethod();
