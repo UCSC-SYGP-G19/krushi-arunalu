@@ -1,5 +1,11 @@
 <?php
 
+/**
+ * @file
+ * Model to represent the RegisteredUser table in the database
+ * Contains both attributes and methods related to the RegisteredUser entity
+ */
+
 namespace app\models;
 
 use app\core\Model;
@@ -7,6 +13,7 @@ use app\core\Model;
 class RegisteredUser extends Model
 {
     private ?int $id;
+    private ?string $role;
     private ?string $name;
     private ?string $address;
     private ?string $lastLogin;
@@ -16,16 +23,18 @@ class RegisteredUser extends Model
     private ?string $password;
 
     public function __construct(
-        $id = null,
-        $name = null,
-        $address = null,
-        $lastLogin = null,
-        $imageUrl = null,
-        $email = null,
-        $contactNo = null,
-        $password = null
+        $id,
+        $role,
+        $name,
+        $address,
+        $lastLogin,
+        $imageUrl,
+        $email,
+        $contactNo,
+        $password
     ) {
         $this->id = $id;
+        $this->role = $role;
         $this->name = $name;
         $this->address = $address;
         $this->lastLogin = $lastLogin;
@@ -43,9 +52,13 @@ class RegisteredUser extends Model
 
         $hash = password_hash($this->password, PASSWORD_DEFAULT);
         unset($this->password);
+
         $result = $this->runQuery(
-            "INSERT into registered_user (name, address, email, contact_no, hashed_password) VALUES (?,?,?,?,?)",
-            [$this->name, $this->address, $this->email, $this->contactNo, $hash]
+            "INSERT into registered_user (role, name, address, last_login, image_url, email, contact_no, 
+                             hashed_password)
+            VALUES (?,?,?,?,?,?,?,?)",
+            [$this->role, $this->name, $this->address, $this->lastLogin, $this->imageUrl, $this->email,
+                $this->contactNo, $hash]
         );
         return $result == true;
     }
@@ -62,8 +75,15 @@ class RegisteredUser extends Model
         if ($result) {
             $hash = $result["hashed_password"];
             if (password_verify($password, $hash)) {
-                $this->fillData(['id' => $result["id"], 'name' => $result["name"], 'address' => $result["address"],
-                    'email' => $result["email"], 'contactNo' => $result["contact_no"]]);
+                $this->fillData([
+                    'id' => $result["id"],
+                    'role' => $result["role"],
+                    'name' => $result["name"],
+                    'address' => $result["address"],
+                    'lastLogin' => $result["last_login"],
+                    'imageUrl' => $result["image_url"],
+                    'email' => $result["email"],
+                    'contactNo' => $result["contact_no"]]);
             } else {
                 $this->id = -1;
             }
@@ -72,77 +92,146 @@ class RegisteredUser extends Model
         return null;
     }
 
-    public function getId(): int
+    /**
+     * @return int|null
+     */
+    public function getId(): ?int
     {
         return $this->id;
     }
 
-    public function setId(int $id): void
+    /**
+     * @param int|null $id
+     */
+    public function setId(?int $id): void
     {
         $this->id = $id;
     }
 
-    public function getName(): string
+    /**
+     * @return string|null
+     */
+    public function getRole(): ?string
+    {
+        return $this->role;
+    }
+
+    /**
+     * @param string|null $role
+     */
+    public function setRole(?string $role): void
+    {
+        $this->role = $role;
+    }
+
+    /**
+     * @return string|null
+     */
+    public function getName(): ?string
     {
         return $this->name;
     }
 
-    public function setName(string $name): void
+    /**
+     * @param string|null $name
+     */
+    public function setName(?string $name): void
     {
         $this->name = $name;
     }
 
-    public function getAddress(): string
+    /**
+     * @return string|null
+     */
+    public function getAddress(): ?string
     {
         return $this->address;
     }
 
-    public function setAddress(string $address): void
+    /**
+     * @param string|null $address
+     */
+    public function setAddress(?string $address): void
     {
         $this->address = $address;
     }
 
-    public function getLastLogin(): string
+    /**
+     * @return string|null
+     */
+    public function getLastLogin(): ?string
     {
         return $this->lastLogin;
     }
 
-    public function setLastLogin(string $lastLogin): void
+    /**
+     * @param string|null $lastLogin
+     */
+    public function setLastLogin(?string $lastLogin): void
     {
         $this->lastLogin = $lastLogin;
     }
 
-    public function getImageUrl(): string
+    /**
+     * @return string|null
+     */
+    public function getImageUrl(): ?string
     {
         return $this->imageUrl;
     }
 
-    public function setImageUrl(string $imageUrl): void
+    /**
+     * @param string|null $imageUrl
+     */
+    public function setImageUrl(?string $imageUrl): void
     {
         $this->imageUrl = $imageUrl;
     }
 
-    public function getEmail(): string
+    /**
+     * @return string|null
+     */
+    public function getEmail(): ?string
     {
         return $this->email;
     }
 
-    public function setEmail(string $email): void
+    /**
+     * @param string|null $email
+     */
+    public function setEmail(?string $email): void
     {
         $this->email = $email;
     }
 
-    public function getContactNo(): string
+    /**
+     * @return string|null
+     */
+    public function getContactNo(): ?string
     {
         return $this->contactNo;
     }
 
-    public function setContactNo(string $contactNo): void
+    /**
+     * @param string|null $contactNo
+     */
+    public function setContactNo(?string $contactNo): void
     {
         $this->contactNo = $contactNo;
     }
 
-    public function setPassword(string $password): void
+    /**
+     * @return string|null
+     */
+    public function getPassword(): ?string
+    {
+        return $this->password;
+    }
+
+    /**
+     * @param string|null $password
+     */
+    public function setPassword(?string $password): void
     {
         $this->password = $password;
     }

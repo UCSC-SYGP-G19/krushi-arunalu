@@ -11,6 +11,9 @@ class View
 {
     // Variable to store the name of the view
     private string $viewName;
+    public ?string $error = null;
+    public ?array $fields = null;
+    public ?array $fieldErrors = null;
 
     public function __construct($viewName)
     {

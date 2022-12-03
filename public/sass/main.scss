@@ -20,11 +20,17 @@
 @import "partials/_utilities";
 @import "partials/_typography";
 
+// pages
+@import "partials/pages/login";
+@import "partials/pages/register";
+
 // reset styles
 * {
   box-sizing: border-box;
   color: inherit;
   margin: 0;
+  font-family: inherit;
+  transition: all 0.3s ease;
 }
 
 body {
@@ -36,21 +42,13 @@ body {
     padding: 0;
 }
 
-* {
-    box-sizing: border-box;
-    color: inherit;
-    margin: 0;
-    font-family: inherit;
-    transition: all 0.3s ease;
-}
-
 ul {
   padding: 0;
   list-style-type: none;
 }
 
-a {
-  //text-decoration: none;
+a.nav-link {
+  text-decoration: none;
 }
 
 img {

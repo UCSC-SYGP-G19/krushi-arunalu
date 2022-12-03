@@ -51,4 +51,10 @@ class Model
             $this->$setter($vars[$key]);
         }
     }
+
+    public function getLastInsertedId(): ?int
+    {
+        $pdo = $this->getDbCon();
+        return $pdo?->lastInsertId();
+    }
 }

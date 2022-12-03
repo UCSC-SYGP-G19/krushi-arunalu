@@ -9,6 +9,7 @@ $colors: (
         "black" : $black,
         "error" : $error-red,
         "error-dark" : $error-red-dark,
+        "grey-dark" : $grey-dark,
 );
 
 $text_align_values: (center, left, right, justify);
@@ -21,25 +22,45 @@ h1.title {
   color: $primary-green-light;
 }
 
+.fs-1 {
+  font-size: $base-font-size*0.5!important;
+}
+
+.fs-2 {
+  font-size: $base-font-size*0.75!important;
+}
+
+.fs-3 {
+  font-size: $base-font-size*1!important;
+}
+
+.fs-4 {
+  font-size: $base-font-size*1.25!important;
+}
+
+.fs-5 {
+  font-size: $base-font-size*1.5!important;
+}
+
 .fw-light {
-  font-weight: 300;
+  font-weight: 300!important;
 }
 
 .fw-normal {
-  font-weight: 400;
+  font-weight: 400!important;
 }
 
 .fw-bold {
-  font-weight: 600;
+  font-weight: 600!important;
 }
 
 // text-color classes
 @each $key, $val in $colors {
   .text-#{$key} {
-    color: $val!important;
+    color: $val !important;
 
     &:hover {
-      color: darken($val, 15)!important;
+      color: darken($val, 15) !important;
     }
   }
 }
