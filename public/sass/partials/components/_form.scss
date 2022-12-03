@@ -1,0 +1,48 @@
+@import "../variables";
+
+form {
+  label {
+    display: block;
+    margin-bottom: $base-margin*0.5;
+    text-align: left;
+  }
+
+  input {
+    height: 42px;
+    width: 100%;
+    margin-bottom: $base-margin;
+    padding: 12px;
+    border-radius: $base-border-radius-sm;
+    outline: none;
+    border: 1px solid $secondary-grey;
+    -webkit-box-sizing: border-box;
+  }
+
+  input::placeholder {
+    color: $secondary-grey;
+    padding: 6px;
+  }
+
+  input:hover, input:focus {
+    border: 1.5px solid $primary-green-light;
+  }
+
+  .alert {
+    width: 100%;
+    color: $error-red;
+    font-size: $font-size-md*0.75;
+    padding: $base-padding*0.5 $base-padding*3;
+    border: 1px solid $error-red;
+    background-color: lighten($error-red-light, 15);
+    border-radius: $base-border-radius-sm;
+    text-align: center;
+    margin: $base-margin*0.5 auto $base-margin auto;
+  }
+
+  .error {
+    color: $error-red;
+    font-weight: 500;
+    font-size: $font-size-md*0.75;
+    margin-top: -$base-margin*0.25;
+  }
+}

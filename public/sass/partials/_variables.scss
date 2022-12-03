@@ -1,8 +1,8 @@
 @import "colors";
 
 // spacing
-$base-padding: 0.75rem;
-$base-margin: 0.75rem;
+$base-padding: 1.5rem;
+$base-margin: 1.5rem;
 
 // font-size
 $base-font-size: 1rem;
@@ -12,6 +12,8 @@ $font-size-lg: $base-font-size * 1.5;
 $font-size-xl: $base-font-size * 2;
 
  // borders
-$base-border-radius: 20px;
+$base-border-radius-lg: 24px;
+$base-border-radius: 16px;
+$base-border-radius-sm: 8px;
 $base-border-weight: 1px;
 $base-border: 1px solid $primary-green-dark;
