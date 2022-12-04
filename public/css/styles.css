@@ -644,16 +644,36 @@
   background: #FFFFFF;
   height: 100px;
 }
+
+.navbar #btn-toggle-sidebar {
+  transition: background-color 0.4s ease;
+  outline: none;
+  border-radius: 50%;
+  background: transparent;
+  cursor: pointer;
+  border: none;
+  padding: 8px 8px 2px 8px;
+  text-align: center;
+  margin-bottom: 8px;
+}
+
+.navbar #btn-toggle-sidebar:hover, .navbar #btn-toggle-sidebar:active {
+  background-color: #185427;
+}
+
 .navbar .site-title {
   font-size: 1.5rem;
 }
+
 .navbar .container {
   max-width: 100%;
 }
-.navbar .brand-logo {
+
+.navbar .brand-logo-large {
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   border-radius: 8px;
 }
+
 .navbar .user-name {
   font-size: 1.1rem;
   font-weight: 500;
@@ -757,7 +777,9 @@ footer {
   display: flex;
   height: 100%;
 }
+
 .content-with-sidebar aside.sidebar {
+  transition: all 0.2s ease !important;
   padding: 0;
   margin: 0;
   background-color: white;
@@ -765,14 +787,25 @@ footer {
   flex: 1 0 22% !important;
   box-shadow: 0 1px 20px rgba(0, 0, 0, 0.1);
 }
-.content-with-sidebar aside.sidebar .brand-logo {
+
+.content-with-sidebar aside.sidebar .brand-logo-container {
   height: 100px;
 }
+
+.content-with-sidebar aside.sidebar .brand-logo-large {
+  display: block;
+}
+
+.content-with-sidebar aside.sidebar .brand-logo-small {
+  display: none;
+}
+
 .content-with-sidebar aside.sidebar .sidebar-links {
   padding: 0;
   margin: 0;
   list-style-type: none;
 }
+
 .content-with-sidebar aside.sidebar .sidebar-links li a {
   display: flex;
   align-items: center;
@@ -790,17 +823,40 @@ footer {
   color: #27963C !important;
   font-weight: 500;
 }
+
 .content-with-sidebar aside.sidebar .sidebar-links li a span {
   padding-left: 1.125rem;
 }
+
 .content-with-sidebar aside.sidebar .sidebar-links li .selected {
   background-color: #D9F0BE !important;
   color: #27963C !important;
   font-weight: 500;
 }
+
+.content-with-sidebar aside.sidebar-collapsed {
+  flex: 1 0 5% !important;
+}
+
+.content-with-sidebar aside.sidebar-collapsed .brand-logo-large {
+  display: none;
+}
+
+.content-with-sidebar aside.sidebar-collapsed .brand-logo-small {
+  display: block;
+}
+
+.content-with-sidebar aside.sidebar-collapsed .sidebar-links li a {
+  justify-content: center;
+  padding: 1.125rem !important;
+}
+
+.content-with-sidebar aside.sidebar-collapsed .sidebar-links li a span {
+  display: none;
+}
+
 .content-with-sidebar main.content {
   position: relative;
-  flex: 1 0 78% !important;
   background-color: #F5F5F5;
 }
 
