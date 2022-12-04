@@ -15,11 +15,15 @@ class IndexController extends Controller
     public function index(): void
     {
         $this->loadView('IndexPage');
-        $this->view->title = "Home";
-        if (Session::isSessionSet()) {
-            $user = unserialize($_SESSION["user"]);
+        $this->view->title = "Dashboard";
+        $this->view->activeLink = "index";
+        $user = Session::getSession();
+
+        if ($user) {
             $this->view->user = $user;
+            $this->view->sidebarLinks = ROUTES[$user->getRole()];
         }
+
         $this->view->render();
     }
 }

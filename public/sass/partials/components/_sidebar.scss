@@ -1,0 +1,61 @@
+.content-with-sidebar {
+  display: flex;
+  height: 100%;
+
+  aside.sidebar {
+    padding: 0;
+    margin: 0;
+    background-color: white;
+    z-index: 10;
+    flex: 1 0 22% !important;
+    box-shadow: 0 1px 20px rgba(0, 0, 0, 0.1);
+
+    .brand-logo {
+      height: 100px;
+    }
+
+    .sidebar-links {
+      padding: 0;
+      margin: 0;
+      list-style-type: none;
+
+      li {
+        a {
+          display: flex;
+          align-items: center;
+          padding: $base-padding*0.75 $base-padding*1.5 !important;
+          text-decoration: none;
+          color: $grey-dark;
+          font-size: $base-font-size * 1.1;
+          font-weight: 500;
+
+          &:hover {
+            background-color: $selected-green-light;
+          }
+
+          &:active {
+            background-color: $selected-green !important;
+            color: $sidebar-green !important;
+            font-weight: 500;
+          }
+
+          span {
+            padding-left: $base-padding * 0.75;
+          }
+        }
+
+        .selected {
+          background-color: $selected-green !important;
+          color: $sidebar-green !important;
+          font-weight: 500;
+        }
+      }
+    }
+  }
+
+  main.content {
+    position: relative;
+    flex: 1 0 78% !important;
+    background-color: $background-grey;
+  }
+}

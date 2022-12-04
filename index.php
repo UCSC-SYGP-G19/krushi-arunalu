@@ -16,6 +16,7 @@ require 'vendor/autoload.php';
 // Load the configuration files
 require_once 'app/config/AppConf.php';
 require_once 'app/config/DatabaseConf.php';
+require_once 'app/config/RoutesConf.php';
 
 // Create an instance of the App class
 $app = new App();
