@@ -644,7 +644,6 @@
   background: #FFFFFF;
   height: 100px;
 }
-
 .navbar #btn-toggle-sidebar {
   transition: background-color 0.4s ease;
   outline: none;
@@ -656,34 +655,18 @@
   text-align: center;
   margin-bottom: 8px;
 }
-
 .navbar #btn-toggle-sidebar:hover, .navbar #btn-toggle-sidebar:active {
   background-color: #185427;
 }
-
 .navbar .site-title {
   font-size: 1.5rem;
 }
-
 .navbar .container {
   max-width: 100%;
 }
-
 .navbar .brand-logo-large {
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   border-radius: 8px;
-}
-
-.navbar .user-name {
-  font-size: 1.1rem;
-  font-weight: 500;
-  padding-top: 2px;
-}
-.navbar .user-role {
-  font-size: 0.9rem;
-  font-weight: 300;
-  color: #555555;
-  padding-top: 2px;
 }
 .navbar a.nav-link {
   text-decoration: none;
@@ -692,7 +675,69 @@
 .logged-in-navbar {
   position: sticky;
   background-color: #95C260;
-  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.3) !important;
+  box-shadow: 0 2px 16px rgba(0, 0, 0, 0.25) !important;
+}
+.logged-in-navbar .user-name {
+  font-size: 1.1rem;
+  font-weight: 500;
+  padding-top: 2px;
+}
+.logged-in-navbar .user-role {
+  font-size: 0.9rem;
+  font-weight: 300;
+  color: #555555;
+  padding-top: 2px;
+}
+.logged-in-navbar .user-profile-pic {
+  border-radius: 50%;
+  width: 56px;
+  height: 56px;
+  padding: 0;
+  margin: auto;
+}
+.logged-in-navbar .user-profile-pic button.overlay {
+  cursor: pointer;
+  position: absolute;
+  outline: none;
+  border: none;
+  z-index: 5;
+  border-radius: 50%;
+  width: 56px;
+  height: 56px;
+  background: transparent;
+}
+.logged-in-navbar .user-profile-pic button.overlay:hover, .logged-in-navbar .user-profile-pic button.overlay:active, .logged-in-navbar .user-profile-pic button.overlay:focus {
+  background-color: #000000;
+  opacity: 0.3;
+}
+.logged-in-navbar #navbar-options-panel {
+  display: none;
+  position: absolute;
+  background: #FFFFFF;
+  top: 100px;
+  right: 50px;
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.1);
+}
+.logged-in-navbar #navbar-options-panel.visible {
+  display: block;
+}
+.logged-in-navbar #navbar-options-panel a {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  text-decoration: none;
+  padding: 0.75rem 2.25rem !important;
+  background-color: white;
+}
+.logged-in-navbar #navbar-options-panel a:hover {
+  background-color: #E7F4D8;
+}
+.logged-in-navbar #navbar-options-panel a span {
+  padding-left: 0.75rem;
+  padding-right: 0.75rem;
+}
+.logged-in-navbar #navbar-options-panel ul li:last-child a {
+  color: #CC3636;
 }
 
 form label {
@@ -777,7 +822,6 @@ footer {
   display: flex;
   height: 100%;
 }
-
 .content-with-sidebar aside.sidebar {
   transition: all 0.2s ease !important;
   padding: 0;
@@ -787,25 +831,20 @@ footer {
   flex: 1 0 22% !important;
   box-shadow: 0 1px 20px rgba(0, 0, 0, 0.1);
 }
-
 .content-with-sidebar aside.sidebar .brand-logo-container {
   height: 100px;
 }
-
 .content-with-sidebar aside.sidebar .brand-logo-large {
   display: block;
 }
-
 .content-with-sidebar aside.sidebar .brand-logo-small {
   display: none;
 }
-
 .content-with-sidebar aside.sidebar .sidebar-links {
   padding: 0;
   margin: 0;
   list-style-type: none;
 }
-
 .content-with-sidebar aside.sidebar .sidebar-links li a {
   display: flex;
   align-items: center;
@@ -823,38 +862,30 @@ footer {
   color: #27963C !important;
   font-weight: 500;
 }
-
 .content-with-sidebar aside.sidebar .sidebar-links li a span {
   padding-left: 1.125rem;
 }
-
 .content-with-sidebar aside.sidebar .sidebar-links li .selected {
   background-color: #D9F0BE !important;
   color: #27963C !important;
   font-weight: 500;
 }
-
 .content-with-sidebar aside.sidebar-collapsed {
   flex: 1 0 5% !important;
 }
-
 .content-with-sidebar aside.sidebar-collapsed .brand-logo-large {
   display: none;
 }
-
 .content-with-sidebar aside.sidebar-collapsed .brand-logo-small {
   display: block;
 }
-
 .content-with-sidebar aside.sidebar-collapsed .sidebar-links li a {
   justify-content: center;
   padding: 1.125rem !important;
 }
-
 .content-with-sidebar aside.sidebar-collapsed .sidebar-links li a span {
   display: none;
 }
-
 .content-with-sidebar main.content {
   position: relative;
   background-color: #F5F5F5;
@@ -1437,6 +1468,7 @@ h1.title {
   color: inherit;
   margin: 0;
   font-family: inherit;
+  transition: all 0.3s ease;
 }
 
 body {
