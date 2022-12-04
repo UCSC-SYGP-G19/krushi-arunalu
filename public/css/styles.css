@@ -1,10 +1,30 @@
 @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap");
 .overflow-auto {
-  overflow: auto !important;
+  overflow: auto;
+}
+
+.overflow-x-auto {
+  overflow-x: auto !important;
+}
+
+.overflow-y-auto {
+  overflow-y: auto !important;
 }
 
 .overflow-hidden {
-  overflow: hidden !important;
+  overflow: hidden;
+}
+
+.overflow-x-hidden {
+  overflow-x: hidden !important;
+}
+
+.overflow-y-hidden {
+  overflow-y: hidden !important;
+}
+
+.full-height {
+  height: 100vh !important;
 }
 
 .container {
@@ -618,7 +638,7 @@
 
 .navbar {
   padding: 1.125rem 3rem;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1) !important;
   position: fixed;
   top: 0;
   background: #FFFFFF;
@@ -633,6 +653,26 @@
 .navbar .brand-logo {
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   border-radius: 8px;
+}
+.navbar .user-name {
+  font-size: 1.1rem;
+  font-weight: 500;
+  padding-top: 2px;
+}
+.navbar .user-role {
+  font-size: 0.9rem;
+  font-weight: 300;
+  color: #555555;
+  padding-top: 2px;
+}
+.navbar a.nav-link {
+  text-decoration: none;
+}
+
+.logged-in-navbar {
+  position: sticky;
+  background-color: #95C260;
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.3) !important;
 }
 
 form label {
@@ -692,7 +732,7 @@ form .card-input {
   margin: auto;
   padding: 2.25rem;
   border-radius: 8px;
-  background-color: #F2F2F2;
+  background-color: #F5F5F5;
   border: 1px solid #B1B1B1;
   font-size: 1.1rem;
   font-weight: 500;
@@ -709,7 +749,59 @@ form .card-input-element:checked + .card-input {
 footer {
   position: relative;
   bottom: 0;
+  background-color: #FFFFFF !important;
   box-shadow: 0 1px 8px rgba(0, 0, 0, 0.1) !important;
+}
+
+.content-with-sidebar {
+  display: flex;
+  height: 100%;
+}
+.content-with-sidebar aside.sidebar {
+  padding: 0;
+  margin: 0;
+  background-color: white;
+  z-index: 10;
+  flex: 1 0 22% !important;
+  box-shadow: 0 1px 20px rgba(0, 0, 0, 0.1);
+}
+.content-with-sidebar aside.sidebar .brand-logo {
+  height: 100px;
+}
+.content-with-sidebar aside.sidebar .sidebar-links {
+  padding: 0;
+  margin: 0;
+  list-style-type: none;
+}
+.content-with-sidebar aside.sidebar .sidebar-links li a {
+  display: flex;
+  align-items: center;
+  padding: 1.125rem 2.25rem !important;
+  text-decoration: none;
+  color: #555555;
+  font-size: 1.1rem;
+  font-weight: 500;
+}
+.content-with-sidebar aside.sidebar .sidebar-links li a:hover {
+  background-color: #E7F4D8;
+}
+.content-with-sidebar aside.sidebar .sidebar-links li a:active {
+  background-color: #D9F0BE !important;
+  color: #27963C !important;
+  font-weight: 500;
+}
+.content-with-sidebar aside.sidebar .sidebar-links li a span {
+  padding-left: 1.125rem;
+}
+.content-with-sidebar aside.sidebar .sidebar-links li .selected {
+  background-color: #D9F0BE !important;
+  color: #27963C !important;
+  font-weight: 500;
+}
+.content-with-sidebar main.content {
+  position: relative;
+  flex: 1 0 78% !important;
+  background-color: #F5F5F5;
 }
 
 .m-0 {
@@ -1252,7 +1344,7 @@ h1.title {
 .register {
   height: 100%;
   width: 100%;
-  background-color: #F2F2F2;
+  background-color: #F5F5F5;
 }
 .register h3 {
   font-weight: normal;
@@ -1289,7 +1381,6 @@ h1.title {
   color: inherit;
   margin: 0;
   font-family: inherit;
-  transition: all 0.3s ease;
 }
 
 body {
@@ -1304,10 +1395,6 @@ body {
 ul {
   padding: 0;
   list-style-type: none;
-}
-
-a.nav-link {
-  text-decoration: none;
 }
 
 img {

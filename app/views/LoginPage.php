@@ -1,5 +1,5 @@
 <?php
-include APP_ROOT . "/views/inc/components/header.php"
+include APP_ROOT . "/views/inc/components/Header.php"
 ?>
     <body class="overflow-hidden">
     <?php
@@ -42,5 +42,5 @@ include APP_ROOT . "/views/inc/components/header.php"
     </main>
     </body>
 <?php
-include APP_ROOT . "/views/inc/components/footer.php"
+include APP_ROOT . "/views/inc/components/EndingTag.php";
 ?>

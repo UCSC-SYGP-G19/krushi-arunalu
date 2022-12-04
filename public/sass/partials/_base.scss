@@ -1,7 +1,19 @@
-.overflow-auto {
-    overflow: auto !important;
+$axises: (x, y);
+$properties: (auto, hidden);
+
+@each $property in $properties {
+  .overflow-#{$property} {
+    overflow: #{$property};
+  }
+
+  // generate overflow classes for x, y axis
+  @each $axis in $axises {
+    .overflow-#{$axis}-#{$property} {
+      overflow-#{$axis}: #{$property} !important;
+    }
+  }
 }
 
-.overflow-hidden {
-    overflow: hidden !important;
+.full-height {
+  height: 100vh !important;
 }

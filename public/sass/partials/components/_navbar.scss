@@ -10,7 +10,7 @@
 .navbar {
   @extend %flex-layout;
   padding: $base-padding*0.75 $base-padding*2;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1) !important;
   position: fixed;
   top: 0;
   background: $white;
@@ -29,4 +29,28 @@
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     border-radius: $base-border-radius*0.5;
   }
+
+  .user-name {
+    font-size: $base-font-size * 1.1;
+    font-weight: 500;
+    padding-top: 2px;
+  }
+
+  .user-role {
+    font-size: $base-font-size * 0.9;
+    font-weight: 300;
+    color: $grey-dark;
+    padding-top: 2px;
+  }
+
+  a.nav-link {
+    text-decoration: none;
+  }
+}
+
+.logged-in-navbar {
+  position: sticky;
+  background-color: $header-green;
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.3) !important;
+
 }
