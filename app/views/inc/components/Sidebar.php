@@ -14,7 +14,7 @@
             foreach ($this->sidebarLinks as $key => $value) {
                 if ($value['link'] == $this->activeLink) {
                     echo '<li>
-                        <a href="' . $value['link'] . '" class="selected">
+                        <a href="' . URL_ROOT . '/' . $value['link'] . '" class="selected">
                             <img src="' . URL_ROOT . '/public/img/icons/sidebar/' . $value['icon'] . '-active.png" 
                             alt="' . $value['icon'] . '-selected-icon" height="30px" title="' . $key . '">
                             <span>' . $key . '</span>
@@ -22,7 +22,7 @@
                       </li>';
                 } else {
                     echo '<li>
-                        <a href="' . $value['link'] . '">
+                        <a href="' . URL_ROOT . '/' . $value['link'] . '">
                             <img src="' . URL_ROOT . '/public/img/icons/sidebar/' . $value['icon'] . '.png" alt="' .
                         $value['icon'] . '-icon" height="30px" title="' . $key . '">
                             <span>' . $key . '</span>
