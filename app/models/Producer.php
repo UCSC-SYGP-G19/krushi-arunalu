@@ -8,8 +8,6 @@
 
 namespace app\models;
 
-use app\core\Model;
-
 class Producer extends RegisteredUser
 {
     private ?string $nicNumber;
@@ -43,19 +41,6 @@ class Producer extends RegisteredUser
             return true;
         }
         return false;
-    }
-
-    public function loginByEmail($email, $password): ?RegisteredUser
-    {
-        if ($user = parent::loginByEmail($email, $password)) {
-            $result = $this->runQuery("SELECT * FROM producer WHERE id = ?", [$user->getId()]);
-            if ($result->rowCount() > 0) {
-                $row = $result->fetch();
-                $this->fillData($row);
-                return $this;
-            }
-        }
-        return null;
     }
 
     /**
