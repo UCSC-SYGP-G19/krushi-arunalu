@@ -1,0 +1,8 @@
+@import "variables";
+
+.server-error {
+  font-style: italic;
+  color: $error-red;
+  padding: 1rem;
+  margin: 1rem 0;
+}

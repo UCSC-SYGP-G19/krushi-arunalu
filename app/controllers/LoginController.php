@@ -42,7 +42,7 @@ class LoginController extends Controller
             $this->view->fieldErrors['password'] = "Please enter your password";
         }
 
-        if (!empty($this->view->fieldErrors)) {
+        if (!empty($this->view?->fieldErrors)) {
             $this->view->fields = $_POST;
             return;
         }

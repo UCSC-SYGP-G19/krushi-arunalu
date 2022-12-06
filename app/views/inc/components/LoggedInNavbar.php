@@ -15,8 +15,15 @@
         <div class="row">
             <div class="col-2 m-auto"></div>
             <div class="col-6 text-right pb-1 px-1 m-auto">
-                <p class="user-name"><?php echo $this->user->getName() ?></p>
-                <p class="user-role"><?php echo $this->user->getRole() ?></p>
+                <?php
+                try {
+                    assert(isset($this?->user), '(User not set)');
+                    echo '<p class="user-name"><?php echo $this->' . $this->user->getName() . '</p>
+                            <p class="user-role"><?php echo $this->' . $this->user->getRole() . '</p>';
+                } catch (AssertionError $e) {
+                    echo '<span class="server-error">' . $e->getMessage() . '</span>';
+                }
+                ?>
             </div>
             <div class="m-auto user-profile-pic">
                 <button id="btn-toggle-navbar-options" class="overlay"></button>

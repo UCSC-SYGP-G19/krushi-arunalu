@@ -22,6 +22,9 @@
 @import "partials/_utilities";
 @import "partials/_typography";
 
+// other common styles
+@import "partials/_other";
+
 // pages
 @import "partials/pages/login";
 @import "partials/pages/register";
@@ -52,5 +55,4 @@ ul {
 img {
   max-width: 100%;
 }
-
 
