@@ -1,10 +1,30 @@
 @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap");
 .overflow-auto {
-  overflow: auto !important;
+  overflow: auto;
+}
+
+.overflow-x-auto {
+  overflow-x: auto !important;
+}
+
+.overflow-y-auto {
+  overflow-y: auto !important;
 }
 
 .overflow-hidden {
-  overflow: hidden !important;
+  overflow: hidden;
+}
+
+.overflow-x-hidden {
+  overflow-x: hidden !important;
+}
+
+.overflow-y-hidden {
+  overflow-y: hidden !important;
+}
+
+.full-height {
+  height: 100vh !important;
 }
 
 .container {
@@ -618,11 +638,25 @@
 
 .navbar {
   padding: 1.125rem 3rem;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1) !important;
   position: fixed;
   top: 0;
   background: #FFFFFF;
   height: 100px;
+}
+.navbar #btn-toggle-sidebar {
+  transition: background-color 0.4s ease;
+  outline: none;
+  border-radius: 50%;
+  background: transparent;
+  cursor: pointer;
+  border: none;
+  padding: 8px 8px 2px 8px;
+  text-align: center;
+  margin-bottom: 8px;
+}
+.navbar #btn-toggle-sidebar:hover, .navbar #btn-toggle-sidebar:active {
+  background-color: #185427;
 }
 .navbar .site-title {
   font-size: 1.5rem;
@@ -630,9 +664,80 @@
 .navbar .container {
   max-width: 100%;
 }
-.navbar .brand-logo {
+.navbar .brand-logo-large {
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   border-radius: 8px;
+}
+.navbar a.nav-link {
+  text-decoration: none;
+}
+
+.logged-in-navbar {
+  position: sticky;
+  background-color: #95C260;
+  box-shadow: 0 2px 16px rgba(0, 0, 0, 0.25) !important;
+}
+.logged-in-navbar .user-name {
+  font-size: 1.1rem;
+  font-weight: 500;
+  padding-top: 2px;
+}
+.logged-in-navbar .user-role {
+  font-size: 0.9rem;
+  font-weight: 300;
+  color: #555555;
+  padding-top: 2px;
+}
+.logged-in-navbar .user-profile-pic {
+  border-radius: 50%;
+  width: 56px;
+  height: 56px;
+  padding: 0;
+  margin: auto;
+}
+.logged-in-navbar .user-profile-pic button.overlay {
+  cursor: pointer;
+  position: absolute;
+  outline: none;
+  border: none;
+  z-index: 5;
+  border-radius: 50%;
+  width: 56px;
+  height: 56px;
+  background: transparent;
+}
+.logged-in-navbar .user-profile-pic button.overlay:hover, .logged-in-navbar .user-profile-pic button.overlay:active, .logged-in-navbar .user-profile-pic button.overlay:focus {
+  background-color: #000000;
+  opacity: 0.3;
+}
+.logged-in-navbar #navbar-options-panel {
+  display: none;
+  position: absolute;
+  background: #FFFFFF;
+  top: 100px;
+  right: 50px;
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.1);
+}
+.logged-in-navbar #navbar-options-panel.visible {
+  display: block;
+}
+.logged-in-navbar #navbar-options-panel a {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  text-decoration: none;
+  padding: 0.75rem 2.25rem !important;
+  background-color: white;
+}
+.logged-in-navbar #navbar-options-panel a:hover {
+  background-color: #E7F4D8;
+}
+.logged-in-navbar #navbar-options-panel a span {
+  padding-left: 0.75rem;
+  padding-right: 0.75rem;
+}
+.logged-in-navbar #navbar-options-panel ul li:last-child a {
+  color: #CC3636;
 }
 
 form label {
@@ -692,7 +797,7 @@ form .card-input {
   margin: auto;
   padding: 2.25rem;
   border-radius: 8px;
-  background-color: #F2F2F2;
+  background-color: #F5F5F5;
   border: 1px solid #B1B1B1;
   font-size: 1.1rem;
   font-weight: 500;
@@ -704,6 +809,86 @@ form .card-input-element:checked + .card-input {
   border: 1px solid transparent;
   box-shadow: 0 0 0 1.6px #15742D;
   background-color: #E7F4D8;
+}
+
+footer {
+  position: relative;
+  bottom: 0;
+  background-color: #FFFFFF !important;
+  box-shadow: 0 1px 8px rgba(0, 0, 0, 0.1) !important;
+}
+
+.content-with-sidebar {
+  display: flex;
+  height: 100%;
+}
+.content-with-sidebar aside.sidebar {
+  transition: all 0.2s ease !important;
+  padding: 0;
+  margin: 0;
+  background-color: white;
+  z-index: 10;
+  flex: 1 0 22% !important;
+  box-shadow: 0 1px 20px rgba(0, 0, 0, 0.1);
+}
+.content-with-sidebar aside.sidebar .brand-logo-container {
+  height: 100px;
+}
+.content-with-sidebar aside.sidebar .brand-logo-large {
+  display: block;
+}
+.content-with-sidebar aside.sidebar .brand-logo-small {
+  display: none;
+}
+.content-with-sidebar aside.sidebar .sidebar-links {
+  padding: 0;
+  margin: 0;
+  list-style-type: none;
+}
+.content-with-sidebar aside.sidebar .sidebar-links li a {
+  display: flex;
+  align-items: center;
+  padding: 1.125rem 2.25rem !important;
+  text-decoration: none;
+  color: #555555;
+  font-size: 1.1rem;
+  font-weight: 500;
+}
+.content-with-sidebar aside.sidebar .sidebar-links li a:hover {
+  background-color: #E7F4D8;
+}
+.content-with-sidebar aside.sidebar .sidebar-links li a:active {
+  background-color: #D9F0BE !important;
+  color: #27963C !important;
+  font-weight: 500;
+}
+.content-with-sidebar aside.sidebar .sidebar-links li a span {
+  padding-left: 1.125rem;
+}
+.content-with-sidebar aside.sidebar .sidebar-links li .selected {
+  background-color: #D9F0BE !important;
+  color: #27963C !important;
+  font-weight: 500;
+}
+.content-with-sidebar aside.sidebar-collapsed {
+  flex: 1 0 5% !important;
+}
+.content-with-sidebar aside.sidebar-collapsed .brand-logo-large {
+  display: none;
+}
+.content-with-sidebar aside.sidebar-collapsed .brand-logo-small {
+  display: block;
+}
+.content-with-sidebar aside.sidebar-collapsed .sidebar-links li a {
+  justify-content: center;
+  padding: 1.125rem !important;
+}
+.content-with-sidebar aside.sidebar-collapsed .sidebar-links li a span {
+  display: none;
+}
+.content-with-sidebar main.content {
+  position: relative;
+  background-color: #F5F5F5;
 }
 
 .m-0 {
@@ -1208,24 +1393,31 @@ h1.title {
 }
 
 .text-right {
-  text-align: right;
+    text-align: right;
 }
 
 .text-justify {
-  text-align: justify;
+    text-align: justify;
+}
+
+.server-error {
+    font-style: italic;
+    color: #CC3636;
+    padding: 1rem;
+    margin: 1rem 0;
 }
 
 .login {
-  height: 100vh;
-  width: 100vw;
-  background-image: url("../img/login-bg.webp");
+    height: 100vh;
+    width: 100vw;
+    background-image: url("../img/login-bg.webp");
 }
 .login .wrapper {
-  background: rgba(255, 255, 255, 0.7);
-  box-shadow: 0 4px 50px rgba(0, 0, 0, 0.2);
-  border-radius: 24px;
-  width: 35%;
-  height: fit-content;
+    background: rgba(255, 255, 255, 0.7);
+    box-shadow: 0 4px 50px rgba(0, 0, 0, 0.2);
+    border-radius: 24px;
+    width: 35%;
+    height: fit-content;
 }
 .login button {
   width: 200px;
@@ -1246,7 +1438,7 @@ h1.title {
 .register {
   height: 100%;
   width: 100%;
-  background-color: #F2F2F2;
+  background-color: #F5F5F5;
 }
 .register h3 {
   font-weight: normal;
@@ -1298,10 +1490,6 @@ body {
 ul {
   padding: 0;
   list-style-type: none;
-}
-
-a.nav-link {
-  text-decoration: none;
 }
 
 img {

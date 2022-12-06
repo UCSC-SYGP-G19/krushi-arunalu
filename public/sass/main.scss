@@ -15,10 +15,15 @@
 @import "partials/components/button";
 @import "partials/components/navbar";
 @import "partials/components/form";
+@import "partials/components/footer";
+@import "partials/components/sidebar";
 
 // utilities (spacing, typography, etc)
 @import "partials/_utilities";
 @import "partials/_typography";
+
+// other common styles
+@import "partials/_other";
 
 // pages
 @import "partials/pages/login";
@@ -47,12 +52,7 @@ ul {
   list-style-type: none;
 }
 
-a.nav-link {
-  text-decoration: none;
-}
-
 img {
   max-width: 100%;
 }
-
 

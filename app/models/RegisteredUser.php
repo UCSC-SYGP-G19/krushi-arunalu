@@ -46,7 +46,7 @@ class RegisteredUser extends Model
 
     public function register(): bool
     {
-        if ($this->emailExists()) {
+        if ($this->emailExists() || $this->phoneExists()) {
             return false;
         }
 
@@ -66,6 +66,12 @@ class RegisteredUser extends Model
     private function emailExists(): bool
     {
         $result = $this->runQuery("SELECT id FROM registered_user WHERE email=?", [$this->email])->fetch();
+        return $result == true;
+    }
+
+    private function phoneExists(): bool
+    {
+        $result = $this->runQuery("SELECT id FROM registered_user WHERE contact_no=?", [$this->contactNo])->fetch();
         return $result == true;
     }
 

@@ -8,8 +8,6 @@
 
 namespace app\models;
 
-use app\core\Model;
-
 class Manufacturer extends RegisteredUser
 {
     private ?string $brNumber;
@@ -46,19 +44,6 @@ class Manufacturer extends RegisteredUser
             return true;
         }
         return false;
-    }
-
-    public function loginByEmail($email, $password): ?RegisteredUser
-    {
-        if ($user = parent::loginByEmail($email, $password)) {
-            $result = $this->runQuery("SELECT * FROM manufacturer WHERE id = ?", [$user->getId()]);
-            if ($result->rowCount() > 0) {
-                $row = $result->fetch();
-                $this->fillData($row);
-                return $this;
-            }
-        }
-        return null;
     }
 
     /**
