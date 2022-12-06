@@ -1,0 +1,125 @@
+@import "variables";
+@import "breakpoints";
+
+$grid-columns: 12;
+$grid-gaps: (
+        "0": 0,
+        "1": 10px,
+        "2": 20px,
+        "3": 30px,
+);
+$justify_values: (start, center, end, space-between, space-around);
+$align_values: (flex-start, center, flex-end, stretch, baseline);
+
+.container {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 1rem;
+  box-sizing: border-box;
+}
+
+.container-fluid {
+  width: 100%;
+  margin: 0 auto;
+  padding: 0 1rem;
+  box-sizing: border-box;
+}
+
+.d-flex {
+  display: flex !important;
+}
+
+.d-inline-flex {
+  display: inline-flex !important;
+}
+
+.d-block {
+  display: block !important;
+}
+
+.d-inline {
+  display: inline !important;
+}
+
+
+.row {
+  display: flex;
+  flex-flow: row wrap;
+}
+
+// grid gaps
+@each $key, $val in $grid-gaps {
+  .gap-#{$key} > * {
+    padding: $val;
+  }
+  .gap-#{$key} {
+    margin-left: -$val;
+    margin-right: -$val;
+  }
+}
+
+// justify-content classes
+@each $val in $justify_values {
+  .justify-content-#{$val} {
+    justify-content: $val;
+  }
+}
+
+// align-items classes
+@each $val in $align_values {
+  .align-items-#{$val} {
+    align-items: $val;
+  }
+}
+
+
+// col classes
+.col {
+  @for $i from 1 through $grid-columns {
+    &-#{$i} {
+      flex: 0 0 (100% / $grid-columns) * $i;
+      max-width: (100% / $grid-columns) * $i;
+    }
+  }
+}
+
+@include xs {
+  @for $i from 1 through $grid-columns {
+    .col-#{$i}-xs {
+      flex: 0 0 (100% / $grid-columns) * $i;
+    }
+  }
+}
+
+@include sm {
+  @for $i from 1 through $grid-columns {
+    .col-#{$i}-sm {
+      flex: 0 0 (100% / $grid-columns) * $i;
+    }
+  }
+}
+
+@include md {
+  @for $i from 1 through $grid-columns {
+    .col-#{$i}-md {
+      flex: 0 0 (100% / $grid-columns) * $i;
+    }
+  }
+}
+
+@include lg {
+  @for $i from 1 through $grid-columns {
+    .col-#{$i}-lg {
+      flex: 0 0 (100% / $grid-columns) * $i;
+    }
+  }
+}
+
+@include xl {
+  @for $i from 1 through $grid-columns {
+    .col-#{$i}-xl {
+      flex: 0 0 (100% / $grid-columns) * $i;
+    }
+  }
+}

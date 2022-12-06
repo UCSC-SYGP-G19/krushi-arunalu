@@ -1,0 +1,85 @@
+@import "../variables";
+
+form {
+  label {
+    display: block;
+    margin-bottom: $base-margin*0.5;
+    text-align: left;
+  }
+
+  input {
+    height: 42px;
+    width: 100%;
+    padding: 12px;
+    border-radius: $base-border-radius-sm;
+    outline: none;
+    border: 1px solid $secondary-grey;
+    -webkit-box-sizing: border-box;
+  }
+
+  input::placeholder {
+    color: $secondary-grey;
+    padding: 6px;
+  }
+
+  input[type="checkbox"] {
+    height: 16px;
+    width: 16px;
+  }
+
+  input:hover, input:focus {
+    border: 1.5px solid $primary-green-light;
+  }
+
+  .form-section-title {
+    color: $header-green;
+    font-weight: 500!important;
+    padding-top: $base-padding*1.2;
+    padding-bottom: $base-padding*0.4;
+  }
+
+  .alert {
+    width: 100%;
+    color: $error-red;
+    font-size: $font-size-md*0.75;
+    padding: $base-padding*0.5 $base-padding*3;
+    border: 1px solid $error-red;
+    background-color: lighten($error-red-light, 15);
+    border-radius: $base-border-radius-sm;
+    text-align: center;
+    margin: $base-margin*0.5 auto $base-margin auto;
+  }
+
+  .error {
+    color: $error-red;
+    font-weight: 500;
+    font-size: $font-size-sm;
+    margin-top: $base-margin*0.5;
+  }
+
+  .card-input-element {
+    display: none;
+  }
+
+  .card-input {
+    text-align: center;
+    width: 100%;
+    margin: auto;
+    padding: $base-padding*1.5;
+    border-radius: $base-border-radius-sm;
+    background-color: $background-grey;
+    border: 1px solid $secondary-grey;
+    font-size: $base-font-size*1.1;
+    font-weight: 500;
+  }
+
+  .card-input:hover {
+    cursor: pointer;
+  }
+
+  .card-input-element:checked + .card-input {
+    border: 1px solid transparent;
+    box-shadow: 0 0 0 1.6px $primary-green-light;
+    background-color: $selected-green-light;
+  }
+}
