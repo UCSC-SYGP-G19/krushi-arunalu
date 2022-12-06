@@ -17,7 +17,7 @@
             <div class="col-6 text-right pb-1 px-1 m-auto">
                 <?php
                 try {
-                    assert(isset($this?->user), '(User not set)');
+                    assert(isset($this?->user), 'User not set');
                     echo '<p class="user-name"><?php echo $this->' . $this->user->getName() . '</p>
                             <p class="user-role"><?php echo $this->' . $this->user->getRole() . '</p>';
                 } catch (AssertionError $e) {

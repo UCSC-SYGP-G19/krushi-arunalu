@@ -12,7 +12,7 @@
         <ul class="sidebar-links">
             <?php
             try {
-                assert(isset($this?->sidebarLinks), '(Sidebar links not set)');
+                assert(isset($this?->sidebarLinks), 'Sidebar links not set');
                 foreach ($this->sidebarLinks as $key => $value) {
                     if ($value['link'] == $this->activeLink) {
                         echo '<li>
