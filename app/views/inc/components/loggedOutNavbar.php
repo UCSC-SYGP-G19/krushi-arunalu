@@ -5,7 +5,7 @@
                  height="72px">
         </div>
         <div class="">
-            <a class="nav-link" href="/login">Home</a>
+            navbar <a class="nav-link" href="<?php echo URL_ROOT ?>">Home</a>
         </div>
     </div>
 </nav>
