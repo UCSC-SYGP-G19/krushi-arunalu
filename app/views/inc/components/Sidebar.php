@@ -11,24 +11,29 @@
     <div class="col-12">
         <ul class="sidebar-links">
             <?php
-            foreach ($this->sidebarLinks as $key => $value) {
-                if ($value['link'] == $this->activeLink) {
-                    echo '<li>
+            try {
+                assert(isset($this?->sidebarLinks), 'Sidebar links not set');
+                foreach ($this->sidebarLinks as $key => $value) {
+                    if ($value['link'] == $this->activeLink) {
+                        echo '<li>
                         <a href="' . URL_ROOT . '/' . $value['link'] . '" class="selected">
                             <img src="' . URL_ROOT . '/public/img/icons/sidebar/' . $value['icon'] . '-active.png" 
                             alt="' . $value['icon'] . '-selected-icon" height="30px" title="' . $key . '">
                             <span>' . $key . '</span>
                         </a>
                       </li>';
-                } else {
-                    echo '<li>
+                    } else {
+                        echo '<li>
                         <a href="' . URL_ROOT . '/' . $value['link'] . '">
                             <img src="' . URL_ROOT . '/public/img/icons/sidebar/' . $value['icon'] . '.png" alt="' .
-                        $value['icon'] . '-icon" height="30px" title="' . $key . '">
+                            $value['icon'] . '-icon" height="30px" title="' . $key . '">
                             <span>' . $key . '</span>
                         </a>
                       </li>';
+                    }
                 }
+            } catch (AssertionError $e) {
+                echo '<span class="server-error">' . $e->getMessage() . '</span>';
             }
             ?>
         </ul>
