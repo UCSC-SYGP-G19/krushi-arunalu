@@ -9,6 +9,7 @@ namespace app\controllers;
 
 use app\core\Controller;
 use app\helpers\Session;
+use app\helpers\Util;
 
 class IndexController extends Controller
 {
@@ -22,8 +23,9 @@ class IndexController extends Controller
         if ($user) {
             $this->view->user = $user;
             $this->view->sidebarLinks = ROUTES[$user->getRole()];
+            $this->view->render();
+        } else {
+            Util::redirect('login');
         }
-
-        $this->view->render();
     }
 }
