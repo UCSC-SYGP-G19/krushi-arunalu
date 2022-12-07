@@ -44,6 +44,16 @@ class App
         $url = rtrim($url, '/');
         $url = filter_var($url, FILTER_SANITIZE_URL);
         $this->url = explode('/', $url);
+
+        // Remove '-' characters of controller in URL
+        if (isset($this->url[0])) {
+            $this->url[0] = str_replace("-", "", $this->url[0]);
+        }
+
+        // Remove '-' characters of method in URL
+        if (isset($this->url[1])) {
+            $this->url[1] = str_replace("-", "", $this->url[1]);
+        }
     }
 
     // Function to load IndexController and index method
