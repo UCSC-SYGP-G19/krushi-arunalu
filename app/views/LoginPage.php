@@ -3,7 +3,7 @@ include APP_ROOT . "/views/inc/components/Header.php"
 ?>
     <body class="overflow-hidden">
     <?php
-    include APP_ROOT . "/views/inc/components/loggedOutNavbar.php"
+    include APP_ROOT . "/views/inc/components/LoggedOutNavbar.php"
     ?>
     <main class="login row d-flex align-items-center justify-content-center">
         <div class="wrapper px-4 py-3 mt-5">

@@ -21,8 +21,8 @@ class IndexController extends Controller
         $user = Session::getSession();
 
         if ($user) {
-            //$this->view->user = $user;
-            //$this->view->sidebarLinks = ROUTES[$user->getRole()];
+            $this->view->user = $user;
+            $this->view->sidebarLinks = ROUTES[$user->getRole()];
             $this->view->render();
         } else {
             Util::redirect('login');

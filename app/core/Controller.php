@@ -7,6 +7,8 @@
 
 namespace app\core;
 
+use app\helpers\Logger;
+
 class Controller
 {
     protected mixed $model = null;
@@ -28,5 +30,30 @@ class Controller
     public function loadView(string $viewName): void
     {
         $this->view = new View($viewName);
+    }
+
+    // Trim and apply common validations for all required text fields
+    protected function validateFields($requiredFields): void
+    {
+        Logger::log("INFO", "Validating form fields");
+        $allFieldsFlag = false;
+        if (!isset($requiredFields)) {
+            $allFieldsFlag = true;
+            $requiredFields = [];
+        }
+        foreach ($_POST as $key => $value) {
+            $_POST[$key] = stripslashes(trim($value));
+            if (($allFieldsFlag  || in_array($key, $requiredFields)) && empty($_POST[$key])) {
+                Logger::log("DEBUG", empty($_POST[$key]));
+                $this->view->fieldErrors[$key] = "Field is required";
+            }
+        }
+    }
+
+    // If there are any field errors, refill values in form and display alert message
+    protected function refillValuesAndShowError($alertMessage = "Please correct the errors in the form"): void
+    {
+            $this->view->fields = $_POST;
+            $this->view->error = $alertMessage;
     }
 }

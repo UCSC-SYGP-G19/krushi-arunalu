@@ -19,7 +19,9 @@ class Session
 
     public static function destroySession(): void
     {
-        session_start();
+        if (!isset($_SESSION)) {
+            session_start();
+        }
         if (isset($_SESSION['user'])) {
             session_unset();
             session_destroy();
@@ -28,7 +30,9 @@ class Session
 
     public static function getSession(): ?object
     {
-        session_start();
+        if (!isset($_SESSION)) {
+            session_start();
+        }
         if (isset($_SESSION['user'])) {
             return unserialize($_SESSION['user']);
         }
@@ -37,7 +41,9 @@ class Session
 
     public static function isSessionSet(): bool
     {
-        session_start();
+        if (!isset($_SESSION)) {
+            session_start();
+        }
         if (isset($_SESSION['user'])) {
             return true;
         }

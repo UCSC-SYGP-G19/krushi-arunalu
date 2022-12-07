@@ -30,13 +30,7 @@ class RegisterController extends Controller
         $required_fields = ['name', 'nic/br', 'address', 'district', 'contact_no', 'email', 'password',
             'confirm_password', 'role', 't&c'];
 
-        // Trim and apply common validations for all required text fields
-        foreach ($_POST as $key => $value) {
-            $_POST[$key] = stripslashes(trim($value));
-            if (in_array($key, $required_fields) && empty($value)) {
-                $this->view->fieldErrors[$key] = "Field is required";
-            }
-        }
+        $this->validateFields($required_fields);
 
         // Apply custom validations for special fields
         if (!isset($_POST['role'])) {
@@ -58,10 +52,8 @@ class RegisterController extends Controller
             }
         }
 
-        // Display alert if there are any field errors
         if (!empty($this->view->fieldErrors)) {
-            $this->view->fields = $_POST;
-            $this->view->error = "Please correct the errors in the form";
+            $this->refillValuesAndShowError();
             return;
         }
 

@@ -7,7 +7,6 @@
             <img src="<?php echo URL_ROOT ?>/public/img/navbar-logo-small.webp" alt="logo" height="72px">
         </div>
     </div>
-    <div class="row"></div>
     <div class="col-12">
         <ul class="sidebar-links">
             <?php

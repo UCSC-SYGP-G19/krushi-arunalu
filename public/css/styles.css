@@ -27,6 +27,10 @@
   height: 100vh !important;
 }
 
+.full-width {
+  width: 100vw !important;
+}
+
 .container {
   width: 100%;
   max-width: 1200px;
@@ -454,11 +458,12 @@
   padding: 0.75rem 1.5rem;
   border-radius: 16px;
   background-color: #FFFFFF;
-  border: 1px solid #15742D;
+  border: 1.5px solid #15742D;
+  color: #15742D;
 }
 .btn-outlined-primary-light:hover {
   background-color: #15742D;
-  color: #FFFFFF;
+  color: #FFFFFF !important;
 }
 
 .btn-primary-dark {
@@ -482,11 +487,12 @@
   padding: 0.75rem 1.5rem;
   border-radius: 16px;
   background-color: #FFFFFF;
-  border: 1px solid #185427;
+  border: 1.5px solid #185427;
+  color: #185427;
 }
 .btn-outlined-primary-dark:hover {
   background-color: #185427;
-  color: #FFFFFF;
+  color: #FFFFFF !important;
 }
 
 .btn-secondary {
@@ -510,11 +516,12 @@
   padding: 0.75rem 1.5rem;
   border-radius: 16px;
   background-color: #FFFFFF;
-  border: 1px solid #B1B1B1;
+  border: 1.5px solid #B1B1B1;
+  color: #B1B1B1;
 }
 .btn-outlined-secondary:hover {
   background-color: #B1B1B1;
-  color: #FFFFFF;
+  color: #FFFFFF !important;
 }
 
 .btn-white {
@@ -538,11 +545,12 @@
   padding: 0.75rem 1.5rem;
   border-radius: 16px;
   background-color: #FFFFFF;
-  border: 1px solid #FFFFFF;
+  border: 1.5px solid #FFFFFF;
+  color: #FFFFFF;
 }
 .btn-outlined-white:hover {
   background-color: #FFFFFF;
-  color: #FFFFFF;
+  color: #FFFFFF !important;
 }
 
 .btn-black {
@@ -566,11 +574,12 @@
   padding: 0.75rem 1.5rem;
   border-radius: 16px;
   background-color: #FFFFFF;
-  border: 1px solid #000000;
+  border: 1.5px solid #000000;
+  color: #000000;
 }
 .btn-outlined-black:hover {
   background-color: #000000;
-  color: #FFFFFF;
+  color: #FFFFFF !important;
 }
 
 .btn-error {
@@ -594,11 +603,12 @@
   padding: 0.75rem 1.5rem;
   border-radius: 16px;
   background-color: #FFFFFF;
-  border: 1px solid #CC3636;
+  border: 1.5px solid #CC3636;
+  color: #CC3636;
 }
 .btn-outlined-error:hover {
   background-color: #CC3636;
-  color: #FFFFFF;
+  color: #FFFFFF !important;
 }
 
 .btn-error-dark {
@@ -622,11 +632,17 @@
   padding: 0.75rem 1.5rem;
   border-radius: 16px;
   background-color: #FFFFFF;
-  border: 1px solid #8B0000;
+  border: 1.5px solid #8B0000;
+  color: #8B0000;
 }
 .btn-outlined-error-dark:hover {
   background-color: #8B0000;
-  color: #FFFFFF;
+  color: #FFFFFF !important;
+}
+
+.btn-sm {
+  padding: 0.6rem 1.2rem;
+  border-radius: 8px;
 }
 
 .navbar .container, .navbar {
@@ -639,7 +655,7 @@
 .navbar {
   padding: 1.125rem 3rem;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1) !important;
-  position: fixed;
+  position: sticky;
   top: 0;
   background: #FFFFFF;
   height: 100px;
@@ -665,6 +681,7 @@
   max-width: 100%;
 }
 .navbar .brand-logo-large {
+  background-color: white;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   border-radius: 8px;
 }
@@ -673,7 +690,6 @@
 }
 
 .logged-in-navbar {
-  position: sticky;
   background-color: #95C260;
   box-shadow: 0 2px 16px rgba(0, 0, 0, 0.25) !important;
 }
@@ -745,10 +761,10 @@ form label {
   margin-bottom: 0.75rem;
   text-align: left;
 }
-form input {
+form input, form select {
   height: 42px;
   width: 100%;
-  padding: 12px;
+  padding: 0 12px;
   border-radius: 8px;
   outline: none;
   border: 1px solid #B1B1B1;
@@ -1393,31 +1409,32 @@ h1.title {
 }
 
 .text-right {
-    text-align: right;
+  text-align: right;
 }
 
 .text-justify {
-    text-align: justify;
+  text-align: justify;
 }
 
 .server-error {
-    font-style: italic;
-    color: #CC3636;
-    padding: 1rem;
-    margin: 1rem 0;
+  font-style: italic;
+  color: #CC3636;
+  padding: 1rem;
+  margin: 1rem 0;
 }
 
 .login {
-    height: 100vh;
-    width: 100vw;
-    background-image: url("../img/login-bg.webp");
+  height: 100vh;
+  width: 100vw;
+  background-image: url("../img/login-bg.webp");
+  margin-top: -100px;
 }
 .login .wrapper {
-    background: rgba(255, 255, 255, 0.7);
-    box-shadow: 0 4px 50px rgba(0, 0, 0, 0.2);
-    border-radius: 24px;
-    width: 35%;
-    height: fit-content;
+  background: rgba(255, 255, 255, 0.7);
+  box-shadow: 0 4px 50px rgba(0, 0, 0, 0.2);
+  border-radius: 24px;
+  width: 35%;
+  height: fit-content;
 }
 .login button {
   width: 200px;
@@ -1440,10 +1457,13 @@ h1.title {
   width: 100%;
   background-color: #F5F5F5;
 }
-.register h3 {
-  font-weight: normal;
+.register h2 {
+  font-weight: 500;
 }
-.register button {
+.register h3, .register h4 {
+  font-weight: 400;
+}
+.register button.btn-lg {
   width: 200px;
   height: 50px;
   font-size: 1rem;
@@ -1457,7 +1477,7 @@ h1.title {
   font-size: 0.9rem;
 }
 .register .wrapper {
-  margin-top: 150px !important;
+  margin-top: 50px !important;
   margin-bottom: 50px !important;
   background: #FFFFFF;
   box-shadow: 0 1px 20px rgba(0, 0, 0, 0.08);
