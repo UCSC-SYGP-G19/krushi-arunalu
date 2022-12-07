@@ -16,6 +16,7 @@ class View
     public ?array $fields = null;
     public ?array $fieldLinks = null;
     public ?array $fieldErrors = null;
+    public ?array $fieldOptions = null;
 
     public function __construct($viewName)
     {
