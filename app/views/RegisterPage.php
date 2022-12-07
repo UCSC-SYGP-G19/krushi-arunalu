@@ -3,7 +3,7 @@ include APP_ROOT . "/views/inc/components/Header.php"
 ?>
 <body class="overflow-auto">
 <?php
-include APP_ROOT . "/views/inc/components/loggedOutNavbar.php"
+include APP_ROOT . "/views/inc/components/LoggedOutNavbar.php"
 ?>
 <main class="register container-fluid d-flex align-items-center justify-content-center">
     <div class="wrapper px-4 py-3 mt-5">
@@ -170,7 +170,7 @@ include APP_ROOT . "/views/inc/components/loggedOutNavbar.php"
                 <div class="alert"><?php echo $this->error; ?></div>
             <?php } ?>
             <div class="mt-1 mb-3 text-center">
-                <button class="btn-primary-light mt-3 text-center text-white" type="submit" name="register"
+                <button class="btn-lg btn-primary-light mt-3 text-center text-white" type="submit" name="register"
                         value="register">REGISTER
                 </button>
             </div>

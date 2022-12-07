@@ -17,7 +17,7 @@ include APP_ROOT . "/views/inc/components/Header.php";
 
     <body class="overflow-hidden full-height">
     <?php
-    //include APP_ROOT . "/views/inc/components/loggedOutNavbar.php"
+    //include APP_ROOT . "/views/inc/components/LoggedOutNavbar.php"
     ?>
     <div class="content-with-sidebar">
         <?php
