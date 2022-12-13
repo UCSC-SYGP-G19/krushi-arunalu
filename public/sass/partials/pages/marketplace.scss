@@ -1,0 +1,44 @@
+@import "../variables";
+
+.marketplace {
+  .product-card {
+    input {
+      height: 42px;
+      width: 100%;
+      padding: 0 12px;
+      border-radius: $base-border-radius-sm;
+      outline: none;
+      border: 1px solid $secondary-grey;
+      -webkit-box-sizing: border-box;
+    }
+
+    border-radius: $base_border-radius-sm;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    background-color: white;
+
+    .image-window {
+      border-radius: $base_border-radius-sm;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+      width: 100%;
+      height: 200px;
+
+      img {
+        object-fit: cover;
+        border-radius: $base_border-radius-sm;
+      }
+    }
+
+    .product-price {
+      font-weight: 700;
+    }
+
+    input, button {
+      width: 100%;
+    }
+
+    button {
+      border-radius: $base-border-radius-sm;
+      height: 42px;
+    }
+  }
+}
