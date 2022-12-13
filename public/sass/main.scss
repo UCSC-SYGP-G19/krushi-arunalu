@@ -28,6 +28,7 @@
 // pages
 @import "partials/pages/login";
 @import "partials/pages/register";
+@import "partials/pages/marketplace";
 
 // reset styles
 * {
@@ -39,12 +40,12 @@
 }
 
 body {
-    background-color: $white;
-    color: $black;
-    font-family: 'Poppins', sans-serif;
-    font-size: $base-font-size;
-    margin: 0;
-    padding: 0;
+  background-color: $white;
+  color: $black;
+  font-family: 'Poppins', sans-serif;
+  font-size: $base-font-size;
+  margin: 0;
+  padding: 0;
 }
 
 ul {
