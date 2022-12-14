@@ -1,6 +1,8 @@
 @import "../variables";
 
 .marketplace {
+  min-height: 100%;
+
   .product-card {
     input {
       height: 42px;
@@ -28,8 +30,12 @@
       }
     }
 
+    .product-name{
+      font-weight: 400;
+    }
+
     .product-price {
-      font-weight: 700;
+      font-weight: 600;
     }
 
     input, button {

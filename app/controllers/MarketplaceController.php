@@ -23,6 +23,8 @@ class MarketplaceController extends Controller
         if ($user) {
             $this->view->user = $user;
             $this->view->sidebarLinks = ROUTES[$user->getRole()];
+            $this->loadModel("Product");
+            $this->view->data = $this->model->getAllProducts();
             $this->view->render();
         } else {
             Util::redirect('login');

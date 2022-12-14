@@ -38,15 +38,18 @@ include APP_ROOT . "/views/inc/components/Header.php";
                         </div>
                         <br>
                         <div class="row px-1">
-                            <div class="col-3 text-center p-2">
-                                <div class="product-card p-3 pb-2">
+                            <?php foreach ($this->data as $product) {
+                                echo '<div class="col-3 product-card text-center p-3 pb-2">
+                                <div class="">
                                     <div class="image-window mb-1">
-                                        <?php echo '<img src="' . URL_ROOT . '/public/img/product-image.jpg" 
-                alt="Product image" height="100%" width="100%">' ?>
+                                    ' .
+                                    '<img src="' . URL_ROOT . '/public/img/product-image.jpg" 
+                alt="Product image" height="100%" width="100%">' .
+                                    '
                                     </div>
-                                    <div class="text-center pb-1">
-                                        <h3 class="pt-2 pb-0 product-name">Product name</h3>
-                                        <h4 class="product-price text-light-green pt-1 pb-2">Rs. 2500</h4>
+                                    <div class="text-center">
+                                        <h3 class="pt-2 pb-0 product-name">' . $product->getName() . '</h3>
+                                        <h4 class="product-price text-light-green py-1 pb-2">' . $product->getUnitSellingPrice() . '</h4>
                                         <div class="row gap-1">
                                             <div class="col-5">
                                                 <label>
@@ -59,117 +62,9 @@ include APP_ROOT . "/views/inc/components/Header.php";
                                         </div>
                                     </div>
                                 </div>
-                            </div>
-                            <div class="col-3 text-center p-2">
-                                <div class="product-card p-3 pb-2">
-                                    <div class="image-window mb-1">
-                                        <?php echo '<img src="' . URL_ROOT . '/public/img/product-image.jpg" 
-                alt="Product image" height="100%" width="100%">' ?>
-                                    </div>
-                                    <div class="text-center pb-1">
-                                        <h3 class="pt-2 pb-0 product-name">Product name</h3>
-                                        <h4 class="product-price text-light-green pt-1 pb-2">Rs. 2500</h4>
-                                        <div class="row gap-1">
-                                            <div class="col-5">
-                                                <label>
-                                                    <input type="number" value="1">
-                                                </label>
-                                            </div>
-                                            <div class="col-7">
-                                                <button class="btn-primary-light text-white">Buy</button>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-3 text-center p-2">
-                                <div class="product-card p-3 pb-2">
-                                    <div class="image-window mb-1">
-                                        <?php echo '<img src="' . URL_ROOT . '/public/img/product-image.jpg" 
-                alt="Product image" height="100%" width="100%">' ?>
-                                    </div>
-                                    <div class="text-center pb-1">
-                                        <h3 class="pt-2 pb-0 product-name">Product name</h3>
-                                        <h4 class="product-price text-light-green pt-1 pb-2">Rs. 2500</h4>
-                                        <div class="row gap-1">
-                                            <div class="col-5">
-                                                <label>
-                                                    <input type="number" value="1">
-                                                </label>
-                                            </div>
-                                            <div class="col-7">
-                                                <button class="btn-primary-light text-white">Buy</button>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-3 text-center p-2">
-                                <div class="product-card p-3 pb-2">
-                                    <div class="image-window mb-1">
-                                        <?php echo '<img src="' . URL_ROOT . '/public/img/product-image.jpg" 
-                alt="Product image" height="100%" width="100%">' ?>
-                                    </div>
-                                    <div class="text-center pb-1">
-                                        <h3 class="pt-2 pb-0 product-name">Product name</h3>
-                                        <h4 class="product-price text-light-green pt-1 pb-2">Rs. 2500</h4>
-                                        <div class="row gap-1">
-                                            <div class="col-5">
-                                                <label>
-                                                    <input type="number" value="1">
-                                                </label>
-                                            </div>
-                                            <div class="col-7">
-                                                <button class="btn-primary-light text-white">Buy</button>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-3 text-center p-2">
-                                <div class="product-card p-3 pb-2">
-                                    <div class="image-window mb-1">
-                                        <?php echo '<img src="' . URL_ROOT . '/public/img/product-image.jpg" 
-                alt="Product image" height="100%" width="100%">' ?>
-                                    </div>
-                                    <div class="text-center pb-1">
-                                        <h3 class="pt-2 pb-0 product-name">Product name</h3>
-                                        <h4 class="product-price text-light-green pt-1 pb-2">Rs. 2500</h4>
-                                        <div class="row gap-1">
-                                            <div class="col-5">
-                                                <label>
-                                                    <input type="number" value="1">
-                                                </label>
-                                            </div>
-                                            <div class="col-7">
-                                                <button class="btn-primary-light text-white">Buy</button>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-3 text-center p-2">
-                                <div class="product-card p-3 pb-2">
-                                    <div class="image-window mb-1">
-                                        <?php echo '<img src="' . URL_ROOT . '/public/img/product-image.jpg" 
-                alt="Product image" height="100%" width="100%">' ?>
-                                    </div>
-                                    <div class="text-center pb-1">
-                                        <h3 class="pt-2 pb-0 product-name">Product name</h3>
-                                        <h4 class="product-price text-light-green pt-1 pb-2">Rs. 2500</h4>
-                                        <div class="row gap-1">
-                                            <div class="col-5">
-                                                <label>
-                                                    <input type="number" value="1">
-                                                </label>
-                                            </div>
-                                            <div class="col-7">
-                                                <button class="btn-primary-light text-white">Buy</button>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
+                            </div>';
+                            }
+                            ?>
                         </div>
                     </div>
                 </div>
