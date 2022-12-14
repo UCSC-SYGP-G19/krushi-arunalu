@@ -7,9 +7,9 @@
 
 const ROUTES = [
     "Producer" => [
-        "Marketplace" => [
-            "icon" => "marketplace",
-            "link" => "marketplace",
+        "Dashboard" => [
+            "icon" => "dashboard",
+            "link" => "index",
         ],
         "Cultivations" => [
             "icon" => "cultivations",
@@ -40,7 +40,7 @@ const ROUTES = [
     "Customer" => [
         "Marketplace" => [
             "icon" => "dashboard",
-            "link" => "index",
+            "link" => "marketplace",
         ],
         "All Manufacturers" => [
             "icon" => "manufacturers",
