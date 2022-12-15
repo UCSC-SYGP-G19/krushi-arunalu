@@ -8,13 +8,16 @@ form {
   }
 
   input, select, textarea {
-    height: 42px;
     width: 100%;
     padding: 0 12px;
     border-radius: $base-border-radius-sm;
     outline: none;
     border: 1px solid $secondary-grey;
     -webkit-box-sizing: border-box;
+  }
+
+  input, select{
+    height: 42px;
   }
 
   input::placeholder, textarea::placeholder {

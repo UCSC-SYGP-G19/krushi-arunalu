@@ -707,13 +707,15 @@ form label {
   text-align: left;
 }
 form input, form select, form textarea {
-  height: 42px;
   width: 100%;
   padding: 0 12px;
   border-radius: 8px;
   outline: none;
   border: 1px solid #B1B1B1;
   -webkit-box-sizing: border-box;
+}
+form input, form select {
+  height: 42px;
 }
 form input::placeholder, form textarea::placeholder {
   color: #B1B1B1;
