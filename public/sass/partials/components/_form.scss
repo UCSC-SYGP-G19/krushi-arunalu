@@ -6,28 +6,34 @@ label {
   text-align: left;
 }
 
-input, select {
-  height: 48px;
-  font-size: $base-font-size;
-  width: 100%;
-  padding: 0 12px;
-  border-radius: $base-border-radius-sm;
-  outline: none;
-  border: 1px solid $secondary-grey;
-  -webkit-box-sizing: border-box;
-}
+input, select, textarea {
+    width: 100%;
+    padding: 0 12px;
+    border-radius: $base-border-radius-sm;
+    outline: none;
+    border: 1px solid $secondary-grey;
+    -webkit-box-sizing: border-box;
+  }
 
-input::placeholder, select::placeholder {
-  color: $secondary-grey;
-  padding: 6px;
-}
+  input, select{
+    height: 42px;
+  }
+
+  input::placeholder, textarea::placeholder {
+    color: $secondary-grey;
+    padding: 6px;
+  }
 
 input[type="checkbox"] {
   height: 16px;
   width: 16px;
 }
 
-input:hover, input:focus, select:hover, select:focus {
+  input:hover, input:focus, textarea:hover, textarea:focus {
+    border: 1.5px solid $primary-green-light;
+  }
+
+input:hover, input:focus, select:hover, select:focus, textarea:hover, textarea:focus {
   border: 1.5px solid $primary-green-light;
 }
 

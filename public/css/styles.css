@@ -214,47 +214,36 @@
   .col-1-xs {
     flex: 0 0 8.3333333333%;
   }
-
   .col-2-xs {
     flex: 0 0 16.6666666667%;
   }
-
   .col-3-xs {
     flex: 0 0 25%;
   }
-
   .col-4-xs {
     flex: 0 0 33.3333333333%;
   }
-
   .col-5-xs {
     flex: 0 0 41.6666666667%;
   }
-
   .col-6-xs {
     flex: 0 0 50%;
   }
-
   .col-7-xs {
     flex: 0 0 58.3333333333%;
   }
-
   .col-8-xs {
     flex: 0 0 66.6666666667%;
   }
-
   .col-9-xs {
     flex: 0 0 75%;
   }
-
   .col-10-xs {
     flex: 0 0 83.3333333333%;
   }
-
   .col-11-xs {
     flex: 0 0 91.6666666667%;
   }
-
   .col-12-xs {
     flex: 0 0 100%;
   }
@@ -263,47 +252,36 @@
   .col-1-sm {
     flex: 0 0 8.3333333333%;
   }
-
   .col-2-sm {
     flex: 0 0 16.6666666667%;
   }
-
   .col-3-sm {
     flex: 0 0 25%;
   }
-
   .col-4-sm {
     flex: 0 0 33.3333333333%;
   }
-
   .col-5-sm {
     flex: 0 0 41.6666666667%;
   }
-
   .col-6-sm {
     flex: 0 0 50%;
   }
-
   .col-7-sm {
     flex: 0 0 58.3333333333%;
   }
-
   .col-8-sm {
     flex: 0 0 66.6666666667%;
   }
-
   .col-9-sm {
     flex: 0 0 75%;
   }
-
   .col-10-sm {
     flex: 0 0 83.3333333333%;
   }
-
   .col-11-sm {
     flex: 0 0 91.6666666667%;
   }
-
   .col-12-sm {
     flex: 0 0 100%;
   }
@@ -312,47 +290,36 @@
   .col-1-md {
     flex: 0 0 8.3333333333%;
   }
-
   .col-2-md {
     flex: 0 0 16.6666666667%;
   }
-
   .col-3-md {
     flex: 0 0 25%;
   }
-
   .col-4-md {
     flex: 0 0 33.3333333333%;
   }
-
   .col-5-md {
     flex: 0 0 41.6666666667%;
   }
-
   .col-6-md {
     flex: 0 0 50%;
   }
-
   .col-7-md {
     flex: 0 0 58.3333333333%;
   }
-
   .col-8-md {
     flex: 0 0 66.6666666667%;
   }
-
   .col-9-md {
     flex: 0 0 75%;
   }
-
   .col-10-md {
     flex: 0 0 83.3333333333%;
   }
-
   .col-11-md {
     flex: 0 0 91.6666666667%;
   }
-
   .col-12-md {
     flex: 0 0 100%;
   }
@@ -361,47 +328,36 @@
   .col-1-lg {
     flex: 0 0 8.3333333333%;
   }
-
   .col-2-lg {
     flex: 0 0 16.6666666667%;
   }
-
   .col-3-lg {
     flex: 0 0 25%;
   }
-
   .col-4-lg {
     flex: 0 0 33.3333333333%;
   }
-
   .col-5-lg {
     flex: 0 0 41.6666666667%;
   }
-
   .col-6-lg {
     flex: 0 0 50%;
   }
-
   .col-7-lg {
     flex: 0 0 58.3333333333%;
   }
-
   .col-8-lg {
     flex: 0 0 66.6666666667%;
   }
-
   .col-9-lg {
     flex: 0 0 75%;
   }
-
   .col-10-lg {
     flex: 0 0 83.3333333333%;
   }
-
   .col-11-lg {
     flex: 0 0 91.6666666667%;
   }
-
   .col-12-lg {
     flex: 0 0 100%;
   }
@@ -410,47 +366,36 @@
   .col-1-xl {
     flex: 0 0 8.3333333333%;
   }
-
   .col-2-xl {
     flex: 0 0 16.6666666667%;
   }
-
   .col-3-xl {
     flex: 0 0 25%;
   }
-
   .col-4-xl {
     flex: 0 0 33.3333333333%;
   }
-
   .col-5-xl {
     flex: 0 0 41.6666666667%;
   }
-
   .col-6-xl {
     flex: 0 0 50%;
   }
-
   .col-7-xl {
     flex: 0 0 58.3333333333%;
   }
-
   .col-8-xl {
     flex: 0 0 66.6666666667%;
   }
-
   .col-9-xl {
     flex: 0 0 75%;
   }
-
   .col-10-xl {
     flex: 0 0 83.3333333333%;
   }
-
   .col-11-xl {
     flex: 0 0 91.6666666667%;
   }
-
   .col-12-xl {
     flex: 0 0 100%;
   }
@@ -825,6 +770,7 @@ form .form-section-title {
   padding-top: 1.8rem;
   padding-bottom: 0.6rem;
 }
+
 form .alert {
   width: 100%;
   color: #CC3636;
@@ -944,6 +890,92 @@ footer {
   position: relative;
   flex: 1 0 78% !important;
   background-color: #F5F5F5;
+}
+
+.table-controls {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1.5rem;
+}
+.table-controls label {
+  margin: 0;
+  padding: 0;
+}
+.table-controls input, .table-controls select, .table-controls button {
+  height: 54px;
+  width: 100%;
+  border: 1.2px solid #B1B1B1;
+  border-radius: 12px;
+  font-size: 1.1rem;
+  color: black;
+  font-weight: 500;
+}
+.table-controls input:hover, .table-controls input:focus, .table-controls select:hover, .table-controls select:focus {
+  border: 1px solid #15742D;
+  background: #F5F5F5;
+}
+
+table {
+  width: 100%;
+}
+table tr {
+  padding: 5px 0;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  background-color: white;
+}
+table th, table td {
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+table thead tr {
+  border-bottom: 2px solid #15742D;
+  background-color: #E7F4D8;
+  border-radius: 16px 16px 0 0;
+  padding: 0.75rem 0;
+}
+table thead tr th {
+  font-weight: 600;
+}
+table tbody tr {
+  border-bottom: 1.5px solid #B1B1B1;
+}
+table tbody tr:hover {
+  background-color: #F5F5F5;
+}
+table tfoot tr {
+  border: none;
+  background-color: #FFFFFF;
+  border-radius: 0 0 16px 16px;
+  padding: 0.75rem 0;
+}
+table tfoot tr td {
+  display: inline;
+}
+table tfoot tr td label {
+  margin-left: 16px;
+  display: inline;
+}
+table tfoot tr td label select {
+  height: 36px;
+  width: unset;
+}
+table .pagination .arrow-icons {
+  margin: 0 12px;
+  padding-top: 8px;
+}
+table .pagination .arrow-icons .left-arrow {
+  cursor: pointer;
+  margin-right: 5px;
+  padding: 4px 4px 0;
+}
+table .pagination .arrow-icons .right-arrow {
+  cursor: pointer;
+  padding: 4px 4px 0;
+  margin-left: 5px;
 }
 
 .table-controls {
