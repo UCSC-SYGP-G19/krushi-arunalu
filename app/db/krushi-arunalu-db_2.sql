@@ -20,6 +20,9 @@ SET time_zone = "+00:00";
 --
 -- Database: `krushi-arunalu-db`
 --
+DROP DATABASE IF EXISTS `krushi-arunalu-db`;
+CREATE DATABASE IF NOT EXISTS `krushi-arunalu-db` DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci;
+USE `krushi-arunalu-db`;
 
 -- --------------------------------------------------------
 
