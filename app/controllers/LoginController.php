@@ -23,7 +23,7 @@ class LoginController extends Controller
             $this->login();
         }
 
-        Session::isSessionSet() ? Util::redirect('index') : $this->view->render();
+        Session::isSessionSet() ?  $this->redirectByUserRole() : $this->view->render();
     }
 
     private function login(): void
@@ -63,12 +63,25 @@ class LoginController extends Controller
         if ($user) {
             if ($user->getId() !== -1) {
                 Session::createSession($user);
-                Util::redirect('index');
+                $this->redirectByUserRole();
             } else {
                 $this->view->error = "Password incorrect";
             }
         } else {
             $this->view->error = "User not found";
+        }
+    }
+
+    private function redirectByUserRole()
+    {
+        $user = Session::getSession();
+        switch ($user->getRole()) {
+            case 'Customer':
+                Util::redirect('marketplace');
+                break;
+            default:
+                Util::redirect('index');
+                break;
         }
     }
 }

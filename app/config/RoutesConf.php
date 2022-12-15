@@ -36,4 +36,19 @@ const ROUTES = [
             "link" => "announcements",
         ],
     ],
+
+    "Customer" => [
+        "Marketplace" => [
+            "icon" => "dashboard",
+            "link" => "marketplace",
+        ],
+        "All Manufacturers" => [
+            "icon" => "manufacturers",
+            "link" => "manufacturers",
+        ],
+        "My Orders" => [
+            "icon" => "my-orders",
+            "link" => "my-orders",
+        ],
+    ],
 ];
