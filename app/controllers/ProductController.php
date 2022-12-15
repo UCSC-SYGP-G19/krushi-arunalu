@@ -45,14 +45,14 @@ class ProductController extends Controller
             $this->view->fieldOptions["product_category"] = $this->model->getProductCategoriesFromDB();
 
             if ($_SERVER["REQUEST_METHOD"] === "POST") {
-//                $required_fields = null;
-//                $this->validateFields($required_fields);
-//
-//                if (!empty($this->view->fieldErrors)) {
-//                    $this->refillValuesAndShowError();
-//                    $this->view->render();
-//                    return;
-//                }
+                //$required_fields = null;
+                //$this->validateFields($required_fields);
+
+                if (!empty($this->view->fieldErrors)) {
+                    $this->refillValuesAndShowError();
+                    $this->view->render();
+                    return;
+                }
 
                 $this->loadModel("Product");
                 $this->model->fillData([
@@ -68,7 +68,7 @@ class ProductController extends Controller
                 ]);
 
                 if ($this->model->addProductToDB()) {
-                    Util::redirect("product");
+                    Util::redirect("../product");
                 }
             }
 
