@@ -16,8 +16,8 @@ $colors: (
   display: inline-block;
   border: 0;
   padding: $base-padding*0.5 $base-padding;
-  border-radius: $base-border-radius;
   background-color: $bg-color;
+  border-radius: $base-border-radius;
 }
 
 @each $key, $val in $colors {
@@ -40,7 +40,21 @@ $colors: (
   }
 }
 
+.btn-lg {
+  border-radius: $base-border-radius-sm;
+}
+
+.btn-md {
+  padding: $base-padding*0.6 $base-padding*1;
+  border-radius: $base-border-radius-sm*1.5;
+}
+
 .btn-sm {
   padding: $base-padding*0.4 $base-padding*0.8;
   border-radius: $base-border-radius-sm;
+}
+
+.btn-xs {
+  padding: $base-padding*0.2 $base-padding*0.4!important;
+  border-radius: $base-border-radius-sm*0.5;
 }

@@ -11,7 +11,7 @@
             </svg>
         </button>
     </div>
-    <div class="col-3 text-center pt-1">
+    <div class="col-4 text-center pt-1">
         <div class="row">
             <div class="col-2 m-auto"></div>
             <div class="col-6 text-right pb-1 px-1 m-auto">

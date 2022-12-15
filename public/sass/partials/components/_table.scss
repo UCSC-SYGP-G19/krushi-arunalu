@@ -1,0 +1,102 @@
+.table-controls {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: $base-margin;
+
+  label {
+    margin: 0;
+    padding: 0;
+  }
+
+  input, select, button {
+    height: 54px;
+    width: 100%;
+    border: $base-border-weight*1.2 solid $secondary-grey;
+    border-radius: 12px;
+    font-size: $base-font-size*1.1;
+    color: black;
+    font-weight: 500;
+  }
+
+  input:hover, input:focus, select:hover, select:focus {
+    border: 1px solid $primary-green-light;
+    background: $background-grey;
+  }
+}
+
+table {
+  width: 100%;
+
+  tr {
+    padding: 5px 0;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    background-color: white;
+  }
+
+  th, td {
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+  }
+
+  thead tr {
+    border-bottom: 2px solid $primary-green-light;
+    background-color: $selected-green-light;
+    border-radius: $base-border-radius $base-border-radius 0 0;
+    padding: 0.75rem 0;
+
+    th {
+      font-weight: 600;
+    }
+  }
+
+  tbody tr {
+    border-bottom: 1.5px solid $secondary-grey;
+
+    &:hover {
+      background-color: $background-grey;
+    }
+  }
+
+  tfoot tr {
+    border: none;
+    background-color: $white;
+    border-radius: 0 0 $base-border-radius $base-border-radius;
+    padding: 0.75rem 0;
+
+    td {
+      display: inline;
+
+      label {
+        margin-left: 16px;
+        display: inline;
+
+        select {
+          height: 36px;
+          width: unset;
+        }
+      }
+    }
+  }
+
+  .pagination {
+    .arrow-icons {
+      margin: 0 12px;
+      padding-top: 8px;
+
+      .left-arrow{
+        cursor: pointer;
+        margin-right: 5px;
+        padding: 4px 4px 0;
+      }
+      .right-arrow{
+        cursor: pointer;
+        padding: 4px 4px 0;
+        margin-left: 5px;
+      }
+    }
+  }
+}

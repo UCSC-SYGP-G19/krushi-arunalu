@@ -30,10 +30,11 @@ class Product extends Model
         $description = null,
         $weight = null,
         $unit = null,
-        $unitPrice = null,
-        $stockQuantity = null,
+        $unitSellingPrice = null,
+        $stockQuantity = null
         $manufacturerId = null,
         $categoryId = null,
+
     ) {
         $this->id = $id;
         $this->name = $name;
@@ -41,7 +42,7 @@ class Product extends Model
         $this->description = $description;
         $this->weight = $weight;
         $this->unit = $unit;
-        $this->unitSellingPrice = $unitPrice;
+        $this->unitSellingPrice = $unitSellingPrice;
         $this->stockQuantity = $stockQuantity;
         $this->manufacturerId = $manufacturerId;
         $this->categoryId = $categoryId;
@@ -71,6 +72,28 @@ class Product extends Model
             INNER JOIN product_category ON product.category_id = product_category.id WHERE product.manufacturer_id = ?
             ", [$manufacturerId])->fetchAll();
         return $result;
+    }
+
+    public function getAllProducts(): array
+    {
+        $result = $this->runQuery("SELECT * FROM product")->fetchAll();
+        $products = [];
+        foreach ($result as $key => $value) {
+            $product = new Product(
+                $value["id"],
+                $value["name"],
+                $value["image_url"],
+                $value["description"],
+                $value["weight"],
+                $value["unit"],
+                $value["unit_selling_price"],
+                $value["stock_quantity"],
+                $value["maufacturer_id"],
+                $value["category_id"],
+            );
+            array_push($products, $product);
+        }
+        return $products;
     }
 
     /**
@@ -122,6 +145,23 @@ class Product extends Model
     }
 
     /**
+     * @return string|null
+     */
+    public function getImageUrl(): ?string
+    {
+        return $this->imageUrl;
+    }
+
+    /**
+     * @param string|null $imageUrl
+     */
+    public function setImageUrl(?string $imageUrl): void
+    {
+        $this->imageUrl = $imageUrl;
+    }
+
+    /**
+
      * @return float|null
      */
     public function getWeight(): ?float
@@ -154,22 +194,7 @@ class Product extends Model
     }
 
     /**
-     * @return string|null
-     */
-    public function getImageUrl(): ?string
-    {
-        return $this->imageUrl;
-    }
 
-    /**
-     * @param string|null $imageUrl
-     */
-    public function setImageUrl(?string $imageUrl): void
-    {
-        $this->imageUrl = $imageUrl;
-    }
-
-    /**
      * @return float|null
      */
     public function getUnitSellingPrice(): ?float
