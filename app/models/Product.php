@@ -14,12 +14,14 @@ class Product extends Model
 {
     private ?int $id;
     private ?string $name;
-    private ?string $description;
     private ?string $imageUrl;
+    private ?string $description;
     private ?float $weight;
     private ?string $unit;
     private ?float $unitSellingPrice;
     private ?float $stockQuantity;
+    private ?int $manufacturerId;
+    private ?int $categoryId;
 
     public function __construct(
         $id = null,
@@ -30,6 +32,9 @@ class Product extends Model
         $unit = null,
         $unitSellingPrice = null,
         $stockQuantity = null
+        $manufacturerId = null,
+        $categoryId = null,
+
     ) {
         $this->id = $id;
         $this->name = $name;
@@ -39,6 +44,34 @@ class Product extends Model
         $this->unit = $unit;
         $this->unitSellingPrice = $unitSellingPrice;
         $this->stockQuantity = $stockQuantity;
+        $this->manufacturerId = $manufacturerId;
+        $this->categoryId = $categoryId;
+    }
+
+    public function addProductToDB(): bool
+    {
+        $result = $this->runQuery(
+            'INSERT into product (name, image_url, description, 
+                     weight, unit, unit_selling_price, stock_quantity, manufacturer_id, category_id) VALUES 
+                         (?,?,?,?,?,?,?,?,?)',
+            [$this->name, $this->imageUrl, $this->description, $this->weight, $this->unit,
+                $this->unitSellingPrice, $this->stockQuantity, $this->manufacturerId, $this->categoryId]
+        );
+        return $result == true;
+    }
+
+    public function getProductsByManufacturerId($manufacturerId): array
+    {
+        $result = $this->runQuery("SELECT 
+            product.image_url as 'image_url', 
+            product_category.name as 'category_name',
+            product.name as 'product_name',
+            product.stock_quantity as stock_qty,
+            product.unit_selling_price as 'unit_price'
+            FROM product
+            INNER JOIN product_category ON product.category_id = product_category.id WHERE product.manufacturer_id = ?
+            ", [$manufacturerId])->fetchAll();
+        return $result;
     }
 
     public function getAllProducts(): array
@@ -54,7 +87,9 @@ class Product extends Model
                 $value["weight"],
                 $value["unit"],
                 $value["unit_selling_price"],
-                $value["stock_quantity"]
+                $value["stock_quantity"],
+                $value["maufacturer_id"],
+                $value["category_id"],
             );
             array_push($products, $product);
         }
@@ -126,6 +161,7 @@ class Product extends Model
     }
 
     /**
+
      * @return float|null
      */
     public function getWeight(): ?float
@@ -158,6 +194,7 @@ class Product extends Model
     }
 
     /**
+
      * @return float|null
      */
     public function getUnitSellingPrice(): ?float
@@ -187,5 +224,37 @@ class Product extends Model
     public function setStockQuantity(?float $stockQuantity): void
     {
         $this->stockQuantity = $stockQuantity;
+    }
+
+    /**
+     * @return int|null
+     */
+    public function getManufacturerId(): ?int
+    {
+        return $this->manufacturerId;
+    }
+
+    /**
+     * @param int|null $manufacturerId
+     */
+    public function setManufacturerId(?int $manufacturerId): void
+    {
+        $this->manufacturerId = $manufacturerId;
+    }
+
+    /**
+     * @return int|null
+     */
+    public function getCategoryId(): ?int
+    {
+        return $this->categoryId;
+    }
+
+    /**
+     * @param int|null $categoryId
+     */
+    public function setCategoryId(?int $categoryId): void
+    {
+        $this->categoryId = $categoryId;
     }
 }
