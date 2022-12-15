@@ -31,6 +31,24 @@
   width: 100vw !important;
 }
 
+.min-h-100 {
+  min-height: 100%;
+}
+
+.min-w-100 {
+  min-width: 100%;
+}
+
+.form-wrapper {
+  background-color: #FFFFFF;
+  border-radius: 16px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1) !important;
+}
+.form-wrapper h2.title {
+  font-size: 2.025rem;
+  font-weight: 600;
+}
+
 .container {
   width: 100%;
   max-width: 1200px;
@@ -388,8 +406,8 @@
   display: inline-block;
   border: 0;
   padding: 0.75rem 1.5rem;
-  border-radius: 16px;
   background-color: #15742D;
+  border-radius: 16px;
 }
 .btn-primary-light:hover {
   background-color: #198a35;
@@ -401,8 +419,8 @@
   display: inline-block;
   border: 0;
   padding: 0.75rem 1.5rem;
-  border-radius: 16px;
   background-color: #FFFFFF;
+  border-radius: 16px;
   border: 1.5px solid #15742D;
   color: #15742D;
 }
@@ -417,8 +435,8 @@
   display: inline-block;
   border: 0;
   padding: 0.75rem 1.5rem;
-  border-radius: 16px;
   background-color: #185427;
+  border-radius: 16px;
 }
 .btn-primary-dark:hover {
   background-color: #1e6830;
@@ -430,8 +448,8 @@
   display: inline-block;
   border: 0;
   padding: 0.75rem 1.5rem;
-  border-radius: 16px;
   background-color: #FFFFFF;
+  border-radius: 16px;
   border: 1.5px solid #185427;
   color: #185427;
 }
@@ -446,8 +464,8 @@
   display: inline-block;
   border: 0;
   padding: 0.75rem 1.5rem;
-  border-radius: 16px;
   background-color: #B1B1B1;
+  border-radius: 16px;
 }
 .btn-secondary:hover {
   background-color: #bebebe;
@@ -459,8 +477,8 @@
   display: inline-block;
   border: 0;
   padding: 0.75rem 1.5rem;
-  border-radius: 16px;
   background-color: #FFFFFF;
+  border-radius: 16px;
   border: 1.5px solid #B1B1B1;
   color: #B1B1B1;
 }
@@ -475,8 +493,8 @@
   display: inline-block;
   border: 0;
   padding: 0.75rem 1.5rem;
-  border-radius: 16px;
   background-color: #FFFFFF;
+  border-radius: 16px;
 }
 .btn-white:hover {
   background-color: white;
@@ -488,8 +506,8 @@
   display: inline-block;
   border: 0;
   padding: 0.75rem 1.5rem;
-  border-radius: 16px;
   background-color: #FFFFFF;
+  border-radius: 16px;
   border: 1.5px solid #FFFFFF;
   color: #FFFFFF;
 }
@@ -504,8 +522,8 @@
   display: inline-block;
   border: 0;
   padding: 0.75rem 1.5rem;
-  border-radius: 16px;
   background-color: #000000;
+  border-radius: 16px;
 }
 .btn-black:hover {
   background-color: #0d0d0d;
@@ -517,8 +535,8 @@
   display: inline-block;
   border: 0;
   padding: 0.75rem 1.5rem;
-  border-radius: 16px;
   background-color: #FFFFFF;
+  border-radius: 16px;
   border: 1.5px solid #000000;
   color: #000000;
 }
@@ -533,8 +551,8 @@
   display: inline-block;
   border: 0;
   padding: 0.75rem 1.5rem;
-  border-radius: 16px;
   background-color: #CC3636;
+  border-radius: 16px;
 }
 .btn-error:hover {
   background-color: #d14a4a;
@@ -546,8 +564,8 @@
   display: inline-block;
   border: 0;
   padding: 0.75rem 1.5rem;
-  border-radius: 16px;
   background-color: #FFFFFF;
+  border-radius: 16px;
   border: 1.5px solid #CC3636;
   color: #CC3636;
 }
@@ -562,8 +580,8 @@
   display: inline-block;
   border: 0;
   padding: 0.75rem 1.5rem;
-  border-radius: 16px;
   background-color: #8B0000;
+  border-radius: 16px;
 }
 .btn-error-dark:hover {
   background-color: #a50000;
@@ -575,8 +593,8 @@
   display: inline-block;
   border: 0;
   padding: 0.75rem 1.5rem;
-  border-radius: 16px;
   background-color: #FFFFFF;
+  border-radius: 16px;
   border: 1.5px solid #8B0000;
   color: #8B0000;
 }
@@ -585,9 +603,23 @@
   color: #FFFFFF !important;
 }
 
+.btn-lg {
+  border-radius: 8px;
+}
+
+.btn-md {
+  padding: 0.9rem 1.5rem;
+  border-radius: 12px;
+}
+
 .btn-sm {
   padding: 0.6rem 1.2rem;
   border-radius: 8px;
+}
+
+.btn-xs {
+  padding: 0.3rem 0.6rem !important;
+  border-radius: 4px;
 }
 
 .navbar .container, .navbar {
@@ -701,12 +733,15 @@
   color: #CC3636;
 }
 
-form label {
+label {
   display: block;
   margin-bottom: 0.75rem;
   text-align: left;
 }
-form input, form select, form textarea {
+
+input, select {
+  height: 48px;
+  font-size: 1rem;
   width: 100%;
   padding: 0 12px;
   border-radius: 8px;
@@ -714,26 +749,28 @@ form input, form select, form textarea {
   border: 1px solid #B1B1B1;
   -webkit-box-sizing: border-box;
 }
-form input, form select {
-  height: 42px;
-}
-form input::placeholder, form textarea::placeholder {
+
+input::placeholder, select::placeholder {
   color: #B1B1B1;
   padding: 6px;
 }
-form input[type=checkbox] {
+
+input[type=checkbox] {
   height: 16px;
   width: 16px;
 }
-form input:hover, form input:focus, form textarea:hover, form textarea:focus {
+
+input:hover, input:focus, select:hover, select:focus {
   border: 1.5px solid #15742D;
 }
+
 form .form-section-title {
   color: #95C260;
   font-weight: 500 !important;
   padding-top: 1.8rem;
   padding-bottom: 0.6rem;
 }
+
 form .alert {
   width: 100%;
   color: #CC3636;
@@ -776,7 +813,7 @@ form .card-input-element:checked + .card-input {
 
 footer {
   position: relative;
-  bottom: 0;
+  margin-top: -168px;
   background-color: #FFFFFF !important;
   box-shadow: 0 1px 8px rgba(0, 0, 0, 0.1) !important;
 }
@@ -791,7 +828,7 @@ footer {
   margin: 0;
   background-color: white;
   z-index: 10;
-  flex: 1 0 22% !important;
+  flex: 0 1 22% !important;
   box-shadow: 0 1px 20px rgba(0, 0, 0, 0.1);
 }
 .content-with-sidebar aside.sidebar .brand-logo-container {
@@ -834,7 +871,7 @@ footer {
   font-weight: 500;
 }
 .content-with-sidebar aside.sidebar-collapsed {
-  flex: 1 0 5% !important;
+  flex: 0 0 5% !important;
 }
 .content-with-sidebar aside.sidebar-collapsed .brand-logo-large {
   display: none;
@@ -851,7 +888,94 @@ footer {
 }
 .content-with-sidebar main.content {
   position: relative;
+  flex: 1 0 78% !important;
   background-color: #F5F5F5;
+}
+
+.table-controls {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1.5rem;
+}
+.table-controls label {
+  margin: 0;
+  padding: 0;
+}
+.table-controls input, .table-controls select, .table-controls button {
+  height: 54px;
+  width: 100%;
+  border: 1.2px solid #B1B1B1;
+  border-radius: 12px;
+  font-size: 1.1rem;
+  color: black;
+  font-weight: 500;
+}
+.table-controls input:hover, .table-controls input:focus, .table-controls select:hover, .table-controls select:focus {
+  border: 1px solid #15742D;
+  background: #F5F5F5;
+}
+
+table {
+  width: 100%;
+}
+table tr {
+  padding: 5px 0;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  background-color: white;
+}
+table th, table td {
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+table thead tr {
+  border-bottom: 2px solid #15742D;
+  background-color: #E7F4D8;
+  border-radius: 16px 16px 0 0;
+  padding: 0.75rem 0;
+}
+table thead tr th {
+  font-weight: 600;
+}
+table tbody tr {
+  border-bottom: 1.5px solid #B1B1B1;
+}
+table tbody tr:hover {
+  background-color: #F5F5F5;
+}
+table tfoot tr {
+  border: none;
+  background-color: #FFFFFF;
+  border-radius: 0 0 16px 16px;
+  padding: 0.75rem 0;
+}
+table tfoot tr td {
+  display: inline;
+}
+table tfoot tr td label {
+  margin-left: 16px;
+  display: inline;
+}
+table tfoot tr td label select {
+  height: 36px;
+  width: unset;
+}
+table .pagination .arrow-icons {
+  margin: 0 12px;
+  padding-top: 8px;
+}
+table .pagination .arrow-icons .left-arrow {
+  cursor: pointer;
+  margin-right: 5px;
+  padding: 4px 4px 0;
+}
+table .pagination .arrow-icons .right-arrow {
+  cursor: pointer;
+  padding: 4px 4px 0;
+  margin-left: 5px;
 }
 
 .table-controls {
@@ -1523,12 +1647,53 @@ h1.title {
   font-size: 0.9rem;
 }
 
+.marketplace {
+  min-height: 100%;
+}
+.marketplace .product-card {
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  background-color: white;
+}
+.marketplace .product-card input {
+  height: 42px;
+  width: 100%;
+  padding: 0 12px;
+  border-radius: 8px;
+  outline: none;
+  border: 1px solid #B1B1B1;
+  -webkit-box-sizing: border-box;
+}
+.marketplace .product-card .image-window {
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  width: 100%;
+  height: 200px;
+}
+.marketplace .product-card .image-window img {
+  object-fit: cover;
+  border-radius: 8px;
+}
+.marketplace .product-card .product-name {
+  font-weight: 400;
+}
+.marketplace .product-card .product-price {
+  font-weight: 600;
+}
+.marketplace .product-card input, .marketplace .product-card button {
+  width: 100%;
+}
+.marketplace .product-card button {
+  border-radius: 8px;
+  height: 42px;
+}
+
 * {
   box-sizing: border-box;
   color: inherit;
   margin: 0;
   font-family: inherit;
-  transition: all 0.3s ease;
+  transition: color 0.3s ease, background-color 0.3s ease, border-color 0.3s ease;
 }
 
 body {

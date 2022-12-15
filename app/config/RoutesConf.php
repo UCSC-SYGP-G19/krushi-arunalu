@@ -36,6 +36,7 @@ const ROUTES = [
             "link" => "announcements",
         ],
     ],
+  
     "Manufacturer" => [
         "Dashboard" => [
             "icon" => "dashboard",
@@ -76,6 +77,22 @@ const ROUTES = [
         "Inquiries" => [
             "icon" => "inquiries",
             "link" => "inquiries",
+
+        ],
+    ],
+
+    "Customer" => [
+        "Marketplace" => [
+            "icon" => "dashboard",
+            "link" => "marketplace",
+        ],
+        "All Manufacturers" => [
+            "icon" => "manufacturers",
+            "link" => "manufacturers",
+        ],
+        "My Orders" => [
+            "icon" => "my-orders",
+            "link" => "my-orders",
         ],
     ],
 ];

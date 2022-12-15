@@ -1,4 +1,4 @@
-<aside class="sidebar container-fluid">
+<aside class="sidebar">
     <div class="row text-center brand-logo-container">
         <div class="col-12 brand-logo-large">
             <img src="<?php echo URL_ROOT ?>/public/img/navbar-logo-large.webp" alt="logo" height="96px">

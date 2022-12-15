@@ -5,12 +5,13 @@
   height: 100%;
 
   aside.sidebar {
+    //max-width: 22vw;
     transition: all 0.2s ease !important;
     padding: 0;
     margin: 0;
     background-color: white;
     z-index: 10;
-    flex: 1 0 22% !important;
+    flex: 0 1 22% !important;
     box-shadow: 0 1px 20px rgba(0, 0, 0, 0.1);
 
     .brand-logo-container {
@@ -65,7 +66,7 @@
   }
 
   aside.sidebar-collapsed {
-    flex: 1 0 5% !important;
+    flex: 0 0 5% !important;
 
     .brand-logo-large {
       display: none;
@@ -90,8 +91,9 @@
   }
 
   main.content {
+//    min-width: 78vw;
     position: relative;
-    //flex: 1 0 78% !important;
+    flex: 1 0 78% !important;
     background-color: $background-grey;
   }
 }
