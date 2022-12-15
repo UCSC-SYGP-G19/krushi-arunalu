@@ -29,3 +29,14 @@ $properties: (auto, hidden);
 .min-w-100 {
   min-width: 100%;
 }
+
+.form-wrapper {
+    background-color: $white;
+    border-radius: $base-border-radius;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1) !important;
+
+  h2.title {
+    font-size: $font-size-lg*1.35;
+    font-weight: 600;
+  }
+}

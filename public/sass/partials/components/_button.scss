@@ -16,8 +16,8 @@ $colors: (
   display: inline-block;
   border: 0;
   padding: $base-padding*0.5 $base-padding;
-  border-radius: $base-border-radius;
   background-color: $bg-color;
+  border-radius: $base-border-radius;
 }
 
 @each $key, $val in $colors {
@@ -38,6 +38,10 @@ $colors: (
       color: $white !important;
     }
   }
+}
+
+.btn-lg {
+  border-radius: $base-border-radius-sm;
 }
 
 .btn-md {
