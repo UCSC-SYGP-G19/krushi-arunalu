@@ -7,7 +7,7 @@ form {
     text-align: left;
   }
 
-  input, select {
+  input, select, textarea {
     height: 42px;
     width: 100%;
     padding: 0 12px;
@@ -17,7 +17,7 @@ form {
     -webkit-box-sizing: border-box;
   }
 
-  input::placeholder {
+  input::placeholder, textarea::placeholder {
     color: $secondary-grey;
     padding: 6px;
   }
@@ -27,7 +27,7 @@ form {
     width: 16px;
   }
 
-  input:hover, input:focus {
+  input:hover, input:focus, textarea:hover, textarea:focus {
     border: 1.5px solid $primary-green-light;
   }
 
