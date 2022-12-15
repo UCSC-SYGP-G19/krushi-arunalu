@@ -44,7 +44,7 @@ class Controller
         foreach ($_POST as $key => $value) {
             $_POST[$key] = stripslashes(trim($value));
             if (($allFieldsFlag  || in_array($key, $requiredFields)) && empty($_POST[$key])) {
-                Logger::log("DEBUG", empty($_POST[$key]));
+                Logger::log("DEBUG", $_POST[$key]);
                 $this->view->fieldErrors[$key] = "Field is required";
             }
         }

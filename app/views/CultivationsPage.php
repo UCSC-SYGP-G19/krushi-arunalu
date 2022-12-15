@@ -95,10 +95,11 @@ include APP_ROOT . "/views/inc/components/Header.php";
                                     <tr class="row justify-content-end pagination">
                                         <td class="col-3 text-right"><span>Rows per page:</span><label>
                                                 <select name="table_filter" id="table_filter">
-                                                    <option value="">10</option>
+                                                    <option value=""><?php echo count($this->data); ?></option>
                                                 </select>
                                             </label></td>
-                                        <td class="col-2">1-2 of 25
+                                        <td class="col-2">1-<?php echo count($this->data); ?> of
+                                            <?php echo count($this->data); ?>
                                             <span class="arrow-icons">
                                                 <span class="left-arrow">
                                                     <svg width="9" height="15" viewBox="0 0 9 15" fill="none"

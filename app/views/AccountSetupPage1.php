@@ -16,28 +16,28 @@ include APP_ROOT . "/views/inc/components/LoggedInNavbarWithoutSidebar.php"
             <h3 class="form-section-title">Details of your lands</h3>
             <div class="row gap-2">
                 <div class="col-4">
-                    <label for="land-name">Land name</label>
-                    <input type="text" id="land-name" name="land-name" placeholder="Enter a name to identify land"
+                    <label for="land_name">Land name</label>
+                    <input type="text" id="land_name" name="land_name" placeholder="Enter a name to identify land"
                            value="<?php
-                            if (isset($this->fields['land-name'])) {
-                                echo $this->fields['land-name'];
+                            if (isset($this->fields['land_name'])) {
+                                echo $this->fields['land_name'];
                             }
                             ?>">
-                    <?php if (isset($this->fieldErrors['land-name'])) { ?>
-                        <div class="error"><?php echo $this->fieldErrors['land-name']; ?></div>
+                    <?php if (isset($this->fieldErrors['land_name'])) { ?>
+                        <div class="error"><?php echo $this->fieldErrors['land_name']; ?></div>
                     <?php } ?>
                 </div>
                 <div class="col-4">
-                    <label for="land-size">Land size (area)</label>
-                    <input type="number" id="land-size" name="land-size"
+                    <label for="land_size">Land size (area)</label>
+                    <input type="number" id="land_size" name="land_size"
                            placeholder="Enter land size (area) in hectares"
                            value="<?php
-                            if (isset($this->fields['land-size'])) {
-                                echo $this->fields['land-size'];
+                            if (isset($this->fields['land_size'])) {
+                                echo $this->fields['land_size'];
                             }
                             ?>">
-                    <?php if (isset($this->fieldErrors['land-size'])) { ?>
-                        <div class="error"><?php echo $this->fieldErrors['land-size']; ?></div>
+                    <?php if (isset($this->fieldErrors['land_size'])) { ?>
+                        <div class="error"><?php echo $this->fieldErrors['land_size']; ?></div>
                     <?php } ?>
                 </div>
                 <div class="col-4">
