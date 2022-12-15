@@ -43,9 +43,8 @@ include APP_ROOT . "/views/inc/components/Header.php";
                                 <div class="">
                                     <div class="image-window mb-1">
                                     ' .
-                                    '<img src="' . URL_ROOT . '/public/img/product-image.jpg" 
-                alt="Product image" height="100%" width="100%">' .
-                                    '
+                                    '<img alt="Product image" height="100%" width="100%" src="' . URL_ROOT . '/public/img/products/' . $product->getImageUrl() .
+                                    '">' . '
                                     </div>
                                     <div class="text-center">
                                         <h3 class="pt-2 pb-0 product-name">' . $product->getName() . '</h3>

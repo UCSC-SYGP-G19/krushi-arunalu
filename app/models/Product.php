@@ -15,6 +15,7 @@ class Product extends Model
     private ?int $id;
     private ?string $name;
     private ?string $description;
+    private ?string $imageUrl;
     private ?float $weight;
     private ?string $unit;
     private ?float $unitSellingPrice;
@@ -23,6 +24,7 @@ class Product extends Model
     public function __construct(
         $id = null,
         $name = null,
+        $imageUrl = null,
         $description = null,
         $weight = null,
         $unit = null,
@@ -31,6 +33,7 @@ class Product extends Model
     ) {
         $this->id = $id;
         $this->name = $name;
+        $this->imageUrl = $imageUrl;
         $this->description = $description;
         $this->weight = $weight;
         $this->unit = $unit;
@@ -46,6 +49,7 @@ class Product extends Model
             $product = new Product(
                 $value["id"],
                 $value["name"],
+                $value["image_url"],
                 $value["description"],
                 $value["weight"],
                 $value["unit"],
@@ -103,6 +107,22 @@ class Product extends Model
     public function setDescription(?string $description): void
     {
         $this->description = $description;
+    }
+
+    /**
+     * @return string|null
+     */
+    public function getImageUrl(): ?string
+    {
+        return $this->imageUrl;
+    }
+
+    /**
+     * @param string|null $imageUrl
+     */
+    public function setImageUrl(?string $imageUrl): void
+    {
+        $this->imageUrl = $imageUrl;
     }
 
     /**
