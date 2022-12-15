@@ -31,10 +31,9 @@ class Product extends Model
         $weight = null,
         $unit = null,
         $unitSellingPrice = null,
-        $stockQuantity = null
+        $stockQuantity = null,
         $manufacturerId = null,
         $categoryId = null,
-
     ) {
         $this->id = $id;
         $this->name = $name;
@@ -161,7 +160,6 @@ class Product extends Model
     }
 
     /**
-
      * @return float|null
      */
     public function getWeight(): ?float
@@ -194,7 +192,6 @@ class Product extends Model
     }
 
     /**
-
      * @return float|null
      */
     public function getUnitSellingPrice(): ?float

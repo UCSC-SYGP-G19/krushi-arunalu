@@ -30,11 +30,11 @@ include APP_ROOT . "/views/inc/components/Header.php";
             <div class="content-wrapper">
                 <div class="content p-4 mt-1">
                     <div class="container-fluid px-2">
-                        <div class="row px-1 pt-1">
-                            <div class="col-10">
+                        <div class="row px-1 pt-1 justify-content-space-between">
+                            <div class="col">
                                 <h1 class="title">Product Categories Page</h1>
                             </div>
-                            <div class=col-2">
+                            <div class=col">
                                 <a href="product-category/add" class="btn-primary-light text-white">
                                     Add Product Category</a>
                             </div>

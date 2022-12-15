@@ -50,16 +50,16 @@ include APP_ROOT . "/views/inc/components/Header.php";
                                 <?php } ?>
                             </div>
                             <div class="col-8">
-                                <label for="product_name">Product Name</label>
-                                <input type="text" id="product_name" name="product_name"
+                                <label for="name">Product Name</label>
+                                <input type="text" id="name" name="name"
                                        placeholder="Enter product name"
                                        value="<?php
-                                        if (isset($this->fields['product_name'])) {
-                                            echo $this->fields['product_name'];
+                                        if (isset($this->fields['name'])) {
+                                            echo $this->fields['name'];
                                         }
                                         ?>">
-                                <?php if (isset($this->fieldErrors['product_name'])) { ?>
-                                    <div class="error"><?php echo $this->fieldErrors['product_name']; ?></div>
+                                <?php if (isset($this->fieldErrors['name'])) { ?>
+                                    <div class="error"><?php echo $this->fieldErrors['name']; ?></div>
                                 <?php } ?>
                             </div>
                         </div>
@@ -78,8 +78,8 @@ include APP_ROOT . "/views/inc/components/Header.php";
                                 <?php } ?>
                             </div>
                             <div class="col-6">
-                                <label for="weight">Weight</label>
-                                <input type="text" id="weight" name="weight"
+                                <label for="weight">Weight (KG)</label>
+                                <input type="number" id="weight" name="weight"
                                        placeholder="Enter weight of the product"
                                        value="<?php
                                         if (isset($this->fields['weight'])) {
@@ -93,8 +93,8 @@ include APP_ROOT . "/views/inc/components/Header.php";
                         </div>
                         <div class="row gap-2">
                             <div class="col-6">
-                                <label for="unit_price">Selling price(per unit)</label>
-                                <input type="text" id="unit_price" name="unit_price"
+                                <label for="unit_price">Selling price (per unit)</label>
+                                <input type="number" id="unit_price" name="unit_price"
                                        placeholder="Enter selling price"
                                        value="<?php
                                         if (isset($this->fields['unit_price'])) {
@@ -106,8 +106,8 @@ include APP_ROOT . "/views/inc/components/Header.php";
                                 <?php } ?>
                             </div>
                             <div class="col-6">
-                                <label for="stock_qty">Initial stock quantity</label>
-                                <input type="text" id="stock_qty" name="stock_qty"
+                                <label for="stock_qty">Initial stock quantity (KG)</label>
+                                <input type="number" id="stock_qty" name="stock_qty"
                                        placeholder="Enter initial stock quantity"
                                        value="<?php
                                         if (isset($this->fields['stock_qty'])) {
