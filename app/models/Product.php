@@ -95,6 +95,21 @@ class Product extends Model
         return $products;
     }
 
+    public function getProductDetails($id): Product
+    {
+        $result = $this->runQuery("SELECT * FROM product WHERE id = ?", [$id])->fetch();
+        return new Product(
+            $result["id"],
+            $result["name"],
+            $result["image_url"],
+            $result["description"],
+            $result["weight"],
+            $result["unit"],
+            $result["unit_selling_price"],
+            $result["stock_quantity"]
+        );
+    }
+
     /**
      * @return int|null
      */
