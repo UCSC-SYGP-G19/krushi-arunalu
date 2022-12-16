@@ -39,12 +39,17 @@ include APP_ROOT . "/views/inc/components/Header.php";
                         <br>
                         <div class="row px-1">
                             <?php foreach ($this->data as $product) {
-                                echo '<div class="col-3 product-card text-center p-3 pb-2">
-                                <div class="">
+                                echo '<div class="col-3 text-center p-2">
+                                <div class="product-card  p-3 pb-2">
                                     <div class="image-window mb-1">
                                     ' .
-                                    '<img alt="Product image" height="100%" width="100%" src="' . URL_ROOT . '/public/img/products/' . $product->getImageUrl() .
-                                    '">' . '
+                                    '<a href="marketplace/product-details/' . $product->getId() .
+                                    '">' .
+                                    '<img alt="Product image" height="100%" width="100%" src="' . URL_ROOT .
+                                    '/public/img/products/' .
+                                    $product->getImageUrl() . '">'
+                                    . '</a>' .
+                                    '
                                     </div>
                                     <div class="text-center">
                                         <h3 class="pt-2 pb-0 product-name">' . $product->getName() . '</h3>
@@ -71,7 +76,6 @@ include APP_ROOT . "/views/inc/components/Header.php";
             <?php
             include APP_ROOT . "/views/inc/components/Footer.php";
             ?>
-
         </main>
     </div>
     </body>
