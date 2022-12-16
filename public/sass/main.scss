@@ -17,6 +17,7 @@
 @import "partials/components/form";
 @import "partials/components/footer";
 @import "partials/components/sidebar";
+@import "partials/components/table";
 
 // utilities (spacing, typography, etc)
 @import "partials/_utilities";
@@ -37,7 +38,7 @@
   color: inherit;
   margin: 0;
   font-family: inherit;
-  transition: all 0.3s ease;
+  transition: color 0.3s ease, background-color 0.3s ease, border-color 0.3s ease;
 }
 
 body {

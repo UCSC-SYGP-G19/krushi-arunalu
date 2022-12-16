@@ -16,7 +16,7 @@ class AccountSetupController extends Controller
 {
     public function index(): void
     {
-        Util::redirect("accountsetup/page1");
+        Util::redirect("account-setup/page1");
     }
 
     public function page1(): void
@@ -95,7 +95,7 @@ class AccountSetupController extends Controller
                 $this->loadModel("Cultivation");
                 $this->model->fillData([
                     'landId' => $_POST['land'],
-                    'cropId' => $_POST['land'],
+                    'cropId' => $_POST['crop'],
                     'cultivatedDate' => $_POST['cultivated_date'],
                     'cultivatedQuantity' => $_POST['cultivated_quantity'],
                     'status' => $_POST['status'],

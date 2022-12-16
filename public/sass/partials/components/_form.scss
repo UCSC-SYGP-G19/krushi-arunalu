@@ -1,14 +1,12 @@
 @import "../variables";
 
-form {
-  label {
-    display: block;
-    margin-bottom: $base-margin*0.5;
-    text-align: left;
-  }
+label {
+  display: block;
+  margin-bottom: $base-margin*0.5;
+  text-align: left;
+}
 
-  input, select {
-    height: 42px;
+input, select, textarea {
     width: 100%;
     padding: 0 12px;
     border-radius: $base-border-radius-sm;
@@ -17,23 +15,32 @@ form {
     -webkit-box-sizing: border-box;
   }
 
-  input::placeholder {
+  input, select{
+    height: 42px;
+  }
+
+  input::placeholder, textarea::placeholder {
     color: $secondary-grey;
     padding: 6px;
   }
 
-  input[type="checkbox"] {
-    height: 16px;
-    width: 16px;
-  }
+input[type="checkbox"] {
+  height: 16px;
+  width: 16px;
+}
 
-  input:hover, input:focus {
+  input:hover, input:focus, textarea:hover, textarea:focus {
     border: 1.5px solid $primary-green-light;
   }
 
+input:hover, input:focus, select:hover, select:focus, textarea:hover, textarea:focus {
+  border: 1.5px solid $primary-green-light;
+}
+
+form {
   .form-section-title {
     color: $header-green;
-    font-weight: 500!important;
+    font-weight: 500 !important;
     padding-top: $base-padding*1.2;
     padding-bottom: $base-padding*0.4;
   }

@@ -36,6 +36,50 @@ const ROUTES = [
             "link" => "announcements",
         ],
     ],
+  
+    "Manufacturer" => [
+        "Dashboard" => [
+            "icon" => "dashboard",
+            "link" => "index",
+        ],
+        "Sales" => [
+            "icon" => "sales",
+            "link" => "sales",
+        ],
+        "Purchases" => [
+            "icon" => "purchases",
+            "link" => "purchases",
+        ],
+        "Manufacturers" => [
+            "icon" => "manufacturers",
+            "link" => "manufacturers",
+        ],
+        "Purchased Stocks" => [
+            "icon" => "stocks",
+            "link" => "stocks",
+        ],
+        "Product Categories" => [
+            "icon" => "categories",
+            "link" => "product-category",
+        ],
+        "Products" => [
+            "icon" => "product",
+            "link" => "product",
+        ],
+        "Producers" => [
+            "icon" => "producers",
+            "link" => "producers",
+        ],
+        "Crop Requests" => [
+            "icon" => "crop-requests-manufacturer",
+            "link" => "crop-requests-manufacturer",
+        ],
+        "Inquiries" => [
+            "icon" => "inquiries",
+            "link" => "inquiries",
+
+        ],
+    ],
 
     "Customer" => [
         "Marketplace" => [
