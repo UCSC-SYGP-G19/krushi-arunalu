@@ -82,7 +82,8 @@ class App
             return true;
         } else {
             Logger::log("ERROR", "Requested controller (" . $this->url[0] . ") not found");
-            echo "Requested controller (" . $this->url[0] . ") not found";
+            //echo "Requested controller (" . $this->url[0] . ") not found";
+            require_once('app/views/404Page.php');
             return false;
         }
     }

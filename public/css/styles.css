@@ -873,7 +873,7 @@ form .card-input-element:checked + .card-input {
 
 footer {
   position: relative;
-  margin-top: -168px;
+  margin-top: -168px !important;
   background-color: #FFFFFF !important;
   box-shadow: 0 1px 8px rgba(0, 0, 0, 0.1) !important;
 }
@@ -1552,6 +1552,10 @@ h1.title {
   color: #CC3636;
   padding: 1rem;
   margin: 1rem 0;
+}
+
+.error-404-page {
+  background-color: rgb(244, 244, 242) !important;
 }
 
 .login {
