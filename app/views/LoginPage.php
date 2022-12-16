@@ -11,7 +11,8 @@ include APP_ROOT . "/views/inc/components/Header.php"
             <br>
             <form class="mb-1" action="" method="post">
                 <label for="email/phone">Email / Phone no.</label>
-                <input type="text" id="email/phone" name="email/phone" placeholder="Enter your email / phone no."
+                <input required type="text" id="email/phone" name="email/phone"
+                       placeholder="Enter your email / phone no."
                        value="<?php
                         if (isset($this->fields['email/phone'])) {
                             echo $this->fields['email/phone'];
@@ -22,7 +23,7 @@ include APP_ROOT . "/views/inc/components/Header.php"
                 <?php } ?>
                 <br>
                 <label for="password" class="mt-1">Password</label>
-                <input type="password" id="password" name="password" placeholder="Enter your password">
+                <input required type="password" id="password" name="password" placeholder="Enter your password">
                 <?php if (isset($this->fieldErrors['password'])) { ?>
                     <div class="error"><?php echo $this->fieldErrors['password']; ?></div>
                 <?php } ?>

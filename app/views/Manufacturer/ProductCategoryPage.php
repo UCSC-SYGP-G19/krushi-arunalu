@@ -38,9 +38,9 @@ include APP_ROOT . "/views/inc/components/Header.php";
                                 <a href="product-category/add" class="btn-primary-light text-white">
                                     Add Product Category</a>
                             </div>
-                        <div class="row px-1 pt-2">
-                            <div class="col-12 text-justify">
-                                <br>
+                            <div class="row px-1 pt-2">
+                                <div class="col-12 text-justify">
+                                    <br>
 
                                     <br>
                                     <table>
@@ -114,20 +114,20 @@ include APP_ROOT . "/views/inc/components/Header.php";
                                 </div>
                             </div>
 
-<!--                                <ul>-->
-<!--                                    --><?php //foreach ($this->data as $category) {
-//                                        echo '<li>' . $category->getName() . '</li>';
-//                                    }?>
-<!--                                </ul>-->
-                            </div>
+                            <!--                                <ul>-->
+                            <!--                                    --><?php //foreach ($this->data as $category) {
+                            //                                        echo '<li>' . $category->getName() . '</li>';
+                            //                                    }?>
+                            <!--                                </ul>-->
                         </div>
                     </div>
                 </div>
             </div>
             <?php
-            include APP_ROOT . "/views/inc/components/Footer.php";
-            ?>
+            //include APP_ROOT . "/views/inc/components/Footer.php";
+            //?>
         </main>
+
     </div>
     </body>
 <?php
