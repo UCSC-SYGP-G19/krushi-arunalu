@@ -30,7 +30,7 @@ class AccountSetupController extends Controller
 
             $this->view->user = $user;
             $this->loadModel("District");
-            $this->view->fieldOptions["district"] = $this->model->getAllDistricts();
+            $this->view->fieldOptions["district"] = $this->model->getNamesFromDB();
 
             if ($_SERVER["REQUEST_METHOD"] === "POST") {
                 $required_fields = null;
@@ -44,7 +44,7 @@ class AccountSetupController extends Controller
 
                 $this->loadModel("Land");
                 $this->model->fillData([
-                    'ownerId' => Session::getSession()->getId(),
+                    'ownerId' => Session::getSession()->id,
                     'name' => $_POST['land-name'],
                     'areaInHectares' => $_POST['land-size'],
                     'address' => $_POST['address'],
@@ -76,11 +76,11 @@ class AccountSetupController extends Controller
 
             $this->view->user = $user;
             $this->loadModel("Land");
-            $this->view->fieldOptions["land"] = $this->model->getLandNamesByOwnerId(Session::getSession()->getId());
+            $this->view->fieldOptions["land"] = $this->model->getNamesByOwnerIdFromDB(Session::getSession()->id);
 
             $this->loadModel("Crop");
             $this->view->fieldOptions["crop"] =
-                $this->model->getCropNames();
+                $this->model->getNamesFromDB();
 
             if ($_SERVER["REQUEST_METHOD"] === "POST") {
                 $required_fields = ["land", "crop", "cultivated_qty", "cultivated_date"];

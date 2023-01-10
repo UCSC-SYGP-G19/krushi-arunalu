@@ -22,9 +22,9 @@ class ProductController extends Controller
 
         if ($user) {
             $this->view->user = $user;
-            $this->view->sidebarLinks = ROUTES[$user->getRole()];
+            $this->view->sidebarLinks = ROUTES[$user->role];
             $this->loadModel("Product");
-            $this->view->data = $this->model->getProductsByManufacturerId($user->getId());
+            $this->view->data = $this->model->getByManufacturerIdFromDB($user->id);
             $this->view->render();
         } else {
             Util::redirect('login');
@@ -42,7 +42,7 @@ class ProductController extends Controller
             $this->view->user = $user;
             $this->view->sidebarLinks = ROUTES[$user->getRole()];
             $this->loadModel("ProductCategory");
-            $this->view->fieldOptions["product_category"] = $this->model->getProductCategoriesFromDB();
+            $this->view->fieldOptions["product_category"] = $this->model->getAllFromDB();
 
             if ($_SERVER["REQUEST_METHOD"] === "POST") {
                 //$required_fields = null;

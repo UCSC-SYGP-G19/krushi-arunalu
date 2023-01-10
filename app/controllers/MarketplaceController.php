@@ -22,7 +22,7 @@ class MarketplaceController extends Controller
 
         if ($user) {
             $this->view->user = $user;
-            $this->view->sidebarLinks = ROUTES[$user->getRole()];
+            $this->view->sidebarLinks = ROUTES[$user->role];
             $this->loadModel("Product");
             $this->view->data = $this->model->getAllProducts();
             $this->view->render();
@@ -40,7 +40,7 @@ class MarketplaceController extends Controller
 
         if ($user) {
             $this->view->user = $user;
-            $this->view->sidebarLinks = ROUTES[$user->getRole()];
+            $this->view->sidebarLinks = ROUTES[$user->role];
             $this->loadModel("Product");
             $this->view->data = $this->model->getProductDetails($id);
             $this->view->render();
@@ -74,7 +74,7 @@ class MarketplaceController extends Controller
                 $this->model->fillData([
                     'dateTime' => date('d-m-y h:i:s'),
                     'content' => $_POST['content'],
-                    'customerId' => Session::getSession()->getId(),
+                    'customerId' => Session::getSession()->id,
                     'productId' => $productId,
                 ]);
 
