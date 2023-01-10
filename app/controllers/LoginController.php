@@ -61,7 +61,7 @@ class LoginController extends Controller
         }
 
         if ($user) {
-            if ($user->getId() !== -1) {
+            if ($user->id !== -1) {
                 Session::createSession($user);
                 $this->redirectByUserRole();
             } else {
@@ -75,7 +75,7 @@ class LoginController extends Controller
     private function redirectByUserRole()
     {
         $user = Session::getSession();
-        switch ($user->getRole()) {
+        switch ($user->role) {
             case 'Customer':
                 Util::redirect('marketplace');
                 break;

@@ -22,7 +22,7 @@ class IndexController extends Controller
 
         if ($user) {
             $this->view->user = $user;
-            $this->view->sidebarLinks = ROUTES[$user->getRole()];
+            $this->view->sidebarLinks = ROUTES[$user->role];
             $this->view->render();
         } else {
             Util::redirect('login');

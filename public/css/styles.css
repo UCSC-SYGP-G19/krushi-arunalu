@@ -39,6 +39,10 @@
   min-width: 100%;
 }
 
+.content-wrapper {
+  flex-grow: 1;
+}
+
 .form-wrapper {
   background-color: #FFFFFF;
   border-radius: 16px;
@@ -214,47 +218,36 @@
   .col-1-xs {
     flex: 0 0 8.3333333333%;
   }
-
   .col-2-xs {
     flex: 0 0 16.6666666667%;
   }
-
   .col-3-xs {
     flex: 0 0 25%;
   }
-
   .col-4-xs {
     flex: 0 0 33.3333333333%;
   }
-
   .col-5-xs {
     flex: 0 0 41.6666666667%;
   }
-
   .col-6-xs {
     flex: 0 0 50%;
   }
-
   .col-7-xs {
     flex: 0 0 58.3333333333%;
   }
-
   .col-8-xs {
     flex: 0 0 66.6666666667%;
   }
-
   .col-9-xs {
     flex: 0 0 75%;
   }
-
   .col-10-xs {
     flex: 0 0 83.3333333333%;
   }
-
   .col-11-xs {
     flex: 0 0 91.6666666667%;
   }
-
   .col-12-xs {
     flex: 0 0 100%;
   }
@@ -263,47 +256,36 @@
   .col-1-sm {
     flex: 0 0 8.3333333333%;
   }
-
   .col-2-sm {
     flex: 0 0 16.6666666667%;
   }
-
   .col-3-sm {
     flex: 0 0 25%;
   }
-
   .col-4-sm {
     flex: 0 0 33.3333333333%;
   }
-
   .col-5-sm {
     flex: 0 0 41.6666666667%;
   }
-
   .col-6-sm {
     flex: 0 0 50%;
   }
-
   .col-7-sm {
     flex: 0 0 58.3333333333%;
   }
-
   .col-8-sm {
     flex: 0 0 66.6666666667%;
   }
-
   .col-9-sm {
     flex: 0 0 75%;
   }
-
   .col-10-sm {
     flex: 0 0 83.3333333333%;
   }
-
   .col-11-sm {
     flex: 0 0 91.6666666667%;
   }
-
   .col-12-sm {
     flex: 0 0 100%;
   }
@@ -312,47 +294,36 @@
   .col-1-md {
     flex: 0 0 8.3333333333%;
   }
-
   .col-2-md {
     flex: 0 0 16.6666666667%;
   }
-
   .col-3-md {
     flex: 0 0 25%;
   }
-
   .col-4-md {
     flex: 0 0 33.3333333333%;
   }
-
   .col-5-md {
     flex: 0 0 41.6666666667%;
   }
-
   .col-6-md {
     flex: 0 0 50%;
   }
-
   .col-7-md {
     flex: 0 0 58.3333333333%;
   }
-
   .col-8-md {
     flex: 0 0 66.6666666667%;
   }
-
   .col-9-md {
     flex: 0 0 75%;
   }
-
   .col-10-md {
     flex: 0 0 83.3333333333%;
   }
-
   .col-11-md {
     flex: 0 0 91.6666666667%;
   }
-
   .col-12-md {
     flex: 0 0 100%;
   }
@@ -361,47 +332,36 @@
   .col-1-lg {
     flex: 0 0 8.3333333333%;
   }
-
   .col-2-lg {
     flex: 0 0 16.6666666667%;
   }
-
   .col-3-lg {
     flex: 0 0 25%;
   }
-
   .col-4-lg {
     flex: 0 0 33.3333333333%;
   }
-
   .col-5-lg {
     flex: 0 0 41.6666666667%;
   }
-
   .col-6-lg {
     flex: 0 0 50%;
   }
-
   .col-7-lg {
     flex: 0 0 58.3333333333%;
   }
-
   .col-8-lg {
     flex: 0 0 66.6666666667%;
   }
-
   .col-9-lg {
     flex: 0 0 75%;
   }
-
   .col-10-lg {
     flex: 0 0 83.3333333333%;
   }
-
   .col-11-lg {
     flex: 0 0 91.6666666667%;
   }
-
   .col-12-lg {
     flex: 0 0 100%;
   }
@@ -410,47 +370,36 @@
   .col-1-xl {
     flex: 0 0 8.3333333333%;
   }
-
   .col-2-xl {
     flex: 0 0 16.6666666667%;
   }
-
   .col-3-xl {
     flex: 0 0 25%;
   }
-
   .col-4-xl {
     flex: 0 0 33.3333333333%;
   }
-
   .col-5-xl {
     flex: 0 0 41.6666666667%;
   }
-
   .col-6-xl {
     flex: 0 0 50%;
   }
-
   .col-7-xl {
     flex: 0 0 58.3333333333%;
   }
-
   .col-8-xl {
     flex: 0 0 66.6666666667%;
   }
-
   .col-9-xl {
     flex: 0 0 75%;
   }
-
   .col-10-xl {
     flex: 0 0 83.3333333333%;
   }
-
   .col-11-xl {
     flex: 0 0 91.6666666667%;
   }
-
   .col-12-xl {
     flex: 0 0 100%;
   }
@@ -872,8 +821,7 @@ form .card-input-element:checked + .card-input {
 }
 
 footer {
-  position: relative;
-  margin-top: -168px !important;
+  bottom: 0;
   background-color: #FFFFFF !important;
   box-shadow: 0 1px 8px rgba(0, 0, 0, 0.1) !important;
 }
@@ -947,8 +895,10 @@ footer {
   display: none;
 }
 .content-with-sidebar main.content {
+  display: flex;
   position: relative;
-  flex: 1 0 78% !important;
+  flex: 1 0 78%;
+  flex-direction: column;
   background-color: #F5F5F5;
 }
 
@@ -1662,6 +1612,40 @@ h1.title {
   width: 100%;
 }
 .marketplace .product-card button {
+  border-radius: 8px;
+  height: 42px;
+}
+
+.product-details {
+  border-radius: 8px;
+  height: 575px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  background-color: white;
+}
+.product-details .image-window {
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  width: 100%;
+  height: 250px;
+}
+.product-details .image-window img {
+  object-fit: cover;
+  border-radius: 8px;
+}
+.product-details .product-name {
+  font-weight: 400;
+}
+.product-details h6 {
+  font-size: medium;
+}
+.product-details .product-price {
+  font-weight: 600;
+  font-size: medium;
+}
+.product-details input, .product-details button {
+  width: 100%;
+}
+.product-details button {
   border-radius: 8px;
   height: 42px;
 }

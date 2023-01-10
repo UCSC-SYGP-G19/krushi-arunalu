@@ -22,7 +22,7 @@ class ProductCategoryController extends Controller
 
         if ($user) {
             $this->view->user = $user;
-            $this->view->sidebarLinks = ROUTES[$user->getRole()];
+            $this->view->sidebarLinks = ROUTES[$user->role];
             $this->loadModel("ProductCategory");
             $this->view->data = $this->model->getProductCategoriesFromDB();
             $this->view->render();
@@ -40,7 +40,7 @@ class ProductCategoryController extends Controller
 
         if ($user) {
             $this->view->user = $user;
-            $this->view->sidebarLinks = ROUTES[$user->getRole()];
+            $this->view->sidebarLinks = ROUTES[$user->role];
             $this->loadModel("ProductCategory");
 
             if ($_SERVER["REQUEST_METHOD"] === "POST") {

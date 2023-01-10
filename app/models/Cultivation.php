@@ -12,33 +12,18 @@ use app\core\Model;
 
 class Cultivation extends Model
 {
-    private ?int $id;
-    private ?int $cropId;
-    private ?int $landId;
-    private ?string $cultivatedDate;
-    private ?float $cultivatedQuantity;
-    private ?string $status;
-    private ?string $expectedHarvestDate;
-
     public function __construct(
-        $id = null,
-        $cropId = null,
-        $landId = null,
-        $cultivatedDate = null,
-        $cultivatedQuantity = null,
-        $status = null,
-        $expectedHarvestDate = null,
+        private ?int $id = null,
+        private ?int $cropId = null,
+        private ?int $landId = null,
+        private ?string $cultivatedDate = null,
+        private ?float $cultivatedQuantity = null,
+        private ?string $status = null,
+        private ?string $expectedHarvestDate = null,
     ) {
-        $this->id = $id;
-        $this->cropId = $cropId;
-        $this->landId = $landId;
-        $this->cultivatedDate = $cultivatedDate;
-        $this->cultivatedQuantity = $cultivatedQuantity;
-        $this->status = $status;
-        $this->expectedHarvestDate = $expectedHarvestDate;
     }
 
-    public function addCultivationToDB(): bool
+    public function addToDB(): bool
     {
         $result = $this->runQuery(
             "INSERT into cultivation (crop_id, land_id, cultivated_date, cultivated_quantity, status, 
@@ -49,9 +34,9 @@ class Cultivation extends Model
         return $result == true;
     }
 
-    public function getCultivationsByProducerId($producerId): array
+    public function getAllByProducerIdFromDB($producerId): array
     {
-        $result = $this->runQuery("SELECT 
+        return $this->runQuery("SELECT 
             land.name as 'land_name', 
             cultivation.status as 'status',
             crop.name as 'crop_name', 
@@ -62,8 +47,6 @@ class Cultivation extends Model
             INNER JOIN land ON cultivation.land_id = land.id
             INNER JOIN crop ON cultivation.crop_id = crop.id
             WHERE land.owner_id = ?", [$producerId])->fetchAll();
-
-        return $result;
     }
 
     /**

@@ -30,6 +30,10 @@ $properties: (auto, hidden);
   min-width: 100%;
 }
 
+.content-wrapper {
+  flex-grow: 1;
+}
+
 .form-wrapper {
     background-color: $white;
     border-radius: $base-border-radius;

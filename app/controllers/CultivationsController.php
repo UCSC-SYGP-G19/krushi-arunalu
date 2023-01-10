@@ -22,9 +22,9 @@ class CultivationsController extends Controller
 
         if ($user) {
             $this->view->user = $user;
-            $this->view->sidebarLinks = ROUTES[$user->getRole()];
+            $this->view->sidebarLinks = ROUTES[$user->role];
             $this->loadModel("Cultivation");
-            $this->view->data = $this->model->getCultivationsByProducerId($user->getId());
+            $this->view->data = $this->model->getAllByProducerIdFromDB($user->id);
             $this->view->render();
         } else {
             Util::redirect('login');
@@ -40,9 +40,9 @@ class CultivationsController extends Controller
 
         if ($user) {
             $this->view->user = $user;
-            $this->view->sidebarLinks = ROUTES[$user->getRole()];
+            $this->view->sidebarLinks = ROUTES[$user->role];
             $this->loadModel("Land");
-            $this->view->fieldOptions["lands"] = $this->model->getLandNamesByOwnerId($user->getId());
+            $this->view->fieldOptions["lands"] = $this->model->getLandNamesByOwnerId($user->id);
             $this->loadModel("Crop");
             $this->view->fieldOptions["crops"] = $this->model->getCropNames();
 

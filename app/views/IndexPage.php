@@ -28,7 +28,7 @@ include APP_ROOT . "/views/inc/components/Header.php";
             include APP_ROOT . "/views/inc/components/LoggedInNavbar.php"
             ?>
 
-            <div class="content-wrapper min-h-100">
+            <div class="content-wrapper">
                 <div class="content p-4 mt-1">
                     <div class="container-fluid px-2">
                         <div class="row px-1 pt-1">
@@ -38,9 +38,8 @@ include APP_ROOT . "/views/inc/components/Header.php";
                         </div>
                         <div class="row px-1">
                             <div class="col-12 text-center justify-content-center align-items-center">
-                                <img class="p-4" src="<?php echo URL_ROOT ?>/public/img/other/webpage-under-construction.gif"
-                                     alt="Webpage under construction"
-                                     height="80%">
+                                <img src="<?php echo URL_ROOT ?>/public/img/other/webpage-under-construction.gif"
+                                     class="p-4" alt="Webpage under construction" width="35%">
                                 <br>
                                 <h2 class="fw-normal pt-3 pb-1">Webpage under construction</h2>
                                 <h3 class="fw-light pb-3 text-grey-dark">Please check back later 😉</h3>

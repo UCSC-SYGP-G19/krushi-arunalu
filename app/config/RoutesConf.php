@@ -36,7 +36,7 @@ const ROUTES = [
             "link" => "announcements",
         ],
     ],
-  
+
     "Manufacturer" => [
         "Dashboard" => [
             "icon" => "dashboard",
