@@ -45,9 +45,9 @@ include APP_ROOT . "/views/inc/components/LoggedInNavbarWithoutSidebar.php"
                     <select name="district" id="district">
                         <option value="" selected>Select district</option>
                         <?php foreach ($this->fieldOptions["district"] as $option) {
-                            echo '<option value="' . $option->getId() . '"' .
-                                ($this->fields['district'] == $option->getId() ? 'selected' : '')
-                                . '>' . $option->getName() . '</option>';
+                            echo '<option value="' . $option->id . '"' .
+                                ($this->fields['district'] == $option->id ? 'selected' : '')
+                                . '>' . $option->name . '</option>';
                         }
                         ?>
                     </select>

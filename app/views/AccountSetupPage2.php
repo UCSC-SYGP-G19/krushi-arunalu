@@ -20,9 +20,9 @@ include APP_ROOT . "/views/inc/components/LoggedInNavbarWithoutSidebar.php"
                     <select name="land" id="land">
                         <option value="" selected>Select land</option>
                         <?php foreach ($this->fieldOptions["land"] as $option) {
-                            echo '<option value="' . $option->getId() . '"' .
-                                ($this->fields['land'] == $option->getId() ? 'selected' : '')
-                                . '>' . $option->getName() . '</option>';
+                            echo '<option value="' . $option->id . '"' .
+                                ($this->fields['land'] == $option->id ? 'selected' : '')
+                                . '>' . $option->name . '</option>';
                         }
                         ?>
                     </select>
@@ -35,9 +35,9 @@ include APP_ROOT . "/views/inc/components/LoggedInNavbarWithoutSidebar.php"
                     <select name="crop" id="crop">
                         <option value="" selected>Select crop</option>
                         <?php foreach ($this->fieldOptions["crop"] as $option) {
-                            echo '<option value="' . $option->getId() . '"' .
-                                ($this->fields['crop'] == $option->getId() ? 'selected' : '')
-                                . '>' . $option->getName() . '</option>';
+                            echo '<option value="' . $option->id . '"' .
+                                ($this->fields['crop'] == $option->id ? 'selected' : '')
+                                . '>' . $option->name . '</option>';
                         }
                         ?>
                     </select>

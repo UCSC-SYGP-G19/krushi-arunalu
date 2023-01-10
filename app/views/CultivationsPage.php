@@ -63,23 +63,23 @@ include APP_ROOT . "/views/inc/components/Header.php";
                                     foreach ($this->data as $cultivation) {
                                         ?>
                                         <tr class="row">
-                                            <td class="col-2"><?php echo $cultivation["land_name"]; ?></td>
-                                            <td class="col-1"><?php echo $cultivation["status"] ?></td>
-                                            <td class="col-2"><?php echo $cultivation["crop_name"]; ?></td>
-                                            <td class="col-1"><?php echo $cultivation["cultivated_quantity"]; ?></td>
-                                            <td class="col-2"><?php echo $cultivation["cultivated_date"]; ?></td>
-                                            <td class="col-2"><?php echo $cultivation["expected_harvest_date"]; ?></td>
+                                            <td class="col-2"><?php echo $cultivation->land_name; ?></td>
+                                            <td class="col-1"><?php echo $cultivation->status ?></td>
+                                            <td class="col-2"><?php echo $cultivation->crop_name; ?></td>
+                                            <td class="col-1"><?php echo $cultivation->cultivated_quantity; ?></td>
+                                            <td class="col-2"><?php echo $cultivation->cultivated_date; ?></td>
+                                            <td class="col-2"><?php echo $cultivation->expected_harvest_date; ?></td>
                                             <td class="col-2 pr-3">
                                                 <div class="row justify-content-end align-items-center gap-1">
                                                     <div class="col">
-                                                        <a href='edit/<?php echo $cultivation["id"]; ?>'
+                                                        <a href='edit/<?php echo $cultivation->id; ?>'
                                                            class="btn-xs btn-outlined-primary-dark text-center">
                                                             Edit
                                                         </a>
 
                                                     </div>
                                                     <div class="col">
-                                                        <a href='delete/<?php echo $cultivation["id"]; ?>'
+                                                        <a href='delete/<?php echo $cultivation->id; ?>'
                                                            class="btn-xs btn-outlined-primary-dark text-center">
                                                             Delete
                                                         </a>
