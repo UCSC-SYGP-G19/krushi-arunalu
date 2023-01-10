@@ -12,36 +12,17 @@ use app\core\Model;
 
 class Land extends Model
 {
-    private ?int $id;
-    private ?int $ownerId;
-    private ?string $name;
-    private ?float $areaInHectares;
-    private ?string $address;
-    private ?string $district;
-    private ?string $soilCondition;
-    private ?string $rainfall;
-    private ?string $humidity;
-
     public function __construct(
-        $id = null,
-        $ownerId = null,
-        $name = null,
-        $areaInHectares = null,
-        $address = null,
-        $district = null,
-        $soilCondition = null,
-        $rainfall = null,
-        $humidity = null
+        private ?int $id = null,
+        private ?int $ownerId = null,
+        private ?string $name = null,
+        private ?float $areaInHectares = null,
+        private ?string $address = null,
+        private ?string $district = null,
+        private ?string $soilCondition = null,
+        private ?string $rainfall = null,
+        private ?string $humidity = null
     ) {
-        $this->id = $id;
-        $this->ownerId = $ownerId;
-        $this->name = $name;
-        $this->areaInHectares = $areaInHectares;
-        $this->address = $address;
-        $this->district = $district;
-        $this->soilCondition = $soilCondition;
-        $this->rainfall = $rainfall;
-        $this->humidity = $humidity;
     }
 
     public function addToDB(): bool
@@ -57,21 +38,9 @@ class Land extends Model
         return $result == true;
     }
 
-    public function getLandNamesByOwnerId($ownerId): array
+    public function getNamesByOwnerIdFromDB($ownerId): array
     {
-        $result = $this->runQuery("SELECT id, name FROM land WHERE owner_id=?", [$ownerId])->fetchAll();
-        $lands = [];
-        foreach ($result as $key => $value) {
-            $land = new Land();
-            $land->fillData(
-                [
-                    'id' => $value["id"],
-                    'name' => $value["name"]
-                ]
-            );
-            array_push($lands, $land);
-        }
-        return $lands;
+        return $this->runQuery("SELECT id, name FROM land WHERE owner_id=?", [$ownerId])->fetchAll();
     }
 
     /**

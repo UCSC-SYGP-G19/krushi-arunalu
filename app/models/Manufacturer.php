@@ -10,10 +10,6 @@ namespace app\models;
 
 class Manufacturer extends RegisteredUser
 {
-    private ?string $brNumber;
-    private ?string $coverImageUrl;
-    private ?string $description;
-
     public function __construct(
         $id = null,
         $role = null,
@@ -24,13 +20,10 @@ class Manufacturer extends RegisteredUser
         $email = null,
         $contactNo = null,
         $password = null,
-        $brNumber = null,
-        $coverImageUrl = null,
-        $description = null,
+        private ?string $brNumber = null,
+        private ?string $coverImageUrl = null,
+        private ?string $description = null,
     ) {
-        $this->brNumber = $brNumber;
-        $this->coverImageUrl = $coverImageUrl;
-        $this->description = $description;
         parent::__construct($id, $role, $name, $address, $lastLogin, $imageUrl, $email, $contactNo, $password);
     }
 

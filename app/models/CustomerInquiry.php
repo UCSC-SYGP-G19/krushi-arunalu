@@ -12,30 +12,15 @@ use app\core\Model;
 
 class CustomerInquiry extends Model
 {
-    private ?int $id;
-    private ?string $dateTime;
-    private ?string $content;
-    private ?string $responseDateTime;
-    private ?string $responseContent;
-    private ?int $customerId;
-    private ?int $productId;
-
     public function __construct(
-        $id = null,
-        $dateTime = null,
-        $content = null,
-        $responseDateTime = null,
-        $responseContent = null,
-        $customerId = null,
-        $productId = null
+        private ?int $id = null,
+        private ?string $dateTime = null,
+        private ?string $content = null,
+        private ?string $responseDateTime = null,
+        private ?string $responseContent = null,
+        private ?int $customerId = null,
+        private ?int $productId = null
     ) {
-        $this->id = $id;
-        $this->dateTime = $dateTime;
-        $this->content = $content;
-        $this->responseDateTime = $responseDateTime;
-        $this->responseContent = $responseContent;
-        $this->customerId = $customerId;
-        $this->productId = $productId;
     }
 
     public function addToDB(): bool

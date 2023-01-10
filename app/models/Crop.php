@@ -12,50 +12,21 @@ use app\core\Model;
 
 class Crop extends Model
 {
-    private ?int $id;
-    private ?int $categoryId;
-    private ?array $cultivatableDistricts;
-    private ?string $name;
-    private ?string $description;
-    private ?string $required_soil_condition;
-    private ?string $required_rainfall;
-    private ?string $required_humidity;
-
     public function __construct(
-        $id = null,
-        $categoryId = null,
-        $cultivatableDistricts = null,
-        $name = null,
-        $description = null,
-        $required_soil_condition = null,
-        $required_rainfall = null,
-        $required_humidity = null,
+        private ?string $id = null,
+        private ?int $categoryId = null,
+        private ?array $cultivatableDistricts = null,
+        private ?string $name = null,
+        private ?string $description = null,
+        private ?string $required_soil_condition = null,
+        private ?string $required_rainfall = null,
+        private ?string $required_humidity = null,
     ) {
-        $this->id = $id;
-        $this->categoryId = $categoryId;
-        $this->cultivatableDistricts = $cultivatableDistricts;
-        $this->name = $name;
-        $this->description = $description;
-        $this->required_soil_condition = $required_soil_condition;
-        $this->required_rainfall = $required_rainfall;
-        $this->required_humidity = $required_humidity;
     }
 
-    public function getCropNames(): array
+    public function getNamesFromDB(): array
     {
-        $result = $this->runQuery("SELECT id, name FROM crop")->fetchAll();
-        $crops = [];
-        foreach ($result as $key => $value) {
-            $crop = new Crop();
-            $crop->fillData(
-                [
-                    'id' => $value["id"],
-                    'name' => $value["name"]
-                ]
-            );
-            array_push($crops, $crop);
-        }
-        return $crops;
+        return $this->runQuery("SELECT id, name FROM crop")->fetchAll();
     }
 
     /**

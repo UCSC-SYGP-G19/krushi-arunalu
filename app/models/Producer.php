@@ -10,9 +10,6 @@ namespace app\models;
 
 class Producer extends RegisteredUser
 {
-    private ?string $nicNumber;
-    private ?int $district;
-
     public function __construct(
         $id = null,
         $role = null,
@@ -23,11 +20,9 @@ class Producer extends RegisteredUser
         $email = null,
         $contactNo = null,
         $password = null,
-        $nicNumber = null,
-        $district = null,
+        private ?string $nicNumber = null,
+        private ?int $district = null,
     ) {
-        $this->nicNumber = $nicNumber;
-        $this->district = $district;
         parent::__construct($id, $role, $name, $address, $lastLogin, $imageUrl, $email, $contactNo, $password);
     }
 
