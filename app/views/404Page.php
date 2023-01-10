@@ -22,7 +22,7 @@ include APP_ROOT . "/views/inc/components/Header.php";
     <div class="">
         <main class="content overflow-y-auto">
 
-            <div class="content-wrapper min-h-100">
+            <div class="content-wrapper">
                 <div class="content p-4 mt-1">
                     <div class="container-fluid px-2">
                         <div class="row px-1">

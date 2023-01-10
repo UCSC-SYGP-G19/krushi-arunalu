@@ -28,7 +28,7 @@ include APP_ROOT . "/views/inc/components/Header.php";
             include APP_ROOT . "/views/inc/components/LoggedInNavbar.php"
             ?>
 
-            <div class="content-wrapper min-h-100">
+            <div class="content-wrapper">
                 <div class="content p-4 mt-1">
                     <div class="container-fluid px-2">
                         <div class="row px-1 pt-1 justify-content-space-between">

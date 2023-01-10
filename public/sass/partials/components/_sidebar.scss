@@ -92,8 +92,10 @@
 
   main.content {
 //    min-width: 78vw;
+    display: flex;
     position: relative;
-    flex: 1 0 78% !important;
+    flex: 1 0 78%;
+    flex-direction: column;
     background-color: $background-grey;
   }
 }

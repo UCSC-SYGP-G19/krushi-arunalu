@@ -23,7 +23,7 @@ if (!isset($this->user)) {
             include APP_ROOT . "/views/inc/components/LoggedInNavbar.php"
             ?>
 
-            <div class="content-wrapper min-h-100 p-1">
+            <div class="content-wrapper p-1">
                 <div class="content p-4">
                     <div class="form-wrapper px-2">
                         <div class="row px-1 pt-1">
