@@ -27,10 +27,11 @@
 @import "partials/_other";
 
 // pages
-@import "partials/pages/login";
-@import "partials/pages/register";
-@import "partials/pages/marketplace";
-@import "partials/pages/product_details";
+@import "partials/pages/index_page";
+@import "partials/pages/login_page";
+@import "partials/pages/register_page";
+@import "partials/pages/marketplace_page";
+@import "partials/pages/product_details_page";
 
 // reset styles
 * {
@@ -59,3 +60,7 @@ img {
   max-width: 100%;
 }
 
+a {
+    text-decoration: none;
+    color: black;
+}
