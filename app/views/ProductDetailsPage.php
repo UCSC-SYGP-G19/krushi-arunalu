@@ -43,7 +43,7 @@ include APP_ROOT . "/views/inc/components/Header.php";
                                 echo '<div class="image-window mb-1">
                                     ' .
                                     '<img alt="Product image" height="100%" width="100%" src="'
-                                    . URL_ROOT . '/public/img/products/' . $this->data->getImageUrl() .
+                                    . URL_ROOT . '/public/img/products/' . $this->data->image_url .
                                     '">' . '
                                     </div>'
                                 ?>
@@ -52,20 +52,21 @@ include APP_ROOT . "/views/inc/components/Header.php";
                                 <?php
                                 echo '<div class="product-data">
                                     ' . '<h1 class="product-name">' .
-                                    $this->data->getName()
+                                    $this->data->name
                                     . '</h1>' .
                                     '<br><p class="product-description">' .
-                                    $this->data->getDescription() .
+                                    $this->data->description .
                                     '</p><br>' .
                                     '<h6>' .
                                         'Rs. ' .
-                                        $this->data->getUnitSellingPrice() .
+                                        $this->data->unit_selling_price .
                                     '</h6>' .
 
                                     '</div>'
                                 ?>
                                 <div class="mt-1 mb-3 ">
-                                    <a class="btn-lg btn-primary-light mt-3 text-center text-white" href=<?php echo "../send-inquiry/" . $this->data->getId()?>>
+                                    <a class="btn-lg btn-primary-light mt-3 text-center text-white"
+                                       href=<?php echo "../send-inquiry/" . $this->data->id?>>
                                         Inquire Now
                                     </a>
                                 </div>

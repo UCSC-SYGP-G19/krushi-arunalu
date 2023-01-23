@@ -24,7 +24,7 @@ class MarketplaceController extends Controller
             $this->view->user = $user;
             $this->view->sidebarLinks = ROUTES[$user->role];
             $this->loadModel("Product");
-            $this->view->data = $this->model->getAllProducts();
+            $this->view->data = $this->model->getAllFromDB();
             $this->view->render();
         } else {
             Util::redirect('login');
@@ -42,7 +42,7 @@ class MarketplaceController extends Controller
             $this->view->user = $user;
             $this->view->sidebarLinks = ROUTES[$user->role];
             $this->loadModel("Product");
-            $this->view->data = $this->model->getProductDetails($id);
+            $this->view->data = $this->model->getDetailsFromDB($id);
             $this->view->render();
         } else {
             Util::redirect('login');
