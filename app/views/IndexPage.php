@@ -1,61 +1,50 @@
 <?php
-include APP_ROOT . "/views/inc/components/Header.php";
-
+include APP_ROOT . "/views/inc/components/Header.php"
 ?>
+<body class="overflow-hidden">
 <?php
-
-//if (isset($this->user)) {
-//    echo "Logged in as: " . $this->user->getName() . " (" . $this->user->getRole() . ")<br>";
-//    echo "<a href='./logout'>Logout</a>";
-//} else {
-//    echo "You are not logged in, please <a href='./login'>login</a>";
-//}
-//
-
-
+include APP_ROOT . "/views/inc/components/LoggedOutNavbar.php"
 ?>
-
-    <body class="overflow-hidden full-height">
-    <?php
-    //include APP_ROOT . "/views/inc/components/LoggedOutNavbar.php"
-    ?>
-    <div class="content-with-sidebar">
-        <?php
-        include APP_ROOT . "/views/inc/components/Sidebar.php"
-        ?>
-        <main class="content overflow-y-auto">
-            <?php
-            include APP_ROOT . "/views/inc/components/LoggedInNavbar.php"
-            ?>
-
-            <div class="content-wrapper">
-                <div class="content p-4 mt-1">
-                    <div class="container-fluid px-2">
-                        <div class="row px-1 pt-1">
-                            <div class="col-12">
-                                <h1 class="title">Dashboard</h1>
-                            </div>
-                        </div>
-                        <div class="row px-1">
-                            <div class="col-12 text-center justify-content-center align-items-center">
-                                <img src="<?php echo URL_ROOT ?>/public/img/other/webpage-under-construction.gif"
-                                     class="p-4" alt="Webpage under construction" width="35%">
-                                <br>
-                                <h2 class="fw-normal pt-3 pb-1">Webpage under construction</h2>
-                                <h3 class="fw-light pb-3 text-grey-dark">Please check back later 😉</h3>
-
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <?php
-            include APP_ROOT . "/views/inc/components/Footer.php";
-            ?>
-
-        </main>
+<main class="index container-fluid d-flex align-items-center justify-content-center">
+    <div class="row mt-5 mb-2">
+        <div class="col-12 mt-5 mb-2">
+            <img src="<?php echo URL_ROOT ?>/public/img/logo-large.webp"
+                 alt="Krushi Arunalu Logo" height="240px" class="pt-1">
+        </div>
     </div>
-    </body>
+    <div class="row justify-content-center">
+        <div class="col p-4 px-4">
+            <a class="card row px-3 mx-2" href="marketplace">
+                <div class="col-5">
+                    <img src="<?php echo URL_ROOT ?>/public/img/index-page/customer-graphic.webp"
+                         alt="Customer graphic" height="auto" class="p-">
+                </div>
+                <div class="col-7 px-2">
+                    <h2 class="fw-light">For<br><span class="fw-bold">Customers</span></h2>
+                </div>
+            </a>
+        </div>
+        <div class="col p-4 px-4">
+            <a class="card row px-3 mx-2" href="login">
+                <div class="col-5">
+                    <img src="<?php echo URL_ROOT ?>/public/img/index-page/farmer-graphic.webp"
+                         alt="Farmer graphic" height="auto" class="p-2">
+                </div>
+                <div class="col-7 px-2">
+                    <h2 class="fw-light">For<br>
+                        <span class="fw-bold fs-4">producers, manufacturers & agri-officers</span></h2>
+                </div>
+            </a>
+        </div>
+    </div>
+    <div class="row scroll-down pt-3 pb-2">
+        <a class="ca3-scroll-down-link ca3-scroll-down-arrow" href="#about-us"></a>
+    </div>
+    <!--    <div class="wrapper px-4 py-3 mt-5">-->
+    <!---->
+    <!--    </div>-->
+</main>
+</body>
 <?php
 include APP_ROOT . "/views/inc/components/EndingTag.php";
-
+?>

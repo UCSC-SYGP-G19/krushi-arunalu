@@ -16,16 +16,16 @@ class IndexController extends Controller
     public function index(): void
     {
         $this->loadView('IndexPage');
-        $this->view->title = "Dashboard";
+        $this->view->title = "Krushi Arunalu";
         $this->view->activeLink = "index";
         $user = Session::getSession();
 
-        if ($user) {
-            $this->view->user = $user;
-            $this->view->sidebarLinks = ROUTES[$user->role];
-            $this->view->render();
-        } else {
-            Util::redirect('login');
-        }
+//        if ($user) {
+//            $this->view->user = $user;
+//            $this->view->sidebarLinks = ROUTES[$user->role];
+//            $this->view->render();
+//        }
+
+        $this->view->render();
     }
 }

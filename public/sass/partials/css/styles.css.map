@@ -1,1 +1,1 @@
-{"version":3,"sourceRoot":"","sources":["../pages/cultivations.scss"],"names":[],"mappings":"AAAA;EACE","file":"styles.css"}
+{"version":3,"sourceRoot":"","sources":["../pages/index_page.scss","../_variables.scss"],"names":[],"mappings":"AAEA;EACE;EACA;EACA;EACA;;AAEA;EACE;EACA;EACA,eCGoB;EDFpB;EACA","file":"styles.css"}
