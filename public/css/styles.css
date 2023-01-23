@@ -1721,13 +1721,13 @@ h1.title {
   font-size: 0.9rem;
 }
 
-.marketplace {
-  min-height: 100%;
-}
 .marketplace .product-card {
   border-radius: 8px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   background-color: white;
+}
+.marketplace .product-card h3 {
+  font-size: 1.1em;
 }
 .marketplace .product-card input {
   height: 42px;
