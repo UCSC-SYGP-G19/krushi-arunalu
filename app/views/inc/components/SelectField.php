@@ -2,21 +2,22 @@
 
 namespace app\views\inc\components;
 
-class SelectField
+class SelectField extends FormField
 {
-    private ?string $id = null;
+    public array $options;
 
     public function __construct(
-        private string $name,
-        private ?string $label,
-        private ?string $placeholder,
-        private ?array $options = [],
-        private ?string $selectedValue = "",
-        private ?string $error = null,
-        private ?string $wrapperClass = ""
+        string $name,
+        ?string $label,
+        ?string $placeholder,
+        ?string $value,
+        ?string $error,
+        ?string $wrapperClass,
+        ?array $options = []
     ) {
+        parent::__construct($name, $label, $placeholder, $value, $error, $wrapperClass);
         if (!$this->id) {
-            $this->id = $this->name . "_dropdown";
+            $this->id = $this->name . "_field";
         }
     }
 
@@ -29,7 +30,7 @@ class SelectField
         $html .= "<select name='$this->name' id='this->id'>";
         $html .= "<option value='' selected>$this->placeholder</option>";
         foreach ($this->options as $option) {
-            $html .= "<option value='$option->id'" . ($this->selectedValue == $option->id ? 'selected' : '') .
+            $html .= "<option value='$option->id'" . ($this->value == $option->id ? 'selected' : '') .
                 ">$option->name</option>";
         }
         $html .= "</select>";

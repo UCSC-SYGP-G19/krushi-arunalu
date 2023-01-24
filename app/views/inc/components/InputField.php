@@ -2,19 +2,20 @@
 
 namespace app\views\inc\components;
 
-class InputField
+class InputField extends FormField
 {
-    private ?string $id = null;
+    public ?string $type;
 
     public function __construct(
-        private string $name,
-        private ?string $label,
-        private ?string $placeholder,
-        private ?string $type = "text",
-        private ?string $value = null,
-        private ?string $error = null,
-        private ?string $wrapperClass = ""
+        string $name,
+        ?string $label,
+        ?string $placeholder,
+        ?string $value,
+        ?string $error,
+        ?string $wrapperClass,
+        ?string $type = "text"
     ) {
+        parent::__construct($name, $label, $placeholder, $value, $error, $wrapperClass);
         if (!$this->id) {
             $this->id = $this->name . "_field";
         }
