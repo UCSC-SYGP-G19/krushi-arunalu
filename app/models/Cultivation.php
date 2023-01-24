@@ -37,12 +37,14 @@ class Cultivation extends Model
     public function getAllByProducerIdFromDB($producerId): array
     {
         return $this->runQuery("SELECT 
+            land.id as 'land_id',         
             land.name as 'land_name', 
-            cultivation.status as 'status',
+            crop.id as 'crop_id',
             crop.name as 'crop_name', 
             cultivation.cultivated_quantity as 'cultivated_quantity',
             cultivation.cultivated_date as 'cultivated_date',
-            cultivation.expected_harvest_date as 'expected_harvest_date'
+            cultivation.expected_harvest_date as 'expected_harvest_date',
+            cultivation.status as 'status'
             FROM cultivation
             INNER JOIN land ON cultivation.land_id = land.id
             INNER JOIN crop ON cultivation.crop_id = crop.id

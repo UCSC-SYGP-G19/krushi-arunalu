@@ -42,9 +42,9 @@ class CultivationsController extends Controller
             $this->view->user = $user;
             $this->view->sidebarLinks = ROUTES[$user->role];
             $this->loadModel("Land");
-            $this->view->fieldOptions["lands"] = $this->model->getLandNamesByOwnerId($user->id);
+            $this->view->fieldOptions["land"] = $this->model->getNamesByOwnerIdFromDB($user->id);
             $this->loadModel("Crop");
-            $this->view->fieldOptions["crops"] = $this->model->getCropNames();
+            $this->view->fieldOptions["crop"] = $this->model->getNamesFromDB();
 
             if ($_SERVER["REQUEST_METHOD"] === "POST") {
                 $required_fields = ["land", "crop", "cultivated_qty", "cultivated_date"];
@@ -66,7 +66,7 @@ class CultivationsController extends Controller
                     'expectedHarvestDate' => $_POST['expected_harvest_date'],
                 ]);
 
-                if ($this->model->addCultivationToDB()) {
+                if ($this->model->addToDB()) {
                     Util::redirect("./");
                     return;
                 }
