@@ -14,10 +14,4 @@ class FormField
         protected ?string $wrapperClass = null
     ) {
     }
-
-    public static function generateField(string $type, array $args): FormField
-    {
-        $class = "app\\views\\inc\\components\\{$type}Field";
-        return new $class(...$args);
-    }
 }
