@@ -95,4 +95,36 @@ const ROUTES = [
             "link" => "my-orders",
         ],
     ],
+
+    "Agri Officer" => [
+        "Dashboard" => [
+            "icon" => "dashboard",
+            "link" => "index",
+        ],
+        "Announcements" => [
+            "icon" => "announcements",
+            "link" => "announcements",
+        ],
+        "Producer Details" => [
+            "icon" => "producer-details",
+            "link" => "producer-details",
+        ],
+        "Land Details" => [
+            "icon" => "land-details",
+            "link" => "land-details",
+        ],
+        "Cultivation Details" => [
+            "icon" => "cultivation-details",
+            "link" => "cultivation-details",
+        ],
+        "Crop Prices" => [
+            "icon" => "crop-prices",
+            "link" => "crop-prices",
+        ],
+        "Cultivation Questions" => [
+            "icon" => "cultivation-question",
+            "link" => "cultivation-question",
+        ],
+    ],
+
 ];
