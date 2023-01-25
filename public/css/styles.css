@@ -976,9 +976,33 @@ footer {
   color: black;
   font-weight: 500;
 }
+.table-controls input::placeholder {
+  color: black;
+}
 .table-controls input:hover, .table-controls input:focus, .table-controls select:hover, .table-controls select:focus {
-  border: 1px solid #15742D;
+  border: 1.2px solid #15742D;
   background: #F5F5F5;
+}
+.table-controls input.with-search-icon {
+  background: white url("../img/icons/other/search-icon.png") no-repeat scroll 20px 12px;
+  padding-left: 56px;
+}
+.table-controls input.with-search-icon:hover {
+  background: #F5F5F5 url("../img/icons/other/search-icon.png") no-repeat scroll 20px 12px;
+}
+.table-controls select.with-filter-icon {
+  background: white url("../img/icons/other/filter-icon.png") no-repeat scroll 14px 12px;
+  padding-left: 48px;
+}
+.table-controls select.with-filter-icon:hover {
+  background: #F5F5F5 url("../img/icons/other/filter-icon.png") no-repeat scroll 14px 12px;
+}
+.table-controls select.with-sort-icon {
+  background: white url("../img/icons/other/sort-icon.png") no-repeat scroll 14px 12px;
+  padding-left: 48px;
+}
+.table-controls select.with-sort-icon:hover {
+  background: #F5F5F5 url("../img/icons/other/sort-icon.png") no-repeat scroll 14px 12px;
 }
 
 table {
