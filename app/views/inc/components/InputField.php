@@ -16,9 +16,8 @@ class InputField extends FormField
         ?string $type = "text"
     ) {
         parent::__construct($name, $label, $placeholder, $value, $error, $wrapperClass);
-        if (!$this->id) {
-            $this->id = $this->name . "_field";
-        }
+        $this->id = $this->name . "_field";
+        $this->type = $type;
     }
 
     public function render(): void

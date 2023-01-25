@@ -16,9 +16,8 @@ class SelectField extends FormField
         ?array $options = []
     ) {
         parent::__construct($name, $label, $placeholder, $value, $error, $wrapperClass);
-        if (!$this->id) {
-            $this->id = $this->name . "_field";
-        }
+        $this->id = $this->name . "_dropdown";
+        $this->options = $options;
     }
 
     public function render(): void
