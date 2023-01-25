@@ -1,4 +1,7 @@
 <?php
+
+use app\views\inc\components\Table;
+
 include APP_ROOT . "/views/inc/components/Header.php";
 
 ?>
@@ -44,84 +47,53 @@ include APP_ROOT . "/views/inc/components/Header.php";
                             <div class="col-12 text-justify">
                                 <br>
                                 <?php
-                                include APP_ROOT . "/views/inc/components/SearchFilterAndSort.php"
+                                include APP_ROOT . "/views/inc/components/SearchFilterAndSort.php";
+                                $this->tableHeaders = [
+                                    "land_name" => [
+                                        "label" => "Land Name",
+                                        "sortable" => true,
+                                        "sortKey" => "land_name",
+                                        "class" => "col-2",
+                                    ],
+                                    "status" => [
+                                        "label" => "Status",
+                                        "sortable" => true,
+                                        "sortKey" => "status",
+                                        "class" => "col-1",
+                                    ],
+                                    "crop_name" => [
+                                        "label" => "Crop Name",
+                                        "sortable" => true,
+                                        "sortKey" => "crop_name",
+                                        "class" => "col-2",
+                                    ],
+                                    "cultivated_quantity" => [
+                                        "label" => "Cultivated quantity",
+                                        "sortable" => true,
+                                        "sortKey" => "cultivated_quantity",
+                                        "class" => "col-1",
+                                    ],
+                                    "cultivated_date" => [
+                                        "label" => "Cultivated date",
+                                        "sortable" => true,
+                                        "sortKey" => "cultivated_date",
+                                        "class" => "col-2"
+                                    ],
+                                    "expected_harvest_date" => [
+                                        "label" => "Expected harvest date",
+                                        "sortable" => true,
+                                        "sortKey" => "expected_harvest_date",
+                                        "class" => "col-2"
+                                    ],
+                                    "actions" => [
+                                        "label" => "",
+                                        "sortable" => false,
+                                        "class" => "col-2"
+                                    ]
+                                ];
+                                $cultivationsTable = new Table($this->tableHeaders, $this->data, "cultivation_id");
+                                $cultivationsTable->render();
                                 ?>
-                                <table>
-                                    <thead>
-                                    <tr class="row">
-                                        <th class="col-2">Land Name</th>
-                                        <th class="col-1">Status</th>
-                                        <th class="col-2">Crop Name</th>
-                                        <th class="col-1">Cultivated quantity</th>
-                                        <th class="col-2">Cultivated date</th>
-                                        <th class="col-2">Expected harvest date</th>
-                                        <th class="col-2"></th>
-                                    </tr>
-                                    </thead>
-                                    <tbody>
-                                    <?php
-                                    foreach ($this->data as $cultivation) {
-                                        ?>
-                                        <tr class="row">
-                                            <td class="col-2"><?php echo $cultivation->land_name; ?></td>
-                                            <td class="col-1"><?php echo $cultivation->status ?></td>
-                                            <td class="col-2"><?php echo $cultivation->crop_name; ?></td>
-                                            <td class="col-1"><?php echo $cultivation->cultivated_quantity; ?></td>
-                                            <td class="col-2"><?php echo $cultivation->cultivated_date; ?></td>
-                                            <td class="col-2"><?php echo $cultivation->expected_harvest_date; ?></td>
-                                            <td class="col-2 pr-3">
-                                                <div class="row justify-content-end align-items-center gap-1">
-                                                    <div class="col">
-                                                        <a href='edit/<?php echo $cultivation->id; ?>'
-                                                           class="btn-xs btn-outlined-primary-dark text-center">
-                                                            Edit
-                                                        </a>
-
-                                                    </div>
-                                                    <div class="col">
-                                                        <a href='delete/<?php echo $cultivation->id; ?>'
-                                                           class="btn-xs btn-outlined-primary-dark text-center">
-                                                            Delete
-                                                        </a>
-                                                    </div>
-                                                </div>
-                                            </td>
-                                        </tr>
-                                        <?php
-                                    }
-                                    ?>
-                                    </tbody>
-                                    <tfoot>
-                                    <tr class="row justify-content-end pagination">
-                                        <td class="col-3 text-right"><span>Rows per page:</span><label>
-                                                <select name="table_filter" id="table_filter">
-                                                    <option value=""><?php echo count($this->data); ?></option>
-                                                </select>
-                                            </label></td>
-                                        <td class="col-2">1-<?php echo count($this->data); ?> of
-                                            <?php echo count($this->data); ?>
-                                            <span class="arrow-icons">
-                                                <span class="left-arrow">
-                                                    <svg width="9" height="15" viewBox="0 0 9 15" fill="none"
-                                                         xmlns="http://www.w3.org/2000/svg">
-                                                    <path d="M7.10107 13.4121L1.10107 7.41211L7.10107 1.41211"
-                                                          stroke="#B1B1B1" stroke-width="2" stroke-linecap="round"
-                                                          stroke-linejoin="round"/>
-                                                </svg>
-                                                </span>
-
-                                                <span class="right-arrow">
-                                                    <svg width="9" height="15" viewBox="0 0 9 15" fill="none"
-                                                         xmlns="http://www.w3.org/2000/svg">
-                                                    <path d="M1.854 13.3516L7.854 7.35156L1.854 1.35156"
-                                                          stroke="#B1B1B1" stroke-width="2" stroke-linecap="round"
-                                                          stroke-linejoin="round"/>
-                                                </svg>
-                                                </span>
-                                            </span>
-                                        </td>
-                                    </tfoot>
-                                </table>
                             </div>
                         </div>
                     </div>

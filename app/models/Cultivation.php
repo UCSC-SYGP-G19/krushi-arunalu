@@ -37,6 +37,7 @@ class Cultivation extends Model
     public function getAllByProducerIdFromDB($producerId): array
     {
         return $this->runQuery("SELECT 
+            cultivation.id as 'cultivation_id',
             land.id as 'land_id',         
             land.name as 'land_name', 
             crop.id as 'crop_id',

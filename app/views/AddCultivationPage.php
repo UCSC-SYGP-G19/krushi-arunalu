@@ -125,4 +125,3 @@ if (!isset($this->user)) {
     </body>
 <?php
 include APP_ROOT . "/views/inc/components/EndingTag.php";
-
