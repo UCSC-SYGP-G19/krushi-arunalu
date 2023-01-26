@@ -29,7 +29,7 @@ include APP_ROOT . "/views/inc/components/LoggedOutNavbar.php"
             </div>
             <div class="row gap-2">
                 <div class="col-9">
-                    <label for="address">Your Inquiry</label>
+                    <label for="query">Your Inquiry</label>
                     <input type="text" id="query" name="content"
                            placeholder="Enter your query regarding the product"
                            value="<?php
