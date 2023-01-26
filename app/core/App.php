@@ -84,7 +84,7 @@ class App
                     exit;
                 } else {
                     if (!in_array($this->url[0], PROTECTED_ROUTES[$user->role])) {
-                        require_once('app/views/403Page.php');
+                        require_once('app/views/other/403Page.php');
                         exit;
                     }
                 }
@@ -97,7 +97,7 @@ class App
         } else {
             Logger::log("ERROR", "Requested controller (" . $this->url[0] . ") not found");
             //echo "Requested controller (" . $this->url[0] . ") not found";
-            require_once('app/views/404Page.php');
+            require_once('app/views/other/404Page.php');
             return false;
         }
     }

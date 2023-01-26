@@ -16,14 +16,39 @@ class LoginController extends Controller
 {
     public function index(): void
     {
-        $this->loadView('LoginPage');
-        $this->view->title = "Login";
+        if (Session::isSessionSet()) {
+            $this->redirectByUserRole();
+        } else {
+            $this->loadView('Common/LoginPage', 'Login');
+        }
 
         if (isset($_POST['login'])) {
             $this->login();
         }
 
-        Session::isSessionSet() ?  $this->redirectByUserRole() : $this->view->render();
+        $this->view->render();
+    }
+
+    private function redirectByUserRole()
+    {
+        $user = Session::getSession();
+        switch ($user->role) {
+            case 'Customer':
+                Util::redirect('marketplace');
+                break;
+            case 'Producer':
+                Util::redirect('producer-dashboard');
+                break;
+            case 'Manufacturer':
+                Util::redirect('manufacturer-dashboard');
+                break;
+            case 'Agri Officer':
+                Util::redirect('agri-officer-dashboard');
+                break;
+            default:
+                Util::redirect('dashboard');
+                break;
+        }
     }
 
     private function login(): void
@@ -69,19 +94,6 @@ class LoginController extends Controller
             }
         } else {
             $this->view->error = "User not found";
-        }
-    }
-
-    private function redirectByUserRole()
-    {
-        $user = Session::getSession();
-        switch ($user->role) {
-            case 'Customer':
-                Util::redirect('marketplace');
-                break;
-            default:
-                Util::redirect('index');
-                break;
         }
     }
 }
