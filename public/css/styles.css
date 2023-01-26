@@ -1035,6 +1035,12 @@ table tbody tr {
 table tbody tr:hover {
   background-color: #F5F5F5;
 }
+table tbody tr.no-content {
+  border-radius: 0 0 16px 16px;
+}
+table tbody tr.no-content:hover {
+  background-color: unset;
+}
 table tfoot tr {
   border: none;
   background-color: #FFFFFF;
@@ -1581,6 +1587,10 @@ h1.title {
   color: #CC3636;
   padding: 1rem;
   margin: 1rem 0;
+}
+
+.error-403-page {
+  background-color: white !important;
 }
 
 .error-404-page {
