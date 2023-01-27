@@ -55,12 +55,13 @@ class Table
                 $html .= "</tr>";
             }
         } else {
-            $html .= "<tr class='py-4'><td class='col-12 text-center'>" . $this->noContentMessage . "</td></tr>";
+            $html .= "<tr class='no-content'><td class='col-12 text-center py-4'>" .
+                $this->noContentMessage . "</td></tr>";
         }
         $html .= "</tbody>";
-        $html .= "<tfoot>";
-        $html .= "<tr class='row justify-content-end pagination'>";
         if (count($this->tableData) > 0) {
+            $html .= "<tfoot>";
+            $html .= "<tr class='row justify-content-end pagination'>";
             $html .= "<td class='col-3 text-right'><span>Rows per page:</span>
                                             <label>
                                                 <select name='table_filter' id='table_filter'>
@@ -85,8 +86,9 @@ class Table
                     </span>
                   </span>";
             $html .= "</td></tr>";
+            $html .= "</tfoot>";
         }
-        $html .= "</tfoot>";
+
         $html .= "</table>";
         echo $html;
     }

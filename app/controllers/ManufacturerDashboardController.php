@@ -9,13 +9,11 @@ namespace app\controllers;
 
 use app\core\Controller;
 
-class Error404Controller extends Controller
+class ManufacturerDashboardController extends Controller
 {
     public function index(): void
     {
-        $this->loadView('404Page');
-        $this->view->title = "Error 404";
-
+        $this->loadView('Manufacturer/ManufacturerDashboardPage', 'Producer Dashboard', 'producer-dashboard');
         $this->view->render();
     }
 }

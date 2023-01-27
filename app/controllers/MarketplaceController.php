@@ -15,52 +15,25 @@ class MarketplaceController extends Controller
 {
     public function index(): void
     {
-        $this->loadView('MarketplacePage');
-        $this->view->title = "Marketplace";
-        $this->view->activeLink = "marketplace";
-        $user = Session::getSession();
-
-        if ($user) {
-            $this->view->user = $user;
-            $this->view->sidebarLinks = ROUTES[$user->role];
-            $this->loadModel("Product");
-            $this->view->data = $this->model->getAllFromDB();
-            $this->view->render();
-        } else {
-            Util::redirect('login');
-        }
+        $this->loadView('Customer/MarketplacePage', 'Marketplace', 'marketplace');
+        $this->loadModel("Product");
+        $this->view->data = $this->model->getAllFromDB();
+        $this->view->render();
     }
 
     public function productDetails($id): void
     {
-        $this->loadView('ProductDetailsPage');
-        $this->view->title = "Product Details";
-        $this->view->activeLink = "marketplace";
-        $user = Session::getSession();
-
-        if ($user) {
-            $this->view->user = $user;
-            $this->view->sidebarLinks = ROUTES[$user->role];
-            $this->loadModel("Product");
-            $this->view->data = $this->model->getDetailsFromDB($id);
-            $this->view->render();
-        } else {
-            Util::redirect('login');
-        }
+        $this->loadView('Customer/ProductDetailsPage', 'Product Details', 'marketplace');
+        $this->loadModel("Product");
+        $this->view->data = $this->model->getDetailsFromDB($id);
+        $this->view->render();
     }
 
     public function sendInquiry($productId): void
     {
-        $user = Session::getSession();
+        $this->loadView('Customer/SendInquiryPage', 'Send Inquiry', 'marketplace');
 
-        if ($user) {
-            $this->loadView('SendInquiryPage');
-            $this->view->title = "Send Product Inquiry";
-            $this->view->activeLink = "marketplace";
-
-            $this->view->user = $user;
-
-            if ($_SERVER["REQUEST_METHOD"] === "POST") {
+        if ($_SERVER["REQUEST_METHOD"] === "POST") {
 //                $required_fields = null;
 //                $this->validateFields($required_fields);
 //
@@ -70,22 +43,19 @@ class MarketplaceController extends Controller
 //                    return;
 //                }
 
-                $this->loadModel("CustomerInquiry");
-                $this->model->fillData([
-                    'dateTime' => date('d-m-y h:i:s'),
-                    'content' => $_POST['content'],
-                    'customerId' => Session::getSession()->id,
-                    'productId' => $productId,
-                ]);
+            $this->loadModel("CustomerInquiry");
+            $this->model->fillData([
+                'dateTime' => date('d-m-y h:i:s'),
+                'content' => $_POST['content'],
+                'customerId' => Session::getSession()->id,
+                'productId' => $productId,
+            ]);
 
-                if ($this->model->addToDB()) {
-                    Util::redirect("../../marketplace");
-                }
+            if ($this->model->addToDB()) {
+                Util::redirect("../../marketplace");
             }
-
-            $this->view->render();
-        } else {
-            Util::redirect('../../login');
         }
+
+        $this->view->render();
     }
 }

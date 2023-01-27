@@ -1,133 +1,142 @@
 .table-controls {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-bottom: $base-margin;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: $base-margin;
 
-  label {
-    margin: 0;
-    padding: 0;
-  }
+    label {
+        margin: 0;
+        padding: 0;
+    }
 
-  input, select, button {
-    height: 54px;
-    width: 100%;
-    border: $base-border-weight*1.2 solid $secondary-grey;
-    border-radius: 12px;
-    font-size: $base-font-size*1.1;
-    color: black;
-    font-weight: 500;
-  }
+    input, select, button {
+        height: 54px;
+        width: 100%;
+        border: $base-border-weight*1.2 solid $secondary-grey;
+        border-radius: 12px;
+        font-size: $base-font-size*1.1;
+        color: black;
+        font-weight: 500;
+    }
 
-  input::placeholder {
-    color: black;
-  }
+    input::placeholder {
+        color: black;
+    }
 
-  input:hover, input:focus, select:hover, select:focus {
-    border: 1.2px solid $primary-green-light;
-    background: $background-grey;
-  }
+    input:hover, input:focus, select:hover, select:focus {
+        border: 1.2px solid $primary-green-light;
+        background: $background-grey;
+    }
 
-  input.with-search-icon {
-    background: white url("../img/icons/other/search-icon.png") no-repeat scroll 20px 12px;
-    padding-left: 56px;
-  }
+    input.with-search-icon {
+        background: white url("../img/icons/other/search-icon.png") no-repeat scroll 20px 12px;
+        padding-left: 56px;
+    }
 
-  input.with-search-icon:hover {
-    background: $background-grey url("../img/icons/other/search-icon.png") no-repeat scroll 20px 12px;
-  }
+    input.with-search-icon:hover {
+        background: $background-grey url("../img/icons/other/search-icon.png") no-repeat scroll 20px 12px;
+    }
 
-  select.with-filter-icon {
-    background: white url("../img/icons/other/filter-icon.png") no-repeat scroll 14px 12px;
-    padding-left: 48px;
-  }
+    select.with-filter-icon {
+        background: white url("../img/icons/other/filter-icon.png") no-repeat scroll 14px 12px;
+        padding-left: 48px;
+    }
 
-  select.with-filter-icon:hover {
-    background: $background-grey url("../img/icons/other/filter-icon.png") no-repeat scroll 14px 12px;
-  }
+    select.with-filter-icon:hover {
+        background: $background-grey url("../img/icons/other/filter-icon.png") no-repeat scroll 14px 12px;
+    }
 
-  select.with-sort-icon {
-    background: white url("../img/icons/other/sort-icon.png") no-repeat scroll 14px 12px;
-    padding-left: 48px;
-  }
+    select.with-sort-icon {
+        background: white url("../img/icons/other/sort-icon.png") no-repeat scroll 14px 12px;
+        padding-left: 48px;
+    }
 
-  select.with-sort-icon:hover {
-    background: $background-grey url("../img/icons/other/sort-icon.png") no-repeat scroll 14px 12px;
-  }
+    select.with-sort-icon:hover {
+        background: $background-grey url("../img/icons/other/sort-icon.png") no-repeat scroll 14px 12px;
+    }
 }
 
 table {
-  width: 100%;
+    width: 100%;
 
-  tr {
-    padding: 5px 0;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-    background-color: white;
-  }
-
-  th, td {
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-  }
-
-  thead tr {
-    border-bottom: 2px solid $primary-green-light;
-    background-color: $selected-green-light;
-    border-radius: $base-border-radius $base-border-radius 0 0;
-    padding: 0.75rem 0;
-
-    th {
-      font-weight: 600;
+    tr {
+        padding: 5px 0;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+        background-color: white;
     }
-  }
 
-  tbody tr {
-    border-bottom: 1.5px solid $secondary-grey;
-
-    &:hover {
-      background-color: $background-grey;
+    th, td {
+        justify-content: center;
+        align-items: center;
+        text-align: center;
     }
-  }
 
-  tfoot tr {
-    border: none;
-    background-color: $white;
-    border-radius: 0 0 $base-border-radius $base-border-radius;
-    padding: 0.75rem 0;
+    thead tr {
+        border-bottom: 2px solid $primary-green-light;
+        background-color: $selected-green-light;
+        border-radius: $base-border-radius $base-border-radius 0 0;
+        padding: 0.75rem 0;
 
-    td {
-      display: inline;
-
-      label {
-        margin-left: 16px;
-        display: inline;
-
-        select {
-          height: 36px;
-          width: unset;
+        th {
+            font-weight: 600;
         }
-      }
     }
-  }
 
-  .pagination {
-    .arrow-icons {
-      margin: 0 12px;
-      padding-top: 8px;
+    tbody tr {
+        border-bottom: 1.5px solid $secondary-grey;
 
-      .left-arrow{
-        cursor: pointer;
-        margin-right: 5px;
-        padding: 4px 4px 0;
-      }
-      .right-arrow{
-        cursor: pointer;
-        padding: 4px 4px 0;
-        margin-left: 5px;
-      }
+        &:hover {
+            background-color: $background-grey;
+        }
     }
-  }
+
+    tbody tr.no-content {
+        border-radius: 0 0 $base-border-radius $base-border-radius;
+
+        &:hover {
+            background-color: unset;
+        }
+    }
+
+    tfoot tr {
+        border: none;
+        background-color: $white;
+        border-radius: 0 0 $base-border-radius $base-border-radius;
+        padding: 0.75rem 0;
+
+        td {
+            display: inline;
+
+            label {
+                margin-left: 16px;
+                display: inline;
+
+                select {
+                    height: 36px;
+                    width: unset;
+                }
+            }
+        }
+    }
+
+    .pagination {
+        .arrow-icons {
+            margin: 0 12px;
+            padding-top: 8px;
+
+            .left-arrow {
+                cursor: pointer;
+                margin-right: 5px;
+                padding: 4px 4px 0;
+            }
+
+            .right-arrow {
+                cursor: pointer;
+                padding: 4px 4px 0;
+                margin-left: 5px;
+            }
+        }
+    }
 }
