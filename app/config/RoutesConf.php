@@ -68,7 +68,7 @@ const SIDEBAR_ROUTES = [
             "link" => "stocks",
         ],
         "Product Categories" => [
-            "icon" => "categories",
+            "icon" => "product-categories",
             "link" => "product-categories",
         ],
         "Products" => [
