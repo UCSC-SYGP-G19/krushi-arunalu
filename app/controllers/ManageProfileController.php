@@ -9,47 +9,24 @@
 namespace app\controllers;
 
 use app\core\Controller;
-use app\helpers\Session;
-use app\helpers\Util;
 
 class ManageProfileController extends Controller
 {
-
     public function index(): void
     {
-        $user = Session::getSession();
+        $this->loadView("Manufacturer/ManageProfilePage", "Manage profile", "manage-profile");
 
-        if ($user) {
-            $this->loadView('manufacturer/ManageProfilePage');
-            $this->view->title = "Manage Profile";
-            $this->view->activeLink = "manage-profile";
+        if ($_SERVER["REQUEST_METHOD"] === "POST") {
+            $required_fields = null;
+            $this->validateFields($required_fields);
 
-            $this->view->user = $user;
-
-            if ($_SERVER["REQUEST_METHOD"] === "POST") {
-                $required_fields = null;
-                $this->validateFields($required_fields);
-
-                if (!empty($this->view->fieldErrors)) {
-                    $this->refillValuesAndShowError();
-                    $this->view->render();
-                    return;
-                }
-
-//                $this->loadModel("ManageProfile");
-//                $this->model->manageProfile([
-//                    'manufacturerId' => Session::getSession()->getId(),
-//                    'name' => $_POST[''],
-//                ]);
-//
-//                if ($this->model->addToDB()) {
-//                    Util::redirect("../");
-//                }
+            if (!empty($this->view->fieldErrors)) {
+                $this->refillValuesAndShowError();
+                $this->view->render();
+                return;
             }
-
-            $this->view->render();
-        } else {
-            Util::redirect('../login');
         }
+
+        $this->view->render();
     }
 }
