@@ -21,96 +21,75 @@ class AccountSetupController extends Controller
 
     public function page1(): void
     {
-        $user = Session::getSession();
+        $this->loadView('Producer/AccountSetupPage1', 'Account Setup - Producers');
+        $this->loadModel("District");
+        $this->view->fieldOptions["district"] = $this->model->getNamesFromDB();
 
-        if ($user) {
-            $this->loadView('AccountSetupPage1');
-            $this->view->title = "Account Setup - Producers";
-            $this->view->activeLink = "account-setup/page-1";
+        if ($_SERVER["REQUEST_METHOD"] === "POST") {
+            $required_fields = null;
+            $this->validateFields($required_fields);
 
-            $this->view->user = $user;
-            $this->loadModel("District");
-            $this->view->fieldOptions["district"] = $this->model->getAllDistricts();
-
-            if ($_SERVER["REQUEST_METHOD"] === "POST") {
-                $required_fields = null;
-                $this->validateFields($required_fields);
-
-                if (!empty($this->view->fieldErrors)) {
-                    $this->refillValuesAndShowError();
-                    $this->view->render();
-                    return;
-                }
-
-                $this->loadModel("Land");
-                $this->model->fillData([
-                    'ownerId' => Session::getSession()->getId(),
-                    'name' => $_POST['land-name'],
-                    'areaInHectares' => $_POST['land-size'],
-                    'address' => $_POST['address'],
-                    'district' => $_POST['district'],
-                    'soilCondition' => $_POST['soil_condition'],
-                    'rainfall' => $_POST['rainfall'],
-                    'humidity' => $_POST['humidity'],
-                ]);
-
-                if ($this->model->addToDB()) {
-                    Util::redirect("account-setup/page-2");
-                }
+            if (!empty($this->view->fieldErrors)) {
+                $this->refillValuesAndShowError();
+                return;
             }
 
-            $this->view->render();
-        } else {
-            Util::redirect('../login');
+            $this->loadModel("Land");
+            $this->model->fillData([
+                'ownerId' => Session::getSession()->id,
+                'name' => $_POST['land-name'],
+                'areaInHectares' => $_POST['land-size'],
+                'address' => $_POST['address'],
+                'district' => $_POST['district'],
+                'soilCondition' => $_POST['soil_condition'],
+                'rainfall' => $_POST['rainfall'],
+                'humidity' => $_POST['humidity'],
+            ]);
+
+            if ($this->model->addToDB()) {
+                Util::redirect("account-setup/page-2");
+            }
         }
+
+        $this->view->render();
     }
 
     public function page2(): void
     {
-        $user = Session::getSession();
+        $this->loadView('Producer/AccountSetupPage2', 'Account Setup - Producers');
 
-        if ($user) {
-            $this->loadView('AccountSetupPage2');
-            $this->view->title = "Account Setup - Producers";
-            $this->view->activeLink = "account-setup/page-2";
+        $this->loadModel("Land");
+        $this->view->fieldOptions["land"] = $this->model->getNamesByOwnerIdFromDB(Session::getSession()->id);
 
-            $this->view->user = $user;
-            $this->loadModel("Land");
-            $this->view->fieldOptions["land"] = $this->model->getLandNamesByOwnerId(Session::getSession()->getId());
+        $this->loadModel("Crop");
+        $this->view->fieldOptions["crop"] = $this->model->getNamesFromDB();
 
-            $this->loadModel("Crop");
-            $this->view->fieldOptions["crop"] =
-                $this->model->getCropNames();
+        if ($_SERVER["REQUEST_METHOD"] === "POST") {
+            $required_fields = ["land", "crop", "cultivated_qty", "cultivated_date"];
+            $this->validateFields($required_fields);
 
-            if ($_SERVER["REQUEST_METHOD"] === "POST") {
-                $required_fields = ["land", "crop", "cultivated_qty", "cultivated_date"];
-                $this->validateFields($required_fields);
-
-                if (!empty($this->view->fieldErrors)) {
-                    $this->refillValuesAndShowError();
-                    $this->view->render();
-                    return;
-                }
-
-                $this->loadModel("Cultivation");
-                $this->model->fillData([
-                    'landId' => $_POST['land'],
-                    'cropId' => $_POST['crop'],
-                    'cultivatedDate' => $_POST['cultivated_date'],
-                    'cultivatedQuantity' => $_POST['cultivated_quantity'],
-                    'status' => $_POST['status'],
-                    'expectedHarvestDate' => $_POST['expected_harvest_date'],
-                ]);
-
-                if ($this->model->addCultivationToDB()) {
-                    Util::redirect("../");
-                    return;
-                }
+            if (!empty($this->view->fieldErrors)) {
+                $this->refillValuesAndShowError();
+                $this->view->render();
+                return;
             }
 
-            $this->view->render();
-        } else {
-            Util::redirect('../login');
+            $this->loadModel("Cultivation");
+            $this->model->fillData([
+                'landId' => $_POST['land'],
+                'cropId' => $_POST['crop'],
+                'cultivatedDate' => $_POST['cultivated_date'],
+                'cultivatedQuantity' => $_POST['cultivated_quantity'],
+                'status' => $_POST['status'],
+                'expectedHarvestDate' => $_POST['expected_harvest_date'],
+            ]);
+
+            if ($this->model->addCultivationToDB()) {
+                Util::redirect("../");
+                return;
+            }
         }
+
+        $this->view->render();
     }
 }

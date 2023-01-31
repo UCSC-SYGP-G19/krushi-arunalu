@@ -15,17 +15,7 @@ class IndexController extends Controller
 {
     public function index(): void
     {
-        $this->loadView('IndexPage');
-        $this->view->title = "Dashboard";
-        $this->view->activeLink = "index";
-        $user = Session::getSession();
-
-        if ($user) {
-            $this->view->user = $user;
-            $this->view->sidebarLinks = ROUTES[$user->getRole()];
-            $this->view->render();
-        } else {
-            Util::redirect('login');
-        }
+        $this->loadView('Common/IndexPage', 'Krushi Arunalu');
+        $this->view->render();
     }
 }

@@ -12,25 +12,15 @@ use app\core\Model;
 
 class District extends Model
 {
-    private ?int $id;
-    private ?string $name;
-
     public function __construct(
-        $id = null,
-        $name = null,
+        private ?int $id = null,
+        private ?string $name = null,
     ) {
-        $this->id = $id;
-        $this->name = $name;
     }
 
-    public function getAllDistricts(): array
+    public function getNamesFromDB(): array
     {
-        $result = $this->runQuery("SELECT * FROM district")->fetchAll();
-        $districts = [];
-        foreach ($result as $key => $value) {
-            array_push($districts, new District($value["id"], $value["name"]));
-        }
-        return $districts;
+        return $this->runQuery("SELECT id, name FROM district")->fetchAll();
     }
 
     /**

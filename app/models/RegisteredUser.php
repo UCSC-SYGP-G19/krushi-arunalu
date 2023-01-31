@@ -12,36 +12,17 @@ use app\core\Model;
 
 class RegisteredUser extends Model
 {
-    private ?int $id;
-    private ?string $role;
-    private ?string $name;
-    private ?string $address;
-    private ?string $lastLogin;
-    private ?string $imageUrl;
-    private ?string $email;
-    private ?string $contactNo;
-    private ?string $password;
-
     public function __construct(
-        $id = null,
-        $role = null,
-        $name = null,
-        $address = null,
-        $lastLogin = null,
-        $imageUrl = null,
-        $email = null,
-        $contactNo = null,
-        $password = null
+        private ?int $id = null,
+        private ?string $role = null,
+        private ?string $name = null,
+        private ?string $address = null,
+        private ?string $lastLogin = null,
+        private ?string $imageUrl = null,
+        private ?string $email = null,
+        private ?string $contactNo = null,
+        private ?string $password = null
     ) {
-        $this->id = $id;
-        $this->role = $role;
-        $this->name = $name;
-        $this->address = $address;
-        $this->lastLogin = $lastLogin;
-        $this->imageUrl = $imageUrl;
-        $this->email = $email;
-        $this->contactNo = $contactNo;
-        $this->password = $password;
     }
 
     public function register(): bool
@@ -75,7 +56,7 @@ class RegisteredUser extends Model
         return $result == true;
     }
 
-    public function loginByEmailOrPhone($type, $emailOrPhone, $password): ?RegisteredUser
+    public function loginByEmailOrPhone($type, $emailOrPhone, $password): ?object
     {
         if ($type === 'email') {
             $result = $this->runQuery("SELECT * FROM registered_user WHERE email=?", [$emailOrPhone])->fetch();
@@ -86,21 +67,13 @@ class RegisteredUser extends Model
         }
 
         if ($result) {
-            $hash = $result["hashed_password"];
+            $hash = $result->hashed_password;
             if (password_verify($password, $hash)) {
-                $this->fillData([
-                    'id' => $result["id"],
-                    'role' => $result["role"],
-                    'name' => $result["name"],
-                    'address' => $result["address"],
-                    'lastLogin' => $result["last_login"],
-                    'imageUrl' => $result["image_url"],
-                    'email' => $result["email"],
-                    'contactNo' => $result["contact_no"]]);
+                $result->hashed_password = null;
             } else {
-                $this->id = -1;
+                $result->id = -1;
             }
-            return $this;
+            return $result;
         }
         return null;
     }

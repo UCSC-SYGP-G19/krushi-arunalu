@@ -27,6 +27,7 @@
 @import "partials/_other";
 
 // pages
+@import "partials/pages/index_page";
 @import "partials/pages/login";
 @import "partials/pages/register";
 @import "partials/pages/marketplace";
@@ -60,3 +61,7 @@ img {
   max-width: 100%;
 }
 
+a {
+    text-decoration: none;
+    color: black;
+}

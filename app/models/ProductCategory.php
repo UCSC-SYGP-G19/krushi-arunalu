@@ -12,21 +12,14 @@ use app\core\Model;
 
 class ProductCategory extends Model
 {
-    private ?int $id;
-    private ?string $name;
-    private ?string $description;
-
     public function __construct(
-        $id = null,
-        $name = null,
-        $description = null,
+        private ?int $id = null,
+        private ?string $name = null,
+        private ?string $description = null,
     ) {
-        $this->id = $id;
-        $this->name = $name;
-        $this->description = $description;
     }
 
-    public function addProductCategoryToDB(): bool
+    public function addToDB(): bool
     {
         $result = $this->runQuery(
             "INSERT into product_category (name, description) VALUES (?,?)",
@@ -35,14 +28,9 @@ class ProductCategory extends Model
         return $result == true;
     }
 
-    public function getProductCategoriesFromDB(): array
+    public function getAllFromDB(): array
     {
-        $result = $this->runQuery("SELECT * FROM product_category")->fetchAll();
-        $categories = [];
-        foreach ($result as $key => $value) {
-            array_push($categories, new ProductCategory($value["id"], $value["name"], $value["description"]));
-        }
-        return $categories;
+        return $this->runQuery("SELECT id, name, description  FROM product_category")->fetchAll();
     }
 
     /**

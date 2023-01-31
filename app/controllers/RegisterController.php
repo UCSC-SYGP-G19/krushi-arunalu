@@ -15,8 +15,7 @@ class RegisterController extends Controller
 {
     public function index()
     {
-        $this->loadView('RegisterPage');
-        $this->view->title = "Register";
+        $this->loadView('Common/RegisterPage', 'Register');
 
         if (isset($_POST['register'])) {
             $this->register();

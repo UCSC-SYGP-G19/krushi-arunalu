@@ -31,6 +31,8 @@ class Model
         return $stmt;
     }
 
+    // TODO: Create separate reusable universal methods for CRUD
+
     // Function to run a custom SQL query on the database
 
     private function getDbCon(): ?PDO

@@ -12,42 +12,21 @@ use app\core\Model;
 
 class Product extends Model
 {
-    private ?int $id;
-    private ?string $name;
-    private ?string $imageUrl;
-    private ?string $description;
-    private ?float $weight;
-    private ?string $unit;
-    private ?float $unitSellingPrice;
-    private ?float $stockQuantity;
-    private ?int $manufacturerId;
-    private ?int $categoryId;
-
     public function __construct(
-        $id = null,
-        $name = null,
-        $imageUrl = null,
-        $description = null,
-        $weight = null,
-        $unit = null,
-        $unitSellingPrice = null,
-        $stockQuantity = null,
-        $manufacturerId = null,
-        $categoryId = null,
+        private ?int $id = null,
+        private ?string $name = null,
+        private ?string $imageUrl = null,
+        private ?string $description = null,
+        private ?float $weight = null,
+        private ?string $unit = null,
+        private ?float $unitSellingPrice = null,
+        private ?float $stockQuantity = null,
+        private ?int $manufacturerId = null,
+        private ?int $categoryId = null,
     ) {
-        $this->id = $id;
-        $this->name = $name;
-        $this->imageUrl = $imageUrl;
-        $this->description = $description;
-        $this->weight = $weight;
-        $this->unit = $unit;
-        $this->unitSellingPrice = $unitSellingPrice;
-        $this->stockQuantity = $stockQuantity;
-        $this->manufacturerId = $manufacturerId;
-        $this->categoryId = $categoryId;
     }
 
-    public function addProductToDB(): bool
+    public function addToDB(): bool
     {
         $result = $this->runQuery(
             'INSERT into product (name, image_url, description, 
@@ -59,9 +38,9 @@ class Product extends Model
         return $result == true;
     }
 
-    public function getProductsByManufacturerId($manufacturerId): array
+    public function getByManufacturerIdFromDB($manufacturerId): array
     {
-        $result = $this->runQuery("SELECT 
+        return $this->runQuery("SELECT 
             product.image_url as 'image_url', 
             product_category.name as 'category_name',
             product.name as 'product_name',
@@ -70,44 +49,16 @@ class Product extends Model
             FROM product
             INNER JOIN product_category ON product.category_id = product_category.id WHERE product.manufacturer_id = ?
             ", [$manufacturerId])->fetchAll();
-        return $result;
     }
 
-    public function getAllProducts(): array
+    public function getAllFromDB(): array
     {
-        $result = $this->runQuery("SELECT * FROM product")->fetchAll();
-        $products = [];
-        foreach ($result as $key => $value) {
-            $product = new Product(
-                $value["id"],
-                $value["name"],
-                $value["image_url"],
-                $value["description"],
-                $value["weight"],
-                $value["unit"],
-                $value["unit_selling_price"],
-                $value["stock_quantity"],
-                $value["maufacturer_id"],
-                $value["category_id"],
-            );
-            array_push($products, $product);
-        }
-        return $products;
+        return $this->runQuery("SELECT * FROM product")->fetchAll();
     }
 
-    public function getProductDetails($id): Product
+    public function getDetailsFromDB($id): object
     {
-        $result = $this->runQuery("SELECT * FROM product WHERE id = ?", [$id])->fetch();
-        return new Product(
-            $result["id"],
-            $result["name"],
-            $result["image_url"],
-            $result["description"],
-            $result["weight"],
-            $result["unit"],
-            $result["unit_selling_price"],
-            $result["stock_quantity"]
-        );
+        return $this->runQuery("SELECT * FROM product WHERE id = ?", [$id])->fetch();
     }
 
     /**

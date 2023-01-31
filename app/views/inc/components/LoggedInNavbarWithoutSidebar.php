@@ -12,8 +12,8 @@
                 <?php
                 try {
                     assert(isset($this?->user), '(User not set)');
-                    echo '<p class="user-name"><?php echo $this->' . $this->user->getName() . '</p>
-                            <p class="user-role"><?php echo $this->' . $this->user->getRole() . '</p>';
+                    echo '<p class="user-name"><?php echo $this->' . $this->user->name . '</p>
+                            <p class="user-role"><?php echo $this->' . $this->user->role . '</p>';
                 } catch (AssertionError $e) {
                     echo '<span class="server-error">' . $e->getMessage() . '</span>';
                 }
