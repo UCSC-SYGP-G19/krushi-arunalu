@@ -66,8 +66,12 @@ include APP_ROOT . "/views/inc/components/Header.php";
                                 ?>
                                 <div class="mt-1 mb-3 ">
                                     <a class="btn-lg btn-primary-light mt-3 text-center text-white"
-                                       href=<?php echo "../send-inquiry/" . $this->data->id?>>
+                                       href=<?php echo URL_ROOT . "/send-inquiry/" . $this->data->id?>>
                                         Inquire Now
+                                    </a>
+                                    <a class="btn-lg btn-primary-light mt-3 text-center text-white"
+                                       href=<?php echo URL_ROOT . "/shopping-cart/add/" . $this->data->id?>>
+                                        Add to Cart
                                     </a>
                                 </div>
                             </div>

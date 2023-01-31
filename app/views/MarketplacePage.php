@@ -57,13 +57,15 @@ include APP_ROOT . "/views/inc/components/Header.php";
                                     . $product->unit_selling_price . '</h4>
                                         <div class="row gap-1">
                                             <div class="col-5">
+                                            <form action="shopping-cart/add/' . $product->id  . '" method="get">
                                                 <label>
-                                                    <input type="number" value="1">
+                                                    <input type="number" name="quantity" value="1" min="1">
                                                 </label>
                                             </div>
                                             <div class="col-7">
                                                 <button class="btn-primary-light text-white">Buy</button>
                                             </div>
+                                            </form>
                                         </div>
                                     </div>
                                 </div>
