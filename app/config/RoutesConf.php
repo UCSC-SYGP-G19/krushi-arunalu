@@ -7,8 +7,8 @@
 
 // Names of controllers relevant to each user role without the Controller suffix
 const PROTECTED_ROUTES = [
-    "Common" => ["Login", "Register", "ForgotPassword", "ResetPassword", "Logout", "Marketplace"],
-    "Producer" => ["AccountSetup","ProducerDashboard", "Cultivations", "Sales", "Manufacturers", "CultivationQuestions",
+    "Common" => ["Login", "Register", "ForgotPassword", "ResetPassword", "Logout", "Marketplace", "ManageProfile"],
+    "Producer" => ["AccountSetup","ProducerDashboard", "Cultivations", "Harvests", "Sales", "Manufacturers", "CultivationQuestions",
         "CropRequests", "Announcements", "Profile"],
     "Manufacturer" => ["ManufacturerDashboard", "Sales", "Purchases", "Manufacturers", "Stocks", "ProductCategories",
         "Products"],
@@ -23,6 +23,10 @@ const SIDEBAR_ROUTES = [
         "Cultivations" => [
             "icon" => "cultivations",
             "link" => "cultivations",
+        ],
+        "Harvests" => [
+            "icon" => "stocks",
+            "link" => "harvests",
         ],
         "Sales" => [
             "icon" => "sales",

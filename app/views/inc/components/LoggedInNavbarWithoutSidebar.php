@@ -31,7 +31,7 @@
     <div id="navbar-options-panel" class="py-1">
         <ul>
             <li>
-                <a href="<?php echo URL_ROOT ?>/profile">
+                <a href="<?php echo URL_ROOT ?>/manageProfile">
                     <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <path d="M16.6668 17.5V15.8333C16.6668 14.9493 16.3156 14.1014 15.6905 13.4763C15.0654 12.8512
                         14.2176 12.5 13.3335 12.5H6.66683C5.78277 12.5 4.93493 12.8512 4.30981 13.4763C3.68469 14.1014
