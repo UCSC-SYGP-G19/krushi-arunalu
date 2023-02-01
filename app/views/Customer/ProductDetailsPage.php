@@ -21,11 +21,17 @@ include APP_ROOT . "/views/inc/components/Header.php";
     ?>
     <div class="content-with-sidebar">
         <?php
-        include APP_ROOT . "/views/inc/components/Sidebar.php"
+        if (isset($this->user)) {
+            include APP_ROOT . "/views/inc/components/Sidebar.php";
+        }
         ?>
         <main class="content overflow-y-auto">
             <?php
-            include APP_ROOT . "/views/inc/components/LoggedInNavbar.php"
+            if (isset($this->user)) {
+                include APP_ROOT . "/views/inc/components/LoggedInNavbar.php";
+            } else {
+                include APP_ROOT . "/views/inc/components/LoggedOutNavbarWithLoginLink.php";
+            }
             ?>
 
             <div class="content-wrapper product-details">

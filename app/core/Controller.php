@@ -8,6 +8,7 @@
 namespace app\core;
 
 use app\helpers\Logger;
+use app\helpers\Session;
 
 class Controller
 {
@@ -27,9 +28,18 @@ class Controller
 
     // Create a new instance of the view class, which stores the relevant view name
     // and assign to $view
-    public function loadView(string $viewName): void
+    public function loadView(string $viewName, string $viewTitle, string $activeLink = null): void
     {
         $this->view = new View($viewName);
+        $this->view->title = $viewTitle;
+        $this->view->activeLink = $activeLink;
+        $user = Session::getSession();
+        if ($user) {
+            $this->view->user = $user;
+            $this->view->sidebarLinks = SIDEBAR_ROUTES[$user->role];
+        } else {
+            $this->view->user = null;
+        }
     }
 
     // Trim and apply common validations for all required text fields
