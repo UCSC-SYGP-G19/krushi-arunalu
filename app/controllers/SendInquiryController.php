@@ -17,6 +17,7 @@ class SendInquiryController extends Controller
     {
         $this->loadView('Customer/SendInquiryPage', 'Send Product Inquiry');
 
+
         if (isset($_POST['inquiry'])) {
             $this->inquiry();
         }

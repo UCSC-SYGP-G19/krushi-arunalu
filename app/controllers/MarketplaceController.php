@@ -29,6 +29,27 @@ class MarketplaceController extends Controller
         $this->view->render();
     }
 
+    public function addToCart($productId)
+    {
+        $this->loadView('Customer/ShoppingCartPage', 'Shopping Cart', 'marketplace');
+
+        if ($_SERVER["REQUEST_METHOD"] === "POST") {
+            $this->loadModel("Product");
+            $this->model->fillData([
+                'dateTime' => date('d-m-y h:i:s'),
+                'content' => $_POST['content'],
+                'customerId' => Session::getSession()->getId(),
+                'productId' => $productId,
+            ]);
+
+            if ($this->model->addToDB()) {
+                Util::redirect(URL_ROOT . "/marketplace");
+            }
+        }
+
+        $this->view->render();
+    }
+
     public function sendInquiry($productId): void
     {
         $this->loadView('Customer/SendInquiryPage', 'Send Inquiry', 'marketplace');
