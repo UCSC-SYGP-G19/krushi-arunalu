@@ -2,7 +2,8 @@
 
 /**
  * @file
- * Default controller which handles the default route
+ * Controller for the products marketplace page
+ * Applicable for both guest users and customers
  */
 
 namespace app\controllers;

@@ -2,7 +2,7 @@
 
 /**
  * @file
- * Register controller with register functionality
+ * Controller which handles sending inquiries regarding products to manufacturers by customers
  */
 
 namespace app\controllers;

@@ -2,8 +2,8 @@
 
 /**
  * @file
- * Account Setup controller which provides account setup functionality for Producers
- * Allows Producers to enter land and cultivation details in order to start using the system
+ * Manage profile controller which allows users to manage their profile
+ * Currently supports only the manufacturer role
  */
 
 namespace app\controllers;
