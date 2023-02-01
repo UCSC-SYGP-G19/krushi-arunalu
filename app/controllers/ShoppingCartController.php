@@ -8,7 +8,6 @@
 namespace app\controllers;
 
 use app\core\Controller;
-use app\helpers\Logger;
 use app\helpers\Session;
 use app\helpers\Util;
 
@@ -16,22 +15,10 @@ class ShoppingCartController extends Controller
 {
     public function index()
     {
-        $this->loadView('ShoppingCartPage');
-        $this->view->title = "Shopping Cart";
-        $this->view->activeLink = "marketplace";
-
-
-        $user = Session::getSession();
-
-        if ($user) {
-            $this->view->user = $user;
-            $this->view->sidebarLinks = ROUTES[$user->role];
-            $this->loadModel("ShoppingCart");
-            $this->view->data = $this->model->getAllByCustomerIdFromDB($user->id);
-            $this->view->render();
-        } else {
-            Util::redirect('login');
-        }
+        $this->loadView('Customer/ShoppingCartPage', 'Shopping Cart', 'marketplace');
+        $this->loadModel("ShoppingCart");
+        $this->view->data = $this->model->getAllByCustomerIdFromDB(Session::getSession()->id);
+        $this->view->render();
     }
 
     public function add($productId)
@@ -55,7 +42,7 @@ class ShoppingCartController extends Controller
 
     public function remove($entryId)
     {
-//        $id = explode('/', $_GET['url'])[2];
+//      $id = explode('/', $_GET['url'])[2];
         $user = Session::getSession();
         if ($user) {
             $this->loadModel("ShoppingCart");

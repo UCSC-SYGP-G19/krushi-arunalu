@@ -31,38 +31,23 @@ class MarketplaceController extends Controller
 
     public function addToCart($productId)
     {
-        $user = Session::getSession();
-        if ($user) {
-            $this->loadView('AddToCartPage');
-            $this->view->render();
-            $this->view->title = "Shopping Cart";
-            $this->view->activeLink = "marketplace";
+        $this->loadView('Customer/ShoppingCartPage', 'Shopping Cart', 'marketplace');
 
-            $this->view->user = $user;
+        if ($_SERVER["REQUEST_METHOD"] === "POST") {
+            $this->loadModel("Product");
+            $this->model->fillData([
+                'dateTime' => date('d-m-y h:i:s'),
+                'content' => $_POST['content'],
+                'customerId' => Session::getSession()->getId(),
+                'productId' => $productId,
+            ]);
 
-            if ($_SERVER["REQUEST_METHOD"] === "POST") {
-//                $required_fields = null;
-//                $this->validateFields($required_fields);
-//
-//                if (!empty($this->view->fieldErrors)) {
-//                    $this->refillValuesAndShowError();
-//                    $this->view->render();
-//                    return;
-//                }
-
-                $this->loadModel("Product");
-                $this->model->fillData([
-                    'dateTime' => date('d-m-y h:i:s'),
-                    'content' => $_POST['content'],
-                    'customerId' => Session::getSession()->getId(),
-                    'productId' => $productId,
-                ]);
-
-                if ($this->model->addToDB()) {
-                    Util::redirect(URL_ROOT . "/marketplace");
-                }
+            if ($this->model->addToDB()) {
+                Util::redirect(URL_ROOT . "/marketplace");
             }
         }
+
+        $this->view->render();
     }
 
     public function sendInquiry($productId): void
