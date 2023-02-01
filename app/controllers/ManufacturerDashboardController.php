@@ -2,7 +2,7 @@
 
 /**
  * @file
- * Default controller which handles the default route
+ * Controller which handles the dashboard of the manufacturer
  */
 
 namespace app\controllers;

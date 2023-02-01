@@ -2,7 +2,7 @@
 
 /**
  * @file
- * Product Category controller which handles product categories of Manufacturers
+ * Controller which handles product categories of Manufacturers
  */
 
 namespace app\controllers;

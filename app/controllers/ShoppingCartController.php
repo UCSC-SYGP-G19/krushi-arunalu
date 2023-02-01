@@ -2,7 +2,7 @@
 
 /**
  * @file
- * Register controller with register functionality
+ * Controller which handles the shopping cart of customers
  */
 
 namespace app\controllers;
