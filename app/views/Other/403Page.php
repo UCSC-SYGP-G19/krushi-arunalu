@@ -16,7 +16,7 @@ include APP_ROOT . "/views/inc/components/Header.php";
                                 <h2 class="fw-light pt-3 pb-3 text-grey-dark">
                                     You are not authorized to access this page</h2>
 
-                                <a href="http://localhost/krushi-arunalu"
+                                <a href="<?php echo URL_ROOT ?>"
                                    class="my-2 btn-primary-light btn-lg text-white">
                                     ← &ensp;Go back home
                                 </a>
