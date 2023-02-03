@@ -122,8 +122,8 @@ const ROUTES = [
             "link" => "crop-prices",
         ],
         "Cultivation Questions" => [
-            "icon" => "cultivation-question",
-            "link" => "cultivation-question",
+            "icon" => "cultivation-questions",
+            "link" => "cultivation-questions",
         ],
     ],
 
