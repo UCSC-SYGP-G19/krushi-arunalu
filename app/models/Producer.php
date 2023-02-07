@@ -38,6 +38,11 @@ class Producer extends RegisteredUser
         return false;
     }
 
+    public function getAllProducersFromDB(): array
+    {
+        return $this->runQuery("SELECT id, name FROM registered_user WHERE id = (SELECT id FROM producer)")->fetchAll();
+    }
+
     /**
      * @return string|null
      */
