@@ -50,16 +50,18 @@ $properties: (auto, hidden);
   border-radius: $base-border-radius;
   box-shadow: 0 2px 4px rgba(21, 116, 45, 0.9) !important;
 
-    .product-name{
-        font-size: $base-font-size * 0.9;
-        font-weight: 300;
-        color: $grey-dark;
-        padding-top: 2px;
-    }
+  .product-name {
+    font-size: $base-font-size * 0.9;
+    font-weight: 300;
+    color: $grey-dark;
+    padding-top: 2px;
+  }
 
-  .responded{
+  .responded {
     background-color: $header-green;
     border-radius: $base-border-radius-sm;
+  }
+}
 
 .request-card-wrapper {
   background-color: $white;
