@@ -44,3 +44,16 @@ $properties: (auto, hidden);
     font-weight: 600;
   }
 }
+
+.request-card-wrapper {
+  background-color: $white;
+  border-radius: $base-border-radius;
+  box-shadow: 0 2px 4px rgba(21, 116, 45, 0.9) !important;
+
+  .user-location {
+    font-size: $base-font-size * 0.9;
+    font-weight: 300;
+    color: $grey-dark;
+    padding-top: 2px;
+  }
+}

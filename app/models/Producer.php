@@ -38,6 +38,16 @@ class Producer extends RegisteredUser
         return false;
     }
 
+    public function getAllFromDB(): array
+    {
+        return $this->runQuery("SELECT 
+            producer.id as 'producer_id',     
+            registered_user.name as 'producer_name'
+            FROM producer
+            INNER JOIN registered_user ON producer.id = registered_user.id
+            ", [])->fetchAll();
+    }
+
     /**
      * @return string|null
      */
