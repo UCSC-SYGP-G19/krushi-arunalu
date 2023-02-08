@@ -10,8 +10,6 @@ namespace app\controllers;
 use app\core\Controller;
 use app\helpers\Session;
 use app\helpers\Util;
-use app\models\ManufacturerOrder;
-use app\views\inc\components\Table;
 
 class ManufacturerOrdersController extends Controller
 {
@@ -37,7 +35,6 @@ class ManufacturerOrdersController extends Controller
         $this->view->fieldOptions["crop"] = $this->model->getNamesFromDB();
 
 
-
         if ($_SERVER["REQUEST_METHOD"] === "POST") {
             if (!empty($this->view->fielfErrors)) {
                 $this->refillValuesAndShowError();
@@ -61,6 +58,7 @@ class ManufacturerOrdersController extends Controller
             }
         }
         $this->view->render();
+        return false;
     }
 
     public function edit($orderId): bool
@@ -102,6 +100,7 @@ class ManufacturerOrdersController extends Controller
             }
         }
         $this->view->render();
+        return false;
     }
 
     public function delete($orderId): bool
@@ -113,5 +112,6 @@ class ManufacturerOrdersController extends Controller
             return true;
         }
         $this->view->render();
+        return false;
     }
 }
