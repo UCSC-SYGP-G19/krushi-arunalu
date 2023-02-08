@@ -53,6 +53,34 @@
   font-weight: 600;
 }
 
+.inquiry-wrapper {
+  background-color: #E7F4D8;
+  border-radius: 16px;
+  box-shadow: 0 2px 4px rgba(21, 116, 45, 0.9) !important;
+}
+.inquiry-wrapper .product-name {
+  font-size: 0.9rem;
+  font-weight: 300;
+  color: #555555;
+  padding-top: 2px;
+}
+.inquiry-wrapper .responded {
+  background-color: #95C260;
+  border-radius: 8px;
+}
+
+.request-card-wrapper {
+  background-color: #FFFFFF;
+  border-radius: 16px;
+  box-shadow: 0 2px 4px rgba(21, 116, 45, 0.9) !important;
+}
+.request-card-wrapper .user-location {
+  font-size: 0.9rem;
+  font-weight: 300;
+  color: #555555;
+  padding-top: 2px;
+}
+
 .container {
   width: 100%;
   max-width: 1200px;
