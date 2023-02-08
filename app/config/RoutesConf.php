@@ -7,11 +7,12 @@
 
 // Names of controllers relevant to each user role without the Controller suffix
 const PROTECTED_ROUTES = [
-    "Common" => ["Login", "Register", "ForgotPassword", "ResetPassword", "Logout", "Marketplace"],
-    "Producer" => ["AccountSetup","ProducerDashboard", "Cultivations", "Sales", "Manufacturers", "CultivationQuestions",
+    "Common" => ["Login", "Register", "ForgotPassword", "ResetPassword", "Logout", "Marketplace", "ManageProfile"],
+    "Producer" => ["AccountSetup","ProducerDashboard", "Cultivations", "Harvests", "Sales", "CultivationQuestions",
         "CropRequests", "Announcements", "Profile"],
-    "Manufacturer" => ["ManufacturerDashboard", "Sales", "Purchases", "Manufacturers", "Stocks", "ProductCategories",
-        "Products"],
+    "Manufacturer" => ["ManufacturerDashboard", "Sales", "ManufacturerOrders", "Producers", "Stocks",
+        "ProductCategories", "Products", "CropRequests", "Inquiries"],
+    "Customer" => ["Marketplace", "ShoppingCart", "Orders", "Profile"],
 ];
 
 const SIDEBAR_ROUTES = [
@@ -23,6 +24,10 @@ const SIDEBAR_ROUTES = [
         "Cultivations" => [
             "icon" => "cultivations",
             "link" => "cultivations",
+        ],
+        "Harvests" => [
+            "icon" => "stocks",
+            "link" => "harvests",
         ],
         "Sales" => [
             "icon" => "sales",
@@ -55,20 +60,16 @@ const SIDEBAR_ROUTES = [
             "icon" => "sales",
             "link" => "sales",
         ],
-        "Purchases" => [
-            "icon" => "purchases",
-            "link" => "purchases",
-        ],
-        "Manufacturers" => [
-            "icon" => "manufacturers",
-            "link" => "manufacturers",
+        "Manufacturer Orders" => [
+            "icon" => "manufacturer-orders",
+            "link" => "manufacturer-orders",
         ],
         "Purchased Stocks" => [
             "icon" => "stocks",
             "link" => "stocks",
         ],
         "Product Categories" => [
-            "icon" => "categories",
+            "icon" => "product-categories",
             "link" => "product-categories",
         ],
         "Products" => [
@@ -104,4 +105,36 @@ const SIDEBAR_ROUTES = [
             "link" => "my-orders",
         ],
     ],
+
+    "Agri Officer" => [
+        "Dashboard" => [
+            "icon" => "dashboard",
+            "link" => "index",
+        ],
+        "Announcements" => [
+            "icon" => "announcements",
+            "link" => "announcements",
+        ],
+        "Producer Details" => [
+            "icon" => "producer-details",
+            "link" => "producer-details",
+        ],
+        "Land Details" => [
+            "icon" => "land-details",
+            "link" => "land-details",
+        ],
+        "Cultivation Details" => [
+            "icon" => "cultivation-details",
+            "link" => "cultivation-details",
+        ],
+        "Crop Prices" => [
+            "icon" => "crop-prices",
+            "link" => "crop-prices",
+        ],
+        "Cultivation Questions" => [
+            "icon" => "cultivation-questions",
+            "link" => "cultivation-questions",
+        ],
+    ],
+
 ];

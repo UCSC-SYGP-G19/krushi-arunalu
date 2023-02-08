@@ -2,14 +2,12 @@
 
 /**
  * @file
- * Default controller which handles the default route
+ * Controller for the landing page of the system
  */
 
 namespace app\controllers;
 
 use app\core\Controller;
-use app\helpers\Session;
-use app\helpers\Util;
 
 class IndexController extends Controller
 {

@@ -14,7 +14,7 @@ include APP_ROOT . "/views/inc/components/Header.php";
                                      alt="Error 404"
                                      height="85%">
                                 <h2 class="fw-light pb-3 text-grey-dark">Page not found</h2>
-                                <a href="http://localhost/krushi-arunalu"
+                                <a href="<?php echo URL_ROOT ?>"
                                    class="my-2 btn-primary-light btn-lg text-white">
                                     ← &ensp;Go back home
                                 </a>

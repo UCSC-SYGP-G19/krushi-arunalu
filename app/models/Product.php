@@ -58,7 +58,7 @@ class Product extends Model
 
     public function getDetailsFromDB($id): object
     {
-        return $this->runQuery("SELECT * FROM product WHERE id = ?", [$id])->fetch();
+        return $this->runQuery("SELECT * FROM product WHERE product.id = ?", [$id])->fetch();
     }
 
     /**

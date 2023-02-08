@@ -83,7 +83,7 @@ class App
                     header("Location: " . URL_ROOT . "/login");
                     exit;
                 } else {
-                    if (!in_array($this->url[0], PROTECTED_ROUTES[$user->role])) {
+                    if (!in_array($this->url[0], PROTECTED_ROUTES[$user->role] ?? [])) {
                         require_once('app/views/other/403Page.php');
                         exit;
                     }
