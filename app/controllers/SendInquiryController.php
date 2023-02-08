@@ -2,7 +2,7 @@
 
 /**
  * @file
- * Register controller with register functionality
+ * Controller which handles sending inquiries regarding products to manufacturers by customers
  */
 
 namespace app\controllers;
@@ -16,6 +16,7 @@ class SendInquiryController extends Controller
     public function index()
     {
         $this->loadView('Customer/SendInquiryPage', 'Send Product Inquiry');
+
 
         if (isset($_POST['inquiry'])) {
             $this->inquiry();

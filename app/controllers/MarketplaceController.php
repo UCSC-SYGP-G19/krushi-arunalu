@@ -2,7 +2,8 @@
 
 /**
  * @file
- * Default controller which handles the default route
+ * Controller for the products marketplace page
+ * Applicable for both guest users and customers
  */
 
 namespace app\controllers;
@@ -26,6 +27,27 @@ class MarketplaceController extends Controller
         $this->loadView('Customer/ProductDetailsPage', 'Product Details', 'marketplace');
         $this->loadModel("Product");
         $this->view->data = $this->model->getDetailsFromDB($id);
+        $this->view->render();
+    }
+
+    public function addToCart($productId)
+    {
+        $this->loadView('Customer/ShoppingCartPage', 'Shopping Cart', 'marketplace');
+
+        if ($_SERVER["REQUEST_METHOD"] === "POST") {
+            $this->loadModel("Product");
+            $this->model->fillData([
+                'dateTime' => date('d-m-y h:i:s'),
+                'content' => $_POST['content'],
+                'customerId' => Session::getSession()->getId(),
+                'productId' => $productId,
+            ]);
+
+            if ($this->model->addToDB()) {
+                Util::redirect(URL_ROOT . "/marketplace");
+            }
+        }
+
         $this->view->render();
     }
 
