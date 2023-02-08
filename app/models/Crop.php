@@ -13,7 +13,7 @@ use app\core\Model;
 class Crop extends Model
 {
     public function __construct(
-        private ?string $id = null,
+        private ?int $id = null,
         private ?int $categoryId = null,
         private ?array $cultivatableDistricts = null,
         private ?string $name = null,
