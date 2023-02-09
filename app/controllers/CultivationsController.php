@@ -27,6 +27,8 @@ class CultivationsController extends Controller
 
         $this->loadModel("Land");
         $this->view->fieldOptions["land"] = $this->model->getNamesByOwnerIdFromDB(Session::getSession()->id);
+        $this->loadModel("CropCategory");
+        $this->view->fieldOptions["category"] = $this->model->getNamesFromDB();
         $this->loadModel("Crop");
         $this->view->fieldOptions["crop"] = $this->model->getNamesFromDB();
 
