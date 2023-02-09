@@ -29,8 +29,9 @@ include APP_ROOT . "/views/inc/components/Header.php";
                                 <h1 class="title">Announcements</h1>
                             </div>
                             <div class="col">
-                                <a href="announcements/publish" class="btn-md btn-primary-light text-center text-white">
-                                    Publish announcements</a>
+                                <a href="<?php echo URL_ROOT ?>/announcements/publish"
+                                   class="btn-md btn-primary-light text-center text-white">
+                                    Publish annoucements</a>
                             </div>
                         </div>
                         <div class="row px-1 pt-2">

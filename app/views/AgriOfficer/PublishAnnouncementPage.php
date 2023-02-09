@@ -38,14 +38,14 @@ if (!isset($this->user)) {
                                     <div class="row gap-2">
                                         <?php
                                         $this->formData = [
-                                            "Announcement Title" => [
+                                            "announcement_title" => [
                                                 "element" => InputField::class,
                                                 "wrapperClass" => "col-12",
                                                 "label" => "<b>Announcement Title</b>",
                                                 "placeholder" => "Enter the announcement title",
                                                 "type" => "text"
                                             ],
-                                            "Announcement Content" => [
+                                            "announcement_content" => [
                                                 "element" => TextArea::class,
                                                 "wrapperClass" => "col-12",
                                                 "label" => "<b>Announcement Content</b>",
