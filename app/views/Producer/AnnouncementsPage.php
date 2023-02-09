@@ -1,15 +1,6 @@
 <?php
 include APP_ROOT . "/views/inc/components/Header.php";
 ?>
-<?php
-//if (isset($this->user)) {
-//    echo "Logged in as: " . $this->user->getName() . " (" . $this->user->getRole() . ")<br>";
-//    echo "<a href='./logout'>Logout</a>";
-//} else {
-//    echo "You are not logged in, please <a href='./login'>login</a>";
-//}
-//
-?>
 
     <body class="overflow-hidden full-height">
     <div class="content-with-sidebar">
@@ -27,11 +18,6 @@ include APP_ROOT . "/views/inc/components/Header.php";
                         <div class="row px-1 pt-1 justify-content-space-between">
                             <div class="col-6">
                                 <h1 class="title">Announcements</h1>
-                            </div>
-                            <div class="col">
-                                <a href="<?php echo URL_ROOT ?>/announcements/publish"
-                                   class="btn-md btn-primary-light text-center text-white">
-                                    Publish annoucements</a>
                             </div>
                         </div>
                         <div class="row px-1 pt-2">
