@@ -40,10 +40,9 @@ class Announcement extends Model
     public function addToDB(): bool
     {
         $result = $this->runQuery(
-            "INSERT into announcement (id, agri_officer_id, title, content, published_date_time, 
-                         relevant_district) VALUES (?,?,?,?,?,?)",
-            [$this->id, $this->agriOfficerId, $this->title, $this->content, $this->publishedDateTime,
-                $this->relevantDistrict]
+            "INSERT into announcement (agri_officer_id, title, content, 
+                         relevant_district) VALUES (?,?,?,?)",
+            [$this->agriOfficerId, $this->title, $this->content, $this->relevantDistrict]
         );
         return $result == true;
     }
