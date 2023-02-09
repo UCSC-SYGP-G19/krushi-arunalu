@@ -5,23 +5,7 @@ use app\views\inc\components\Table;
 include APP_ROOT . "/views/inc/components/Header.php";
 
 ?>
-<?php
-
-//if (isset($this->user)) {
-//    echo "Logged in as: " . $this->user->getName() . " (" . $this->user->getRole() . ")<br>";
-//    echo "<a href='./logout'>Logout</a>";
-//} else {
-//    echo "You are not logged in, please <a href='./login'>login</a>";
-//}
-//
-
-
-?>
-
     <body class="overflow-hidden full-height">
-    <?php
-    //include APP_ROOT . "/views/inc/components/LoggedOutNavbar.php"
-    ?>
     <div class="content-with-sidebar">
         <?php
         include APP_ROOT . "/views/inc/components/Sidebar.php"
@@ -36,11 +20,12 @@ include APP_ROOT . "/views/inc/components/Header.php";
                     <div class="container-fluid px-2">
                         <div class="row px-1 pt-1 justify-content-space-between">
                             <div class="col-6">
-                                <h1 class="title">My cultivations</h1>
+                                <h1 class="title">Manufacturer Orders</h1>
                             </div>
                             <div class="col">
-                                <a href="cultivations/add" class="btn-md btn-primary-light text-center text-white">
-                                    Add cultivation</a>
+                                <a href="<?php echo URL_ROOT;?>/manufacturer-orders/add"
+                                   class="btn-md btn-primary-light text-center text-white">
+                                    Add new order</a>
                             </div>
                         </div>
                         <div class="row px-1 pt-2">
@@ -49,41 +34,47 @@ include APP_ROOT . "/views/inc/components/Header.php";
                                 <?php
                                 include APP_ROOT . "/views/inc/components/SearchFilterAndSort.php";
                                 $this->tableHeaders = [
-                                    "land_name" => [
-                                        "label" => "Land name",
+                                    "order_id" => [
+                                        "label" => "Order ID",
                                         "sortable" => true,
-                                        "sortKey" => "land_name",
-                                        "class" => "col-2",
+                                        "sortKey" => "order_id",
+                                        "class" => "col-1",
                                     ],
-                                    "status" => [
-                                        "label" => "Remarks",
+                                    "date" => [
+                                        "label" => "Date",
                                         "sortable" => true,
-                                        "sortKey" => "status",
+                                        "sortKey" => "date",
                                         "class" => "col-1",
                                     ],
                                     "crop_name" => [
-                                        "label" => "Crop name",
+                                        "label" => "Crop Name",
                                         "sortable" => true,
                                         "sortKey" => "crop_name",
                                         "class" => "col-2",
                                     ],
-                                    "cultivated_quantity" => [
-                                        "label" => "Cultivated quantity",
-                                        "sortable" => true,
-                                        "sortKey" => "cultivated_quantity",
+                                    "quantity" => [
+                                        "label" => "Quantity",
+                                        "sortable" => false,
+                                        "sortKey" => "quantity",
                                         "class" => "col-1",
                                     ],
-                                    "cultivated_date" => [
-                                        "label" => "Cultivated date",
-                                        "sortable" => true,
-                                        "sortKey" => "cultivated_date",
-                                        "class" => "col-2"
+                                    "unit_selling_price" => [
+                                        "label" => "Unit Price",
+                                        "sortable" => false,
+                                        "sortKey" => "unit_selling_price",
+                                        "class" => "col-1",
                                     ],
-                                    "expected_harvest_date" => [
-                                        "label" => "Expected harvest date",
+                                    "producer_name" => [
+                                        "label" => "Producer",
                                         "sortable" => true,
-                                        "sortKey" => "expected_harvest_date",
-                                        "class" => "col-2"
+                                        "sortKey" => "producer",
+                                        "class" => "col-2",
+                                    ],
+                                    "status" => [
+                                        "label" => "Status",
+                                        "sortable" => true,
+                                        "sortKey" => "status",
+                                        "class" => "col-2",
                                     ],
                                     "actions" => [
                                         "label" => "",
@@ -91,8 +82,12 @@ include APP_ROOT . "/views/inc/components/Header.php";
                                         "class" => "col-2"
                                     ]
                                 ];
-                                $cultivationsTable = new Table($this->tableHeaders, $this->data, "cultivation_id");
-                                $cultivationsTable->render();
+                                $manufacturerOrderTable = new Table(
+                                    $this->tableHeaders,
+                                    $this->data,
+                                    "order_id"
+                                );
+                                $manufacturerOrderTable->render();
                                 ?>
                             </div>
                         </div>
@@ -102,10 +97,12 @@ include APP_ROOT . "/views/inc/components/Header.php";
             <?php
             include APP_ROOT . "/views/inc/components/Footer.php";
             ?>
-
         </main>
+
     </div>
     </body>
 <?php
 include APP_ROOT . "/views/inc/components/EndingTag.php";
+
+
 
