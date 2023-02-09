@@ -26,7 +26,7 @@ const SIDEBAR_ROUTES = [
             "link" => "cultivations",
         ],
         "Harvests" => [
-            "icon" => "stocks",
+            "icon" => "purchased-stocks",
             "link" => "harvests",
         ],
         "Sales" => [
@@ -61,7 +61,7 @@ const SIDEBAR_ROUTES = [
             "link" => "sales",
         ],
         "Purchases" => [
-            "icon" => "purchases",
+            "icon" => "manufacturer-orders",
             "link" => "purchases",
         ],
         "Purchased Stocks" => [

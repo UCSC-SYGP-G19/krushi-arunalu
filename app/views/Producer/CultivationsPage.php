@@ -91,7 +91,7 @@ include APP_ROOT . "/views/inc/components/Header.php";
                                         "class" => "col-2"
                                     ]
                                 ];
-                                $cultivationsTable = new Table($this->tableHeaders, $this->data, "cultivation_id");
+                                $cultivationsTable = new Table("cultivations", $this->tableHeaders, $this->data, "cultivation_id");
                                 $cultivationsTable->render();
                                 ?>
                             </div>
