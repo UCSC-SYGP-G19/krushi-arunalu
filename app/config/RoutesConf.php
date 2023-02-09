@@ -60,9 +60,9 @@ const SIDEBAR_ROUTES = [
             "icon" => "sales",
             "link" => "sales",
         ],
-        "Manufacturer Orders" => [
-            "icon" => "manufacturer-orders",
-            "link" => "manufacturer-orders",
+        "Purchases" => [
+            "icon" => "purchases",
+            "link" => "purchases",
         ],
         "Purchased Stocks" => [
             "icon" => "purchased-stocks",
@@ -81,8 +81,8 @@ const SIDEBAR_ROUTES = [
             "link" => "producers",
         ],
         "Crop Requests" => [
-            "icon" => "crop-requests-manufacturer",
-            "link" => "crop-requests-manufacturer",
+            "icon" => "manufacturer-crop-requests",
+            "link" => "manufacturer-crop-requests",
         ],
         "Inquiries" => [
             "icon" => "inquiries",
