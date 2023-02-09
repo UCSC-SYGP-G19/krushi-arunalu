@@ -18,10 +18,7 @@ class CheckoutController extends Controller
     {
         $user = Session::getSession();
         if ($user) {
-            $this->loadView('CheckoutPage');
-            $this->view->title = "Checkout";
-            $this->view->activeLink = "marketplace";
-
+            $this->loadView('Customer/CheckoutPage', "Checkout", "marketplace");
             $this->view->render();
 
             if (isset($_POST['checkout'])) {
