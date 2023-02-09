@@ -4,8 +4,8 @@ namespace app\views\inc\components;
 
 class TextArea extends FormField
 {
-    public ?int $rows;
-    public ?int $cols;
+    public ?int $rows = 6;
+    public ?int $cols = 12;
 
     public function __construct(
         string  $name,
