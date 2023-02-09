@@ -65,8 +65,8 @@ const SIDEBAR_ROUTES = [
             "link" => "manufacturer-orders",
         ],
         "Purchased Stocks" => [
-            "icon" => "stocks",
-            "link" => "stocks",
+            "icon" => "purchased-stocks",
+            "link" => "purchased-stocks",
         ],
         "Product Categories" => [
             "icon" => "product-categories",
