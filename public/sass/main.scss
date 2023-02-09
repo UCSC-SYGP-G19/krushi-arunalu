@@ -27,12 +27,11 @@
 @import "partials/_other";
 
 // pages
-@import "partials/pages/index_page";
-@import "partials/pages/login_page";
-@import "partials/pages/register_page";
-@import "partials/pages/marketplace_page";
-@import "partials/pages/product_details_page";
-@import "partials/pages/manage_profile_page";
+@import "pages/index_page";
+@import "pages/login_page";
+@import "pages/register_page";
+@import "pages/marketplace_page";
+@import "pages/product_details_page";
 
 // reset styles
 * {
@@ -62,6 +61,6 @@ img {
 }
 
 a {
-    text-decoration: none;
-    color: black;
+  text-decoration: none;
+  color: black;
 }

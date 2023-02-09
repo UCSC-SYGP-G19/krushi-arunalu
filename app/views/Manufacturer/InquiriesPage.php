@@ -1,7 +1,5 @@
 <?php
 
-use app\views\inc\components\Table;
-
 include APP_ROOT . "/views/inc/components/Header.php";
 
 ?>
