@@ -23,6 +23,14 @@
   overflow-y: hidden !important;
 }
 
+.position-absolute {
+  position: absolute;
+}
+
+.position-relative {
+  position: relative;
+}
+
 .full-height {
   height: 100vh !important;
 }
@@ -528,6 +536,7 @@
   border-radius: 16px;
   border: 1.5px solid #15742D;
   color: #15742D;
+  background-color: transparent;
 }
 .btn-outlined-primary-light:hover {
   background-color: #15742D;
@@ -557,6 +566,7 @@
   border-radius: 16px;
   border: 1.5px solid #185427;
   color: #185427;
+  background-color: transparent;
 }
 .btn-outlined-primary-dark:hover {
   background-color: #185427;
@@ -586,6 +596,7 @@
   border-radius: 16px;
   border: 1.5px solid #B1B1B1;
   color: #B1B1B1;
+  background-color: transparent;
 }
 .btn-outlined-secondary:hover {
   background-color: #B1B1B1;
@@ -615,6 +626,7 @@
   border-radius: 16px;
   border: 1.5px solid #FFFFFF;
   color: #FFFFFF;
+  background-color: transparent;
 }
 .btn-outlined-white:hover {
   background-color: #FFFFFF;
@@ -644,6 +656,7 @@
   border-radius: 16px;
   border: 1.5px solid #000000;
   color: #000000;
+  background-color: transparent;
 }
 .btn-outlined-black:hover {
   background-color: #000000;
@@ -673,6 +686,7 @@
   border-radius: 16px;
   border: 1.5px solid #CC3636;
   color: #CC3636;
+  background-color: transparent;
 }
 .btn-outlined-error:hover {
   background-color: #CC3636;
@@ -702,6 +716,7 @@
   border-radius: 16px;
   border: 1.5px solid #8B0000;
   color: #8B0000;
+  background-color: transparent;
 }
 .btn-outlined-error-dark:hover {
   background-color: #8B0000;
@@ -836,6 +851,16 @@
 }
 .logged-in-navbar #navbar-options-panel ul li:last-child a {
   color: #CC3636;
+}
+.logged-in-navbar .btn-shopping-cart {
+  margin-top: -8px;
+  margin-left: -8px;
+  position: absolute;
+  border-radius: 8px;
+  border: 1px solid #185427;
+}
+.logged-in-navbar .btn-shopping-cart:hover {
+  background-color: #D9F0BE;
 }
 
 label {

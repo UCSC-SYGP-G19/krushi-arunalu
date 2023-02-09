@@ -12,25 +12,35 @@
         </button>
     </div>
 
-    <div class="col-4 text-center pt-1">
+    <div class="col-5 text-center pt-1">
         <div class="row">
-
-            <div class="col-3 m-auto">
+            <div class="col-3 pt-2 position-relative">
+                <a class="btn-shopping-cart p-2 pb-1" href="shopping-cart">
+                    <svg width="21" height="20" viewBox="0 0 21 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M16 15H5.5L3.5 1H1" stroke="#185427" stroke-width="1.5" stroke-linecap="round"
+                              stroke-linejoin="round"/>
+                        <path d="M3.78564 3H19.9999L16.9999 12H5.07135" stroke="#185427" stroke-width="1.5"
+                              stroke-linecap="round" stroke-linejoin="round"/>
+                        <path d="M8 19C9.1046 19 10 18.1046 10 17C10 15.8954 9.1046 15 8 15C6.89543 15 6 15.8954 6 17C6 18.1046 6.89543 19 8 19Z"
+                              stroke="#185427" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                        <path d="M16 19C17.1046 19 18 18.1046 18 17C18 15.8954 17.1046 15 16 15C14.8954 15 14 15.8954 14 17C14 18.1046 14.8954 19 16 19Z"
+                              stroke="#185427" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                </a>
+            </div>
+            <div class="col-1 m-auto">
                 <div class="justify-content-center align-items-center">
                     <?php echo '<img src="' . URL_ROOT . '/public/img/icons/other/lang-icon.png" 
                 alt="Lang icon" height="20px">' ?>
 
-
                     <span class="fs-3 fw-bold text-primary-dark pb-2 position-absolute">&ensp;English&nbsp;
-<svg width="12" height="7" viewBox="0 0 12 7" fill="none" xmlns="http://www.w3.org/2000/svg">
-<path d="M1 1L6 6L11 1" stroke="#185427" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/>
-</svg>
-
-
-</span>
+                        <svg width="12" height="7" viewBox="0 0 12 7" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M1 1L6 6L11 1" stroke="#185427" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                    </span>
                 </div>
-
             </div>
+
             <div class="col-6 text-right pb-1 px-2 m-auto">
                 <?php
                 try {
@@ -44,12 +54,10 @@
             </div>
 
             <div class="col-2 m-auto user-profile-pic">
-                <button id="btn-toggle-navbar-options" class="overlay"></button>
                 <?php echo '<img src="' . URL_ROOT . '/public/img/icons/navbar/user-avatar.webp" 
                 alt="User profile icon" height="56px">' ?>
             </div>
         </div>
-
     </div>
 
 
