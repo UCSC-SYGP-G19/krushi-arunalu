@@ -8,10 +8,10 @@
 // Names of controllers relevant to each user role without the Controller suffix
 const PROTECTED_ROUTES = [
     "Common" => ["Login", "Register", "ForgotPassword", "ResetPassword", "Logout", "Marketplace", "ManageProfile"],
-    "Producer" => ["AccountSetup","ProducerDashboard", "Cultivations", "Harvests", "Sales", "Manufacturers", "CultivationQuestions",
-        "CropRequests", "Announcements", "Profile"],
-    "Manufacturer" => ["ManufacturerDashboard", "Sales", "Purchases", "Manufacturers", "Stocks", "ProductCategories",
-        "Products"],
+    "Producer" => ["AccountSetup","ProducerDashboard", "Cultivations", "Harvests", "Sales", "Manufacturers",
+        "CultivationQuestions", "CropRequests", "Announcements", "Profile"],
+    "Manufacturer" => ["ManufacturerDashboard", "Sales", "Purchases", "Producers", "Stocks", "ProductCategories",
+        "Products", "ManufacturerCropRequests", "Inquiries"],
     "Customer" => ["Marketplace", "ShoppingCart", "Orders", "Profile"],
 ];
 
@@ -64,10 +64,6 @@ const SIDEBAR_ROUTES = [
             "icon" => "purchases",
             "link" => "purchases",
         ],
-        "Manufacturers" => [
-            "icon" => "manufacturers",
-            "link" => "manufacturers",
-        ],
         "Purchased Stocks" => [
             "icon" => "stocks",
             "link" => "stocks",
@@ -85,8 +81,8 @@ const SIDEBAR_ROUTES = [
             "link" => "producers",
         ],
         "Crop Requests" => [
-            "icon" => "crop-requests-manufacturer",
-            "link" => "crop-requests-manufacturer",
+            "icon" => "manufacturer-crop-requests",
+            "link" => "manufacturer-crop-requests",
         ],
         "Inquiries" => [
             "icon" => "inquiries",
