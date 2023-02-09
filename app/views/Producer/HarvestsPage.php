@@ -70,7 +70,7 @@ include APP_ROOT . "/views/inc/components/Header.php";
                                         "class" => "col-2"
                                     ]
                                 ];
-                                $harvestsTable = new Table($this->tableHeaders, $this->data, "harvest_id");
+                                $harvestsTable = new Table("harvests", $this->tableHeaders, $this->data, "harvest_id");
                                 $harvestsTable->render();
                                 ?>
                             </div>

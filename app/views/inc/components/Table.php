@@ -5,10 +5,13 @@ namespace app\views\inc\components;
 class Table
 {
     public function __construct(
+        private string $activeLink,
         private array $tableHeaders,
         private array $tableData,
         private string $primaryKey = "id",
         private string $noContentMessage = "No data available",
+        private array $actionLabels = ["Edit", "Delete"],
+        private array $actionUrls = ["edit", "delete"],
     ) {
     }
 
@@ -34,16 +37,18 @@ class Table
                             $html .= "<td class='" . $this->tableHeaders[$key]["class"] . "'>
                                         <div class='row justify-content-center align-items-center gap-1'>
                                             <div class='col'>
-                                                <a href='edit/" . $row->{$this->primaryKey} . "'
+                                                <a href='" . $this->activeLink . "/" .
+                                $this->actionUrls[0] . "/" . $row->{$this->primaryKey} . "'
                                                     class='btn-xs btn-outlined-primary-dark text-center'>
-                                                    Edit
+                                                    " . $this->actionLabels[0] . "
                                                 </a>
                                             </div>
                                             <div class='col'>
-                                                <a href='delete/" . $row->{$this->primaryKey} . "'
-                                                    class='btn-xs btn-outlined-error-dark text-center'>
-                                                    Delete
-                                                </a>
+                                                <a href='" . $this->activeLink . "/" .
+                                $this->actionUrls[1] . "/" . $row->{$this->primaryKey} . "'
+                                                    class='btn-xs btn-outlined-error-dark text-center'>" .
+                                $this->actionLabels[1] .
+                                "</a>
                                             </div>
                                         </div>
                                   </td>";

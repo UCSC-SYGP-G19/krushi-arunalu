@@ -52,7 +52,12 @@ include APP_ROOT . "/views/inc/components/Header.php";
                                         "class" => "col-2"
                                     ]
                                 ];
-                                $productCategoriesTable = new Table($this->tableHeaders, $this->data, "id");
+                                $productCategoriesTable = new Table(
+                                    "product-categories",
+                                    $this->tableHeaders,
+                                    $this->data,
+                                    "id"
+                                );
                                 $productCategoriesTable->render();
                                 ?>
                             </div>

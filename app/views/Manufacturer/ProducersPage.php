@@ -62,7 +62,12 @@ include APP_ROOT . "/views/inc/components/Header.php";
                                         "class" => "col-2"
                                     ]
                                 ];
-                                $producersTable = new Table($this->tableHeaders, $this->data, "producer_id");
+                                $producersTable = new Table(
+                                    "producers",
+                                    $this->tableHeaders,
+                                    $this->data,
+                                    "producer_id"
+                                );
                                 $producersTable->render();
                                 ?>
                             </div>

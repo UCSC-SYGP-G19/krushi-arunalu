@@ -83,6 +83,7 @@ include APP_ROOT . "/views/inc/components/Header.php";
                                     ]
                                 ];
                                 $manufacturerOrderTable = new Table(
+                                    "manufacturer-orders",
                                     $this->tableHeaders,
                                     $this->data,
                                     "order_id"

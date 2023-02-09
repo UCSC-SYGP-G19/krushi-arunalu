@@ -46,6 +46,34 @@ class ManufacturerOrder extends Model
             WHERE manufacturer.id = ?", [$manufacturerId]) ->fetchAll();
     }
 
+    public function getAllOrdersByProducerId($producerId): array
+    {
+        return $this->runQuery("SELECT 
+            mo.id as 'order_id',
+            mo.date as 'order_date',
+            c.name as 'crop_name', 
+            mo.quantity as 'quantity', 
+            mo.unit_selling_price as 'unit_selling_price',
+            ru.name as 'manufacturer_name',
+            mo.status as 'order_status'
+            FROM manufacturer_order mo
+            INNER JOIN crop c ON mo.crop_id = c.id
+            INNER JOIN registered_user ru ON mo.manufacturer_id = ru.id
+            WHERE mo.producer_id = ?", [$producerId]) ->fetchAll();
+    }
+
+    public function acceptOrder($orderId): bool
+    {
+        $result = $this->runQuery("UPDATE manufacturer_order SET status = 'Accepted' WHERE id = ?", [$orderId]);
+        return $result == true;
+    }
+
+    public function declineOrder($orderId): bool
+    {
+        $result = $this->runQuery("UPDATE manufacturer_order SET status = 'Declined' WHERE id = ?", [$orderId]);
+        return $result == true;
+    }
+
     public function getByOrderId($orderId): object
     {
         return $this->runQuery("SELECT 
