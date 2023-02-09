@@ -12,7 +12,7 @@ const PROTECTED_ROUTES = [
         "CropRequests", "Announcements", "Profile", "Manufacturers"],
     "Manufacturer" => ["ManufacturerDashboard", "Sales", "ManufacturerOrders", "Producers", "Stocks",
         "ProductCategories", "Products", "CropRequests", "Inquiries"],
-    "Customer" => ["Marketplace", "ShoppingCart", "Orders", "Profile"],
+    "Customer" => ["Marketplace", "ShoppingCart", "Orders", "Profile", "SendInquiry"],
 ];
 
 const SIDEBAR_ROUTES = [
