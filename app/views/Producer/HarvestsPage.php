@@ -24,7 +24,7 @@ include APP_ROOT . "/views/inc/components/Header.php";
                                 <h1 class="title">My stocks</h1>
                             </div>
                             <div class="col">
-                                <a href="stocks/add" class="btn-md btn-primary-light text-center text-white">
+                                <a href="harvests/add" class="btn-md btn-primary-light text-center text-white">
                                     Add harvest</a>
                             </div>
                         </div>
@@ -38,12 +38,6 @@ include APP_ROOT . "/views/inc/components/Header.php";
                                         "label" => "Harvested date",
                                         "sortable" => true,
                                         "sortKey" => "harvested_date",
-                                        "class" => "col-1",
-                                    ],
-                                    "crop_category" => [
-                                        "label" => "Crop category",
-                                        "sortable" => true,
-                                        "sortKey" => "crop_category",
                                         "class" => "col-2",
                                     ],
                                     "crop_name" => [
@@ -68,7 +62,7 @@ include APP_ROOT . "/views/inc/components/Header.php";
                                         "label" => "Expected price",
                                         "sortable" => true,
                                         "sortKey" => "price",
-                                        "class" => "col-1"
+                                        "class" => "col-2"
                                     ],
                                     "actions" => [
                                         "label" => "",

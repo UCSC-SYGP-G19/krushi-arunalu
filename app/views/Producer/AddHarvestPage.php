@@ -21,101 +21,68 @@ include APP_ROOT . "/views/inc/components/Header.php";
                     <div class="form-wrapper px-2">
                         <div class="row px-1 pt-1">
                             <div class="col-12 wrapper px-3 py-3">
-                                <h2 class="title mt-2 py-1 text-center">Add new cultivation</h2>
+                                <h2 class="title mt-2 py-1 text-center">Add new harvest</h2>
                                 <form class=" mt-2 mb-1 px-2" action="" method="post">
-                                    <h3 class="form-section-title">Land details</h3>
-                                    <div class="row gap-2">
-                                        <?php
-                                        $this->formData = [
-                                            "land" => [
-                                                "element" => SelectField::class,
-                                                "wrapperClass" => "col-4",
-                                                "label" => "Land",
-                                                "placeholder" => "Select Land",
-                                            ],
-                                        ];
-
-                                        foreach ($this->formData as $key => $value) {
-                                            $formField = new $value["element"](
-                                                $key,
-                                                $value["label"],
-                                                $value["placeholder"],
-                                                $this->fields[$key] ?? null,
-                                                $this->fieldErrors[$key] ?? null,
-                                                $value["wrapperClass"],
-                                            );
-                                            isset($this->fieldOptions[$key]) &&
-                                            $formField->options = $this->fieldOptions[$key];
-                                            isset($value["type"]) && $formField->type = $value["type"];
-                                            $formField->render();
-                                        }
-                                        ?>
-                                    </div>
-                                    <h3 class="form-section-title">Crop details</h3>
-                                    <div class="row gap-2">
-                                        <?php
-                                        $this->formData = [
-                                            "category" => [
-                                                "element" => SelectField::class,
-                                                "wrapperClass" => "col-4",
-                                                "label" => "Category",
-                                                "placeholder" => "Select category",
-                                            ],
-                                            "crop" => [
-                                                "element" => SelectField::class,
-                                                "wrapperClass" => "col-8",
-                                                "label" => "Crop",
-                                                "placeholder" => "Select crop",
-                                            ],
-                                        ];
-
-                                        foreach ($this->formData as $key => $value) {
-                                            $formField = new $value["element"](
-                                                $key,
-                                                $value["label"],
-                                                $value["placeholder"],
-                                                $this->fields[$key] ?? null,
-                                                $this->fieldErrors[$key] ?? null,
-                                                $value["wrapperClass"],
-                                            );
-                                            isset($this->fieldOptions[$key]) &&
-                                            $formField->options = $this->fieldOptions[$key];
-                                            isset($value["type"]) && $formField->type = $value["type"];
-                                            $formField->render();
-                                        }
-                                        ?>
-                                    </div>
                                     <h3 class="form-section-title">Cultivation details</h3>
                                     <div class="row gap-2">
                                         <?php
+
                                         $this->formData = [
-                                            "cultivated_quantity" => [
+                                            "cultivation" => [
+                                                "element" => SelectField::class,
+                                                "wrapperClass" => "col-4",
+                                                "label" => "Cultivation",
+                                                "placeholder" => "Select cultivation",
+                                            ]
+                                        ];
+
+                                        foreach ($this->formData as $key => $value) {
+                                            $formField = new $value["element"](
+                                                $key,
+                                                $value["label"],
+                                                $value["placeholder"],
+                                                $this->fields[$key] ?? null,
+                                                $this->fieldErrors[$key] ?? null,
+                                                $value["wrapperClass"],
+                                            );
+                                            isset($this->fieldOptions[$key]) &&
+                                            $formField->options = $this->fieldOptions[$key];
+                                            isset($value["type"]) && $formField->type = $value["type"];
+                                            $formField->render();
+                                        }
+                                        ?>
+                                    </div>
+                                    <h3 class="form-section-title">Harvest details</h3>
+                                    <div class="row gap-2">
+                                        <?php
+                                        $this->formData = [
+                                            "harvested_date" => [
                                                 "element" => InputField::class,
                                                 "wrapperClass" => "col-4",
-                                                "label" => "Cultivated quantity",
-                                                "placeholder" => "Enter cultivated quantity (KG)",
+                                                "label" => "Harvested date",
+                                                "placeholder" => "Select date",
+                                                "type" => "date",
+                                            ],
+                                            "harvested_quantity" => [
+                                                "element" => InputField::class,
+                                                "wrapperClass" => "col-4",
+                                                "label" => "Harvested quantity (KG)",
+                                                "placeholder" => "Set harvested quantity",
                                                 "type" => "number",
                                             ],
-                                            "cultivated_date" => [
+                                            "remaining_quantity" => [
                                                 "element" => InputField::class,
                                                 "wrapperClass" => "col-4",
-                                                "label" => "Cultivated date",
-                                                "placeholder" => null,
-                                                "type" => "date",
+                                                "label" => "Remaining quantity (KG)",
+                                                "placeholder" => "Set remaining quantity",
+                                                "type" => "number",
                                             ],
-                                            "expected_harvest_date" => [
+                                            "expected_price" => [
                                                 "element" => InputField::class,
                                                 "wrapperClass" => "col-4",
-                                                "label" => "Cultivated date",
-                                                "placeholder" => null,
-                                                "type" => "date",
-                                            ],
-                                            "remarks" => [
-                                                "element" => InputField::class,
-                                                "wrapperClass" => "col-12",
-                                                "label" => "Remarks",
-                                                "placeholder" => "Enter remarks about cultivation (if any)",
-                                                "type" => "text",
+                                                "label" => "Expected price (Rs/KG)",
+                                                "placeholder" => "Set expected price",
+                                                "type" => "number",
                                             ],
                                         ];
 

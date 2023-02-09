@@ -38,6 +38,17 @@ class Harvest extends Model
             WHERE land.owner_id = ?", [$producerId])->fetchAll();
     }
 
+    public function addToDB(): bool
+    {
+        $result = $this->runQuery(
+            "INSERT into harvest (cultivation_id, harvested_date, harvested_quantity, expected_price, 
+                     remaining_quantity) VALUES (?,?,?,?,?)",
+            [$this->cultivationId, $this->harvestedDate, $this->harvestedQuantity, $this->expectedPrice,
+                $this->remainingQuantity]
+        );
+        return $result == true;
+    }
+
     /**
      * @return int|null
      */
