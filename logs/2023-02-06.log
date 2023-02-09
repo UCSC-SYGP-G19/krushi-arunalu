@@ -1,0 +1,30 @@
+2023-02-06 08:54:17  -  [INFO]  GET: http://localhost/krushi-arunalu/marketplace/sendinquiry/1
+2023-02-06 08:54:17  -  [INFO]  Calling sendinquiry method in app\controllers\MarketplaceController
+2023-02-06 08:54:19  -  [INFO]  GET: http://localhost/krushi-arunalu/marketplace/productdetails/1
+2023-02-06 08:54:19  -  [INFO]  Calling productdetails method in app\controllers\MarketplaceController
+2023-02-06 08:54:23  -  [INFO]  GET: http://localhost/krushi-arunalu/marketplace/shoppingcart/add/'.$product->id.'
+2023-02-06 08:54:23  -  [ERROR]  Requested method (shoppingcart) not found
+2023-02-06 08:54:25  -  [INFO]  GET: http://localhost/krushi-arunalu/marketplace/productdetails/1
+2023-02-06 08:54:25  -  [INFO]  Calling productdetails method in app\controllers\MarketplaceController
+2023-02-06 08:54:26  -  [INFO]  GET: http://localhost/krushi-arunalu/marketplace
+2023-02-06 08:54:26  -  [INFO]  Calling index method in app\controllers\MarketplaceController
+2023-02-06 08:54:28  -  [INFO]  GET: http://localhost/krushi-arunalu/shoppingcart/add/1
+2023-02-06 08:54:28  -  [INFO]  Calling add method in app\controllers\ShoppingCartController
+2023-02-06 08:54:28  -  [INFO]  GET: http://localhost/krushi-arunalu/shoppingcart
+2023-02-06 08:54:28  -  [INFO]  Calling index method in app\controllers\ShoppingCartController
+2023-02-06 10:10:08  -  [INFO]  GET: http://localhost/krushi-arunalu/shoppingcart
+2023-02-06 10:10:08  -  [INFO]  Calling index method in app\controllers\ShoppingCartController
+2023-02-06 10:10:54  -  [INFO]  GET: http://localhost/krushi-arunalu/shoppingcart
+2023-02-06 10:10:54  -  [INFO]  Calling index method in app\controllers\ShoppingCartController
+2023-02-06 10:11:11  -  [INFO]  GET: http://localhost/krushi-arunalu/shoppingcart
+2023-02-06 10:11:11  -  [INFO]  Calling index method in app\controllers\ShoppingCartController
+2023-02-06 10:11:12  -  [INFO]  GET: http://localhost/krushi-arunalu/shoppingcart
+2023-02-06 10:11:12  -  [INFO]  Calling index method in app\controllers\ShoppingCartController
+2023-02-06 10:11:12  -  [INFO]  GET: http://localhost/krushi-arunalu/shoppingcart
+2023-02-06 10:11:12  -  [INFO]  Calling index method in app\controllers\ShoppingCartController
+2023-02-06 10:11:12  -  [INFO]  GET: http://localhost/krushi-arunalu/shoppingcart
+2023-02-06 10:11:12  -  [INFO]  Calling index method in app\controllers\ShoppingCartController
+2023-02-06 10:11:13  -  [INFO]  GET: http://localhost/krushi-arunalu/shoppingcart
+2023-02-06 10:11:13  -  [INFO]  Calling index method in app\controllers\ShoppingCartController
+2023-02-06 10:11:13  -  [INFO]  GET: http://localhost/krushi-arunalu/shoppingcart
+2023-02-06 10:11:13  -  [INFO]  Calling index method in app\controllers\ShoppingCartController
