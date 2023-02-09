@@ -15,7 +15,12 @@ class AnnouncementsController extends Controller
 {
     public function index(): void
     {
-        $this->loadView('AgriOfficer/AnnouncementPage', 'Announcements', 'announcements');
+        if (Session::getSession()->role === "Agri Officer") {
+            $this->loadView('AgriOfficer/AnnouncementsPage', 'Announcements', 'announcements');
+        } else {
+            $this->loadView('Producer/AnnouncementsPage', 'Announcements', 'announcements');
+        }
+
         $this->loadModel('Announcement');
         $this->view->data = $this->model->getAllFromDB();
         $this->view->render();
