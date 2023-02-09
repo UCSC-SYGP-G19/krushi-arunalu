@@ -53,6 +53,34 @@
   font-weight: 600;
 }
 
+.inquiry-wrapper {
+  background-color: #E7F4D8;
+  border-radius: 16px;
+  box-shadow: 0 2px 4px rgba(21, 116, 45, 0.9) !important;
+}
+.inquiry-wrapper .product-name {
+  font-size: 0.9rem;
+  font-weight: 300;
+  color: #555555;
+  padding-top: 2px;
+}
+.inquiry-wrapper .responded {
+  background-color: #95C260;
+  border-radius: 8px;
+}
+
+.request-card-wrapper {
+  background-color: #FFFFFF;
+  border-radius: 16px;
+  box-shadow: 0 2px 4px rgba(21, 116, 45, 0.9) !important;
+}
+.request-card-wrapper .user-location {
+  font-size: 0.9rem;
+  font-weight: 300;
+  color: #555555;
+  padding-top: 2px;
+}
+
 .container {
   width: 100%;
   max-width: 1200px;
@@ -1828,50 +1856,6 @@ h1.title {
 .product-details button {
   border-radius: 8px;
   height: 42px;
-}
-
-.upload-content {
-  font-size: small;
-  text-align: center;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-direction: column;
-}
-
-.btn-browse {
-  cursor: pointer;
-  border: none;
-  background-color: #FFFFFF;
-  font-weight: bold;
-}
-
-.image-upload {
-  border: 2px dashed #B1B1B1;
-  border-radius: 16px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-direction: column;
-  padding: 16px;
-}
-
-.image-upload.drag {
-  background-color: #e1dfdf;
-}
-
-.btn-cancel {
-  position: absolute;
-  font-size: large;
-  cursor: pointer;
-  background-color: #B1B1B1;
-  border: none;
-  padding: 0 7px;
-  border-radius: 50%;
-}
-
-.image-preview {
-  text-align: right;
 }
 
 * {
