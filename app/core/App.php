@@ -9,6 +9,7 @@ namespace app\core;
 
 use app\controllers\IndexController;
 use app\helpers\Logger;
+use app\helpers\Session;
 
 class App
 {
@@ -45,6 +46,9 @@ class App
         $url = filter_var($url, FILTER_SANITIZE_URL);
         $this->url = explode('/', $url);
 
+        // Convert controller names to PascalCase
+        $this->url[0] = ucwords($this->url[0], "-");
+
         // Remove '-' characters of controller in URL
         if (isset($this->url[0])) {
             $this->url[0] = str_replace("-", "", $this->url[0]);
@@ -73,17 +77,27 @@ class App
         $controller = "app\\controllers\\" . $fileName;
 
         if (file_exists($filePath)) {
+            if (!in_array($this->url[0], PROTECTED_ROUTES["Common"])) {
+                $user = Session::getSession();
+                if ($user == null) {
+                    header("Location: " . URL_ROOT . "/login");
+                    exit;
+                } else {
+                    if (!in_array($this->url[0], PROTECTED_ROUTES[$user->role] ?? [])) {
+                        require_once('app/views/other/403Page.php');
+                        exit;
+                    }
+                }
+            }
             // Create a new instance of the specified controller
             $this->controller = new $controller();
-            // Load the relevant model to communicate with DB
-            $this->controller->loadModel($this->url[0]);
             // Destroy the element that stores the controller name in the URL array
             unset($this->url[0]);
             return true;
         } else {
             Logger::log("ERROR", "Requested controller (" . $this->url[0] . ") not found");
             //echo "Requested controller (" . $this->url[0] . ") not found";
-            require_once('app/views/404Page.php');
+            require_once('app/views/other/404Page.php');
             return false;
         }
     }

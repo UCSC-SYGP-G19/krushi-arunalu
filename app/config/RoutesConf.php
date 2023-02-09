@@ -5,11 +5,21 @@
  * Defines routes and links related to all user roles
  */
 
-const ROUTES = [
+// Names of controllers relevant to each user role without the Controller suffix
+const PROTECTED_ROUTES = [
+    "Common" => ["Login", "Register", "ForgotPassword", "ResetPassword", "Logout", "Marketplace"],
+    "Producer" => ["AccountSetup","ProducerDashboard", "Cultivations", "Sales", "Manufacturers", "CultivationQuestions",
+        "CropRequests", "Announcements", "Profile"],
+    "Manufacturer" => ["ManufacturerDashboard", "Sales", "Purchases", "Manufacturers", "Stocks", "ProductCategories",
+        "Products"],
+    "Customer" => ["Marketplace", "ShoppingCart", "Orders", "Profile"],
+];
+
+const SIDEBAR_ROUTES = [
     "Producer" => [
         "Dashboard" => [
             "icon" => "dashboard",
-            "link" => "index",
+            "link" => "producer-dashboard",
         ],
         "Cultivations" => [
             "icon" => "cultivations",
@@ -40,7 +50,7 @@ const ROUTES = [
     "Manufacturer" => [
         "Dashboard" => [
             "icon" => "dashboard",
-            "link" => "index",
+            "link" => "manufacturer-dashboard",
         ],
         "Sales" => [
             "icon" => "sales",
@@ -59,12 +69,12 @@ const ROUTES = [
             "link" => "stocks",
         ],
         "Product Categories" => [
-            "icon" => "categories",
-            "link" => "product-category",
+            "icon" => "product-categories",
+            "link" => "product-categories",
         ],
         "Products" => [
-            "icon" => "product",
-            "link" => "product",
+            "icon" => "products",
+            "link" => "products",
         ],
         "Producers" => [
             "icon" => "producers",

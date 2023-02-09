@@ -30,7 +30,7 @@ class ProductCategory extends Model
 
     public function getAllFromDB(): array
     {
-        return $this->runQuery("SELECT * FROM product_category")->fetchAll();
+        return $this->runQuery("SELECT id, name, description  FROM product_category")->fetchAll();
     }
 
     /**
