@@ -26,10 +26,10 @@ class ManufacturerOrdersController extends Controller
         $this->loadView('Manufacturer/AddManufacturerOrdersPage', 'Add Manufacturer Orders', 'manufacturer-orders');
 
         $this->loadModel('CropCategory');
-        $this->view->fieldOptions["crop_category_name"] = $this->model->getAllCropCategoriesFromDB();
+        $this->view->fieldOptions["crop_category_name"] = $this->model->getNamesFromDB();
 
         $this->loadModel('Producer');
-        $this->view->fieldOptions["producer"] = $this->model->getAllProducersFromDB();
+        $this->view->fieldOptions["producer"] = $this->model->getAllNamesFromDB();
 
         $this->loadModel('Crop');
         $this->view->fieldOptions["crop"] = $this->model->getNamesFromDB();
@@ -66,10 +66,10 @@ class ManufacturerOrdersController extends Controller
         $this->loadView('Manufacturer/UpdateManufacturerOrdersPage', 'Update Order Details', 'manufacturer-orders');
 
         $this->loadModel('CropCategory');
-        $this->view->fieldOptions["crop_category_name"] = $this->model->getAllCropCategoriesFromDB();
+        $this->view->fieldOptions["crop_category_name"] = $this->model->getNamesFromDB();
 
         $this->loadModel('Producer');
-        $this->view->fieldOptions["producer"] = $this->model->getAllProducersFromDB();
+        $this->view->fieldOptions["producer"] = $this->model->getAllNamesFromDB();
 
         $this->loadModel('Crop');
         $this->view->fieldOptions["crop"] = $this->model->getNamesFromDB();

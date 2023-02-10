@@ -5,6 +5,7 @@ use app\views\inc\components\Table;
 include APP_ROOT . "/views/inc/components/Header.php";
 
 ?>
+
     <body class="overflow-hidden full-height">
     <div class="content-with-sidebar">
         <?php
@@ -20,12 +21,7 @@ include APP_ROOT . "/views/inc/components/Header.php";
                     <div class="container-fluid px-2">
                         <div class="row px-1 pt-1 justify-content-space-between">
                             <div class="col-6">
-                                <h1 class="title">Manufacturer Orders</h1>
-                            </div>
-                            <div class="col">
-                                <a href="<?php echo URL_ROOT;?>/manufacturer-orders/add"
-                                   class="btn-md btn-primary-light text-center text-white">
-                                    Add new order</a>
+                                <h1 class="title">Sales</h1>
                             </div>
                         </div>
                         <div class="row px-1 pt-2">
@@ -40,41 +36,41 @@ include APP_ROOT . "/views/inc/components/Header.php";
                                         "sortKey" => "order_id",
                                         "class" => "col-1",
                                     ],
-                                    "date" => [
+                                    "order_date" => [
                                         "label" => "Date",
                                         "sortable" => true,
                                         "sortKey" => "date",
                                         "class" => "col-1",
                                     ],
                                     "crop_name" => [
-                                        "label" => "Crop Name",
+                                        "label" => "Crop name",
                                         "sortable" => true,
                                         "sortKey" => "crop_name",
                                         "class" => "col-2",
                                     ],
                                     "quantity" => [
-                                        "label" => "Quantity",
-                                        "sortable" => false,
+                                        "label" => "Qty",
+                                        "sortable" => true,
                                         "sortKey" => "quantity",
                                         "class" => "col-1",
                                     ],
                                     "unit_selling_price" => [
-                                        "label" => "Unit Price",
-                                        "sortable" => false,
-                                        "sortKey" => "unit_selling_price",
-                                        "class" => "col-1",
-                                    ],
-                                    "producer_name" => [
-                                        "label" => "Producer",
+                                        "label" => "Price per unit",
                                         "sortable" => true,
-                                        "sortKey" => "producer",
-                                        "class" => "col-2",
+                                        "sortKey" => "unit_selling_price",
+                                        "class" => "col-1"
                                     ],
-                                    "status" => [
+                                    "manufacturer_name" => [
+                                        "label" => "Manufacturer",
+                                        "sortable" => true,
+                                        "sortKey" => "Manufacturer",
+                                        "class" => "col-2"
+                                    ],
+                                    "order_status" => [
                                         "label" => "Status",
                                         "sortable" => true,
                                         "sortKey" => "status",
-                                        "class" => "col-2",
+                                        "class" => "col-2"
                                     ],
                                     "actions" => [
                                         "label" => "",
@@ -82,13 +78,16 @@ include APP_ROOT . "/views/inc/components/Header.php";
                                         "class" => "col-2"
                                     ]
                                 ];
-                                $manufacturerOrderTable = new Table(
-                                    "manufacturer-orders",
+                                $salesTable = new Table(
+                                    "sales",
                                     $this->tableHeaders,
                                     $this->data,
-                                    "order_id"
+                                    "order_id",
+                                    "No orders yet",
+                                    ["Accept", "Decline"],
+                                    ["accept", "decline"]
                                 );
-                                $manufacturerOrderTable->render();
+                                $salesTable->render();
                                 ?>
                             </div>
                         </div>
@@ -98,12 +97,10 @@ include APP_ROOT . "/views/inc/components/Header.php";
             <?php
             include APP_ROOT . "/views/inc/components/Footer.php";
             ?>
-        </main>
 
+        </main>
     </div>
     </body>
 <?php
 include APP_ROOT . "/views/inc/components/EndingTag.php";
-
-
 

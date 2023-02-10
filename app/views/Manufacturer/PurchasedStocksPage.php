@@ -32,11 +32,7 @@ include APP_ROOT . "/views/inc/components/Header.php";
                     <div class="container-fluid px-2">
                         <div class="row px-1 pt-1 justify-content-space-between">
                             <div class="col-6">
-                                <h1 class="title">Products</h1>
-                            </div>
-                            <div class="col">
-                                <a href="products/add" class="btn-md btn-primary-light text-center text-white">
-                                    Add product</a>
+                                <h1 class="title">Purchased Stocks</h1>
                             </div>
                         </div>
                         <div class="row px-1 pt-2">
@@ -45,39 +41,32 @@ include APP_ROOT . "/views/inc/components/Header.php";
                                 <table>
                                     <thead>
                                     <tr class="row">
-                                        <th class="col-1"></th>
-                                        <th class="col-3">Category</th>
-                                        <th class="col-3">Product</th>
-                                        <th class="col-1">Quantity in stock</th>
-                                        <th class="col-2">Unit price</th>
+                                        <th class="col-2">Stock Item ID</th>
+                                        <th class="col-2">Category</th>
+                                        <th class="col-2">Crop Name</th>
+                                        <th class="col-2">Quantity</th>
+                                        <th class="col-2">Last Purchased Date</th>
                                         <th class="col-2"></th>
                                     </tr>
                                     </thead>
                                     <tbody>
-                                    <?php
-                                    foreach ($this->data as $product) {
-                                        ?>
                                         <tr class="row">
-                                            <td class="col-1">
-                                                <?php echo '<div class="image-window mb-1">
-                                    ' . '<img class="ml-2 mt-2 pr-3" alt="Product image" height="100%" 
-                                                width="100%" src="' . URL_ROOT . '/public/img/products/' .
-                                                    $product->image_url . '">' . '
-                                    </div>'
-                                                ?></td>
-                                            <td class="col-3"><?php echo $product->category_name ?></td>
-                                            <td class="col-3"><?php echo $product->product_name; ?></td>
-                                            <td class="col-1"><?php echo $product->stock_qty; ?></td>
-                                            <td class="col-2"><?php echo $product->unit_price ?></td>
+                                            <td class="col-2">1</td>
+                                            <td class="col-2">Spices</td>
+                                            <td class="col-2">Cinnamon</td>
+                                            <td class="col-2">10KG</td>
+                                            <td class="col-2">23-01-2023</td>
                                             <td class="col-2 pr-3">
                                                 <div class="row justify-content-end align-items-center gap-1">
                                                     <div class="col">
-                                                        <?php echo '<a class="btn-xs btn-outlined-primary-dark 
-                                                        text-center" 
-                                                        href = "' . URL_ROOT . '/products/edit">Edit</a>' ?>
+                                                        <a href='edit/<?php echo $stock_item_id->id; ?>'
+                                                           class="btn-xs btn-outlined-primary-dark text-center">
+                                                            Edit
+                                                        </a>
+
                                                     </div>
                                                     <div class="col">
-                                                        <a href='delete/<?php echo $product->id; ?>'
+                                                        <a href='delete/<?php echo $stock_item_id->id; ?>'
                                                            class="btn-xs btn-outlined-secondary text-center">
                                                             Hide
                                                         </a>
@@ -85,9 +74,30 @@ include APP_ROOT . "/views/inc/components/Header.php";
                                                 </div>
                                             </td>
                                         </tr>
-                                        <?php
-                                    }
-                                    ?>
+                                        <tr class="row">
+                                            <td class="col-2">2</td>
+                                            <td class="col-2">Spices</td>
+                                            <td class="col-2">Cinnamon</td>
+                                            <td class="col-2">10KG</td>
+                                            <td class="col-2">28-12-2022</td>
+                                            <td class="col-2 pr-3">
+                                                <div class="row justify-content-end align-items-center gap-1">
+                                                    <div class="col">
+                                                        <a href='edit/<?php echo $stock_item_id->id; ?>'
+                                                           class="btn-xs btn-outlined-primary-dark text-center">
+                                                            Edit
+                                                        </a>
+
+                                                    </div>
+                                                    <div class="col">
+                                                        <a href='delete/<?php echo $stock_item_id->id; ?>'
+                                                           class="btn-xs btn-outlined-secondary text-center">
+                                                            Hide
+                                                        </a>
+                                                    </div>
+                                                </div>
+                                            </td>
+                                        </tr>
                                     </tbody>
                                     <tfoot>
                                     <tr class="row justify-content-end pagination">

@@ -30,7 +30,7 @@ include APP_ROOT . "/views/inc/components/Header.php";
 
             <main class="register container-fluid d-flex align-items-center justify-content-center">
                 <div class="wrapper px-4 py-3">
-                    <h1 class="title">Add new product</h1>
+                    <h1 class="title">Update product details</h1>
                     <br>
                     <form class="mb-1 px-2" action="" method="post">
                         <div class="row gap-2">

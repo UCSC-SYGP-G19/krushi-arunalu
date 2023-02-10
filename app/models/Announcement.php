@@ -13,14 +13,13 @@ use app\core\Model;
 class Announcement extends Model
 {
     public function __construct(
-        private ?int    $id = null,
-        private ?int    $agriOfficerId = null,
+        private ?int $id = null,
+        private ?int $agriOfficerId = null,
         private ?string $title = null,
         private ?string $content = null,
         private ?string $publishedDateTime = null,
-        private ?int    $relevantDistrict = null
-    )
-    {
+        private ?int $relevantDistrict = null
+    ) {
     }
 
     public function getAllFromDB(): array
@@ -40,10 +39,9 @@ class Announcement extends Model
     public function addToDB(): bool
     {
         $result = $this->runQuery(
-            "INSERT into announcement (id, agri_officer_id, title, content, published_date_time, 
-                         relevant_district) VALUES (?,?,?,?,?,?)",
-            [$this->id, $this->agriOfficerId, $this->title, $this->content, $this->publishedDateTime,
-                $this->relevantDistrict]
+            "INSERT into announcement (agri_officer_id, title, content, 
+                         relevant_district) VALUES (?,?,?,?)",
+            [$this->agriOfficerId, $this->title, $this->content, $this->relevantDistrict]
         );
         return $result == true;
     }

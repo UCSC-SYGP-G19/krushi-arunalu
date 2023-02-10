@@ -45,6 +45,27 @@ $properties: (auto, hidden);
   }
 }
 
+.crop-request-card-wrapper {
+  background-color: $white;
+  border-radius: $base-border-radius;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1) !important;
+
+  .fulfilled-quantity {
+    background-color: $selected-green;
+
+    .crop-response-card-content {
+      background-color: $background-grey;
+      border-radius: $base-border-radius;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1) !important;
+
+      .accepted-quantity {
+        background-color: $selected-green;
+        border-radius: $base-border-radius-sm;
+      }
+    }
+  }
+}
+
 .inquiry-wrapper {
   background-color: $selected-green-light;
   border-radius: $base-border-radius;

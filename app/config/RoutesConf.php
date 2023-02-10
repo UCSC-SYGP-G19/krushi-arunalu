@@ -9,9 +9,8 @@
 const PROTECTED_ROUTES = [
     "Common" => ["Login", "Register", "ForgotPassword", "ResetPassword", "Logout", "Marketplace", "ManageProfile"],
     "Producer" => ["AccountSetup","ProducerDashboard", "Cultivations", "Harvests", "Sales", "CultivationQuestions",
-        "CropRequests", "Announcements", "Profile"],
-    "Manufacturer" => ["ManufacturerDashboard", "ManufacturerSales", "ManufacturerOrders", "Producers", "Stocks",
-        "ProductCategories", "Products", "CropRequests", "Inquiries"],
+        "CropRequests", "Announcements", "Profile", "Manufacturers"],
+    "Manufacturer" => ["ManufacturerDashboard", "ManufacturerSales", "ManufacturerOrders", "Producers", "Stocks", "ProductCategories", "Products", "CropRequests", "Inquiries"],
     "Customer" => ["Marketplace", "ShoppingCart", "Orders", "Profile"],
 ];
 
@@ -26,7 +25,7 @@ const SIDEBAR_ROUTES = [
             "link" => "cultivations",
         ],
         "Harvests" => [
-            "icon" => "stocks",
+            "icon" => "purchased-stocks",
             "link" => "harvests",
         ],
         "Sales" => [
@@ -60,13 +59,13 @@ const SIDEBAR_ROUTES = [
             "icon" => "manufacturer-sales",
             "link" => "manufacturer-sales",
         ],
-        "Manufacturer Orders" => [
+        "Purchases" => [
             "icon" => "manufacturer-orders",
-            "link" => "manufacturer-orders",
+            "link" => "purchases",
         ],
         "Purchased Stocks" => [
-            "icon" => "stocks",
-            "link" => "stocks",
+            "icon" => "purchased-stocks",
+            "link" => "purchased-stocks",
         ],
         "Product Categories" => [
             "icon" => "product-categories",
@@ -81,8 +80,8 @@ const SIDEBAR_ROUTES = [
             "link" => "producers",
         ],
         "Crop Requests" => [
-            "icon" => "crop-requests-manufacturer",
-            "link" => "crop-requests-manufacturer",
+            "icon" => "manufacturer-crop-requests",
+            "link" => "manufacturer-crop-requests",
         ],
         "Inquiries" => [
             "icon" => "inquiries",
