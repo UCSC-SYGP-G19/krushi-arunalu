@@ -45,10 +45,10 @@ include APP_ROOT . "/views/inc/components/Header.php";
                                     <input type="text" id="recipient_name" name="recipient_name"
                                            placeholder="Enter recipient name"
                                            value="<?php
-                                            if (isset($this->fields['recipient_name'])) {
-                                                echo $this->fields['recipient_name'];
-                                            }
-                                            ?>">
+                                           if (isset($this->fields['recipient_name'])) {
+                                               echo $this->fields['recipient_name'];
+                                           }
+                                           ?>">
                                     <?php if (isset($this->fieldErrors['recipient_name'])) { ?>
                                         <div class="error"><?php echo $this->fieldErrors['recipient_name']; ?></div>
                                     <?php } ?>
@@ -58,10 +58,10 @@ include APP_ROOT . "/views/inc/components/Header.php";
                                     <input type="text" id="contact_no" name="contact_no"
                                            placeholder="Enter contact no"
                                            value="<?php
-                                            if (isset($this->fields['contact_no'])) {
-                                                echo $this->fields['contact_no'];
-                                            }
-                                            ?>">
+                                           if (isset($this->fields['contact_no'])) {
+                                               echo $this->fields['contact_no'];
+                                           }
+                                           ?>">
                                     <?php if (isset($this->fieldErrors['contact_no'])) { ?>
                                         <div class="error"><?php echo $this->fieldErrors['contact_no']; ?></div>
                                     <?php } ?>
@@ -70,10 +70,10 @@ include APP_ROOT . "/views/inc/components/Header.php";
                                     <label for="email">Email address</label>
                                     <input type="email" id="email" name="email" placeholder="Enter email address"
                                            value="<?php
-                                            if (isset($this->fields['email'])) {
-                                                echo $this->fields['email'];
-                                            }
-                                            ?>">
+                                           if (isset($this->fields['email'])) {
+                                               echo $this->fields['email'];
+                                           }
+                                           ?>">
                                     <?php if (isset($this->fieldErrors['email'])) { ?>
                                         <div class="error"><?php echo $this->fieldErrors['email']; ?></div>
                                     <?php } ?>
@@ -83,10 +83,10 @@ include APP_ROOT . "/views/inc/components/Header.php";
                                     <input type="text" id="delivery_address" name="delivery_address"
                                            placeholder="Enter delivery address"
                                            value="<?php
-                                            if (isset($this->fields['nic/br'])) {
-                                                echo $this->fields['nic/br'];
-                                            }
-                                            ?>">
+                                           if (isset($this->fields['nic/br'])) {
+                                               echo $this->fields['nic/br'];
+                                           }
+                                           ?>">
                                     <?php if (isset($this->fieldErrors['nic/br'])) { ?>
                                         <div class="error"><?php echo $this->fieldErrors['nic/br']; ?></div>
                                     <?php } ?>
@@ -96,10 +96,10 @@ include APP_ROOT . "/views/inc/components/Header.php";
                                     <input type="text" id="postalCode" name="postal_code"
                                            placeholder="Enter postal code"
                                            value="<?php
-                                            if (isset($this->fields['postalCode'])) {
-                                                echo $this->fields['postalCode'];
-                                            }
-                                            ?>">
+                                           if (isset($this->fields['postalCode'])) {
+                                               echo $this->fields['postalCode'];
+                                           }
+                                           ?>">
                                     <?php if (isset($this->fieldErrors['postalCode'])) { ?>
                                         <div class="error"><?php echo $this->fieldErrors['postalCode']; ?></div>
                                     <?php } ?>
@@ -122,10 +122,10 @@ include APP_ROOT . "/views/inc/components/Header.php";
                                     <input type="text" id="delivery_instructions" name="delivery_instructions"
                                            placeholder="Enter delivery instructions"
                                            value="<?php
-                                            if (isset($this->fields['nic/br'])) {
-                                                echo $this->fields['nic/br'];
-                                            }
-                                            ?>">
+                                           if (isset($this->fields['nic/br'])) {
+                                               echo $this->fields['nic/br'];
+                                           }
+                                           ?>">
                                     <?php if (isset($this->fieldErrors['nic/br'])) { ?>
                                         <div class="error"><?php echo $this->fieldErrors['nic/br']; ?></div>
                                     <?php } ?>
@@ -137,10 +137,10 @@ include APP_ROOT . "/views/inc/components/Header.php";
                                             <label class="px-2">
                                                 <input type="radio" name="role" class="card-input-element"
                                                        value="Producer" <?php
-                                                        if (isset($this->fields['role']) && $this->fields['role'] == 'Producer') {
-                                                            echo 'checked';
-                                                        }
-                                                        ?>/>
+                                                if (isset($this->fields['role']) && $this->fields['role'] == 'Producer') {
+                                                    echo 'checked';
+                                                }
+                                                ?>/>
                                                 <div class="card-input">
                                                     Credit/Debit Card
                                                 </div>
@@ -150,10 +150,10 @@ include APP_ROOT . "/views/inc/components/Header.php";
                                             <label class="px-2">
                                                 <input type="radio" name="role" class="card-input-element"
                                                        value="Manufacturer" <?php
-                                                        if (isset($this->fields['role']) && $this->fields['role'] == 'Manufacturer') {
-                                                            echo 'checked';
-                                                        }
-                                                        ?>/>
+                                                if (isset($this->fields['role']) && $this->fields['role'] == 'Manufacturer') {
+                                                    echo 'checked';
+                                                }
+                                                ?>/>
                                                 <div class="card-input">
                                                     Cash on Delivery
                                                 </div>
@@ -166,10 +166,10 @@ include APP_ROOT . "/views/inc/components/Header.php";
                                             <input type="number" id="amount_paid" name="amount_paid"
                                                    placeholder="Enter paid amount"
                                                    value="<?php
-                                                    if (isset($this->fields['amount_paid'])) {
-                                                        echo $this->fields['amount_paid'];
-                                                    }
-                                                    ?>">
+                                                   if (isset($this->fields['amount_paid'])) {
+                                                       echo $this->fields['amount_paid'];
+                                                   }
+                                                   ?>">
                                             <?php if (isset($this->fieldErrors['amount_paid'])) { ?>
                                                 <div class="error"><?php echo $this->fieldErrors['amount_paid']; ?></div>
                                             <?php } ?>

@@ -2,8 +2,23 @@
 include APP_ROOT . "/views/inc/components/Header.php";
 
 ?>
+<?php
+
+//if (isset($this->user)) {
+//    echo "Logged in as: " . $this->user->getName() . " (" . $this->user->getRole() . ")<br>";
+//    echo "<a href='./logout'>Logout</a>";
+//} else {
+//    echo "You are not logged in, please <a href='./login'>login</a>";
+//}
+//
+
+
+?>
 
     <body class="overflow-hidden full-height">
+    <?php
+    //include APP_ROOT . "/views/inc/components/LoggedOutNavbar.php"
+    ?>
     <div class="content-with-sidebar">
         <?php
         if (isset($this->user)) {
@@ -13,7 +28,7 @@ include APP_ROOT . "/views/inc/components/Header.php";
         <main class="content overflow-y-auto">
             <?php
             if (isset($this->user)) {
-                include APP_ROOT . "/views/inc/components/CustomerLoggedInNavbar.php";
+                include APP_ROOT . "/views/inc/components/LoggedInNavbar.php";
             } else {
                 include APP_ROOT . "/views/inc/components/LoggedOutNavbarWithLoginLink.php";
             }
@@ -33,7 +48,7 @@ include APP_ROOT . "/views/inc/components/Header.php";
                                 <?php
                                 echo '<div class="image-window mb-1">
                                     ' .
-                                    '<img alt="Product image" height="100%" width="100%" src="'
+                                    '<img alt="Product image" height="150%" src="'
                                     . URL_ROOT . '/public/img/products/' . $this->data->image_url .
                                     '">' . '
                                     </div>'
@@ -55,15 +70,21 @@ include APP_ROOT . "/views/inc/components/Header.php";
 
                                     '</div>'
                                 ?>
-                                <div class="mt-1 mb-3 ">
-                                    <a class="btn-lg btn-primary-light mt-3 text-center text-white"
-                                       href=<?php echo URL_ROOT . "/marketplace/send-inquiry/" . $this->data->id?>>
+
+                                <form action="../../shopping-cart/add/<?= $this->data->id?>" method="get">
+                                    <div class="row pt-2 mt-2">
+                                        <label class="col-2 pr-2">
+                                            <input type="number" name="quantity" value="1" min="1">
+                                        </label>
+                                        <button class="pl-2 col-5 btn-primary-light text-white">Add to Cart</button>
+                                    </div>
+                                </form>
+                                <div class="row py-2">
+                                    <a class="col-7 btn-lg btn-outlined-primary-light text-center"
+                                       href=<?php echo "../send-inquiry/" . $this->data->id?>>
                                         Inquire Now
                                     </a>
-                                    <a class="btn-lg btn-primary-light mt-3 text-center text-white"
-                                       href=<?php echo URL_ROOT . "/shopping-cart/add/" . $this->data->id?>>
-                                        Add to Cart
-                                    </a>
+                                </div>
                                 </div>
                             </div>
                         </div>
