@@ -13,8 +13,9 @@ const PROTECTED_ROUTES = [
     "Manufacturer" => ["ManufacturerDashboard", "Sales", "ManufacturerOrders", "Producers", "Stocks",
         "ProductCategories", "Products", "CropRequests", "Inquiries"],
     "Customer" => ["Marketplace", "ShoppingCart", "Orders", "Profile", "SendInquiry"],
-    "Manufacturer" => ["ManufacturerDashboard", "ManufacturerSales", "ManufacturerOrders", "Producers", "Stocks", "ProductCategories", "Products", "CropRequests", "Inquiries"],
-    "Customer" => ["Marketplace", "ShoppingCart", "Orders", "Profile"],
+    "Agri Officer" => ["Dashboard", "Announcements", "Producer Details", "land-details",
+        "cultivation-details", "crop-prices", "crop-prices", "cultivation-questions"],
+    "Admin" => ["Dashboard", "All Products", "Crops", "manufacturers", "producers", "announcements", "UserManagement"]
 ];
 
 const SIDEBAR_ROUTES = [
@@ -138,5 +139,33 @@ const SIDEBAR_ROUTES = [
             "link" => "cultivation-questions",
         ],
     ],
-
-];
+    "Admin" => [
+        "Dashboard" => [
+            "icon" => "dashboard",
+            "link" => "Dashboard",
+        ],
+        "All Products" => [
+            "icon" => "all-products",
+            "link" => "all-products",
+        ],
+        "Crops" => [
+            "icon" => "crops",
+            "link" => "crops",
+        ],
+        "manufacturers" => [
+            "icon" => "crops",
+            "link" => "crops",
+        ],
+        "producers" => [
+            "icon" => "producers",
+            "link" => "producers",
+        ],
+        "announcements" => [
+            "icon" => "announcements",
+            "link" => "announcements",
+        ],
+        "User Management" => [
+            "icon" => "user-management",
+            "link" => "user-management",
+        ],
+    ],];
