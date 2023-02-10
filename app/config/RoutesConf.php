@@ -7,12 +7,15 @@
 
 // Names of controllers relevant to each user role without the Controller suffix
 const PROTECTED_ROUTES = [
-    "Common" => ["Login", "Register", "ForgotPassword", "ResetPassword", "Logout", "Marketplace"],
-    "Producer" => ["AccountSetup","ProducerDashboard", "Cultivations", "Sales", "Manufacturers", "CultivationQuestions",
-        "CropRequests", "Announcements", "Profile"],
-    "Manufacturer" => ["ManufacturerDashboard", "Sales", "Purchases", "Manufacturers", "Stocks", "ProductCategories",
-        "Products"],
-    "Customer" => ["Marketplace", "ShoppingCart", "Orders", "Profile", "CustomerOrder", "Checkout"],
+    "Common" => ["Login", "Register", "ForgotPassword", "ResetPassword", "Logout", "Marketplace", "ManageProfile"],
+    "Producer" => ["AccountSetup","ProducerDashboard", "Cultivations", "Harvests", "Sales", "CultivationQuestions",
+        "CropRequests", "Announcements", "Profile", "Manufacturers"],
+    "Manufacturer" => ["ManufacturerDashboard", "Sales", "ManufacturerOrders", "Producers", "Stocks",
+        "ProductCategories", "Products", "CropRequests", "Inquiries"],
+    "Customer" => ["Marketplace", "ShoppingCart", "Orders", "Profile", "SendInquiry"],
+    "Agri Officer" => ["Dashboard", "Announcements", "Producer Details", "land-details",
+        "cultivation-details", "crop-prices", "crop-prices", "cultivation-questions"],
+    "Admin" => ["Dashboard", "All Products", "Crops", "manufacturers", "producers", "announcements", "UserManagement"]
 ];
 
 const SIDEBAR_ROUTES = [
@@ -24,6 +27,10 @@ const SIDEBAR_ROUTES = [
         "Cultivations" => [
             "icon" => "cultivations",
             "link" => "cultivations",
+        ],
+        "Harvests" => [
+            "icon" => "purchased-stocks",
+            "link" => "harvests",
         ],
         "Sales" => [
             "icon" => "sales",
@@ -53,20 +60,16 @@ const SIDEBAR_ROUTES = [
             "link" => "manufacturer-dashboard",
         ],
         "Sales" => [
-            "icon" => "sales",
-            "link" => "sales",
+            "icon" => "manufacturer-sales",
+            "link" => "manufacturer-sales",
         ],
         "Purchases" => [
-            "icon" => "purchases",
+            "icon" => "manufacturer-orders",
             "link" => "purchases",
         ],
-        "Manufacturers" => [
-            "icon" => "manufacturers",
-            "link" => "manufacturers",
-        ],
         "Purchased Stocks" => [
-            "icon" => "stocks",
-            "link" => "stocks",
+            "icon" => "purchased-stocks",
+            "link" => "purchased-stocks",
         ],
         "Product Categories" => [
             "icon" => "product-categories",
@@ -81,8 +84,8 @@ const SIDEBAR_ROUTES = [
             "link" => "producers",
         ],
         "Crop Requests" => [
-            "icon" => "crop-requests-manufacturer",
-            "link" => "crop-requests-manufacturer",
+            "icon" => "manufacturer-crop-requests",
+            "link" => "manufacturer-crop-requests",
         ],
         "Inquiries" => [
             "icon" => "inquiries",
@@ -105,4 +108,64 @@ const SIDEBAR_ROUTES = [
             "link" => "orders",
         ],
     ],
-];
+
+    "Agri Officer" => [
+        "Dashboard" => [
+            "icon" => "dashboard",
+            "link" => "index",
+        ],
+        "Announcements" => [
+            "icon" => "announcements",
+            "link" => "announcements",
+        ],
+        "Producer Details" => [
+            "icon" => "producer-details",
+            "link" => "producer-details",
+        ],
+        "Land Details" => [
+            "icon" => "land-details",
+            "link" => "land-details",
+        ],
+        "Cultivation Details" => [
+            "icon" => "cultivation-details",
+            "link" => "cultivation-details",
+        ],
+        "Crop Prices" => [
+            "icon" => "crop-prices",
+            "link" => "crop-prices",
+        ],
+        "Cultivation Questions" => [
+            "icon" => "cultivation-questions",
+            "link" => "cultivation-questions",
+        ],
+    ],
+    "Admin" => [
+        "Dashboard" => [
+            "icon" => "dashboard",
+            "link" => "Dashboard",
+        ],
+        "All Products" => [
+            "icon" => "all-products",
+            "link" => "all-products",
+        ],
+        "Crops" => [
+            "icon" => "crops",
+            "link" => "crops",
+        ],
+        "manufacturers" => [
+            "icon" => "crops",
+            "link" => "crops",
+        ],
+        "producers" => [
+            "icon" => "producers",
+            "link" => "producers",
+        ],
+        "announcements" => [
+            "icon" => "announcements",
+            "link" => "announcements",
+        ],
+        "User Management" => [
+            "icon" => "user-management",
+            "link" => "user-management",
+        ],
+    ],];

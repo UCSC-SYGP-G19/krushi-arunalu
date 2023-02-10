@@ -2,7 +2,7 @@
 
 /**
  * @file
- * Default controller which handles the default route
+ * Controller which handles the dashboard of the manufacturer
  */
 
 namespace app\controllers;
@@ -13,7 +13,7 @@ class ManufacturerDashboardController extends Controller
 {
     public function index(): void
     {
-        $this->loadView('Manufacturer/ManufacturerDashboardPage', 'Producer Dashboard', 'producer-dashboard');
+        $this->loadView('Manufacturer/ManufacturerDashboardPage', 'Manufacturer Dashboard', 'manufacturer-dashboard');
         $this->view->render();
     }
 }

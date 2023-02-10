@@ -2,23 +2,8 @@
 include APP_ROOT . "/views/inc/components/Header.php";
 
 ?>
-<?php
-
-//if (isset($this->user)) {
-//    echo "Logged in as: " . $this->user->getName() . " (" . $this->user->getRole() . ")<br>";
-//    echo "<a href='./logout'>Logout</a>";
-//} else {
-//    echo "You are not logged in, please <a href='./login'>login</a>";
-//}
-//
-
-
-?>
 
     <body class="overflow-hidden full-height">
-    <?php
-    //include APP_ROOT . "/views/inc/components/LoggedOutNavbar.php"
-    ?>
     <div class="content-with-sidebar">
         <?php
         if (isset($this->user)) {
@@ -28,7 +13,7 @@ include APP_ROOT . "/views/inc/components/Header.php";
         <main class="content overflow-y-auto">
             <?php
             if (isset($this->user)) {
-                include APP_ROOT . "/views/inc/components/LoggedInNavbar.php";
+                include APP_ROOT . "/views/inc/components/CustomerLoggedInNavbar.php";
             } else {
                 include APP_ROOT . "/views/inc/components/LoggedOutNavbarWithLoginLink.php";
             }
@@ -70,24 +55,15 @@ include APP_ROOT . "/views/inc/components/Header.php";
 
                                     '</div>'
                                 ?>
-                                <div class="row gap-1">
-                                    <div class="column mt-1 mb-3">
-                                        <a class="btn-lg btn-primary-light mt-3 text-center text-white"
-                                            href=<?php echo "../send-inquiry/" . $this->data->id?>>
-                                            Inquire Now
-                                        </a>
-                                    </div>
-
-                                    <div class="column mt-1 mb-3">
-                                        <div class="column mt-1 mb-3">
-                                                <form action="../../shopping-cart/add/<?= $this->data->id?>" method="get">
-                                                    <label>
-                                                        <input type="number" name="quantity" value="1" min="1">
-                                                    </label>
-                                                <button class="btn-primary-light text-white">Add to Cart</button>
-                                                </form>
-                                        </div>
-                                    </div>
+                                <div class="mt-1 mb-3 ">
+                                    <a class="btn-lg btn-primary-light mt-3 text-center text-white"
+                                       href=<?php echo URL_ROOT . "/marketplace/send-inquiry/" . $this->data->id?>>
+                                        Inquire Now
+                                    </a>
+                                    <a class="btn-lg btn-primary-light mt-3 text-center text-white"
+                                       href=<?php echo URL_ROOT . "/shopping-cart/add/" . $this->data->id?>>
+                                        Add to Cart
+                                    </a>
                                 </div>
                             </div>
                         </div>

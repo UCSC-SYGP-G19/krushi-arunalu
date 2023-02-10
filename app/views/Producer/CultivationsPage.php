@@ -50,19 +50,19 @@ include APP_ROOT . "/views/inc/components/Header.php";
                                 include APP_ROOT . "/views/inc/components/SearchFilterAndSort.php";
                                 $this->tableHeaders = [
                                     "land_name" => [
-                                        "label" => "Land Name",
+                                        "label" => "Land name",
                                         "sortable" => true,
                                         "sortKey" => "land_name",
                                         "class" => "col-2",
                                     ],
                                     "status" => [
-                                        "label" => "Status",
+                                        "label" => "Remarks",
                                         "sortable" => true,
                                         "sortKey" => "status",
                                         "class" => "col-1",
                                     ],
                                     "crop_name" => [
-                                        "label" => "Crop Name",
+                                        "label" => "Crop name",
                                         "sortable" => true,
                                         "sortKey" => "crop_name",
                                         "class" => "col-2",
@@ -91,7 +91,7 @@ include APP_ROOT . "/views/inc/components/Header.php";
                                         "class" => "col-2"
                                     ]
                                 ];
-                                $cultivationsTable = new Table($this->tableHeaders, $this->data, "cultivation_id");
+                                $cultivationsTable = new Table("cultivations", $this->tableHeaders, $this->data, "cultivation_id");
                                 $cultivationsTable->render();
                                 ?>
                             </div>

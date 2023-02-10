@@ -2,23 +2,8 @@
 include APP_ROOT . "/views/inc/components/Header.php";
 
 ?>
-<?php
-
-//if (isset($this->user)) {
-//    echo "Logged in as: " . $this->user->getName() . " (" . $this->user->getRole() . ")<br>";
-//    echo "<a href='./logout'>Logout</a>";
-//} else {
-//    echo "You are not logged in, please <a href='./login'>login</a>";
-//}
-//
-
-
-?>
 
     <body class="overflow-hidden full-height">
-    <?php
-    //include APP_ROOT . "/views/inc/components/LoggedOutNavbar.php"
-    ?>
     <div class="content-with-sidebar">
         <?php
         if (isset($this->user)) {
@@ -28,7 +13,7 @@ include APP_ROOT . "/views/inc/components/Header.php";
         <main class="content overflow-y-auto">
             <?php
             if (isset($this->user)) {
-                include APP_ROOT . "/views/inc/components/LoggedInNavbar.php";
+                include APP_ROOT . "/views/inc/components/CustomerLoggedInNavbar.php";
             } else {
                 include APP_ROOT . "/views/inc/components/LoggedOutNavbarWithLoginLink.php";
             }

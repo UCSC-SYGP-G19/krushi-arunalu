@@ -3,6 +3,7 @@
 /**
  * @file
  * Register controller with register functionality
+ * Currently supports only Producers and Manufacturer roles
  */
 
 namespace app\controllers;

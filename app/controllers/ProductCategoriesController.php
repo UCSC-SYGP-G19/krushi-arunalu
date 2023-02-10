@@ -2,7 +2,7 @@
 
 /**
  * @file
- * Product Category controller which handles product categories of Manufacturers
+ * Controller which handles product categories of Manufacturers
  */
 
 namespace app\controllers;
@@ -44,6 +44,13 @@ class ProductCategoriesController extends Controller
                 Util::redirect("../product-categories");
             }
         }
+
+        $this->view->render();
+    }
+
+    public function edit(): void
+    {
+        $this->loadView('Manufacturer/UpdateProductCategoriesPage', 'Update Product Categories', 'product-categories');
 
         $this->view->render();
     }
