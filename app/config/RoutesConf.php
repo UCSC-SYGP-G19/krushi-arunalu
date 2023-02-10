@@ -104,8 +104,8 @@ const SIDEBAR_ROUTES = [
             "link" => "manufacturers",
         ],
         "My Orders" => [
-            "icon" => "my-orders",
-            "link" => "my-orders",
+            "icon" => "orders",
+            "link" => "orders",
         ],
     ],
 

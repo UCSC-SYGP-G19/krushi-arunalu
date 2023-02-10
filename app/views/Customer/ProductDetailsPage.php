@@ -67,6 +67,10 @@ include APP_ROOT . "/views/inc/components/Header.php";
                                 </div>
                             </div>
                         </div>
+
+                        <div class="row px-1 gap-2">
+
+                        </div>
                     </div>
                 </div>
             </div>
