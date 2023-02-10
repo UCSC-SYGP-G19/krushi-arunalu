@@ -47,4 +47,11 @@ class ProductCategoriesController extends Controller
 
         $this->view->render();
     }
+
+    public function edit(): void
+    {
+        $this->loadView('Manufacturer/UpdateProductCategoriesPage', 'Update Product Categories', 'product-categories');
+
+        $this->view->render();
+    }
 }

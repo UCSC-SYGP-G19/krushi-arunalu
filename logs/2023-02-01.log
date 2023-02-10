@@ -1,0 +1,212 @@
+2023-02-01 18:50:48  -  [INFO]  GET: http://localhost/krushi-arunalu/
+2023-02-01 18:50:48  -  [INFO]  Calling index method in app\controllers\IndexController
+2023-02-01 18:50:49  -  [INFO]  GET: http://localhost/krushi-arunalu/marketplace
+2023-02-01 18:50:49  -  [INFO]  Calling index method in app\controllers\MarketplaceController
+2023-02-01 18:50:49  -  [INFO]  GET: http://localhost/krushi-arunalu/login
+2023-02-01 18:50:49  -  [INFO]  Calling index method in app\controllers\LoginController
+2023-02-01 18:50:51  -  [INFO]  POST: http://localhost/krushi-arunalu/login
+2023-02-01 18:50:51  -  [INFO]  Calling index method in app\controllers\LoginController
+2023-02-01 18:50:51  -  [INFO]  Login attempt by phone: 0764023716
+2023-02-01 18:50:51  -  [INFO]  GET: http://localhost/krushi-arunalu/marketplace
+2023-02-01 18:50:51  -  [INFO]  Calling index method in app\controllers\MarketplaceController
+2023-02-01 18:50:55  -  [INFO]  GET: http://localhost/krushi-arunalu/shoppingcart/add/1
+2023-02-01 18:50:55  -  [INFO]  Calling add method in app\controllers\ShoppingCartController
+2023-02-01 18:50:55  -  [INFO]  GET: http://localhost/krushi-arunalu/shoppingcart
+2023-02-01 18:50:55  -  [INFO]  Calling index method in app\controllers\ShoppingCartController
+2023-02-01 18:50:57  -  [INFO]  GET: http://localhost/krushi-arunalu/shoppingcart/remove/307
+2023-02-01 18:50:57  -  [INFO]  Calling remove method in app\controllers\ShoppingCartController
+2023-02-01 18:50:57  -  [INFO]  GET: http://localhost/krushi-arunalu/shoppingcart
+2023-02-01 18:50:57  -  [INFO]  Calling index method in app\controllers\ShoppingCartController
+2023-02-01 18:50:59  -  [INFO]  GET: http://localhost/krushi-arunalu/shoppingcart/remove/308
+2023-02-01 18:50:59  -  [INFO]  Calling remove method in app\controllers\ShoppingCartController
+2023-02-01 18:50:59  -  [INFO]  GET: http://localhost/krushi-arunalu/shoppingcart
+2023-02-01 18:50:59  -  [INFO]  Calling index method in app\controllers\ShoppingCartController
+2023-02-01 18:50:59  -  [INFO]  GET: http://localhost/krushi-arunalu/shoppingcart/remove/309
+2023-02-01 18:50:59  -  [INFO]  Calling remove method in app\controllers\ShoppingCartController
+2023-02-01 18:50:59  -  [INFO]  GET: http://localhost/krushi-arunalu/shoppingcart
+2023-02-01 18:50:59  -  [INFO]  Calling index method in app\controllers\ShoppingCartController
+2023-02-01 18:51:00  -  [INFO]  GET: http://localhost/krushi-arunalu/shoppingcart/remove/310
+2023-02-01 18:51:00  -  [INFO]  Calling remove method in app\controllers\ShoppingCartController
+2023-02-01 18:51:00  -  [INFO]  GET: http://localhost/krushi-arunalu/shoppingcart
+2023-02-01 18:51:00  -  [INFO]  Calling index method in app\controllers\ShoppingCartController
+2023-02-01 18:51:01  -  [INFO]  GET: http://localhost/krushi-arunalu/shoppingcart/remove/311
+2023-02-01 18:51:01  -  [INFO]  Calling remove method in app\controllers\ShoppingCartController
+2023-02-01 18:51:01  -  [INFO]  GET: http://localhost/krushi-arunalu/shoppingcart
+2023-02-01 18:51:01  -  [INFO]  Calling index method in app\controllers\ShoppingCartController
+2023-02-01 18:51:02  -  [INFO]  GET: http://localhost/krushi-arunalu/marketplace
+2023-02-01 18:51:02  -  [INFO]  Calling index method in app\controllers\MarketplaceController
+2023-02-01 18:51:03  -  [INFO]  GET: http://localhost/krushi-arunalu/shoppingcart/add/1
+2023-02-01 18:51:03  -  [INFO]  Calling add method in app\controllers\ShoppingCartController
+2023-02-01 18:51:03  -  [INFO]  GET: http://localhost/krushi-arunalu/shoppingcart
+2023-02-01 18:51:03  -  [INFO]  Calling index method in app\controllers\ShoppingCartController
+2023-02-01 18:51:05  -  [INFO]  GET: http://localhost/krushi-arunalu/marketplace
+2023-02-01 18:51:05  -  [INFO]  Calling index method in app\controllers\MarketplaceController
+2023-02-01 18:51:10  -  [INFO]  GET: http://localhost/krushi-arunalu/shoppingcart/add/3
+2023-02-01 18:51:10  -  [INFO]  Calling add method in app\controllers\ShoppingCartController
+2023-02-01 18:51:10  -  [INFO]  GET: http://localhost/krushi-arunalu/shoppingcart
+2023-02-01 18:51:10  -  [INFO]  Calling index method in app\controllers\ShoppingCartController
+2023-02-01 18:51:14  -  [INFO]  GET: http://localhost/krushi-arunalu/marketplace
+2023-02-01 18:51:14  -  [INFO]  Calling index method in app\controllers\MarketplaceController
+2023-02-01 18:51:15  -  [INFO]  GET: http://localhost/krushi-arunalu/marketplace/productdetails/1
+2023-02-01 18:51:15  -  [INFO]  Calling productdetails method in app\controllers\MarketplaceController
+2023-02-01 18:51:16  -  [INFO]  GET: http://localhost/krushi-arunalu/sendinquiry/1
+2023-02-01 18:51:16  -  [ERROR]  Requested method (1) not found
+2023-02-01 18:51:17  -  [INFO]  GET: http://localhost/krushi-arunalu/marketplace/productdetails/1
+2023-02-01 18:51:17  -  [INFO]  Calling productdetails method in app\controllers\MarketplaceController
+2023-02-01 18:51:18  -  [INFO]  GET: http://localhost/krushi-arunalu/shoppingcart/add/1
+2023-02-01 18:51:18  -  [INFO]  Calling add method in app\controllers\ShoppingCartController
+2023-02-01 18:51:18  -  [PDOException]  SQLSTATE[23000]: Integrity constraint violation: 1048 Column 'quantity' cannot be null
+2023-02-01 18:51:18  -  [INFO]  GET: http://localhost/krushi-arunalu/marketplace
+2023-02-01 18:51:18  -  [INFO]  Calling index method in app\controllers\MarketplaceController
+2023-02-01 18:51:19  -  [INFO]  GET: http://localhost/krushi-arunalu/marketplace/productdetails/1
+2023-02-01 18:51:19  -  [INFO]  Calling productdetails method in app\controllers\MarketplaceController
+2023-02-01 18:55:21  -  [INFO]  GET: http://localhost/krushi-arunalu/sendinquiry/1
+2023-02-01 18:55:21  -  [ERROR]  Requested method (1) not found
+2023-02-01 18:55:23  -  [INFO]  GET: http://localhost/krushi-arunalu/marketplace/productdetails/1
+2023-02-01 18:55:23  -  [INFO]  Calling productdetails method in app\controllers\MarketplaceController
+2023-02-01 18:55:44  -  [INFO]  GET: http://localhost/krushi-arunalu/sendinquiry/1
+2023-02-01 18:55:44  -  [ERROR]  Requested method (1) not found
+2023-02-01 19:08:15  -  [INFO]  GET: http://localhost/krushi-arunalu/sendinquiry/1
+2023-02-01 19:08:15  -  [ERROR]  Requested method (1) not found
+2023-02-01 19:08:16  -  [INFO]  GET: http://localhost/krushi-arunalu/marketplace/productdetails/1
+2023-02-01 19:08:16  -  [INFO]  Calling productdetails method in app\controllers\MarketplaceController
+2023-02-01 19:08:34  -  [INFO]  GET: http://localhost/krushi-arunalu/marketplace/productdetails/1
+2023-02-01 19:08:34  -  [INFO]  Calling productdetails method in app\controllers\MarketplaceController
+2023-02-01 19:08:36  -  [INFO]  GET: http://localhost/krushi-arunalu/marketplace/productdetails/1
+2023-02-01 19:08:36  -  [INFO]  Calling productdetails method in app\controllers\MarketplaceController
+2023-02-01 19:08:37  -  [INFO]  GET: http://localhost/krushi-arunalu/marketplace/productdetails/1
+2023-02-01 19:08:37  -  [INFO]  Calling productdetails method in app\controllers\MarketplaceController
+2023-02-01 19:08:37  -  [INFO]  GET: http://localhost/krushi-arunalu/marketplace/productdetails/1
+2023-02-01 19:08:37  -  [INFO]  Calling productdetails method in app\controllers\MarketplaceController
+2023-02-01 19:08:38  -  [INFO]  GET: http://localhost/krushi-arunalu/marketplace/productdetails/1
+2023-02-01 19:08:38  -  [INFO]  Calling productdetails method in app\controllers\MarketplaceController
+2023-02-01 19:08:38  -  [INFO]  GET: http://localhost/krushi-arunalu/marketplace/productdetails/1
+2023-02-01 19:08:38  -  [INFO]  Calling productdetails method in app\controllers\MarketplaceController
+2023-02-01 19:08:38  -  [INFO]  GET: http://localhost/krushi-arunalu/marketplace/productdetails/1
+2023-02-01 19:08:38  -  [INFO]  Calling productdetails method in app\controllers\MarketplaceController
+2023-02-01 19:08:38  -  [INFO]  GET: http://localhost/krushi-arunalu/marketplace/productdetails/1
+2023-02-01 19:08:38  -  [INFO]  Calling productdetails method in app\controllers\MarketplaceController
+2023-02-01 19:08:38  -  [INFO]  GET: http://localhost/krushi-arunalu/marketplace/productdetails/1
+2023-02-01 19:08:38  -  [INFO]  Calling productdetails method in app\controllers\MarketplaceController
+2023-02-01 19:08:39  -  [INFO]  GET: http://localhost/krushi-arunalu/marketplace/productdetails/1
+2023-02-01 19:08:39  -  [INFO]  Calling productdetails method in app\controllers\MarketplaceController
+2023-02-01 19:08:39  -  [INFO]  GET: http://localhost/krushi-arunalu/marketplace/productdetails/1
+2023-02-01 19:08:39  -  [INFO]  Calling productdetails method in app\controllers\MarketplaceController
+2023-02-01 19:08:39  -  [INFO]  GET: http://localhost/krushi-arunalu/marketplace/productdetails/1
+2023-02-01 19:08:39  -  [INFO]  Calling productdetails method in app\controllers\MarketplaceController
+2023-02-01 19:08:39  -  [INFO]  GET: http://localhost/krushi-arunalu/marketplace/productdetails/1
+2023-02-01 19:08:39  -  [INFO]  Calling productdetails method in app\controllers\MarketplaceController
+2023-02-01 19:08:39  -  [INFO]  GET: http://localhost/krushi-arunalu/marketplace/productdetails/1
+2023-02-01 19:08:39  -  [INFO]  Calling productdetails method in app\controllers\MarketplaceController
+2023-02-01 19:08:40  -  [INFO]  GET: http://localhost/krushi-arunalu/marketplace/productdetails/1
+2023-02-01 19:08:40  -  [INFO]  Calling productdetails method in app\controllers\MarketplaceController
+2023-02-01 19:08:40  -  [INFO]  GET: http://localhost/krushi-arunalu/sendinquiry/1
+2023-02-01 19:08:40  -  [ERROR]  Requested method (1) not found
+2023-02-01 19:08:42  -  [INFO]  GET: http://localhost/krushi-arunalu/marketplace/productdetails/1
+2023-02-01 19:08:42  -  [INFO]  Calling productdetails method in app\controllers\MarketplaceController
+2023-02-01 19:08:42  -  [INFO]  GET: http://localhost/krushi-arunalu/marketplace
+2023-02-01 19:08:42  -  [INFO]  Calling index method in app\controllers\MarketplaceController
+2023-02-01 19:08:43  -  [INFO]  GET: http://localhost/krushi-arunalu/shoppingcart/add/1
+2023-02-01 19:08:43  -  [INFO]  Calling add method in app\controllers\ShoppingCartController
+2023-02-01 19:08:43  -  [INFO]  GET: http://localhost/krushi-arunalu/shoppingcart
+2023-02-01 19:08:43  -  [INFO]  Calling index method in app\controllers\ShoppingCartController
+2023-02-01 19:08:45  -  [INFO]  GET: http://localhost/krushi-arunalu/marketplace
+2023-02-01 19:08:45  -  [INFO]  Calling index method in app\controllers\MarketplaceController
+2023-02-01 19:08:46  -  [INFO]  GET: http://localhost/krushi-arunalu/marketplace/productdetails/1
+2023-02-01 19:08:46  -  [INFO]  Calling productdetails method in app\controllers\MarketplaceController
+2023-02-01 19:09:09  -  [INFO]  GET: http://localhost/krushi-arunalu/marketplace/productdetails/1
+2023-02-01 19:09:09  -  [INFO]  Calling productdetails method in app\controllers\MarketplaceController
+2023-02-01 19:12:31  -  [INFO]  GET: http://localhost/krushi-arunalu/marketplace/productdetails/1
+2023-02-01 19:12:31  -  [INFO]  Calling productdetails method in app\controllers\MarketplaceController
+2023-02-01 19:15:39  -  [INFO]  GET: http://localhost/krushi-arunalu/marketplace/productdetails/1
+2023-02-01 19:15:39  -  [INFO]  Calling productdetails method in app\controllers\MarketplaceController
+2023-02-01 19:15:40  -  [INFO]  GET: http://localhost/krushi-arunalu/marketplace/productdetails/1
+2023-02-01 19:15:40  -  [INFO]  Calling productdetails method in app\controllers\MarketplaceController
+2023-02-01 19:15:40  -  [INFO]  GET: http://localhost/krushi-arunalu/marketplace/productdetails/1
+2023-02-01 19:15:40  -  [INFO]  Calling productdetails method in app\controllers\MarketplaceController
+2023-02-01 19:15:40  -  [INFO]  GET: http://localhost/krushi-arunalu/marketplace/productdetails/1
+2023-02-01 19:15:40  -  [INFO]  Calling productdetails method in app\controllers\MarketplaceController
+2023-02-01 19:15:41  -  [INFO]  GET: http://localhost/krushi-arunalu/marketplace/productdetails/1
+2023-02-01 19:15:41  -  [INFO]  Calling productdetails method in app\controllers\MarketplaceController
+2023-02-01 19:15:41  -  [INFO]  GET: http://localhost/krushi-arunalu/marketplace/productdetails/1
+2023-02-01 19:15:41  -  [INFO]  Calling productdetails method in app\controllers\MarketplaceController
+2023-02-01 19:15:41  -  [INFO]  GET: http://localhost/krushi-arunalu/marketplace/productdetails/1
+2023-02-01 19:15:41  -  [INFO]  Calling productdetails method in app\controllers\MarketplaceController
+2023-02-01 19:15:47  -  [INFO]  GET: http://localhost/krushi-arunalu/marketplace/productdetails/shopping-cart/add/'.$product->id.'
+2023-02-01 19:15:47  -  [INFO]  Calling productdetails method in app\controllers\MarketplaceController
+2023-02-01 19:15:48  -  [INFO]  GET: http://localhost/krushi-arunalu/marketplace/productdetails/1
+2023-02-01 19:15:48  -  [INFO]  Calling productdetails method in app\controllers\MarketplaceController
+2023-02-01 19:15:49  -  [INFO]  GET: http://localhost/krushi-arunalu/sendinquiry/1
+2023-02-01 19:15:49  -  [ERROR]  Requested method (1) not found
+2023-02-01 19:15:51  -  [INFO]  GET: http://localhost/krushi-arunalu/marketplace/productdetails/1
+2023-02-01 19:15:51  -  [INFO]  Calling productdetails method in app\controllers\MarketplaceController
+2023-02-01 19:15:58  -  [INFO]  GET: http://localhost/krushi-arunalu/marketplace/productdetails/shopping-cart/add/'.$product->id.'
+2023-02-01 19:15:58  -  [INFO]  Calling productdetails method in app\controllers\MarketplaceController
+2023-02-01 19:15:59  -  [INFO]  GET: http://localhost/krushi-arunalu/marketplace/productdetails/1
+2023-02-01 19:15:59  -  [INFO]  Calling productdetails method in app\controllers\MarketplaceController
+2023-02-01 19:16:00  -  [INFO]  GET: http://localhost/krushi-arunalu/sendinquiry/1
+2023-02-01 19:16:00  -  [ERROR]  Requested method (1) not found
+2023-02-01 19:16:01  -  [INFO]  GET: http://localhost/krushi-arunalu/marketplace/productdetails/1
+2023-02-01 19:16:01  -  [INFO]  Calling productdetails method in app\controllers\MarketplaceController
+2023-02-01 19:25:05  -  [INFO]  GET: http://localhost/krushi-arunalu/marketplace
+2023-02-01 19:25:05  -  [INFO]  Calling index method in app\controllers\MarketplaceController
+2023-02-01 19:25:07  -  [INFO]  GET: http://localhost/krushi-arunalu/shoppingcart/add/1
+2023-02-01 19:25:07  -  [INFO]  Calling add method in app\controllers\ShoppingCartController
+2023-02-01 19:25:07  -  [INFO]  GET: http://localhost/krushi-arunalu/shoppingcart
+2023-02-01 19:25:07  -  [INFO]  Calling index method in app\controllers\ShoppingCartController
+2023-02-01 19:25:16  -  [INFO]  GET: http://localhost/krushi-arunalu/marketplace
+2023-02-01 19:25:16  -  [INFO]  Calling index method in app\controllers\MarketplaceController
+2023-02-01 19:25:22  -  [INFO]  GET: http://localhost/krushi-arunalu/marketplace/productdetails/1
+2023-02-01 19:25:22  -  [INFO]  Calling productdetails method in app\controllers\MarketplaceController
+2023-02-01 19:25:48  -  [INFO]  GET: http://localhost/krushi-arunalu/marketplace/productdetails/1
+2023-02-01 19:25:48  -  [INFO]  Calling productdetails method in app\controllers\MarketplaceController
+2023-02-01 19:25:49  -  [INFO]  GET: http://localhost/krushi-arunalu/shoppingcart/add/'.$product->id.'
+2023-02-01 19:25:49  -  [INFO]  Calling add method in app\controllers\ShoppingCartController
+2023-02-01 19:25:49  -  [PDOException]  SQLSTATE[23000]: Integrity constraint violation: 1452 Cannot add or update a child row: a foreign key constraint fails (`krushi-arunalu-db`.`shopping_cart`, CONSTRAINT `shopping_cart_product_id` FOREIGN KEY (`product_id`) REFERENCES `product` (`id`))
+2023-02-01 19:25:49  -  [INFO]  GET: http://localhost/krushi-arunalu/marketplace
+2023-02-01 19:25:49  -  [INFO]  Calling index method in app\controllers\MarketplaceController
+2023-02-01 19:25:52  -  [INFO]  GET: http://localhost/krushi-arunalu/marketplace/productdetails/1
+2023-02-01 19:25:52  -  [INFO]  Calling productdetails method in app\controllers\MarketplaceController
+2023-02-01 19:25:53  -  [INFO]  GET: http://localhost/krushi-arunalu/shoppingcart/add/'.$product->id.'
+2023-02-01 19:25:53  -  [INFO]  Calling add method in app\controllers\ShoppingCartController
+2023-02-01 19:25:53  -  [PDOException]  SQLSTATE[23000]: Integrity constraint violation: 1452 Cannot add or update a child row: a foreign key constraint fails (`krushi-arunalu-db`.`shopping_cart`, CONSTRAINT `shopping_cart_product_id` FOREIGN KEY (`product_id`) REFERENCES `product` (`id`))
+2023-02-01 19:25:53  -  [INFO]  GET: http://localhost/krushi-arunalu/marketplace
+2023-02-01 19:25:53  -  [INFO]  Calling index method in app\controllers\MarketplaceController
+2023-02-01 19:26:00  -  [INFO]  GET: http://localhost/krushi-arunalu/marketplace/productdetails/1
+2023-02-01 19:26:00  -  [INFO]  Calling productdetails method in app\controllers\MarketplaceController
+2023-02-01 19:26:09  -  [INFO]  GET: http://localhost/krushi-arunalu/marketplace/productdetails/1
+2023-02-01 19:26:09  -  [INFO]  Calling productdetails method in app\controllers\MarketplaceController
+2023-02-01 19:26:11  -  [INFO]  GET: http://localhost/krushi-arunalu/marketplace/productdetails/1
+2023-02-01 19:26:11  -  [INFO]  Calling productdetails method in app\controllers\MarketplaceController
+2023-02-01 19:26:12  -  [INFO]  GET: http://localhost/krushi-arunalu/marketplace
+2023-02-01 19:26:12  -  [INFO]  Calling index method in app\controllers\MarketplaceController
+2023-02-01 19:26:14  -  [INFO]  GET: http://localhost/krushi-arunalu/marketplace/productdetails/1
+2023-02-01 19:26:14  -  [INFO]  Calling productdetails method in app\controllers\MarketplaceController
+2023-02-01 19:26:16  -  [INFO]  GET: http://localhost/krushi-arunalu/marketplace/productdetails/1
+2023-02-01 19:26:16  -  [INFO]  Calling productdetails method in app\controllers\MarketplaceController
+2023-02-01 19:26:24  -  [INFO]  GET: http://localhost/krushi-arunalu/marketplace/productdetails/1
+2023-02-01 19:26:24  -  [INFO]  Calling productdetails method in app\controllers\MarketplaceController
+2023-02-01 19:26:25  -  [INFO]  GET: http://localhost/krushi-arunalu/marketplace/shoppingcart/add/'.$product->id.'
+2023-02-01 19:26:25  -  [ERROR]  Requested method (shoppingcart) not found
+2023-02-01 19:26:27  -  [INFO]  GET: http://localhost/krushi-arunalu/marketplace/productdetails/1
+2023-02-01 19:26:27  -  [INFO]  Calling productdetails method in app\controllers\MarketplaceController
+2023-02-01 19:26:27  -  [INFO]  GET: http://localhost/krushi-arunalu/marketplace
+2023-02-01 19:26:27  -  [INFO]  Calling index method in app\controllers\MarketplaceController
+2023-02-01 19:26:35  -  [INFO]  GET: http://localhost/krushi-arunalu/marketplace/productdetails/1
+2023-02-01 19:26:35  -  [INFO]  Calling productdetails method in app\controllers\MarketplaceController
+2023-02-01 19:26:51  -  [INFO]  GET: http://localhost/krushi-arunalu/marketplace/productdetails/1
+2023-02-01 19:26:51  -  [INFO]  Calling productdetails method in app\controllers\MarketplaceController
+2023-02-01 19:26:53  -  [INFO]  GET: http://localhost/krushi-arunalu/marketplace
+2023-02-01 19:26:53  -  [INFO]  Calling index method in app\controllers\MarketplaceController
+2023-02-01 19:26:54  -  [INFO]  GET: http://localhost/krushi-arunalu/shoppingcart/add/1
+2023-02-01 19:26:54  -  [INFO]  Calling add method in app\controllers\ShoppingCartController
+2023-02-01 19:26:54  -  [INFO]  GET: http://localhost/krushi-arunalu/shoppingcart
+2023-02-01 19:26:54  -  [INFO]  Calling index method in app\controllers\ShoppingCartController
+2023-02-01 19:27:00  -  [INFO]  GET: http://localhost/krushi-arunalu/marketplace
+2023-02-01 19:27:00  -  [INFO]  Calling index method in app\controllers\MarketplaceController
+2023-02-01 19:27:01  -  [INFO]  GET: http://localhost/krushi-arunalu/marketplace/productdetails/1
+2023-02-01 19:27:01  -  [INFO]  Calling productdetails method in app\controllers\MarketplaceController
+2023-02-01 19:27:27  -  [INFO]  GET: http://localhost/krushi-arunalu/marketplace/productdetails/1
+2023-02-01 19:27:27  -  [INFO]  Calling productdetails method in app\controllers\MarketplaceController
+2023-02-01 19:27:30  -  [INFO]  GET: http://localhost/krushi-arunalu/marketplace/productdetails/1
+2023-02-01 19:27:30  -  [INFO]  Calling productdetails method in app\controllers\MarketplaceController

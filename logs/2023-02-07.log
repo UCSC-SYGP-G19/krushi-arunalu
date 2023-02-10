@@ -1,0 +1,392 @@
+2023-02-07 11:41:29  -  [INFO]  GET: http://localhost/krushi-arunalu/
+2023-02-07 11:41:29  -  [INFO]  Calling index method in app\controllers\IndexController
+2023-02-07 11:41:32  -  [INFO]  GET: http://localhost/krushi-arunalu/marketplace
+2023-02-07 11:41:32  -  [INFO]  Calling index method in app\controllers\MarketplaceController
+2023-02-07 11:41:32  -  [INFO]  GET: http://localhost/krushi-arunalu/login
+2023-02-07 11:41:32  -  [INFO]  Calling index method in app\controllers\LoginController
+2023-02-07 11:41:34  -  [INFO]  POST: http://localhost/krushi-arunalu/login
+2023-02-07 11:41:34  -  [INFO]  Calling index method in app\controllers\LoginController
+2023-02-07 11:41:34  -  [INFO]  Login attempt by phone: 0764023716
+2023-02-07 11:41:34  -  [INFO]  GET: http://localhost/krushi-arunalu/marketplace
+2023-02-07 11:41:34  -  [INFO]  Calling index method in app\controllers\MarketplaceController
+2023-02-07 11:41:38  -  [INFO]  GET: http://localhost/krushi-arunalu/shoppingcart/add/1
+2023-02-07 11:41:38  -  [INFO]  Calling add method in app\controllers\ShoppingCartController
+2023-02-07 11:41:38  -  [INFO]  GET: http://localhost/krushi-arunalu/shoppingcart
+2023-02-07 11:41:38  -  [INFO]  Calling index method in app\controllers\ShoppingCartController
+2023-02-07 11:41:44  -  [INFO]  GET: http://localhost/krushi-arunalu/marketplace
+2023-02-07 11:41:44  -  [INFO]  Calling index method in app\controllers\MarketplaceController
+2023-02-07 11:41:45  -  [INFO]  GET: http://localhost/krushi-arunalu/marketplace/productdetails/1
+2023-02-07 11:41:45  -  [INFO]  Calling productdetails method in app\controllers\MarketplaceController
+2023-02-07 11:41:47  -  [INFO]  GET: http://localhost/krushi-arunalu/marketplace/shoppingcart/add/'.$product->id.'
+2023-02-07 11:41:47  -  [ERROR]  Requested method (shoppingcart) not found
+2023-02-07 11:41:50  -  [INFO]  GET: http://localhost/krushi-arunalu/marketplace/productdetails/1
+2023-02-07 11:41:50  -  [INFO]  Calling productdetails method in app\controllers\MarketplaceController
+2023-02-07 11:41:52  -  [INFO]  GET: http://localhost/krushi-arunalu/marketplace/sendinquiry/1
+2023-02-07 11:41:52  -  [INFO]  Calling sendinquiry method in app\controllers\MarketplaceController
+2023-02-07 11:41:54  -  [INFO]  GET: http://localhost/krushi-arunalu/marketplace/productdetails/1
+2023-02-07 11:41:54  -  [INFO]  Calling productdetails method in app\controllers\MarketplaceController
+2023-02-07 11:41:55  -  [INFO]  GET: http://localhost/krushi-arunalu/marketplace/shoppingcart/add/'.$product->id.'
+2023-02-07 11:41:55  -  [ERROR]  Requested method (shoppingcart) not found
+2023-02-07 11:44:46  -  [INFO]  GET: http://localhost/krushi-arunalu/marketplace/productdetails/1
+2023-02-07 11:44:46  -  [INFO]  Calling productdetails method in app\controllers\MarketplaceController
+2023-02-07 11:44:54  -  [INFO]  GET: http://localhost/krushi-arunalu/marketplace
+2023-02-07 11:44:54  -  [INFO]  Calling index method in app\controllers\MarketplaceController
+2023-02-07 11:44:56  -  [INFO]  GET: http://localhost/krushi-arunalu/shoppingcart/add/1
+2023-02-07 11:44:56  -  [INFO]  Calling add method in app\controllers\ShoppingCartController
+2023-02-07 11:44:56  -  [INFO]  GET: http://localhost/krushi-arunalu/shoppingcart
+2023-02-07 11:44:56  -  [INFO]  Calling index method in app\controllers\ShoppingCartController
+2023-02-07 11:45:02  -  [INFO]  GET: http://localhost/krushi-arunalu/marketplace
+2023-02-07 11:45:02  -  [INFO]  Calling index method in app\controllers\MarketplaceController
+2023-02-07 11:45:03  -  [INFO]  GET: http://localhost/krushi-arunalu/marketplace/productdetails/1
+2023-02-07 11:45:03  -  [INFO]  Calling productdetails method in app\controllers\MarketplaceController
+2023-02-07 11:47:38  -  [INFO]  GET: http://localhost/krushi-arunalu/manufacturers
+2023-02-07 11:47:38  -  [ERROR]  Requested controller (manufacturers) not found
+2023-02-07 11:47:40  -  [INFO]  GET: http://localhost/krushi-arunalu/marketplace/productdetails/1
+2023-02-07 11:47:40  -  [INFO]  Calling productdetails method in app\controllers\MarketplaceController
+2023-02-07 11:47:41  -  [INFO]  GET: http://localhost/krushi-arunalu/marketplace
+2023-02-07 11:47:41  -  [INFO]  Calling index method in app\controllers\MarketplaceController
+2023-02-07 11:47:43  -  [INFO]  GET: http://localhost/krushi-arunalu/shoppingcart/add/1
+2023-02-07 11:47:43  -  [INFO]  Calling add method in app\controllers\ShoppingCartController
+2023-02-07 11:47:43  -  [INFO]  GET: http://localhost/krushi-arunalu/shoppingcart
+2023-02-07 11:47:43  -  [INFO]  Calling index method in app\controllers\ShoppingCartController
+2023-02-07 11:48:28  -  [INFO]  GET: http://localhost/krushi-arunalu/marketplace
+2023-02-07 11:48:28  -  [INFO]  Calling index method in app\controllers\MarketplaceController
+2023-02-07 11:48:31  -  [INFO]  GET: http://localhost/krushi-arunalu/marketplace/productdetails/1
+2023-02-07 11:48:31  -  [INFO]  Calling productdetails method in app\controllers\MarketplaceController
+2023-02-07 11:48:32  -  [INFO]  GET: http://localhost/krushi-arunalu/shoppingcart/add/'.$product->id.'
+2023-02-07 11:48:32  -  [INFO]  Calling add method in app\controllers\ShoppingCartController
+2023-02-07 11:48:32  -  [PDOException]  SQLSTATE[23000]: Integrity constraint violation: 1452 Cannot add or update a child row: a foreign key constraint fails (`krushi-arunalu-db`.`shopping_cart`, CONSTRAINT `shopping_cart_product_id` FOREIGN KEY (`product_id`) REFERENCES `product` (`id`))
+2023-02-07 11:48:32  -  [INFO]  GET: http://localhost/krushi-arunalu/marketplace
+2023-02-07 11:48:32  -  [INFO]  Calling index method in app\controllers\MarketplaceController
+2023-02-07 11:48:36  -  [INFO]  GET: http://localhost/krushi-arunalu/marketplace/productdetails/1
+2023-02-07 11:48:36  -  [INFO]  Calling productdetails method in app\controllers\MarketplaceController
+2023-02-07 11:48:37  -  [INFO]  GET: http://localhost/krushi-arunalu/shoppingcart/add/'.$product->id.'
+2023-02-07 11:48:37  -  [INFO]  Calling add method in app\controllers\ShoppingCartController
+2023-02-07 11:48:37  -  [PDOException]  SQLSTATE[23000]: Integrity constraint violation: 1452 Cannot add or update a child row: a foreign key constraint fails (`krushi-arunalu-db`.`shopping_cart`, CONSTRAINT `shopping_cart_product_id` FOREIGN KEY (`product_id`) REFERENCES `product` (`id`))
+2023-02-07 11:48:37  -  [INFO]  GET: http://localhost/krushi-arunalu/marketplace
+2023-02-07 11:48:37  -  [INFO]  Calling index method in app\controllers\MarketplaceController
+2023-02-07 11:48:40  -  [INFO]  GET: http://localhost/krushi-arunalu/marketplace/productdetails/1
+2023-02-07 11:48:40  -  [INFO]  Calling productdetails method in app\controllers\MarketplaceController
+2023-02-07 11:48:42  -  [INFO]  GET: http://localhost/krushi-arunalu/marketplace
+2023-02-07 11:48:42  -  [INFO]  Calling index method in app\controllers\MarketplaceController
+2023-02-07 11:48:45  -  [INFO]  GET: http://localhost/krushi-arunalu/shoppingcart/add/1
+2023-02-07 11:48:45  -  [INFO]  Calling add method in app\controllers\ShoppingCartController
+2023-02-07 11:48:45  -  [INFO]  GET: http://localhost/krushi-arunalu/shoppingcart
+2023-02-07 11:48:45  -  [INFO]  Calling index method in app\controllers\ShoppingCartController
+2023-02-07 11:48:49  -  [INFO]  GET: http://localhost/krushi-arunalu/marketplace
+2023-02-07 11:48:49  -  [INFO]  Calling index method in app\controllers\MarketplaceController
+2023-02-07 11:48:51  -  [INFO]  GET: http://localhost/krushi-arunalu/marketplace/productdetails/1
+2023-02-07 11:48:51  -  [INFO]  Calling productdetails method in app\controllers\MarketplaceController
+2023-02-07 11:48:53  -  [INFO]  GET: http://localhost/krushi-arunalu/shoppingcart/add/'.$product->id.'
+2023-02-07 11:48:53  -  [INFO]  Calling add method in app\controllers\ShoppingCartController
+2023-02-07 11:48:53  -  [PDOException]  SQLSTATE[23000]: Integrity constraint violation: 1452 Cannot add or update a child row: a foreign key constraint fails (`krushi-arunalu-db`.`shopping_cart`, CONSTRAINT `shopping_cart_product_id` FOREIGN KEY (`product_id`) REFERENCES `product` (`id`))
+2023-02-07 11:48:53  -  [INFO]  GET: http://localhost/krushi-arunalu/marketplace
+2023-02-07 11:48:53  -  [INFO]  Calling index method in app\controllers\MarketplaceController
+2023-02-07 11:49:24  -  [INFO]  GET: http://localhost/krushi-arunalu/marketplace
+2023-02-07 11:49:24  -  [INFO]  Calling index method in app\controllers\MarketplaceController
+2023-02-07 11:49:27  -  [INFO]  GET: http://localhost/krushi-arunalu/shoppingcart/add/1
+2023-02-07 11:49:27  -  [INFO]  Calling add method in app\controllers\ShoppingCartController
+2023-02-07 11:49:27  -  [INFO]  GET: http://localhost/krushi-arunalu/shoppingcart
+2023-02-07 11:49:27  -  [INFO]  Calling index method in app\controllers\ShoppingCartController
+2023-02-07 11:49:30  -  [INFO]  GET: http://localhost/krushi-arunalu/marketplace
+2023-02-07 11:49:30  -  [INFO]  Calling index method in app\controllers\MarketplaceController
+2023-02-07 11:49:32  -  [INFO]  GET: http://localhost/krushi-arunalu/marketplace/productdetails/1
+2023-02-07 11:49:32  -  [INFO]  Calling productdetails method in app\controllers\MarketplaceController
+2023-02-07 11:49:33  -  [INFO]  GET: http://localhost/krushi-arunalu/marketplace/productdetails/shopping-cart/add/'.$product->id.'
+2023-02-07 11:49:33  -  [INFO]  Calling productdetails method in app\controllers\MarketplaceController
+2023-02-07 11:49:51  -  [INFO]  GET: http://localhost/krushi-arunalu/marketplace/productdetails/1
+2023-02-07 11:49:51  -  [INFO]  Calling productdetails method in app\controllers\MarketplaceController
+2023-02-07 11:49:55  -  [INFO]  GET: http://localhost/krushi-arunalu/marketplace
+2023-02-07 11:49:55  -  [INFO]  Calling index method in app\controllers\MarketplaceController
+2023-02-07 11:49:57  -  [INFO]  GET: http://localhost/krushi-arunalu/marketplace/productdetails/1
+2023-02-07 11:49:57  -  [INFO]  Calling productdetails method in app\controllers\MarketplaceController
+2023-02-07 11:50:00  -  [INFO]  GET: http://localhost/krushi-arunalu/marketplace
+2023-02-07 11:50:00  -  [INFO]  Calling index method in app\controllers\MarketplaceController
+2023-02-07 11:50:01  -  [INFO]  GET: http://localhost/krushi-arunalu/shoppingcart/add/1
+2023-02-07 11:50:01  -  [INFO]  Calling add method in app\controllers\ShoppingCartController
+2023-02-07 11:50:01  -  [INFO]  GET: http://localhost/krushi-arunalu/shoppingcart
+2023-02-07 11:50:01  -  [INFO]  Calling index method in app\controllers\ShoppingCartController
+2023-02-07 11:50:30  -  [INFO]  GET: http://localhost/krushi-arunalu/marketplace
+2023-02-07 11:50:30  -  [INFO]  Calling index method in app\controllers\MarketplaceController
+2023-02-07 11:50:32  -  [INFO]  GET: http://localhost/krushi-arunalu/marketplace/productdetails/1
+2023-02-07 11:50:32  -  [INFO]  Calling productdetails method in app\controllers\MarketplaceController
+2023-02-07 11:51:06  -  [INFO]  GET: http://localhost/krushi-arunalu/marketplace/productdetails/1
+2023-02-07 11:51:06  -  [INFO]  Calling productdetails method in app\controllers\MarketplaceController
+2023-02-07 11:51:12  -  [INFO]  GET: http://localhost/krushi-arunalu/marketplace/productdetails/1
+2023-02-07 11:51:12  -  [INFO]  Calling productdetails method in app\controllers\MarketplaceController
+2023-02-07 11:51:23  -  [INFO]  GET: http://localhost/krushi-arunalu/marketplace/productdetails/1
+2023-02-07 11:51:23  -  [INFO]  Calling productdetails method in app\controllers\MarketplaceController
+2023-02-07 11:51:25  -  [INFO]  GET: http://localhost/krushi-arunalu/shoppingcart/add/'.$product->id.'
+2023-02-07 11:51:25  -  [INFO]  Calling add method in app\controllers\ShoppingCartController
+2023-02-07 11:51:25  -  [PDOException]  SQLSTATE[23000]: Integrity constraint violation: 1452 Cannot add or update a child row: a foreign key constraint fails (`krushi-arunalu-db`.`shopping_cart`, CONSTRAINT `shopping_cart_product_id` FOREIGN KEY (`product_id`) REFERENCES `product` (`id`))
+2023-02-07 11:51:25  -  [INFO]  GET: http://localhost/krushi-arunalu/marketplace
+2023-02-07 11:51:25  -  [INFO]  Calling index method in app\controllers\MarketplaceController
+2023-02-07 11:51:31  -  [INFO]  GET: http://localhost/krushi-arunalu/marketplace/productdetails/1
+2023-02-07 11:51:31  -  [INFO]  Calling productdetails method in app\controllers\MarketplaceController
+2023-02-07 11:51:36  -  [INFO]  GET: http://localhost/krushi-arunalu/shoppingcart/add/'.$product->id.'
+2023-02-07 11:51:36  -  [INFO]  Calling add method in app\controllers\ShoppingCartController
+2023-02-07 11:51:36  -  [PDOException]  SQLSTATE[23000]: Integrity constraint violation: 1452 Cannot add or update a child row: a foreign key constraint fails (`krushi-arunalu-db`.`shopping_cart`, CONSTRAINT `shopping_cart_product_id` FOREIGN KEY (`product_id`) REFERENCES `product` (`id`))
+2023-02-07 11:51:36  -  [INFO]  GET: http://localhost/krushi-arunalu/marketplace
+2023-02-07 11:51:36  -  [INFO]  Calling index method in app\controllers\MarketplaceController
+2023-02-07 11:51:55  -  [INFO]  GET: http://localhost/krushi-arunalu/marketplace/productdetails/1
+2023-02-07 11:51:55  -  [INFO]  Calling productdetails method in app\controllers\MarketplaceController
+2023-02-07 11:51:56  -  [INFO]  GET: http://localhost/krushi-arunalu/shoppingcart/add/'.$product->id.'
+2023-02-07 11:51:56  -  [INFO]  Calling add method in app\controllers\ShoppingCartController
+2023-02-07 11:51:56  -  [PDOException]  SQLSTATE[23000]: Integrity constraint violation: 1452 Cannot add or update a child row: a foreign key constraint fails (`krushi-arunalu-db`.`shopping_cart`, CONSTRAINT `shopping_cart_product_id` FOREIGN KEY (`product_id`) REFERENCES `product` (`id`))
+2023-02-07 11:51:56  -  [INFO]  GET: http://localhost/krushi-arunalu/marketplace
+2023-02-07 11:51:56  -  [INFO]  Calling index method in app\controllers\MarketplaceController
+2023-02-07 11:52:00  -  [INFO]  GET: http://localhost/krushi-arunalu/shoppingcart/add/1
+2023-02-07 11:52:00  -  [INFO]  Calling add method in app\controllers\ShoppingCartController
+2023-02-07 11:52:00  -  [INFO]  GET: http://localhost/krushi-arunalu/shoppingcart
+2023-02-07 11:52:00  -  [INFO]  Calling index method in app\controllers\ShoppingCartController
+2023-02-07 11:52:04  -  [INFO]  GET: http://localhost/krushi-arunalu/marketplace
+2023-02-07 11:52:04  -  [INFO]  Calling index method in app\controllers\MarketplaceController
+2023-02-07 11:52:15  -  [INFO]  GET: http://localhost/krushi-arunalu/marketplace/productdetails/1
+2023-02-07 11:52:15  -  [INFO]  Calling productdetails method in app\controllers\MarketplaceController
+2023-02-07 11:52:18  -  [INFO]  GET: http://localhost/krushi-arunalu/marketplace/productdetails/1
+2023-02-07 11:52:18  -  [INFO]  Calling productdetails method in app\controllers\MarketplaceController
+2023-02-07 11:52:31  -  [INFO]  GET: http://localhost/krushi-arunalu/marketplace/productdetails/1
+2023-02-07 11:52:31  -  [INFO]  Calling productdetails method in app\controllers\MarketplaceController
+2023-02-07 11:52:43  -  [INFO]  GET: http://localhost/krushi-arunalu/marketplace/shoppingcart/add/'.$product->id.'
+2023-02-07 11:52:43  -  [ERROR]  Requested method (shoppingcart) not found
+2023-02-07 11:52:51  -  [INFO]  GET: http://localhost/krushi-arunalu/marketplace/productdetails/1
+2023-02-07 11:52:51  -  [INFO]  Calling productdetails method in app\controllers\MarketplaceController
+2023-02-07 11:53:03  -  [INFO]  GET: http://localhost/krushi-arunalu/marketplace/shoppingcart/add/'.$product->id.'
+2023-02-07 11:53:03  -  [ERROR]  Requested method (shoppingcart) not found
+2023-02-07 11:53:06  -  [INFO]  GET: http://localhost/krushi-arunalu/marketplace/productdetails/1
+2023-02-07 11:53:06  -  [INFO]  Calling productdetails method in app\controllers\MarketplaceController
+2023-02-07 11:53:07  -  [INFO]  GET: http://localhost/krushi-arunalu/marketplace/productdetails/1
+2023-02-07 11:53:07  -  [INFO]  Calling productdetails method in app\controllers\MarketplaceController
+2023-02-07 11:53:19  -  [INFO]  GET: http://localhost/krushi-arunalu/marketplace/productdetails/1
+2023-02-07 11:53:19  -  [INFO]  Calling productdetails method in app\controllers\MarketplaceController
+2023-02-07 11:53:23  -  [INFO]  GET: http://localhost/krushi-arunalu/marketplace/productdetails/1
+2023-02-07 11:53:23  -  [INFO]  Calling productdetails method in app\controllers\MarketplaceController
+2023-02-07 11:53:30  -  [INFO]  GET: http://localhost/krushi-arunalu/marketplace/productdetails/1
+2023-02-07 11:53:30  -  [INFO]  Calling productdetails method in app\controllers\MarketplaceController
+2023-02-07 11:53:32  -  [INFO]  GET: http://localhost/krushi-arunalu/shoppingcart/add/'.$product->id.'
+2023-02-07 11:53:32  -  [INFO]  Calling add method in app\controllers\ShoppingCartController
+2023-02-07 11:53:32  -  [PDOException]  SQLSTATE[23000]: Integrity constraint violation: 1452 Cannot add or update a child row: a foreign key constraint fails (`krushi-arunalu-db`.`shopping_cart`, CONSTRAINT `shopping_cart_product_id` FOREIGN KEY (`product_id`) REFERENCES `product` (`id`))
+2023-02-07 11:53:32  -  [INFO]  GET: http://localhost/krushi-arunalu/marketplace
+2023-02-07 11:53:32  -  [INFO]  Calling index method in app\controllers\MarketplaceController
+2023-02-07 11:53:48  -  [INFO]  GET: http://localhost/krushi-arunalu/marketplace/productdetails/1
+2023-02-07 11:53:48  -  [INFO]  Calling productdetails method in app\controllers\MarketplaceController
+2023-02-07 11:53:52  -  [INFO]  GET: http://localhost/krushi-arunalu/marketplace/productdetails/1
+2023-02-07 11:53:52  -  [INFO]  Calling productdetails method in app\controllers\MarketplaceController
+2023-02-07 11:54:12  -  [INFO]  GET: http://localhost/krushi-arunalu/marketplace/sendinquiry/1
+2023-02-07 11:54:12  -  [INFO]  Calling sendinquiry method in app\controllers\MarketplaceController
+2023-02-07 11:54:14  -  [INFO]  GET: http://localhost/krushi-arunalu/marketplace/productdetails/1
+2023-02-07 11:54:14  -  [INFO]  Calling productdetails method in app\controllers\MarketplaceController
+2023-02-07 11:54:15  -  [INFO]  GET: http://localhost/krushi-arunalu/shoppingcart/add/'.$product->id.'
+2023-02-07 11:54:15  -  [INFO]  Calling add method in app\controllers\ShoppingCartController
+2023-02-07 11:54:15  -  [PDOException]  SQLSTATE[23000]: Integrity constraint violation: 1452 Cannot add or update a child row: a foreign key constraint fails (`krushi-arunalu-db`.`shopping_cart`, CONSTRAINT `shopping_cart_product_id` FOREIGN KEY (`product_id`) REFERENCES `product` (`id`))
+2023-02-07 11:54:15  -  [INFO]  GET: http://localhost/krushi-arunalu/marketplace
+2023-02-07 11:54:15  -  [INFO]  Calling index method in app\controllers\MarketplaceController
+2023-02-07 11:54:17  -  [INFO]  GET: http://localhost/krushi-arunalu/shoppingcart/add/1
+2023-02-07 11:54:17  -  [INFO]  Calling add method in app\controllers\ShoppingCartController
+2023-02-07 11:54:17  -  [INFO]  GET: http://localhost/krushi-arunalu/shoppingcart
+2023-02-07 11:54:17  -  [INFO]  Calling index method in app\controllers\ShoppingCartController
+2023-02-07 11:54:36  -  [INFO]  GET: http://localhost/krushi-arunalu/marketplace
+2023-02-07 11:54:36  -  [INFO]  Calling index method in app\controllers\MarketplaceController
+2023-02-07 11:56:07  -  [INFO]  GET: http://localhost/krushi-arunalu/marketplace/productdetails/1
+2023-02-07 11:56:07  -  [INFO]  Calling productdetails method in app\controllers\MarketplaceController
+2023-02-07 11:56:10  -  [INFO]  GET: http://localhost/krushi-arunalu/marketplace/productdetails/1
+2023-02-07 11:56:10  -  [INFO]  Calling productdetails method in app\controllers\MarketplaceController
+2023-02-07 15:36:47  -  [INFO]  GET: http://localhost/krushi-arunalu/
+2023-02-07 15:36:47  -  [INFO]  Calling index method in app\controllers\IndexController
+2023-02-07 15:36:50  -  [INFO]  GET: http://localhost/krushi-arunalu/marketplace
+2023-02-07 15:36:50  -  [INFO]  Calling index method in app\controllers\MarketplaceController
+2023-02-07 15:36:50  -  [INFO]  GET: http://localhost/krushi-arunalu/login
+2023-02-07 15:36:50  -  [INFO]  Calling index method in app\controllers\LoginController
+2023-02-07 15:36:55  -  [INFO]  POST: http://localhost/krushi-arunalu/login
+2023-02-07 15:36:55  -  [INFO]  Calling index method in app\controllers\LoginController
+2023-02-07 15:36:55  -  [INFO]  Login attempt by phone: 0764023716
+2023-02-07 15:36:55  -  [INFO]  GET: http://localhost/krushi-arunalu/marketplace
+2023-02-07 15:36:55  -  [INFO]  Calling index method in app\controllers\MarketplaceController
+2023-02-07 15:36:57  -  [INFO]  GET: http://localhost/krushi-arunalu/marketplace/productdetails/1
+2023-02-07 15:36:57  -  [INFO]  Calling productdetails method in app\controllers\MarketplaceController
+2023-02-07 15:36:59  -  [INFO]  GET: http://localhost/krushi-arunalu/shoppingcart/add/'.$product->id.'
+2023-02-07 15:36:59  -  [INFO]  Calling add method in app\controllers\ShoppingCartController
+2023-02-07 15:36:59  -  [PDOException]  SQLSTATE[23000]: Integrity constraint violation: 1452 Cannot add or update a child row: a foreign key constraint fails (`krushi-arunalu-db`.`shopping_cart`, CONSTRAINT `shopping_cart_product_id` FOREIGN KEY (`product_id`) REFERENCES `product` (`id`))
+2023-02-07 15:36:59  -  [INFO]  GET: http://localhost/krushi-arunalu/marketplace
+2023-02-07 15:36:59  -  [INFO]  Calling index method in app\controllers\MarketplaceController
+2023-02-07 15:37:01  -  [INFO]  GET: http://localhost/krushi-arunalu/marketplace/productdetails/1
+2023-02-07 15:37:01  -  [INFO]  Calling productdetails method in app\controllers\MarketplaceController
+2023-02-07 15:38:01  -  [INFO]  GET: http://localhost/krushi-arunalu/shoppingcart/add/'.$product->id.'
+2023-02-07 15:38:01  -  [INFO]  Calling add method in app\controllers\ShoppingCartController
+2023-02-07 15:38:01  -  [PDOException]  SQLSTATE[23000]: Integrity constraint violation: 1452 Cannot add or update a child row: a foreign key constraint fails (`krushi-arunalu-db`.`shopping_cart`, CONSTRAINT `shopping_cart_product_id` FOREIGN KEY (`product_id`) REFERENCES `product` (`id`))
+2023-02-07 15:38:01  -  [INFO]  GET: http://localhost/krushi-arunalu/marketplace
+2023-02-07 15:38:01  -  [INFO]  Calling index method in app\controllers\MarketplaceController
+2023-02-07 15:38:06  -  [INFO]  GET: http://localhost/krushi-arunalu/shoppingcart/add/1
+2023-02-07 15:38:06  -  [INFO]  Calling add method in app\controllers\ShoppingCartController
+2023-02-07 15:38:06  -  [INFO]  GET: http://localhost/krushi-arunalu/shoppingcart
+2023-02-07 15:38:06  -  [INFO]  Calling index method in app\controllers\ShoppingCartController
+2023-02-07 15:38:08  -  [INFO]  GET: http://localhost/krushi-arunalu/shoppingcart/remove/330
+2023-02-07 15:38:08  -  [INFO]  Calling remove method in app\controllers\ShoppingCartController
+2023-02-07 15:38:08  -  [INFO]  GET: http://localhost/krushi-arunalu/shoppingcart
+2023-02-07 15:38:08  -  [INFO]  Calling index method in app\controllers\ShoppingCartController
+2023-02-07 15:38:12  -  [INFO]  GET: http://localhost/krushi-arunalu/marketplace
+2023-02-07 15:38:12  -  [INFO]  Calling index method in app\controllers\MarketplaceController
+2023-02-07 15:38:14  -  [INFO]  GET: http://localhost/krushi-arunalu/marketplace/productdetails/1
+2023-02-07 15:38:14  -  [INFO]  Calling productdetails method in app\controllers\MarketplaceController
+2023-02-07 15:38:17  -  [INFO]  GET: http://localhost/krushi-arunalu/shoppingcart/add/'.$product->id.'
+2023-02-07 15:38:17  -  [INFO]  Calling add method in app\controllers\ShoppingCartController
+2023-02-07 15:38:17  -  [PDOException]  SQLSTATE[23000]: Integrity constraint violation: 1452 Cannot add or update a child row: a foreign key constraint fails (`krushi-arunalu-db`.`shopping_cart`, CONSTRAINT `shopping_cart_product_id` FOREIGN KEY (`product_id`) REFERENCES `product` (`id`))
+2023-02-07 15:38:17  -  [INFO]  GET: http://localhost/krushi-arunalu/marketplace
+2023-02-07 15:38:17  -  [INFO]  Calling index method in app\controllers\MarketplaceController
+2023-02-07 15:38:24  -  [INFO]  GET: http://localhost/krushi-arunalu/myorders
+2023-02-07 15:38:24  -  [ERROR]  Requested controller (myorders) not found
+2023-02-07 15:38:25  -  [INFO]  GET: http://localhost/krushi-arunalu/
+2023-02-07 15:38:25  -  [INFO]  Calling index method in app\controllers\IndexController
+2023-02-07 15:38:27  -  [INFO]  GET: http://localhost/krushi-arunalu/marketplace
+2023-02-07 15:38:27  -  [INFO]  Calling index method in app\controllers\MarketplaceController
+2023-02-07 15:38:32  -  [INFO]  GET: http://localhost/krushi-arunalu/shoppingcart/add/1
+2023-02-07 15:38:32  -  [INFO]  Calling add method in app\controllers\ShoppingCartController
+2023-02-07 15:38:32  -  [INFO]  GET: http://localhost/krushi-arunalu/shoppingcart
+2023-02-07 15:38:32  -  [INFO]  Calling index method in app\controllers\ShoppingCartController
+2023-02-07 15:38:41  -  [INFO]  GET: http://localhost/krushi-arunalu/shoppingcart/remove/355
+2023-02-07 15:38:41  -  [INFO]  Calling remove method in app\controllers\ShoppingCartController
+2023-02-07 15:38:41  -  [INFO]  GET: http://localhost/krushi-arunalu/shoppingcart
+2023-02-07 15:38:41  -  [INFO]  Calling index method in app\controllers\ShoppingCartController
+2023-02-07 15:38:43  -  [INFO]  GET: http://localhost/krushi-arunalu/shoppingcart/remove/332
+2023-02-07 15:38:43  -  [INFO]  Calling remove method in app\controllers\ShoppingCartController
+2023-02-07 15:38:43  -  [INFO]  GET: http://localhost/krushi-arunalu/shoppingcart
+2023-02-07 15:38:43  -  [INFO]  Calling index method in app\controllers\ShoppingCartController
+2023-02-07 15:38:44  -  [INFO]  GET: http://localhost/krushi-arunalu/shoppingcart/remove/334
+2023-02-07 15:38:44  -  [INFO]  Calling remove method in app\controllers\ShoppingCartController
+2023-02-07 15:38:44  -  [INFO]  GET: http://localhost/krushi-arunalu/shoppingcart
+2023-02-07 15:38:44  -  [INFO]  Calling index method in app\controllers\ShoppingCartController
+2023-02-07 15:38:44  -  [INFO]  GET: http://localhost/krushi-arunalu/shoppingcart/remove/335
+2023-02-07 15:38:44  -  [INFO]  Calling remove method in app\controllers\ShoppingCartController
+2023-02-07 15:38:44  -  [INFO]  GET: http://localhost/krushi-arunalu/shoppingcart
+2023-02-07 15:38:44  -  [INFO]  Calling index method in app\controllers\ShoppingCartController
+2023-02-07 15:38:44  -  [INFO]  GET: http://localhost/krushi-arunalu/shoppingcart/remove/336
+2023-02-07 15:38:44  -  [INFO]  Calling remove method in app\controllers\ShoppingCartController
+2023-02-07 15:38:44  -  [INFO]  GET: http://localhost/krushi-arunalu/shoppingcart
+2023-02-07 15:38:44  -  [INFO]  Calling index method in app\controllers\ShoppingCartController
+2023-02-07 15:38:45  -  [INFO]  GET: http://localhost/krushi-arunalu/shoppingcart/remove/337
+2023-02-07 15:38:45  -  [INFO]  Calling remove method in app\controllers\ShoppingCartController
+2023-02-07 15:38:45  -  [INFO]  GET: http://localhost/krushi-arunalu/shoppingcart
+2023-02-07 15:38:45  -  [INFO]  Calling index method in app\controllers\ShoppingCartController
+2023-02-07 15:38:45  -  [INFO]  GET: http://localhost/krushi-arunalu/shoppingcart/remove/340
+2023-02-07 15:38:45  -  [INFO]  Calling remove method in app\controllers\ShoppingCartController
+2023-02-07 15:38:45  -  [INFO]  GET: http://localhost/krushi-arunalu/shoppingcart
+2023-02-07 15:38:45  -  [INFO]  Calling index method in app\controllers\ShoppingCartController
+2023-02-07 15:38:45  -  [INFO]  GET: http://localhost/krushi-arunalu/shoppingcart/remove/342
+2023-02-07 15:38:45  -  [INFO]  Calling remove method in app\controllers\ShoppingCartController
+2023-02-07 15:38:46  -  [INFO]  GET: http://localhost/krushi-arunalu/shoppingcart
+2023-02-07 15:38:46  -  [INFO]  Calling index method in app\controllers\ShoppingCartController
+2023-02-07 15:38:46  -  [INFO]  GET: http://localhost/krushi-arunalu/shoppingcart/remove/343
+2023-02-07 15:38:46  -  [INFO]  Calling remove method in app\controllers\ShoppingCartController
+2023-02-07 15:38:46  -  [INFO]  GET: http://localhost/krushi-arunalu/shoppingcart
+2023-02-07 15:38:46  -  [INFO]  Calling index method in app\controllers\ShoppingCartController
+2023-02-07 15:38:46  -  [INFO]  GET: http://localhost/krushi-arunalu/shoppingcart/remove/347
+2023-02-07 15:38:46  -  [INFO]  Calling remove method in app\controllers\ShoppingCartController
+2023-02-07 15:38:46  -  [INFO]  GET: http://localhost/krushi-arunalu/shoppingcart
+2023-02-07 15:38:46  -  [INFO]  Calling index method in app\controllers\ShoppingCartController
+2023-02-07 15:38:47  -  [INFO]  GET: http://localhost/krushi-arunalu/shoppingcart/remove/350
+2023-02-07 15:38:47  -  [INFO]  Calling remove method in app\controllers\ShoppingCartController
+2023-02-07 15:38:47  -  [INFO]  GET: http://localhost/krushi-arunalu/shoppingcart
+2023-02-07 15:38:47  -  [INFO]  Calling index method in app\controllers\ShoppingCartController
+2023-02-07 15:38:48  -  [INFO]  GET: http://localhost/krushi-arunalu/shoppingcart/remove/353
+2023-02-07 15:38:48  -  [INFO]  Calling remove method in app\controllers\ShoppingCartController
+2023-02-07 15:38:48  -  [INFO]  GET: http://localhost/krushi-arunalu/shoppingcart
+2023-02-07 15:38:48  -  [INFO]  Calling index method in app\controllers\ShoppingCartController
+2023-02-07 15:38:50  -  [INFO]  GET: http://localhost/krushi-arunalu/marketplace
+2023-02-07 15:38:50  -  [INFO]  Calling index method in app\controllers\MarketplaceController
+2023-02-07 15:38:51  -  [INFO]  GET: http://localhost/krushi-arunalu/marketplace/productdetails/1
+2023-02-07 15:38:51  -  [INFO]  Calling productdetails method in app\controllers\MarketplaceController
+2023-02-07 15:38:54  -  [INFO]  GET: http://localhost/krushi-arunalu/shoppingcart/add/'.$product->id.'
+2023-02-07 15:38:54  -  [INFO]  Calling add method in app\controllers\ShoppingCartController
+2023-02-07 15:38:54  -  [PDOException]  SQLSTATE[23000]: Integrity constraint violation: 1452 Cannot add or update a child row: a foreign key constraint fails (`krushi-arunalu-db`.`shopping_cart`, CONSTRAINT `shopping_cart_product_id` FOREIGN KEY (`product_id`) REFERENCES `product` (`id`))
+2023-02-07 15:38:54  -  [INFO]  GET: http://localhost/krushi-arunalu/marketplace
+2023-02-07 15:38:54  -  [INFO]  Calling index method in app\controllers\MarketplaceController
+2023-02-07 15:38:56  -  [INFO]  GET: http://localhost/krushi-arunalu/shoppingcart/add/1
+2023-02-07 15:38:56  -  [INFO]  Calling add method in app\controllers\ShoppingCartController
+2023-02-07 15:38:56  -  [INFO]  GET: http://localhost/krushi-arunalu/shoppingcart
+2023-02-07 15:38:56  -  [INFO]  Calling index method in app\controllers\ShoppingCartController
+2023-02-07 15:39:04  -  [INFO]  GET: http://localhost/krushi-arunalu/shoppingcart/remove/357
+2023-02-07 15:39:04  -  [INFO]  Calling remove method in app\controllers\ShoppingCartController
+2023-02-07 15:39:04  -  [INFO]  GET: http://localhost/krushi-arunalu/shoppingcart
+2023-02-07 15:39:04  -  [INFO]  Calling index method in app\controllers\ShoppingCartController
+2023-02-07 15:39:05  -  [INFO]  GET: http://localhost/krushi-arunalu/shoppingcart/remove/331
+2023-02-07 15:39:05  -  [INFO]  Calling remove method in app\controllers\ShoppingCartController
+2023-02-07 15:39:05  -  [INFO]  GET: http://localhost/krushi-arunalu/shoppingcart
+2023-02-07 15:39:05  -  [INFO]  Calling index method in app\controllers\ShoppingCartController
+2023-02-07 15:39:07  -  [INFO]  GET: http://localhost/krushi-arunalu/marketplace
+2023-02-07 15:39:07  -  [INFO]  Calling index method in app\controllers\MarketplaceController
+2023-02-07 15:39:08  -  [INFO]  GET: http://localhost/krushi-arunalu/marketplace/productdetails/3
+2023-02-07 15:39:08  -  [INFO]  Calling productdetails method in app\controllers\MarketplaceController
+2023-02-07 15:39:09  -  [INFO]  GET: http://localhost/krushi-arunalu/shoppingcart/add/'.$product->id.'
+2023-02-07 15:39:09  -  [INFO]  Calling add method in app\controllers\ShoppingCartController
+2023-02-07 15:39:09  -  [PDOException]  SQLSTATE[23000]: Integrity constraint violation: 1452 Cannot add or update a child row: a foreign key constraint fails (`krushi-arunalu-db`.`shopping_cart`, CONSTRAINT `shopping_cart_product_id` FOREIGN KEY (`product_id`) REFERENCES `product` (`id`))
+2023-02-07 15:39:09  -  [INFO]  GET: http://localhost/krushi-arunalu/marketplace
+2023-02-07 15:39:09  -  [INFO]  Calling index method in app\controllers\MarketplaceController
+2023-02-07 15:39:10  -  [INFO]  GET: http://localhost/krushi-arunalu/shoppingcart/add/1
+2023-02-07 15:39:10  -  [INFO]  Calling add method in app\controllers\ShoppingCartController
+2023-02-07 15:39:10  -  [INFO]  GET: http://localhost/krushi-arunalu/shoppingcart
+2023-02-07 15:39:10  -  [INFO]  Calling index method in app\controllers\ShoppingCartController
+2023-02-07 15:39:13  -  [INFO]  GET: http://localhost/krushi-arunalu/shoppingcart/remove/359
+2023-02-07 15:39:13  -  [INFO]  Calling remove method in app\controllers\ShoppingCartController
+2023-02-07 15:39:13  -  [INFO]  GET: http://localhost/krushi-arunalu/shoppingcart
+2023-02-07 15:39:13  -  [INFO]  Calling index method in app\controllers\ShoppingCartController
+2023-02-07 15:40:14  -  [INFO]  GET: http://localhost/krushi-arunalu/marketplace
+2023-02-07 15:40:14  -  [INFO]  Calling index method in app\controllers\MarketplaceController
+2023-02-07 15:40:15  -  [INFO]  GET: http://localhost/krushi-arunalu/marketplace/productdetails/1
+2023-02-07 15:40:15  -  [INFO]  Calling productdetails method in app\controllers\MarketplaceController
+2023-02-07 15:40:20  -  [INFO]  GET: http://localhost/krushi-arunalu/shoppingcart/add/'.$product->id.'
+2023-02-07 15:40:20  -  [INFO]  Calling add method in app\controllers\ShoppingCartController
+2023-02-07 15:40:20  -  [PDOException]  SQLSTATE[23000]: Integrity constraint violation: 1452 Cannot add or update a child row: a foreign key constraint fails (`krushi-arunalu-db`.`shopping_cart`, CONSTRAINT `shopping_cart_product_id` FOREIGN KEY (`product_id`) REFERENCES `product` (`id`))
+2023-02-07 15:40:20  -  [INFO]  GET: http://localhost/krushi-arunalu/marketplace
+2023-02-07 15:40:20  -  [INFO]  Calling index method in app\controllers\MarketplaceController
+2023-02-07 15:40:23  -  [INFO]  GET: http://localhost/krushi-arunalu/shoppingcart/add/1
+2023-02-07 15:40:23  -  [INFO]  Calling add method in app\controllers\ShoppingCartController
+2023-02-07 15:40:23  -  [INFO]  GET: http://localhost/krushi-arunalu/shoppingcart
+2023-02-07 15:40:23  -  [INFO]  Calling index method in app\controllers\ShoppingCartController
+2023-02-07 15:40:30  -  [INFO]  GET: http://localhost/krushi-arunalu/shoppingcart/remove/361
+2023-02-07 15:40:30  -  [INFO]  Calling remove method in app\controllers\ShoppingCartController
+2023-02-07 15:40:30  -  [INFO]  GET: http://localhost/krushi-arunalu/shoppingcart
+2023-02-07 15:40:30  -  [INFO]  Calling index method in app\controllers\ShoppingCartController
+2023-02-07 15:40:37  -  [INFO]  GET: http://localhost/krushi-arunalu/marketplace
+2023-02-07 15:40:37  -  [INFO]  Calling index method in app\controllers\MarketplaceController
+2023-02-07 15:40:39  -  [INFO]  GET: http://localhost/krushi-arunalu/shoppingcart/add/1
+2023-02-07 15:40:39  -  [INFO]  Calling add method in app\controllers\ShoppingCartController
+2023-02-07 15:40:39  -  [INFO]  GET: http://localhost/krushi-arunalu/shoppingcart
+2023-02-07 15:40:39  -  [INFO]  Calling index method in app\controllers\ShoppingCartController
+2023-02-07 15:40:42  -  [INFO]  GET: http://localhost/krushi-arunalu/marketplace
+2023-02-07 15:40:42  -  [INFO]  Calling index method in app\controllers\MarketplaceController
+2023-02-07 15:40:43  -  [INFO]  GET: http://localhost/krushi-arunalu/marketplace/productdetails/1
+2023-02-07 15:40:43  -  [INFO]  Calling productdetails method in app\controllers\MarketplaceController
+2023-02-07 15:40:47  -  [INFO]  GET: http://localhost/krushi-arunalu/marketplace
+2023-02-07 15:40:47  -  [INFO]  Calling index method in app\controllers\MarketplaceController
+2023-02-07 15:42:17  -  [INFO]  GET: http://localhost/krushi-arunalu/marketplace
+2023-02-07 15:42:17  -  [INFO]  Calling index method in app\controllers\MarketplaceController
+2023-02-07 15:42:22  -  [INFO]  GET: http://localhost/krushi-arunalu/marketplace/productdetails/1
+2023-02-07 15:42:22  -  [INFO]  Calling productdetails method in app\controllers\MarketplaceController
+2023-02-07 15:43:10  -  [INFO]  GET: http://localhost/krushi-arunalu/marketplace/productdetails/1
+2023-02-07 15:43:10  -  [INFO]  Calling productdetails method in app\controllers\MarketplaceController
+2023-02-07 15:43:25  -  [INFO]  GET: http://localhost/krushi-arunalu/marketplace/productdetails/1
+2023-02-07 15:43:25  -  [INFO]  Calling productdetails method in app\controllers\MarketplaceController
+2023-02-07 15:43:55  -  [INFO]  GET: http://localhost/krushi-arunalu/marketplace/productdetails/1
+2023-02-07 15:43:55  -  [INFO]  Calling productdetails method in app\controllers\MarketplaceController
+2023-02-07 15:44:11  -  [INFO]  GET: http://localhost/krushi-arunalu/marketplace/productdetails/1
+2023-02-07 15:44:11  -  [INFO]  Calling productdetails method in app\controllers\MarketplaceController
+2023-02-07 15:44:32  -  [INFO]  GET: http://localhost/krushi-arunalu/marketplace/productdetails/1
+2023-02-07 15:44:32  -  [INFO]  Calling productdetails method in app\controllers\MarketplaceController
+2023-02-07 15:44:44  -  [INFO]  GET: http://localhost/krushi-arunalu/marketplace/productdetails/1
+2023-02-07 15:44:44  -  [INFO]  Calling productdetails method in app\controllers\MarketplaceController
+2023-02-07 15:44:47  -  [INFO]  GET: http://localhost/krushi-arunalu/marketplace/productdetails/shopping-cart/add/1
+2023-02-07 15:44:47  -  [INFO]  Calling productdetails method in app\controllers\MarketplaceController
+2023-02-07 15:44:59  -  [INFO]  GET: http://localhost/krushi-arunalu/marketplace/productdetails/1
+2023-02-07 15:44:59  -  [INFO]  Calling productdetails method in app\controllers\MarketplaceController
+2023-02-07 15:45:07  -  [INFO]  GET: http://localhost/krushi-arunalu/marketplace/productdetails/1
+2023-02-07 15:45:07  -  [INFO]  Calling productdetails method in app\controllers\MarketplaceController
+2023-02-07 15:45:09  -  [INFO]  GET: http://localhost/krushi-arunalu/shoppingcart/add/1
+2023-02-07 15:45:09  -  [INFO]  Calling add method in app\controllers\ShoppingCartController
+2023-02-07 15:45:10  -  [INFO]  GET: http://localhost/krushi-arunalu/shoppingcart
+2023-02-07 15:45:10  -  [INFO]  Calling index method in app\controllers\ShoppingCartController
+2023-02-07 15:54:40  -  [INFO]  GET: http://localhost/krushi-arunalu/myorders
+2023-02-07 15:54:40  -  [ERROR]  Requested controller (myorders) not found
+2023-02-07 15:54:41  -  [INFO]  GET: http://localhost/krushi-arunalu/shoppingcart
+2023-02-07 15:54:41  -  [INFO]  Calling index method in app\controllers\ShoppingCartController
+2023-02-07 16:07:31  -  [INFO]  GET: http://localhost/krushi-arunalu/shoppingcart
+2023-02-07 16:07:31  -  [INFO]  Calling index method in app\controllers\ShoppingCartController

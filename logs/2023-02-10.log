@@ -1,0 +1,432 @@
+2023-02-10 00:03:21  -  [INFO]  GET: http://localhost/krushi-arunalu/Sales
+2023-02-10 00:03:21  -  [INFO]  Calling index method in app\controllers\SalesController
+2023-02-10 00:05:14  -  [INFO]  GET: http://localhost/krushi-arunalu/Manufacturers
+2023-02-10 00:05:14  -  [ERROR]  Requested controller (Manufacturers) not found
+2023-02-10 00:08:22  -  [INFO]  GET: http://localhost/krushi-arunalu/Sales
+2023-02-10 00:08:22  -  [INFO]  Calling index method in app\controllers\SalesController
+2023-02-10 00:08:34  -  [INFO]  GET: http://localhost/krushi-arunalu/Accept1
+2023-02-10 00:08:34  -  [ERROR]  Requested controller (Accept1) not found
+2023-02-10 00:08:39  -  [INFO]  GET: http://localhost/krushi-arunalu/Sales
+2023-02-10 00:08:39  -  [INFO]  Calling index method in app\controllers\SalesController
+2023-02-10 00:09:24  -  [INFO]  GET: http://localhost/krushi-arunalu/Cultivations
+2023-02-10 00:09:24  -  [INFO]  Calling index method in app\controllers\CultivationsController
+2023-02-10 00:13:28  -  [INFO]  GET: http://localhost/krushi-arunalu/Cultivations
+2023-02-10 00:13:28  -  [INFO]  Calling index method in app\controllers\CultivationsController
+2023-02-10 00:20:10  -  [INFO]  GET: http://localhost/krushi-arunalu/Cultivations
+2023-02-10 00:20:10  -  [INFO]  Calling index method in app\controllers\CultivationsController
+2023-02-10 00:20:53  -  [INFO]  GET: http://localhost/krushi-arunalu/Cultivations
+2023-02-10 00:20:53  -  [INFO]  Calling index method in app\controllers\CultivationsController
+2023-02-10 00:21:00  -  [INFO]  GET: http://localhost/krushi-arunalu/Harvests
+2023-02-10 00:21:00  -  [INFO]  GET: http://localhost/krushi-arunalu/Sales
+2023-02-10 00:21:04  -  [INFO]  Calling index method in app\controllers\HarvestsController
+2023-02-10 00:21:13  -  [INFO]  Calling index method in app\controllers\SalesController
+2023-02-10 00:22:29  -  [INFO]  GET: http://localhost/krushi-arunalu/Sales/accept/1
+2023-02-10 00:22:29  -  [INFO]  Calling accept method in app\controllers\SalesController
+2023-02-10 00:22:40  -  [INFO]  GET: http://localhost/krushi-arunalu/Sales/accept/sales
+2023-02-10 00:22:40  -  [INFO]  Calling accept method in app\controllers\SalesController
+2023-02-10 00:22:49  -  [INFO]  GET: http://localhost/krushi-arunalu/Sales/accept/sales
+2023-02-10 00:22:49  -  [INFO]  Calling accept method in app\controllers\SalesController
+2023-02-10 00:22:58  -  [INFO]  GET: http://localhost/krushi-arunalu/Sales/accept/sales
+2023-02-10 00:22:58  -  [INFO]  Calling accept method in app\controllers\SalesController
+2023-02-10 00:23:09  -  [INFO]  GET: http://localhost/krushi-arunalu/Sales/accept/sales
+2023-02-10 00:23:09  -  [INFO]  Calling accept method in app\controllers\SalesController
+2023-02-10 00:23:18  -  [INFO]  GET: http://localhost/krushi-arunalu/Sales/accept/sales
+2023-02-10 00:23:18  -  [INFO]  Calling accept method in app\controllers\SalesController
+2023-02-10 00:23:28  -  [INFO]  GET: http://localhost/krushi-arunalu/Sales/accept/sales
+2023-02-10 00:23:28  -  [INFO]  Calling accept method in app\controllers\SalesController
+2023-02-10 00:23:38  -  [INFO]  GET: http://localhost/krushi-arunalu/Sales/accept/sales
+2023-02-10 00:23:38  -  [INFO]  Calling accept method in app\controllers\SalesController
+2023-02-10 00:23:47  -  [INFO]  GET: http://localhost/krushi-arunalu/Sales/accept/sales
+2023-02-10 00:23:47  -  [INFO]  Calling accept method in app\controllers\SalesController
+2023-02-10 00:23:57  -  [INFO]  GET: http://localhost/krushi-arunalu/Sales/accept/sales
+2023-02-10 00:23:57  -  [INFO]  Calling accept method in app\controllers\SalesController
+2023-02-10 00:24:07  -  [INFO]  GET: http://localhost/krushi-arunalu/Sales/accept/sales
+2023-02-10 00:24:07  -  [INFO]  Calling accept method in app\controllers\SalesController
+2023-02-10 00:24:17  -  [INFO]  GET: http://localhost/krushi-arunalu/Sales/accept/sales
+2023-02-10 00:24:17  -  [INFO]  Calling accept method in app\controllers\SalesController
+2023-02-10 00:24:25  -  [INFO]  GET: http://localhost/krushi-arunalu/Harvests
+2023-02-10 00:24:26  -  [INFO]  Calling index method in app\controllers\HarvestsController
+2023-02-10 00:25:29  -  [INFO]  GET: http://localhost/krushi-arunalu/Sales
+2023-02-10 00:25:29  -  [INFO]  Calling index method in app\controllers\SalesController
+2023-02-10 00:43:53  -  [INFO]  GET: http://localhost/krushi-arunalu/Manufacturers
+2023-02-10 00:44:11  -  [INFO]  GET: http://localhost/krushi-arunalu/Manufacturers
+2023-02-10 00:44:11  -  [INFO]  Calling index method in app\controllers\ManufacturersController
+2023-02-10 00:55:01  -  [INFO]  GET: http://localhost/krushi-arunalu/Manufacturers
+2023-02-10 00:55:01  -  [INFO]  Calling index method in app\controllers\ManufacturersController
+2023-02-10 00:56:02  -  [INFO]  GET: http://localhost/krushi-arunalu/Producers/connectionRequests
+2023-02-10 00:57:19  -  [INFO]  GET: http://localhost/krushi-arunalu/Manufacturers/connectionRequests
+2023-02-10 00:57:19  -  [INFO]  Calling connectionRequests method in app\controllers\ManufacturersController
+2023-02-10 00:57:25  -  [INFO]  GET: http://localhost/krushi-arunalu/Manufacturers/connectionrequests
+2023-02-10 00:57:25  -  [INFO]  Calling connectionrequests method in app\controllers\ManufacturersController
+2023-02-10 00:57:38  -  [INFO]  GET: http://localhost/krushi-arunalu/Sales
+2023-02-10 00:57:38  -  [INFO]  Calling index method in app\controllers\SalesController
+2023-02-10 01:02:51  -  [INFO]  GET: http://localhost/krushi-arunalu/CultivationQuestions
+2023-02-10 01:02:51  -  [INFO]  Calling index method in app\controllers\CultivationQuestionsController
+2023-02-10 01:02:58  -  [INFO]  GET: http://localhost/krushi-arunalu/Manufacturers
+2023-02-10 01:02:58  -  [INFO]  Calling index method in app\controllers\ManufacturersController
+2023-02-10 01:03:32  -  [INFO]  GET: http://localhost/krushi-arunalu/Announcements
+2023-02-10 01:03:32  -  [INFO]  Calling index method in app\controllers\AnnouncementsController
+2023-02-10 01:07:08  -  [INFO]  GET: http://localhost/krushi-arunalu/Announcements
+2023-02-10 01:07:08  -  [INFO]  Calling index method in app\controllers\AnnouncementsController
+2023-02-10 01:08:30  -  [INFO]  GET: http://localhost/krushi-arunalu/Announcements
+2023-02-10 01:08:30  -  [INFO]  Calling index method in app\controllers\AnnouncementsController
+2023-02-10 01:08:44  -  [INFO]  GET: http://localhost/krushi-arunalu/CropRequests
+2023-02-10 01:08:44  -  [ERROR]  Requested controller (CropRequests) not found
+2023-02-10 01:08:46  -  [INFO]  GET: http://localhost/krushi-arunalu/
+2023-02-10 01:08:46  -  [INFO]  Calling index method in app\controllers\IndexController
+2023-02-10 01:08:48  -  [INFO]  GET: http://localhost/krushi-arunalu/Login
+2023-02-10 01:08:48  -  [INFO]  Calling index method in app\controllers\LoginController
+2023-02-10 01:08:48  -  [INFO]  GET: http://localhost/krushi-arunalu/ProducerDashboard
+2023-02-10 01:08:48  -  [INFO]  Calling index method in app\controllers\ProducerDashboardController
+2023-02-10 01:08:55  -  [INFO]  GET: http://localhost/krushi-arunalu/CultivationQuestions
+2023-02-10 01:08:55  -  [INFO]  Calling index method in app\controllers\CultivationQuestionsController
+2023-02-10 01:08:56  -  [INFO]  GET: http://localhost/krushi-arunalu/Manufacturers
+2023-02-10 01:08:56  -  [INFO]  Calling index method in app\controllers\ManufacturersController
+2023-02-10 01:09:10  -  [INFO]  GET: http://localhost/krushi-arunalu/Sales
+2023-02-10 01:09:10  -  [INFO]  Calling index method in app\controllers\SalesController
+2023-02-10 01:09:19  -  [INFO]  GET: http://localhost/krushi-arunalu/Harvests
+2023-02-10 01:09:19  -  [INFO]  Calling index method in app\controllers\HarvestsController
+2023-02-10 01:09:32  -  [INFO]  GET: http://localhost/krushi-arunalu/Harvests/edit/1
+2023-02-10 01:09:32  -  [ERROR]  Requested method (edit) not found
+2023-02-10 01:09:36  -  [INFO]  GET: http://localhost/krushi-arunalu/Harvests
+2023-02-10 01:09:36  -  [INFO]  Calling index method in app\controllers\HarvestsController
+2023-02-10 01:09:51  -  [INFO]  GET: http://localhost/krushi-arunalu/Cultivations
+2023-02-10 01:09:51  -  [INFO]  Calling index method in app\controllers\CultivationsController
+2023-02-10 01:11:48  -  [INFO]  GET: http://localhost/krushi-arunalu/Harvests
+2023-02-10 01:11:48  -  [INFO]  Calling index method in app\controllers\HarvestsController
+2023-02-10 01:12:18  -  [INFO]  GET: http://localhost/krushi-arunalu/Sales
+2023-02-10 01:12:18  -  [INFO]  Calling index method in app\controllers\SalesController
+2023-02-10 01:25:04  -  [INFO]  GET: http://localhost/krushi-arunalu/ManageProfile
+2023-02-10 01:25:04  -  [INFO]  Calling index method in app\controllers\ManageProfileController
+2023-02-10 01:45:34  -  [INFO]  GET: http://localhost/krushi-arunalu/ManageProfile
+2023-02-10 01:45:34  -  [INFO]  Calling index method in app\controllers\ManageProfileController
+2023-02-10 01:45:43  -  [INFO]  GET: http://localhost/krushi-arunalu/ManageProfile
+2023-02-10 01:45:43  -  [INFO]  Calling index method in app\controllers\ManageProfileController
+2023-02-10 01:45:54  -  [INFO]  GET: http://localhost/krushi-arunalu/
+2023-02-10 01:45:54  -  [INFO]  Calling index method in app\controllers\IndexController
+2023-02-10 01:45:56  -  [INFO]  GET: http://localhost/krushi-arunalu/Login
+2023-02-10 01:45:56  -  [INFO]  Calling index method in app\controllers\LoginController
+2023-02-10 01:45:56  -  [INFO]  GET: http://localhost/krushi-arunalu/ProducerDashboard
+2023-02-10 01:45:56  -  [INFO]  Calling index method in app\controllers\ProducerDashboardController
+2023-02-10 01:47:33  -  [INFO]  GET: http://localhost/krushi-arunalu/ProducerDashboard
+2023-02-10 01:47:33  -  [INFO]  Calling index method in app\controllers\ProducerDashboardController
+2023-02-10 01:48:14  -  [INFO]  GET: http://localhost/krushi-arunalu/ProducerDashboard
+2023-02-10 01:48:14  -  [INFO]  Calling index method in app\controllers\ProducerDashboardController
+2023-02-10 01:51:41  -  [INFO]  GET: http://localhost/krushi-arunalu/ProducerDashboard
+2023-02-10 01:51:41  -  [INFO]  Calling index method in app\controllers\ProducerDashboardController
+2023-02-10 01:52:35  -  [INFO]  GET: http://localhost/krushi-arunalu/ProducerDashboard
+2023-02-10 01:52:35  -  [INFO]  Calling index method in app\controllers\ProducerDashboardController
+2023-02-10 01:52:47  -  [INFO]  GET: http://localhost/krushi-arunalu/ProducerDashboard
+2023-02-10 01:52:47  -  [INFO]  Calling index method in app\controllers\ProducerDashboardController
+2023-02-10 01:53:32  -  [INFO]  GET: http://localhost/krushi-arunalu/ProducerDashboard
+2023-02-10 01:53:32  -  [INFO]  Calling index method in app\controllers\ProducerDashboardController
+2023-02-10 01:54:54  -  [INFO]  GET: http://localhost/krushi-arunalu/ProducerDashboard
+2023-02-10 01:54:54  -  [INFO]  Calling index method in app\controllers\ProducerDashboardController
+2023-02-10 01:55:06  -  [INFO]  GET: http://localhost/krushi-arunalu/ProducerDashboard
+2023-02-10 01:55:06  -  [INFO]  Calling index method in app\controllers\ProducerDashboardController
+2023-02-10 01:56:05  -  [INFO]  GET: http://localhost/krushi-arunalu/ProducerDashboard
+2023-02-10 01:56:05  -  [INFO]  Calling index method in app\controllers\ProducerDashboardController
+2023-02-10 01:57:03  -  [INFO]  GET: http://localhost/krushi-arunalu/ProducerDashboard
+2023-02-10 01:57:03  -  [INFO]  Calling index method in app\controllers\ProducerDashboardController
+2023-02-10 01:57:04  -  [INFO]  GET: http://localhost/krushi-arunalu/ProducerDashboard
+2023-02-10 01:57:04  -  [INFO]  Calling index method in app\controllers\ProducerDashboardController
+2023-02-10 01:57:22  -  [INFO]  GET: http://localhost/krushi-arunalu/ProducerDashboard
+2023-02-10 01:57:22  -  [INFO]  Calling index method in app\controllers\ProducerDashboardController
+2023-02-10 01:57:28  -  [INFO]  GET: http://localhost/krushi-arunalu/ProducerDashboard
+2023-02-10 01:57:28  -  [INFO]  Calling index method in app\controllers\ProducerDashboardController
+2023-02-10 01:58:44  -  [INFO]  GET: http://localhost/krushi-arunalu/ProducerDashboard
+2023-02-10 01:58:44  -  [INFO]  Calling index method in app\controllers\ProducerDashboardController
+2023-02-10 02:02:07  -  [INFO]  GET: http://localhost/krushi-arunalu/ProducerDashboard
+2023-02-10 02:02:07  -  [INFO]  Calling index method in app\controllers\ProducerDashboardController
+2023-02-10 02:04:18  -  [INFO]  GET: http://localhost/krushi-arunalu/ProducerDashboard
+2023-02-10 02:04:18  -  [INFO]  Calling index method in app\controllers\ProducerDashboardController
+2023-02-10 02:04:50  -  [INFO]  GET: http://localhost/krushi-arunalu/ProducerDashboard
+2023-02-10 02:04:50  -  [INFO]  Calling index method in app\controllers\ProducerDashboardController
+2023-02-10 02:04:58  -  [INFO]  GET: http://localhost/krushi-arunalu/ProducerDashboard
+2023-02-10 02:04:58  -  [INFO]  Calling index method in app\controllers\ProducerDashboardController
+2023-02-10 02:05:24  -  [INFO]  GET: http://localhost/krushi-arunalu/ProducerDashboard
+2023-02-10 02:05:24  -  [INFO]  Calling index method in app\controllers\ProducerDashboardController
+2023-02-10 02:05:45  -  [INFO]  GET: http://localhost/krushi-arunalu/ProducerDashboard
+2023-02-10 02:05:45  -  [INFO]  Calling index method in app\controllers\ProducerDashboardController
+2023-02-10 02:06:24  -  [INFO]  GET: http://localhost/krushi-arunalu/ProducerDashboard
+2023-02-10 02:06:24  -  [INFO]  Calling index method in app\controllers\ProducerDashboardController
+2023-02-10 02:06:30  -  [INFO]  GET: http://localhost/krushi-arunalu/ProducerDashboard
+2023-02-10 02:06:30  -  [INFO]  Calling index method in app\controllers\ProducerDashboardController
+2023-02-10 02:09:24  -  [INFO]  GET: http://localhost/krushi-arunalu/ProducerDashboard
+2023-02-10 02:09:24  -  [INFO]  Calling index method in app\controllers\ProducerDashboardController
+2023-02-10 02:09:46  -  [INFO]  GET: http://localhost/krushi-arunalu/ProducerDashboard
+2023-02-10 02:09:46  -  [INFO]  Calling index method in app\controllers\ProducerDashboardController
+2023-02-10 02:09:56  -  [INFO]  GET: http://localhost/krushi-arunalu/ProducerDashboard
+2023-02-10 02:09:56  -  [INFO]  Calling index method in app\controllers\ProducerDashboardController
+2023-02-10 02:10:03  -  [INFO]  GET: http://localhost/krushi-arunalu/ProducerDashboard
+2023-02-10 02:10:03  -  [INFO]  Calling index method in app\controllers\ProducerDashboardController
+2023-02-10 02:10:08  -  [INFO]  GET: http://localhost/krushi-arunalu/ProducerDashboard
+2023-02-10 02:10:08  -  [INFO]  Calling index method in app\controllers\ProducerDashboardController
+2023-02-10 02:10:18  -  [INFO]  GET: http://localhost/krushi-arunalu/ProducerDashboard
+2023-02-10 02:10:18  -  [INFO]  Calling index method in app\controllers\ProducerDashboardController
+2023-02-10 02:10:34  -  [INFO]  GET: http://localhost/krushi-arunalu/ProducerDashboard
+2023-02-10 02:10:34  -  [INFO]  Calling index method in app\controllers\ProducerDashboardController
+2023-02-10 02:10:56  -  [INFO]  GET: http://localhost/krushi-arunalu/ProducerDashboard
+2023-02-10 02:10:56  -  [INFO]  Calling index method in app\controllers\ProducerDashboardController
+2023-02-10 02:11:11  -  [INFO]  GET: http://localhost/krushi-arunalu/ProducerDashboard
+2023-02-10 02:11:11  -  [INFO]  Calling index method in app\controllers\ProducerDashboardController
+2023-02-10 02:11:15  -  [INFO]  GET: http://localhost/krushi-arunalu/ProducerDashboard
+2023-02-10 02:11:15  -  [INFO]  Calling index method in app\controllers\ProducerDashboardController
+2023-02-10 02:11:31  -  [INFO]  GET: http://localhost/krushi-arunalu/ProducerDashboard
+2023-02-10 02:11:31  -  [INFO]  Calling index method in app\controllers\ProducerDashboardController
+2023-02-10 02:11:46  -  [INFO]  GET: http://localhost/krushi-arunalu/ProducerDashboard
+2023-02-10 02:11:46  -  [INFO]  Calling index method in app\controllers\ProducerDashboardController
+2023-02-10 02:12:22  -  [INFO]  GET: http://localhost/krushi-arunalu/ProducerDashboard
+2023-02-10 02:12:22  -  [INFO]  Calling index method in app\controllers\ProducerDashboardController
+2023-02-10 02:12:38  -  [INFO]  GET: http://localhost/krushi-arunalu/ProducerDashboard
+2023-02-10 02:12:38  -  [INFO]  Calling index method in app\controllers\ProducerDashboardController
+2023-02-10 02:12:51  -  [INFO]  GET: http://localhost/krushi-arunalu/ProducerDashboard
+2023-02-10 02:12:51  -  [INFO]  Calling index method in app\controllers\ProducerDashboardController
+2023-02-10 02:13:55  -  [INFO]  GET: http://localhost/krushi-arunalu/ProducerDashboard
+2023-02-10 02:13:55  -  [INFO]  Calling index method in app\controllers\ProducerDashboardController
+2023-02-10 02:13:56  -  [INFO]  GET: http://localhost/krushi-arunalu/ProducerDashboard
+2023-02-10 02:13:56  -  [INFO]  Calling index method in app\controllers\ProducerDashboardController
+2023-02-10 02:14:00  -  [INFO]  GET: http://localhost/krushi-arunalu/ProducerDashboard
+2023-02-10 02:14:00  -  [INFO]  Calling index method in app\controllers\ProducerDashboardController
+2023-02-10 02:14:01  -  [INFO]  GET: http://localhost/krushi-arunalu/ProducerDashboard
+2023-02-10 02:14:01  -  [INFO]  Calling index method in app\controllers\ProducerDashboardController
+2023-02-10 02:14:01  -  [INFO]  GET: http://localhost/krushi-arunalu/ProducerDashboard
+2023-02-10 02:14:01  -  [INFO]  Calling index method in app\controllers\ProducerDashboardController
+2023-02-10 02:15:18  -  [INFO]  GET: http://localhost/krushi-arunalu/ProducerDashboard
+2023-02-10 02:15:18  -  [INFO]  Calling index method in app\controllers\ProducerDashboardController
+2023-02-10 02:16:45  -  [INFO]  GET: http://localhost/krushi-arunalu/ProducerDashboard
+2023-02-10 02:16:45  -  [INFO]  Calling index method in app\controllers\ProducerDashboardController
+2023-02-10 02:18:06  -  [INFO]  GET: http://localhost/krushi-arunalu/ProducerDashboard
+2023-02-10 02:18:06  -  [INFO]  Calling index method in app\controllers\ProducerDashboardController
+2023-02-10 02:18:10  -  [INFO]  GET: http://localhost/krushi-arunalu/ProducerDashboard
+2023-02-10 02:18:10  -  [INFO]  Calling index method in app\controllers\ProducerDashboardController
+2023-02-10 02:18:17  -  [INFO]  GET: http://localhost/krushi-arunalu/ProducerDashboard
+2023-02-10 02:18:17  -  [INFO]  Calling index method in app\controllers\ProducerDashboardController
+2023-02-10 02:18:22  -  [INFO]  GET: http://localhost/krushi-arunalu/ProducerDashboard
+2023-02-10 02:18:23  -  [INFO]  Calling index method in app\controllers\ProducerDashboardController
+2023-02-10 02:18:32  -  [INFO]  GET: http://localhost/krushi-arunalu/ProducerDashboard
+2023-02-10 02:18:32  -  [INFO]  Calling index method in app\controllers\ProducerDashboardController
+2023-02-10 02:18:37  -  [INFO]  GET: http://localhost/krushi-arunalu/ProducerDashboard
+2023-02-10 02:18:37  -  [INFO]  Calling index method in app\controllers\ProducerDashboardController
+2023-02-10 02:18:42  -  [INFO]  GET: http://localhost/krushi-arunalu/ProducerDashboard
+2023-02-10 02:18:42  -  [INFO]  Calling index method in app\controllers\ProducerDashboardController
+2023-02-10 02:18:48  -  [INFO]  GET: http://localhost/krushi-arunalu/ProducerDashboard
+2023-02-10 02:18:48  -  [INFO]  Calling index method in app\controllers\ProducerDashboardController
+2023-02-10 02:19:29  -  [INFO]  GET: http://localhost/krushi-arunalu/ProducerDashboard
+2023-02-10 02:19:29  -  [INFO]  Calling index method in app\controllers\ProducerDashboardController
+2023-02-10 02:19:29  -  [INFO]  GET: http://localhost/krushi-arunalu/ProducerDashboard
+2023-02-10 02:19:29  -  [INFO]  Calling index method in app\controllers\ProducerDashboardController
+2023-02-10 02:20:00  -  [INFO]  GET: http://localhost/krushi-arunalu/ProducerDashboard
+2023-02-10 02:20:00  -  [INFO]  Calling index method in app\controllers\ProducerDashboardController
+2023-02-10 02:20:07  -  [INFO]  GET: http://localhost/krushi-arunalu/ProducerDashboard
+2023-02-10 02:20:07  -  [INFO]  Calling index method in app\controllers\ProducerDashboardController
+2023-02-10 02:20:11  -  [INFO]  GET: http://localhost/krushi-arunalu/ProducerDashboard
+2023-02-10 02:20:11  -  [INFO]  Calling index method in app\controllers\ProducerDashboardController
+2023-02-10 02:21:04  -  [INFO]  GET: http://localhost/krushi-arunalu/ProducerDashboard
+2023-02-10 02:21:04  -  [INFO]  Calling index method in app\controllers\ProducerDashboardController
+2023-02-10 02:21:07  -  [INFO]  GET: http://localhost/krushi-arunalu/ProducerDashboard
+2023-02-10 02:21:07  -  [INFO]  Calling index method in app\controllers\ProducerDashboardController
+2023-02-10 02:21:29  -  [INFO]  GET: http://localhost/krushi-arunalu/ProducerDashboard
+2023-02-10 02:21:29  -  [INFO]  Calling index method in app\controllers\ProducerDashboardController
+2023-02-10 02:21:35  -  [INFO]  GET: http://localhost/krushi-arunalu/ProducerDashboard
+2023-02-10 02:21:35  -  [INFO]  Calling index method in app\controllers\ProducerDashboardController
+2023-02-10 02:21:44  -  [INFO]  GET: http://localhost/krushi-arunalu/ProducerDashboard
+2023-02-10 02:21:44  -  [INFO]  Calling index method in app\controllers\ProducerDashboardController
+2023-02-10 02:21:49  -  [INFO]  GET: http://localhost/krushi-arunalu/ProducerDashboard
+2023-02-10 02:21:49  -  [INFO]  Calling index method in app\controllers\ProducerDashboardController
+2023-02-10 02:22:09  -  [INFO]  GET: http://localhost/krushi-arunalu/ProducerDashboard
+2023-02-10 02:22:09  -  [INFO]  Calling index method in app\controllers\ProducerDashboardController
+2023-02-10 02:22:09  -  [INFO]  GET: http://localhost/krushi-arunalu/ProducerDashboard
+2023-02-10 02:22:09  -  [INFO]  Calling index method in app\controllers\ProducerDashboardController
+2023-02-10 02:22:16  -  [INFO]  GET: http://localhost/krushi-arunalu/ProducerDashboard
+2023-02-10 02:22:16  -  [INFO]  Calling index method in app\controllers\ProducerDashboardController
+2023-02-10 02:22:25  -  [INFO]  GET: http://localhost/krushi-arunalu/ProducerDashboard
+2023-02-10 02:22:25  -  [INFO]  Calling index method in app\controllers\ProducerDashboardController
+2023-02-10 02:22:29  -  [INFO]  GET: http://localhost/krushi-arunalu/ProducerDashboard
+2023-02-10 02:22:29  -  [INFO]  Calling index method in app\controllers\ProducerDashboardController
+2023-02-10 02:22:35  -  [INFO]  GET: http://localhost/krushi-arunalu/ProducerDashboard
+2023-02-10 02:22:35  -  [INFO]  Calling index method in app\controllers\ProducerDashboardController
+2023-02-10 02:22:38  -  [INFO]  GET: http://localhost/krushi-arunalu/ProducerDashboard
+2023-02-10 02:22:38  -  [INFO]  Calling index method in app\controllers\ProducerDashboardController
+2023-02-10 02:23:11  -  [INFO]  GET: http://localhost/krushi-arunalu/ProducerDashboard
+2023-02-10 02:23:11  -  [INFO]  Calling index method in app\controllers\ProducerDashboardController
+2023-02-10 02:23:26  -  [INFO]  GET: http://localhost/krushi-arunalu/ProducerDashboard
+2023-02-10 02:23:26  -  [INFO]  Calling index method in app\controllers\ProducerDashboardController
+2023-02-10 02:23:30  -  [INFO]  GET: http://localhost/krushi-arunalu/ProducerDashboard
+2023-02-10 02:23:30  -  [INFO]  Calling index method in app\controllers\ProducerDashboardController
+2023-02-10 02:23:39  -  [INFO]  GET: http://localhost/krushi-arunalu/ProducerDashboard
+2023-02-10 02:23:39  -  [INFO]  Calling index method in app\controllers\ProducerDashboardController
+2023-02-10 02:24:20  -  [INFO]  GET: http://localhost/krushi-arunalu/ProducerDashboard
+2023-02-10 02:24:20  -  [INFO]  Calling index method in app\controllers\ProducerDashboardController
+2023-02-10 02:24:28  -  [INFO]  GET: http://localhost/krushi-arunalu/ProducerDashboard
+2023-02-10 02:24:28  -  [INFO]  Calling index method in app\controllers\ProducerDashboardController
+2023-02-10 02:24:43  -  [INFO]  GET: http://localhost/krushi-arunalu/ProducerDashboard
+2023-02-10 02:24:43  -  [INFO]  Calling index method in app\controllers\ProducerDashboardController
+2023-02-10 02:24:48  -  [INFO]  GET: http://localhost/krushi-arunalu/ProducerDashboard
+2023-02-10 02:24:48  -  [INFO]  Calling index method in app\controllers\ProducerDashboardController
+2023-02-10 02:24:52  -  [INFO]  GET: http://localhost/krushi-arunalu/ProducerDashboard
+2023-02-10 02:24:52  -  [INFO]  Calling index method in app\controllers\ProducerDashboardController
+2023-02-10 02:24:56  -  [INFO]  GET: http://localhost/krushi-arunalu/ProducerDashboard
+2023-02-10 02:24:56  -  [INFO]  Calling index method in app\controllers\ProducerDashboardController
+2023-02-10 02:25:09  -  [INFO]  GET: http://localhost/krushi-arunalu/ProducerDashboard
+2023-02-10 02:25:09  -  [INFO]  Calling index method in app\controllers\ProducerDashboardController
+2023-02-10 02:25:26  -  [INFO]  GET: http://localhost/krushi-arunalu/ProducerDashboard
+2023-02-10 02:25:26  -  [INFO]  Calling index method in app\controllers\ProducerDashboardController
+2023-02-10 02:25:53  -  [INFO]  GET: http://localhost/krushi-arunalu/ProducerDashboard
+2023-02-10 02:25:53  -  [INFO]  Calling index method in app\controllers\ProducerDashboardController
+2023-02-10 02:26:14  -  [INFO]  GET: http://localhost/krushi-arunalu/ProducerDashboard
+2023-02-10 02:26:14  -  [INFO]  Calling index method in app\controllers\ProducerDashboardController
+2023-02-10 02:26:31  -  [INFO]  GET: http://localhost/krushi-arunalu/ProducerDashboard
+2023-02-10 02:26:31  -  [INFO]  Calling index method in app\controllers\ProducerDashboardController
+2023-02-10 02:26:40  -  [INFO]  GET: http://localhost/krushi-arunalu/ProducerDashboard
+2023-02-10 02:26:40  -  [INFO]  Calling index method in app\controllers\ProducerDashboardController
+2023-02-10 02:26:47  -  [INFO]  GET: http://localhost/krushi-arunalu/ProducerDashboard
+2023-02-10 02:26:47  -  [INFO]  Calling index method in app\controllers\ProducerDashboardController
+2023-02-10 02:27:23  -  [INFO]  GET: http://localhost/krushi-arunalu/ProducerDashboard
+2023-02-10 02:27:23  -  [INFO]  Calling index method in app\controllers\ProducerDashboardController
+2023-02-10 02:27:44  -  [INFO]  GET: http://localhost/krushi-arunalu/ProducerDashboard
+2023-02-10 02:27:44  -  [INFO]  Calling index method in app\controllers\ProducerDashboardController
+2023-02-10 02:28:01  -  [INFO]  GET: http://localhost/krushi-arunalu/ProducerDashboard
+2023-02-10 02:28:01  -  [INFO]  Calling index method in app\controllers\ProducerDashboardController
+2023-02-10 02:28:15  -  [INFO]  GET: http://localhost/krushi-arunalu/ProducerDashboard
+2023-02-10 02:28:15  -  [INFO]  Calling index method in app\controllers\ProducerDashboardController
+2023-02-10 02:28:30  -  [INFO]  GET: http://localhost/krushi-arunalu/Cultivations
+2023-02-10 02:28:30  -  [INFO]  Calling index method in app\controllers\CultivationsController
+2023-02-10 02:28:47  -  [INFO]  GET: http://localhost/krushi-arunalu/Cultivations
+2023-02-10 02:28:47  -  [INFO]  Calling index method in app\controllers\CultivationsController
+2023-02-10 02:28:48  -  [INFO]  GET: http://localhost/krushi-arunalu/ProducerDashboard
+2023-02-10 02:28:49  -  [INFO]  GET: http://localhost/krushi-arunalu/ProducerDashboard
+2023-02-10 02:28:58  -  [INFO]  Calling index method in app\controllers\ProducerDashboardController
+2023-02-10 02:28:58  -  [INFO]  Calling index method in app\controllers\ProducerDashboardController
+2023-02-10 02:29:58  -  [INFO]  GET: http://localhost/krushi-arunalu/ProducerDashboard
+2023-02-10 02:29:58  -  [INFO]  Calling index method in app\controllers\ProducerDashboardController
+2023-02-10 02:30:09  -  [INFO]  GET: http://localhost/krushi-arunalu/ProducerDashboard
+2023-02-10 02:30:09  -  [INFO]  Calling index method in app\controllers\ProducerDashboardController
+2023-02-10 02:30:50  -  [INFO]  GET: http://localhost/krushi-arunalu/ProducerDashboard
+2023-02-10 02:30:50  -  [INFO]  Calling index method in app\controllers\ProducerDashboardController
+2023-02-10 02:30:57  -  [INFO]  GET: http://localhost/krushi-arunalu/ProducerDashboard
+2023-02-10 02:30:57  -  [INFO]  Calling index method in app\controllers\ProducerDashboardController
+2023-02-10 02:31:06  -  [INFO]  GET: http://localhost/krushi-arunalu/ProducerDashboard
+2023-02-10 02:31:06  -  [INFO]  Calling index method in app\controllers\ProducerDashboardController
+2023-02-10 02:31:24  -  [INFO]  GET: http://localhost/krushi-arunalu/ProducerDashboard
+2023-02-10 02:31:24  -  [INFO]  Calling index method in app\controllers\ProducerDashboardController
+2023-02-10 02:31:36  -  [INFO]  GET: http://localhost/krushi-arunalu/ProducerDashboard
+2023-02-10 02:31:36  -  [INFO]  Calling index method in app\controllers\ProducerDashboardController
+2023-02-10 02:31:37  -  [INFO]  GET: http://localhost/krushi-arunalu/ProducerDashboard
+2023-02-10 02:31:37  -  [INFO]  Calling index method in app\controllers\ProducerDashboardController
+2023-02-10 02:31:51  -  [INFO]  GET: http://localhost/krushi-arunalu/ProducerDashboard
+2023-02-10 02:31:51  -  [INFO]  Calling index method in app\controllers\ProducerDashboardController
+2023-02-10 02:31:51  -  [INFO]  GET: http://localhost/krushi-arunalu/ProducerDashboard
+2023-02-10 02:31:51  -  [INFO]  Calling index method in app\controllers\ProducerDashboardController
+2023-02-10 02:33:13  -  [INFO]  GET: http://localhost/krushi-arunalu/ProducerDashboard
+2023-02-10 02:33:13  -  [INFO]  Calling index method in app\controllers\ProducerDashboardController
+2023-02-10 02:33:14  -  [INFO]  GET: http://localhost/krushi-arunalu/ShoppingCart
+2023-02-10 02:33:17  -  [INFO]  GET: http://localhost/krushi-arunalu/ProducerDashboard
+2023-02-10 02:33:17  -  [INFO]  Calling index method in app\controllers\ProducerDashboardController
+2023-02-10 02:33:42  -  [INFO]  GET: http://localhost/krushi-arunalu/ProducerDashboard
+2023-02-10 02:33:42  -  [INFO]  Calling index method in app\controllers\ProducerDashboardController
+2023-02-10 02:33:42  -  [INFO]  GET: http://localhost/krushi-arunalu/ProducerDashboard
+2023-02-10 02:33:42  -  [INFO]  Calling index method in app\controllers\ProducerDashboardController
+2023-02-10 02:33:43  -  [INFO]  GET: http://localhost/krushi-arunalu/ProducerDashboard
+2023-02-10 02:33:43  -  [INFO]  Calling index method in app\controllers\ProducerDashboardController
+2023-02-10 02:33:44  -  [INFO]  GET: http://localhost/krushi-arunalu/ShoppingCart
+2023-02-10 02:33:46  -  [INFO]  GET: http://localhost/krushi-arunalu/ProducerDashboard
+2023-02-10 02:33:46  -  [INFO]  Calling index method in app\controllers\ProducerDashboardController
+2023-02-10 02:33:57  -  [INFO]  GET: http://localhost/krushi-arunalu/ProducerDashboard
+2023-02-10 02:33:57  -  [INFO]  Calling index method in app\controllers\ProducerDashboardController
+2023-02-10 02:38:14  -  [INFO]  GET: http://localhost/krushi-arunalu/ProducerDashboard
+2023-02-10 02:38:14  -  [INFO]  Calling index method in app\controllers\ProducerDashboardController
+2023-02-10 02:38:57  -  [INFO]  GET: http://localhost/krushi-arunalu/ProducerDashboard
+2023-02-10 02:38:57  -  [INFO]  Calling index method in app\controllers\ProducerDashboardController
+2023-02-10 02:39:19  -  [INFO]  GET: http://localhost/krushi-arunalu/ProducerDashboard
+2023-02-10 02:39:19  -  [INFO]  Calling index method in app\controllers\ProducerDashboardController
+2023-02-10 02:39:37  -  [INFO]  GET: http://localhost/krushi-arunalu/ProducerDashboard
+2023-02-10 02:39:37  -  [INFO]  Calling index method in app\controllers\ProducerDashboardController
+2023-02-10 02:40:01  -  [INFO]  GET: http://localhost/krushi-arunalu/ProducerDashboard
+2023-02-10 02:40:01  -  [INFO]  Calling index method in app\controllers\ProducerDashboardController
+2023-02-10 02:40:05  -  [INFO]  GET: http://localhost/krushi-arunalu/ProducerDashboard
+2023-02-10 02:40:05  -  [INFO]  Calling index method in app\controllers\ProducerDashboardController
+2023-02-10 02:40:13  -  [INFO]  GET: http://localhost/krushi-arunalu/ProducerDashboard
+2023-02-10 02:40:14  -  [INFO]  Calling index method in app\controllers\ProducerDashboardController
+2023-02-10 02:40:25  -  [INFO]  GET: http://localhost/krushi-arunalu/ProducerDashboard
+2023-02-10 02:40:25  -  [INFO]  Calling index method in app\controllers\ProducerDashboardController
+2023-02-10 02:40:51  -  [INFO]  GET: http://localhost/krushi-arunalu/ProducerDashboard
+2023-02-10 02:40:51  -  [INFO]  Calling index method in app\controllers\ProducerDashboardController
+2023-02-10 02:41:01  -  [INFO]  GET: http://localhost/krushi-arunalu/ProducerDashboard
+2023-02-10 02:41:01  -  [INFO]  Calling index method in app\controllers\ProducerDashboardController
+2023-02-10 02:41:32  -  [INFO]  GET: http://localhost/krushi-arunalu/ProducerDashboard
+2023-02-10 02:41:32  -  [INFO]  Calling index method in app\controllers\ProducerDashboardController
+2023-02-10 02:42:54  -  [INFO]  GET: http://localhost/krushi-arunalu/ProducerDashboard
+2023-02-10 02:42:54  -  [INFO]  Calling index method in app\controllers\ProducerDashboardController
+2023-02-10 02:43:05  -  [INFO]  GET: http://localhost/krushi-arunalu/ProducerDashboard
+2023-02-10 02:43:05  -  [INFO]  Calling index method in app\controllers\ProducerDashboardController
+2023-02-10 02:43:12  -  [INFO]  GET: http://localhost/krushi-arunalu/ProducerDashboard
+2023-02-10 02:43:12  -  [INFO]  Calling index method in app\controllers\ProducerDashboardController
+2023-02-10 02:43:37  -  [INFO]  GET: http://localhost/krushi-arunalu/ProducerDashboard
+2023-02-10 02:43:37  -  [INFO]  Calling index method in app\controllers\ProducerDashboardController
+2023-02-10 02:43:37  -  [INFO]  GET: http://localhost/krushi-arunalu/ShoppingCart
+2023-02-10 02:43:40  -  [INFO]  GET: http://localhost/krushi-arunalu/ProducerDashboard
+2023-02-10 02:43:40  -  [INFO]  Calling index method in app\controllers\ProducerDashboardController
+2023-02-10 02:43:48  -  [INFO]  GET: http://localhost/krushi-arunalu/ProducerDashboard
+2023-02-10 02:43:48  -  [INFO]  Calling index method in app\controllers\ProducerDashboardController
+2023-02-10 02:44:25  -  [INFO]  GET: http://localhost/krushi-arunalu/ProducerDashboard
+2023-02-10 02:44:25  -  [INFO]  Calling index method in app\controllers\ProducerDashboardController
+2023-02-10 02:44:29  -  [INFO]  GET: http://localhost/krushi-arunalu/ProducerDashboard
+2023-02-10 02:44:29  -  [INFO]  Calling index method in app\controllers\ProducerDashboardController
+2023-02-10 02:44:37  -  [INFO]  GET: http://localhost/krushi-arunalu/ProducerDashboard
+2023-02-10 02:44:37  -  [INFO]  Calling index method in app\controllers\ProducerDashboardController
+2023-02-10 02:44:53  -  [INFO]  GET: http://localhost/krushi-arunalu/ProducerDashboard
+2023-02-10 02:44:53  -  [INFO]  Calling index method in app\controllers\ProducerDashboardController
+2023-02-10 02:45:09  -  [INFO]  GET: http://localhost/krushi-arunalu/ProducerDashboard
+2023-02-10 02:45:09  -  [INFO]  Calling index method in app\controllers\ProducerDashboardController
+2023-02-10 02:45:14  -  [INFO]  GET: http://localhost/krushi-arunalu/ProducerDashboard
+2023-02-10 02:45:14  -  [INFO]  Calling index method in app\controllers\ProducerDashboardController
+2023-02-10 02:45:34  -  [INFO]  GET: http://localhost/krushi-arunalu/ProducerDashboard
+2023-02-10 02:45:34  -  [INFO]  Calling index method in app\controllers\ProducerDashboardController
+2023-02-10 02:45:49  -  [INFO]  GET: http://localhost/krushi-arunalu/ProducerDashboard
+2023-02-10 02:45:49  -  [INFO]  Calling index method in app\controllers\ProducerDashboardController
+2023-02-10 02:45:59  -  [INFO]  GET: http://localhost/krushi-arunalu/ProducerDashboard
+2023-02-10 02:45:59  -  [INFO]  Calling index method in app\controllers\ProducerDashboardController
+2023-02-10 02:46:08  -  [INFO]  GET: http://localhost/krushi-arunalu/ProducerDashboard
+2023-02-10 02:46:08  -  [INFO]  Calling index method in app\controllers\ProducerDashboardController
+2023-02-10 02:46:19  -  [INFO]  GET: http://localhost/krushi-arunalu/ProducerDashboard
+2023-02-10 02:46:19  -  [INFO]  Calling index method in app\controllers\ProducerDashboardController
+2023-02-10 02:48:56  -  [INFO]  GET: http://localhost/krushi-arunalu/ProducerDashboard
+2023-02-10 02:48:56  -  [INFO]  Calling index method in app\controllers\ProducerDashboardController
+2023-02-10 02:49:05  -  [INFO]  GET: http://localhost/krushi-arunalu/ProducerDashboard
+2023-02-10 02:49:05  -  [INFO]  Calling index method in app\controllers\ProducerDashboardController
+2023-02-10 02:55:42  -  [INFO]  GET: http://localhost/krushi-arunalu/ProducerDashboard
+2023-02-10 02:55:42  -  [INFO]  Calling index method in app\controllers\ProducerDashboardController
+2023-02-10 02:55:43  -  [INFO]  GET: http://localhost/krushi-arunalu/ProducerDashboard
+2023-02-10 02:55:43  -  [INFO]  Calling index method in app\controllers\ProducerDashboardController
+2023-02-10 02:57:50  -  [INFO]  GET: http://localhost/krushi-arunalu/ProducerDashboard
+2023-02-10 02:57:50  -  [INFO]  Calling index method in app\controllers\ProducerDashboardController
+2023-02-10 02:57:55  -  [INFO]  GET: http://localhost/krushi-arunalu/Logout
+2023-02-10 02:57:55  -  [INFO]  Calling index method in app\controllers\LogoutController
+2023-02-10 02:57:55  -  [INFO]  GET: http://localhost/krushi-arunalu/Login
+2023-02-10 02:57:55  -  [INFO]  Calling index method in app\controllers\LoginController
+2023-02-10 02:58:01  -  [INFO]  POST: http://localhost/krushi-arunalu/Login
+2023-02-10 02:58:01  -  [INFO]  Calling index method in app\controllers\LoginController
+2023-02-10 02:58:01  -  [INFO]  Login attempt by email: gamagevinuri99@gmail.com
+2023-02-10 02:58:12  -  [INFO]  GET: http://localhost/krushi-arunalu/Marketplace
+2023-02-10 02:58:12  -  [INFO]  Calling index method in app\controllers\MarketplaceController
+2023-02-10 03:00:45  -  [INFO]  GET: http://localhost/krushi-arunalu/ShoppingCart
+2023-02-10 03:00:45  -  [INFO]  Calling index method in app\controllers\ShoppingCartController
+2023-02-10 03:01:16  -  [INFO]  GET: http://localhost/krushi-arunalu/Marketplace
+2023-02-10 03:01:16  -  [INFO]  Calling index method in app\controllers\MarketplaceController
+2023-02-10 03:01:30  -  [INFO]  GET: http://localhost/krushi-arunalu/ShoppingCart/add/1
+2023-02-10 03:01:30  -  [INFO]  Calling add method in app\controllers\ShoppingCartController
+2023-02-10 03:01:34  -  [INFO]  GET: http://localhost/krushi-arunalu/Marketplace/productdetails/1
+2023-02-10 03:01:34  -  [INFO]  Calling productdetails method in app\controllers\MarketplaceController
+2023-02-10 03:01:41  -  [PDOException]  SQLSTATE[HY000]: General error: 1364 Field 'id' doesn't have a default value
+2023-02-10 03:01:58  -  [INFO]  GET: http://localhost/krushi-arunalu/SendInquiry/1
+2023-02-10 03:02:24  -  [INFO]  GET: http://localhost/krushi-arunalu/SendInquiry/1
+2023-02-10 03:02:24  -  [ERROR]  Requested method (1) not found
+2023-02-10 03:03:06  -  [INFO]  GET: http://localhost/krushi-arunalu/Marketplace/productdetails/1
+2023-02-10 03:03:06  -  [INFO]  Calling productdetails method in app\controllers\MarketplaceController
+2023-02-10 03:03:37  -  [INFO]  GET: http://localhost/krushi-arunalu/Marketplace/sendinquiry/1
+2023-02-10 03:03:37  -  [INFO]  Calling sendinquiry method in app\controllers\MarketplaceController
+2023-02-10 03:03:45  -  [INFO]  GET: http://localhost/krushi-arunalu/
+2023-02-10 03:03:45  -  [INFO]  Calling index method in app\controllers\IndexController
+2023-02-10 03:03:48  -  [INFO]  GET: http://localhost/krushi-arunalu/Marketplace
+2023-02-10 03:03:48  -  [INFO]  Calling index method in app\controllers\MarketplaceController

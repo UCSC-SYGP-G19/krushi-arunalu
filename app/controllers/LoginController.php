@@ -45,6 +45,9 @@ class LoginController extends Controller
             case 'Agri Officer':
                 Util::redirect('announcements');
                 break;
+            case 'Admin':
+                Util::redirect('user-management');
+                break;
             default:
                 Util::redirect('dashboard');
                 break;

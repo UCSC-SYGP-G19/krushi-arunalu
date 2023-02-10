@@ -18,7 +18,7 @@ class CropCategory extends Model
     ) {
     }
 
-    public function getAllCropCategoriesFromDB(): array
+    public function getNamesFromDB(): array
     {
         return $this->runQuery("SELECT id, name FROM crop_category")->fetchAll();
     }
