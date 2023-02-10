@@ -72,11 +72,9 @@ include APP_ROOT . "/views/inc/components/Header.php";
                                             <td class="col-2 pr-3">
                                                 <div class="row justify-content-end align-items-center gap-1">
                                                     <div class="col">
-                                                        <a href='edit/<?php echo $product->id; ?>'
-                                                           class="btn-xs btn-outlined-primary-dark text-center">
-                                                            Edit
-                                                        </a>
-
+                                                        <?php echo '<a class="btn-xs btn-outlined-primary-dark 
+                                                        text-center" 
+                                                        href = "' . URL_ROOT . '/products/edit">Edit</a>' ?>
                                                     </div>
                                                     <div class="col">
                                                         <a href='delete/<?php echo $product->id; ?>'

@@ -14,6 +14,14 @@ $properties: (auto, hidden);
   }
 }
 
+.position-absolute {
+  position: absolute;
+}
+
+.position-relative {
+  position: relative;
+}
+
 .full-height {
   height: 100vh !important;
 }
@@ -45,6 +53,27 @@ $properties: (auto, hidden);
   }
 }
 
+.crop-request-card-wrapper {
+  background-color: $white;
+  border-radius: $base-border-radius;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1) !important;
+
+  .fulfilled-quantity {
+    background-color: $selected-green;
+
+    .crop-response-card-content {
+      background-color: $background-grey;
+      border-radius: $base-border-radius;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1) !important;
+
+      .accepted-quantity {
+        background-color: $selected-green;
+        border-radius: $base-border-radius-sm;
+      }
+    }
+  }
+}
+
 .inquiry-wrapper {
   background-color: $selected-green-light;
   border-radius: $base-border-radius;
@@ -73,5 +102,41 @@ $properties: (auto, hidden);
     font-weight: 300;
     color: $grey-dark;
     padding-top: 2px;
+  }
+}
+
+.order-details-wrapper {
+  .order-details-container, .delivery-address, .order-summary{
+    background-color: $selected-green-light;
+  }
+
+  .order-details-container{
+    border-radius: $base-border-radius $base-border-radius 0 0;
+    border-bottom: 2px solid $primary-green-light;
+  }
+
+  .delivery-address{
+    border-radius: 0 0 0 $base-border-radius;
+    border-top: 2px solid $primary-green-light;
+  }
+
+  .order-summary{
+    border-radius: 0 0 $base-border-radius 0;
+    border-top: 2px solid $primary-green-light;
+  }
+
+  .order-item-wrapper {
+    background-color: $white;
+    border-bottom: 1px solid $secondary-grey;
+
+    .product-img{
+      border-radius: 50%;
+    }
+
+    .product-qty{
+      background-color: $header-green;
+      height: max-content;
+      border-radius: $base-border-radius-sm;
+    }
   }
 }

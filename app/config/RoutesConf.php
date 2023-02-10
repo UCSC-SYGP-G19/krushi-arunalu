@@ -8,11 +8,11 @@
 // Names of controllers relevant to each user role without the Controller suffix
 const PROTECTED_ROUTES = [
     "Common" => ["Login", "Register", "ForgotPassword", "ResetPassword", "Logout", "Marketplace", "ManageProfile"],
-    "Producer" => ["AccountSetup", "ProducerDashboard", "Cultivations", "Harvests", "Sales", "CultivationQuestions",
-        "CropRequests", "Announcements", "Profile"],
+    "Producer" => ["AccountSetup","ProducerDashboard", "Cultivations", "Harvests", "Sales", "CultivationQuestions",
+        "CropRequests", "Announcements", "Profile", "Manufacturers"],
     "Manufacturer" => ["ManufacturerDashboard", "Sales", "ManufacturerOrders", "Producers", "Stocks",
         "ProductCategories", "Products", "CropRequests", "Inquiries"],
-    "Customer" => ["Marketplace", "ShoppingCart", "Orders", "Profile"],
+    "Customer" => ["Marketplace", "ShoppingCart", "Orders", "Profile", "SendInquiry"],
     "Agri Officer" => ["Dashboard", "Announcements", "Producer Details", "land-details",
         "cultivation-details", "crop-prices", "crop-prices", "cultivation-questions"],
     "Admin" => ["Dashboard", "All Products", "Crops", "manufacturers", "producers", "announcements", "UserManagement"]
@@ -29,7 +29,7 @@ const SIDEBAR_ROUTES = [
             "link" => "cultivations",
         ],
         "Harvests" => [
-            "icon" => "stocks",
+            "icon" => "purchased-stocks",
             "link" => "harvests",
         ],
         "Sales" => [
@@ -60,16 +60,16 @@ const SIDEBAR_ROUTES = [
             "link" => "manufacturer-dashboard",
         ],
         "Sales" => [
-            "icon" => "sales",
-            "link" => "sales",
+            "icon" => "manufacturer-sales",
+            "link" => "manufacturer-sales",
         ],
-        "Manufacturer Orders" => [
+        "Purchases" => [
             "icon" => "manufacturer-orders",
-            "link" => "manufacturer-orders",
+            "link" => "purchases",
         ],
         "Purchased Stocks" => [
-            "icon" => "stocks",
-            "link" => "stocks",
+            "icon" => "purchased-stocks",
+            "link" => "purchased-stocks",
         ],
         "Product Categories" => [
             "icon" => "product-categories",
@@ -84,8 +84,8 @@ const SIDEBAR_ROUTES = [
             "link" => "producers",
         ],
         "Crop Requests" => [
-            "icon" => "crop-requests-manufacturer",
-            "link" => "crop-requests-manufacturer",
+            "icon" => "manufacturer-crop-requests",
+            "link" => "manufacturer-crop-requests",
         ],
         "Inquiries" => [
             "icon" => "inquiries",

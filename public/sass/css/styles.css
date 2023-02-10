@@ -1,45 +1,30 @@
-.upload-content {
-  font-size: small;
-  text-align: center;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-direction: column;
+.login {
+  height: 100vh;
+  width: 100vw;
+  background-image: url("../img/login-bg.webp");
+  margin-top: -100px;
 }
-
-.btn-browse {
-  cursor: pointer;
-  border: none;
-  background-color: #FFFFFF;
-  font-weight: bold;
+.login .wrapper {
+  background: rgba(255, 255, 255, 0.7);
+  box-shadow: 0 4px 50px rgba(0, 0, 0, 0.2);
+  border-radius: 24px;
+  width: 35%;
+  height: fit-content;
 }
-
-.image-upload {
-  border: 2px dashed #B1B1B1;
-  border-radius: 16px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-direction: column;
-  padding: 16px;
+.login button {
+  width: 200px;
+  height: 50px;
+  font-size: 1.1rem;
+  border-radius: 8px;
 }
-
-.image-upload.drag {
-  background-color: #e1dfdf;
+.login input {
+  height: 48px;
+  font-size: 1rem;
+  margin-bottom: 1.5rem;
 }
-
-.btn-cancel {
-  position: absolute;
-  font-size: large;
-  cursor: pointer;
-  background-color: #B1B1B1;
-  border: none;
-  padding: 0 7px;
-  border-radius: 50%;
-}
-
-.image-preview {
-  text-align: right;
+.login form .error {
+  font-size: 0.9rem;
+  margin-top: -0.75rem;
 }
 
 /*# sourceMappingURL=styles.css.map */

@@ -39,6 +39,16 @@ class Manufacturer extends RegisteredUser
         return false;
     }
 
+    public function getAllFromDB(): array
+    {
+        return $this->runQuery("SELECT 
+            manufacturer.id as 'manufacturer_id',     
+            registered_user.name as 'manufacturer_name'
+            FROM manufacturer
+            INNER JOIN registered_user ON manufacturer.id = registered_user.id
+            ", [])->fetchAll();
+    }
+
     /**
      * @return string|null
      */

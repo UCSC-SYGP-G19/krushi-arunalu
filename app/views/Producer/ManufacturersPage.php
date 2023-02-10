@@ -20,16 +20,16 @@ include APP_ROOT . "/views/inc/components/Header.php";
                     <div class="container-fluid px-2">
                         <div class="row px-1 pt-1 justify-content-space-between">
                             <div class="col-6">
-                                <h1 class="title text-black">Producers</h1>
+                                <h1 class="title">Manufacturers</h1>
                             </div>
                             <div class="col">
-                                <a href="producers/connectionRequests"
+                                <a href="manufacturers/connection-requests"
                                    class="btn-md btn-primary-light text-center text-white">
                                     Connection Requests</a>
                             </div>
                         </div>
                         <div class="row d-flex">
-                            <span class="text-primary-light px-1 pt-3 fs-4 fw-bold">All</span>
+                            <span class="text-primary-light px-1 pt-3 fs-4 fw-bold"><u>All</u></span>
                             <span class="text-secondary px-1 pt-3 fs-4 fw-bold mx-4">Connected</span>
                         </div>
                         <div class="row px-1 pt-2">
@@ -38,37 +38,37 @@ include APP_ROOT . "/views/inc/components/Header.php";
                                 <?php
                                 include APP_ROOT . "/views/inc/components/SearchFilterAndSort.php";
                                 $this->tableHeaders = [
-                                    "producer_id" => [
+                                    "manufacturer_id" => [
                                         "label" => "ID",
                                         "sortable" => true,
                                         "sortKey" => "id",
-                                        "class" => "col-2",
+                                        "class" => "col-3",
                                     ],
-                                    "producer_name" => [
+                                    "manufacturer_name" => [
                                         "label" => "Name",
                                         "sortable" => true,
                                         "sortKey" => "name",
-                                        "class" => "col-4",
+                                        "class" => "col-3",
                                     ],
-                                    "cultivating_crops" => [
-                                        "label" => "Cultivating Crops",
+                                    "interested_crops" => [
+                                        "label" => "Interested Crops",
                                         "sortable" => true,
-                                        "sortKey" => "cultivating_crops",
-                                        "class" => "col-4",
+                                        "sortKey" => "interested_crops",
+                                        "class" => "col-3",
                                     ],
-                                    "actions" => [
+                                    "" => [
                                         "label" => "",
                                         "sortable" => false,
-                                        "class" => "col-2"
+                                        "class" => "col-3"
                                     ]
                                 ];
-                                $producersTable = new Table(
-                                    "producers",
+                                $manufacturersTable = new Table(
+                                    "manufacturers",
                                     $this->tableHeaders,
                                     $this->data,
-                                    "producer_id"
+                                    "manufacturer_id"
                                 );
-                                $producersTable->render();
+                                $manufacturersTable->render();
                                 ?>
                             </div>
                         </div>
