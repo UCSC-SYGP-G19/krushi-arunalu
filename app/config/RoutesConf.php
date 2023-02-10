@@ -12,7 +12,7 @@ const PROTECTED_ROUTES = [
         "CropRequests", "Announcements", "Profile"],
     "Manufacturer" => ["ManufacturerDashboard", "Sales", "Purchases", "Manufacturers", "Stocks", "ProductCategories",
         "Products"],
-    "Customer" => ["Marketplace", "ShoppingCart", "Orders", "Profile", "Checkout"],
+    "Customer" => ["Marketplace", "ShoppingCart", "Orders", "Profile", "CustomerOrder", "Checkout"],
 ];
 
 const SIDEBAR_ROUTES = [
@@ -101,8 +101,8 @@ const SIDEBAR_ROUTES = [
             "link" => "manufacturers",
         ],
         "My Orders" => [
-            "icon" => "my-orders",
-            "link" => "my-orders",
+            "icon" => "orders",
+            "link" => "orders",
         ],
     ],
 ];
