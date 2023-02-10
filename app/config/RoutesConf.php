@@ -15,7 +15,7 @@ const PROTECTED_ROUTES = [
     "Customer" => ["Marketplace", "ShoppingCart", "Orders", "Profile", "SendInquiry", "ShoppingCart", "Manufacturers"],
     "Agri Officer" => ["Dashboard", "Announcements", "Producers", "land-details",
         "cultivation-details", "crop-prices", "crop-prices", "cultivation-questions"],
-    "Admin" => ["Dashboard", "All Products", "Crops", "manufacturers", "producers", "announcements", "UserManagement"]
+    ""Admin" => ["Dashboard", "AllProducts", "Crops", "Manufacturers", "Producers", "Announcements", "UserManagement"]
 ];
 
 const SIDEBAR_ROUTES = [
