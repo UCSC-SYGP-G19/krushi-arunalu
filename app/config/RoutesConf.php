@@ -8,11 +8,14 @@
 // Names of controllers relevant to each user role without the Controller suffix
 const PROTECTED_ROUTES = [
     "Common" => ["Login", "Register", "ForgotPassword", "ResetPassword", "Logout", "Marketplace", "ManageProfile"],
-    "Producer" => ["AccountSetup","ProducerDashboard", "Cultivations", "Harvests", "Sales", "CultivationQuestions",
+    "Producer" => ["AccountSetup", "ProducerDashboard", "Cultivations", "Harvests", "Sales", "CultivationQuestions",
         "CropRequests", "Announcements", "Profile"],
     "Manufacturer" => ["ManufacturerDashboard", "Sales", "ManufacturerOrders", "Producers", "Stocks",
         "ProductCategories", "Products", "CropRequests", "Inquiries"],
     "Customer" => ["Marketplace", "ShoppingCart", "Orders", "Profile"],
+    "Agri Officer" => ["Dashboard", "Announcements", "ProducerDetails", "LandDetails",
+        "cultivation-details", "crop-prices", "crop-prices", "cultivation-questions"],
+    "Admin" => ["Dashboard", "All Products", "Crops", "manufacturers", "producer", "announcements", "UserManagement"]
 ];
 
 const SIDEBAR_ROUTES = [
@@ -136,5 +139,33 @@ const SIDEBAR_ROUTES = [
             "link" => "cultivation-questions",
         ],
     ],
-
-];
+    "Admin" => [
+        "Dashboard" => [
+            "icon" => "dashboard",
+            "link" => "Dashboard",
+        ],
+        "All Products" => [
+            "icon" => "all-products",
+            "link" => "all-products",
+        ],
+        "Crops" => [
+            "icon" => "crops",
+            "link" => "crops",
+        ],
+        "manufacturers" => [
+            "icon" => "crops",
+            "link" => "crops",
+        ],
+        "producers" => [
+            "icon" => "producers",
+            "link" => "producers",
+        ],
+        "announcements" => [
+            "icon" => "announcements",
+            "link" => "announcements",
+        ],
+        "User Management" => [
+            "icon" => "user-management",
+            "link" => "user-management",
+        ],
+    ],];

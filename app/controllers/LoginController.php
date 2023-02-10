@@ -43,7 +43,7 @@ class LoginController extends Controller
                 Util::redirect('manufacturer-dashboard');
                 break;
             case 'Agri Officer':
-                Util::redirect('agri-officer-dashboard');
+                Util::redirect('announcements');
                 break;
             default:
                 Util::redirect('dashboard');
