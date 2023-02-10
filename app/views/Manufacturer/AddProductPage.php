@@ -39,9 +39,9 @@ include APP_ROOT . "/views/inc/components/Header.php";
                                 <select name="category_id" id="category_id">
                                     <option value="" selected>Select category</option>
                                     <?php foreach ($this->fieldOptions["product_category"] as $option) {
-                                        echo '<option value="' . $option->getId() . '"' .
-                                            ($this->fields['category_id'] == $option->getId() ? 'selected' : '')
-                                            . '>' . $option->getName() . '</option>';
+                                        echo '<option value="' . $option->id . '"' .
+                                            ($this->fields['category_id'] == $option->id ? 'selected' : '')
+                                            . '>' . $option->name . '</option>';
                                     }
                                     ?>
                                 </select>
@@ -138,12 +138,13 @@ include APP_ROOT . "/views/inc/components/Header.php";
                             <div class="col-12">
                                 <label for="description">Description</label>
                                 <textarea id="description" name="description" rows="5"
-                                       placeholder="Add a description"
-                                       value="<?php
-                                        if (isset($this->fields['description'])) {
-                                            echo $this->fields['description'];
-                                        }
-                                        ?>"></textarea>
+                                          placeholder="Add a description">
+                                    <?php
+                                    if (isset($this->fields['description'])) {
+                                        echo $this->fields['description'];
+                                    }
+                                    ?>
+                                </textarea>
                                 <?php if (isset($this->fieldErrors['description'])) { ?>
                                     <div class="error"><?php echo $this->fieldErrors['description']; ?></div>
                                 <?php } ?>

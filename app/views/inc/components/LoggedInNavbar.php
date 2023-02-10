@@ -1,4 +1,4 @@
-<nav class="navbar logged-in-navbar">
+<nav class="navbar logged-in-navbar justify-content-space-between">
     <div class="col-1 pt-1">
         <button id="btn-toggle-sidebar">
             <svg width="30" height="30" viewBox="0 0 30 30" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -11,10 +11,27 @@
             </svg>
         </button>
     </div>
+
     <div class="col-4 text-center pt-1">
         <div class="row">
-            <div class="col-2 m-auto"></div>
-            <div class="col-6 text-right pb-1 px-1 m-auto">
+
+            <div class="col-3 m-auto">
+                <div class="justify-content-center align-items-center">
+                    <?php echo '<img src="' . URL_ROOT . '/public/img/icons/other/lang-icon.png" 
+                alt="Lang icon" height="20px">' ?>
+
+
+                    <span class="fs-3 fw-bold text-primary-dark pb-2 position-absolute">&ensp;English&nbsp;
+<svg width="12" height="7" viewBox="0 0 12 7" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M1 1L6 6L11 1" stroke="#185427" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>
+
+
+</span>
+                </div>
+
+            </div>
+            <div class="col-6 text-right pb-1 px-2 m-auto">
                 <?php
                 try {
                     assert(isset($this?->user), '(User not set)');
@@ -25,19 +42,21 @@
                 }
                 ?>
             </div>
-            <div class="m-auto user-profile-pic">
+
+            <div class="col-2 m-auto user-profile-pic">
                 <button id="btn-toggle-navbar-options" class="overlay"></button>
                 <?php echo '<img src="' . URL_ROOT . '/public/img/icons/navbar/user-avatar.webp" 
                 alt="User profile icon" height="56px">' ?>
             </div>
         </div>
 
-
     </div>
+
+
     <div id="navbar-options-panel" class="py-1">
         <ul>
             <li>
-                <a href="<?php echo URL_ROOT ?>/profile">
+                <a href="<?php echo URL_ROOT ?>/manageProfile">
                     <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <path d="M16.6668 17.5V15.8333C16.6668 14.9493 16.3156 14.1014 15.6905 13.4763C15.0654 12.8512
                         14.2176 12.5 13.3335 12.5H6.66683C5.78277 12.5 4.93493 12.8512 4.30981 13.4763C3.68469 14.1014

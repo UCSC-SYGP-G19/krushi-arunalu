@@ -128,4 +128,16 @@
       color: $error-red;
     }
   }
+
+  .btn-shopping-cart {
+    margin-top: -8px;
+    margin-left: -8px;
+    position: absolute;
+    border-radius: 8px;
+    border: 1px solid $primary-green-dark;
+  }
+
+  .btn-shopping-cart:hover {
+    background-color: $selected-green;
+  }
 }

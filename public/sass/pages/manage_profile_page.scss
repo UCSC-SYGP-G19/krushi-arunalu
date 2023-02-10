@@ -1,0 +1,45 @@
+@import "../partials/variables";
+
+.upload-content{
+  font-size:small ;
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.btn-browse{
+  cursor: pointer;
+  border: none;
+  background-color: #FFFFFF;
+  font-weight: bold;
+}
+
+.image-upload{
+  border: 2px dashed $secondary-grey;
+  border-radius: $base-border-radius;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  padding: 16px;
+}
+
+.image-upload.drag{
+  background-color: #e1dfdf;
+}
+
+.btn-cancel{
+  position: absolute;
+  font-size: large;
+  cursor: pointer;
+  background-color: #B1B1B1;
+  border: none;
+  padding: 0 7px;
+  border-radius: 50%;
+}
+
+.image-preview{
+  text-align: right;
+}
