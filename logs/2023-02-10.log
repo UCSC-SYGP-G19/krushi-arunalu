@@ -583,3 +583,175 @@
 2023-02-10 09:20:15  -  [INFO]  Calling index method in app\controllers\MarketplaceController
 2023-02-10 09:20:17  -  [INFO]  GET: http://localhost/krushi-arunalu/ShoppingCart
 2023-02-10 09:20:17  -  [INFO]  Calling index method in app\controllers\ShoppingCartController
+2023-02-10 09:21:34  -  [INFO]  GET: http://localhost/krushi-arunalu/ShoppingCart
+2023-02-10 09:21:34  -  [INFO]  Calling index method in app\controllers\ShoppingCartController
+2023-02-10 09:21:37  -  [INFO]  GET: http://localhost/krushi-arunalu/ShoppingCart
+2023-02-10 09:21:37  -  [INFO]  Calling index method in app\controllers\ShoppingCartController
+2023-02-10 09:21:38  -  [INFO]  GET: http://localhost/krushi-arunalu/Manufacturers
+2023-02-10 09:21:38  -  [INFO]  Calling index method in app\controllers\ManufacturersController
+2023-02-10 09:21:40  -  [INFO]  GET: http://localhost/krushi-arunalu/Marketplace
+2023-02-10 09:21:40  -  [INFO]  Calling index method in app\controllers\MarketplaceController
+2023-02-10 09:21:41  -  [INFO]  GET: http://localhost/krushi-arunalu/ShoppingCart/add/1
+2023-02-10 09:21:41  -  [INFO]  Calling add method in app\controllers\ShoppingCartController
+2023-02-10 09:21:42  -  [PDOException]  SQLSTATE[HY000]: General error: 1364 Field 'id' doesn't have a default value
+2023-02-10 09:21:42  -  [INFO]  GET: http://localhost/krushi-arunalu/Marketplace
+2023-02-10 09:21:42  -  [INFO]  Calling index method in app\controllers\MarketplaceController
+2023-02-10 09:21:43  -  [INFO]  GET: http://localhost/krushi-arunalu/ShoppingCart/add/3
+2023-02-10 09:21:43  -  [INFO]  Calling add method in app\controllers\ShoppingCartController
+2023-02-10 09:21:43  -  [PDOException]  SQLSTATE[HY000]: General error: 1364 Field 'id' doesn't have a default value
+2023-02-10 09:21:43  -  [INFO]  GET: http://localhost/krushi-arunalu/Marketplace
+2023-02-10 09:21:43  -  [INFO]  Calling index method in app\controllers\MarketplaceController
+2023-02-10 09:21:44  -  [INFO]  GET: http://localhost/krushi-arunalu/ShoppingCart/add/5
+2023-02-10 09:21:44  -  [INFO]  Calling add method in app\controllers\ShoppingCartController
+2023-02-10 09:21:44  -  [INFO]  GET: http://localhost/krushi-arunalu/ShoppingCart/add/5
+2023-02-10 09:21:44  -  [PDOException]  SQLSTATE[HY000]: General error: 1364 Field 'id' doesn't have a default value
+2023-02-10 09:21:44  -  [INFO]  Calling add method in app\controllers\ShoppingCartController
+2023-02-10 09:21:45  -  [PDOException]  SQLSTATE[HY000]: General error: 1364 Field 'id' doesn't have a default value
+2023-02-10 09:21:45  -  [INFO]  GET: http://localhost/krushi-arunalu/Marketplace
+2023-02-10 09:21:45  -  [INFO]  Calling index method in app\controllers\MarketplaceController
+2023-02-10 09:21:46  -  [INFO]  GET: http://localhost/krushi-arunalu/ShoppingCart
+2023-02-10 09:21:46  -  [INFO]  Calling index method in app\controllers\ShoppingCartController
+2023-02-10 09:21:48  -  [INFO]  GET: http://localhost/krushi-arunalu/ShoppingCart
+2023-02-10 09:21:48  -  [INFO]  Calling index method in app\controllers\ShoppingCartController
+2023-02-10 09:22:00  -  [INFO]  GET: http://localhost/krushi-arunalu/ShoppingCart
+2023-02-10 09:22:00  -  [INFO]  Calling index method in app\controllers\ShoppingCartController
+2023-02-10 09:22:27  -  [INFO]  GET: http://localhost/krushi-arunalu/ShoppingCart
+2023-02-10 09:22:27  -  [INFO]  Calling index method in app\controllers\ShoppingCartController
+2023-02-10 09:22:31  -  [INFO]  GET: http://localhost/krushi-arunalu/
+2023-02-10 09:22:31  -  [INFO]  Calling index method in app\controllers\IndexController
+2023-02-10 09:22:32  -  [INFO]  GET: http://localhost/krushi-arunalu/Login
+2023-02-10 09:22:32  -  [INFO]  Calling index method in app\controllers\LoginController
+2023-02-10 09:22:32  -  [INFO]  GET: http://localhost/krushi-arunalu/Marketplace
+2023-02-10 09:22:32  -  [INFO]  Calling index method in app\controllers\MarketplaceController
+2023-02-10 09:22:37  -  [INFO]  GET: http://localhost/krushi-arunalu/Marketplace/logout
+2023-02-10 09:22:37  -  [ERROR]  Requested method (logout) not found
+2023-02-10 09:22:41  -  [INFO]  GET: http://localhost/krushi-arunalu/Logout
+2023-02-10 09:22:41  -  [INFO]  Calling index method in app\controllers\LogoutController
+2023-02-10 09:22:41  -  [INFO]  GET: http://localhost/krushi-arunalu/Login
+2023-02-10 09:22:41  -  [INFO]  Calling index method in app\controllers\LoginController
+2023-02-10 09:22:44  -  [INFO]  POST: http://localhost/krushi-arunalu/Login
+2023-02-10 09:22:44  -  [INFO]  Calling index method in app\controllers\LoginController
+2023-02-10 09:22:44  -  [INFO]  Login attempt by email: sandulrenuja@gmail.com
+2023-02-10 09:22:45  -  [INFO]  GET: http://localhost/krushi-arunalu/ProducerDashboard
+2023-02-10 09:22:45  -  [INFO]  Calling index method in app\controllers\ProducerDashboardController
+2023-02-10 09:27:41  -  [INFO]  GET: http://localhost/krushi-arunalu/Logout
+2023-02-10 09:27:41  -  [INFO]  Calling index method in app\controllers\LogoutController
+2023-02-10 09:27:41  -  [INFO]  GET: http://localhost/krushi-arunalu/Login
+2023-02-10 09:27:41  -  [INFO]  Calling index method in app\controllers\LoginController
+2023-02-10 09:27:42  -  [INFO]  GET: http://localhost/krushi-arunalu/ProducerDashboard
+2023-02-10 09:27:42  -  [INFO]  GET: http://localhost/krushi-arunalu/Login
+2023-02-10 09:27:42  -  [INFO]  Calling index method in app\controllers\LoginController
+2023-02-10 09:27:44  -  [INFO]  GET: http://localhost/krushi-arunalu/Register
+2023-02-10 09:27:44  -  [INFO]  Calling index method in app\controllers\RegisterController
+2023-02-10 09:27:48  -  [INFO]  GET: http://localhost/krushi-arunalu/
+2023-02-10 09:27:48  -  [INFO]  Calling index method in app\controllers\IndexController
+2023-02-10 09:27:49  -  [INFO]  GET: http://localhost/krushi-arunalu/Login
+2023-02-10 09:27:49  -  [INFO]  Calling index method in app\controllers\LoginController
+2023-02-10 09:27:50  -  [INFO]  GET: http://localhost/krushi-arunalu/
+2023-02-10 09:27:50  -  [INFO]  Calling index method in app\controllers\IndexController
+2023-02-10 09:27:50  -  [INFO]  GET: http://localhost/krushi-arunalu/Marketplace
+2023-02-10 09:27:50  -  [INFO]  Calling index method in app\controllers\MarketplaceController
+2023-02-10 09:27:52  -  [INFO]  GET: http://localhost/krushi-arunalu/
+2023-02-10 09:27:52  -  [INFO]  Calling index method in app\controllers\IndexController
+2023-02-10 09:27:52  -  [INFO]  GET: http://localhost/krushi-arunalu/Login
+2023-02-10 09:27:52  -  [INFO]  Calling index method in app\controllers\LoginController
+2023-02-10 09:27:59  -  [INFO]  POST: http://localhost/krushi-arunalu/Login
+2023-02-10 09:27:59  -  [INFO]  Calling index method in app\controllers\LoginController
+2023-02-10 09:27:59  -  [INFO]  Login attempt by email: testmanufacturer1@gmail.com
+2023-02-10 09:28:00  -  [INFO]  GET: http://localhost/krushi-arunalu/ManufacturerDashboard
+2023-02-10 09:28:00  -  [INFO]  Calling index method in app\controllers\ManufacturerDashboardController
+2023-02-10 09:28:04  -  [INFO]  GET: http://localhost/krushi-arunalu/ManufacturerSales
+2023-02-10 09:28:32  -  [INFO]  GET: http://localhost/krushi-arunalu/ManufacturerSales
+2023-02-10 09:28:32  -  [INFO]  Calling index method in app\controllers\ManufacturerSalesController
+2023-02-10 09:28:34  -  [INFO]  GET: http://localhost/krushi-arunalu/Purchases
+2023-02-10 09:28:34  -  [ERROR]  Requested controller (Purchases) not found
+2023-02-10 09:28:36  -  [INFO]  GET: http://localhost/krushi-arunalu/ManufacturerSales
+2023-02-10 09:28:36  -  [INFO]  Calling index method in app\controllers\ManufacturerSalesController
+2023-02-10 09:28:38  -  [INFO]  GET: http://localhost/krushi-arunalu/Purchases
+2023-02-10 09:28:38  -  [ERROR]  Requested controller (Purchases) not found
+2023-02-10 09:28:41  -  [INFO]  GET: http://localhost/krushi-arunalu/ManufacturerSales
+2023-02-10 09:28:41  -  [INFO]  Calling index method in app\controllers\ManufacturerSalesController
+2023-02-10 09:29:00  -  [INFO]  GET: http://localhost/krushi-arunalu/ManufacturerSales
+2023-02-10 09:29:00  -  [INFO]  Calling index method in app\controllers\ManufacturerSalesController
+2023-02-10 09:29:14  -  [INFO]  GET: http://localhost/krushi-arunalu/PurchasedStocks
+2023-02-10 09:29:16  -  [INFO]  GET: http://localhost/krushi-arunalu/ManufacturerSales
+2023-02-10 09:29:16  -  [INFO]  Calling index method in app\controllers\ManufacturerSalesController
+2023-02-10 09:29:17  -  [INFO]  GET: http://localhost/krushi-arunalu/ManufacturerSales
+2023-02-10 09:29:17  -  [INFO]  Calling index method in app\controllers\ManufacturerSalesController
+2023-02-10 09:29:17  -  [INFO]  GET: http://localhost/krushi-arunalu/ManufacturerOrders
+2023-02-10 09:29:17  -  [INFO]  Calling index method in app\controllers\ManufacturerOrdersController
+2023-02-10 09:29:19  -  [INFO]  GET: http://localhost/krushi-arunalu/ManufacturerSales
+2023-02-10 09:29:19  -  [INFO]  Calling index method in app\controllers\ManufacturerSalesController
+2023-02-10 09:29:23  -  [INFO]  GET: http://localhost/krushi-arunalu/ManufacturerSales
+2023-02-10 09:29:23  -  [INFO]  Calling index method in app\controllers\ManufacturerSalesController
+2023-02-10 09:29:50  -  [INFO]  GET: http://localhost/krushi-arunalu/PurchasedStocks
+2023-02-10 09:30:02  -  [INFO]  GET: http://localhost/krushi-arunalu/PurchasedStocks
+2023-02-10 09:30:02  -  [INFO]  Calling index method in app\controllers\PurchasedStocksController
+2023-02-10 09:30:06  -  [INFO]  GET: http://localhost/krushi-arunalu/ManufacturerCropRequests
+2023-02-10 09:30:25  -  [INFO]  GET: http://localhost/krushi-arunalu/ManufacturerCropRequests
+2023-02-10 09:30:25  -  [INFO]  Calling index method in app\controllers\ManufacturerCropRequestsController
+2023-02-10 09:30:28  -  [INFO]  GET: http://localhost/krushi-arunalu/Inquiries
+2023-02-10 09:30:28  -  [INFO]  Calling index method in app\controllers\InquiriesController
+2023-02-10 09:30:29  -  [INFO]  GET: http://localhost/krushi-arunalu/Producers
+2023-02-10 09:30:29  -  [INFO]  Calling index method in app\controllers\ProducersController
+2023-02-10 09:30:30  -  [INFO]  GET: http://localhost/krushi-arunalu/Products
+2023-02-10 09:30:30  -  [INFO]  Calling index method in app\controllers\ProductsController
+2023-02-10 09:30:31  -  [INFO]  GET: http://localhost/krushi-arunalu/ProductCategories
+2023-02-10 09:30:31  -  [INFO]  Calling index method in app\controllers\ProductCategoriesController
+2023-02-10 09:30:31  -  [INFO]  GET: http://localhost/krushi-arunalu/PurchasedStocks
+2023-02-10 09:30:31  -  [INFO]  Calling index method in app\controllers\PurchasedStocksController
+2023-02-10 09:30:32  -  [INFO]  GET: http://localhost/krushi-arunalu/ManufacturerOrders
+2023-02-10 09:30:32  -  [INFO]  Calling index method in app\controllers\ManufacturerOrdersController
+2023-02-10 09:30:33  -  [INFO]  GET: http://localhost/krushi-arunalu/ManufacturerSales
+2023-02-10 09:30:33  -  [INFO]  Calling index method in app\controllers\ManufacturerSalesController
+2023-02-10 09:30:34  -  [INFO]  GET: http://localhost/krushi-arunalu/ManufacturerDashboard
+2023-02-10 09:30:34  -  [INFO]  Calling index method in app\controllers\ManufacturerDashboardController
+2023-02-10 09:30:38  -  [INFO]  GET: http://localhost/krushi-arunalu/ManufacturerSales
+2023-02-10 09:30:38  -  [INFO]  Calling index method in app\controllers\ManufacturerSalesController
+2023-02-10 09:31:01  -  [INFO]  GET: http://localhost/krushi-arunalu/ManufacturerSales
+2023-02-10 09:31:01  -  [INFO]  Calling index method in app\controllers\ManufacturerSalesController
+2023-02-10 09:31:04  -  [INFO]  GET: http://localhost/krushi-arunalu/Logout
+2023-02-10 09:31:04  -  [INFO]  Calling index method in app\controllers\LogoutController
+2023-02-10 09:31:04  -  [INFO]  GET: http://localhost/krushi-arunalu/Login
+2023-02-10 09:31:04  -  [INFO]  Calling index method in app\controllers\LoginController
+2023-02-10 09:31:12  -  [INFO]  POST: http://localhost/krushi-arunalu/Login
+2023-02-10 09:31:12  -  [INFO]  Calling index method in app\controllers\LoginController
+2023-02-10 09:31:12  -  [INFO]  Login attempt by email: admin@gmail.com
+2023-02-10 09:31:13  -  [INFO]  GET: http://localhost/krushi-arunalu/UserManagement
+2023-02-10 09:31:13  -  [INFO]  Calling index method in app\controllers\UserManagementController
+2023-02-10 09:31:18  -  [INFO]  GET: http://localhost/krushi-arunalu/Announcements
+2023-02-10 09:31:19  -  [INFO]  GET: http://localhost/krushi-arunalu/UserManagement
+2023-02-10 09:31:19  -  [INFO]  Calling index method in app\controllers\UserManagementController
+2023-02-10 09:31:20  -  [INFO]  GET: http://localhost/krushi-arunalu/Dashboard
+2023-02-10 09:31:20  -  [ERROR]  Requested controller (Dashboard) not found
+2023-02-10 09:31:20  -  [INFO]  GET: http://localhost/krushi-arunalu/UserManagement
+2023-02-10 09:31:20  -  [INFO]  Calling index method in app\controllers\UserManagementController
+2023-02-10 09:31:22  -  [INFO]  GET: http://localhost/krushi-arunalu/Logout
+2023-02-10 09:31:22  -  [INFO]  Calling index method in app\controllers\LogoutController
+2023-02-10 09:31:22  -  [INFO]  GET: http://localhost/krushi-arunalu/Login
+2023-02-10 09:31:22  -  [INFO]  Calling index method in app\controllers\LoginController
+2023-02-10 09:31:34  -  [INFO]  POST: http://localhost/krushi-arunalu/Login
+2023-02-10 09:31:34  -  [INFO]  Calling index method in app\controllers\LoginController
+2023-02-10 09:31:34  -  [INFO]  Login attempt by email: rumindu@gmail.com
+2023-02-10 09:31:35  -  [INFO]  GET: http://localhost/krushi-arunalu/Announcements
+2023-02-10 09:31:35  -  [INFO]  Calling index method in app\controllers\AnnouncementsController
+2023-02-10 09:31:37  -  [INFO]  GET: http://localhost/krushi-arunalu/ProducerDetails
+2023-02-10 09:31:37  -  [ERROR]  Requested controller (ProducerDetails) not found
+2023-02-10 09:31:37  -  [INFO]  GET: http://localhost/krushi-arunalu/Announcements
+2023-02-10 09:31:37  -  [INFO]  Calling index method in app\controllers\AnnouncementsController
+2023-02-10 09:31:40  -  [INFO]  GET: http://localhost/krushi-arunalu/Announcements/publish
+2023-02-10 09:31:40  -  [INFO]  Calling publish method in app\controllers\AnnouncementsController
+2023-02-10 09:31:42  -  [INFO]  GET: http://localhost/krushi-arunalu/ProducerDetails
+2023-02-10 09:31:42  -  [ERROR]  Requested controller (ProducerDetails) not found
+2023-02-10 09:32:17  -  [INFO]  GET: http://localhost/krushi-arunalu/Announcements/publish
+2023-02-10 09:32:17  -  [INFO]  Calling publish method in app\controllers\AnnouncementsController
+2023-02-10 09:32:18  -  [INFO]  GET: http://localhost/krushi-arunalu/Producers
+2023-02-10 09:32:18  -  [INFO]  Calling index method in app\controllers\ProducersController
+2023-02-10 09:32:21  -  [INFO]  GET: http://localhost/krushi-arunalu/LandDetails
+2023-02-10 09:32:21  -  [ERROR]  Requested controller (LandDetails) not found
+2023-02-10 09:32:22  -  [INFO]  GET: http://localhost/krushi-arunalu/Producers
+2023-02-10 09:32:22  -  [INFO]  Calling index method in app\controllers\ProducersController
+2023-02-10 09:32:29  -  [INFO]  GET: http://localhost/krushi-arunalu/Logout
+2023-02-10 09:32:29  -  [INFO]  Calling index method in app\controllers\LogoutController
+2023-02-10 09:32:29  -  [INFO]  GET: http://localhost/krushi-arunalu/Login
+2023-02-10 09:32:29  -  [INFO]  Calling index method in app\controllers\LoginController
