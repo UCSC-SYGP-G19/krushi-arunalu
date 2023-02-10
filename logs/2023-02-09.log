@@ -697,3 +697,143 @@
 2023-02-09 16:22:32  -  [INFO]  Calling index method in app\controllers\HarvestsController
 2023-02-09 16:22:41  -  [INFO]  GET: http://localhost/krushi-arunalu/Cultivations
 2023-02-09 16:22:41  -  [INFO]  Calling index method in app\controllers\CultivationsController
+2023-02-09 18:53:05  -  [INFO]  GET: http://localhost/krushi-arunalu/
+2023-02-09 18:53:05  -  [INFO]  Calling index method in app\controllers\IndexController
+2023-02-09 18:55:24  -  [INFO]  GET: http://localhost/krushi-arunalu/
+2023-02-09 18:55:24  -  [INFO]  Calling index method in app\controllers\IndexController
+2023-02-09 18:55:26  -  [INFO]  GET: http://localhost/krushi-arunalu/Login
+2023-02-09 18:55:26  -  [INFO]  Calling index method in app\controllers\LoginController
+2023-02-09 18:55:32  -  [INFO]  POST: http://localhost/krushi-arunalu/Login
+2023-02-09 18:55:32  -  [INFO]  Calling index method in app\controllers\LoginController
+2023-02-09 18:55:32  -  [INFO]  Login attempt by email: sandulrenuja@gmail.com
+2023-02-09 18:55:33  -  [INFO]  GET: http://localhost/krushi-arunalu/ProducerDashboard
+2023-02-09 18:55:33  -  [INFO]  Calling index method in app\controllers\ProducerDashboardController
+2023-02-09 18:55:36  -  [INFO]  GET: http://localhost/krushi-arunalu/Harvests
+2023-02-09 18:55:36  -  [INFO]  Calling index method in app\controllers\HarvestsController
+2023-02-09 18:55:38  -  [INFO]  GET: http://localhost/krushi-arunalu/Cultivations
+2023-02-09 18:55:38  -  [INFO]  Calling index method in app\controllers\CultivationsController
+2023-02-09 18:55:40  -  [INFO]  GET: http://localhost/krushi-arunalu/Harvests
+2023-02-09 18:55:40  -  [INFO]  Calling index method in app\controllers\HarvestsController
+2023-02-09 18:55:42  -  [INFO]  GET: http://localhost/krushi-arunalu/Sales
+2023-02-09 18:55:42  -  [ERROR]  Requested controller (Sales) not found
+2023-02-09 18:55:44  -  [INFO]  GET: http://localhost/krushi-arunalu/Harvests
+2023-02-09 18:55:44  -  [INFO]  Calling index method in app\controllers\HarvestsController
+2023-02-09 18:55:45  -  [INFO]  GET: http://localhost/krushi-arunalu/Manufacturers
+2023-02-09 18:55:45  -  [ERROR]  Requested controller (Manufacturers) not found
+2023-02-09 18:55:46  -  [INFO]  GET: http://localhost/krushi-arunalu/Harvests
+2023-02-09 18:55:46  -  [INFO]  Calling index method in app\controllers\HarvestsController
+2023-02-09 18:55:49  -  [INFO]  GET: http://localhost/krushi-arunalu/Announcements
+2023-02-09 18:55:49  -  [INFO]  Calling index method in app\controllers\AnnouncementsController
+2023-02-09 18:56:16  -  [INFO]  GET: http://localhost/krushi-arunalu/Harvests
+2023-02-09 18:56:16  -  [INFO]  Calling index method in app\controllers\HarvestsController
+2023-02-09 18:58:40  -  [INFO]  GET: http://localhost/krushi-arunalu/Harvests
+2023-02-09 18:58:40  -  [INFO]  Calling index method in app\controllers\HarvestsController
+2023-02-09 18:58:46  -  [INFO]  GET: http://localhost/krushi-arunalu/Sales
+2023-02-09 18:58:46  -  [ERROR]  Requested controller (Sales) not found
+2023-02-09 18:58:47  -  [INFO]  GET: http://localhost/krushi-arunalu/Harvests
+2023-02-09 18:58:47  -  [INFO]  Calling index method in app\controllers\HarvestsController
+2023-02-09 18:58:49  -  [INFO]  GET: http://localhost/krushi-arunalu/Cultivations
+2023-02-09 18:58:49  -  [INFO]  Calling index method in app\controllers\CultivationsController
+2023-02-09 18:58:53  -  [INFO]  GET: http://localhost/krushi-arunalu/ManageProfile
+2023-02-09 18:58:53  -  [INFO]  Calling index method in app\controllers\ManageProfileController
+2023-02-09 18:59:54  -  [INFO]  GET: http://localhost/krushi-arunalu/ManageProfile
+2023-02-09 18:59:54  -  [INFO]  Calling index method in app\controllers\ManageProfileController
+2023-02-09 19:00:01  -  [INFO]  GET: http://localhost/krushi-arunalu/ManageProfile
+2023-02-09 19:00:01  -  [INFO]  Calling index method in app\controllers\ManageProfileController
+2023-02-09 19:00:04  -  [INFO]  GET: http://localhost/krushi-arunalu/Cultivations
+2023-02-09 19:00:04  -  [INFO]  Calling index method in app\controllers\CultivationsController
+2023-02-09 19:00:06  -  [INFO]  GET: http://localhost/krushi-arunalu/Harvests
+2023-02-09 19:00:06  -  [INFO]  Calling index method in app\controllers\HarvestsController
+2023-02-09 19:00:08  -  [INFO]  GET: http://localhost/krushi-arunalu/Sales
+2023-02-09 19:00:08  -  [ERROR]  Requested controller (Sales) not found
+2023-02-09 19:00:11  -  [INFO]  GET: http://localhost/krushi-arunalu/
+2023-02-09 19:00:11  -  [INFO]  Calling index method in app\controllers\IndexController
+2023-02-09 19:00:13  -  [INFO]  GET: http://localhost/krushi-arunalu/Marketplace
+2023-02-09 19:00:13  -  [INFO]  Calling index method in app\controllers\MarketplaceController
+2023-02-09 19:00:20  -  [INFO]  GET: http://localhost/krushi-arunalu/Logout
+2023-02-09 19:00:20  -  [INFO]  Calling index method in app\controllers\LogoutController
+2023-02-09 19:00:20  -  [INFO]  GET: http://localhost/krushi-arunalu/Login
+2023-02-09 19:00:20  -  [INFO]  Calling index method in app\controllers\LoginController
+2023-02-09 19:00:27  -  [INFO]  POST: http://localhost/krushi-arunalu/Login
+2023-02-09 19:00:27  -  [INFO]  Calling index method in app\controllers\LoginController
+2023-02-09 19:00:27  -  [INFO]  Login attempt by email: sandulrenuja@gmail.com
+2023-02-09 19:00:27  -  [INFO]  GET: http://localhost/krushi-arunalu/ProducerDashboard
+2023-02-09 19:00:27  -  [INFO]  Calling index method in app\controllers\ProducerDashboardController
+2023-02-09 19:00:31  -  [INFO]  GET: http://localhost/krushi-arunalu/CultivationQuestions
+2023-02-09 19:00:31  -  [ERROR]  Requested controller (CultivationQuestions) not found
+2023-02-09 19:00:35  -  [INFO]  GET: http://localhost/krushi-arunalu/
+2023-02-09 19:00:35  -  [INFO]  Calling index method in app\controllers\IndexController
+2023-02-09 19:00:36  -  [INFO]  GET: http://localhost/krushi-arunalu/
+2023-02-09 19:00:36  -  [INFO]  Calling index method in app\controllers\IndexController
+2023-02-09 19:00:38  -  [INFO]  GET: http://localhost/krushi-arunalu/Login
+2023-02-09 19:00:38  -  [INFO]  Calling index method in app\controllers\LoginController
+2023-02-09 19:00:38  -  [INFO]  GET: http://localhost/krushi-arunalu/ProducerDashboard
+2023-02-09 19:00:38  -  [INFO]  Calling index method in app\controllers\ProducerDashboardController
+2023-02-09 19:00:40  -  [INFO]  GET: http://localhost/krushi-arunalu/Logout
+2023-02-09 19:00:40  -  [INFO]  Calling index method in app\controllers\LogoutController
+2023-02-09 19:00:40  -  [INFO]  GET: http://localhost/krushi-arunalu/Login
+2023-02-09 19:00:40  -  [INFO]  Calling index method in app\controllers\LoginController
+2023-02-09 19:00:48  -  [INFO]  POST: http://localhost/krushi-arunalu/Login
+2023-02-09 19:00:48  -  [INFO]  Calling index method in app\controllers\LoginController
+2023-02-09 19:00:48  -  [INFO]  Login attempt by email: testmanufacturer1@gmail.com
+2023-02-09 19:00:49  -  [INFO]  GET: http://localhost/krushi-arunalu/ManufacturerDashboard
+2023-02-09 19:00:49  -  [INFO]  Calling index method in app\controllers\ManufacturerDashboardController
+2023-02-09 19:06:38  -  [INFO]  GET: http://localhost/krushi-arunalu/ManufacturerDashboard
+2023-02-09 19:06:38  -  [INFO]  Calling index method in app\controllers\ManufacturerDashboardController
+2023-02-09 19:06:39  -  [INFO]  GET: http://localhost/krushi-arunalu/Purchases
+2023-02-09 19:06:39  -  [ERROR]  Requested controller (Purchases) not found
+2023-02-09 19:06:40  -  [INFO]  GET: http://localhost/krushi-arunalu/ManufacturerDashboard
+2023-02-09 19:06:40  -  [INFO]  Calling index method in app\controllers\ManufacturerDashboardController
+2023-02-09 19:06:41  -  [INFO]  GET: http://localhost/krushi-arunalu/ProductCategories
+2023-02-09 19:06:41  -  [INFO]  Calling index method in app\controllers\ProductCategoriesController
+2023-02-09 19:06:42  -  [INFO]  GET: http://localhost/krushi-arunalu/PurchasedStocks
+2023-02-09 19:06:43  -  [INFO]  GET: http://localhost/krushi-arunalu/ProductCategories
+2023-02-09 19:06:43  -  [INFO]  Calling index method in app\controllers\ProductCategoriesController
+2023-02-09 19:06:44  -  [INFO]  GET: http://localhost/krushi-arunalu/Products
+2023-02-09 19:06:44  -  [INFO]  Calling index method in app\controllers\ProductsController
+2023-02-09 19:06:48  -  [INFO]  GET: http://localhost/krushi-arunalu/Producers
+2023-02-09 19:06:48  -  [INFO]  Calling index method in app\controllers\ProducersController
+2023-02-09 19:06:51  -  [INFO]  GET: http://localhost/krushi-arunalu/ManufacturerCropRequests
+2023-02-09 19:06:53  -  [INFO]  GET: http://localhost/krushi-arunalu/Producers
+2023-02-09 19:06:53  -  [INFO]  Calling index method in app\controllers\ProducersController
+2023-02-09 19:06:59  -  [INFO]  GET: http://localhost/krushi-arunalu/ManufacturerCropRequests
+2023-02-09 19:07:01  -  [INFO]  GET: http://localhost/krushi-arunalu/Producers
+2023-02-09 19:07:01  -  [INFO]  Calling index method in app\controllers\ProducersController
+2023-02-09 19:07:03  -  [INFO]  GET: http://localhost/krushi-arunalu/Inquiries
+2023-02-09 19:07:03  -  [INFO]  Calling index method in app\controllers\InquiriesController
+2023-02-09 19:09:42  -  [INFO]  GET: http://localhost/krushi-arunalu/Inquiries
+2023-02-09 19:09:42  -  [INFO]  Calling index method in app\controllers\InquiriesController
+2023-02-09 22:52:03  -  [INFO]  GET: http://localhost/krushi-arunalu/
+2023-02-09 22:52:03  -  [INFO]  Calling index method in app\controllers\IndexController
+2023-02-09 22:52:05  -  [INFO]  GET: http://localhost/krushi-arunalu/Login
+2023-02-09 22:52:05  -  [INFO]  Calling index method in app\controllers\LoginController
+2023-02-09 22:52:05  -  [INFO]  GET: http://localhost/krushi-arunalu/ProducerDashboard
+2023-02-09 22:52:05  -  [INFO]  Calling index method in app\controllers\ProducerDashboardController
+2023-02-09 22:52:06  -  [INFO]  GET: http://localhost/krushi-arunalu/Cultivations
+2023-02-09 22:52:06  -  [INFO]  Calling index method in app\controllers\CultivationsController
+2023-02-09 22:52:14  -  [INFO]  GET: http://localhost/krushi-arunalu/Harvests
+2023-02-09 22:52:14  -  [INFO]  Calling index method in app\controllers\HarvestsController
+2023-02-09 22:53:53  -  [INFO]  GET: http://localhost/krushi-arunalu/Sales
+2023-02-09 22:53:53  -  [ERROR]  Requested controller (Sales) not found
+2023-02-09 22:53:54  -  [INFO]  GET: http://localhost/krushi-arunalu/Harvests
+2023-02-09 22:53:54  -  [INFO]  Calling index method in app\controllers\HarvestsController
+2023-02-09 23:22:10  -  [INFO]  GET: http://localhost/krushi-arunalu/Harvests
+2023-02-09 23:22:10  -  [INFO]  Calling index method in app\controllers\HarvestsController
+2023-02-09 23:22:16  -  [INFO]  GET: http://localhost/krushi-arunalu/Cultivations
+2023-02-09 23:22:20  -  [INFO]  Calling index method in app\controllers\CultivationsController
+2023-02-09 23:22:41  -  [INFO]  GET: http://localhost/krushi-arunalu/Edit/1
+2023-02-09 23:22:41  -  [ERROR]  Requested controller (Edit) not found
+2023-02-09 23:22:59  -  [INFO]  GET: http://localhost/krushi-arunalu/Cultivations
+2023-02-09 23:22:59  -  [INFO]  Calling index method in app\controllers\CultivationsController
+2023-02-09 23:32:25  -  [INFO]  GET: http://localhost/krushi-arunalu/Harvests
+2023-02-09 23:32:25  -  [INFO]  Calling index method in app\controllers\HarvestsController
+2023-02-09 23:33:32  -  [INFO]  GET: http://localhost/krushi-arunalu/Cultivations
+2023-02-09 23:33:32  -  [INFO]  Calling index method in app\controllers\CultivationsController
+2023-02-09 23:34:14  -  [INFO]  GET: http://localhost/krushi-arunalu/Sales
+2023-02-09 23:34:14  -  [ERROR]  Requested controller (Sales) not found
+2023-02-09 23:55:12  -  [INFO]  GET: http://localhost/krushi-arunalu/Sales
+2023-02-09 23:55:12  -  [INFO]  Calling index method in app\controllers\SalesController
+2023-02-09 23:55:54  -  [INFO]  GET: http://localhost/krushi-arunalu/Sales
+2023-02-09 23:55:54  -  [INFO]  Calling index method in app\controllers\SalesController
+2023-02-09 23:58:45  -  [INFO]  GET: http://localhost/krushi-arunalu/Sales
+2023-02-09 23:58:45  -  [INFO]  Calling index method in app\controllers\SalesController

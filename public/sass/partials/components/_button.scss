@@ -32,6 +32,7 @@ $colors: (
     @include btn($white);
     border: $base-border-weight*1.5 solid $val;
     color: $val;
+    background-color: transparent;
 
     &:hover {
       background-color: $val;

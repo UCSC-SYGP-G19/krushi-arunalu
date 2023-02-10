@@ -14,6 +14,14 @@ $properties: (auto, hidden);
   }
 }
 
+.position-absolute {
+  position: absolute;
+}
+
+.position-relative {
+  position: relative;
+}
+
 .full-height {
   height: 100vh !important;
 }
