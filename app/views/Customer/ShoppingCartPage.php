@@ -2,15 +2,30 @@
 include APP_ROOT . "/views/inc/components/Header.php";
 
 ?>
+<?php
+
+//if (isset($this->user)) {
+//    echo "Logged in as: " . $this->user->getName() . " (" . $this->user->getRole() . ")<br>";
+//    echo "<a href='./logout'>Logout</a>";
+//} else {
+//    echo "You are not logged in, please <a href='./login'>login</a>";
+//}
+//
+
+
+?>
 
     <body class="overflow-hidden full-height">
+    <?php
+    //include APP_ROOT . "/views/inc/components/LoggedOutNavbar.php"
+    ?>
     <div class="content-with-sidebar">
         <?php
         include APP_ROOT . "/views/inc/components/Sidebar.php"
         ?>
         <main class="content overflow-y-auto">
             <?php
-            include APP_ROOT . "/views/inc/components/CustomerLoggedInNavbar.php"
+            include APP_ROOT . "/views/inc/components/LoggedInNavbar.php"
             ?>
 
             <div class="content-wrapper">
@@ -18,9 +33,14 @@ include APP_ROOT . "/views/inc/components/Header.php";
                     <div class="container-fluid px-2">
                         <div class="row px-1 pt-1 justify-content-space-between">
                             <div class="col-6">
+                                <a class="btn-outlined-primary-light fw-bold fs-3"
+                                   href="<?php echo URL_ROOT ?>/marketplace">
+                                    &lt; Back to shopping
+                                </a>
+                            </div>
+                            <div class="col-12 px-10 pt-3">
                                 <h1 class="title">Shopping Cart</h1>
                             </div>
-
                         </div>
                         <div class="row px-1 pt-2">
                             <div class="col-12 text-justify">
@@ -108,6 +128,12 @@ include APP_ROOT . "/views/inc/components/Header.php";
 
                                     </tfoot>
                                 </table>
+                                <div class="py-3 mb-2 row justify-content-center">
+                                    <a class="btn-lg btn-primary-light mt-3 text-center text-white"
+                                       href="<?php echo URL_ROOT ?>/checkout">
+                                        Proceed to Checkout
+                                    </a>
+                                </div>
                             </div>
                         </div>
                     </div>
