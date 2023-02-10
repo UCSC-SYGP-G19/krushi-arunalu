@@ -430,3 +430,156 @@
 2023-02-10 03:03:45  -  [INFO]  Calling index method in app\controllers\IndexController
 2023-02-10 03:03:48  -  [INFO]  GET: http://localhost/krushi-arunalu/Marketplace
 2023-02-10 03:03:48  -  [INFO]  Calling index method in app\controllers\MarketplaceController
+2023-02-10 09:12:41  -  [INFO]  GET: http://localhost/krushi-arunalu/
+2023-02-10 09:12:41  -  [INFO]  Calling index method in app\controllers\IndexController
+2023-02-10 09:12:43  -  [INFO]  GET: http://localhost/krushi-arunalu/Marketplace
+2023-02-10 09:12:43  -  [INFO]  Calling index method in app\controllers\MarketplaceController
+2023-02-10 09:12:50  -  [INFO]  GET: http://localhost/krushi-arunalu/Marketplace/productdetails/1
+2023-02-10 09:12:50  -  [INFO]  Calling productdetails method in app\controllers\MarketplaceController
+2023-02-10 09:12:52  -  [INFO]  GET: http://localhost/krushi-arunalu/Marketplace/sendinquiry/1
+2023-02-10 09:12:52  -  [INFO]  Calling sendinquiry method in app\controllers\MarketplaceController
+2023-02-10 09:12:53  -  [INFO]  GET: http://localhost/krushi-arunalu/Marketplace/productdetails/1
+2023-02-10 09:12:53  -  [INFO]  Calling productdetails method in app\controllers\MarketplaceController
+2023-02-10 09:12:54  -  [INFO]  GET: http://localhost/krushi-arunalu/ShoppingCart/add/1
+2023-02-10 09:13:08  -  [INFO]  GET: http://localhost/krushi-arunalu/Marketplace/productdetails/1
+2023-02-10 09:13:08  -  [INFO]  Calling productdetails method in app\controllers\MarketplaceController
+2023-02-10 09:13:10  -  [INFO]  GET: http://localhost/krushi-arunalu/ShoppingCart/add/1
+2023-02-10 09:13:17  -  [INFO]  GET: http://localhost/krushi-arunalu/Marketplace/productdetails/1
+2023-02-10 09:13:17  -  [INFO]  Calling productdetails method in app\controllers\MarketplaceController
+2023-02-10 09:15:07  -  [INFO]  GET: http://localhost/krushi-arunalu/Marketplace/sendinquiry/1
+2023-02-10 09:15:07  -  [INFO]  Calling sendinquiry method in app\controllers\MarketplaceController
+2023-02-10 09:15:08  -  [INFO]  GET: http://localhost/krushi-arunalu/Marketplace/productdetails/1
+2023-02-10 09:15:08  -  [INFO]  Calling productdetails method in app\controllers\MarketplaceController
+2023-02-10 09:16:33  -  [INFO]  GET: http://localhost/krushi-arunalu/Marketplace/productdetails/1
+2023-02-10 09:16:33  -  [INFO]  Calling productdetails method in app\controllers\MarketplaceController
+2023-02-10 09:16:36  -  [INFO]  GET: http://localhost/krushi-arunalu/Marketplace/productdetails/1
+2023-02-10 09:16:36  -  [INFO]  Calling productdetails method in app\controllers\MarketplaceController
+2023-02-10 09:16:50  -  [INFO]  GET: http://localhost/krushi-arunalu/Marketplace/productdetails/1
+2023-02-10 09:16:50  -  [INFO]  Calling productdetails method in app\controllers\MarketplaceController
+2023-02-10 09:17:22  -  [INFO]  GET: http://localhost/krushi-arunalu/
+2023-02-10 09:17:22  -  [INFO]  Calling index method in app\controllers\IndexController
+2023-02-10 09:17:23  -  [INFO]  GET: http://localhost/krushi-arunalu/Login
+2023-02-10 09:17:23  -  [INFO]  Calling index method in app\controllers\LoginController
+2023-02-10 09:17:27  -  [INFO]  POST: http://localhost/krushi-arunalu/Login
+2023-02-10 09:17:27  -  [INFO]  Calling index method in app\controllers\LoginController
+2023-02-10 09:17:27  -  [INFO]  Login attempt by email: sandulrenuja@gmail.com
+2023-02-10 09:17:28  -  [INFO]  GET: http://localhost/krushi-arunalu/ProducerDashboard
+2023-02-10 09:17:28  -  [INFO]  Calling index method in app\controllers\ProducerDashboardController
+2023-02-10 09:18:20  -  [INFO]  GET: http://localhost/krushi-arunalu/ProducerDashboard
+2023-02-10 09:18:20  -  [INFO]  Calling index method in app\controllers\ProducerDashboardController
+2023-02-10 09:18:22  -  [INFO]  GET: http://localhost/krushi-arunalu/Cultivations
+2023-02-10 09:18:22  -  [INFO]  Calling index method in app\controllers\CultivationsController
+2023-02-10 09:18:23  -  [INFO]  GET: http://localhost/krushi-arunalu/Harvests
+2023-02-10 09:18:23  -  [INFO]  Calling index method in app\controllers\HarvestsController
+2023-02-10 09:18:24  -  [INFO]  GET: http://localhost/krushi-arunalu/Sales
+2023-02-10 09:18:24  -  [INFO]  Calling index method in app\controllers\SalesController
+2023-02-10 09:18:25  -  [INFO]  GET: http://localhost/krushi-arunalu/Manufacturers
+2023-02-10 09:18:25  -  [INFO]  Calling index method in app\controllers\ManufacturersController
+2023-02-10 09:18:26  -  [INFO]  GET: http://localhost/krushi-arunalu/CultivationQuestions
+2023-02-10 09:18:26  -  [INFO]  Calling index method in app\controllers\CultivationQuestionsController
+2023-02-10 09:18:26  -  [INFO]  GET: http://localhost/krushi-arunalu/CropRequests
+2023-02-10 09:18:26  -  [ERROR]  Requested controller (CropRequests) not found
+2023-02-10 09:18:27  -  [INFO]  GET: http://localhost/krushi-arunalu/CultivationQuestions
+2023-02-10 09:18:27  -  [INFO]  Calling index method in app\controllers\CultivationQuestionsController
+2023-02-10 09:18:28  -  [INFO]  GET: http://localhost/krushi-arunalu/Announcements
+2023-02-10 09:18:28  -  [INFO]  Calling index method in app\controllers\AnnouncementsController
+2023-02-10 09:18:30  -  [INFO]  GET: http://localhost/krushi-arunalu/Logout
+2023-02-10 09:18:30  -  [INFO]  Calling index method in app\controllers\LogoutController
+2023-02-10 09:18:30  -  [INFO]  GET: http://localhost/krushi-arunalu/Login
+2023-02-10 09:18:30  -  [INFO]  Calling index method in app\controllers\LoginController
+2023-02-10 09:18:40  -  [INFO]  POST: http://localhost/krushi-arunalu/Login
+2023-02-10 09:18:40  -  [INFO]  Calling index method in app\controllers\LoginController
+2023-02-10 09:18:40  -  [INFO]  Login attempt by email: gamagevinuri99@gmail.com
+2023-02-10 09:18:40  -  [INFO]  GET: http://localhost/krushi-arunalu/Marketplace
+2023-02-10 09:18:40  -  [INFO]  Calling index method in app\controllers\MarketplaceController
+2023-02-10 09:18:43  -  [INFO]  GET: http://localhost/krushi-arunalu/ShoppingCart
+2023-02-10 09:18:43  -  [INFO]  Calling index method in app\controllers\ShoppingCartController
+2023-02-10 09:18:44  -  [INFO]  GET: http://localhost/krushi-arunalu/Manufacturers
+2023-02-10 09:19:07  -  [INFO]  GET: http://localhost/krushi-arunalu/ShoppingCart
+2023-02-10 09:19:07  -  [INFO]  Calling index method in app\controllers\ShoppingCartController
+2023-02-10 09:19:09  -  [INFO]  GET: http://localhost/krushi-arunalu/Manufacturers
+2023-02-10 09:19:09  -  [INFO]  Calling index method in app\controllers\ManufacturersController
+2023-02-10 09:19:11  -  [INFO]  GET: http://localhost/krushi-arunalu/Orders
+2023-02-10 09:19:11  -  [INFO]  Calling index method in app\controllers\OrdersController
+2023-02-10 09:19:13  -  [INFO]  GET: http://localhost/krushi-arunalu/Orders/viewOrderDetails
+2023-02-10 09:19:13  -  [INFO]  Calling viewOrderDetails method in app\controllers\OrdersController
+2023-02-10 09:19:18  -  [INFO]  GET: http://localhost/krushi-arunalu/Orders
+2023-02-10 09:19:18  -  [INFO]  Calling index method in app\controllers\OrdersController
+2023-02-10 09:19:22  -  [INFO]  GET: http://localhost/krushi-arunalu/ManageProfile
+2023-02-10 09:19:22  -  [INFO]  Calling index method in app\controllers\ManageProfileController
+2023-02-10 09:19:23  -  [INFO]  GET: http://localhost/krushi-arunalu/Orders
+2023-02-10 09:19:23  -  [INFO]  Calling index method in app\controllers\OrdersController
+2023-02-10 09:19:24  -  [INFO]  GET: http://localhost/krushi-arunalu/Marketplace
+2023-02-10 09:19:24  -  [INFO]  Calling index method in app\controllers\MarketplaceController
+2023-02-10 09:19:25  -  [INFO]  GET: http://localhost/krushi-arunalu/Marketplace/productdetails/1
+2023-02-10 09:19:25  -  [INFO]  Calling productdetails method in app\controllers\MarketplaceController
+2023-02-10 09:19:26  -  [INFO]  GET: http://localhost/krushi-arunalu/Marketplace/sendinquiry/1
+2023-02-10 09:19:26  -  [INFO]  Calling sendinquiry method in app\controllers\MarketplaceController
+2023-02-10 09:19:26  -  [INFO]  GET: http://localhost/krushi-arunalu/Marketplace/productdetails/1
+2023-02-10 09:19:26  -  [INFO]  Calling productdetails method in app\controllers\MarketplaceController
+2023-02-10 09:19:27  -  [INFO]  GET: http://localhost/krushi-arunalu/ShoppingCart/add/1
+2023-02-10 09:19:27  -  [INFO]  Calling add method in app\controllers\ShoppingCartController
+2023-02-10 09:19:27  -  [PDOException]  SQLSTATE[HY000]: General error: 1364 Field 'id' doesn't have a default value
+2023-02-10 09:19:27  -  [INFO]  GET: http://localhost/krushi-arunalu/Marketplace
+2023-02-10 09:19:27  -  [INFO]  Calling index method in app\controllers\MarketplaceController
+2023-02-10 09:19:29  -  [INFO]  GET: http://localhost/krushi-arunalu/ShoppingCart
+2023-02-10 09:19:29  -  [INFO]  Calling index method in app\controllers\ShoppingCartController
+2023-02-10 09:19:31  -  [INFO]  GET: http://localhost/krushi-arunalu/ShoppingCart/remove/381
+2023-02-10 09:19:31  -  [INFO]  Calling remove method in app\controllers\ShoppingCartController
+2023-02-10 09:19:31  -  [INFO]  GET: http://localhost/krushi-arunalu/ShoppingCart
+2023-02-10 09:19:31  -  [INFO]  Calling index method in app\controllers\ShoppingCartController
+2023-02-10 09:19:33  -  [INFO]  GET: http://localhost/krushi-arunalu/Marketplace
+2023-02-10 09:19:33  -  [INFO]  Calling index method in app\controllers\MarketplaceController
+2023-02-10 09:19:34  -  [INFO]  GET: http://localhost/krushi-arunalu/Marketplace/productdetails/3
+2023-02-10 09:19:34  -  [INFO]  Calling productdetails method in app\controllers\MarketplaceController
+2023-02-10 09:19:34  -  [INFO]  GET: http://localhost/krushi-arunalu/Marketplace
+2023-02-10 09:19:34  -  [INFO]  Calling index method in app\controllers\MarketplaceController
+2023-02-10 09:19:37  -  [INFO]  GET: http://localhost/krushi-arunalu/ShoppingCart/add/3
+2023-02-10 09:19:37  -  [INFO]  Calling add method in app\controllers\ShoppingCartController
+2023-02-10 09:19:37  -  [PDOException]  SQLSTATE[HY000]: General error: 1364 Field 'id' doesn't have a default value
+2023-02-10 09:19:37  -  [INFO]  GET: http://localhost/krushi-arunalu/Marketplace
+2023-02-10 09:19:37  -  [INFO]  Calling index method in app\controllers\MarketplaceController
+2023-02-10 09:19:40  -  [INFO]  GET: http://localhost/krushi-arunalu/ShoppingCart
+2023-02-10 09:19:40  -  [INFO]  Calling index method in app\controllers\ShoppingCartController
+2023-02-10 09:19:41  -  [INFO]  GET: http://localhost/krushi-arunalu/Marketplace
+2023-02-10 09:19:41  -  [INFO]  Calling index method in app\controllers\MarketplaceController
+2023-02-10 09:19:44  -  [INFO]  GET: http://localhost/krushi-arunalu/ShoppingCart/add/3
+2023-02-10 09:19:44  -  [INFO]  Calling add method in app\controllers\ShoppingCartController
+2023-02-10 09:19:44  -  [PDOException]  SQLSTATE[HY000]: General error: 1364 Field 'id' doesn't have a default value
+2023-02-10 09:19:44  -  [INFO]  GET: http://localhost/krushi-arunalu/Marketplace
+2023-02-10 09:19:44  -  [INFO]  Calling index method in app\controllers\MarketplaceController
+2023-02-10 09:19:45  -  [INFO]  GET: http://localhost/krushi-arunalu/Marketplace/productdetails/3
+2023-02-10 09:19:45  -  [INFO]  Calling productdetails method in app\controllers\MarketplaceController
+2023-02-10 09:19:47  -  [INFO]  GET: http://localhost/krushi-arunalu/ShoppingCart/add/3
+2023-02-10 09:19:47  -  [INFO]  Calling add method in app\controllers\ShoppingCartController
+2023-02-10 09:19:47  -  [PDOException]  SQLSTATE[HY000]: General error: 1364 Field 'id' doesn't have a default value
+2023-02-10 09:19:47  -  [INFO]  GET: http://localhost/krushi-arunalu/Marketplace
+2023-02-10 09:19:47  -  [INFO]  Calling index method in app\controllers\MarketplaceController
+2023-02-10 09:19:48  -  [INFO]  GET: http://localhost/krushi-arunalu/ShoppingCart
+2023-02-10 09:19:48  -  [INFO]  Calling index method in app\controllers\ShoppingCartController
+2023-02-10 09:19:52  -  [INFO]  GET: http://localhost/krushi-arunalu/ShoppingCart
+2023-02-10 09:19:52  -  [INFO]  Calling index method in app\controllers\ShoppingCartController
+2023-02-10 09:19:53  -  [INFO]  GET: http://localhost/krushi-arunalu/Manufacturers
+2023-02-10 09:19:53  -  [INFO]  Calling index method in app\controllers\ManufacturersController
+2023-02-10 09:19:54  -  [INFO]  GET: http://localhost/krushi-arunalu/Marketplace
+2023-02-10 09:19:54  -  [INFO]  Calling index method in app\controllers\MarketplaceController
+2023-02-10 09:19:55  -  [INFO]  GET: http://localhost/krushi-arunalu/Marketplace/productdetails/3
+2023-02-10 09:19:55  -  [INFO]  Calling productdetails method in app\controllers\MarketplaceController
+2023-02-10 09:19:57  -  [INFO]  GET: http://localhost/krushi-arunalu/ShoppingCart/add/3
+2023-02-10 09:19:57  -  [INFO]  Calling add method in app\controllers\ShoppingCartController
+2023-02-10 09:19:57  -  [PDOException]  SQLSTATE[HY000]: General error: 1364 Field 'id' doesn't have a default value
+2023-02-10 09:19:57  -  [INFO]  GET: http://localhost/krushi-arunalu/Marketplace
+2023-02-10 09:19:57  -  [INFO]  Calling index method in app\controllers\MarketplaceController
+2023-02-10 09:20:00  -  [INFO]  GET: http://localhost/krushi-arunalu/Marketplace/productdetails/3
+2023-02-10 09:20:00  -  [INFO]  Calling productdetails method in app\controllers\MarketplaceController
+2023-02-10 09:20:02  -  [INFO]  GET: http://localhost/krushi-arunalu/Marketplace/productdetails/shopping-cart
+2023-02-10 09:20:02  -  [INFO]  Calling productdetails method in app\controllers\MarketplaceController
+2023-02-10 09:20:12  -  [INFO]  GET: http://localhost/krushi-arunalu/Marketplace/productdetails/3
+2023-02-10 09:20:12  -  [INFO]  Calling productdetails method in app\controllers\MarketplaceController
+2023-02-10 09:20:15  -  [INFO]  GET: http://localhost/krushi-arunalu/ShoppingCart/add/3
+2023-02-10 09:20:15  -  [INFO]  Calling add method in app\controllers\ShoppingCartController
+2023-02-10 09:20:15  -  [PDOException]  SQLSTATE[HY000]: General error: 1364 Field 'id' doesn't have a default value
+2023-02-10 09:20:15  -  [INFO]  GET: http://localhost/krushi-arunalu/Marketplace
+2023-02-10 09:20:15  -  [INFO]  Calling index method in app\controllers\MarketplaceController
+2023-02-10 09:20:17  -  [INFO]  GET: http://localhost/krushi-arunalu/ShoppingCart
+2023-02-10 09:20:17  -  [INFO]  Calling index method in app\controllers\ShoppingCartController
