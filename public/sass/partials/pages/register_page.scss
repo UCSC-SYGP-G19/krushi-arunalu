@@ -1,0 +1,48 @@
+@import "../variables";
+
+.register {
+    height: 100%;
+    width: 100%;
+    background-color: $background-grey;
+
+    h2 {
+        font-weight: 500;
+    }
+
+    h3, h4 {
+        font-weight: 400;
+    }
+
+    button.btn-lg {
+        width: 200px;
+        height: 50px;
+        font-size: $base-font-size;
+        border-radius: $base-border-radius-sm;
+    }
+
+    label {
+        font-size: $base-font-size*0.9;
+    }
+
+    input {
+        height: 45px;
+        font-size: $base-font-size*0.9;
+    }
+
+    .wrapper {
+        margin-top: 50px !important;
+        margin-bottom: 50px !important;
+        background: $white;
+        box-shadow: 0 1px 20px rgba(0, 0, 0, 0.08);
+        border-radius: $base-border-radius;
+        width: 100%;
+        max-width: 1200px;
+        height: fit-content;
+    }
+
+    form {
+        .error {
+            font-size: $base-font-size*0.9;
+        }
+    }
+}
