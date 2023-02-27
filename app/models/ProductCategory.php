@@ -16,6 +16,7 @@ class ProductCategory extends Model
         private ?int $id = null,
         private ?string $name = null,
         private ?string $description = null,
+        private ?bool $hidden = null,
     ) {
     }
 
@@ -30,7 +31,41 @@ class ProductCategory extends Model
 
     public function getAllFromDB(): array
     {
-        return $this->runQuery("SELECT id, name, description  FROM product_category")->fetchAll();
+        return $this->runQuery(
+            "SELECT * FROM product_category WHERE product_category.hidden != 1",
+            []
+        )->fetchAll();
+    }
+
+    public function getCategoryById($categoryId): object
+    {
+        return $this->runQuery(
+            "SELECT name, description FROM product_category WHERE id = ?",
+            [$categoryId]
+        )->fetch();
+    }
+
+    public function updateCategory($categoryId): bool
+    {
+        $result = $this->runQuery(
+            "UPDATE product_category SET 
+                              name = ?,
+                              description = ?
+                          WHERE product_category.id = ?",
+            [$this->name, $this->description, $categoryId]
+        );
+        return $result == true;
+    }
+
+    public function hideCategory($categoryId): bool
+    {
+        $result = $this->runQuery(
+            "UPDATE product_category SET 
+                              hidden = ?
+                          WHERE product_category.id = ?",
+            [1, $categoryId]
+        );
+        return $result == true;
     }
 
     /**
@@ -79,5 +114,21 @@ class ProductCategory extends Model
     public function setDescription(?string $description): void
     {
         $this->description = $description;
+    }
+
+    /**
+     * @return bool|null
+     */
+    public function getHidden(): ?bool
+    {
+        return $this->hidden;
+    }
+
+    /**
+     * @param bool|null $hidden
+     */
+    public function setHidden(?bool $hidden): void
+    {
+        $this->hidden = $hidden;
     }
 }
