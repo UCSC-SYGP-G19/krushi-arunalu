@@ -35,8 +35,9 @@ include APP_ROOT . "/views/inc/components/Header.php";
                                 <h1 class="title">Products</h1>
                             </div>
                             <div class="col">
-                                <a href="products/add" class="btn-md btn-primary-light text-center text-white">
-                                    Add product</a>
+                                <?php echo '<a class="btn-md btn-primary-light text-center text-white" 
+                                    href = "' . URL_ROOT . '/products/add">Add Product</a>'
+                                ?>
                             </div>
                         </div>
                         <div class="row px-1 pt-2">
@@ -62,25 +63,27 @@ include APP_ROOT . "/views/inc/components/Header.php";
                                                 <?php echo '<div class="image-window mb-1">
                                     ' . '<img class="ml-2 mt-2 pr-3" alt="Product image" height="100%" 
                                                 width="100%" src="' . URL_ROOT . '/public/img/products/' .
-                                                    $product->image_url . '">' . '
+                                                    $product->image . '">' . '
                                     </div>'
                                                 ?></td>
-                                            <td class="col-3"><?php echo $product->category_name ?></td>
+                                            <td class="col-3"><?php echo $product->category; ?></td>
                                             <td class="col-3"><?php echo $product->product_name; ?></td>
                                             <td class="col-1"><?php echo $product->stock_qty; ?></td>
-                                            <td class="col-2"><?php echo $product->unit_price ?></td>
+                                            <td class="col-2"><?php echo $product->unit_price; ?></td>
                                             <td class="col-2 pr-3">
                                                 <div class="row justify-content-end align-items-center gap-1">
                                                     <div class="col">
                                                         <?php echo '<a class="btn-xs btn-outlined-primary-dark 
                                                         text-center" 
-                                                        href = "' . URL_ROOT . '/products/edit">Edit</a>' ?>
+                                                        href = "' . URL_ROOT . '/products/edit/' .
+                                                            $product->product_id . '">Edit</a>' ?>
                                                     </div>
+
                                                     <div class="col">
-                                                        <a href='delete/<?php echo $product->id; ?>'
-                                                           class="btn-xs btn-outlined-secondary text-center">
-                                                            Hide
-                                                        </a>
+                                                        <?php echo '<a class="btn-xs btn-outlined-error
+                                                        text-center" 
+                                                        href = "' . URL_ROOT . '/products/hide/' .
+                                                            $product->product_id . '">Hide</a>' ?>
                                                     </div>
                                                 </div>
                                             </td>
