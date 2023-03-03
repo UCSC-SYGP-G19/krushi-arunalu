@@ -33,6 +33,16 @@ class ProductCategory extends Model
         return $this->runQuery("SELECT id, name, description  FROM product_category")->fetchAll();
     }
 
+    public function getCategoriesFromDB(): array
+    {
+        return $this->runQuery("SELECT 
+            id as 'category_id',
+            name as 'category_name'
+            FROM product_category
+            WHERE product_category.hidden != ? 
+            ", [1])->fetchAll();
+    }
+
     /**
      * @return int|null
      */

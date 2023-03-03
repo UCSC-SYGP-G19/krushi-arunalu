@@ -23,6 +23,7 @@ class Product extends Model
         private ?float $stockQuantity = null,
         private ?int $manufacturerId = null,
         private ?int $categoryId = null,
+        private ?bool $hidden = null,
     ) {
     }
 
@@ -42,13 +43,15 @@ class Product extends Model
     {
         return $this->runQuery("SELECT 
             product.image_url as 'image_url', 
+            product_category.id as 'category_id',
             product_category.name as 'category_name',
             product.name as 'product_name',
             product.stock_quantity as stock_qty,
             product.unit_selling_price as 'unit_price'
             FROM product
-            INNER JOIN product_category ON product.category_id = product_category.id WHERE product.manufacturer_id = ?
-            ", [$manufacturerId])->fetchAll();
+            INNER JOIN product_category ON product.category_id = product_category.id 
+            WHERE product.hidden != ? AND product.manufacturer_id = ?
+            ", [1, $manufacturerId])->fetchAll();
     }
 
     public function getAllFromDB(): array
@@ -219,5 +222,21 @@ class Product extends Model
     public function setCategoryId(?int $categoryId): void
     {
         $this->categoryId = $categoryId;
+    }
+
+    /**
+     * @return bool|null
+     */
+    public function getHidden(): ?bool
+    {
+        return $this->hidden;
+    }
+
+    /**
+     * @param bool|null $hidden
+     */
+    public function setHidden(?bool $hidden): void
+    {
+        $this->hidden = $hidden;
     }
 }
