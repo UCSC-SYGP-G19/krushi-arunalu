@@ -23,7 +23,7 @@ include APP_ROOT . "/views/inc/components/Header.php";
                                 <h1 class="title">Product Categories</h1>
                             </div>
                             <div class="col">
-                                <a href="product-categories/add"
+                                <a href="<?php echo URL_ROOT ?>/product-categories/add"
                                    class="btn-md btn-primary-light text-center text-white">
                                     Add category</a>
                             </div>
@@ -56,7 +56,10 @@ include APP_ROOT . "/views/inc/components/Header.php";
                                     "product-categories",
                                     $this->tableHeaders,
                                     $this->data,
-                                    "id"
+                                    "id",
+                                    "",
+                                    ["Edit", "Hide"],
+                                    ["edit", "hide"],
                                 );
                                 $productCategoriesTable->render();
                                 ?>
