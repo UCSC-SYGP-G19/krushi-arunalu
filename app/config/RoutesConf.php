@@ -7,16 +7,62 @@
 
 // Names of controllers relevant to each user role without the Controller suffix
 const PROTECTED_ROUTES = [
-    "Common" => ["Login", "Register", "ForgotPassword", "ResetPassword", "Logout", "Marketplace", "ManageProfile"],
+    "Common" => ["Login", "Register", "ForgotPassword", "ResetPassword", "Logout", "Marketplace", "ManageProfile",
+        "ManufacturerStore"],
     "Producer" => ["AccountSetup","ProducerDashboard", "Cultivations", "Harvests", "Sales", "CultivationQuestions",
         "CropRequests", "Announcements", "Profile", "Manufacturers"],
     "Manufacturer" => ["ManufacturerDashboard", "Sales", "ManufacturerOrders", "Producers", "Stocks",
-        "ProductCategories", "Products", "ManufacturerCropRequests", "Inquiries", "ManufacturerSales", "PurchasedStocks"],
-    "Customer" => ["Marketplace", "ShoppingCart", "Orders", "Profile", "SendInquiry", "ShoppingCart", "Manufacturers"],
+        "ProductCategories", "Products", "ManufacturerCropRequests", "Inquiries", "ManufacturerSales",
+        "PurchasedStocks"],
+    "Customer" => ["Marketplace", "ShoppingCart", "Orders", "Profile", "SendInquiry", "Checkout", "Manufacturers"],
     "Agri Officer" => ["Dashboard", "Announcements", "Producers", "land-details",
         "cultivation-details", "crop-prices", "crop-prices", "cultivation-questions"],
     "Admin" => ["Dashboard", "AllProducts", "Crops", "Manufacturers", "Producers", "Announcements", "UserManagement"]
 ];
+
+//$html = "";
+//
+//const NAVBAR_LINKS = [
+//    "Producer", "Agri Officer", "Customer" => [
+//        "Profile" => [
+//            "link" => "",
+//            "svgPath1" => "M16.6668 17.5V15.8333C16.6668 14.9493 16.3156 14.1014 15.6905 13.4763C15.0654 12.8512
+//                        14.2176 12.5 13.3335 12.5H6.66683C5.78277 12.5 4.93493 12.8512 4.30981 13.4763C3.68469 14.1014
+//                        3.3335 14.9493 3.3335 15.8333V17.5",
+//            "svgPath2" => "M9.99984 9.16667C11.8408 9.16667 13.3332 7.67428 13.3332 5.83333C13.3332 3.99238
+//                        11.8408 2.5 9.99984 2.5C8.15889 2.5 6.6665 3.99238 6.6665 5.83333C6.6665 7.67428 8.15889
+//                        9.16667 9.99984 9.16667Z"
+//        ],
+//        "Logout" => [
+//            "link" => "logout",
+//            "svgPath1" => "",
+//            "svgPath2" => "",
+//            "svgPath3" => "",
+//            "option" => "logout"
+//        ]
+//    ],
+//    "Manufacturer" => [
+//        "Profile" => [
+//            "link" => "manageProfile",
+//            "svgPath1" => "M16.6668 17.5V15.8333C16.6668 14.9493 16.3156 14.1014 15.6905 13.4763C15.0654 12.8512
+//                        14.2176 12.5 13.3335 12.5H6.66683C5.78277 12.5 4.93493 12.8512 4.30981 13.4763C3.68469 14.1014
+//                        3.3335 14.9493 3.3335 15.8333V17.5",
+//            "svgPath2" => "M9.99984 9.16667C11.8408 9.16667 13.3332 7.67428 13.3332 5.83333C13.3332 3.99238
+//                        11.8408 2.5 9.99984 2.5C8.15889 2.5 6.6665 3.99238 6.6665 5.83333C6.6665 7.67428 8.15889
+//                        9.16667 9.99984 9.16667Z"
+//        ],
+//        "My Store" => [
+//            "link" => "",
+//            "svg" => "",
+//            "option" => "My Store"
+//        ],
+//        "Logout" => [
+//            "link" => "logout",
+//            "svgPathS" => ;echo $html,
+//            "option" => "Logout"
+//        ]
+//    ]
+//]);
 
 const SIDEBAR_ROUTES = [
     "Producer" => [

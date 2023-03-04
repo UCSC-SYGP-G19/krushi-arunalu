@@ -50,6 +50,24 @@ class Manufacturer extends RegisteredUser
             INNER JOIN registered_user ON manufacturer.id = registered_user.id
         ", [])->fetchAll();
     }
+
+    public function getManufacturerDetails($manufacturerId): object
+    {
+        return $this->runQuery(
+            "SELECT 
+            m.cover_image_url as 'cover_image', 
+            m.description as 'description',
+            ru.name as 'company_name',
+            ru.address as 'address',
+            ru.contact_no as 'contact_no',
+            ru.image_url as 'company_logo'
+            FROM manufacturer m
+            INNER JOIN registered_user ru ON m.id = ru.id               
+            WHERE ru.id = ?",
+            [$manufacturerId]
+        )->fetch();
+    }
+
     /**
      * @return string|null
      */

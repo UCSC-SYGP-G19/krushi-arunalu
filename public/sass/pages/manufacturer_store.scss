@@ -1,0 +1,63 @@
+@import "../partials/variables";
+
+.manufacturer-store-wrapper{
+  padding: 0 10% 0 10%;
+}
+
+.store-info{
+  border-radius: 0 0 $base-border-radius $base-border-radius;
+}
+
+.store-cover{
+  border-radius: $base-border-radius $base-border-radius 0 0;
+}
+
+.store-info{
+  background-color: $white;
+}
+
+.product-count-wrapper{
+  border-radius: 50%;
+  background-color: $secondary-grey;
+}
+
+.product-count{
+  color: $primary-green-dark;
+  font-size: $font-size-xl;
+}
+
+.company-logo{
+  height: 75%;
+  width: 75%;
+}
+
+.company-name{
+  font-size: $font-size-lg;
+}
+
+.contact-info{
+  font-size: $font-size-md;
+}
+
+.description{
+  font-size: $base-font-size;
+}
+
+.category{
+  border-radius: $base-border-radius*10;
+  border: 2px solid $primary-green-dark;
+
+  &:hover {
+    background-color: $selected-green-light;
+  }
+}
+
+.product-card {
+  background-color: $white;
+  border-radius: $base-border-radius;
+}
+
+.up-arrow-icon{
+  height: 30px;
+  width: 30px;
+}

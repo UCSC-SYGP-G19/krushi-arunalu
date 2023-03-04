@@ -42,16 +42,15 @@ class Product extends Model
     public function getByManufacturerIdFromDB($manufacturerId): array
     {
         return $this->runQuery("SELECT 
-            product.image_url as 'image', 
-            product_category.name as 'category',
-            product.id as 'product_id',
+            product.image_url as 'image_url', 
+            product_category.id as 'category_id',
+            product_category.name as 'category_name',
             product.name as 'product_name',
             product.stock_quantity as stock_qty,
             product.unit_selling_price as 'unit_price'
             FROM product
             INNER JOIN product_category ON product.category_id = product_category.id 
-            WHERE product.manufacturer_id = ? AND product.hidden != ?
-            ", [$manufacturerId, 1])->fetchAll();
+            WHERE product.hidden != ? AND product.manufacturer_id = ?", [1, $manufacturerId])->fetchAll();
     }
 
     public function getAllFromDB(): array
