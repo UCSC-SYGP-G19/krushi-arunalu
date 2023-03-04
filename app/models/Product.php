@@ -13,7 +13,7 @@ use app\core\Model;
 class Product extends Model
 {
     public function __construct(
-        private ?int $id = null,
+        private ?int $productId = null,
         private ?string $name = null,
         private ?string $imageUrl = null,
         private ?string $description = null,
@@ -50,34 +50,74 @@ class Product extends Model
             product.unit_selling_price as 'unit_price'
             FROM product
             INNER JOIN product_category ON product.category_id = product_category.id 
-            WHERE product.hidden != ? AND product.manufacturer_id = ?
-            ", [1, $manufacturerId])->fetchAll();
+            WHERE product.hidden != ? AND product.manufacturer_id = ?", [1, $manufacturerId])->fetchAll();
     }
 
     public function getAllFromDB(): array
     {
-        return $this->runQuery("SELECT * FROM product")->fetchAll();
+        return $this->runQuery("SELECT * FROM product WHERE hidden != ?", [1])->fetchAll();
     }
 
-    public function getDetailsFromDB($id): object
+    public function getByProductId($productId): object
     {
-        return $this->runQuery("SELECT * FROM product WHERE product.id = ?", [$id])->fetch();
+        return $this->runQuery("SELECT
+            p.image_url as 'image_url',
+            p.name as 'product_name',
+            pc.id as 'category',
+            p.unit as 'unit',
+            p.weight as 'weight',
+            p.stock_quantity as stock_qty,
+            p.unit_selling_price as 'unit_price',
+            p.description as description
+            FROM product p
+            INNER JOIN product_category pc ON p.category_id = pc.id
+            WHERE p.id = ?", [$productId])->fetch();
+    }
+
+    public function updateProduct($productId): bool
+    {
+        $result = $this->runQuery(
+            "UPDATE product SET 
+                              category_id = ?,
+                              name = ?,
+                              unit = ?,
+                              weight = ?,
+                              unit_selling_price = ?,
+                              stock_quantity = ?,
+                              image_url = ?,
+                              description = ?
+                          WHERE product.id = ?",
+            [$this->categoryId, $this->name, $this->unit, $this->weight, $this->unitSellingPrice,
+                $this->stockQuantity, $this->imageUrl, $this->description, $productId]
+        );
+        return $result == true;
+    }
+
+    public function hideProduct($productId): bool
+    {
+        $result = $this->runQuery(
+            "UPDATE product SET 
+                              hidden = ?
+                          WHERE product.id = ?",
+            [1, $productId]
+        );
+        return $result == true;
     }
 
     /**
      * @return int|null
      */
-    public function getId(): ?int
+    public function getProductId(): ?int
     {
-        return $this->id;
+        return $this->productId;
     }
 
     /**
-     * @param int|null $id
+     * @param int|null $productId
      */
-    public function setId(?int $id): void
+    public function setProductId(?int $productId): void
     {
-        $this->id = $id;
+        $this->productId = $productId;
     }
 
     /**
@@ -99,22 +139,6 @@ class Product extends Model
     /**
      * @return string|null
      */
-    public function getDescription(): ?string
-    {
-        return $this->description;
-    }
-
-    /**
-     * @param string|null $description
-     */
-    public function setDescription(?string $description): void
-    {
-        $this->description = $description;
-    }
-
-    /**
-     * @return string|null
-     */
     public function getImageUrl(): ?string
     {
         return $this->imageUrl;
@@ -126,6 +150,22 @@ class Product extends Model
     public function setImageUrl(?string $imageUrl): void
     {
         $this->imageUrl = $imageUrl;
+    }
+
+    /**
+     * @return string|null
+     */
+    public function getDescription(): ?string
+    {
+        return $this->description;
+    }
+
+    /**
+     * @param string|null $description
+     */
+    public function setDescription(?string $description): void
+    {
+        $this->description = $description;
     }
 
     /**

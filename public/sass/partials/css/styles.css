@@ -1,3 +1,39 @@
-
+.register {
+  height: 100%;
+  width: 100%;
+  background-color: #F5F5F5;
+}
+.register h2 {
+  font-weight: 500;
+}
+.register h3, .register h4 {
+  font-weight: 400;
+}
+.register button.btn-lg {
+  width: 200px;
+  height: 50px;
+  font-size: 1rem;
+  border-radius: 8px;
+}
+.register label {
+  font-size: 0.9rem;
+}
+.register input {
+  height: 45px;
+  font-size: 0.9rem;
+}
+.register .wrapper {
+  margin-top: 50px !important;
+  margin-bottom: 50px !important;
+  background: #FFFFFF;
+  box-shadow: 0 1px 20px rgba(0, 0, 0, 0.08);
+  border-radius: 16px;
+  width: 100%;
+  max-width: 1200px;
+  height: fit-content;
+}
+.register form .error {
+  font-size: 0.9rem;
+}
 
 /*# sourceMappingURL=styles.css.map */

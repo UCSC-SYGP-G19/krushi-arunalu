@@ -1,4 +1,9 @@
 <?php
+
+use app\views\inc\components\InputField;
+use app\views\inc\components\SelectField;
+use app\views\inc\components\TextArea;
+
 include APP_ROOT . "/views/inc/components/Header.php";
 
 ?>
@@ -16,9 +21,6 @@ include APP_ROOT . "/views/inc/components/Header.php";
 ?>
 
     <body class="overflow-hidden full-height">
-    <?php
-    //include APP_ROOT . "/views/inc/components/LoggedOutNavbar.php"
-    ?>
     <div class="content-with-sidebar">
         <?php
         include APP_ROOT . "/views/inc/components/Sidebar.php"
@@ -30,125 +32,89 @@ include APP_ROOT . "/views/inc/components/Header.php";
 
             <main class="register container-fluid d-flex align-items-center justify-content-center">
                 <div class="wrapper px-4 py-3">
-                    <h1 class="title">Update product details</h1>
+                    <h1 class="title text-center">Update product details</h1>
                     <br>
-                    <form class="mb-1 px-2" action="" method="post">
+                    <form class="mt-2 mb-1 px-2" action="" method="post">
                         <div class="row gap-2">
-                            <div class="col-4">
-                                <label for="category_id">Category</label>
-                                <select name="category_id" id="category_id">
-                                    <option value="" selected>Select category</option>
-                                    <?php foreach ($this->fieldOptions["product_category"] as $option) {
-                                        echo '<option value="' . $option->id . '"' .
-                                            ($this->fields['category_id'] == $option->id ? 'selected' : '')
-                                            . '>' . $option->name . '</option>';
-                                    }
-                                    ?>
-                                </select>
-                                <?php if (isset($this->fieldErrors['category_id'])) { ?>
-                                    <div class="error"><?php echo $this->fieldErrors['category_id']; ?></div>
-                                <?php } ?>
-                            </div>
-                            <div class="col-8">
-                                <label for="name">Product Name</label>
-                                <input type="text" id="name" name="name"
-                                       placeholder="Enter product name"
-                                       value="<?php
-                                        if (isset($this->fields['name'])) {
-                                            echo $this->fields['name'];
-                                        }
-                                        ?>">
-                                <?php if (isset($this->fieldErrors['name'])) { ?>
-                                    <div class="error"><?php echo $this->fieldErrors['name']; ?></div>
-                                <?php } ?>
-                            </div>
-                        </div>
-                        <div class="row gap-2">
-                            <div class="col-6">
-                                <label for="unit">Unit of measurement</label>
-                                <input type="text" id="unit" name="unit"
-                                       placeholder="Enter unit of measurement"
-                                       value="<?php
-                                        if (isset($this->fields['unit'])) {
-                                            echo $this->fields['unit'];
-                                        }
-                                        ?>">
-                                <?php if (isset($this->fieldErrors['unit'])) { ?>
-                                    <div class="error"><?php echo $this->fieldErrors['unit']; ?></div>
-                                <?php } ?>
-                            </div>
-                            <div class="col-6">
-                                <label for="weight">Weight (KG)</label>
-                                <input type="number" id="weight" name="weight"
-                                       placeholder="Enter weight of the product"
-                                       value="<?php
-                                        if (isset($this->fields['weight'])) {
-                                            echo $this->fields['weight'];
-                                        }
-                                        ?>">
-                                <?php if (isset($this->fieldErrors['weight'])) { ?>
-                                    <div class="error"><?php echo $this->fieldErrors['weight']; ?></div>
-                                <?php } ?>
-                            </div>
-                        </div>
-                        <div class="row gap-2">
-                            <div class="col-6">
-                                <label for="unit_price">Selling price (per unit)</label>
-                                <input type="number" id="unit_price" name="unit_price"
-                                       placeholder="Enter selling price"
-                                       value="<?php
-                                        if (isset($this->fields['unit_price'])) {
-                                            echo $this->fields['unit_price'];
-                                        }
-                                        ?>">
-                                <?php if (isset($this->fieldErrors['unit_price'])) { ?>
-                                    <div class="error"><?php echo $this->fieldErrors['unit_price']; ?></div>
-                                <?php } ?>
-                            </div>
-                            <div class="col-6">
-                                <label for="stock_qty">Initial stock quantity (KG)</label>
-                                <input type="number" id="stock_qty" name="stock_qty"
-                                       placeholder="Enter initial stock quantity"
-                                       value="<?php
-                                        if (isset($this->fields['stock_qty'])) {
-                                            echo $this->fields['stock_qty'];
-                                        }
-                                        ?>">
-                                <?php if (isset($this->fieldErrors['stock_qty'])) { ?>
-                                    <div class="error"><?php echo $this->fieldErrors['stock_qty']; ?></div>
-                                <?php } ?>
-                            </div>
-                        </div>
-                        <div class="row gap-2">
-                            <div class="col-12">
-                                <label for="image_url">Image URL</label>
-                                <input type="text" id="image_url" name="image_url"
-                                       placeholder="Enter image URL"
-                                       value="<?php
-                                        if (isset($this->fields['image_url'])) {
-                                            echo $this->fields['image_url'];
-                                        }
-                                        ?>">
-                                <?php if (isset($this->fieldErrors['image_url'])) { ?>
-                                    <div class="error"><?php echo $this->fieldErrors['image_url']; ?></div>
-                                <?php } ?>
-                            </div>
-                        </div>
-                        <div class="row gap-2">
-                            <div class="col-12">
-                                <label for="description">Description</label>
-                                <textarea id="description" name="description" rows="5"
-                                          placeholder="Add a description">
-                                    <?php
-                                    if (isset($this->fields['description'])) {
-                                        echo $this->fields['description'];
-                                    }
-                                    ?>
-                                </textarea>
-                                <?php if (isset($this->fieldErrors['description'])) { ?>
-                                    <div class="error"><?php echo $this->fieldErrors['description']; ?></div>
-                                <?php } ?>
-                            </div>
+                            <?php
+                            $this->formData = [
+                                "category" => [
+                                    "element" => SelectField::class,
+                                    "wrapperClass" => "col-4",
+                                    "label" => "Category",
+                                    "placeholder" => "Select Category",
+                                    "value" => $this->data->category
+                                ],
+                                "product_name" => [
+                                    "element" => InputField::class,
+                                    "wrapperClass" => "col-8",
+                                    "label" => "Product Name",
+                                    "placeholder" => "Enter product name",
+                                    "value" => $this->data->product_name
+                                ],
+                                "unit" => [
+                                    "element" => InputField::class,
+                                    "wrapperClass" => "col-6",
+                                    "label" => "Unit of measurement",
+                                    "placeholder" => "Enter unit of measurement",
+                                    "value" => $this->data->unit
+                                ],
+                                "weight" => [
+                                    "element" => InputField::class,
+                                    "wrapperClass" => "col-6",
+                                    "label" => "Weight (KG)",
+                                    "placeholder" => "Enter weight of the product",
+                                    "type" => "number step=0.01",
+                                    "value" => $this->data->weight
+                                ],
+                                "unit_price" => [
+                                    "element" => InputField::class,
+                                    "wrapperClass" => "col-6",
+                                    "label" => "Selling Price (per unit)",
+                                    "placeholder" => "Enter selling price",
+                                    "type" => "number",
+                                    "value" => $this->data->unit_price
+                                ],
+                                "stock_qty" => [
+                                    "element" => InputField::class,
+                                    "wrapperClass" => "col-6",
+                                    "label" => "Initial Stock Quantity (KG)",
+                                    "placeholder" => "Enter initial stock quantity",
+                                    "type" => "number",
+                                    "value" => $this->data->stock_qty
+                                ],
+                                "image_url" => [
+                                    "element" => InputField::class,
+                                    "wrapperClass" => "col-12",
+                                    "label" => "Image URL",
+                                    "placeholder" => "Enter image URL",
+                                    "value" => $this->data->image_url
+                                ],
+                                "description" => [
+                                    "element" => TextArea::class,
+                                    "wrapperClass" => "col-12",
+                                    "label" => "Description",
+                                    "placeholder" => "Add a description",
+                                    "value" => $this->data->description
+                                ],
+                            ];
+                            foreach ($this->formData as $key => $value) {
+                                $formField = new $value["element"](
+                                    $key,
+                                    $value["label"],
+                                    $value["placeholder"],
+                                    $value["value"] ?? null,
+                                    $this->fieldErrors[$key] ?? null,
+                                    $value["wrapperClass"]
+                                );
+
+                                isset($this->fieldOptions[$key]) &&
+                                $formField->options = $this->fieldOptions[$key];
+
+                                isset($value["type"]) && $formField->type = $value["type"];
+                                $formField->render();
+                            }
+                            ?>
                         </div>
                         <?php if (isset($this->error)) { ?>
                             <br>

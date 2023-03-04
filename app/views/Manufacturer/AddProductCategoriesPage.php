@@ -1,4 +1,7 @@
 <?php
+
+use app\views\inc\components\InputField;
+
 include APP_ROOT . "/views/inc/components/Header.php";
 
 ?>
@@ -11,7 +14,6 @@ include APP_ROOT . "/views/inc/components/Header.php";
 //    echo "You are not logged in, please <a href='./login'>login</a>";
 //}
 //
-
 
 ?>
 
@@ -34,34 +36,38 @@ include APP_ROOT . "/views/inc/components/Header.php";
                     <br>
                     <form class="mb-1 px-2" action="" method="post">
                         <div class="row gap-2">
-                            <div class="col-12">
-                                <label for="category-name">Category Name</label>
-                                <input type="text" id="category-name" name="category-name"
-                                       placeholder="Enter category name"
-                                       value="<?php
-                                        if (isset($this->fields['category-name'])) {
-                                            echo $this->fields['category-name'];
-                                        }
-                                        ?>">
-                                <?php if (isset($this->fieldErrors['category-name'])) { ?>
-                                    <div class="error"><?php echo $this->fieldErrors['category-name']; ?></div>
-                                <?php } ?>
-                            </div>
-                        </div>
-                        <div class="row gap-2">
-                            <div class="col-12">
-                                <label for="description">Description</label>
-                                <textarea id="description" name="description" rows="5"
-                                          placeholder="Add a description"
-                                          value="<?php
-                                            if (isset($this->fields['description'])) {
-                                                echo $this->fields['description'];
-                                            }
-                                            ?>"></textarea>
-                                <?php if (isset($this->fieldErrors['description'])) { ?>
-                                    <div class="error"><?php echo $this->fieldErrors['description']; ?></div>
-                                <?php } ?>
-                            </div>
+                            <?php
+                            $this->formData = [
+                                "name" => [
+                                    "element" => InputField::class,
+                                    "wrapperClass" => "col-12",
+                                    "label" => "Category Name",
+                                    "placeholder" => "Enter category name",
+                                ],
+                                "description" => [
+                                    "element" => InputField::class,
+                                    "wrapperClass" => "col-12",
+                                    "label" => "Description",
+                                    "placeholder" => "Add a description",
+                                ],
+                            ];
+                            foreach ($this->formData as $key => $value) {
+                                $formField = new $value["element"](
+                                    $key,  //name
+                                    $value["label"],
+                                    $value["placeholder"],
+                                    $this->fields[$key] ?? null,  //value
+                                    $this->fieldErrors[$key] ?? null,
+                                    $value["wrapperClass"]
+                                );
+
+//                                isset($this->fieldOptions[$key]) &&
+//                                $formField->options = $this->fieldOptions[$key];
+//
+//                                isset($value["type"]) && $formField->type = $value["type"];
+                                $formField->render();
+                            }
+                            ?>
                         </div>
                         <?php if (isset($this->error)) { ?>
                             <br>

@@ -37,14 +37,14 @@ class Table
                             $html .= "<td class='" . $this->tableHeaders[$key]["class"] . "'>
                                         <div class='row justify-content-center align-items-center gap-1'>
                                             <div class='col'>
-                                                <a href='" . $this->activeLink . "/" .
+                                                <a href='" . URL_ROOT . "/" . $this->activeLink . "/" .
                                 $this->actionUrls[0] . "/" . $row->{$this->primaryKey} . "'
                                                     class='btn-xs btn-outlined-primary-dark text-center'>
                                                     " . $this->actionLabels[0] . "
                                                 </a>
                                             </div>
                                             <div class='col'>
-                                                <a href='" . $this->activeLink . "/" .
+                                                <a href='" . URL_ROOT . "/" . $this->activeLink . "/" .
                                 $this->actionUrls[1] . "/" . $row->{$this->primaryKey} . "'
                                                     class='btn-xs btn-outlined-error-dark text-center'>" .
                                 $this->actionLabels[1] .

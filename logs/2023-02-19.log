@@ -1,0 +1,157 @@
+2023-02-19 12:36:33  -  [INFO]  GET: http://localhost/krushi-arunalu/
+2023-02-19 12:36:33  -  [INFO]  Calling index method in app\controllers\IndexController
+2023-02-19 12:36:36  -  [INFO]  GET: http://localhost/krushi-arunalu/Marketplace
+2023-02-19 12:36:36  -  [INFO]  Calling index method in app\controllers\MarketplaceController
+2023-02-19 12:36:59  -  [INFO]  GET: http://localhost/krushi-arunalu/Marketplace
+2023-02-19 12:36:59  -  [INFO]  Calling index method in app\controllers\MarketplaceController
+2023-02-19 12:37:00  -  [INFO]  GET: http://localhost/krushi-arunalu/Marketplace
+2023-02-19 12:37:00  -  [INFO]  Calling index method in app\controllers\MarketplaceController
+2023-02-19 12:37:00  -  [INFO]  GET: http://localhost/krushi-arunalu/Marketplace
+2023-02-19 12:37:00  -  [INFO]  Calling index method in app\controllers\MarketplaceController
+2023-02-19 12:37:01  -  [INFO]  GET: http://localhost/krushi-arunalu/Marketplace
+2023-02-19 12:37:01  -  [INFO]  Calling index method in app\controllers\MarketplaceController
+2023-02-19 12:37:01  -  [INFO]  GET: http://localhost/krushi-arunalu/Marketplace
+2023-02-19 12:37:01  -  [INFO]  Calling index method in app\controllers\MarketplaceController
+2023-02-19 12:37:02  -  [INFO]  GET: http://localhost/krushi-arunalu/
+2023-02-19 12:37:02  -  [INFO]  Calling index method in app\controllers\IndexController
+2023-02-19 12:37:04  -  [INFO]  GET: http://localhost/krushi-arunalu/Marketplace
+2023-02-19 12:37:04  -  [INFO]  Calling index method in app\controllers\MarketplaceController
+2023-02-19 12:37:05  -  [INFO]  GET: http://localhost/krushi-arunalu/Login
+2023-02-19 12:37:05  -  [INFO]  Calling index method in app\controllers\LoginController
+2023-02-19 12:37:06  -  [INFO]  POST: http://localhost/krushi-arunalu/Login
+2023-02-19 12:37:06  -  [INFO]  Calling index method in app\controllers\LoginController
+2023-02-19 12:37:06  -  [INFO]  Login attempt by phone: 0764023716
+2023-02-19 12:37:06  -  [INFO]  GET: http://localhost/krushi-arunalu/Marketplace
+2023-02-19 12:37:06  -  [INFO]  Calling index method in app\controllers\MarketplaceController
+2023-02-19 12:37:12  -  [INFO]  GET: http://localhost/krushi-arunalu/Marketplace/productdetails/1
+2023-02-19 12:37:12  -  [INFO]  Calling productdetails method in app\controllers\MarketplaceController
+2023-02-19 12:37:14  -  [INFO]  GET: http://localhost/krushi-arunalu/ShoppingCart/add/1
+2023-02-19 12:37:14  -  [INFO]  Calling add method in app\controllers\ShoppingCartController
+2023-02-19 12:37:14  -  [INFO]  GET: http://localhost/krushi-arunalu/ShoppingCart
+2023-02-19 12:37:14  -  [INFO]  Calling index method in app\controllers\ShoppingCartController
+2023-02-19 12:37:17  -  [INFO]  GET: http://localhost/krushi-arunalu/ShoppingCart/remove/406
+2023-02-19 12:37:17  -  [INFO]  Calling remove method in app\controllers\ShoppingCartController
+2023-02-19 12:37:17  -  [INFO]  GET: http://localhost/krushi-arunalu/ShoppingCart
+2023-02-19 12:37:17  -  [INFO]  Calling index method in app\controllers\ShoppingCartController
+2023-02-19 12:37:18  -  [INFO]  GET: http://localhost/krushi-arunalu/ShoppingCart/remove/407
+2023-02-19 12:37:18  -  [INFO]  Calling remove method in app\controllers\ShoppingCartController
+2023-02-19 12:37:18  -  [INFO]  GET: http://localhost/krushi-arunalu/ShoppingCart
+2023-02-19 12:37:18  -  [INFO]  Calling index method in app\controllers\ShoppingCartController
+2023-02-19 12:37:19  -  [INFO]  GET: http://localhost/krushi-arunalu/ShoppingCart/remove/408
+2023-02-19 12:37:19  -  [INFO]  Calling remove method in app\controllers\ShoppingCartController
+2023-02-19 12:37:19  -  [INFO]  GET: http://localhost/krushi-arunalu/ShoppingCart
+2023-02-19 12:37:19  -  [INFO]  Calling index method in app\controllers\ShoppingCartController
+2023-02-19 12:37:19  -  [INFO]  GET: http://localhost/krushi-arunalu/ShoppingCart/remove/409
+2023-02-19 12:37:19  -  [INFO]  Calling remove method in app\controllers\ShoppingCartController
+2023-02-19 12:37:19  -  [INFO]  GET: http://localhost/krushi-arunalu/ShoppingCart
+2023-02-19 12:37:19  -  [INFO]  Calling index method in app\controllers\ShoppingCartController
+2023-02-19 12:37:20  -  [INFO]  GET: http://localhost/krushi-arunalu/ShoppingCart/remove/410
+2023-02-19 12:37:20  -  [INFO]  Calling remove method in app\controllers\ShoppingCartController
+2023-02-19 12:37:20  -  [INFO]  GET: http://localhost/krushi-arunalu/ShoppingCart
+2023-02-19 12:37:20  -  [INFO]  Calling index method in app\controllers\ShoppingCartController
+2023-02-19 12:37:20  -  [INFO]  GET: http://localhost/krushi-arunalu/ShoppingCart/remove/411
+2023-02-19 12:37:20  -  [INFO]  Calling remove method in app\controllers\ShoppingCartController
+2023-02-19 12:37:20  -  [INFO]  GET: http://localhost/krushi-arunalu/ShoppingCart
+2023-02-19 12:37:20  -  [INFO]  Calling index method in app\controllers\ShoppingCartController
+2023-02-19 12:37:21  -  [INFO]  GET: http://localhost/krushi-arunalu/ShoppingCart/remove/412
+2023-02-19 12:37:21  -  [INFO]  Calling remove method in app\controllers\ShoppingCartController
+2023-02-19 12:37:21  -  [INFO]  GET: http://localhost/krushi-arunalu/ShoppingCart
+2023-02-19 12:37:21  -  [INFO]  Calling index method in app\controllers\ShoppingCartController
+2023-02-19 12:37:23  -  [INFO]  GET: http://localhost/krushi-arunalu/Marketplace
+2023-02-19 12:37:23  -  [INFO]  Calling index method in app\controllers\MarketplaceController
+2023-02-19 12:37:24  -  [INFO]  GET: http://localhost/krushi-arunalu/Marketplace/productdetails/3
+2023-02-19 12:37:24  -  [INFO]  Calling productdetails method in app\controllers\MarketplaceController
+2023-02-19 12:37:25  -  [INFO]  GET: http://localhost/krushi-arunalu/Marketplace/sendinquiry/3
+2023-02-19 12:37:25  -  [INFO]  Calling sendinquiry method in app\controllers\MarketplaceController
+2023-02-19 12:37:39  -  [INFO]  POST: http://localhost/krushi-arunalu/Marketplace/sendinquiry/3
+2023-02-19 12:37:39  -  [INFO]  Calling sendinquiry method in app\controllers\MarketplaceController
+2023-02-19 12:37:39  -  [INFO]  GET: http://localhost/krushi-arunalu/Marketplace
+2023-02-19 12:37:39  -  [INFO]  Calling index method in app\controllers\MarketplaceController
+2023-02-19 12:37:43  -  [INFO]  GET: http://localhost/krushi-arunalu/Marketplace/productdetails/1
+2023-02-19 12:37:43  -  [INFO]  Calling productdetails method in app\controllers\MarketplaceController
+2023-02-19 12:37:45  -  [INFO]  GET: http://localhost/krushi-arunalu/ShoppingCart/add/1
+2023-02-19 12:37:45  -  [INFO]  Calling add method in app\controllers\ShoppingCartController
+2023-02-19 12:37:45  -  [INFO]  GET: http://localhost/krushi-arunalu/ShoppingCart
+2023-02-19 12:37:45  -  [INFO]  Calling index method in app\controllers\ShoppingCartController
+2023-02-19 12:37:47  -  [INFO]  GET: http://localhost/krushi-arunalu/Checkout
+2023-02-19 12:37:47  -  [INFO]  Calling index method in app\controllers\CheckoutController
+2023-02-19 12:40:12  -  [INFO]  GET: http://localhost/krushi-arunalu/Checkout/orderConfirm
+2023-02-19 12:40:12  -  [INFO]  Calling orderConfirm method in app\controllers\CheckoutController
+2023-02-19 12:40:15  -  [INFO]  GET: http://localhost/krushi-arunalu/Checkout
+2023-02-19 12:40:15  -  [INFO]  Calling index method in app\controllers\CheckoutController
+2023-02-19 12:40:15  -  [INFO]  GET: http://localhost/krushi-arunalu/ShoppingCart
+2023-02-19 12:40:15  -  [INFO]  Calling index method in app\controllers\ShoppingCartController
+2023-02-19 12:40:16  -  [INFO]  GET: http://localhost/krushi-arunalu/Manufacturers
+2023-02-19 12:40:18  -  [INFO]  GET: http://localhost/krushi-arunalu/ShoppingCart
+2023-02-19 12:40:18  -  [INFO]  Calling index method in app\controllers\ShoppingCartController
+2023-02-19 12:40:19  -  [INFO]  GET: http://localhost/krushi-arunalu/Orders
+2023-02-19 12:40:19  -  [INFO]  Calling index method in app\controllers\OrdersController
+2023-02-19 12:40:23  -  [INFO]  GET: http://localhost/krushi-arunalu/Manufacturers
+2023-02-19 12:53:39  -  [INFO]  GET: http://localhost/krushi-arunalu/Orders
+2023-02-19 12:53:39  -  [INFO]  Calling index method in app\controllers\OrdersController
+2023-02-19 12:53:40  -  [INFO]  GET: http://localhost/krushi-arunalu/Manufacturers
+2023-02-19 12:53:41  -  [INFO]  GET: http://localhost/krushi-arunalu/Orders
+2023-02-19 12:53:41  -  [INFO]  Calling index method in app\controllers\OrdersController
+2023-02-19 12:53:42  -  [INFO]  GET: http://localhost/krushi-arunalu/Orders
+2023-02-19 12:53:42  -  [INFO]  Calling index method in app\controllers\OrdersController
+2023-02-19 12:53:44  -  [INFO]  GET: http://localhost/krushi-arunalu/Manufacturers
+2023-02-19 12:53:45  -  [INFO]  GET: http://localhost/krushi-arunalu/Orders
+2023-02-19 12:53:45  -  [INFO]  Calling index method in app\controllers\OrdersController
+2023-02-19 12:53:46  -  [INFO]  GET: http://localhost/krushi-arunalu/Marketplace
+2023-02-19 12:53:46  -  [INFO]  Calling index method in app\controllers\MarketplaceController
+2023-02-19 12:53:47  -  [INFO]  GET: http://localhost/krushi-arunalu/Manufacturers
+2023-02-19 13:08:19  -  [INFO]  GET: http://localhost/krushi-arunalu/Marketplace
+2023-02-19 13:08:19  -  [INFO]  Calling index method in app\controllers\MarketplaceController
+2023-02-19 13:08:21  -  [INFO]  GET: http://localhost/krushi-arunalu/Marketplace/productdetails/1
+2023-02-19 13:08:21  -  [INFO]  Calling productdetails method in app\controllers\MarketplaceController
+2023-02-19 13:08:23  -  [INFO]  GET: http://localhost/krushi-arunalu/ShoppingCart/add/1
+2023-02-19 13:08:23  -  [INFO]  Calling add method in app\controllers\ShoppingCartController
+2023-02-19 13:08:23  -  [INFO]  GET: http://localhost/krushi-arunalu/ShoppingCart
+2023-02-19 13:08:23  -  [INFO]  Calling index method in app\controllers\ShoppingCartController
+2023-02-19 13:14:18  -  [INFO]  GET: http://localhost/krushi-arunalu/ShoppingCart
+2023-02-19 13:14:18  -  [INFO]  Calling index method in app\controllers\ShoppingCartController
+2023-02-19 13:14:18  -  [INFO]  GET: http://localhost/krushi-arunalu/ShoppingCart
+2023-02-19 13:14:18  -  [INFO]  Calling index method in app\controllers\ShoppingCartController
+2023-02-19 13:14:19  -  [INFO]  GET: http://localhost/krushi-arunalu/Marketplace
+2023-02-19 13:14:19  -  [INFO]  Calling index method in app\controllers\MarketplaceController
+2023-02-19 13:14:20  -  [INFO]  GET: http://localhost/krushi-arunalu/Marketplace/productdetails/1
+2023-02-19 13:14:20  -  [INFO]  Calling productdetails method in app\controllers\MarketplaceController
+2023-02-19 13:14:21  -  [INFO]  GET: http://localhost/krushi-arunalu/ShoppingCart/add/1
+2023-02-19 13:14:21  -  [INFO]  Calling add method in app\controllers\ShoppingCartController
+2023-02-19 13:14:21  -  [INFO]  GET: http://localhost/krushi-arunalu/ShoppingCart
+2023-02-19 13:14:21  -  [INFO]  Calling index method in app\controllers\ShoppingCartController
+2023-02-19 13:14:22  -  [INFO]  GET: http://localhost/krushi-arunalu/Marketplace/productdetails/1
+2023-02-19 13:14:22  -  [INFO]  Calling productdetails method in app\controllers\MarketplaceController
+2023-02-19 13:14:23  -  [INFO]  GET: http://localhost/krushi-arunalu/Marketplace/sendinquiry/1
+2023-02-19 13:14:23  -  [INFO]  Calling sendinquiry method in app\controllers\MarketplaceController
+2023-02-19 13:14:25  -  [INFO]  GET: http://localhost/krushi-arunalu/Marketplace/productdetails/1
+2023-02-19 13:14:25  -  [INFO]  Calling productdetails method in app\controllers\MarketplaceController
+2023-02-19 13:14:26  -  [INFO]  GET: http://localhost/krushi-arunalu/Manufacturers
+2023-02-19 13:14:27  -  [INFO]  GET: http://localhost/krushi-arunalu/Marketplace/productdetails/1
+2023-02-19 13:14:27  -  [INFO]  Calling productdetails method in app\controllers\MarketplaceController
+2023-02-19 13:14:28  -  [INFO]  GET: http://localhost/krushi-arunalu/Orders
+2023-02-19 13:14:28  -  [INFO]  Calling index method in app\controllers\OrdersController
+2023-02-19 16:52:37  -  [INFO]  GET: http://localhost/krushi-arunalu/Manufacturers
+2023-02-19 17:36:41  -  [INFO]  GET: http://localhost/krushi-arunalu/Manufacturers
+2023-02-19 17:36:42  -  [INFO]  GET: http://localhost/krushi-arunalu/Orders
+2023-02-19 17:36:42  -  [INFO]  Calling index method in app\controllers\OrdersController
+2023-02-19 17:36:43  -  [INFO]  GET: http://localhost/krushi-arunalu/Manufacturers
+2023-02-19 17:36:44  -  [INFO]  GET: http://localhost/krushi-arunalu/Orders
+2023-02-19 17:36:44  -  [INFO]  Calling index method in app\controllers\OrdersController
+2023-02-19 17:37:41  -  [INFO]  GET: http://localhost/krushi-arunalu/Manufacturers
+2023-02-19 17:37:42  -  [INFO]  GET: http://localhost/krushi-arunalu/Orders
+2023-02-19 17:37:42  -  [INFO]  Calling index method in app\controllers\OrdersController
+2023-02-19 17:37:43  -  [INFO]  GET: http://localhost/krushi-arunalu/Orders
+2023-02-19 17:37:43  -  [INFO]  Calling index method in app\controllers\OrdersController
+2023-02-19 17:38:26  -  [INFO]  GET: http://localhost/krushi-arunalu/Marketplace
+2023-02-19 17:38:26  -  [INFO]  Calling index method in app\controllers\MarketplaceController
+2023-02-19 17:38:47  -  [INFO]  GET: http://localhost/krushi-arunalu/Manufacturers
+2023-02-19 17:38:49  -  [INFO]  GET: http://localhost/krushi-arunalu/Marketplace
+2023-02-19 17:38:49  -  [INFO]  Calling index method in app\controllers\MarketplaceController
+2023-02-19 17:38:50  -  [INFO]  GET: http://localhost/krushi-arunalu/Orders
+2023-02-19 17:38:50  -  [INFO]  Calling index method in app\controllers\OrdersController
+2023-02-19 22:13:52  -  [INFO]  GET: http://localhost/krushi-arunalu/Orders
+2023-02-19 22:13:52  -  [INFO]  Calling index method in app\controllers\OrdersController
+2023-02-19 22:13:55  -  [INFO]  GET: http://localhost/krushi-arunalu/Manufacturers
+2023-02-19 22:13:56  -  [INFO]  GET: http://localhost/krushi-arunalu/Orders
+2023-02-19 22:13:56  -  [INFO]  Calling index method in app\controllers\OrdersController
