@@ -42,6 +42,7 @@ class Product extends Model
     public function getByManufacturerIdFromDB($manufacturerId): array
     {
         return $this->runQuery("SELECT 
+            product.id as product_id,
             product.image_url as 'image_url', 
             product_category.id as 'category_id',
             product_category.name as 'category_name',
