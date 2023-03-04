@@ -25,7 +25,7 @@ class ProductsController extends Controller
     {
         $this->loadView('Manufacturer/AddProductPage', 'Add Products', 'products');
         $this->loadModel("ProductCategory");
-        $this->view->fieldOptions["product_category"] = $this->model->getAllFromDB();
+        $this->view->fieldOptions["category"] = $this->model->getNamesFromDB();
 
         if ($_SERVER["REQUEST_METHOD"] === "POST") {
             //$required_fields = null;
@@ -39,29 +39,76 @@ class ProductsController extends Controller
 
             $this->loadModel("Product");
             $this->model->fillData([
-                'name' => $_POST['name'],
+                'name' => $_POST['product_name'],
                 'imageUrl' => $_POST['image_url'],
                 'description' => $_POST['description'],
                 'weight' => $_POST['weight'],
                 'unit' => $_POST['unit'],
                 'unitSellingPrice' => $_POST['unit_price'],
                 'stockQuantity' => $_POST['stock_qty'],
-                'manufacturerId' => Session::getSession()->getId(),
-                'categoryId' => $_POST['category_id'],
+                'manufacturerId' => Session::getSession()->id,
+                'categoryId' => $_POST['category'],
             ]);
 
-            if ($this->model->addProductToDB()) {
-                Util::redirect("../product");
+            if ($this->model->addToDB()) {
+                Util::redirect("./");
             }
         }
         $this->view->render();
     }
 
-    public function edit(): void
+    public function edit($productId): bool
     {
         $this->loadView('Manufacturer/UpdateProductsPage', 'Update Products', 'products');
 
+        $this->loadModel("ProductCategory");
+        $this->view->fieldOptions["category"] = $this->model->getNamesFromDB();
+
+        $this->loadModel("Product");
+        $this->view->data = $this->model->getByProductId($productId);
+
+        if ($_SERVER["REQUEST_METHOD"] === "POST") {
+            //$required_fields = null;
+            //$this->validateFields($required_fields);
+
+            if (!empty($this->view->fieldErrors)) {
+                $this->refillValuesAndShowError();
+                $this->view->render();
+                return true;
+            }
+
+            $this->loadModel("Product");
+            $this->model->fillData([
+                'name' => $_POST['product_name'],
+                'imageUrl' => $_POST['image_url'],
+                'description' => $_POST['description'],
+                'weight' => $_POST['weight'],
+                'unit' => $_POST['unit'],
+                'unitSellingPrice' => $_POST['unit_price'],
+                'stockQuantity' => $_POST['stock_qty'],
+                'manufacturerId' => Session::getSession()->id,
+                'categoryId' => $_POST['category'],
+            ]);
+
+            if ($this->model->updateProduct($productId)) {
+                Util::redirect("../");
+                return true;
+            }
+        }
         $this->view->render();
+        return false;
     }
 
+    public function hide($productId): bool
+    {
+        $this->loadView('Manufacturer/ProductsPage', 'Products', 'products');
+        $this->loadModel("Product");
+
+        if ($this->model->hideProduct($productId)) {
+            Util::redirect("../");
+            return true;
+        }
+        $this->view->render();
+        return false;
+    }
 }

@@ -68,6 +68,11 @@ class ProductCategory extends Model
         return $result == true;
     }
 
+    public function getNamesFromDB(): array
+    {
+        return $this->runQuery("SELECT id, name  FROM product_category")->fetchAll();
+    }
+
     /**
      * @return int|null
      */
