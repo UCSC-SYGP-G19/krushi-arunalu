@@ -88,6 +88,22 @@ class ManufacturerOrder extends Model
             WHERE id = ?", [$orderId]) ->fetch();
     }
 
+    public function getByOrderStatus($manufacturerId): array
+    {
+        return $this->runQuery("SELECT
+        mo.crop_id as 'crop_id',
+        c.name as 'crop_name',
+        cc.name as 'category_name',
+        (SELECT SUM(mo.quantity)) as 'purchased_qty',
+        (SELECT MAX(mo.date)) as 'last_purchased_date'
+        FROM manufacturer_order mo       
+        INNER JOIN crop c ON c.id = mo.crop_id
+        INNER JOIN crop_category cc ON cc.id = mo.crop_category_id
+        WHERE mo.status = ? AND mo.manufacturer_id = ? 
+        GROUP BY mo.crop_id
+        ", ["Received", $manufacturerId])->fetchAll();
+    }
+
     public function addToDB($manufacturerId): bool
     {
         $result = $this->runQuery(
