@@ -129,6 +129,11 @@ $properties: (auto, hidden);
     background-color: $header-green;
     border-radius: $base-border-radius-sm;
   }
+
+  .user-profile-pic{
+    border: 1px solid $secondary-grey;
+    border-radius: 50%;
+  }
 }
 
 .request-card-wrapper {
