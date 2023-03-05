@@ -27,7 +27,8 @@
     }
   ],
   "require": {
-    "ext-pdo": "*"
+    "ext-pdo": "*",
+    "vlucas/phpdotenv": "^5.5"
   },
   "require-dev": {
     "squizlabs/php_codesniffer": "^3.5"
@@ -47,6 +48,3 @@
     ]
   }
 }
-
-
-
