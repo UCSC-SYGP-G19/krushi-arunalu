@@ -24,6 +24,8 @@ include APP_ROOT . "/views/inc/components/Header.php";
                         <div class="row px-1 pt-2">
                             <div class="col-12 text-justify">
                                 <br>
+                                <?php
+                                include APP_ROOT . "/views/inc/components/SearchFilterAndSort.php";?>
                                 <table>
                                     <thead>
                                     <tr class="row">
