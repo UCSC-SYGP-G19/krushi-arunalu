@@ -2,22 +2,8 @@
 include APP_ROOT . "/views/inc/components/Header.php";
 
 ?>
-<?php
-
-//if (isset($this->user)) {
-//    echo "Logged in as: " . $this->user->getName() . " (" . $this->user->getRole() . ")<br>";
-//    echo "<a href='./logout'>Logout</a>";
-//} else {
-//    echo "You are not logged in, please <a href='./login'>login</a>";
-//}
-//
-
-?>
 
     <body class="overflow-hidden full-height">
-    <?php
-    //include APP_ROOT . "/views/inc/components/LoggedOutNavbar.php"
-    ?>
     <div class="content-with-sidebar">
         <?php
         include APP_ROOT . "/views/inc/components/Sidebar.php"
@@ -45,59 +31,30 @@ include APP_ROOT . "/views/inc/components/Header.php";
                                         <th class="col-2">Category</th>
                                         <th class="col-2">Crop Name</th>
                                         <th class="col-2">Quantity</th>
-                                        <th class="col-2">Last Purchased Date</th>
-                                        <th class="col-2"></th>
+                                        <th class="col-3">Last Purchased Date</th>
+                                        <th class="col-1"></th>
                                     </tr>
                                     </thead>
                                     <tbody>
+                                        <?php foreach ($this->data as $stockItem) { ?>
                                         <tr class="row">
-                                            <td class="col-2">1</td>
-                                            <td class="col-2">Spices</td>
-                                            <td class="col-2">Cinnamon</td>
-                                            <td class="col-2">10KG</td>
-                                            <td class="col-2">23-01-2023</td>
-                                            <td class="col-2 pr-3">
+                                            <td class="col-2"><?php echo $stockItem->crop_id ?></td>
+                                            <td class="col-2"><?php echo $stockItem->category_name ?></td>
+                                            <td class="col-2"><?php echo $stockItem->crop_name ?></td>
+                                            <td class="col-2"><?php echo $stockItem->purchased_qty ?></td>
+                                            <td class="col-3"><?php echo $stockItem->last_purchased_date ?></td>
+                                            <td class="col-1 pr-5">
                                                 <div class="row justify-content-end align-items-center gap-1">
                                                     <div class="col">
-                                                        <a href='edit/<?php echo $stock_item_id->id; ?>'
-                                                           class="btn-xs btn-outlined-primary-dark text-center">
-                                                            Edit
-                                                        </a>
-
-                                                    </div>
-                                                    <div class="col">
-                                                        <a href='delete/<?php echo $stock_item_id->id; ?>'
-                                                           class="btn-xs btn-outlined-secondary text-center">
+                                                        <a href='hide/<?php echo $stockItem->crop_id; ?>'
+                                                           class="btn-xs btn-outlined-error text-center">
                                                             Hide
                                                         </a>
                                                     </div>
                                                 </div>
                                             </td>
                                         </tr>
-                                        <tr class="row">
-                                            <td class="col-2">2</td>
-                                            <td class="col-2">Spices</td>
-                                            <td class="col-2">Cinnamon</td>
-                                            <td class="col-2">10KG</td>
-                                            <td class="col-2">28-12-2022</td>
-                                            <td class="col-2 pr-3">
-                                                <div class="row justify-content-end align-items-center gap-1">
-                                                    <div class="col">
-                                                        <a href='edit/<?php echo $stock_item_id->id; ?>'
-                                                           class="btn-xs btn-outlined-primary-dark text-center">
-                                                            Edit
-                                                        </a>
-
-                                                    </div>
-                                                    <div class="col">
-                                                        <a href='delete/<?php echo $stock_item_id->id; ?>'
-                                                           class="btn-xs btn-outlined-secondary text-center">
-                                                            Hide
-                                                        </a>
-                                                    </div>
-                                                </div>
-                                            </td>
-                                        </tr>
+                                        <?php } ?>
                                     </tbody>
                                     <tfoot>
                                     <tr class="row justify-content-end pagination">
