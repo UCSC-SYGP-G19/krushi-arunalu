@@ -24,9 +24,13 @@ class Crop extends Model
     ) {
     }
 
-    public function getNamesFromDB(): array
+    public static function getNamesFromDB(): array
     {
-        return $this->runQuery("SELECT id, name FROM crop")->fetchAll();
+        $stmt = Model::select("crop", array("crop.id", "crop.name"));
+        if ($stmt) {
+            return $stmt->fetchAll();
+        }
+        return [];
     }
 
     /**

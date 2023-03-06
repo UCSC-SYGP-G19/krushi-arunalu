@@ -34,24 +34,6 @@ class Cultivation extends Model
         return $result == true;
     }
 
-//    public function getNamesByProducerIdFromDB($producerId): array
-//    {
-//        return $this->runQuery("SELECT
-//            cultivation.id as 'cultivation_id',
-//            cultivation.name as 'cultivation_id',
-//            land.name as 'land_name',
-//            crop.id as 'crop_id',
-//            crop.name as 'crop_name',
-//            cultivation.cultivated_quantity as 'cultivated_quantity',
-//            cultivation.cultivated_date as 'cultivated_date',
-//            cultivation.expected_harvest_date as 'expected_harvest_date',
-//            cultivation.status as 'status'
-//            FROM cultivation
-//            INNER JOIN land ON cultivation.land_id = land.id
-//            INNER JOIN crop ON cultivation.crop_id = crop.id
-//            WHERE land.owner_id = ?", [$producerId])->fetchAll();
-//    }
-
     public function getAllByProducerIdFromDB($producerId): array
     {
         return $this->runQuery("SELECT 
