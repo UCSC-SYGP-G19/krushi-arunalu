@@ -2,8 +2,8 @@ name: Push-to-EC2
 
 # Trigger deployment on push and merge to master, dev branches
 on:
-  push:
-    branches: [master, dev]
+  # push:
+    # branches: [master, dev]
   pull_request_target:
     types: [closed]
     branches: [master, dev]
