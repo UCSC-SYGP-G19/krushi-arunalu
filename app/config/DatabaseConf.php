@@ -5,7 +5,7 @@
  * Links env variables used for database connection to PHP constants
  */
 
-if ($_ENV['APP_USE_REMOTE_DB']) {
+if ($_ENV['APP_USE_REMOTE_DB'] == 'true') {
     define("DB_TYPE", $_ENV['DB_TYPE']);
     define("DB_HOST", $_ENV['DB_HOST']);
     define("DB_PORT", $_ENV['DB_PORT']);
