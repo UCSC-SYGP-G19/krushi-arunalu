@@ -27,7 +27,12 @@ include APP_ROOT . "/views/inc/components/Header.php";
                                 <h1 class="title">Sales</h1>
                             </div>
                         </div>
-                        <div class="row px-1 pt-2">
+                        <div class="col-12 text-justify px-2">
+                            <br>
+                            <?php
+                            include APP_ROOT . "/views/inc/components/SearchFilterAndSort.php";?>
+                        </div>
+                        <div class="row px-1">
                             <div class="col-12 text-justify">
                                 <br>
                                 <table>
