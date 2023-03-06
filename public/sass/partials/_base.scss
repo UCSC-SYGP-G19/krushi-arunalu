@@ -148,39 +148,7 @@ $properties: (auto, hidden);
     padding-top: 2px;
   }
 }
-
-.order-details-wrapper {
-  .order-details-container, .delivery-address, .order-summary{
-    background-color: $selected-green-light;
-  }
-
-  .order-details-container{
-    border-radius: $base-border-radius $base-border-radius 0 0;
-    border-bottom: 2px solid $primary-green-light;
-  }
-
-  .delivery-address{
-    border-radius: 0 0 0 $base-border-radius;
-    border-top: 2px solid $primary-green-light;
-  }
-
-  .order-summary{
-    border-radius: 0 0 $base-border-radius 0;
-    border-top: 2px solid $primary-green-light;
-  }
-
-  .order-item-wrapper {
-    background-color: $white;
-    border-bottom: 1px solid $secondary-grey;
-
-    .product-img{
-      border-radius: 50%;
-    }
-
-    .product-qty{
-      background-color: $header-green;
-      height: max-content;
-      border-radius: $base-border-radius-sm;
-    }
-  }
+ //producers view
+.active-page{
+  border-bottom: $primary-green-light 2px solid;
 }
