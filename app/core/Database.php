@@ -13,6 +13,7 @@ namespace app\core;
 use app\helpers\Logger;
 use PDO;
 use PDOException;
+use PDOStatement;
 
 class Database
 {
@@ -48,7 +49,22 @@ class Database
             return self::$pdo;
         } catch (PDOException $e) {
             Logger::log("PDOException", $e->getMessage());
-            return null;
+            die("Database connection failed: " . $e->getMessage());
         }
+    }
+
+    public static function prepareAndExecute(PDO $pdo, string $query, array $values = []): bool|PDOStatement
+    {
+        $stmt = $pdo->prepare($query);
+        if (!$stmt) {
+            return false;
+        }
+        try {
+            $stmt->execute($values);
+        } catch (PDOException $e) {
+            Logger::log("PDOException", $e->getMessage());
+            return false;
+        }
+        return $stmt;
     }
 }
