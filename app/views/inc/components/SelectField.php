@@ -26,7 +26,7 @@ class SelectField extends FormField
         if ($this->label) {
             $html .= "<label for='$this->id'>$this->label</label>";
         }
-        $html .= "<select name='$this->name' id='this->id'>";
+        $html .= "<select name='$this->name' id='$this->id'>";
         $html .= "<option value='' selected>$this->placeholder</option>";
         foreach ($this->options as $option) {
             $html .= "<option value='$option->id'" . ($this->value == $option->id ? 'selected' : '') .
