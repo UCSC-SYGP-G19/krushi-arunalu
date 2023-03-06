@@ -1,7 +1,5 @@
 <?php
 
-use app\views\inc\components\Table;
-
 include APP_ROOT . "/views/inc/components/Header.php";
 
 ?>
@@ -20,7 +18,7 @@ include APP_ROOT . "/views/inc/components/Header.php";
                     <div class="container-fluid px-2">
                         <div class="row px-1 pt-1 justify-content-space-between">
                             <div class="col-6">
-                                <h1 class="title text-black">Producers</h1>
+                                <h1 class="title">Producers</h1>
                             </div>
                             <div class="col">
                                 <a href="producers/connectionRequests"
@@ -29,47 +27,75 @@ include APP_ROOT . "/views/inc/components/Header.php";
                             </div>
                         </div>
                         <div class="row d-flex">
-                            <span class="text-primary-light px-1 pt-3 fs-4 fw-bold">All</span>
+                            <span class="active-page text-primary-light px-1 pt-3 fs-4 fw-bold">All</span>
                             <span class="text-secondary px-1 pt-3 fs-4 fw-bold mx-4">Connected</span>
                         </div>
                         <div class="row px-1 pt-2">
                             <div class="col-12 text-justify">
                                 <br>
-                                <?php
-                                include APP_ROOT . "/views/inc/components/SearchFilterAndSort.php";
-                                $this->tableHeaders = [
-                                    "producer_id" => [
-                                        "label" => "ID",
-                                        "sortable" => true,
-                                        "sortKey" => "id",
-                                        "class" => "col-2",
-                                    ],
-                                    "producer_name" => [
-                                        "label" => "Name",
-                                        "sortable" => true,
-                                        "sortKey" => "name",
-                                        "class" => "col-4",
-                                    ],
-                                    "cultivating_crops" => [
-                                        "label" => "Cultivating Crops",
-                                        "sortable" => true,
-                                        "sortKey" => "cultivating_crops",
-                                        "class" => "col-4",
-                                    ],
-                                    "actions" => [
-                                        "label" => "",
-                                        "sortable" => false,
-                                        "class" => "col-2"
-                                    ]
-                                ];
-                                $producersTable = new Table(
-                                    "producers",
-                                    $this->tableHeaders,
-                                    $this->data,
-                                    "producer_id"
-                                );
-                                $producersTable->render();
-                                ?>
+                                <table>
+                                    <thead>
+                                    <tr class="row">
+                                        <th class="col-2">Producer ID</th>
+                                        <th class="col-4">Producer Name</th>
+                                        <th class="col-4">Cultivating Crops</th>
+                                        <th class="col-2"></th>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                    <?php
+                                    foreach ($this->data as $producer) { ?>
+                                        <tr class="row">
+                                            <td class="col-2"><?php echo $producer->producer_id ?></td>
+                                            <td class="col-4"><?php echo $producer->producer_name ?></td>
+                                            <td class="col-4">
+                                                <?php
+                                                echo $producer->crop_names
+                                                ?>
+                                            </td>
+                                            <td class="col-2 pr-5">
+                                                <div class="row justify-content-end align-items-center gap-1">
+                                                    <div class="col">
+                                                        <a href='connect/<?php echo $producer->producer_id ?>'
+                                                           class="btn-xs btn-outlined-secondary text-center">
+                                                            Connect
+                                                        </a>
+                                                    </div>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                    <?php } ?>
+                                    </tbody>
+                                    <tfoot>
+                                    <tr class="row justify-content-end pagination">
+                                        <td class="col-3 text-right"><span>Rows per page:</span><label>
+                                                <select name="table_filter" id="table_filter">
+                                                    <option value="">10</option>
+                                                </select>
+                                            </label></td>
+                                        <td class="col-2">1-2 of 25
+                                            <span class="arrow-icons">
+                                                <span class="left-arrow">
+                                                    <svg width="9" height="15" viewBox="0 0 9 15" fill="none"
+                                                         xmlns="http://www.w3.org/2000/svg">
+                                                    <path d="M7.10107 13.4121L1.10107 7.41211L7.10107 1.41211"
+                                                          stroke="#B1B1B1" stroke-width="2" stroke-linecap="round"
+                                                          stroke-linejoin="round"/>
+                                                </svg>
+                                                </span>
+
+                                                <span class="right-arrow">
+                                                    <svg width="9" height="15" viewBox="0 0 9 15" fill="none"
+                                                         xmlns="http://www.w3.org/2000/svg">
+                                                    <path d="M1.854 13.3516L7.854 7.35156L1.854 1.35156"
+                                                          stroke="#B1B1B1" stroke-width="2" stroke-linecap="round"
+                                                          stroke-linejoin="round"/>
+                                                </svg>
+                                                </span>
+                                            </span>
+                                        </td>
+                                    </tfoot>
+                                </table>
                             </div>
                         </div>
                     </div>

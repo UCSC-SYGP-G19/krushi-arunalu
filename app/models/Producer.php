@@ -44,13 +44,18 @@ class Producer extends RegisteredUser
             ->fetchAll();
     }
 
-    public function getAllFromDB(): array
+    public function getAllProducersFromDB(): array
     {
         return $this->runQuery("SELECT 
-            producer.id as 'producer_id',     
-            registered_user.name as 'producer_name'
-            FROM producer
-            INNER JOIN registered_user ON producer.id = registered_user.id
+            p.id as 'producer_id',
+            ru.name as 'producer_name',
+            GROUP_CONCAT(DISTINCT cr.name SEPARATOR ', ') as 'crop_names'
+            FROM producer p
+            INNER JOIN registered_user ru on p.id = ru.id
+            INNER JOIN land l on p.id = l.owner_id
+            INNER JOIN cultivation c on l.id = c.land_id
+            INNER JOIN crop cr on c.crop_id = cr.id
+            GROUP BY ru.id
             ", [])->fetchAll();
     }
 

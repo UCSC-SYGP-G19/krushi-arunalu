@@ -15,7 +15,7 @@ class ProducersController extends Controller
     {
         $this->loadView('Manufacturer/ProducersPage', 'Producers', 'producers');
         $this->loadModel("Producer");
-        $this->view->data = $this->model->getAllFromDB();
+        $this->view->data = $this->model->getAllProducersFromDB();
         $this->view->render();
     }
 
