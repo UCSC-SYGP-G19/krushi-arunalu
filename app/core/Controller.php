@@ -18,11 +18,13 @@ class Controller
     // Create a new instance of the specified model and assign to $model
     public function loadModel(string $modelName): void
     {
-        $path = 'app/models/' . $modelName . '.php';
+        $path = '../app/models/' . $modelName . '.php';
 
         if (file_exists($path)) {
             $model = "app\\models\\" . $modelName;
             $this->model = new $model();
+        } else {
+            die("Model not found");
         }
     }
 
@@ -53,7 +55,7 @@ class Controller
         }
         foreach ($_POST as $key => $value) {
             $_POST[$key] = stripslashes(trim($value));
-            if (($allFieldsFlag  || in_array($key, $requiredFields)) && empty($_POST[$key])) {
+            if (($allFieldsFlag || in_array($key, $requiredFields)) && empty($_POST[$key])) {
                 Logger::log("DEBUG", $_POST[$key]);
                 $this->view->fieldErrors[$key] = "Field is required";
             }
@@ -63,7 +65,14 @@ class Controller
     // If there are any field errors, refill values in form and display alert message
     protected function refillValuesAndShowError($alertMessage = "Please correct the errors in the form"): void
     {
-            $this->view->fields = $_POST;
-            $this->view->error = $alertMessage;
+        $this->view->fields = $_POST;
+        $this->view->error = $alertMessage;
+    }
+
+    // Return a JSON response to the client
+    protected function sendJson(array $data): void
+    {
+        header('Content-Type: application/json');
+        echo json_encode($data);
     }
 }

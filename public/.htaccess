@@ -1,5 +1,22 @@
-RewriteEngine on
-RewriteBase /krushi-arunalu/public
+# Check if the Apache mod_rewrite module is installed and enabled
+<IfModule mod_rewrite.c>
 
-RewriteCond %(REQUEST_FILENAME) !-d
-RewriteCond %{REQUEST_FILENAME} !-f
+    # Prevent Apache from showing a directory listing
+    # Prevent Apache from performing automatic filename matching (only exact filename matches will be used)
+    Options -Indexes -MultiViews
+
+    # Activate the mod_rewrite module and enable URL rewriting
+    RewriteEngine on
+    RewriteBase /krushi-arunalu/public
+
+    # Check if the requested URL path does not correspond to an existing file on the server
+    RewriteCond %{REQUEST_FILENAME} !-f
+    # Check if the requested URL path does not correspond to an existing directory on the server
+    RewriteCond %{REQUEST_FILENAME} !-d
+
+    # Rewrite the requested URL to index.php on the server, while preserving the original URL in the background
+    # ^(.*)$ captures the entire requested URL path and passes it as a query parameter url to index.php
+    # QSA flag tells Apache to append any existing query string to the rewritten URL
+    # L flag tells Apache to stop processing any additional rules if this rule is matched
+    RewriteRule ^(.*)$ index.php?url=$1 [QSA,L]
+</IfModule>

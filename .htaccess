@@ -1,7 +1,10 @@
-RewriteEngine on
-RewriteBase /krushi-arunalu/
+# Check if the Apache mod_rewrite module is installed and enabled
+<IfModule mod_rewrite.c>
+    # Activate the mod_rewrite module and enable URL rewriting
+    RewriteEngine on
+    RewriteBase /krushi-arunalu/
 
-RewriteCond %(REQUEST_FILENAME) !-d
-RewriteCond %(REQUEST_FILENAME) !-f
-
-RewriteRule ^(.*)$ index.php?url=$1 [QSA,L]
+    # Rewrite all requests to public folder
+    # (.*) matches any string and rewrites to "public/string"
+    RewriteRule (.*) public/$1 [L]
+</IfModule>

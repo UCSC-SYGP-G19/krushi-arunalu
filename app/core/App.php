@@ -10,6 +10,7 @@ namespace app\core;
 use app\controllers\IndexController;
 use app\helpers\Logger;
 use app\helpers\Session;
+use app\helpers\Util;
 
 class App
 {
@@ -41,6 +42,11 @@ class App
     {
         // Get the URL from the browser
         $url = $_GET['url'] ?? null;
+
+        if ($url == null) {
+            return;
+        }
+
         // Remove trailing slash
         $url = rtrim($url, '/');
         $url = filter_var($url, FILTER_SANITIZE_URL);
@@ -73,18 +79,18 @@ class App
     private function loadController(): bool
     {
         $fileName = $this->url[0] . "Controller";
-        $filePath = 'app/controllers/' . $fileName . '.php';
-        $controller = "app\\controllers\\" . $fileName;
+        $filePath = '../app/controllers/' . $fileName . '.php';
+        $controller =  "app\\controllers\\" . $fileName;
 
         if (file_exists($filePath)) {
             if (!in_array($this->url[0], PROTECTED_ROUTES["Common"])) {
                 $user = Session::getSession();
                 if ($user == null) {
-                    header("Location: " . URL_ROOT . "/login");
+                    Util::redirect('login');
                     exit;
                 } else {
                     if (!in_array($this->url[0], PROTECTED_ROUTES[$user->role] ?? [])) {
-                        require_once('app/views/other/403Page.php');
+                        require_once(APP_ROOT . '/views/other/403Page.php');
                         exit;
                     }
                 }
@@ -97,7 +103,7 @@ class App
         } else {
             Logger::log("ERROR", "Requested controller (" . $this->url[0] . ") not found");
             //echo "Requested controller (" . $this->url[0] . ") not found";
-            require_once('app/views/other/404Page.php');
+            require_once(APP_ROOT . '/views/other/404Page.php');
             return false;
         }
     }
