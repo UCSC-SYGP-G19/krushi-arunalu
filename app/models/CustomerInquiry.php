@@ -34,6 +34,22 @@ class CustomerInquiry extends Model
         return $result == true;
     }
 
+    public function getInquiriesByManufacturerIdFromDB($manufacturerId): array
+    {
+        return $this->runQuery("SELECT
+        ci.content as 'content',
+        p.name as 'product_name',
+        c.name as 'customer_name',
+        ci.date_time as 'asked_date',
+        (SELECT CASE WHEN response_content IS NULL THEN TRUE ELSE FALSE END) as 'responded',
+        m.image_url as 'company_logo'
+        FROM customer_inquiry ci
+        INNER JOIN product p ON ci.product_id = p.id
+        INNER JOIN registered_user m ON p.manufacturer_id = m.id
+        INNER JOIN registered_user c ON ci.customer_id = c.id
+        WHERE m.id = ?", [$manufacturerId])->fetchAll();
+    }
+
     /**
      * @return int|null
      */
