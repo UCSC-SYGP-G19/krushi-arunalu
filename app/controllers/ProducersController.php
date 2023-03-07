@@ -8,6 +8,7 @@
 namespace app\controllers;
 
 use app\core\Controller;
+use app\helpers\Session;
 
 class ProducersController extends Controller
 {
@@ -22,7 +23,8 @@ class ProducersController extends Controller
     public function connectionRequests(): void
     {
         $this->loadView('Manufacturer/ConnectionRequestsPage', 'Connection Requests', 'producers');
-
+        $this->loadModel('Manufacturer');
+        $this->view->data = $this->model->getRequestsFromProducers(Session::getSession()->id);
         $this->view->render();
     }
 }
