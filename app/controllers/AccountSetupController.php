@@ -11,6 +11,8 @@ namespace app\controllers;
 use app\core\Controller;
 use app\helpers\Session;
 use app\helpers\Util;
+use app\models\Crop;
+use app\models\Land;
 
 class AccountSetupController extends Controller
 {
@@ -58,11 +60,9 @@ class AccountSetupController extends Controller
     {
         $this->loadView('Producer/AccountSetupPage2', 'Account Setup - Producers');
 
-        $this->loadModel("Land");
-        $this->view->fieldOptions["land"] = $this->model->getNamesByOwnerIdFromDB(Session::getSession()->id);
+        $this->view->fieldOptions["land"] = Land::getNamesByOwnerIdFromDB(Session::getSession()->id);
 
-        $this->loadModel("Crop");
-        $this->view->fieldOptions["crop"] = $this->model->getNamesFromDB();
+        $this->view->fieldOptions["crop"] = Crop::getNamesFromDB();
 
         if ($_SERVER["REQUEST_METHOD"] === "POST") {
             $required_fields = ["land", "crop", "cultivated_qty", "cultivated_date"];
