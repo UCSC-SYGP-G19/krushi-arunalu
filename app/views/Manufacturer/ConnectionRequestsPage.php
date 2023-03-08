@@ -36,7 +36,9 @@ include APP_ROOT . "/views/inc/components/Header.php";
                                 include APP_ROOT . "/views/inc/components/SearchFilterAndSort.php";
                                 ?>
                                 <div class="connection-request-wrapper">
-                                    <?php foreach ($this->data as $producer) { ?>
+
+                                    <?php if (sizeof($this->data) > 0) {
+                                        foreach ($this->data as $producer) { ?>
                                         <div class="request-card-wrapper col-12 p-3 d-flex justify-content-space-between
                                                 mb-3">
                                             <div class="d-flex">
@@ -57,15 +59,23 @@ include APP_ROOT . "/views/inc/components/Header.php";
                                             <div class="btn-container d-flex">
                                                 <div class="mx-2"><?php echo'<a class="btn-md btn-primary-light
                                                 text-center text-white" href="' . URL_ROOT . '/producers/accept/'
-                                                        . $producer->sender_id . '">Accept</a>'?>
+                                                        . $producer->request_id . '">Accept</a>'?>
                                                 </div>
                                                 <div class="mx-2"><?php echo'<a class="btn-md btn-outlined-error 
                                                 text-center text-error" href="' . URL_ROOT . '/producers/decline/'
-                                                 . $producer->sender_id . '">Decline</a>'?>
+                                                 . $producer->request_id . '">Decline</a>'?>
                                                 </div>
                                             </div>
                                         </div>
-                                    <?php } ?>
+                                            <?php
+                                        }
+                                    } else { ?>
+                                        <div class="request-card-wrapper text-center py-3">
+                                            <?php
+                                            echo "No Pending Requests";
+                                            ?>
+                                        </div>
+                                    <?php }?>
                                 </div>
                             </div>
                         </div>

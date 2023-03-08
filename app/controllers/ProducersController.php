@@ -9,6 +9,7 @@ namespace app\controllers;
 
 use app\core\Controller;
 use app\helpers\Session;
+use app\helpers\Util;
 
 class ProducersController extends Controller
 {
@@ -28,8 +29,29 @@ class ProducersController extends Controller
         $this->view->render();
     }
 
-    public function accept(): void
+    public function accept($requestId): bool
     {
+        $this->loadView('Manufacturer/ConnectionRequestsPage', 'Connection Requests', 'producers');
+        $this->loadModel('Manufacturer');
 
+        if ($this->model->acceptConnectionRequests($requestId)) {
+            Util::redirect("../connectionRequests");
+            return true;
+        }
+        $this->view->render();
+        return false;
+    }
+
+    public function decline($requestId): bool
+    {
+        $this->loadView('Manufacturer/ConnectionRequestsPage', 'Connection Requests', 'producers');
+        $this->loadModel('Manufacturer');
+
+        if ($this->model->declineConnectionRequests($requestId)) {
+            Util::redirect("../connectionRequests");
+            return true;
+        }
+        $this->view->render();
+        return false;
     }
 }
