@@ -55,16 +55,22 @@ class Database
 
     public static function prepareAndExecute(PDO $pdo, string $query, array $values = []): bool|PDOStatement
     {
+        if (empty($values)) {
+            return $pdo->query($query);
+        }
+
         $stmt = $pdo->prepare($query);
         if (!$stmt) {
             return false;
         }
+
         try {
             $stmt->execute($values);
         } catch (PDOException $e) {
             Logger::log("PDOException", $e->getMessage());
             return false;
         }
+
         return $stmt;
     }
 }

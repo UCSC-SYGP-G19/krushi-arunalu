@@ -63,6 +63,53 @@ class Cultivation extends Model
             WHERE land.owner_id = ?", [$producerId])->fetchAll();
     }
 
+    public function updateInDB(): bool
+    {
+        return $this->update("cultivation", [
+            "crop_id" => $this->cropId,
+            "land_id" => $this->landId,
+            "cultivated_date" => $this->cultivatedDate,
+            "cultivated_quantity" => $this->cultivatedQuantity,
+            "status" => $this->status,
+            "expected_harvest_date" => $this->expectedHarvestDate
+        ], "id = $this->id") == 1;
+    }
+
+    public static function getByIdFromDB($id): ?object
+    {
+//        return $this->runQuery("SELECT
+//            cultivation.id as 'cultivation_id',
+//            land.id as 'land_id',
+//            land.name as 'land_name',
+//            crop.id as 'crop_id',
+//            crop.name as 'crop_name',
+//            cultivation.cultivated_quantity as 'cultivated_quantity',
+//            cultivation.cultivated_date as 'cultivated_date',
+//            cultivation.expected_harvest_date as 'expected_harvest_date',
+//            cultivation.status as 'status'
+//            FROM cultivation
+//            INNER JOIN land ON cultivation.land_id = land.id
+//            INNER JOIN crop ON cultivation.crop_id = crop.id
+//            WHERE cultivation.id = ?", [$id])->fetch();
+
+        $stmt = Model::select(
+            "cultivation",
+            array("cultivation.id", "land.id", "crop.id", "crop_category.id",
+                "cultivation.cultivated_quantity", "cultivation.cultivated_date",
+                "cultivation.expected_harvest_date", "cultivation.status"),
+            ["cultivation.id" => $id],
+            [
+                "JOIN land ON cultivation.land_id = land.id",
+                "JOIN crop ON cultivation.crop_id = crop.id",
+                "JOIN crop_category ON crop.category_id = crop_category.id"
+            ]
+        );
+        if ($stmt) {
+            return $stmt->fetch();
+        }
+        return null;
+    }
+
     /**
      * @return int|null
      */
