@@ -151,4 +151,9 @@ $properties: (auto, hidden);
  //producers view
 .active-page{
   border-bottom: $primary-green-light 2px solid;
+  color: $primary-green-light;
+}
+
+.inactive-page{
+  color: $secondary-grey;
 }
