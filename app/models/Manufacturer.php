@@ -32,7 +32,7 @@ class Manufacturer extends RegisteredUser
         if (parent::register()) {
             $this->runQuery(
                 "INSERT INTO manufacturer (id, br_number, cover_image_url, description) VALUES (?,?,?,?)",
-                [$this->getLastInsertedId(), $this->brNumber, $this->coverImageUrl, $this->description]
+                [$this->LastInsertId(), $this->brNumber, $this->coverImageUrl, $this->description]
             );
             return true;
         }
@@ -66,6 +66,40 @@ class Manufacturer extends RegisteredUser
             WHERE ru.id = ?",
             [$manufacturerId]
         )->fetch();
+    }
+
+    public function getRequestsFromProducers($manufacturerId): array
+    {
+        return $this->runQuery("SELECT
+        ru.name as 'sender_name',
+        d.name as 'location',
+        ru.image_url as 'profile_pic',
+        cr.sender_id as 'sender_id',
+        cr.id as 'request_id'
+        FROM connection_request cr
+        INNER JOIN registered_user ru ON ru.id = cr.sender_id
+        INNER JOIN producer p on p.id = cr.sender_id
+        INNER JOIN district d on p.district = d.id
+        WHERE cr.receiver_id = ? AND cr.status = ?
+        ", [$manufacturerId, "Pending"])->fetchAll();
+    }
+
+    public function acceptConnectionRequests($requestId): bool
+    {
+        $result = $this->runQuery("
+        UPDATE connection_request SET status = ?
+        WHERE connection_request.id = ?
+        ", ["Accepted", $requestId]);
+        return $result = true;
+    }
+
+    public function declineConnectionRequests($requestId): bool
+    {
+        $result = $this->runQuery("
+        UPDATE connection_request SET status = ?
+        WHERE connection_request.id = ?
+        ", ["Declined", $requestId]);
+        return $result = true;
     }
 
     /**

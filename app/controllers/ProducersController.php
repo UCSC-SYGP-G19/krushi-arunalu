@@ -8,6 +8,8 @@
 namespace app\controllers;
 
 use app\core\Controller;
+use app\helpers\Session;
+use app\helpers\Util;
 
 class ProducersController extends Controller
 {
@@ -22,7 +24,34 @@ class ProducersController extends Controller
     public function connectionRequests(): void
     {
         $this->loadView('Manufacturer/ConnectionRequestsPage', 'Connection Requests', 'producers');
-
+        $this->loadModel('Manufacturer');
+        $this->view->data = $this->model->getRequestsFromProducers(Session::getSession()->id);
         $this->view->render();
+    }
+
+    public function accept($requestId): bool
+    {
+        $this->loadView('Manufacturer/ConnectionRequestsPage', 'Connection Requests', 'producers');
+        $this->loadModel('Manufacturer');
+
+        if ($this->model->acceptConnectionRequests($requestId)) {
+            Util::redirect("../connectionRequests");
+            return true;
+        }
+        $this->view->render();
+        return false;
+    }
+
+    public function decline($requestId): bool
+    {
+        $this->loadView('Manufacturer/ConnectionRequestsPage', 'Connection Requests', 'producers');
+        $this->loadModel('Manufacturer');
+
+        if ($this->model->declineConnectionRequests($requestId)) {
+            Util::redirect("../connectionRequests");
+            return true;
+        }
+        $this->view->render();
+        return false;
     }
 }
