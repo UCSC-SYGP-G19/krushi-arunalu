@@ -16,9 +16,13 @@ class ProducersController extends Controller
     public function index(): void
     {
         $this->loadView('Manufacturer/ProducersPage', 'Producers', 'producers');
-        $this->loadModel("Producer");
-        $this->view->data = $this->model->getAllProducersFromDB();
         $this->view->render();
+    }
+
+    public function getJson(): void
+    {
+        $this->loadModel("Producer");
+        $this->sendJson($this->model->getAllProducersFromDB());
     }
 
     public function connectionRequests(): void
