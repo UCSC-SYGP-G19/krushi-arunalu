@@ -201,7 +201,7 @@ class Model
     }
 
     // Function to get the last inserted ID
-    public function lastInsertId(): int
+    public function getLastInsertedId(): int
     {
         $pdo = Database::getCon();
         if (!$pdo) {
