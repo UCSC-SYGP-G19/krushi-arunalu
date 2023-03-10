@@ -1,6 +1,6 @@
 name: Push-to-EC2
 
-# Trigger deployment on push and merge to master, dev branches
+# Trigger deployment on merge to master, dev branches
 on:
   # push:
     # branches: [master, dev]
@@ -13,12 +13,12 @@ jobs:
     name: Deploy to EC2 on master branch push
     runs-on: ubuntu-latest
     environment:
-      name: production
+      name: development
       url: ${{ env.URL }}
 
     steps:
       - name: Checkout the files
-        uses: actions/checkout@v2
+        uses: actions/checkout@v3
 
       - name: Deploy to Apache Web Server on EC2
         uses: easingthemes/ssh-deploy@main
