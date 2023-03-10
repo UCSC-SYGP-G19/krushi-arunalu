@@ -23,7 +23,6 @@ class CustomerOrder extends Model
         private ?string $email = null,
         private ?string $contactNo = null,
         private ?string $status = null
-
     ) {
     }
 

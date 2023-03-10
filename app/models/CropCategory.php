@@ -18,9 +18,13 @@ class CropCategory extends Model
     ) {
     }
 
-    public function getNamesFromDB(): array
+    public static function getNamesFromDB(): array
     {
-        return $this->runQuery("SELECT id, name FROM crop_category")->fetchAll();
+        $stmt = Model::select("crop_category", array("crop_category.id", "crop_category.name"));
+        if ($stmt) {
+            return $stmt->fetchAll();
+        }
+        return [];
     }
 
     /**

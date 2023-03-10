@@ -22,32 +22,94 @@ class Harvest extends Model
     ) {
     }
 
-    public function getAllByProducerIdFromDB($producerId): array
+    public static function getByIdFromDB($harvestId): ?object
     {
-        return $this->runQuery("SELECT 
-            harvest.id as 'harvest_id',
-            harvest.harvested_date as 'harvested_date',         
-            crop.name as 'crop_name', 
-            harvest.harvested_quantity as 'harvested_quantity',
-            harvest.remaining_quantity as 'remaining_quantity', 
-            harvest.expected_price as 'expected_price'
-            FROM harvest
-            INNER JOIN cultivation ON harvest.cultivation_id = cultivation.id
-            INNER JOIN crop ON cultivation.crop_id = crop.id
-            INNER JOIN land ON cultivation.land_id = land.id
-            WHERE land.owner_id = ?", [$producerId])->fetchAll();
+        $stmt = Model::select(
+            table: "harvest",
+            columns: [
+                "harvest.id", "harvest.cultivation_id AS cultivation_id",
+                "harvest.harvested_date AS harvested_date",
+                "harvest.harvested_quantity AS harvested_quantity",
+                "harvest.remaining_quantity AS remaining_quantity",
+                "harvest.expected_price AS expected_price"
+            ],
+            where: ["harvest.id" => $harvestId],
+        );
+
+        if ($stmt) {
+            return $stmt->fetch();
+        }
+        return null;
+    }
+
+    public static function getAllByProducerIdFromDB($producerId): array
+    {
+        $stmt = Model::select(
+            table: "harvest",
+            columns: [
+                "harvest.id",
+                "harvest.harvested_date AS harvested_date",
+                "crop.name",
+                "harvest.harvested_quantity AS harvested_quantity",
+                "harvest.remaining_quantity AS remaining_quantity",
+                "harvest.expected_price AS expected_price",
+            ],
+            where: ["land.owner_id" => $producerId],
+            joins: [
+                "cultivation" => "harvest.cultivation_id",
+                "crop" => "cultivation.crop_id",
+                "land" => "cultivation.land_id",
+            ]
+        );
+        if ($stmt) {
+            return $stmt->fetchAll();
+        }
+        return [];
     }
 
     public function addToDB(): bool
     {
-        $result = $this->runQuery(
-            "INSERT into harvest (cultivation_id, harvested_date, harvested_quantity, expected_price, 
-                     remaining_quantity) VALUES (?,?,?,?,?)",
-            [$this->cultivationId, $this->harvestedDate, $this->harvestedQuantity, $this->expectedPrice,
-                $this->remainingQuantity]
+//        $result = $this->runQuery(
+//            "INSERT into harvest (cultivation_id, harvested_date, harvested_quantity, expected_price,
+//                     remaining_quantity) VALUES (?,?,?,?,?)",
+//            [$this->cultivationId, $this->harvestedDate, $this->harvestedQuantity, $this->expectedPrice,
+//                $this->remainingQuantity]
+//        );
+//        return $result == true;
+
+        return $this->insert(
+            table: "harvest",
+            data: [
+                "cultivation_id" => $this->cultivationId,
+                "harvested_date" => $this->harvestedDate,
+                "harvested_quantity" => $this->harvestedQuantity,
+                "expected_price" => $this->expectedPrice,
+                "remaining_quantity" => $this->remainingQuantity,
+            ]
         );
-        return $result == true;
     }
+
+    public function updateInDB(): bool
+    {
+        return $this->update(
+            table: "harvest",
+            data: [
+                "cultivation_id" => $this->cultivationId,
+                "harvested_date" => $this->harvestedDate,
+                "harvested_quantity" => $this->harvestedQuantity,
+                "expected_price" => $this->expectedPrice,
+                "remaining_quantity" => $this->remainingQuantity,
+            ],
+            where: "id = $this->id"
+        ) == 1;
+    }
+
+    public function deleteFromDB(): bool
+    {
+        return $this->delete(table: "harvest", where: "id = $this->id") == 1;
+    }
+
+    // Getters and Setters
 
     /**
      * @return int|null

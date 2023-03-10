@@ -21,12 +21,11 @@ include APP_ROOT . "/views/inc/components/Header.php";
                     <div class="form-wrapper px-2">
                         <div class="row px-1 pt-1">
                             <div class="col-12 wrapper px-3 py-3">
-                                <h2 class="title mt-2 py-1 text-center">Add new harvest</h2>
+                                <h2 class="title mt-2 py-1 text-center">Update harvest</h2>
                                 <form class=" mt-2 mb-1 px-2" action="" method="post">
                                     <h3 class="form-section-title">Cultivation details</h3>
                                     <div class="row gap-2">
                                         <?php
-
                                         $formData = [
                                             "cultivation" => [
                                                 "element" => SelectField::class,

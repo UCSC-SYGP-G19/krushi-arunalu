@@ -46,32 +46,57 @@ class ManufacturerOrder extends Model
             WHERE manufacturer.id = ?", [$manufacturerId]) ->fetchAll();
     }
 
-    public function getAllOrdersByProducerId($producerId): array
+    public static function getAllOrdersByProducerId($producerId): array
     {
-        return $this->runQuery("SELECT 
-            mo.id as 'order_id',
-            mo.date as 'order_date',
-            c.name as 'crop_name', 
-            mo.quantity as 'quantity', 
-            mo.unit_selling_price as 'unit_selling_price',
-            ru.name as 'manufacturer_name',
-            mo.status as 'order_status'
-            FROM manufacturer_order mo
-            INNER JOIN crop c ON mo.crop_id = c.id
-            INNER JOIN registered_user ru ON mo.manufacturer_id = ru.id
-            WHERE mo.producer_id = ?", [$producerId]) ->fetchAll();
+//        return $this->runQuery("SELECT
+//            mo.id as 'order_id',
+//            mo.date as 'order_date',
+//            c.name as 'crop_name',
+//            mo.quantity as 'quantity',
+//            mo.unit_selling_price as 'unit_selling_price',
+//            ru.name as 'manufacturer_name',
+//            mo.status as 'order_status'
+//            FROM manufacturer_order mo
+//            INNER JOIN crop c ON mo.crop_id = c.id
+//            INNER JOIN registered_user ru ON mo.m+anufacturer_id = ru.id
+//            WHERE mo.producer_id = ?", [$producerId]) ->fetchAll();
+
+        $stmt = Model::select(
+            table: "manufacturer_order",
+            columns: [
+                "manufacturer_order.id AS order_id",
+                "manufacturer_order.date AS order_date",
+                "crop.name",
+                "manufacturer_order.quantity AS order_quantity",
+                "manufacturer_order.unit_selling_price * manufacturer_order.quantity AS order_total",
+                "registered_user.name AS manufacturer_name",
+                "manufacturer_order.status AS order_status",
+            ],
+            where: ["manufacturer_order.producer_id" => $producerId],
+            joins: [
+                "crop" => "manufacturer_order.crop_id",
+                "registered_user" => "manufacturer_order.manufacturer_id",
+            ],
+            order: "manufacturer_order.date DESC"
+        );
+        if ($stmt) {
+            return $stmt->fetchAll();
+        }
+        return [];
     }
 
-    public function acceptOrder($orderId): bool
+    public function updateOrderStatusInDB(): bool
     {
-        $result = $this->runQuery("UPDATE manufacturer_order SET status = 'Accepted' WHERE id = ?", [$orderId]);
-        return $result == true;
-    }
+//        $result = $this->runQuery("UPDATE manufacturer_order SET status = 'Accepted' WHERE id = ?", [$this->orderId]);
+//        return $result == true;
 
-    public function declineOrder($orderId): bool
-    {
-        $result = $this->runQuery("UPDATE manufacturer_order SET status = 'Declined' WHERE id = ?", [$orderId]);
-        return $result == true;
+        return $this->update(
+            table: "manufacturer_order",
+            data: [
+                    "status" => $this->status,
+                ],
+            where: "id = $this->orderId"
+        ) == 1;
     }
 
     public function getByOrderId($orderId): object

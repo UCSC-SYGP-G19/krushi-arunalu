@@ -15,60 +15,96 @@ $colors: (
 $text_align_values: (center, left, right, justify);
 
 h1.title {
-  font-family: 'Poppins', serif;
-  font-style: normal;
-  font-weight: 600;
-  font-size: $base-font-size*2;
-  color: $primary-green-light;
+    font-family: 'Poppins', serif;
+    font-style: normal;
+    font-weight: 600;
+    font-size: $base-font-size*2;
+    color: $primary-green-light;
 }
 
 .fs-1 {
-  font-size: $base-font-size*0.5!important;
+    font-size: $base-font-size*0.5 !important;
 }
 
 .fs-2 {
-  font-size: $base-font-size*0.75!important;
+    font-size: $base-font-size*0.75 !important;
 }
 
 .fs-3 {
-  font-size: $base-font-size*1!important;
+    font-size: $base-font-size*1 !important;
 }
 
 .fs-4 {
-  font-size: $base-font-size*1.25!important;
+    font-size: $base-font-size*1.25 !important;
 }
 
 .fs-5 {
-  font-size: $base-font-size*1.5!important;
+    font-size: $base-font-size*1.5 !important;
 }
 
 .fw-light {
-  font-weight: 300!important;
+    font-weight: 300 !important;
 }
 
 .fw-normal {
-  font-weight: 400!important;
+    font-weight: 400 !important;
 }
 
 .fw-bold {
-  font-weight: 600!important;
+    font-weight: 600 !important;
 }
 
 // text-color classes
 @each $key, $val in $colors {
-  .text-#{$key} {
-    color: $val !important;
+    .text-#{$key} {
+        color: $val !important;
 
-    &:hover {
-      color: darken($val, 15) !important;
+        &:hover {
+            color: darken($val, 15) !important;
+        }
     }
-  }
 }
 
 // text-align classes
 @each $val in $text_align_values {
-  .text-#{$val} {
-    text-align: $val;
-  }
+    .text-#{$val} {
+        text-align: $val;
+    }
+}
+
+.badge {
+    font-size: $base-font-size*0.8;
+    font-weight: 600;
+    color: $white;
+    background-color: $grey-dark;
+    border-radius: $base-border-radius;
+    padding: $base-padding*0.25 $base-padding*0.75;
+    margin-top: $base-margin/2;
+    margin-bottom: $base-margin/2;
+    //font-style: italic;
+    text-align: center;
+    white-space: nowrap;
+    vertical-align: baseline;
+    display: inline-block;
+
+    &.badge-success {
+        background-color: $sidebar-green;
+    }
+
+    &.badge-danger {
+        background-color: $error-red;
+    }
+
+    &.badge-warning {
+        background-color: $gold-dark;
+    }
+
+    &.badge-primary {
+        background-color: $primary-green-dark;
+    }
+
+    &.badge-secondary {
+        background-color: $grey-dark;
+    }
 }
 
