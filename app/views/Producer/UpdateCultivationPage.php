@@ -92,7 +92,7 @@ include APP_ROOT . "/views/inc/components/Header.php";
                                             "cultivated_quantity" => [
                                                 "element" => InputField::class,
                                                 "wrapperClass" => "col-4",
-                                                "label" => "Cultivated quantity",
+                                                "label" => "Cultivated quantity (KG)",
                                                 "placeholder" => "Enter cultivated quantity (KG)",
                                                 "type" => "number",
                                             ],

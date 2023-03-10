@@ -85,15 +85,26 @@ class Model
             $query = "SELECT ";
 
             foreach ($columns as $column) {
-                $actualTable = explode('.', $column)[0];
-                $actualColumn = explode('.', $column)[1];
-                $query .= $column . " AS " . $actualTable . "_" . $actualColumn . ", ";
+                // if user has given an alias, use it
+                if (str_contains($column, ' AS ')) {
+                    $query .= $column . ", ";
+
+                    // if user has not given an alias, create one (tableName_columnName)
+                } else {
+                    $actualTable = explode('.', $column)[0];
+                    $actualColumn = explode('.', $column)[1];
+                    $query .= $column . " AS " . $actualTable . "_" . $actualColumn . ", ";
+                }
             }
 
             $query = rtrim($query, ', ') . " FROM $table";
 
-            foreach ($joins as $join) {
-                $query .= " " . $join;
+//            foreach ($joins as $join) {
+//                $query .= " " . $join;
+//            }
+
+            foreach ($joins as $table => $relatedColumn) {
+                $query .= " JOIN $table ON $relatedColumn = $table.id";
             }
         }
 
