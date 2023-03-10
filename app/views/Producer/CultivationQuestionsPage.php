@@ -20,6 +20,11 @@ include APP_ROOT . "/views/inc/components/Header.php";
                             <div class="col-6">
                                 <h1 class="title">Cultivation Questions</h1>
                             </div>
+                            <div class="col">
+                                <a href="cultivation-questions/ask"
+                                   class="btn-md btn-primary-light text-center text-white">
+                                    Ask question</a>
+                            </div>
                         </div>
                         <div class="row px-1 pt-2">
                             <div class="col-12 text-justify">
@@ -29,56 +34,53 @@ include APP_ROOT . "/views/inc/components/Header.php";
                                 ?>
                             </div>
                         </div>
-                        <div class="row inquiry-wrapper col-12 px-4 py-3 d-block mb-3">
-                            <div class="d-block col-12">
-                                <h3 class="text-black">
-                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod ... </h3>
-                                <div class="product-name">
-                                    Product X
+                        <section class="px-1">
+                            <?php foreach ($this->data as $question) {
+                                ?>
+
+                                <div class="question-wrapper py-3 px-4 mb-3">
+                                    <div class="row justify-content-space-between">
+                                        <div class="col-8">
+                                            <a
+                                                    href="<?php echo('cultivation-questions/details/' . $question->id)
+                                                    ?>">
+                                                <h3 class="question-title">
+                                                    <?php echo $question->title; ?>
+                                                </h3>
+                                            </a>
+                                        </div>
+                                        <div class="col-2 question-actions text-right">
+                                            <a class="btn-xs btn-outlined-tertiary mr-1 px-2 fs-3"
+                                               href="<?php echo('cultivation-questions/edit/' . $question->id) ?>">
+                                                Edit
+                                            </a>
+
+                                            <a class="btn-xs btn-outlined-tertiary ml-1 px-2 fs-3"
+                                               href="<?php echo('cultivation-questions/delete/' . $question->id) ?>">
+                                                Delete
+                                            </a>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col my-1">
+                                            <span class="text-primary-light fw-bold">
+                                                <?php echo $question->producer_name; ?>
+                                            </span>
+                                            <span class="text-secondary"> - asked on
+                                                <?php echo $question->asked_date_time; ?></span>
+                                        </div>
+                                    </div>
+                                    <div class="row justify-content-end response-info">
+                                        <div class="col mb-1">
+                                            <span class="response-status mx-2">Responded ✓️</span>
+                                            <span class="text-secondary">&nbsp;Last response on</span>
+                                        </div>
+                                    </div>
                                 </div>
-                            </div>
-                            <div class="row py-1 justify-content-end">
-                                <div class="responded text-white py-1 px-2 mr-2">Responded ✓️</div>
-                                <div class="text-primary-light fw-bold py-1">Customer 1 - <span class="text-secondary">
-                                       asked on Oct 15
-                                    </span>
-                                </div>
-                            </div>
-                            <div class="row pt-1">
-                                <div class="user-profile-pic col-1 text-center">
-                                    <?php echo '<img src="' . URL_ROOT . '/public/img/icons/navbar/user-avatar.webp" 
-                alt="User profile icon" height="56px">' ?>
-                                </div>
-                                <div class="col-11 py-2">
-                                    <textarea class="col-12" placeholder="Write a Response"></textarea>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="row inquiry-wrapper col-12 px-4 py-3 d-block mb-3">
-                            <div class="d-block col-12">
-                                <h3 class="text-black">
-                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod ... </h3>
-                                <div class="product-name">
-                                    Product Y
-                                </div>
-                            </div>
-                            <div class="row py-1 justify-content-end">
-                                <div class="responded text-white py-1 px-2 mr-2">Responded ✓️</div>
-                                <div class="text-primary-light fw-bold py-1">Customer 2 - <span class="text-secondary">
-                                       asked on Sep 21
-                                    </span>
-                                </div>
-                            </div>
-                            <div class="row pt-1">
-                                <div class="user-profile-pic col-1 text-center">
-                                    <?php echo '<img src="' . URL_ROOT . '/public/img/icons/navbar/user-avatar.webp" 
-                alt="User profile icon" height="56px">' ?>
-                                </div>
-                                <div class="col-11 py-2">
-                                    <textarea class="col-12" placeholder="Write a Response"></textarea>
-                                </div>
-                            </div>
-                        </div>
+                                <?php
+                            }
+                            ?>
+                        </section>
                     </div>
                 </div>
             </div>

@@ -63,6 +63,8 @@ class View
             isset($this->fieldOptions[$key]) &&
             $formField->options = $this->fieldOptions[$key];
             isset($value["type"]) && $formField->type = $value["type"];
+            isset($value["rows"]) && $formField->rows = $value["rows"];
+            isset($value["cols"]) && $formField->cols = $value["cols"];
             $formField->render();
         }
     }
