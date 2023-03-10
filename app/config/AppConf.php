@@ -6,7 +6,7 @@
  */
 
 define('APP_ROOT', dirname(__FILE__, 2));
-define('FILE_ROOT', dirname(__FILE__, 3) . DIRECTORY_SEPARATOR . 'storage');
+define('UPLOADS_ROOT', dirname(__FILE__, 3) . '/public/uploads');
 
 if (isset($_SERVER['SERVER_NAME']) && $_SERVER['SERVER_NAME'] == 'localhost') {
     define('URL_ROOT', $_ENV['APP_LOCAL_URL']);
