@@ -1,7 +1,7 @@
 
 const dropAreas = document.querySelectorAll(".image-upload"),
     content = document.querySelectorAll(".upload-content"),
-    finalImages = document.querySelectorAll(".image-preview"),
+    finalImages = document.querySelectorAll(".upload-preview"),
     browseButtons = document.querySelectorAll(".btn-browse"),
     uploadInputs = document.querySelectorAll(".upload-input");
 
@@ -55,14 +55,14 @@ function previewFile(file, index)
             console.log(fileURL);
             if (typeof (fileURL) === "string") {
                 const preview = new Image();
-                preview.setAttribute("width", "100%");
+                preview.setAttribute("height", "100%");
                 preview.src = fileURL;
                 selectedContent.setAttribute("style", "display:none;")
 
                 const closeBtn = document.createElement("button");
                 closeBtn.id = "btn-cancel";
                 closeBtn.className = "btn-cancel";
-                closeBtn.innerHTML =  `&times;`;
+                closeBtn.innerHTML =  "&times;";
                 closeBtn.addEventListener("click", (e) => {
                     e.preventDefault();
                     deleteImg(index)
@@ -74,7 +74,7 @@ function previewFile(file, index)
             }
         }
     } else {
-        alert("This is not an Image File!");
+        alert("This is not an image file");
         dropAreas[index].classList.remove("drag");
     }
 }
