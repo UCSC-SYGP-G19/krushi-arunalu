@@ -40,12 +40,18 @@ class Land extends Model
 
     public static function getNamesByOwnerIdFromDB($ownerId): array
     {
-        $stmt = Model::select("land", array("land.id", "land.name"), ["land.owner_id" => $ownerId]);
+        $stmt = Model::select(
+            table: "land",
+            columns: ["land.id", "land.name"],
+            where: ["land.owner_id" => $ownerId]
+        );
         if ($stmt) {
             return $stmt->fetchAll();
         }
         return [];
     }
+
+    // Getters and Setters
 
     /**
      * @return int|null

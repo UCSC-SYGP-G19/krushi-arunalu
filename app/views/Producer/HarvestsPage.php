@@ -58,7 +58,7 @@ include APP_ROOT . "/views/inc/components/Header.php";
                                         "sortKey" => "remaining_quantity",
                                         "class" => "col-2",
                                     ],
-                                    "price" => [
+                                    "expected_price" => [
                                         "label" => "Expected price",
                                         "sortable" => true,
                                         "sortKey" => "price",
