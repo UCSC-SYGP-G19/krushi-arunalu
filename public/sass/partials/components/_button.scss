@@ -3,7 +3,7 @@
 $colors: (
         "primary-light": $primary-green-light,
         "primary-dark": $primary-green-dark,
-        "secondary" : $secondary-grey,
+        "secondary" : $grey-dark,
         "white" : $white,
         "black" : $black,
         "error" : $error-red,
@@ -57,5 +57,5 @@ $colors: (
 
 .btn-xs {
   padding: $base-padding*0.2 $base-padding*0.4!important;
-  border-radius: $base-border-radius-sm*0.5;
+  border-radius: $base-border-radius-sm*0.75;
 }

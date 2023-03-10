@@ -560,11 +560,11 @@
   display: inline-block;
   border: 0;
   padding: 0.75rem 1.5rem;
-  background-color: #B1B1B1;
+  background-color: #555555;
   border-radius: 16px;
 }
 .btn-secondary:hover {
-  background-color: #bebebe;
+  background-color: #626262;
 }
 
 .btn-outlined-secondary {
@@ -575,12 +575,12 @@
   padding: 0.75rem 1.5rem;
   background-color: #FFFFFF;
   border-radius: 16px;
-  border: 1.5px solid #B1B1B1;
-  color: #B1B1B1;
+  border: 1.5px solid #555555;
+  color: #555555;
   background-color: transparent;
 }
 .btn-outlined-secondary:hover {
-  background-color: #B1B1B1;
+  background-color: #555555;
   color: #FFFFFF !important;
 }
 
@@ -720,7 +720,7 @@
 
 .btn-xs {
   padding: 0.3rem 0.6rem !important;
-  border-radius: 4px;
+  border-radius: 6px;
 }
 
 .navbar .container, .navbar {
@@ -1635,6 +1635,36 @@ h1.title {
 
 .text-justify {
   text-align: justify;
+}
+
+.badge {
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: #FFFFFF;
+  background-color: #555555;
+  border-radius: 16px;
+  padding: 0.375rem 1.125rem;
+  margin-top: 0.75rem;
+  margin-bottom: 0.75rem;
+  text-align: center;
+  white-space: nowrap;
+  vertical-align: baseline;
+  display: inline-block;
+}
+.badge.badge-success {
+  background-color: #27963C;
+}
+.badge.badge-danger {
+  background-color: #CC3636;
+}
+.badge.badge-warning {
+  background-color: #E7A811;
+}
+.badge.badge-primary {
+  background-color: #185427;
+}
+.badge.badge-secondary {
+  background-color: #555555;
 }
 
 .server-error {
