@@ -122,6 +122,10 @@
   background-color: #95C260;
   border-radius: 8px;
 }
+.inquiry-wrapper .user-profile-pic {
+  border: 1px solid #B1B1B1;
+  border-radius: 50%;
+}
 
 .request-card-wrapper {
   background-color: #FFFFFF;
@@ -135,32 +139,8 @@
   padding-top: 2px;
 }
 
-.order-details-wrapper .order-details-container, .order-details-wrapper .delivery-address, .order-details-wrapper .order-summary {
-  background-color: #E7F4D8;
-}
-.order-details-wrapper .order-details-container {
-  border-radius: 16px 16px 0 0;
-  border-bottom: 2px solid #15742D;
-}
-.order-details-wrapper .delivery-address {
-  border-radius: 0 0 0 16px;
-  border-top: 2px solid #15742D;
-}
-.order-details-wrapper .order-summary {
-  border-radius: 0 0 16px 0;
-  border-top: 2px solid #15742D;
-}
-.order-details-wrapper .order-item-wrapper {
-  background-color: #FFFFFF;
-  border-bottom: 1px solid #B1B1B1;
-}
-.order-details-wrapper .order-item-wrapper .product-img {
-  border-radius: 50%;
-}
-.order-details-wrapper .order-item-wrapper .product-qty {
-  background-color: #95C260;
-  height: max-content;
-  border-radius: 8px;
+.active-page {
+  border-bottom: #15742D 2px solid;
 }
 
 .container {
@@ -958,7 +938,7 @@ footer {
   height: 100%;
 }
 .content-with-sidebar aside.sidebar {
-  transition: all 0.2s ease !important;
+  transition: all 0.3s ease !important;
   padding: 0;
   margin: 0;
   background-color: white;
@@ -999,6 +979,9 @@ footer {
 }
 .content-with-sidebar aside.sidebar .sidebar-links li a span {
   padding-left: 1.125rem;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
 }
 .content-with-sidebar aside.sidebar .sidebar-links li .selected {
   background-color: #D9F0BE !important;
