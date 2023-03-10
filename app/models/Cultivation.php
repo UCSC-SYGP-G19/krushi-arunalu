@@ -23,6 +23,29 @@ class Cultivation extends Model
     ) {
     }
 
+    public function addToDB(): bool
+    {
+//        $result = $this->runQuery(
+//            "INSERT into cultivation (crop_id, land_id, cultivated_date, cultivated_quantity, status,
+//                         expected_harvest_date) VALUES (?,?,?,?,?,?)",
+//            [$this->cropId, $this->landId, $this->cultivatedDate, $this->cultivatedQuantity, $this->status,
+//                $this->expectedHarvestDate]
+//        );
+//        return $result == true;
+
+        return $this->insert(
+            table: "cultivation",
+            data: [
+                "crop_id" => $this->cropId,
+                "land_id" => $this->landId,
+                "cultivated_date" => $this->cultivatedDate,
+                "cultivated_quantity" => $this->cultivatedQuantity,
+                "status" => $this->status,
+                "expected_harvest_date" => $this->expectedHarvestDate,
+            ]
+        );
+    }
+
     public static function getByIdFromDB($cultivationId): ?object
     {
 //        return $this->runQuery("SELECT
@@ -62,30 +85,7 @@ class Cultivation extends Model
         return null;
     }
 
-    public function addToDB(): bool
-    {
-//        $result = $this->runQuery(
-//            "INSERT into cultivation (crop_id, land_id, cultivated_date, cultivated_quantity, status,
-//                         expected_harvest_date) VALUES (?,?,?,?,?,?)",
-//            [$this->cropId, $this->landId, $this->cultivatedDate, $this->cultivatedQuantity, $this->status,
-//                $this->expectedHarvestDate]
-//        );
-//        return $result == true;
-
-        return $this->insert(
-            table: "cultivation",
-            data: [
-                "crop_id" => $this->cropId,
-                "land_id" => $this->landId,
-                "cultivated_date" => $this->cultivatedDate,
-                "cultivated_quantity" => $this->cultivatedQuantity,
-                "status" => $this->status,
-                "expected_harvest_date" => $this->expectedHarvestDate,
-            ]
-        );
-    }
-
-    public function getAllByProducerIdFromDB($producerId): array
+    public static function getAllByProducerIdFromDB($producerId): array
     {
 //        return $this->runQuery("SELECT
 //            cultivation.id as 'cultivation_id',
@@ -136,14 +136,18 @@ class Cultivation extends Model
 
     public function updateInDB(): bool
     {
-        return $this->update("cultivation", [
+        return $this->update(
+            table: "cultivation",
+            data: [
                 "crop_id" => $this->cropId,
                 "land_id" => $this->landId,
                 "cultivated_date" => $this->cultivatedDate,
                 "cultivated_quantity" => $this->cultivatedQuantity,
                 "status" => $this->status,
                 "expected_harvest_date" => $this->expectedHarvestDate
-            ], "id = $this->id") == 1;
+            ],
+            where: "id = $this->id"
+        ) == 1;
     }
 
     public function deleteFromDB(): bool

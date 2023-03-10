@@ -18,19 +18,19 @@ use app\models\Land;
 
 class CultivationsController extends Controller
 {
+    public string $base = URL_ROOT . "/cultivations";
     public function index(): void
     {
         $this->loadView("Producer/CultivationsPage", "Cultivations", "cultivations");
-        $this->loadModel("Cultivation");
-        $this->view->data = $this->model->getAllByProducerIdFromDB(Session::getSession()->id);
+        $this->view->data = Cultivation::getAllByProducerIdFromDB(Session::getSession()->id);
         $this->view->render();
     }
 
     public function add(): void
     {
-        if ($_SERVER["REQUEST_METHOD"] === "GET") {
-            $this->loadView('Producer/AddCultivationPage', 'Add Cultivation', 'cultivations');
+        $this->loadView('Producer/AddCultivationPage', 'Add cultivation', 'cultivations');
 
+        if ($_SERVER["REQUEST_METHOD"] === "GET") {
             $this->view->fieldOptions["land"] = Land::getNamesByOwnerIdFromDB(Session::getSession()->id);
             $this->view->fieldOptions["category"] = CropCategory::getNamesFromDB();
             $this->view->fieldOptions["crop"] = Crop::getNamesFromDB();
@@ -60,7 +60,7 @@ class CultivationsController extends Controller
             ]);
 
             if ($this->model->addToDB()) {
-                Util::redirect("./");
+                Util::redirect($this->base);
             }
         }
     }
@@ -68,7 +68,7 @@ class CultivationsController extends Controller
     public function edit($cultivationId): void
     {
         if ($_SERVER["REQUEST_METHOD"] === "GET") {
-            $this->loadView('Producer/UpdateCultivationPage', 'Add Cultivation', 'cultivations');
+            $this->loadView('Producer/UpdateCultivationPage', 'Update cultivation', 'cultivations');
 
             $this->view->fieldOptions["land"] = Land::getNamesByOwnerIdFromDB(Session::getSession()->id);
             $this->view->fieldOptions["category"] = CropCategory::getNamesFromDB();
@@ -115,7 +115,7 @@ class CultivationsController extends Controller
                 echo("Not Updated");
             }
 
-            Util::redirect(URL_ROOT . "/cultivations");
+            Util::redirect($this->base);
         }
     }
 
@@ -132,6 +132,6 @@ class CultivationsController extends Controller
             echo "Cannot delete cultivations with associated harvests";
         }
 
-        Util::redirect(URL_ROOT . "/cultivations");
+        Util::redirect($this->base);
     }
 }

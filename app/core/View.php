@@ -48,4 +48,22 @@ class View
             require_once '../app/views/other/404Page.php';
         }
     }
+
+    public function generateFormFields($formData): void
+    {
+        foreach ($formData as $key => $value) {
+            $formField = new $value["element"](
+                $key,
+                $value["label"],
+                $value["placeholder"],
+                $this->fieldValues[$key] ?? null,
+                $this->fieldErrors[$key] ?? null,
+                $value["wrapperClass"],
+            );
+            isset($this->fieldOptions[$key]) &&
+            $formField->options = $this->fieldOptions[$key];
+            isset($value["type"]) && $formField->type = $value["type"];
+            $formField->render();
+        }
+    }
 }
