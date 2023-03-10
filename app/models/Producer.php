@@ -31,7 +31,7 @@ class Producer extends RegisteredUser
         if (parent::register()) {
             $this->runQuery(
                 "INSERT INTO producer (id, nic_number, district) VALUES (?,?,?)",
-                [$this->LastInsertId(), $this->nicNumber, $this->district]
+                [$this->getLastInsertedId(), $this->nicNumber, $this->district]
             );
             return true;
         }

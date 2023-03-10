@@ -32,7 +32,7 @@ class Manufacturer extends RegisteredUser
         if (parent::register()) {
             $this->runQuery(
                 "INSERT INTO manufacturer (id, br_number, cover_image_url, description) VALUES (?,?,?,?)",
-                [$this->LastInsertId(), $this->brNumber, $this->coverImageUrl, $this->description]
+                [$this->getLastInsertedId(), $this->brNumber, $this->coverImageUrl, $this->description]
             );
             return true;
         }
