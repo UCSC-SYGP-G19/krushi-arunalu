@@ -22,21 +22,19 @@ class CultivationQuestion extends Model
     ) {
     }
 
-    public static function getByIdFromDB($cultivationId): ?object
+    public static function getByIdFromDB($questionId): ?object
     {
         $stmt = Model::select(
-            table: "cultivation",
+            table: "cultivation_question",
             columns: [
-                "cultivation.id", "land.id", "land.name", "crop.id", "crop.name", "crop.category_id",
-                "cultivation.cultivated_quantity AS cultivated_quantity",
-                "cultivation.cultivated_date AS cultivated_date",
-                "cultivation.expected_harvest_date AS expected_harvest_date",
-                "cultivation.status AS status"
+                "cultivation_question.id AS id", "registered_user.image_url AS producer_image",
+                "registered_user.name AS producer_name", "cultivation_question.asked_date_time AS asked_date_time",
+                "cultivation_question.title AS title", "cultivation_question.content AS content",
+                "cultivation_question.image AS image",
             ],
-            where: ["cultivation.id" => $cultivationId],
+            where: ["cultivation_question.id" => $questionId],
             joins: [
-                "land" => "cultivation.land_id",
-                "crop" => "cultivation.crop_id",
+                "registered_user" => "cultivation_question.producer_id",
             ]
         );
 
@@ -51,8 +49,10 @@ class CultivationQuestion extends Model
         $stmt = Model::select(
             table: "cultivation_question",
             columns: [
-                "cultivation_question.id AS id", "cultivation_question.title AS title",
+                "cultivation_question.id AS id", "registered_user.image_url AS producer_image",
                 "registered_user.name AS producer_name", "cultivation_question.asked_date_time AS asked_date_time",
+                "cultivation_question.title AS title", "cultivation_question.content AS content",
+                "cultivation_question.image AS image",
             ],
             joins: [
                 "registered_user" => "cultivation_question.producer_id",
@@ -73,7 +73,6 @@ class CultivationQuestion extends Model
                 "title" => $this->title,
                 "content" => $this->content,
                 "image" => $this->image,
-                "asked_date_time" => $this->askedDateTime,
             ]
         );
     }

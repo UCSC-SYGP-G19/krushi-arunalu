@@ -66,7 +66,6 @@ class CultivationQuestionsController extends Controller
                 'title' => $_POST['title'],
                 'content' => $_POST['content'],
                 'image' => $uploaded_file_name,
-                'askedDateTime' => date('Y-m-d H:i:s'),
             ]);
 
             if ($this->model->addToDB()) {
@@ -74,6 +73,17 @@ class CultivationQuestionsController extends Controller
             }
         }
 
+        $this->view->render();
+    }
+
+    public function details($questionId): void
+    {
+        $this->loadView(
+            'Producer/QuestionDetailsPage',
+            'Question details',
+            'cultivation-questions'
+        );
+        $this->view->data["questionDetails"] = CultivationQuestion::getByIdFromDB($questionId);
         $this->view->render();
     }
 }

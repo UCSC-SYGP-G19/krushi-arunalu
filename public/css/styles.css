@@ -2083,6 +2083,22 @@ h1.title {
   padding: 0.525rem 1.05rem;
 }
 
+.question-details-wrapper {
+  border-radius: 16px;
+  background-color: white;
+}
+.question-details-wrapper .heading .user-info h3 {
+  font-weight: 500;
+}
+.question-details-wrapper .body h2.question-title {
+  font-weight: 600;
+}
+.question-details-wrapper .body img.question-image {
+  width: 100%;
+  height: auto;
+  border-radius: 4px;
+}
+
 * {
   box-sizing: border-box;
   color: inherit;

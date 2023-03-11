@@ -1,7 +1,5 @@
 <?php
-
 include APP_ROOT . "/views/inc/components/Header.php";
-
 ?>
     <body class="overflow-hidden full-height">
     <div class="content-with-sidebar">
@@ -12,7 +10,6 @@ include APP_ROOT . "/views/inc/components/Header.php";
             <?php
             include APP_ROOT . "/views/inc/components/LoggedInNavbar.php"
             ?>
-
             <div class="content-wrapper">
                 <div class="content p-4 mt-1">
                     <div class="container-fluid px-2">
@@ -37,13 +34,10 @@ include APP_ROOT . "/views/inc/components/Header.php";
                         <section class="px-1">
                             <?php foreach ($this->data as $question) {
                                 ?>
-
                                 <div class="question-wrapper py-3 px-4 mb-3">
                                     <div class="row justify-content-space-between">
                                         <div class="col-8">
-                                            <a
-                                                    href="<?php echo('cultivation-questions/details/' . $question->id)
-                                                    ?>">
+                                            <a href="<?php echo('cultivation-questions/details/' . $question->id) ?>">
                                                 <h3 class="question-title">
                                                     <?php echo $question->title; ?>
                                                 </h3>
@@ -88,7 +82,6 @@ include APP_ROOT . "/views/inc/components/Header.php";
             include APP_ROOT . "/views/inc/components/Footer.php";
             ?>
         </main>
-
     </div>
     </body>
 <?php

@@ -1,4 +1,3 @@
-
 const dropAreas = document.querySelectorAll(".image-upload"),
     content = document.querySelectorAll(".upload-content"),
     finalImages = document.querySelectorAll(".upload-preview"),
@@ -41,7 +40,6 @@ dropAreas.forEach((dropArea, index) => {
     });
 })
 
-
 function previewFile(file, index)
 {
     let selectedContent = content[index];
@@ -80,7 +78,6 @@ function previewFile(file, index)
 }
 
 //remove image
-
 function deleteImg(index)
 {
     const selectedContent = content[index];

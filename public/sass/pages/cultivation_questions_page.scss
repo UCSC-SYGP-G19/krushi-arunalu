@@ -28,3 +28,27 @@
         }
     }
 }
+
+.question-details-wrapper {
+    border-radius: $base-border-radius;
+    background-color: white;
+
+    .heading {
+        .user-info {
+            h3 {
+                font-weight: 500;
+            }
+        }
+    }
+
+    .body {
+        h2.question-title {
+            font-weight: 600;
+        }
+        img.question-image {
+            width: 100%;
+            height: auto;
+            border-radius: $base-border-radius*0.25;
+        }
+    }
+}
