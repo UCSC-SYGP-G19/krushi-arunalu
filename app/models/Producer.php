@@ -31,7 +31,7 @@ class Producer extends RegisteredUser
         if (parent::register()) {
             $this->runQuery(
                 "INSERT INTO producer (id, nic_number, district) VALUES (?,?,?)",
-                [$this->LastInsertId(), $this->nicNumber, $this->district]
+                [$this->getLastInsertedId(), $this->nicNumber, $this->district]
             );
             return true;
         }
@@ -56,7 +56,7 @@ class Producer extends RegisteredUser
             INNER JOIN land l on p.id = l.owner_id
             INNER JOIN cultivation c on l.id = c.land_id
             INNER JOIN crop cr on c.crop_id = cr.id
-            INNER JOIN connection_request co ON co.sender_id = p.id
+            LEFT JOIN connection_request co ON co.sender_id = p.id
             GROUP BY ru.id
             ", [])->fetchAll();
     }

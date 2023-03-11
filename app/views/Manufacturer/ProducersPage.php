@@ -21,7 +21,7 @@ include APP_ROOT . "/views/inc/components/Header.php";
                                 <h1 class="title">Producers</h1>
                             </div>
                             <div class="col">
-                                <a href="producers/connectionRequests"
+                                <a href="producers/received-connection-requests"
                                    class="btn-md btn-primary-light text-center text-white">
                                     Connection Requests</a>
                             </div>
@@ -94,7 +94,7 @@ include APP_ROOT . "/views/inc/components/Header.php";
         </main>
 
     </div>
-    <script src="<?php echo URL_ROOT ?>/public/js/producers.js" defer></script>
+    <script src="<?php echo URL_ROOT ?>/public/js/Manufacturer/viewProducers.js" defer></script>
     </body>
 <?php
 include APP_ROOT . "/views/inc/components/EndingTag.php";
