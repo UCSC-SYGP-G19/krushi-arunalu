@@ -82,21 +82,20 @@ class CultivationQuestion extends Model
         return $this->update(
             table: "cultivation_question",
             data: [
-                "producer_id" => $this->producerId,
-                "title" => $this->title,
-                "content" => $this->content,
-                "image" => $this->image,
-                "asked_date_time" => $this->askedDateTime,
-            ],
+                    "title" => $this->title,
+                    "content" => $this->content,
+                    "image" => $this->image,
+                ],
             where: "id = $this->id"
         ) == 1;
     }
 
-    // Getters and Setters
     public function deleteFromDB(): bool
     {
         return $this->delete("cultivation_question", "id = $this->id") == 1;
     }
+
+    // Getters and Setters
 
     /**
      * @return int|null

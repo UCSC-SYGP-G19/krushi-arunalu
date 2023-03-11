@@ -60,6 +60,8 @@ class Database
         }
 
         $stmt = $pdo->prepare($query);
+        Logger::log("PDOStatement", $stmt->queryString);
+
         if (!$stmt) {
             return false;
         }
