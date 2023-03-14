@@ -84,6 +84,16 @@ class Manufacturer extends RegisteredUser
         ", [$manufacturerId, "Pending"])->fetchAll();
     }
 
+    public function sendRequestsToProducers($manufacturerId, $producerId): bool
+    {
+        $result = $this->runQuery(
+            "INSERT INTO
+                connection_request(sender_id, receiver_id) VALUES (?,?)",
+            [$manufacturerId, $producerId]
+        );
+        return $result = true;
+    }
+
     public function getSentConnectionRequests($manufacturerId): array
     {
         return $this->runQuery("SELECT

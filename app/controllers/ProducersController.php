@@ -49,18 +49,18 @@ class ProducersController extends Controller
         $this->sendJson($this->model->getSentConnectionRequests(Session::getSession()->id));
     }
 
-//    public function sendConnectionRequests($producerId): bool
-//    {
-//        $this->loadView('Manufacturer/ConnectionRequestsPage', 'Connection Requests', 'producers');
-//        $this->loadModel('Manufacturer');
-//
-//        if ($this->model->sendConnectionRequestsFromProducers(Session::getSession()->id, $producerId) {
-//            Util::redirect("../");
-//            return true;
-//        }
-//        $this->view->render();
-//        return false;
-//    }
+    public function sendConnectionRequests($producerId): bool
+    {
+        $this->loadView('Manufacturer/ProducersPage', 'Producers', 'producers');
+        $this->loadModel('Manufacturer');
+
+        if ($this->model->sendRequestsToProducers(Session::getSession()->id, $producerId)) {
+            Util::redirect("..");
+            return true;
+        }
+        $this->view->render();
+        return false;
+    }
 
     public function accept($requestId): bool
     {
@@ -68,7 +68,7 @@ class ProducersController extends Controller
         $this->loadModel('Manufacturer');
 
         if ($this->model->acceptConnectionRequests($requestId)) {
-            Util::redirect("../connectionRequests");
+            Util::redirect("../received-connection-requests");
             return true;
         }
         $this->view->render();

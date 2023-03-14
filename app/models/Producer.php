@@ -56,7 +56,7 @@ class Producer extends RegisteredUser
             INNER JOIN land l on p.id = l.owner_id
             INNER JOIN cultivation c on l.id = c.land_id
             INNER JOIN crop cr on c.crop_id = cr.id
-            LEFT JOIN connection_request co ON co.sender_id = p.id
+            LEFT JOIN connection_request co ON co.sender_id = p.id OR co.receiver_id = p.id
             GROUP BY ru.id
             ", [])->fetchAll();
     }

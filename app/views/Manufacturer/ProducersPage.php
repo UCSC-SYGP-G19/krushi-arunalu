@@ -20,10 +20,9 @@ include APP_ROOT . "/views/inc/components/Header.php";
                             <div class="col-6">
                                 <h1 class="title">Producers</h1>
                             </div>
-                            <div class="col">
-                                <a href="producers/received-connection-requests"
-                                   class="btn-md btn-primary-light text-center text-white">
-                                    Connection Requests</a>
+                            <div class="">
+                                <?php echo '<a class="btn-md btn-primary-light text-center text-white" href = "
+                                 ' . URL_ROOT . '/producers/received-connection-requests">Connection Requests</a>' ?>
                             </div>
                         </div>
                         <div class="row d-flex">
@@ -94,7 +93,7 @@ include APP_ROOT . "/views/inc/components/Header.php";
         </main>
 
     </div>
-    <script src="<?php echo URL_ROOT ?>/public/js/Manufacturer/viewProducers.js" defer></script>
+    <script type="module" src="<?php echo URL_ROOT ?>/public/js/Manufacturer/viewProducers.js" defer></script>
     </body>
 <?php
 include APP_ROOT . "/views/inc/components/EndingTag.php";
