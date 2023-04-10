@@ -83,7 +83,7 @@ class ProductCategoriesController extends Controller
         $this->loadView('Manufacturer/ProductCategoriesPage', 'Product Categories', 'product-categories');
         $this->loadModel("ProductCategory");
 
-        if ($this->model->hideCategory($id)) {
+        if ($this->model->hideCategory($id) && $this->model->hideRelatedProductsOfTheCategory($id)) {
             Util::redirect("../");
             return true;
         }

@@ -68,6 +68,18 @@ class ProductCategory extends Model
         return $result == true;
     }
 
+    public function hideRelatedProductsOfTheCategory($categoryId): bool
+    {
+
+        $result = $this->runQuery(
+            "UPDATE product SET 
+                              hidden = ?
+                          WHERE product.category_id = ?",
+            [1, $categoryId]
+        );
+        return $result == true;
+    }
+
     public function getNamesFromDB(): array
     {
         return $this->runQuery("SELECT id, name  FROM product_category")->fetchAll();
