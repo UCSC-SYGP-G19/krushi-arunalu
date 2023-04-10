@@ -22,7 +22,8 @@ include APP_ROOT . "/views/inc/components/Header.php";
                             </div>
                             <div class="">
                                 <?php echo '<a class="btn-md btn-primary-light text-center text-white" href = "
-                                 ' . URL_ROOT . '/producers/received-connection-requests">Connection Requests</a>' ?>
+                                 ' . URL_ROOT . '/connection-requests/">
+                                 Connection Requests</a>' ?>
                             </div>
                         </div>
                         <div class="row d-flex">

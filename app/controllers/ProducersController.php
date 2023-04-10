@@ -2,7 +2,7 @@
 
 /**
  * @file
- * Controller which handles product categories of Manufacturers
+ * Controller which handles producers of Manufacturers
  */
 
 namespace app\controllers;
@@ -25,34 +25,10 @@ class ProducersController extends Controller
         $this->sendJson($this->model->getAllProducersFromDB());
     }
 
-    public function receivedConnectionRequests(): void
-    {
-        $this->loadView('Manufacturer/ConnectionRequestsPage', 'Connection Requests', 'producers');
-        $this->view->render();
-    }
-
-    public function getJsonForReceivedRequests(): void
-    {
-        $this->loadModel('Manufacturer');
-        $this->sendJson($this->model->getConnectionRequestsFromProducers(Session::getSession()->id));
-    }
-
-    public function viewSentConnectionRequests(): void
-    {
-        $this->loadView('Manufacturer/ConnectionRequestsPage', 'Connection Requests', 'producers');
-        $this->view->render();
-    }
-
-    public function getJsonForSentRequests(): void
-    {
-        $this->loadModel('Manufacturer');
-        $this->sendJson($this->model->getSentConnectionRequests(Session::getSession()->id));
-    }
-
     public function sendConnectionRequests($producerId): bool
     {
         $this->loadView('Manufacturer/ProducersPage', 'Producers', 'producers');
-        $this->loadModel('Manufacturer');
+        $this->loadModel('ConnectionRequest');
 
         if ($this->model->sendRequestsToProducers(Session::getSession()->id, $producerId)) {
             Util::redirect("..");
@@ -62,29 +38,4 @@ class ProducersController extends Controller
         return false;
     }
 
-    public function accept($requestId): bool
-    {
-        $this->loadView('Manufacturer/ConnectionRequestsPage', 'Connection Requests', 'producers');
-        $this->loadModel('Manufacturer');
-
-        if ($this->model->acceptConnectionRequests($requestId)) {
-            Util::redirect("../received-connection-requests");
-            return true;
-        }
-        $this->view->render();
-        return false;
-    }
-
-    public function decline($requestId): bool
-    {
-        $this->loadView('Manufacturer/ConnectionRequestsPage', 'Connection Requests', 'producers');
-        $this->loadModel('Manufacturer');
-
-        if ($this->model->declineConnectionRequests($requestId)) {
-            Util::redirect("../connectionRequests");
-            return true;
-        }
-        $this->view->render();
-        return false;
-    }
 }

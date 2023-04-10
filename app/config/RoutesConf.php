@@ -13,7 +13,7 @@ const PROTECTED_ROUTES = [
         "CropRequests", "Announcements", "Profile", "Manufacturers"],
     "Manufacturer" => ["ManufacturerDashboard", "Sales", "ManufacturerOrders", "Producers", "Stocks",
         "ProductCategories", "Products", "ManufacturerCropRequests", "Inquiries", "ManufacturerSales",
-        "PurchasedStocks"],
+        "PurchasedStocks", "ConnectionRequests"],
     "Customer" => ["Marketplace", "ShoppingCart", "Orders", "Profile", "SendInquiry", "Checkout", "Manufacturers"],
     "Agri Officer" => ["Dashboard", "Announcements", "Producers", "land-details",
         "cultivation-details", "crop-prices", "crop-prices", "cultivation-questions"],

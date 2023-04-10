@@ -2,7 +2,7 @@ let received_req = null;
 let sent_req = null;
 
 const fetchReceivedRequests = async() => {
-    const res = await fetch('http://localhost/krushi-arunalu/producers/getJsonForReceivedRequests');
+    const res = await fetch('http://localhost/krushi-arunalu/connection-requests/getJsonForReceivedRequests');
     if (res.status === 200) {
         received_req = await res.json();
         renderReceivedRequests(received_req);
@@ -10,7 +10,7 @@ const fetchReceivedRequests = async() => {
 }
 
 const fetchSentRequests = async() => {
-    const res = await fetch('http://localhost/krushi-arunalu/producers/getJsonForSentRequests');
+    const res = await fetch('http://localhost/krushi-arunalu/connection-requests/getJsonForSentRequests');
     if (res.status === 200) {
         sent_req = await res.json();
         renderSentRequests(sent_req);
@@ -39,12 +39,12 @@ const renderReceivedRequests = (data) => {
                     </div>
                     <div class="btn-container d-flex">
                         <div class="mx-2">
-                            <a class="btn-md btn-primary-light text-center text-white" href="accept/${element.sender_id}">
+                            <a class="btn-md btn-primary-light text-center text-white" href="accept/${element.request_id}">
                                 Accept
                             </a>
                         </div>
                         <div class="mx-2">
-                            <a class="md btn-outlined-error text-center text-error" href="decline/${element.sender_id}">
+                            <a class="md btn-outlined-error text-center text-error" href="decline/${element.request_id}">
                                 Decline
                             </a>
                         </div>
@@ -81,14 +81,9 @@ const renderSentRequests = (data) => {
                         </div>
                     </div>
                     <div class="btn-container d-flex">
-                        <div class="mx-2">
-                            <a class="btn-md btn-primary-light text-center text-white" href="accept/${element.receiver_id}">
-                                Accept
-                            </a>
-                        </div>
-                        <div class="mx-2">
-                            <a class="md btn-outlined-error text-center text-error" href="decline/${element.receiver_id}">
-                                Decline
+                        <div class="mr-4">
+                            <a class="md btn-outlined-error text-center text-error" href="decline/${element.request_id}">
+                                Delete Request
                             </a>
                         </div>
                     </div>
