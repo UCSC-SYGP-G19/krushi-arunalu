@@ -46,13 +46,11 @@ include APP_ROOT . "/views/inc/components/Header.php";
                             <?php
                             if (count($this->data) > 0) {
                                 foreach ($this->data as $row) {
-                                    echo '<div class="col-12 form-wrapper p-4 mb-3">
-                                <h3>' . $row->announcement_title . '</h3>
-                                <p class="pt-2 text-justify">' . $row->announcement_content
-                                        . '
-                                </p>
-                                <div class="text-right pt-2">
-                                    <b class="text-primary-dark">' . $row->agri_officer_name . '</b>
+                                    echo '<div class="col-12 form-wrapper p-4 mb-3" <h3>' . $row->announcement_title . '</h3>
+                                    <p class="pt-2 text-justify">' . $row->announcement_content . '</p>
+                                    <a href=' . URL_ROOT . '/announcements/edit/' . $row->announcement_id . ' class="btn-xs btn-outlined-primary-dark text-center">Edit</a>
+                                    <a href=' . URL_ROOT . '/announcements/delete/' . $row->announcement_id . ' class="btn-xs btn-outlined-error-dark text-center">Delete</a>
+                                    <div class="text-right pt-2"><b class="text-primary-dark">' . $row->agri_officer_name . '</b>
                                 - ' . $row->announcement_published_date_time . '
                                 </div>
                             </div>';
