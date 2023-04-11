@@ -19,9 +19,6 @@ include APP_ROOT . "/views/inc/components/Header.php";
 ?>
 
     <body class="overflow-hidden full-height">
-    <?php
-    //include APP_ROOT . "/views/inc/components/LoggedOutNavbar.php"
-    ?>
     <div class="content-with-sidebar">
         <?php
         include APP_ROOT . "/views/inc/components/Sidebar.php"
@@ -39,7 +36,8 @@ include APP_ROOT . "/views/inc/components/Header.php";
                                 <h1 class="title">My cultivations</h1>
                             </div>
                             <div class="col">
-                                <a href="cultivations/add" class="btn-md btn-primary-light text-center text-white">
+                                <a href='<?php echo(URL_ROOT . "/cultivations/add") ?>'
+                                   class="btn-md btn-primary-light text-center text-white">
                                     Add cultivation</a>
                             </div>
                         </div>
@@ -57,7 +55,7 @@ include APP_ROOT . "/views/inc/components/Header.php";
                                     ],
                                     "status" => [
                                         "label" => "Remarks",
-                                        "sortable" => true,
+                                        "sortable" => false,
                                         "sortKey" => "status",
                                         "class" => "col-1",
                                     ],
@@ -91,7 +89,12 @@ include APP_ROOT . "/views/inc/components/Header.php";
                                         "class" => "col-2"
                                     ]
                                 ];
-                                $cultivationsTable = new Table("cultivations", $this->tableHeaders, $this->data, "cultivation_id");
+                                $cultivationsTable = new Table(
+                                    "cultivations",
+                                    $this->tableHeaders,
+                                    $this->data,
+                                    "cultivation_id"
+                                );
                                 $cultivationsTable->render();
                                 ?>
                             </div>

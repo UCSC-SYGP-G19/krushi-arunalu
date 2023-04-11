@@ -38,10 +38,20 @@ class Land extends Model
         return $result == true;
     }
 
-    public function getNamesByOwnerIdFromDB($ownerId): array
+    public static function getNamesByOwnerIdFromDB($ownerId): array
     {
-        return $this->runQuery("SELECT id, name FROM land WHERE owner_id=?", [$ownerId])->fetchAll();
+        $stmt = Model::select(
+            table: "land",
+            columns: ["land.id", "land.name"],
+            where: ["land.owner_id" => $ownerId]
+        );
+        if ($stmt) {
+            return $stmt->fetchAll();
+        }
+        return [];
     }
+
+    // Getters and Setters
 
     /**
      * @return int|null

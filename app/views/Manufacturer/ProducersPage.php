@@ -27,8 +27,12 @@ include APP_ROOT . "/views/inc/components/Header.php";
                             </div>
                         </div>
                         <div class="row d-flex">
-                            <span class="active-page text-primary-light px-1 pt-3 fs-4 fw-bold">All</span>
-                            <span class="text-secondary px-1 pt-3 fs-4 fw-bold mx-4">Connected</span>
+                            <span class="px-1 pt-3 fs-4 fw-bold">
+                                <a href="#" class="active-page" id="btn-all-producers">All</a>
+                            </span>
+                            <span class="px-1 pt-3 fs-4 fw-bold mx-4">
+                                <a href="#" class="inactive-page" id="btn-connected-producers">Connected</a>
+                            </span>
                         </div>
                         <div class="row px-1 pt-2">
                             <div class="col-12 text-justify">
@@ -44,29 +48,10 @@ include APP_ROOT . "/views/inc/components/Header.php";
                                         <th class="col-2"></th>
                                     </tr>
                                     </thead>
-                                    <tbody>
-                                    <?php
-                                    foreach ($this->data as $producer) { ?>
-                                        <tr class="row">
-                                            <td class="col-2"><?php echo $producer->producer_id ?></td>
-                                            <td class="col-4"><?php echo $producer->producer_name ?></td>
-                                            <td class="col-4">
-                                                <?php
-                                                echo $producer->crop_names
-                                                ?>
-                                            </td>
-                                            <td class="col-2 pr-5">
-                                                <div class="row justify-content-end align-items-center gap-1">
-                                                    <div class="col">
-                                                        <a href='connect/<?php echo $producer->producer_id ?>'
-                                                           class="btn-xs btn-outlined-secondary text-center">
-                                                            Connect
-                                                        </a>
-                                                    </div>
-                                                </div>
-                                            </td>
+                                    <tbody id="producers-table">
+                                        <tr class="py-3">
+                                            <td>Loading</td>
                                         </tr>
-                                    <?php } ?>
                                     </tbody>
                                     <tfoot>
                                     <tr class="row justify-content-end pagination">
@@ -109,6 +94,7 @@ include APP_ROOT . "/views/inc/components/Header.php";
         </main>
 
     </div>
+    <script src="<?php echo URL_ROOT ?>/public/js/producers.js" defer></script>
     </body>
 <?php
 include APP_ROOT . "/views/inc/components/EndingTag.php";

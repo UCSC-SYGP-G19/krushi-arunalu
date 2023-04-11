@@ -26,7 +26,7 @@ include APP_ROOT . "/views/inc/components/Header.php";
                                     <h3 class="form-section-title">Land details</h3>
                                     <div class="row gap-2">
                                         <?php
-                                        $this->formData = [
+                                        $formData = [
                                             "land" => [
                                                 "element" => SelectField::class,
                                                 "wrapperClass" => "col-4",
@@ -35,26 +35,13 @@ include APP_ROOT . "/views/inc/components/Header.php";
                                             ],
                                         ];
 
-                                        foreach ($this->formData as $key => $value) {
-                                            $formField = new $value["element"](
-                                                $key,
-                                                $value["label"],
-                                                $value["placeholder"],
-                                                $this->fields[$key] ?? null,
-                                                $this->fieldErrors[$key] ?? null,
-                                                $value["wrapperClass"],
-                                            );
-                                            isset($this->fieldOptions[$key]) &&
-                                            $formField->options = $this->fieldOptions[$key];
-                                            isset($value["type"]) && $formField->type = $value["type"];
-                                            $formField->render();
-                                        }
+                                        $this->generateFormFields($formData);
                                         ?>
                                     </div>
                                     <h3 class="form-section-title">Crop details</h3>
                                     <div class="row gap-2">
                                         <?php
-                                        $this->formData = [
+                                        $formData = [
                                             "category" => [
                                                 "element" => SelectField::class,
                                                 "wrapperClass" => "col-4",
@@ -69,26 +56,13 @@ include APP_ROOT . "/views/inc/components/Header.php";
                                             ],
                                         ];
 
-                                        foreach ($this->formData as $key => $value) {
-                                            $formField = new $value["element"](
-                                                $key,
-                                                $value["label"],
-                                                $value["placeholder"],
-                                                $this->fields[$key] ?? null,
-                                                $this->fieldErrors[$key] ?? null,
-                                                $value["wrapperClass"],
-                                            );
-                                            isset($this->fieldOptions[$key]) &&
-                                            $formField->options = $this->fieldOptions[$key];
-                                            isset($value["type"]) && $formField->type = $value["type"];
-                                            $formField->render();
-                                        }
+                                        $this->generateFormFields($formData);
                                         ?>
                                     </div>
                                     <h3 class="form-section-title">Cultivation details</h3>
                                     <div class="row gap-2">
                                         <?php
-                                        $this->formData = [
+                                        $formData = [
                                             "cultivated_quantity" => [
                                                 "element" => InputField::class,
                                                 "wrapperClass" => "col-4",
@@ -119,20 +93,7 @@ include APP_ROOT . "/views/inc/components/Header.php";
                                             ],
                                         ];
 
-                                        foreach ($this->formData as $key => $value) {
-                                            $formField = new $value["element"](
-                                                $key,
-                                                $value["label"],
-                                                $value["placeholder"],
-                                                $this->fields[$key] ?? null,
-                                                $this->fieldErrors[$key] ?? null,
-                                                $value["wrapperClass"],
-                                            );
-                                            isset($this->fieldOptions[$key]) &&
-                                            $formField->options = $this->fieldOptions[$key];
-                                            isset($value["type"]) && $formField->type = $value["type"];
-                                            $formField->render();
-                                        }
+                                        $this->generateFormFields($formData);
                                         ?>
                                     </div>
                                     <?php if (isset($this->error)) { ?>

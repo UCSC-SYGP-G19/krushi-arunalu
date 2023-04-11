@@ -25,43 +25,137 @@ class Cultivation extends Model
 
     public function addToDB(): bool
     {
-        $result = $this->runQuery(
-            "INSERT into cultivation (crop_id, land_id, cultivated_date, cultivated_quantity, status, 
-                         expected_harvest_date) VALUES (?,?,?,?,?,?)",
-            [$this->cropId, $this->landId, $this->cultivatedDate, $this->cultivatedQuantity, $this->status,
-                $this->expectedHarvestDate]
+//        $result = $this->runQuery(
+//            "INSERT into cultivation (crop_id, land_id, cultivated_date, cultivated_quantity, status,
+//                         expected_harvest_date) VALUES (?,?,?,?,?,?)",
+//            [$this->cropId, $this->landId, $this->cultivatedDate, $this->cultivatedQuantity, $this->status,
+//                $this->expectedHarvestDate]
+//        );
+//        return $result == true;
+
+        return $this->insert(
+            table: "cultivation",
+            data: [
+                "crop_id" => $this->cropId,
+                "land_id" => $this->landId,
+                "cultivated_date" => $this->cultivatedDate,
+                "cultivated_quantity" => $this->cultivatedQuantity,
+                "status" => $this->status,
+                "expected_harvest_date" => $this->expectedHarvestDate,
+            ]
         );
-        return $result == true;
     }
 
-    public function getAllByProducerIdFromDB($producerId): array
+    public static function getByIdFromDB($cultivationId): ?object
     {
-        return $this->runQuery("SELECT 
-            cultivation.id as 'cultivation_id',
-            land.id as 'land_id',         
-            land.name as 'land_name', 
-            crop.id as 'crop_id',
-            crop.name as 'crop_name', 
-            cultivation.cultivated_quantity as 'cultivated_quantity',
-            cultivation.cultivated_date as 'cultivated_date',
-            cultivation.expected_harvest_date as 'expected_harvest_date',
-            cultivation.status as 'status'
-            FROM cultivation
-            INNER JOIN land ON cultivation.land_id = land.id
-            INNER JOIN crop ON cultivation.crop_id = crop.id
-            WHERE land.owner_id = ?", [$producerId])->fetchAll();
+//        return $this->runQuery("SELECT
+//            cultivation.id as 'cultivation_id',
+//            land.id as 'land_id',
+//            land.name as 'land_name',
+//            crop.id as 'crop_id',
+//            crop.name as 'crop_name',
+//            cultivation.cultivated_quantity as 'cultivated_quantity',
+//            cultivation.cultivated_date as 'cultivated_date',
+//            cultivation.expected_harvest_date as 'expected_harvest_date',
+//            cultivation.status as 'status'
+//            FROM cultivation
+//            INNER JOIN land ON cultivation.land_id = land.id
+//            INNER JOIN crop ON cultivation.crop_id = crop.id
+//            WHERE cultivation.id = ?", [$id])->fetch();
+
+        $stmt = Model::select(
+            table: "cultivation",
+            columns: [
+                "cultivation.id", "land.id", "land.name", "crop.id", "crop.name", "crop.category_id",
+                "cultivation.cultivated_quantity AS cultivated_quantity",
+                "cultivation.cultivated_date AS cultivated_date",
+                "cultivation.expected_harvest_date AS expected_harvest_date",
+                "cultivation.status AS status"
+            ],
+            where: ["cultivation.id" => $cultivationId],
+            joins: [
+                "land" => "cultivation.land_id",
+                "crop" => "cultivation.crop_id",
+            ]
+        );
+
+        if ($stmt) {
+            return $stmt->fetch();
+        }
+        return null;
+    }
+
+    public static function getAllByProducerIdFromDB($producerId): array
+    {
+//        return $this->runQuery("SELECT
+//            cultivation.id as 'cultivation_id',
+//            land.id as 'land_id',
+//            land.name as 'land_name',
+//            crop.id as 'crop_id',
+//            crop.name as 'crop_name',
+//            cultivation.cultivated_quantity as 'cultivated_quantity',
+//            cultivation.cultivated_date as 'cultivated_date',
+//            cultivation.expected_harvest_date as 'expected_harvest_date',
+//            cultivation.status as 'status'
+//            FROM cultivation
+//            INNER JOIN land ON cultivation.land_id = land.id
+//            INNER JOIN crop ON cultivation.crop_id = crop.id
+//            WHERE land.owner_id = ?", [$producerId])->fetchAll();
+
+        $stmt = Model::select(
+            table: "cultivation",
+            columns: [
+                "cultivation.id", "land.id", "land.name", "crop.id", "crop.name",
+                "cultivation.cultivated_quantity AS cultivated_quantity",
+                "cultivation.cultivated_date AS cultivated_date",
+                "cultivation.expected_harvest_date AS expected_harvest_date",
+                "cultivation.status AS status"
+            ],
+            where: ["land.owner_id" => $producerId],
+            joins: [
+                "land" => "cultivation.land_id",
+                "crop" => "cultivation.crop_id",
+            ]
+        );
+        if ($stmt) {
+            return $stmt->fetchAll();
+        }
+        return [];
     }
 
     public function getNamesByProducerIdFromDB($producerId): array
     {
         return $this->runQuery("SELECT 
-            cultivation.id as 'id',       
-            CONCAT(crop.name, ' cultivated in ', land.name, ' on ' , cultivation.cultivated_date) as 'name'
+            cultivation.id AS 'id',       
+            CONCAT(crop.name, ' cultivated in ', land.name, ' on ' , cultivation.cultivated_date) AS 'name'
             FROM cultivation
             INNER JOIN land ON cultivation.land_id = land.id
             INNER JOIN crop ON cultivation.crop_id = crop.id
             WHERE land.owner_id = ?", [$producerId])->fetchAll();
     }
+
+    public function updateInDB(): bool
+    {
+        return $this->update(
+            table: "cultivation",
+            data: [
+                "crop_id" => $this->cropId,
+                "land_id" => $this->landId,
+                "cultivated_date" => $this->cultivatedDate,
+                "cultivated_quantity" => $this->cultivatedQuantity,
+                "status" => $this->status,
+                "expected_harvest_date" => $this->expectedHarvestDate
+            ],
+            where: "id = $this->id"
+        ) == 1;
+    }
+
+    public function deleteFromDB(): bool
+    {
+        return $this->delete("cultivation", "id = $this->id") == 1;
+    }
+
+    // Getters and Setters
 
     /**
      * @return int|null

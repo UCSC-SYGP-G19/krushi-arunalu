@@ -10,6 +10,41 @@ class Model
 {
     // Function to run a custom SQL query on the database
     /**
+     * @param string $query
+     * @param array|null $args
+     * @return bool|PDOStatement
+     */
+    public function runQuery(string $query, ?array $args = null): bool|PDOStatement
+    {
+        $pdo = Database::getCon();
+        if (!$pdo) {
+            return false;
+        }
+        if (!$args) {
+            return $pdo->query($query);
+        }
+        $stmt = $pdo->prepare($query);
+        if (!$stmt) {
+            return false;
+        }
+        try {
+            $stmt->execute($args);
+        } catch (PDOException $e) {
+            Logger::log("PDOException", $e->getMessage());
+            return false;
+        }
+        return $stmt;
+    }
+
+    // Function to select data from multiple tables
+    /* Example for $columns parameter:
+     * $columns = array("crop.id", "crop.name", "cultivation.id", "cultivation.name");
+     *
+     * Example for $joins parameter:
+     * $joins = array("JOIN cultivation ON crop.id = cultivation.id",
+     *                "LEFT JOIN harvest ON cultivation.id = harvest.id");
+     */
+    /**
      * @param string $table
      * @param array $columns
      * @param array $where
@@ -45,20 +80,31 @@ class Model
         if (empty($joins)) {
             $query = "SELECT " . implode(', ', $columns) . " FROM $table";
 
-        // if there are joins, return output with alias (tableName_columnName)
+            // if there are joins, return output with alias (tableName_columnName)
         } else {
             $query = "SELECT ";
 
             foreach ($columns as $column) {
-                $actualTable = explode('.', $column)[0];
-                $actualColumn = explode('.', $column)[1];
-                $query .= $column . " AS " . $actualTable . "_" . $actualColumn . ", ";
+                // if user has given an alias, use it
+                if (str_contains($column, ' AS ')) {
+                    $query .= $column . ", ";
+
+                    // if user has not given an alias, create one (tableName_columnName)
+                } else {
+                    $actualTable = explode('.', $column)[0];
+                    $actualColumn = explode('.', $column)[1];
+                    $query .= $column . " AS " . $actualTable . "_" . $actualColumn . ", ";
+                }
             }
 
             $query = rtrim($query, ', ') . " FROM $table";
 
-            foreach ($joins as $join) {
-                $query .= " " . $join;
+//            foreach ($joins as $join) {
+//                $query .= " " . $join;
+//            }
+
+            foreach ($joins as $table => $relatedColumn) {
+                $query .= " JOIN $table ON $relatedColumn = $table.id";
             }
         }
 
@@ -94,43 +140,6 @@ class Model
     }
 
     // Function to insert data into the database
-
-    /**
-     * @param string $query
-     * @param array|null $args
-     * @return bool|PDOStatement
-     */
-    public function runQuery(string $query, ?array $args = null): bool|PDOStatement
-    {
-        $pdo = Database::getCon();
-        if (!$pdo) {
-            return false;
-        }
-        if (!$args) {
-            return $pdo->query($query);
-        }
-        $stmt = $pdo->prepare($query);
-        if (!$stmt) {
-            return false;
-        }
-        try {
-            $stmt->execute($args);
-        } catch (PDOException $e) {
-            Logger::log("PDOException", $e->getMessage());
-            return false;
-        }
-        return $stmt;
-    }
-
-    // Function to select data from multiple tables
-    /* Example for $columns parameter:
-     * $columns = array("crop.id", "crop.name", "cultivation.id", "cultivation.name");
-     *
-     * Example for $joins parameter:
-     * $joins = array("JOIN cultivation ON crop.id = cultivation.id",
-     *                "LEFT JOIN harvest ON cultivation.id = harvest.id");
-     */
-
     /**
      * @param string $table
      * @param array $data
@@ -150,7 +159,7 @@ class Model
             array_fill(0, count($values), '?')
         ) . ")";
 
-        return Database::prepareAndExecute($pdo, $query, $values) == 1;
+        return Database::prepareAndExecute($pdo, $query, $values) != false;
     }
 
     // Function to update data in the database
@@ -165,6 +174,7 @@ class Model
     {
         $pdo = Database::getCon();
         if (!$pdo) {
+            echo "no pdo";
             return false;
         }
 
@@ -176,9 +186,7 @@ class Model
         }
         $query = rtrim($query, ', ');
         $query .= " WHERE $where";
-        $stmt = $pdo->prepare($query);
-
-        return Database::prepareAndExecute($pdo, $query, $values) == 1;
+        return Database::prepareAndExecute($pdo, $query, $values) != false;
     }
 
     // Function to delete data from a table
@@ -201,7 +209,7 @@ class Model
     }
 
     // Function to get the last inserted ID
-    public function lastInsertId(): int
+    public function getLastInsertedId(): int
     {
         $pdo = Database::getCon();
         if (!$pdo) {

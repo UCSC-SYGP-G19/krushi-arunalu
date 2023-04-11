@@ -21,55 +21,75 @@ include APP_ROOT . "/views/inc/components/Header.php";
                     <div class="form-wrapper px-2">
                         <div class="row px-1 pt-1">
                             <div class="col-12 wrapper px-3 py-3">
-                                <h2 class="title mt-2 py-1 text-center">Add new harvest</h2>
+                                <h2 class="title mt-2 py-1 text-center">Update cultivation</h2>
                                 <form class=" mt-2 mb-1 px-2" action="" method="post">
-                                    <h3 class="form-section-title">Cultivation details</h3>
+                                    <h3 class="form-section-title">Land details</h3>
                                     <div class="row gap-2">
                                         <?php
-
                                         $formData = [
-                                            "cultivation" => [
+                                            "land" => [
                                                 "element" => SelectField::class,
                                                 "wrapperClass" => "col-4",
-                                                "label" => "Cultivation",
-                                                "placeholder" => "Select cultivation",
-                                            ]
+                                                "label" => "Land",
+                                                "placeholder" => "Select Land",
+                                            ],
                                         ];
 
                                         $this->generateFormFields($formData);
                                         ?>
                                     </div>
-                                    <h3 class="form-section-title">Harvest details</h3>
+                                    <h3 class="form-section-title">Crop details</h3>
                                     <div class="row gap-2">
                                         <?php
                                         $formData = [
-                                            "harvested_date" => [
+                                            "category" => [
+                                                "element" => SelectField::class,
+                                                "wrapperClass" => "col-4",
+                                                "label" => "Category",
+                                                "placeholder" => "Select category",
+                                            ],
+                                            "crop" => [
+                                                "element" => SelectField::class,
+                                                "wrapperClass" => "col-8",
+                                                "label" => "Crop",
+                                                "placeholder" => "Select crop",
+                                            ],
+                                        ];
+
+                                        $this->generateFormFields($formData);
+                                        ?>
+                                    </div>
+                                    <h3 class="form-section-title">Cultivation details</h3>
+                                    <div class="row gap-2">
+                                        <?php
+                                        $formData = [
+                                            "cultivated_quantity" => [
                                                 "element" => InputField::class,
                                                 "wrapperClass" => "col-4",
-                                                "label" => "Harvested date",
-                                                "placeholder" => "Select date",
+                                                "label" => "Cultivated quantity (KG)",
+                                                "placeholder" => "Enter cultivated quantity (KG)",
+                                                "type" => "number",
+                                            ],
+                                            "cultivated_date" => [
+                                                "element" => InputField::class,
+                                                "wrapperClass" => "col-4",
+                                                "label" => "Cultivated date",
+                                                "placeholder" => null,
                                                 "type" => "date",
                                             ],
-                                            "harvested_quantity" => [
+                                            "expected_harvest_date" => [
                                                 "element" => InputField::class,
                                                 "wrapperClass" => "col-4",
-                                                "label" => "Harvested quantity (KG)",
-                                                "placeholder" => "Enter harvested quantity in KG",
-                                                "type" => "number",
+                                                "label" => "Cultivated date",
+                                                "placeholder" => null,
+                                                "type" => "date",
                                             ],
-                                            "remaining_quantity" => [
+                                            "remarks" => [
                                                 "element" => InputField::class,
-                                                "wrapperClass" => "col-4",
-                                                "label" => "Remaining quantity (KG)",
-                                                "placeholder" => "Enter remaining quantity in KG",
-                                                "type" => "number",
-                                            ],
-                                            "expected_price" => [
-                                                "element" => InputField::class,
-                                                "wrapperClass" => "col-4",
-                                                "label" => "Expected price (Rs/KG)",
-                                                "placeholder" => "Set expected price",
-                                                "type" => "number",
+                                                "wrapperClass" => "col-12",
+                                                "label" => "Remarks",
+                                                "placeholder" => "Enter remarks about cultivation (if any)",
+                                                "type" => "text",
                                             ],
                                         ];
 

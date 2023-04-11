@@ -49,12 +49,14 @@ class Producer extends RegisteredUser
         return $this->runQuery("SELECT 
             p.id as 'producer_id',
             ru.name as 'producer_name',
-            GROUP_CONCAT(DISTINCT cr.name SEPARATOR ', ') as 'crop_names'
+            GROUP_CONCAT(DISTINCT cr.name SEPARATOR ', ') as 'crop_names',
+            co.status as 'is_connected'
             FROM producer p
             INNER JOIN registered_user ru on p.id = ru.id
             INNER JOIN land l on p.id = l.owner_id
             INNER JOIN cultivation c on l.id = c.land_id
             INNER JOIN crop cr on c.crop_id = cr.id
+            INNER JOIN connection_request co ON co.sender_id = p.id
             GROUP BY ru.id
             ", [])->fetchAll();
     }

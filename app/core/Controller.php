@@ -65,7 +65,7 @@ class Controller
     // If there are any field errors, refill values in form and display alert message
     protected function refillValuesAndShowError($alertMessage = "Please correct the errors in the form"): void
     {
-        $this->view->fields = $_POST;
+        $this->view->fieldValues = $_POST;
         $this->view->error = $alertMessage;
     }
 

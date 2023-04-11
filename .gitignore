@@ -1,5 +1,6 @@
 composer.phar
 /vendor/
+/logs/
 /.idea/
 /.git/
 .env

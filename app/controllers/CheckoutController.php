@@ -8,7 +8,6 @@
 namespace app\controllers;
 
 use app\core\Controller;
-use app\helpers\Logger;
 use app\helpers\Session;
 use app\helpers\Util;
 
@@ -62,7 +61,6 @@ class CheckoutController extends Controller
                 Util::redirect(URL_ROOT . "/marketplace");
             } else {
                 die("Something went wrong while submitting order");
-
             }
         }
     }
@@ -77,5 +75,4 @@ class CheckoutController extends Controller
             Util::redirect('login');
         }
     }
-
 }
