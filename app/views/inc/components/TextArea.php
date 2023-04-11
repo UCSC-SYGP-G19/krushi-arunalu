@@ -8,17 +8,15 @@ class TextArea extends FormField
     public ?int $cols = 12;
 
     public function __construct(
-        string  $name,
+        string $name,
         ?string $label,
         ?string $placeholder,
         ?string $value,
         ?string $error,
         ?string $wrapperClass,
-    )
-    {
-        parent::__construct($name, $label, $placeholder, $value, $error, $wrapperClass,);
+    ) {
+        parent::__construct($name, $label, $placeholder, $value, $error, $wrapperClass);
         $this->id = $this->name . "_text_area";
-
     }
 
     public function render(): void
