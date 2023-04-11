@@ -21,7 +21,7 @@ class CultivationQuestionsController extends Controller
     public function index(): void
     {
         $this->loadView('Producer/CultivationQuestionsPage', 'Cultivation questions', 'cultivation-questions');
-        $this->view->data = CultivationQuestion::getAllFromDB(Session::getSession()->id);
+        $this->view->data = CultivationQuestion::getAllFromDB();
         $this->view->render();
     }
 
