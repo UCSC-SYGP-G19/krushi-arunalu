@@ -68,7 +68,7 @@ class Manufacturer extends RegisteredUser
         )->fetch();
     }
 
-    public function getRequestsFromProducers($manufacturerId): array
+    public function getConnectionRequestsFromProducers($manufacturerId): array
     {
         return $this->runQuery("SELECT
         ru.name as 'sender_name',
@@ -84,21 +84,47 @@ class Manufacturer extends RegisteredUser
         ", [$manufacturerId, "Pending"])->fetchAll();
     }
 
+    public function sendRequestsToProducers($manufacturerId, $producerId): bool
+    {
+        $result = $this->runQuery(
+            "INSERT INTO
+                connection_request(sender_id, receiver_id) VALUES (?,?)",
+            [$manufacturerId, $producerId]
+        );
+        return $result = true;
+    }
+
+    public function getSentConnectionRequests($manufacturerId): array
+    {
+        return $this->runQuery("SELECT
+        ru.name as 'receiver_name',
+        d.name as 'location',
+        ru.image_url as 'profile_pic',
+        cr.receiver_id as 'receiver_id',
+        cr.id as 'request_id'
+        FROM connection_request cr
+        INNER JOIN registered_user ru ON ru.id = cr.receiver_id
+        INNER JOIN producer p on p.id = cr.receiver_id
+        INNER JOIN district d on p.district = d.id
+        WHERE cr.sender_id = ? AND cr.status = ?
+        ", [$manufacturerId, "Pending"])->fetchAll();
+    }
+
     public function acceptConnectionRequests($requestId): bool
     {
         $result = $this->runQuery("
         UPDATE connection_request SET status = ?
         WHERE connection_request.id = ?
-        ", ["Accepted", $requestId]);
+        ", ["Connected", $requestId]);
         return $result = true;
     }
 
     public function declineConnectionRequests($requestId): bool
     {
         $result = $this->runQuery("
-        UPDATE connection_request SET status = ?
+        DELETE from connection_request
         WHERE connection_request.id = ?
-        ", ["Declined", $requestId]);
+        ", [$requestId]);
         return $result = true;
     }
 
