@@ -21,7 +21,7 @@ class ConnectionRequest extends Model
     ) {
     }
 
-    public function getConnectionRequestsFromProducers($manufacturerId): array
+    public function getReceivedConnectionRequestsOfManufacturer($manufacturerId): array
     {
         return $this->runQuery("SELECT
         ru.name as 'sender_name',
@@ -37,7 +37,7 @@ class ConnectionRequest extends Model
         ", [$manufacturerId, "Pending"])->fetchAll();
     }
 
-    public function sendRequestsToProducers($manufacturerId, $producerId): bool
+    public function addConnectionRequestToDb($manufacturerId, $producerId): bool
     {
         $result = $this->runQuery(
             "INSERT INTO
@@ -63,7 +63,7 @@ class ConnectionRequest extends Model
         ", [$manufacturerId, "Pending"])->fetchAll();
     }
 
-    public function acceptConnectionRequests($requestId): bool
+    public function acceptConnectionRequest($requestId): bool
     {
         $result = $this->runQuery("
         UPDATE connection_request SET status = ?
@@ -72,7 +72,7 @@ class ConnectionRequest extends Model
         return $result = true;
     }
 
-    public function declineConnectionRequests($requestId): bool
+    public function declineConnectionRequest($requestId): bool
     {
         $result = $this->runQuery("
         DELETE from connection_request
@@ -161,4 +161,3 @@ class ConnectionRequest extends Model
         $this->status = $status;
     }
 }
-

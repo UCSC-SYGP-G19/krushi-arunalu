@@ -147,13 +147,3 @@ $properties: (auto, hidden);
 .user-profile-pic{
   border-radius: 50%;
 }
-
- //producers view
-.active-page{
-  border-bottom: $primary-green-light 2px solid;
-  color: $primary-green-light;
-}
-
-.inactive-page{
-  color: $secondary-grey;
-}

@@ -22,7 +22,7 @@ class ConnectionRequestsController extends Controller
     public function getJsonForReceivedRequests(): void
     {
         $this->loadModel('ConnectionRequest');
-        $this->sendJson($this->model->getConnectionRequestsFromProducers(Session::getSession()->id));
+        $this->sendJson($this->model->getReceivedConnectionRequestsOfManufacturer(Session::getSession()->id));
     }
 
     public function viewSentConnectionRequests(): void
@@ -42,7 +42,7 @@ class ConnectionRequestsController extends Controller
         $this->loadView('Manufacturer/ConnectionRequestsPage', 'Connection Requests', 'producers');
         $this->loadModel('ConnectionRequest');
 
-        if ($this->model->acceptConnectionRequests($requestId)) {
+        if ($this->model->acceptConnectionRequest($requestId)) {
             Util::redirect("../");
             return true;
         }
@@ -55,7 +55,7 @@ class ConnectionRequestsController extends Controller
         $this->loadView('Manufacturer/ConnectionRequestsPage', 'Connection Requests', 'producers');
         $this->loadModel('ConnectionRequest');
 
-        if ($this->model->declineConnectionRequests($requestId)) {
+        if ($this->model->declineConnectionRequest($requestId)) {
             Util::redirect("../");
             return true;
         }
