@@ -124,6 +124,14 @@ include APP_ROOT . "/views/inc/components/Header.php";
                                         </td>
                                     </tfoot>
                                 </table>
+
+                                <div class="hidden-products-wrapper px-1 py-3">
+                                    <button class="btn-hidden-products text-primary-light fs-3 p-2 d-flex"
+                                            id="hidden-products-toggle" value="show">Show hidden products
+                                    </button>
+                                    <div class="d-flex mt-2 product-card-wrapper row col-12" id="hidden-products"></div>
+                                </div>
+
                             </div>
                         </div>
                     </div>
@@ -134,6 +142,7 @@ include APP_ROOT . "/views/inc/components/Header.php";
             ?>
         </main>
     </div>
+    <script src="<?php echo URL_ROOT ?>/public/js/hiddenProducts.js" defer></script>
     </body>
 <?php
 include APP_ROOT . "/views/inc/components/EndingTag.php";

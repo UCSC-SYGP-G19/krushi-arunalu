@@ -122,10 +122,6 @@
   background-color: #95C260;
   border-radius: 8px;
 }
-.inquiry-wrapper .user-profile-pic {
-  border: 1px solid #B1B1B1;
-  border-radius: 50%;
-}
 
 .request-card-wrapper {
   background-color: #FFFFFF;
@@ -139,8 +135,18 @@
   padding-top: 2px;
 }
 
+.user-profile-pic {
+  border: 1px solid #B1B1B1;
+  border-radius: 50%;
+}
+
 .active-page {
   border-bottom: #15742D 2px solid;
+  color: #15742D;
+}
+
+.inactive-page {
+  color: #B1B1B1;
 }
 
 .container {
@@ -1916,6 +1922,22 @@ h1.title {
 
 .image-preview {
   text-align: right;
+}
+
+.product-card {
+  background-color: #FFFFFF;
+  border-radius: 16px;
+}
+
+.hidden-product-card {
+  background-color: #FFFFFF;
+  border-radius: 16px;
+}
+
+.btn-hidden-products {
+  cursor: pointer;
+  border: none;
+  background-color: #F5F5F5;
 }
 
 .manufacturer-store-wrapper {

@@ -59,6 +59,14 @@ class Product extends Model
         return $this->runQuery("SELECT * FROM product WHERE hidden != ?", [1])->fetchAll();
     }
 
+    public function getHiddenProductsFromDB($manufacturerId): array
+    {
+        return $this->runQuery(
+            "SELECT * FROM product WHERE product.hidden = ? AND product.manufacturer_id = ?",
+            [1, $manufacturerId]
+        )->fetchAll();
+    }
+
     public function getByProductId($productId): object
     {
         return $this->runQuery("SELECT
@@ -101,6 +109,17 @@ class Product extends Model
                               hidden = ?
                           WHERE product.id = ?",
             [1, $productId]
+        );
+        return $result == true;
+    }
+
+    public function removeFromHidden($productId): bool
+    {
+        $result = $this->runQuery(
+            "UPDATE product SET 
+                              hidden = ?
+                          WHERE product.id = ?",
+            [0, $productId]
         );
         return $result == true;
     }
