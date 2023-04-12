@@ -30,7 +30,7 @@ class AnnouncementsController extends Controller
     public function publish(): void
     {
         $this->loadView(
-            'AgriOfficer/PublishAnnouncementPage',
+            'AgriOfficer/AnnouncementsPublishPage',
             'Publish Announcement',
             'announcements'
         );//loading page view
@@ -52,5 +52,50 @@ class AnnouncementsController extends Controller
         }
 
         $this->view->render();
+    }
+
+
+    public function edit($announcementId): bool
+    {
+        $this->loadView(
+            'AgriOfficer/AnnouncementsEditPage',
+            'Edit Announcement',
+            'announcements'
+        );
+        $this->loadModel('Announcement');
+        $this->view->data = $this->model->getByAnnouncementId($announcementId);
+
+        if ($_SERVER["REQUEST_METHOD"] === "POST") {
+            if (!empty($this->view->fieldErrors)) {
+                $this->refillValuesAndShowError();
+                $this->view->render();
+                return true;
+            }
+
+            $this->loadModel("Announcement");
+            $this->model->fillData([
+                'title' => $_POST['announcement_title'],
+                'content' => $_POST['announcement_content']
+            ]);
+
+            if ($this->model->updateDB($announcementId)) {
+                Util::redirect("../");
+                return true;
+            }
+        }
+        $this->view->render();
+        return false;
+    }
+
+    public function delete($announcementId): bool
+    {
+        $this->loadView('AgriOfficer/AnnouncementPage', 'Announcement', 'announcements');
+        $this->loadModel("Announcement");
+        if ($this->model->deleteRecord($announcementId)) {
+            Util::redirect("../");
+            return true;
+        }
+        $this->view->render();
+        return false;
     }
 }

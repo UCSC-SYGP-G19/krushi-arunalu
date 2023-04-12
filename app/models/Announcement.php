@@ -13,20 +13,21 @@ use app\core\Model;
 class Announcement extends Model
 {
     public function __construct(
-        private ?int $id = null,
-        private ?int $agriOfficerId = null,
+        private ?int    $id = null,
+        private ?int    $agriOfficerId = null,
         private ?string $title = null,
         private ?string $content = null,
         private ?string $publishedDateTime = null,
-        private ?int $relevantDistrict = null
-    ) {
+        private ?int    $relevantDistrict = null
+    )
+    {
     }
 
     public function getAllFromDB(): array
     {
         return $this->runQuery(
             "SELECT 
-            a.id as 'announcement_id',
+            a.id as 'announcement_id', 
             a.title as 'announcement_title',         
             a.content as 'announcement_content',
             a.published_date_time as 'announcement_published_date_time',
@@ -36,6 +37,16 @@ class Announcement extends Model
         )->fetchAll();
     }
 
+    public function getByAnnouncementId($announcementId): object
+    {
+        return $this->runQuery("SELECT 
+            id as 'announcement_id', 
+            title as 'announcement_title',
+            content as 'announcement_content'
+            FROM announcement
+            WHERE id = ?", [$announcementId])->fetch();
+    }
+
     public function addToDB(): bool
     {
         $result = $this->runQuery(
@@ -43,6 +54,24 @@ class Announcement extends Model
                          relevant_district) VALUES (?,?,?,?)",
             [$this->agriOfficerId, $this->title, $this->content, $this->relevantDistrict]
         );
+        return $result == true;
+    }
+
+    public function updateDB($id): bool
+    {
+        $result = $this->runQuery(
+            "UPDATE announcement SET 
+                              title = ?,
+                              content = ?
+                          WHERE announcement.id = ?",
+            [$this->title, $this->content, $id]
+        );
+        return $result == true;
+    }
+
+    public function deleteRecord($id): bool
+    {
+        $result = $this->runQuery("DELETE FROM announcement WHERE announcement.id = ?", [$id]);
         return $result == true;
     }
 

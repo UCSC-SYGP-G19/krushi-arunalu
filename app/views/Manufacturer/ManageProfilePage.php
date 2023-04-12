@@ -14,9 +14,9 @@ include APP_ROOT . "/views/inc/components/LoggedInNavbarWithoutSidebar.php"
             <div class="row gap-2">
                 <div class="col-3">
                     <label for="logo">Upload Logo</label>
-                    <div class="image-upload pt-2 pb-3">
+                    <div class="image-upload py-2">
                         <div class="upload-content">
-                            <div class="upload-icon pt-1 pb-1">
+                            <div class="upload-icon pt-2 pb-1">
                                 <svg class="box__icon" xmlns="http://www.w3.org/2000/svg" width="50" height="50"
                                      viewBox="0 0 50 50">
                                 <path d="M48.4 26.5c-.9 0-1.7.7-1.7 1.7v11.6h-43.3v-11.6c0-.9-.7-1.7-1.7-1.7s-1.7.7-1.7
@@ -26,13 +26,13 @@ include APP_ROOT . "/views/inc/components/LoggedInNavbarWithoutSidebar.php"
                                     1.7 0 2.4l10 11.6z">
                                     </path></svg>
                             </div>
-                            <header class="txt-drag">Drag & Drop</header>
+                            <span class="txt-drag">Drag & Drop</span>
                             <span>OR</span>
                             <button class="btn-browse" type="button">Browse</button><br>
                         </div>
-                        <div class="image-preview mb-2"></div>
+                        <div class="image-preview d-none"></div>
                         <input type="file" hidden class="upload-input" id="logo" name="logo" accept="image/*"/>
-                        <button class="btn-outlined-secondary btn-upload">Upload</button>
+                        <button class="btn-xs btn-outlined-secondary mb-2">Upload</button>
                     </div>
                     <?php if (isset($this->fieldErrors['logo'])) { ?>
                         <div class="error"><?php echo $this->fieldErrors['logo']; ?></div>
@@ -210,7 +210,7 @@ include APP_ROOT . "/views/inc/components/LoggedInNavbarWithoutSidebar.php"
         </form>
     </div>
 </main>
-<?php echo '<script defer src="' . URL_ROOT . '/public/js/manageProfile.js"' . '></script>' ?>
+<?php echo '<script defer src="' . URL_ROOT . '/public/js/imageUploader.js"' . '></script>' ?>
 
 </body>
 <?php

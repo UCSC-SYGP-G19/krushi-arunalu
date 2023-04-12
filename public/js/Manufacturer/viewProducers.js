@@ -1,8 +1,8 @@
 let data = null;
 
 const fetchProducersList = async() => {
-    const res = await fetch('http://localhost/krushi-arunalu/producers/getJson');
-    if (res.status === 200){
+    const res = await fetch('http://localhost/krushi-arunalu/producers/getJsonForProducers');
+    if (res.status === 200) {
         data = await res.json();
         renderProducersList(data);
     }
@@ -13,7 +13,7 @@ const renderProducersList = (data) => {
 
     if (data != null) {
         data.forEach((element) => {
-            let row = `
+            let row = ` 
             <tr class = "row">
                 <td class = "col-2"> ${element.producer_id} </td>
                 <td class = "col-4"> ${element.producer_name} </td>
@@ -40,9 +40,12 @@ const renderConnectBtn = (element) => {
     let output = "";
     if (element.is_connected === "Connected") {
         output = `Connected`
-    } else {
-        output = ` <a href = 'connect/${element.producer_id}'
-            class = "btn-xs btn-outlined-secondary text-center">
+    } else if (element.is_connected === "Pending") {
+        output = `Pending`;
+    }
+    else {
+        output = ` <a href = "${ window.location.href}/send-connection-requests/${element.producer_id}"
+            class = "btn-xs btn-outlined-primary-dark text-center">
                 Connect
         </a> `;
     }
