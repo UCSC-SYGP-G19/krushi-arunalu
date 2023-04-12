@@ -23,8 +23,8 @@ class ProductCategory extends Model
     public function addToDB(): bool
     {
         $result = $this->runQuery(
-            "INSERT into product_category (name, description) VALUES (?,?)",
-            [$this->name, $this->description]
+            "INSERT into product_category (name, description, hidden) VALUES (?,?,?)",
+            [$this->name, $this->description, 0]
         );
         return $result == true;
     }
@@ -32,16 +32,16 @@ class ProductCategory extends Model
     public function getAllFromDB(): array
     {
         return $this->runQuery(
-            "SELECT * FROM product_category WHERE product_category.hidden != 1",
-            []
+            "SELECT * FROM product_category WHERE product_category.hidden != ?",
+            [1]
         )->fetchAll();
     }
 
     public function getCategoryById($categoryId): object
     {
         return $this->runQuery(
-            "SELECT name, description FROM product_category WHERE id = ?",
-            [$categoryId]
+            "SELECT name, description FROM product_category WHERE id = ? AND hidden != ?",
+            [$categoryId, 1]
         )->fetch();
     }
 
@@ -68,21 +68,12 @@ class ProductCategory extends Model
         return $result == true;
     }
 
-    public function hideRelatedProductsOfTheCategory($categoryId): bool
-    {
-
-        $result = $this->runQuery(
-            "UPDATE product SET 
-                              hidden = ?
-                          WHERE product.category_id = ?",
-            [1, $categoryId]
-        );
-        return $result == true;
-    }
-
     public function getNamesFromDB(): array
     {
-        return $this->runQuery("SELECT id, name  FROM product_category")->fetchAll();
+        return $this->runQuery(
+            "SELECT id, name  FROM product_category WHERE hidden != ?",
+            [1]
+        )->fetchAll();
     }
 
     public function getCategoriesFromDB(): array

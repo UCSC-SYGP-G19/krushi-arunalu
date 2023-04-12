@@ -14,19 +14,19 @@ const renderHiddenCategories = (data) => {
     if (data != null) {
         data.forEach((element) => {
             let category = `
-<div class="col-2 mb-4">
-            <div class="hidden-product-card pb-2 p-3">
-                 <div class="text-center">
-                      <h4 class="pt-2 pb-0 name fw-bold">
-                        ${element.name}</h4>
-                      <span class="description text-black py-1 pb-2 fs-2">
-                        ${element.description}</span> <br>
-                      <a href = '${ window.location.href}/restore-hidden-category/${element.id}'
-                          class = "btn-xs btn-outlined-secondary text-center my-2">
-                          Restore
-                      </a>
-                 </div>
-            </div>
+            <div class="col-2">
+                <div class="hidden-product-card pb-2 p-3">
+                     <div class="text-center">
+                          <h4 class="pt-2 pb-0 name fw-bold">
+                            ${element.name}</h4>
+                          <span class="description text-black py-1 pb-2 fs-2">
+                            ${element.description}</span> <br>
+                          <a href = '${ window.location.href}/restore-hidden-category/${element.id}'
+                              class = "btn-xs btn-outlined-secondary text-center my-2">
+                              Restore
+                          </a>
+                     </div>
+                </div>
             </div>
              `;
 
