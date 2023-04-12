@@ -95,6 +95,25 @@ class ProductCategory extends Model
             ", [1])->fetchAll();
     }
 
+    public function getHiddenCategoriesFromDB(): array
+    {
+        return $this->runQuery(
+            "SELECT * FROM product_category WHERE product_category.hidden = ?",
+            [1]
+        )->fetchAll();
+    }
+
+    public function removeFromHidden($productCategoryId): bool
+    {
+        $result = $this->runQuery(
+            "UPDATE product_category SET 
+                              hidden = ?
+                          WHERE product_category.id = ?",
+            [0, $productCategoryId]
+        );
+        return $result == true;
+    }
+
     /**
      * @return int|null
      */

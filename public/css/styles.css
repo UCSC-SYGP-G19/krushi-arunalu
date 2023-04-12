@@ -1934,7 +1934,7 @@ h1.title {
   border-radius: 16px;
 }
 
-.btn-hidden-products {
+.btn-hidden-products, .btn-hidden-categories {
   cursor: pointer;
   border: none;
   background-color: #F5F5F5;
