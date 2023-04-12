@@ -97,7 +97,7 @@ class ProductsController extends Controller
             ]);
 
             if ($this->model->updateProduct($productId)) {
-                Util::redirect("../");
+                Util::redirect("../../products");
                 return true;
             }
         }

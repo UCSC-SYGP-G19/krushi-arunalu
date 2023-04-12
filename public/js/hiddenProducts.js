@@ -14,7 +14,8 @@ const renderHiddenProducts = (data) => {
     if (data != null) {
         data.forEach((element) => {
             let product = `
-                <div class="hidden-product-card pb-2 p-3 col-2 m-2 mb-4">
+            <div class="col-2 mb-4">
+                <div class="hidden-product-card pb-2 p-3">
                     <div class="image-window mb-1">
                         <img alt="Product image" height="100%" width="100%" src="./public/img/products/${element.image_url}">
                     </div>
@@ -25,10 +26,11 @@ const renderHiddenProducts = (data) => {
                         ${element.description}</span> <br>
                         <a href = '${ window.location.href}/restore-hide-product/${element.id}'
                             class = "btn-xs btn-outlined-secondary text-center my-2">
-                            Unhide
+                            Restore
                         </a>
                     </div>
                 </div>
+            </div>
             `;
 
             output += product;
