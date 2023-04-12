@@ -30,7 +30,7 @@ class AnnouncementsController extends Controller
     public function publish(): void
     {
         $this->loadView(
-            'AgriOfficer/PublishAnnouncementPage',
+            'AgriOfficer/AnnouncementsPublishPage',
             'Publish Announcement',
             'announcements'
         );//loading page view
@@ -82,6 +82,18 @@ class AnnouncementsController extends Controller
                 Util::redirect("../");
                 return true;
             }
+        }
+        $this->view->render();
+        return false;
+    }
+
+    public function delete($announcementId): bool
+    {
+        $this->loadView('AgriOfficer/AnnouncementPage', 'Announcement', 'announcements');
+        $this->loadModel("Announcement");
+        if ($this->model->deleteRecord($announcementId)) {
+            Util::redirect("../");
+            return true;
         }
         $this->view->render();
         return false;
