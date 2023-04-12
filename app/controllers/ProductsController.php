@@ -21,6 +21,12 @@ class ProductsController extends Controller
         $this->view->render();
     }
 
+    public function showHiddenProducts(): void
+    {
+        $this->loadModel("Product");
+        $this->sendJson($this->model->getHiddenProductsFromDB(Session::getSession()->id));
+    }
+
     public function add(): void
     {
         $this->loadView('Manufacturer/AddProductPage', 'Add Products', 'products');
@@ -91,7 +97,7 @@ class ProductsController extends Controller
             ]);
 
             if ($this->model->updateProduct($productId)) {
-                Util::redirect("../");
+                Util::redirect("../../products");
                 return true;
             }
         }
@@ -105,7 +111,20 @@ class ProductsController extends Controller
         $this->loadModel("Product");
 
         if ($this->model->hideProduct($productId)) {
-            Util::redirect("../");
+            Util::redirect("../../products");
+            return true;
+        }
+        $this->view->render();
+        return false;
+    }
+
+    public function restoreHideProduct($productId): bool
+    {
+        $this->loadView('Manufacturer/ProductsPage', 'Products', 'products');
+        $this->loadModel("Product");
+
+        if ($this->model->removeFromHidden($productId)) {
+            Util::redirect("../../products");
             return true;
         }
         $this->view->render();
