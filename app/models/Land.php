@@ -13,29 +13,17 @@ use app\core\Model;
 class Land extends Model
 {
     public function __construct(
-        private ?int $id = null,
-        private ?int $ownerId = null,
+        private ?int    $id = null,
+        private ?int    $ownerId = null,
         private ?string $name = null,
-        private ?float $areaInHectares = null,
+        private ?float  $areaInHectares = null,
         private ?string $address = null,
         private ?string $district = null,
         private ?string $soilCondition = null,
         private ?string $rainfall = null,
         private ?string $humidity = null
-    ) {
-    }
-
-    public function addToDB(): bool
+    )
     {
-        $result = $this->runQuery(
-            "INSERT into land (owner_id, name, area_in_hectares, address, district, soil_condition, rainfall, 
-                  humidity)
-            VALUES (?,?,?,?,?,?,?,?)",
-            [$this->ownerId, $this->name, $this->areaInHectares, $this->address, $this->district,
-                $this->soilCondition, $this->rainfall, $this->humidity]
-        );
-
-        return $result == true;
     }
 
     public static function getNamesByOwnerIdFromDB($ownerId): array
@@ -51,6 +39,32 @@ class Land extends Model
         return [];
     }
 
+    public function addToDB(): bool
+    {
+        $result = $this->runQuery(
+            "INSERT into land (owner_id, name, area_in_hectares, address, district, soil_condition, rainfall, 
+                  humidity)
+            VALUES (?,?,?,?,?,?,?,?)",
+            [$this->ownerId, $this->name, $this->areaInHectares, $this->address, $this->district,
+                $this->soilCondition, $this->rainfall, $this->humidity]
+        );
+
+        return $result == true;
+    }
+
+    //Model function of Agri-Officer's Land details.
+
+    public function getAllLandDetailsForAgriOfficers(): array
+    {
+        $stmt = Model::select(
+            table: "land",
+            columns: ["land.id", "registered_user.name", "land.address", "land.district",
+                "registered_user.contact_no"],
+            where: ["producer.district_id" => $agriOfficerDistrictID],
+            joins: ["registered_user" => "owner.id"]
+        );
+        return [];
+    }
     // Getters and Setters
 
     /**
