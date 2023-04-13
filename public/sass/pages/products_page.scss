@@ -1,0 +1,24 @@
+@import "../partials/variables";
+
+.hidden-product-card, .product-card {
+  background-color: $white;
+  border-radius: $base-border-radius;
+}
+
+.hidden-product-card {
+  background-color: $white;
+  border-radius: $base-border-radius;
+}
+
+.btn-hidden-products, .btn-hidden-categories{
+  cursor: pointer;
+  border: none;
+  background-color: $background-grey;
+}
+
+.product-qty{
+  background-color: $selected-green-light;
+  border: none;
+  width: max-content;
+  border-radius: $base-border-radius-sm;
+}

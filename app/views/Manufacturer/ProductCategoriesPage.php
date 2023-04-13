@@ -65,6 +65,13 @@ include APP_ROOT . "/views/inc/components/Header.php";
                                 ?>
                             </div>
                         </div>
+                        <div class="hidden-categories-wrapper px-1 py-3">
+                            <button class="btn-hidden-categories text-primary-light fs-3 p-2 d-flex"
+                                    id="hidden-categories-toggle" value="show">Show hidden categories
+                            </button>
+                            <div class="mt-2 row gap-1" id="hidden-categories">
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -72,8 +79,8 @@ include APP_ROOT . "/views/inc/components/Header.php";
             include APP_ROOT . "/views/inc/components/Footer.php";
             ?>
         </main>
-
     </div>
+    <script src="<?php echo URL_ROOT ?>/public/js/hiddenCategories.js" defer></script>
     </body>
 <?php
 include APP_ROOT . "/views/inc/components/EndingTag.php";
