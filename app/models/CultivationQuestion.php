@@ -86,13 +86,13 @@ class CultivationQuestion extends Model
                     "content" => $this->content,
                     "image" => $this->image,
                 ],
-            where: "id = $this->id"
+            where: ["id" => $this->id],
         ) == 1;
     }
 
     public function deleteFromDB(): bool
     {
-        return $this->delete("cultivation_question", "id = $this->id") == 1;
+        return $this->delete(table: "cultivation_question", where: ["id" => $this->id]) == 1;
     }
 
     // Getters and Setters

@@ -146,13 +146,13 @@ class Cultivation extends Model
                 "status" => $this->status,
                 "expected_harvest_date" => $this->expectedHarvestDate
             ],
-            where: "id = $this->id"
+            where: ["id" => $this->id]
         ) == 1;
     }
 
     public function deleteFromDB(): bool
     {
-        return $this->delete("cultivation", "id = $this->id") == 1;
+        return $this->delete(table: "cultivation", where: ["id" => $this->id]) == 1;
     }
 
     // Getters and Setters

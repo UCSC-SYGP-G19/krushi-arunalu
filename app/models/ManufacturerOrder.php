@@ -95,7 +95,7 @@ class ManufacturerOrder extends Model
             data: [
                     "status" => $this->status,
                 ],
-            where: "id = $this->orderId"
+            where: ["id" => $this->orderId]
         ) == 1;
     }
 
