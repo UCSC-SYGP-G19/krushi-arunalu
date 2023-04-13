@@ -20,6 +20,16 @@ const fetchConnectedManufacturersList = async () => {
 }
 
 const renderConnectedManufacturersTable = (data) => {
+  if (data == null) {
+    tblManufacturers.innerHTML = renderMessageCard("Error fetching data");
+    return;
+  }
+
+  if (data.length === 0) {
+    tblManufacturers.innerHTML = renderMessageCard("No data to show");
+    return;
+  }
+
   let output = `<thead>
                   <tr class="row">
                     <th class="col-1"></th>
@@ -43,7 +53,7 @@ const renderConnectedManufacturersTable = (data) => {
                 <td class="col-2 pr-5" >
                     <div class="row justify-content-end align-items-center gap-1" >
                         <div class="col-12" >
-                            <a href="${window.location.href}/send-connection-requests/${element.manufacturer_id}"
+                            <a href="${window.location.origin}/krushi-arunalu/connection-requests/remove/${element.manufacturer_id}"
             class="btn-xs btn-outlined-error-dark text-center">Remove</a> 
                         </div>
                     </div>
@@ -90,6 +100,16 @@ const renderConnectedManufacturersTable = (data) => {
 }
 
 const renderAllManufacturersTable = (data) => {
+  if (data == null) {
+    tblManufacturers.innerHTML = renderMessageCard("Error fetching data");
+    return;
+  }
+
+  if (data.length === 0) {
+    tblManufacturers.innerHTML = renderMessageCard("No data to show");
+    return;
+  }
+
   let output = `<thead>
                   <tr class="row">
                     <th class="col-1"></th>
@@ -103,7 +123,7 @@ const renderAllManufacturersTable = (data) => {
   data.forEach((element) => {
     let row = ` 
             <tr class="row">
-                <td class="col-1"> <img src=${window.location.origin + "/krushi-arunalu/img/manufacturer/" + element.manufacturer_image_url} width="72" class="m-2"/> </td>
+                <td class="col-1"> <img src=${window.location.origin + "/krushi-arunalu/img/user-avatars/" + element.manufacturer_image_url} width="72" class="m-2"/> </td>
                 <td class="col-1"> ${element.manufacturer_id} </td>
                 <td class="col-3"> ${element.manufacturer_name} </td>
                 <td class="col-5" > ${element.manufacturer_description} </td>
@@ -154,7 +174,7 @@ const renderAllManufacturersTable = (data) => {
 
 const renderConnectionStatus = (element) => {
   if (element.request_status == null) {
-    return ` <a href="${window.location.href}/send-connection-requests/${element.manufacturer_id}"
+    return ` <a href="${window.location.origin}/krushi-arunalu/connection-requests/send/${element.manufacturer_id}"
             class="btn-xs btn-outlined-primary-dark text-center">
                 Connect
         </a> `;
@@ -167,6 +187,7 @@ let allManufacturersList = null;
 let connectedManufacturersList = null;
 
 document.addEventListener("DOMContentLoaded", () => {
+  tblManufacturers.innerHTML = renderMessageCard("Loading");
   fetchAllManufacturersList().then(r => {
     renderAllManufacturersTable(allManufacturersList);
   })
@@ -179,7 +200,7 @@ btnAll.addEventListener("click", () => {
   btnConnected.classList.remove('active-tab');
   btnAll.classList.add('active-tab');
   if (allManufacturersList == null) {
-    tblManufacturers.innerHTML = `<tbody><tr class="py-3"><td class="p-3">Loading</td></tr></tbody>`;
+    tblManufacturers.innerHTML = renderMessageCard("Loading");
     fetchAllManufacturersList().then(r => {
       renderAllManufacturersTable(allManufacturersList);
     });
@@ -192,7 +213,7 @@ btnConnected.addEventListener("click", () => {
   btnConnected.classList.add('active-tab');
   btnAll.classList.remove('active-tab');
   if (connectedManufacturersList == null) {
-    tblManufacturers.innerHTML = `<tbody><tr class="py-3"><td class="p-3">Loading</td></tr></tbody>`;
+    tblManufacturers.innerHTML = renderMessageCard("Loading");
     fetchConnectedManufacturersList().then(r => {
       renderConnectedManufacturersTable(connectedManufacturersList);
     });

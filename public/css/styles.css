@@ -123,22 +123,6 @@
   border-radius: 8px;
 }
 
-.request-card-wrapper {
-  background-color: #FFFFFF;
-  border-radius: 16px;
-  box-shadow: 0 2px 4px rgba(21, 116, 45, 0.9) !important;
-}
-.request-card-wrapper .user-location {
-  font-size: 0.9rem;
-  font-weight: 300;
-  color: #555555;
-  padding-top: 2px;
-}
-
-.user-profile-pic {
-  border-radius: 50%;
-}
-
 .container {
   width: 100%;
   max-width: 1200px;
@@ -1103,6 +1087,13 @@ footer {
   background-color: #F5F5F5;
 }
 
+tbody.isolated tr:hover {
+  background-color: #FFFFFF;
+}
+tbody.isolated tr td {
+  border-radius: 16px;
+}
+
 .table-controls {
   display: flex;
   justify-content: space-between;
@@ -1773,6 +1764,12 @@ h1.title {
   background-color: rgb(244, 244, 242) !important;
 }
 
+div.message-card {
+  text-align: center;
+  background-color: #FFFFFF;
+  border-radius: 16px;
+}
+
 .index {
   height: 100vh;
   width: 100vw;
@@ -2106,6 +2103,27 @@ h1.title {
   width: 100%;
   height: auto;
   border-radius: 4px;
+}
+
+.connection-request-wrapper {
+  border-radius: 16px;
+  background-color: white;
+  border-bottom: 3px solid #15742D;
+}
+.connection-request-wrapper:hover {
+  background-color: #E7F4D8;
+}
+.connection-request-wrapper .avatar {
+  border-radius: 50%;
+}
+.connection-request-wrapper .title {
+  font-size: large;
+}
+.connection-request-wrapper .sub-title-1 {
+  font-size: 1rem;
+}
+.connection-request-wrapper .sub-title-2 {
+  font-size: 0.9rem;
 }
 
 * {

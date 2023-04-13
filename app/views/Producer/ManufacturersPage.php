@@ -40,11 +40,6 @@ include APP_ROOT . "/views/inc/components/Header.php";
                                 <?php
                                 include APP_ROOT . "/views/inc/components/SearchFilterAndSort.php";?>
                                 <table id="manufacturers-table">
-                                    <tbody>
-                                        <tr class="py-3">
-                                            <td class="p-3">Loading</td>
-                                        </tr>
-                                    </tbody>
                                 </table>
                             </div>
                         </div>
