@@ -106,5 +106,9 @@ h1.title {
     &.badge-secondary {
         background-color: $grey-dark;
     }
+
+    &.badge-light-green {
+        background-color: $selected-green;
+    }
 }
 

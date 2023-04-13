@@ -1,0 +1,31 @@
+@import "../partials/variables";
+
+.crop-request-card {
+
+    div.clickable {
+        cursor: pointer;
+    }
+
+    background-color: $white;
+    border-radius: $base-border-radius;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1) !important;
+
+    &:hover {
+        background-color: $selected-green-light;
+    }
+
+    .badge {
+        font-size: $base-font-size*0.9;
+    }
+
+    .company-info {
+        font-size: $base-font-size*1.1;
+    }
+
+    .crop-response-card-content {
+        background-color: $background-grey;
+        border-radius: $base-border-radius;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1) !important;
+
+    }
+}
