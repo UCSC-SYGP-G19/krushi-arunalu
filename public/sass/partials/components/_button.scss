@@ -12,51 +12,75 @@ $colors: (
 );
 
 @mixin btn($bg-color) {
-  text-decoration: none;
-  cursor: pointer;
-  display: inline-block;
-  border: 0;
-  padding: $base-padding*0.5 $base-padding;
-  background-color: $bg-color;
-  border-radius: $base-border-radius;
+    text-decoration: none;
+    cursor: pointer;
+    display: inline-block;
+    border: 0;
+    padding: $base-padding*0.5 $base-padding;
+    background-color: $bg-color;
+    border-radius: $base-border-radius;
 }
 
 @each $key, $val in $colors {
-  .btn-#{$key} {
-    @include btn($val);
+    .btn-#{$key} {
+        @include btn($val);
 
-    &:hover {
-      background-color: lighten($val, 5);
+        &:hover {
+            background-color: lighten($val, 5);
+        }
     }
-  }
-  .btn-outlined-#{$key} {
-    @include btn($white);
-    border: $base-border-weight*1.5 solid $val;
-    color: $val;
-    background-color: transparent;
+    .btn-outlined-#{$key} {
+        @include btn($white);
+        border: $base-border-weight*1.5 solid $val;
+        color: $val;
+        background-color: transparent;
 
-    &:hover {
-      background-color: $val;
-      color: $white !important;
+        &:hover {
+            background-color: $val;
+            color: $white !important;
+        }
     }
-  }
 }
 
 .btn-lg {
-  border-radius: $base-border-radius-sm;
+    border-radius: $base-border-radius-sm;
 }
 
 .btn-md {
-  padding: $base-padding*0.6 $base-padding*1;
-  border-radius: $base-border-radius-sm*1.5;
+    padding: $base-padding*0.6 $base-padding*1;
+    border-radius: $base-border-radius-sm*1.5;
 }
 
 .btn-sm {
-  padding: $base-padding*0.4 $base-padding*0.8;
-  border-radius: $base-border-radius-sm;
+    padding: $base-padding*0.4 $base-padding*0.8;
+    border-radius: $base-border-radius-sm;
 }
 
 .btn-xs {
-  padding: $base-padding*0.2 $base-padding*0.4!important;
-  border-radius: $base-border-radius-sm*0.75;
+    padding: $base-padding*0.2 $base-padding*0.4 !important;
+    border-radius: $base-border-radius-sm*0.75;
 }
+
+
+.tab-btn {
+    border: none;
+    background-color: transparent;
+    font-size: large;
+    font-weight: 600;
+    color: $secondary-grey;
+    padding: 0;
+    margin: 0;
+    cursor: pointer;
+    outline: none;
+
+    &:hover {
+        color: $primary-green-light;
+    }
+
+    &.active-tab {
+        border-bottom: $primary-green-light 2px solid;
+        color: $primary-green-light;
+    }
+}
+
+

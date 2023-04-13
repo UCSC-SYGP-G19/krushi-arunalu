@@ -61,7 +61,7 @@ class Database
 
         $stmt = $pdo->prepare($query);
         Logger::log("PDOStatement", $stmt->queryString);
-
+        Logger::log("PDOValues", implode(", ", $values));
         if (!$stmt) {
             return false;
         }

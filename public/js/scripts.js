@@ -26,3 +26,7 @@ if (btnToggleNavbarOptions) {
         }
     });
 }
+
+const renderMessageCard = (message) => {
+    return `<div class="message-card p-3">${message}</div>`;
+}

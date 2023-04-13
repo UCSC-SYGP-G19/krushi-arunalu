@@ -123,32 +123,6 @@
   border-radius: 8px;
 }
 
-.request-card-wrapper {
-  background-color: #FFFFFF;
-  border-radius: 16px;
-  box-shadow: 0 2px 4px rgba(21, 116, 45, 0.9) !important;
-}
-.request-card-wrapper .user-location {
-  font-size: 0.9rem;
-  font-weight: 300;
-  color: #555555;
-  padding-top: 2px;
-}
-
-.user-profile-pic {
-  border: 1px solid #B1B1B1;
-  border-radius: 50%;
-}
-
-.active-page {
-  border-bottom: #15742D 2px solid;
-  color: #15742D;
-}
-
-.inactive-page {
-  color: #B1B1B1;
-}
-
 .container {
   width: 100%;
   max-width: 1200px;
@@ -759,6 +733,25 @@
   border-radius: 6px;
 }
 
+.tab-btn {
+  border: none;
+  background-color: transparent;
+  font-size: large;
+  font-weight: 600;
+  color: #B1B1B1;
+  padding: 0;
+  margin: 0;
+  cursor: pointer;
+  outline: none;
+}
+.tab-btn:hover {
+  color: #15742D;
+}
+.tab-btn.active-tab {
+  border-bottom: #15742D 2px solid;
+  color: #15742D;
+}
+
 .navbar .container, .navbar {
   width: 100%;
   display: flex;
@@ -1092,6 +1085,13 @@ footer {
   flex: 1 0 78%;
   flex-direction: column;
   background-color: #F5F5F5;
+}
+
+tbody.isolated tr:hover {
+  background-color: #FFFFFF;
+}
+tbody.isolated tr td {
+  border-radius: 16px;
 }
 
 .table-controls {
@@ -1764,6 +1764,12 @@ h1.title {
   background-color: rgb(244, 244, 242) !important;
 }
 
+div.message-card {
+  text-align: center;
+  background-color: #FFFFFF;
+  border-radius: 16px;
+}
+
 .index {
   height: 100vh;
   width: 100vw;
@@ -2166,6 +2172,27 @@ h1.title {
   width: 100%;
   height: auto;
   border-radius: 4px;
+}
+
+.connection-request-wrapper {
+  border-radius: 16px;
+  background-color: white;
+  border-bottom: 3px solid #15742D;
+}
+.connection-request-wrapper:hover {
+  background-color: #E7F4D8;
+}
+.connection-request-wrapper .avatar {
+  border-radius: 50%;
+}
+.connection-request-wrapper .title {
+  font-size: large;
+}
+.connection-request-wrapper .sub-title-1 {
+  font-size: 1rem;
+}
+.connection-request-wrapper .sub-title-2 {
+  font-size: 0.9rem;
 }
 
 * {
