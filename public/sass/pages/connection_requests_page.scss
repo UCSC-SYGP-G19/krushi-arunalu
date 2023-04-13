@@ -1,0 +1,27 @@
+@import "../partials/variables";
+
+.connection-request-wrapper{
+    border-radius: $base-border-radius;
+    background-color: white;
+    border-bottom: 3px solid $primary-green-light;
+
+    &:hover {
+        background-color: $selected-green-light;
+    }
+
+    .avatar {
+        border-radius: 50%;
+    }
+
+    .title {
+        font-size: large;
+    }
+
+    .sub-title-1 {
+        font-size: $base-font-size;
+    }
+
+    .sub-title-2 {
+        font-size: $base-font-size*0.9;
+    }
+}

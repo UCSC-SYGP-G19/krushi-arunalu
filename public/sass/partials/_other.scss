@@ -14,3 +14,9 @@
 .error-404-page {
     background-color: rgb(244,244,242)!important;
 }
+
+div.message-card {
+    text-align: center;
+    background-color: $white;
+    border-radius: $base-border-radius;
+}

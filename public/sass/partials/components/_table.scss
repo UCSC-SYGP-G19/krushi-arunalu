@@ -1,3 +1,15 @@
+tbody.isolated {
+    tr {
+        &:hover {
+            background-color: $white;
+        }
+
+        td {
+            border-radius: $base-border-radius;
+        }
+    }
+}
+
 .table-controls {
     display: flex;
     justify-content: space-between;
