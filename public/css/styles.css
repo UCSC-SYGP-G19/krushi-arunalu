@@ -89,24 +89,6 @@
   border-radius: 8px;
 }
 
-.crop-request-card-wrapper {
-  background-color: #FFFFFF;
-  border-radius: 16px;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1) !important;
-}
-.crop-request-card-wrapper .fulfilled-quantity {
-  background-color: #D9F0BE;
-}
-.crop-request-card-wrapper .fulfilled-quantity .crop-response-card-content {
-  background-color: #F5F5F5;
-  border-radius: 16px;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1) !important;
-}
-.crop-request-card-wrapper .fulfilled-quantity .crop-response-card-content .accepted-quantity {
-  background-color: #D9F0BE;
-  border-radius: 8px;
-}
-
 .inquiry-wrapper {
   background-color: #E7F4D8;
   border-radius: 16px;
@@ -1748,6 +1730,9 @@ h1.title {
 .badge.badge-secondary {
   background-color: #555555;
 }
+.badge.badge-light-green {
+  background-color: #D9F0BE;
+}
 
 .server-error {
   font-style: italic;
@@ -1995,58 +1980,12 @@ div.message-card {
   font-weight: 600;
   font-size: medium;
 }
-
 .product-details input, .product-details button {
   width: 100%;
 }
-
 .product-details button {
   border-radius: 8px;
   height: 42px;
-}
-
-.upload-content {
-  font-size: small;
-  text-align: center;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-direction: column;
-}
-
-.btn-browse {
-  cursor: pointer;
-  border: none;
-  background-color: #FFFFFF;
-  font-weight: bold;
-}
-
-.image-upload {
-  border: 2px dashed #B1B1B1;
-  border-radius: 16px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-direction: column;
-  padding: 16px;
-}
-
-.image-upload.drag {
-  background-color: #e1dfdf;
-}
-
-.btn-cancel {
-  position: absolute;
-  font-size: large;
-  cursor: pointer;
-  background-color: #B1B1B1;
-  border: none;
-  padding: 0 7px;
-  border-radius: 50%;
-}
-
-.image-preview {
-  text-align: right;
 }
 
 .hidden-product-card, .product-card {
@@ -2193,6 +2132,29 @@ div.message-card {
 }
 .connection-request-wrapper .sub-title-2 {
   font-size: 0.9rem;
+}
+
+.crop-request-card {
+  background-color: #FFFFFF;
+  border-radius: 16px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1) !important;
+}
+.crop-request-card div.clickable {
+  cursor: pointer;
+}
+.crop-request-card:hover {
+  background-color: #E7F4D8;
+}
+.crop-request-card .badge {
+  font-size: 0.9rem;
+}
+.crop-request-card .company-info {
+  font-size: 1.1rem;
+}
+.crop-request-card .crop-response-card-content {
+  background-color: #F5F5F5;
+  border-radius: 16px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1) !important;
 }
 
 * {

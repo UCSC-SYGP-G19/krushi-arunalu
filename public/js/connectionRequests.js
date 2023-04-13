@@ -6,8 +6,6 @@ const fetchReceivedRequests = async () => {
   if (res.status === 200) {
     console.log(res);
     receivedRequestsList = await res.json();
-    console.log(receivedRequestsList);
-    renderReceivedRequests(receivedRequestsList);
   }
 }
 
@@ -15,7 +13,6 @@ const fetchSentRequests = async () => {
   const res = await fetch(window.location.origin + '/krushi-arunalu/connection-requests/getSentRequestsAsJson');
   if (res.status === 200) {
     sentRequestsList = await res.json();
-    renderSentRequests(sentRequestsList);
   }
 }
 

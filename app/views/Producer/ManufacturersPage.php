@@ -22,7 +22,7 @@ include APP_ROOT . "/views/inc/components/Header.php";
                             </div>
                             <div class="">
                                 <?php echo '<a class="btn-md btn-primary-light text-center text-white" href = "
-                                 ' . URL_ROOT . '/connection-requests/">
+                                 ' . URL_ROOT . '/connection-requests">
                                  Connection Requests</a>' ?>
                             </div>
                         </div>
@@ -52,7 +52,7 @@ include APP_ROOT . "/views/inc/components/Header.php";
         </main>
 
     </div>
-    <script type="module" src="<?php echo URL_ROOT ?>/public/js/Producer/viewManufacturers.js" defer></script>
+    <script src="<?php echo URL_ROOT ?>/public/js/Producer/viewManufacturers.js" defer></script>
     </body>
 <?php
 include APP_ROOT . "/views/inc/components/EndingTag.php";
