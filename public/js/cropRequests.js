@@ -73,7 +73,7 @@ const renderPricesLine = (element) => `<div>
                                         <span class="fw-bold">Rs. ${element.low_price} to Rs. ${element.high_price} per unit</span>
                                     </div>`;
 
-const renderResponseInfoLine = (element) => `<div class="fs-3"><span class="text-primary-light fw-bold pr-1">${element.response_count} responses - </span>
+const renderResponseInfoLine = (element) => `<div class="fs-3"><span class="text-primary-light fw-bold pr-1">${element.response_count} response${element.response_count !== 1 ? "s" : ""} - </span>
                                         <span class="badge badge-light-green text-black fw-bold px-2 mt-0 mb-1">
                                         ${element.fulfilled_quantity} KG fulfilled / ${element.required_quantity} KG required</span></div>`;
 const renderExpandedSection = (element) => `
@@ -97,15 +97,15 @@ const renderExpandedSection = (element) => `
                                             <div class="row gap-2">
                                                 <div class="col-4">
                                                     <label for="accepted_quantity">Accepted quantity (KG)</label>
-                                                    <input type="number" id="accepted_quantity" name="accepted_quantity" placeholder="Enter accepted quantity" min="0" max=${element.required_quantity - element.fulfilled_quantity} value="">
+                                                    <input required type="number" id="accepted_quantity" name="accepted_quantity" placeholder="Enter accepted quantity" min="0" max=${element.required_quantity - element.fulfilled_quantity} value="">
                                                 </div>
                                                 <div class="col-4">
                                                     <label for="accepted_price">Accepted price (Rs.)</label>
-                                                    <input type="number" id="accepted_price" name="accepted_price" placeholder="Set accepted price" min=${element.low_price} max=${element.high_price} value="">
+                                                    <input required type="number" id="accepted_price" name="accepted_price" placeholder="Set accepted price" min=${element.low_price} max=${element.high_price} value="">
                                                 </div>
                                                 <div class="col-4">
                                                     <label for="accepted_delivery_date">Accepted delivery date</label>
-                                                    <input type="date" id="accepted_delivery_date" name="accepted_delivery_date" value="">
+                                                    <input required type="date" id="accepted_delivery_date" name="accepted_delivery_date" value="">
                                                 </div>
                                             </div>
                                             <div class="row gap-2">
@@ -115,6 +115,7 @@ const renderExpandedSection = (element) => `
                                                 </div>
                                             </div>
                                             <div class="row gap-2 mt-1 justify-content-center">
+                                                <input type="hidden" name="crop_request_id" value=${element.id}>
                                                 <button class="mr-2 btn-lg btn-primary-light text-center text-white fs-3" type="submit" name="submit_response" value="submit">Submit response
                                                 </button>
                                                 <button class="ml-2 btn-lg btn-outlined-error text-center text-error fs-3" type="reset" name="cancel_response" value="cancel">Cancel
