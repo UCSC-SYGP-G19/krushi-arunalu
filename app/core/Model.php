@@ -163,7 +163,6 @@ class Model
     }
 
     // Function to update data in the database
-
     /**
      * @param string $table
      * @param array $data
@@ -203,7 +202,6 @@ class Model
     }
 
     // Function to delete data from a table
-
     /**
      * @param string $table
      * @param array $where
