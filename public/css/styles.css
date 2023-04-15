@@ -89,6 +89,20 @@
   border-radius: 8px;
 }
 
+.inquiry-wrapper {
+  background-color: #E7F4D8;
+  border-radius: 16px;
+  box-shadow: 0 2px 4px rgba(21, 116, 45, 0.9) !important;
+}
+.inquiry-wrapper .product-name {
+  font-size: 0.9rem;
+  font-weight: 300;
+  color: #555555;
+  padding-top: 2px;
+}
+.inquiry-wrapper .responded {
+  background-color: #95C260;
+}
 .crop-request-card-wrapper {
   background-color: #FFFFFF;
   border-radius: 16px;
@@ -734,6 +748,15 @@
 .tab-btn.active-tab {
   border-bottom: #15742D 2px solid;
   color: #15742D;
+}
+
+button:disabled {
+  cursor: not-allowed;
+  opacity: 0.5;
+}
+button:disabled:hover {
+  color: #B1B1B1 !important;
+  background-color: transparent;
 }
 
 .navbar .container, .navbar {
@@ -1652,6 +1675,13 @@ h1.title {
   color: #8b8b8b !important;
 }
 
+.text-gold {
+  color: #B89130 !important;
+}
+.text-gold:hover {
+  color: #7b6120 !important;
+}
+
 .text-white {
   color: #FFFFFF !important;
 }
@@ -1731,6 +1761,9 @@ h1.title {
 }
 .badge.badge-secondary {
   background-color: #555555;
+}
+.badge.badge-light-green {
+  background-color: #D9F0BE;
 }
 
 .server-error {
@@ -2074,6 +2107,7 @@ div.message-card {
 .question-wrapper {
   border-radius: 16px;
   background-color: white;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1) !important;
   border-bottom: 3px solid #15742D;
 }
 .question-wrapper:hover {
@@ -2115,6 +2149,7 @@ div.message-card {
 .connection-request-wrapper {
   border-radius: 16px;
   background-color: white;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1) !important;
   border-bottom: 3px solid #15742D;
 }
 .connection-request-wrapper:hover {
@@ -2132,7 +2167,29 @@ div.message-card {
 .connection-request-wrapper .sub-title-2 {
   font-size: 0.9rem;
 }
-
+.crop-request-card {
+  background-color: #FFFFFF;
+  border-radius: 16px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1) !important;
+  border-bottom: 3px solid #15742D;
+}
+.crop-request-card div.clickable {
+  cursor: pointer;
+}
+.crop-request-card:hover {
+  background-color: #F9FCF5;
+}
+.crop-request-card .badge {
+  font-size: 0.9rem;
+}
+.crop-request-card .company-info {
+  font-size: 1.1rem;
+}
+.crop-request-card .crop-response-card-content {
+  background-color: #F5F5F5;
+  border-radius: 16px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1) !important;
+=======
 .inquiry-wrapper {
   background-color: #FFFFFF;
   border-radius: 16px;

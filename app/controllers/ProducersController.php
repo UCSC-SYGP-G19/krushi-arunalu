@@ -25,7 +25,7 @@ class ProducersController extends Controller
         $this->sendJson($this->model->getAllProducersFromDB());
     }
 
-    public function sendConnectionRequests($producerId): bool
+    public function sendConnectionRequest($producerId): bool
     {
         $this->loadView('Manufacturer/ProducersPage', 'Producers', 'producers');
         $this->loadModel('ConnectionRequest');

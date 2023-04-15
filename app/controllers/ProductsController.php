@@ -118,7 +118,7 @@ class ProductsController extends Controller
         return false;
     }
 
-    public function restoreHideProduct($productId): bool
+    public function restoreHiddenProduct($productId): bool
     {
         $this->loadView('Manufacturer/ProductsPage', 'Products', 'products');
         $this->loadModel("Product");

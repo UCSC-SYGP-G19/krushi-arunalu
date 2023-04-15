@@ -28,5 +28,5 @@ if (btnToggleNavbarOptions) {
 }
 
 const renderMessageCard = (message) => {
-    return `<div class="message-card p-3">${message}</div>`;
+    return `<div class="message-card p-3 mb-2">${message}</div>`;
 }

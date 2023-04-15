@@ -3,6 +3,7 @@
 .connection-request-wrapper{
     border-radius: $base-border-radius;
     background-color: white;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1) !important;
     border-bottom: 3px solid $primary-green-light;
 
     &:hover {

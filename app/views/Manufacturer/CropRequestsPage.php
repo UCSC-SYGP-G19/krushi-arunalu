@@ -1,7 +1,5 @@
 <?php
 
-use app\views\inc\components\Table;
-
 include APP_ROOT . "/views/inc/components/Header.php";
 
 ?>
@@ -149,7 +147,7 @@ include APP_ROOT . "/views/inc/components/Header.php";
                             <div class="crop-response-card d-flex mt-3">
                                 <div class="col-1 user-profile-pic text-center">
                                     <?php echo '<img src="' . URL_ROOT . '/public/img/icons/navbar/user-avatar.webp" 
-                alt="User profile icon" height="56px">' ?>
+                                        alt="User profile icon" height="56px">' ?>
                                 </div>
                                 <div class="col-11 crop-response-card-content py-2 pl-3 pr-4">
                                     <div class="col-12 d-flex">

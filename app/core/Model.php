@@ -163,7 +163,6 @@ class Model
     }
 
     // Function to update data in the database
-
     /**
      * @param string $table
      * @param array $data
@@ -203,7 +202,6 @@ class Model
     }
 
     // Function to delete data from a table
-
     /**
      * @param string $table
      * @param array $where
@@ -230,7 +228,7 @@ class Model
             $query .= " WHERE " . implode(" AND ", $where_conditions);
         }
 
-        return Database::prepareAndExecute($pdo, $query, $where_values) == 1;
+        return Database::prepareAndExecute($pdo, $query, $where_values) != false;
     }
 
     // Function to get the last inserted ID

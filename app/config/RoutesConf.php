@@ -10,7 +10,7 @@ const PROTECTED_ROUTES = [
     "Common" => ["Login", "Register", "ForgotPassword", "ResetPassword", "Logout", "Marketplace", "ManageProfile",
         "ManufacturerStore"],
     "Producer" => ["AccountSetup","ProducerDashboard", "Cultivations", "Harvests", "Sales", "CultivationQuestions",
-        "CropRequests", "Announcements", "Profile", "Manufacturers", "ConnectionRequests"],
+        "ProducerCropRequests", "Announcements", "Profile", "Manufacturers", "ConnectionRequests"],
     "Manufacturer" => ["ManufacturerDashboard", "Sales", "ManufacturerOrders", "Producers", "Stocks",
         "ProductCategories", "Products", "ManufacturerCropRequests", "Inquiries", "ManufacturerSales",
         "PurchasedStocks", "ConnectionRequests"],
@@ -48,7 +48,7 @@ const SIDEBAR_ROUTES = [
         ],
         "Crop Requests" => [
             "icon" => "crop-requests",
-            "link" => "crop-requests",
+            "link" => "producer-crop-requests",
         ],
         "Announcements" => [
             "icon" => "announcements",

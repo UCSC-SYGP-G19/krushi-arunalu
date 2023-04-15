@@ -1,7 +1,7 @@
 let data = null;
 
 const fetchHiddenCategories = async() => {
-    const res = await fetch('http://localhost/krushi-arunalu/product-categories/showHiddenCategories');
+    const res = await fetch(`${URL_ROOT}/productCategories/showHiddenCategories`);
     if (res.status === 200){
         data = await res.json();
         renderHiddenCategories(data);
@@ -21,7 +21,7 @@ const renderHiddenCategories = (data) => {
                             ${element.name}</h4>
                           <span class="description text-black py-1 pb-2 fs-2">
                             ${element.description}</span> <br>
-                          <a href = '${ window.location.href}/restore-hidden-category/${element.id}'
+                          <a href = '${URL_ROOT}/productCategories/restoreHiddenCategory/${element.id}'
                               class = "btn-xs btn-outlined-secondary text-center my-2">
                               Restore
                           </a>
