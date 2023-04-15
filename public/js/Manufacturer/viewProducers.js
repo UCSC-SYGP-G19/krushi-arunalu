@@ -1,7 +1,7 @@
 let data = null;
 
 const fetchProducersList = async() => {
-    const res = await fetch('http://localhost/krushi-arunalu/producers/getJsonForProducers');
+    const res = await fetch(`${URL_ROOT}/producers/getJsonForProducers`);
     if (res.status === 200) {
         data = await res.json();
         renderProducersList(data);
@@ -44,7 +44,7 @@ const renderConnectBtn = (element) => {
         output = `Pending`;
     }
     else {
-        output = ` <a href = "${ window.location.href}/send-connection-requests/${element.producer_id}"
+        output = ` <a href = "${URL_ROOT}/producer/sendConnectionRequest/${element.producer_id}"
             class = "btn-xs btn-outlined-primary-dark text-center">
                 Connect
         </a> `;

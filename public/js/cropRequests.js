@@ -2,7 +2,7 @@ let cropRequestsList = null;
 let myResponsesList = null;
 
 const fetchCropRequests = async () => {
-  const res = await fetch(window.location.origin + '/krushi-arunalu/producer-crop-requests/getRequestsAsJson');
+  const res = await fetch(`${URL_ROOT}/producerCropRequests/getRequestsAsJson`);
   if (res.status === 200) {
     cropRequestsList = await res.json();
     console.log(cropRequestsList);
@@ -10,7 +10,7 @@ const fetchCropRequests = async () => {
 }
 
 const fetchMyResponses = async (cropRequestId) => {
-  const res = await fetch(window.location.origin + '/krushi-arunalu/producer-crop-requests/getMyResponsesAsJson/' + cropRequestId);
+  const res = await fetch(`${URL_ROOT}/producerCropRequests/getMyResponsesAsJson/` + cropRequestId);
   if (res.status === 200) {
     myResponsesList[cropRequestId] = await res.json();
     console.log(myResponsesList);
@@ -33,7 +33,7 @@ const handleResponseEditClick = (requestId, responseId) => {
   const responseNode = requestNode.querySelector(`#response-${responseId}`);
   requestNode.querySelectorAll(".edit-button").forEach((button) => button.disabled = false);
   responseNode.querySelector(".edit-button").disabled = true;
-  requestNode.querySelector("form").action = `${URL_ROOT}/producer-crop-requests/update-my-response/${responseId}`;
+  requestNode.querySelector("form").action = `${URL_ROOT}/producerCropRequests/updateMyResponse/${responseId}`;
 
   const responseData = myResponsesList[requestId].find((response) => response.response_id === responseId);
   requestNode.querySelector(`#accepted_quantity_${requestId}`).value = responseData.accepted_quantity;
@@ -44,7 +44,7 @@ const handleResponseEditClick = (requestId, responseId) => {
   requestNode.querySelector("button[type='submit']").innerText = "Update response";
 
   requestNode.querySelector("button[type='reset']").addEventListener("click", () => {
-    requestNode.querySelector("form").action = `${URL_ROOT}/producer-crop-requests/submit-response/${requestId}`;
+    requestNode.querySelector("form").action = `${URL_ROOT}/producerCropRequests/addResponse/${requestId}`;
     requestNode.querySelector("button[type='submit']").value = "Submit";
     requestNode.querySelector("button[type='submit']").innerText = "Submit response";
     requestNode.querySelectorAll(".edit-button").forEach((button) => button.disabled = false);
@@ -54,7 +54,7 @@ const handleResponseEditClick = (requestId, responseId) => {
 }
 
 const handleResponseDeleteClick = async (responseId) => {
-  window.location.href = `${URL_ROOT}/producer-crop-requests/delete-my-response/${responseId}`;
+  window.location.href = `${URL_ROOT}/producerCropRequests/deleteMyResponse/${responseId}`;
   // const res = await fetch(`${URL_ROOT}/producer-crop-requests/delete-my-response/` + responseId);
   // if (res.status === 200) {
   //   const responseNode = document.querySelector(`#response-${responseId}`);
@@ -105,11 +105,11 @@ const renderCropRequests = (data) => {
                     <div class="col-3 py-4 justify-content-end d-flex px-3">
                         <span class="company-info text-gold fw-bold"><em>${element.manufacturer_name}</em></span>
                             <!--<a class="btn-md btn-outlined-secondary mx-2"
-                                    href="${URL_ROOT}/manufacturer-crop-requests/edit/${element.id}">
+                                    href="${URL_ROOT}/manufacturerCropRequests/edit/${element.id}">
                                       Edit
                                     </a>
                                     <a class="btn-md btn-outlined-error mx-2"
-                                    href="${URL_ROOT}/manufacturer-crop-requests/delete/${element.id}">
+                                    href="${URL_ROOT}/manufacturerCropRequests/delete/${element.id}">
                                       Delete
                                     </a>-->
                     </div>
@@ -270,9 +270,6 @@ const renderExpandedSection = (element) => `
                         </div>
                     </form>
                 </div>
-                <!--<div class="col-12 text-center responses-list">
-                    Loading responses ...
-                </div>-->
             </div>
         </div>
     </div>`;

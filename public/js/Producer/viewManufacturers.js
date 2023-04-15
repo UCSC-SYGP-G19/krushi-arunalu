@@ -1,5 +1,5 @@
 const fetchAllManufacturersList = async () => {
-  const res = await fetch(URL_ROOT + '/manufacturers/getAllManufacturersForProducerAsJson');
+  const res = await fetch(`${URL_ROOT}/manufacturers/getAllManufacturersForProducerAsJson`);
   if (res.status === 200) {
     allManufacturersList = await res.json();
   } else {
@@ -9,7 +9,7 @@ const fetchAllManufacturersList = async () => {
 }
 
 const fetchConnectedManufacturersList = async () => {
-  const res = await fetch(URL_ROOT + '/manufacturers/getConnectedManufacturersForProducerAsJson');
+  const res = await fetch(`${URL_ROOT}/manufacturers/getConnectedManufacturersForProducerAsJson`);
   if (res.status === 200) {
     connectedManufacturersList = await res.json();
     renderConnectedManufacturersTable(connectedManufacturersList);
@@ -47,7 +47,7 @@ const renderConnectedManufacturersTable = (data) => {
     let row = `
         <tr class="row">
             <td class="col-1"><img
-                    src=${window.location.origin + "/krushi-arunalu/img/manufacturer/" + element.manufacturer_image_url}
+                    src="${URL_ROOT}/img/user-avatars/${element.manufacturer_image_url}"
                     width="72" class="m-2" alt="User avatar"/></td>
             <td class="col-1"> ${element.manufacturer_id}</td>
             <td class="col-2"> ${element.manufacturer_name}</td>
@@ -56,7 +56,7 @@ const renderConnectedManufacturersTable = (data) => {
             <td class="col-2 pr-5">
                 <div class="row justify-content-end align-items-center gap-1">
                     <div class="col-12">
-                        <a href="${window.location.origin}/krushi-arunalu/connection-requests/remove/${element.manufacturer_id}"
+                        <a href="${URL_ROOT}/connection-requests/remove/${element.manufacturer_id}"
                            class="btn-xs btn-outlined-error-dark text-center">Remove</a>
                     </div>
                 </div>
@@ -129,7 +129,7 @@ const renderAllManufacturersTable = (data) => {
     let row = `
         <tr class="row">
             <td class="col-1"><img
-                    src=${window.location.origin + "/krushi-arunalu/img/user-avatars/" + element.manufacturer_image_url}
+                    src="${URL_ROOT}/img/user-avatars/${element.manufacturer_image_url}"
                     width="72" class="m-2" alt="User avatar"/></td>
             <td class="col-1"> ${element.manufacturer_id}</td>
             <td class="col-3"> ${element.manufacturer_name}</td>
@@ -182,7 +182,7 @@ const renderAllManufacturersTable = (data) => {
 
 const renderConnectionStatus = (element) => {
   if (element.request_status == null) {
-    return ` <a href="${window.location.origin}/krushi-arunalu/connection-requests/send/${element.manufacturer_id}"
+    return ` <a href="${URL_ROOT}/connection-requests/send/${element.manufacturer_id}"
                 class="btn-xs btn-outlined-primary-dark text-center">
         Connect
     </a> `;

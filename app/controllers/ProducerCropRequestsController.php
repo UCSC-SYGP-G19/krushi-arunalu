@@ -29,7 +29,7 @@ class ProducerCropRequestsController extends Controller
         $this->sendJson($this->model->getCropRequestsForProducerFromDB(Session::getSession()->id));
     }
 
-    public function submitResponse(): void
+    public function addResponse(): void
     {
         $this->loadModel('CropRequestResponse');
         $this->model->fillData([
