@@ -162,8 +162,9 @@ class Cultivation extends Model
             table: "cultivation",
             columns: ["crop.name", "cultivation.land_id", "cultivation.cultivated_quantity",
                 "cultivation.expected_harvest_date"],
-            where: ["land.district_id" => $agriOfficerDistrictID],
-            joins: ["crop" => "crop.id"]
+            joins: ["crop" => "crop.id",
+                "land" => "cultivation.land_id"],
+            where: ["land.district_id" => $agriOfficerDistrictID]
         );
         return [];
     }

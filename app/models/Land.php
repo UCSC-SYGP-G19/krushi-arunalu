@@ -54,14 +54,14 @@ class Land extends Model
 
     //Model function of Agri-Officer's Land details.
 
-    public function getAllLandDetailsForAgriOfficers(): array
+    public function getAllLandDetailsForAgriOfficers($agriOfficerDistrictID): array
     {
         $stmt = Model::select(
             table: "land",
             columns: ["land.id", "registered_user.name", "land.address", "land.district",
                 "registered_user.contact_no"],
-            where: ["producer.district_id" => $agriOfficerDistrictID],
-            joins: ["registered_user" => "owner.id"]
+            joins: ["registered_user" => "owner.id"],
+            where: ["producer.district_id" => $agriOfficerDistrictID]
         );
         return [];
     }
