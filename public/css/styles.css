@@ -2091,6 +2091,7 @@ div.message-card {
 .question-wrapper {
   border-radius: 16px;
   background-color: white;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1) !important;
   border-bottom: 3px solid #15742D;
 }
 .question-wrapper:hover {
@@ -2132,6 +2133,7 @@ div.message-card {
 .connection-request-wrapper {
   border-radius: 16px;
   background-color: white;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1) !important;
   border-bottom: 3px solid #15742D;
 }
 .connection-request-wrapper:hover {
@@ -2154,6 +2156,7 @@ div.message-card {
   background-color: #FFFFFF;
   border-radius: 16px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1) !important;
+  border-bottom: 3px solid #15742D;
 }
 .crop-request-card div.clickable {
   cursor: pointer;
