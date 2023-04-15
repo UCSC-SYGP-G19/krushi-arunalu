@@ -42,6 +42,15 @@ const handleResponseEditClick = (requestId, responseId) => {
   requestNode.querySelector(`#remarks_${requestId}`).value = responseData.remarks;
   requestNode.querySelector("button[type='submit']").value = "Update";
   requestNode.querySelector("button[type='submit']").innerText = "Update response";
+
+  requestNode.querySelector("button[type='reset']").addEventListener("click", () => {
+    requestNode.querySelector("form").action = `${URL_ROOT}/producer-crop-requests/submit-response/${requestId}`;
+    requestNode.querySelector("button[type='submit']").value = "Submit";
+    requestNode.querySelector("button[type='submit']").innerText = "Submit response";
+    requestNode.querySelectorAll(".edit-button").forEach((button) => button.disabled = false);
+    requestNode.querySelector("button[type='reset']").removeEventListener("click", () => {
+    });
+  });
 }
 
 const handleResponseDeleteClick = async (responseId) => {
@@ -225,7 +234,8 @@ const renderExpandedSection = (element) => `
                         <div class="row gap-2">
                             <div class="col-4">
                                 <label for="accepted_quantity">Accepted quantity (KG)</label>
-                                <input required type="number" id="accepted_quantity_${element.id}" name="accepted_quantity"
+                                <input required type="number" id="accepted_quantity_${element.id}"
+                                       name="accepted_quantity"
                                        placeholder="Enter accepted quantity" min="1"
                                        max=${element.required_quantity - element.fulfilled_quantity} value="">
                             </div>
@@ -237,14 +247,16 @@ const renderExpandedSection = (element) => `
                             </div>
                             <div class="col-4">
                                 <label for="accepted_delivery_date">Accepted delivery date</label>
-                                <input required type="date" id="accepted_delivery_date_${element.id}" name="accepted_delivery_date"
+                                <input required type="date" id="accepted_delivery_date_${element.id}"
+                                       name="accepted_delivery_date"
                                        value="">
                             </div>
                         </div>
                         <div class="row gap-2">
                             <div class="col-12">
                                 <label for="remarks">Remarks</label>
-                                <textarea name="remarks" id="remarks_${element.id}" rows="8" placeholder="Add remarks"></textarea>
+                                <textarea name="remarks" id="remarks_${element.id}" rows="8"
+                                          placeholder="Add remarks"></textarea>
                             </div>
                         </div>
                         <div class="row gap-2 mt-1 justify-content-center">
