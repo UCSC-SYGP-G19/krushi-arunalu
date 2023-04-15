@@ -38,16 +38,16 @@ class CustomerInquiry extends Model
     {
         return $this->runQuery("SELECT
         ci.content as 'content',
+        ci.id as 'inquiry_id',
         p.name as 'product_name',
         c.name as 'customer_name',
         ci.date_time as 'asked_date',
-        (SELECT CASE WHEN response_content IS NULL THEN TRUE ELSE FALSE END) as 'responded',
-        m.image_url as 'company_logo'
+        ru.image_url as 'company_logo'
         FROM customer_inquiry ci
         INNER JOIN product p ON ci.product_id = p.id
-        INNER JOIN registered_user m ON p.manufacturer_id = m.id
+        INNER JOIN registered_user ru ON p.manufacturer_id = ru.id
         INNER JOIN registered_user c ON ci.customer_id = c.id
-        WHERE m.id = ?", [$manufacturerId])->fetchAll();
+        WHERE ru.id = ?", [$manufacturerId])->fetchAll();
     }
 
     /**
