@@ -1,5 +1,5 @@
 const fetchAllManufacturersList = async () => {
-  const res = await fetch('http://localhost/krushi-arunalu/manufacturers/getAllManufacturersForProducerAsJson');
+  const res = await fetch(URL_ROOT + '/manufacturers/getAllManufacturersForProducerAsJson');
   if (res.status === 200) {
     allManufacturersList = await res.json();
   } else {
@@ -9,7 +9,7 @@ const fetchAllManufacturersList = async () => {
 }
 
 const fetchConnectedManufacturersList = async () => {
-  const res = await fetch('http://localhost/krushi-arunalu/manufacturers/getConnectedManufacturersForProducerAsJson');
+  const res = await fetch(URL_ROOT + '/manufacturers/getConnectedManufacturersForProducerAsJson');
   if (res.status === 200) {
     connectedManufacturersList = await res.json();
     renderConnectedManufacturersTable(connectedManufacturersList);
@@ -30,51 +30,54 @@ const renderConnectedManufacturersTable = (data) => {
     return;
   }
 
-  let output = `<thead>
-                  <tr class="row">
-                    <th class="col-1"></th>
-                    <th class="col-1">Manufacturer ID</th>
-                    <th class="col-2">Name</th>
-                    <th class="col-4">Address</th>
-                    <th class="col-2">Contact No.</th>
-                    <th class="col-2"></th>
-                  </tr>
-                </thead>
-                <tbody>`;
+  let output = `
+      <thead>
+      <tr class="row">
+          <th class="col-1"></th>
+          <th class="col-1">Manufacturer ID</th>
+          <th class="col-2">Name</th>
+          <th class="col-4">Address</th>
+          <th class="col-2">Contact No.</th>
+          <th class="col-2"></th>
+      </tr>
+      </thead>
+      <tbody>`;
 
   data.forEach((element) => {
-    let row = ` 
-            <tr class="row">
-                <td class="col-1"> <img src=${window.location.origin + "/krushi-arunalu/img/manufacturer/" + element.manufacturer_image_url} width="72" class="m-2"/> </td>
-                <td class="col-1"> ${element.manufacturer_id} </td>
-                <td class="col-2"> ${element.manufacturer_name} </td>
-                <td class="col-4" > ${element.manufacturer_address} </td>
-                <td class="col-2" > ${element.manufacturer_contact_no} </td>
-                <td class="col-2 pr-5" >
-                    <div class="row justify-content-end align-items-center gap-1" >
-                        <div class="col-12" >
-                            <a href="${window.location.origin}/krushi-arunalu/connection-requests/remove/${element.manufacturer_id}"
-            class="btn-xs btn-outlined-error-dark text-center">Remove</a> 
-                        </div>
+    let row = `
+        <tr class="row">
+            <td class="col-1"><img
+                    src=${window.location.origin + "/krushi-arunalu/img/manufacturer/" + element.manufacturer_image_url}
+                    width="72" class="m-2" alt="User avatar"/></td>
+            <td class="col-1"> ${element.manufacturer_id}</td>
+            <td class="col-2"> ${element.manufacturer_name}</td>
+            <td class="col-4"> ${element.manufacturer_address}</td>
+            <td class="col-2"> ${element.manufacturer_contact_no}</td>
+            <td class="col-2 pr-5">
+                <div class="row justify-content-end align-items-center gap-1">
+                    <div class="col-12">
+                        <a href="${window.location.origin}/krushi-arunalu/connection-requests/remove/${element.manufacturer_id}"
+                           class="btn-xs btn-outlined-error-dark text-center">Remove</a>
                     </div>
-                </td>   
-            </tr>`;
+                </div>
+            </td>
+        </tr>`;
 
     output += row;
   });
 
   output += `</tbody>
   <tfoot>
-    <tr class="row justify-content-end pagination">
-        <td class="col-3 text-right"><span>Rows per page:</span>
-            <label>
-                <select name="table_filter" id="table_filter">
-                    <option value="">10</option>
-                </select>
-            </label>
-        </td>
-        <td class="col-2">1-2 of 25
-            <span class="arrow-icons">
+  <tr class="row justify-content-end pagination">
+      <td class="col-3 text-right"><span>Rows per page:</span>
+          <label>
+              <select name="table_filter" id="table_filter">
+                  <option value="">10</option>
+              </select>
+          </label>
+      </td>
+      <td class="col-2">1-2 of 25
+          <span class="arrow-icons">
                 <span class="left-arrow">
                     <svg width="9" height="15" viewBox="0 0 9 15" fill="none"
                          xmlns="http://www.w3.org/2000/svg">
@@ -93,7 +96,7 @@ const renderConnectedManufacturersTable = (data) => {
                 </svg>
                 </span>
             </span>
-        </td>
+      </td>
   </tfoot>`
 
   tblManufacturers.innerHTML = output;
@@ -110,44 +113,49 @@ const renderAllManufacturersTable = (data) => {
     return;
   }
 
-  let output = `<thead>
-                  <tr class="row">
-                    <th class="col-1"></th>
-                    <th class="col-1">Manufacturer ID</th>
-                    <th class="col-3">Name</th>
-                    <th class="col-5">Description</th>
-                    <th class="col-2"></th>
-                    </tr>
-                </thead><tbody>`;
+  let output = `
+      <thead>
+      <tr class="row">
+          <th class="col-1"></th>
+          <th class="col-1">Manufacturer ID</th>
+          <th class="col-3">Name</th>
+          <th class="col-5">Description</th>
+          <th class="col-2"></th>
+      </tr>
+      </thead>
+      <tbody>`;
 
   data.forEach((element) => {
-    let row = ` 
-            <tr class="row">
-                <td class="col-1"> <img src=${window.location.origin + "/krushi-arunalu/img/user-avatars/" + element.manufacturer_image_url} width="72" class="m-2"/> </td>
-                <td class="col-1"> ${element.manufacturer_id} </td>
-                <td class="col-3"> ${element.manufacturer_name} </td>
-                <td class="col-5" > ${element.manufacturer_description} </td>
-                <td class="col-2 pr-5" >
-                    <div class="row justify-content-end align-items-center gap-1" >
-                        <div class="col-12" >
-                            ${renderConnectionStatus(element)}
-                        </div>
+    let row = `
+        <tr class="row">
+            <td class="col-1"><img
+                    src=${window.location.origin + "/krushi-arunalu/img/user-avatars/" + element.manufacturer_image_url}
+                    width="72" class="m-2" alt="User avatar"/></td>
+            <td class="col-1"> ${element.manufacturer_id}</td>
+            <td class="col-3"> ${element.manufacturer_name}</td>
+            <td class="col-5"> ${element.manufacturer_description}</td>
+            <td class="col-2 pr-5">
+                <div class="row justify-content-end align-items-center gap-1">
+                    <div class="col-12">
+                        ${renderConnectionStatus(element)}
                     </div>
-                </td>  
-            </tr> `;
+                </div>
+            </td>
+        </tr> `;
 
     output += row;
   });
 
-  output += `</tbody><tfoot>
-                                    <tr class="row justify-content-end pagination">
-                                        <td class="col-3 text-right"><span>Rows per page:</span><label>
-                                                <select name="table_filter" id="table_filter">
-                                                    <option value="">10</option>
-                                                </select>
-                                            </label></td>
-                                        <td class="col-2">1-2 of 25
-                                            <span class="arrow-icons">
+  output += `</tbody>
+  <tfoot>
+  <tr class="row justify-content-end pagination">
+      <td class="col-3 text-right"><span>Rows per page:</span><label>
+          <select name="table_filter" id="table_filter">
+              <option value="">10</option>
+          </select>
+      </label></td>
+      <td class="col-2">1-2 of 25
+          <span class="arrow-icons">
                                                 <span class="left-arrow">
                                                     <svg width="9" height="15" viewBox="0 0 9 15" fill="none"
                                                          xmlns="http://www.w3.org/2000/svg">
@@ -166,8 +174,8 @@ const renderAllManufacturersTable = (data) => {
                                                 </svg>
                                                 </span>
                                             </span>
-                                        </td>
-                                    </tfoot>`
+      </td>
+  </tfoot>`
 
   tblManufacturers.innerHTML = output;
 }
@@ -175,9 +183,9 @@ const renderAllManufacturersTable = (data) => {
 const renderConnectionStatus = (element) => {
   if (element.request_status == null) {
     return ` <a href="${window.location.origin}/krushi-arunalu/connection-requests/send/${element.manufacturer_id}"
-            class="btn-xs btn-outlined-primary-dark text-center">
-                Connect
-        </a> `;
+                class="btn-xs btn-outlined-primary-dark text-center">
+        Connect
+    </a> `;
   }
   return element.request_status;
 }
