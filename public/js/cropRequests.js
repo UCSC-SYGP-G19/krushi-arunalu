@@ -18,14 +18,41 @@ const fetchMyResponses = async (cropRequestId) => {
 }
 
 const fetchAndRenderMyResponses = async (cropRequestId) => {
-  const responsesListNode = document.querySelector(`#crop-request-${cropRequestId}-card`).querySelector('.request-responses-list');
-  if(myResponsesList == null) {
+  const responsesListNode = document.querySelector(`#crop-request-${cropRequestId}`).querySelector('.request-responses-list');
+  if (myResponsesList == null) {
     myResponsesList = {};
   }
   if (!(cropRequestId in myResponsesList)) {
     await fetchMyResponses(cropRequestId);
   }
   renderMyResponses(responsesListNode, myResponsesList[cropRequestId]);
+}
+
+const handleResponseEditClick = (requestId, responseId) => {
+  const requestNode = document.querySelector(`#crop-request-${requestId}`)
+  const responseNode = requestNode.querySelector(`#response-${responseId}`);
+  requestNode.querySelectorAll(".edit-button").forEach((button) => button.disabled = false);
+  responseNode.querySelector(".edit-button").disabled = true;
+  requestNode.querySelector("form").action = `${URL_ROOT}/producer-crop-requests/update-my-response/${responseId}`;
+
+  const responseData = myResponsesList[requestId].find((response) => response.response_id === responseId);
+  requestNode.querySelector(`#accepted_quantity_${requestId}`).value = responseData.accepted_quantity;
+  requestNode.querySelector(`#accepted_price_${requestId}`).value = responseData.accepted_price;
+  requestNode.querySelector(`#accepted_delivery_date_${requestId}`).value = responseData.accepted_delivery_date;
+  requestNode.querySelector(`#remarks_${requestId}`).value = responseData.remarks;
+  requestNode.querySelector("button[type='submit']").value = "Update";
+  requestNode.querySelector("button[type='submit']").innerText = "Update response";
+}
+
+const handleResponseDeleteClick = async (responseId) => {
+  window.location.href = `${URL_ROOT}/producer-crop-requests/delete-my-response/${responseId}`;
+  // const res = await fetch(`${URL_ROOT}/producer-crop-requests/delete-my-response/` + responseId);
+  // if (res.status === 200) {
+  //   const responseNode = document.querySelector(`#response-${responseId}`);
+  //   responseNode.remove();
+  // } else {
+  //   alert("Error deleting response");
+  // }
 }
 
 const renderCropRequests = (data) => {
@@ -37,8 +64,8 @@ const renderCropRequests = (data) => {
     } else {
       data.forEach((element) => {
         let row = `
-            <div class="crop-request-card p-3 px-4 mb-3" id="crop-request-${element.id}-card" datatype="collapsed">
-                <div class="row clickable" onClick="handleCardClick(${element.id})">
+            <div class="crop-request-card p-3 px-4 mb-3" id="crop-request-${element.id}" datatype="collapsed">
+                <div class="row clickable" onClick="handleCropRequestClick(${element.id})">
                     <div class="col-1">
                         <div class="image-window">
                             <img alt="Product image" height="100%" width="100%"
@@ -103,7 +130,7 @@ const renderMyResponses = (node, data) => {
                     <img src="${URL_ROOT}/public/img/icons/navbar/user-avatar.webp"
                          alt="User profile icon" width="90%">
                 </div>
-                <div class="col-11 crop-response-card-content py-3 px-4">
+                <div class="col-11 crop-response-card-content py-3 px-4" id="response-${element.response_id}">
                     <div class="row pb-1">
                         <div class="col-12">
                             <div class="row align-items-center">
@@ -111,14 +138,14 @@ const renderMyResponses = (node, data) => {
                                 <div class="col-6 text-primary-light fw-bold text-right">
                                     <span>${element.response_date_time}</span>
                                     <span class="ml-3">
-                                      <a class="btn-xs btn-outlined-secondary mr-1"
-                                         href="${URL_ROOT}/producer-crop-requests/edit-response/${element.response_id}">
-                                      Edit
-                                    </a>
-                                    <a class="btn-xs btn-outlined-error ml-1"
-                                       href="${URL_ROOT}/producer-crop-requests/delete-response/${element.response_id}">
-                                      Delete
-                                    </a>
+                                      <button class="btn-xs btn-outlined-secondary mr-1 edit-button"
+                                              onclick="handleResponseEditClick(${element.request_id}, ${element.response_id})">
+                                        Edit
+                                    </button>
+                                    <button class="btn-xs btn-outlined-error ml-1 delete-button"
+                                            onclick="handleResponseDeleteClick(${element.response_id})">
+                                        Delete
+                                    </button>
                                   </span>
                                 </div>
                             </div>
@@ -198,26 +225,26 @@ const renderExpandedSection = (element) => `
                         <div class="row gap-2">
                             <div class="col-4">
                                 <label for="accepted_quantity">Accepted quantity (KG)</label>
-                                <input required type="number" id="accepted_quantity" name="accepted_quantity"
-                                       placeholder="Enter accepted quantity" min="0"
+                                <input required type="number" id="accepted_quantity_${element.id}" name="accepted_quantity"
+                                       placeholder="Enter accepted quantity" min="1"
                                        max=${element.required_quantity - element.fulfilled_quantity} value="">
                             </div>
                             <div class="col-4">
                                 <label for="accepted_price">Accepted price (Rs.)</label>
-                                <input required type="number" id="accepted_price" name="accepted_price"
+                                <input required type="number" id="accepted_price_${element.id}" name="accepted_price"
                                        placeholder="Set accepted price" min=${element.low_price}
                                        max=${element.high_price} value="">
                             </div>
                             <div class="col-4">
                                 <label for="accepted_delivery_date">Accepted delivery date</label>
-                                <input required type="date" id="accepted_delivery_date" name="accepted_delivery_date"
+                                <input required type="date" id="accepted_delivery_date_${element.id}" name="accepted_delivery_date"
                                        value="">
                             </div>
                         </div>
                         <div class="row gap-2">
                             <div class="col-12">
                                 <label for="remarks">Remarks</label>
-                                <textarea name="remarks" id="remarks" rows="8" placeholder="Add remarks"></textarea>
+                                <textarea name="remarks" id="remarks_${element.id}" rows="8" placeholder="Add remarks"></textarea>
                             </div>
                         </div>
                         <div class="row gap-2 mt-1 justify-content-center">
@@ -238,19 +265,19 @@ const renderExpandedSection = (element) => `
         </div>
     </div>`;
 
-const handleCardClick = (e) => {
+const handleCropRequestClick = (e) => {
   console.log(e);
-  const card = document.querySelector(`#crop-request-${e}-card`);
-  if (card.getAttribute("datatype") === "collapsed") {
-    card.setAttribute("datatype", "expanded");
+  const cropRequestCard = document.querySelector(`#crop-request-${e}`);
+  if (cropRequestCard.getAttribute("datatype") === "collapsed") {
+    cropRequestCard.setAttribute("datatype", "expanded");
     const currentCropRequest = cropRequestsList.find(r => r.id === e);
-    card.querySelector(".third-line").innerHTML = renderPricesLine(currentCropRequest);
-    card.innerHTML += renderExpandedSection(currentCropRequest);
+    cropRequestCard.querySelector(".third-line").innerHTML = renderPricesLine(currentCropRequest);
+    cropRequestCard.innerHTML += renderExpandedSection(currentCropRequest);
     fetchAndRenderMyResponses(e);
   } else {
-    card.setAttribute("datatype", "collapsed");
-    card.querySelector(".third-line").innerHTML = renderResponseInfoLine(cropRequestsList.find(r => r.id === e));
-    card.querySelector(".expanded-section").remove();
+    cropRequestCard.setAttribute("datatype", "collapsed");
+    cropRequestCard.querySelector(".third-line").innerHTML = renderResponseInfoLine(cropRequestsList.find(r => r.id === e));
+    cropRequestCard.querySelector(".expanded-section").remove();
   }
 }
 

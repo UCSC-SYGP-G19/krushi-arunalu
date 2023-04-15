@@ -734,6 +734,15 @@
   color: #15742D;
 }
 
+button:disabled {
+  cursor: not-allowed;
+  opacity: 0.5;
+}
+button:disabled:hover {
+  color: #B1B1B1 !important;
+  background-color: transparent;
+}
+
 .navbar .container, .navbar {
   width: 100%;
   display: flex;

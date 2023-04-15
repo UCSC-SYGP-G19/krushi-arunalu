@@ -67,6 +67,34 @@ class CropRequestResponse extends Model
         return [];
     }
 
+    public function updateInDB(): bool
+    {
+        return $this->update(
+            table: "crop_request_response",
+            data: [
+                    "accepted_delivery_date" => $this->acceptedDeliveryDate,
+                    "accepted_price" => $this->acceptedPrice,
+                    "accepted_quantity" => $this->acceptedQuantity,
+                    "remarks" => $this->remarks
+                ],
+            where: [
+                    "id" => $this->id,
+                    "producer_id" => $this->producerId
+                ]
+        );
+    }
+
+    public function deleteFromDB(): bool
+    {
+        return $this->delete(
+            table: "crop_request_response",
+            where: [
+                "id" => $this->id,
+                "producer_id" => $this->producerId
+            ]
+        );
+    }
+
     /**
      * @return int|null
      */

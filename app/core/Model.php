@@ -228,7 +228,7 @@ class Model
             $query .= " WHERE " . implode(" AND ", $where_conditions);
         }
 
-        return Database::prepareAndExecute($pdo, $query, $where_values) == 1;
+        return Database::prepareAndExecute($pdo, $query, $where_values) != false;
     }
 
     // Function to get the last inserted ID
