@@ -17,4 +17,8 @@
     <link rel="manifest" href="<?php echo URL_ROOT ?>/public/favicons/site.webmanifest">
 
     <script src="<?php echo URL_ROOT ?>/public/js/scripts.js" defer></script>
+    <script>
+        const URL_ROOT = "<?php echo URL_ROOT ?>";
+        const SITE_NAME = "<?php echo SITE_NAME ?>";
+    </script>
 </head>

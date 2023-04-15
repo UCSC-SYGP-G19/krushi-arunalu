@@ -25,7 +25,6 @@ class ProducerCropRequestsController extends Controller
     public function getRequestsAsJson(): void
     {
         $this->loadModel('CropRequest');
-//        Logger::log("DEBUG", implode(", ", $this->model->getCropRequestsForProducerFromDB(Session::getSession()->id)));
         $this->sendJson($this->model->getCropRequestsForProducerFromDB(Session::getSession()->id));
     }
 
@@ -46,5 +45,11 @@ class ProducerCropRequestsController extends Controller
         } else {
             Util::redirect($this->base);
         }
+    }
+
+    public function getMyResponsesAsJson($cropRequestId): void
+    {
+        $this->loadModel('CropRequestResponse');
+        $this->sendJson($this->model->getProducerResponsesForRequestFromDB($cropRequestId, Session::getSession()->id));
     }
 }

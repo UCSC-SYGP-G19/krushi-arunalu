@@ -1650,6 +1650,13 @@ h1.title {
   color: #8b8b8b !important;
 }
 
+.text-gold {
+  color: #B89130 !important;
+}
+.text-gold:hover {
+  color: #7b6120 !important;
+}
+
 .text-white {
   color: #FFFFFF !important;
 }
@@ -2143,7 +2150,7 @@ div.message-card {
   cursor: pointer;
 }
 .crop-request-card:hover {
-  background-color: #E7F4D8;
+  background-color: #F9FCF5;
 }
 .crop-request-card .badge {
   font-size: 0.9rem;
