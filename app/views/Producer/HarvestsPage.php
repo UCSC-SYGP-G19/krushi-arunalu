@@ -83,6 +83,7 @@ include APP_ROOT . "/views/inc/components/Header.php";
 
         </main>
     </div>
+    <script src="<?php echo URL_ROOT ?>/public/js/tables.js"></script>
     <script src="<?php echo URL_ROOT ?>/public/js/producer/harvests.js" defer></script>
     </body>
 <?php
