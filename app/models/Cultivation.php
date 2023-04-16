@@ -160,11 +160,16 @@ class Cultivation extends Model
     {
         $stmt = Model::select(
             table: "cultivation",
-            columns: ["crop.name", "cultivation.land_id", "cultivation.cultivated_quantity",
+            columns: [
+                "crop.name",
+                "cultivation.land_id",
+                "land.area_in_hectares",
+                "cultivation.cultivated_quantity",
                 "cultivation.expected_harvest_date"],
-            joins: ["crop" => "crop.id",
-                "land" => "cultivation.land_id"],
-            where: ["land.district_id" => $agriOfficerDistrictID]
+            where: ["land.district" => $agriOfficerDistrictID],
+            joins: ["crop" => "cultivation.id",
+                "land" => "cultivation.land_id",
+                "district" => "land.district"]
         );
         return [];
     }
