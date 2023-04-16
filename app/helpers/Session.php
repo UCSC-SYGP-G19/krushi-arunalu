@@ -49,4 +49,27 @@ class Session
         }
         return false;
     }
+
+//$message should be an array in the format ["type", "title", "content"]
+//type should be success, error or warning
+    public static function setMessage($message): void
+    {
+        if (!isset($_SESSION)) {
+            session_start();
+        }
+        $_SESSION['message'] = $message;
+    }
+
+    public static function getMessage(): ?array
+    {
+        if (!isset($_SESSION)) {
+            session_start();
+        }
+        if (isset($_SESSION['message'])) {
+            $message = $_SESSION['message'];
+            unset($_SESSION['message']);
+            return $message;
+        }
+        return null;
+    }
 }

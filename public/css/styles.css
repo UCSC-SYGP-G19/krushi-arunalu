@@ -102,22 +102,6 @@
 }
 .inquiry-wrapper .responded {
   background-color: #95C260;
-}
-.crop-request-card-wrapper {
-  background-color: #FFFFFF;
-  border-radius: 16px;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1) !important;
-}
-.crop-request-card-wrapper .fulfilled-quantity {
-  background-color: #D9F0BE;
-}
-.crop-request-card-wrapper .fulfilled-quantity .crop-response-card-content {
-  background-color: #F5F5F5;
-  border-radius: 16px;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1) !important;
-}
-.crop-request-card-wrapper .fulfilled-quantity .crop-response-card-content .accepted-quantity {
-  background-color: #D9F0BE;
   border-radius: 8px;
 }
 
@@ -1017,7 +1001,7 @@ footer {
 
 .content-with-sidebar {
   display: flex;
-  height: 100%;
+  height: 100vh;
 }
 .content-with-sidebar aside.sidebar {
   transition: all 0.3s ease !important;
@@ -1787,6 +1771,38 @@ div.message-card {
   border-radius: 16px;
 }
 
+div.swal2-popup {
+  border-radius: 16px;
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+  background-color: #FFFFFF;
+  color: #555555;
+  padding: 0 0 1.5em;
+}
+div.swal2-popup div.swal2-icon {
+  margin: 2em auto 0.6em;
+}
+div.swal2-popup div.swal2-html-container {
+  margin: 0.6em 1em 0.6em;
+}
+div.swal2-popup h2.swal2-title {
+  padding: 0.5em 1em 0;
+}
+div.swal2-popup div.swal2-actions {
+  margin: 1em auto 0;
+}
+div.swal2-popup button.swal2-styled {
+  border-radius: 8px;
+  color: #FFFFFF;
+  border: none !important;
+  outline: none !important;
+}
+div.swal2-popup button.swal2-styled.swal2-confirm {
+  background-color: #15742D;
+}
+div.swal2-popup button.swal2-styled.swal2-confirm:focus {
+  box-shadow: none !important;
+}
+
 .index {
   height: 100vh;
   width: 100vw;
@@ -2167,6 +2183,7 @@ div.message-card {
 .connection-request-wrapper .sub-title-2 {
   font-size: 0.9rem;
 }
+
 .crop-request-card {
   background-color: #FFFFFF;
   border-radius: 16px;
@@ -2189,7 +2206,8 @@ div.message-card {
   background-color: #F5F5F5;
   border-radius: 16px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1) !important;
-=======
+}
+
 .inquiry-wrapper {
   background-color: #FFFFFF;
   border-radius: 16px;

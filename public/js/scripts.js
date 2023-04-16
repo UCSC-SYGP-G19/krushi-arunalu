@@ -30,3 +30,13 @@ if (btnToggleNavbarOptions) {
 const renderMessageCard = (message) => {
     return `<div class="message-card p-3 mb-2">${message}</div>`;
 }
+
+// Show flash messages sent by the server
+if(message != null) {
+    Swal.fire({
+        title: message.title,
+        text: message.content,
+        icon: message.type,
+        confirmButtonText: 'OK'
+    })
+}
