@@ -40,4 +40,12 @@ class ManufacturersController extends Controller
 
         $this->view->render();
     }
+
+    public function manufacturerStore($id): void
+    {
+        $this->loadView('Customer/ManufacturerStorePage', 'Manufacturer Store', 'manufacturers');
+        $this->loadModel("Manufacturer");
+        $this->view->data = $this->model->getManufacturerDetails($id);
+        $this->view->render();
+    }
 }

@@ -64,13 +64,13 @@ include APP_ROOT . "/views/inc/components/Header.php";
                                     . $product->unit_selling_price . '</h4>
                                         <div class="row gap-1">
                                             <div class="col-5">
-                                            <form action="shopping-cart/add/' . $product->id  . '" method="get">
+                                            
                                                 <label>
                                                     <input type="number" name="quantity" value="1" min="1">
                                                 </label>
                                             </div>
                                             <div class="col-7">
-                                                <button class="btn-primary-light text-white"><svg class="pb-2" width="45" height="44" viewBox="0 0 44 44" fill="none" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+                                                <button onClick="addItemToCart(' . $product->id . ')" class="btn-add-to-cart btn-primary-light text-white p-0" value="' . $product->id  . '"><svg class="py-1" width="45" height="44" viewBox="0 0 44 44" fill="none" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
                                                 <rect x="10.332" y="10" width="24" height="25" fill="url(#pattern0)"/>
                                                 <defs>
                                                 <pattern id="pattern0" patternContentUnits="objectBoundingBox" width="1" height="1">
@@ -81,7 +81,7 @@ include APP_ROOT . "/views/inc/components/Header.php";
                                                 </svg>
                                                 </button>
                                             </div>
-                                            </form>
+                                            
                                         </div>
                                     </div>
                                 </div>
@@ -97,6 +97,8 @@ include APP_ROOT . "/views/inc/components/Header.php";
             ?>
         </main>
     </div>
+    <script src="<?php echo URL_ROOT ?>/public/js/addToCart.js" defer>
+    </script>
     </body>
 <?php
 include APP_ROOT . "/views/inc/components/EndingTag.php";
