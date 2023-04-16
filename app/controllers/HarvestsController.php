@@ -139,4 +139,9 @@ class HarvestsController extends Controller
 
         Util::redirect($this->base);
     }
+
+    public function getMyHarvestsAsJson(): void
+    {
+        $this->sendJson(Harvest::getAllByProducerIdFromDB(Session::getSession()->id));
+    }
 }

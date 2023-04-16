@@ -39,18 +39,7 @@ class Table
 
                             $html .= "<td class='" . $this->tableHeaders[$key]["class"] . "'>
                                         <div class='row justify-content-center align-items-center gap-1'>
-                                            <div class='col'>
-                                                <button class='btn-xs btn-outlined-secondary text-center' 
-                                                    onclick=handleEditClick('" . $editUrl . "')>" .
-                                                $this->actionLabels[0] . "
-                                                </button>
-                                            </div>
-                                            <div class='col'>
-                                                <button class='btn-xs btn-outlined-error-dark text-center' 
-                                                    onclick=handleDeleteClick('" . $deleteUrl . "')>" .
-                                                    $this->actionLabels[1] . "
-                                                </button>
-                                            </div>
+                                            
                                         </div>
                                   </td>";
                         } else {
