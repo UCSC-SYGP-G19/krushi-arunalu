@@ -101,12 +101,12 @@ class Harvest extends Model
                 "remaining_quantity" => $this->remainingQuantity,
             ],
             where: ["id" => $this->id],
-        ) == 1;
+        );
     }
 
     public function deleteFromDB(): bool
     {
-        return $this->delete(table: "harvest", where: ["id" => $this->id]) == 1;
+        return $this->delete(table: "harvest", where: ["id" => $this->id]);
     }
 
     // Getters and Setters
