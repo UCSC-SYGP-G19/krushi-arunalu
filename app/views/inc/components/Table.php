@@ -34,21 +34,22 @@ class Table
                         $html .= "<td class='" . $this->tableHeaders[$key]["class"] . "'>" . $row->$key . "</td>";
                     } else {
                         if ($key == "actions") {
+                            $editUrl = URL_ROOT . "/" . $this->activeLink . "/" . $this->actionUrls[0] . "/" . $row->{$this->primaryKey};
+                            $deleteUrl = URL_ROOT . "/" . $this->activeLink . "/" . $this->actionUrls[1] . "/" . $row->{$this->primaryKey};
+
                             $html .= "<td class='" . $this->tableHeaders[$key]["class"] . "'>
                                         <div class='row justify-content-center align-items-center gap-1'>
                                             <div class='col'>
-                                                <a href='" . URL_ROOT . "/" . $this->activeLink . "/" .
-                                $this->actionUrls[0] . "/" . $row->{$this->primaryKey} . "'
-                                                    class='btn-xs btn-outlined-primary-dark text-center'>
-                                                    " . $this->actionLabels[0] . "
-                                                </a>
+                                                <button class='btn-xs btn-outlined-secondary text-center' 
+                                                    onclick=handleEditClick('" . $editUrl . "')>" .
+                                                $this->actionLabels[0] . "
+                                                </button>
                                             </div>
                                             <div class='col'>
-                                                <a href='" . URL_ROOT . "/" . $this->activeLink . "/" .
-                                $this->actionUrls[1] . "/" . $row->{$this->primaryKey} . "'
-                                                    class='btn-xs btn-outlined-error-dark text-center'>" .
-                                $this->actionLabels[1] .
-                                "</a>
+                                                <button class='btn-xs btn-outlined-error-dark text-center' 
+                                                    onclick=handleDeleteClick('" . $deleteUrl . "')>" .
+                                                    $this->actionLabels[1] . "
+                                                </button>
                                             </div>
                                         </div>
                                   </td>";

@@ -27,22 +27,23 @@ div.swal2-popup {
     box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
     background-color: $white;
     color: $grey-dark;
-    padding: 0 0 1.5em;
+    padding: 0.5em 0 1.5em;
 
     div.swal2-icon {
-        margin: 2em auto 0.6em;
+        margin: 1.5em auto 0.2em;
     }
 
     div.swal2-html-container {
-        margin: 0.6em 1em 0.6em
+        margin: 0.5em 1em 0.5em
     }
 
     h2.swal2-title {
-        padding: 0.5em 1em 0;
+        //padding: 0.8em 1em 0;
+        font-size: 1.6em;
     }
 
     div.swal2-actions {
-        margin: 1em auto 0;
+        margin: 1.2em auto 0;
     }
 
     button.swal2-styled {
@@ -54,6 +55,12 @@ div.swal2-popup {
         &.swal2-confirm {
             background-color: $primary-green-light;
 
+            &:focus {
+                box-shadow: none !important;
+            }
+        }
+
+        &.swal2-cancel {
             &:focus {
                 box-shadow: none !important;
             }

@@ -96,7 +96,6 @@ class HarvestsController extends Controller
                 $this->view->fieldOptions["cultivation"] =
                     $this->model->getNamesByProducerIdFromDB(Session::getSession()->id);
 
-
                 $this->view->render();
                 return;
             }
