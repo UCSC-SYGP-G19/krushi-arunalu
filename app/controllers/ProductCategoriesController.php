@@ -21,6 +21,12 @@ class ProductCategoriesController extends Controller
         $this->view->render();
     }
 
+    public function showHiddenCategories(): void
+    {
+        $this->loadModel("ProductCategory");
+        $this->sendJson($this->model->getHiddenCategoriesFromDB());
+    }
+
     public function add(): void
     {
         $this->loadView('Manufacturer/AddProductCategoriesPage', 'Add Product Categories', 'product-categories');
@@ -70,7 +76,7 @@ class ProductCategoriesController extends Controller
             ]);
 
             if ($this->model->updateCategory($id)) {
-                Util::redirect("../");
+                Util::redirect("../../product-categories");
                 return true;
             }
         }
@@ -84,7 +90,20 @@ class ProductCategoriesController extends Controller
         $this->loadModel("ProductCategory");
 
         if ($this->model->hideCategory($id)) {
-            Util::redirect("../");
+            Util::redirect("../../product-categories");
+            return true;
+        }
+        $this->view->render();
+        return false;
+    }
+
+    public function restoreHiddenCategory($categoryId): bool
+    {
+        $this->loadView('Manufacturer/ProductCategoriesPage', 'Product Categories', 'product-categories');
+        $this->loadModel("ProductCategory");
+
+        if ($this->model->removeFromHidden($categoryId)) {
+            Util::redirect("../../product-categories");
             return true;
         }
         $this->view->render();

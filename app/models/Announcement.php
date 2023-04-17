@@ -13,14 +13,13 @@ use app\core\Model;
 class Announcement extends Model
 {
     public function __construct(
-        private ?int    $id = null,
-        private ?int    $agriOfficerId = null,
+        private ?int $id = null,
+        private ?int $agriOfficerId = null,
         private ?string $title = null,
         private ?string $content = null,
         private ?string $publishedDateTime = null,
-        private ?int    $relevantDistrict = null
-    )
-    {
+        private ?int $relevantDistrict = null
+    ) {
     }
 
     public function getAllFromDB(): array

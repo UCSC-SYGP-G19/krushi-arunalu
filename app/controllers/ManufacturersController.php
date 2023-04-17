@@ -9,35 +9,50 @@ namespace app\controllers;
 
 use app\core\Controller;
 use app\helpers\Session;
-use app\helpers\Util;
 
 class ManufacturersController extends Controller
 {
     public function index(): void
     {
-        $this->loadView('Customer/ManufacturersPage', 'All Manufacturers', 'manufacturers');
+        $user = Session::getSession();
+        if ($user->role == 'Producer') {
+            $this->renderManufacturersPageForProducer();
+        } elseif ($user->role == 'Customer') {
+            $this->renderManufacturersPageForCustomer();
+        }
+    }
+
+    public function getAllManufacturersAsJson(): void
+    {
         $this->loadModel("Manufacturer");
-        $this->view->data = $this->model->getAllFromDB();
+        $this->sendJson($this->model->getAllManufacturersFromDB());
+    }
+
+    public function getAllManufacturersForProducerAsJson(): void
+    {
+        $this->loadModel("Manufacturer");
+        $this->sendJson($this->model->getAllManufacturersForProducer(Session::getSession()->id));
+    }
+
+    public function getConnectedManufacturersForProducerAsJson(): void
+    {
+        $this->loadModel("Manufacturer");
+        $this->sendJson($this->model->getConnectedManufacturersForProducer(Session::getSession()->id));
+    }
+
+    private function renderManufacturersPageForProducer(): void
+    {
+        $this->loadView('Producer/ManufacturersPage', 'All Manufacturers', 'manufacturers');
+        $this->loadModel("Manufacturer");
+        $this->view->data = $this->model->getAllManufacturersForProducer(Session::getSession()->id);
         $this->view->render();
     }
-    public function addToCart($productId)
+
+    private function renderManufacturersPageForCustomer(): void
     {
-        $this->loadView('Customer/ShoppingCartPage', 'Shopping Cart', 'marketplace');
-
-        if ($_SERVER["REQUEST_METHOD"] === "POST") {
-            $this->loadModel("Product");
-            $this->model->fillData([
-                'dateTime' => date('d-m-y h:i:s'),
-                'content' => $_POST['content'],
-                'customerId' => Session::getSession()->getId(),
-                'productId' => $productId,
-            ]);
-
-            if ($this->model->addToDB()) {
-                Util::redirect(URL_ROOT . "/marketplace");
-            }
-        }
-
+        $this->loadView('Customer/ManufacturersPage', 'All Manufacturers', 'manufacturers');
+        $this->loadModel("Manufacturer");
+        $this->view->data = $this->model->getAllManufacturersFromDB();
         $this->view->render();
     }
 }

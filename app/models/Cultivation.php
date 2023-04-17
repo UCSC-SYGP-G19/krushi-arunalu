@@ -138,22 +138,22 @@ class Cultivation extends Model
     public function updateInDB(): bool
     {
         return $this->update(
-                table: "cultivation",
-                data: [
-                    "crop_id" => $this->cropId,
-                    "land_id" => $this->landId,
-                    "cultivated_date" => $this->cultivatedDate,
-                    "cultivated_quantity" => $this->cultivatedQuantity,
-                    "status" => $this->status,
-                    "expected_harvest_date" => $this->expectedHarvestDate
-                ],
-                where: "id = $this->id"
-            ) == 1;
+            table: "cultivation",
+            data: [
+                "crop_id" => $this->cropId,
+                "land_id" => $this->landId,
+                "cultivated_date" => $this->cultivatedDate,
+                "cultivated_quantity" => $this->cultivatedQuantity,
+                "status" => $this->status,
+                "expected_harvest_date" => $this->expectedHarvestDate
+            ],
+            where: ["id" => $this->id]
+        );
     }
 
     public function deleteFromDB(): bool
     {
-        return $this->delete("cultivation", "id = $this->id") == 1;
+        return $this->delete(table: "cultivation", where: ["id" => $this->id]) == 1;
     }
 
     public function getAllCultivationDetailsForAgriOfficers($agriOfficerDistrictID): array

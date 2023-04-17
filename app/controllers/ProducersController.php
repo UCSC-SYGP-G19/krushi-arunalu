@@ -25,17 +25,16 @@ class ProducersController extends Controller
         $this->sendJson($this->model->getAllProducersFromDB());
     }
 
-    public function sendConnectionRequests($producerId): bool
+    public function sendConnectionRequest($producerId): bool
     {
         $this->loadView('Manufacturer/ProducersPage', 'Producers', 'producers');
         $this->loadModel('ConnectionRequest');
 
-        if ($this->model->sendRequestsToProducers(Session::getSession()->id, $producerId)) {
+        if ($this->model->addConnectionRequestToDb(Session::getSession()->id, $producerId)) {
             Util::redirect("..");
             return true;
         }
         $this->view->render();
         return false;
     }
-
 }

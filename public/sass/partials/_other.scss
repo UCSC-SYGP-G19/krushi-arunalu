@@ -1,16 +1,69 @@
 @import "variables";
 
 .server-error {
-  font-style: italic;
-  color: $error-red;
-  padding: 1rem;
-  margin: 1rem 0;
+    font-style: italic;
+    color: $error-red;
+    padding: 1rem;
+    margin: 1rem 0;
 }
 
 .error-403-page {
-    background-color: white!important;
+    background-color: white !important;
 }
 
 .error-404-page {
-    background-color: rgb(244,244,242)!important;
+    background-color: rgb(244, 244, 242) !important;
+}
+
+div.message-card {
+    text-align: center;
+    background-color: $white;
+    border-radius: $base-border-radius;
+}
+
+// Override the default styles of the SweetAlert2 popup
+div.swal2-popup {
+    border-radius: $base-border-radius;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+    background-color: $white;
+    color: $grey-dark;
+    padding: 0.5em 0 1.5em;
+
+    div.swal2-icon {
+        margin: 1.5em auto 0.2em;
+    }
+
+    div.swal2-html-container {
+        margin: 0.5em 1em 0.5em
+    }
+
+    h2.swal2-title {
+        //padding: 0.8em 1em 0;
+        font-size: 1.6em;
+    }
+
+    div.swal2-actions {
+        margin: 1.2em auto 0;
+    }
+
+    button.swal2-styled {
+        border-radius: $base-border-radius-sm;
+        color: $white;
+        border: none !important;
+        outline: none !important;
+
+        &.swal2-confirm {
+            background-color: $primary-green-light;
+
+            &:focus {
+                box-shadow: none !important;
+            }
+        }
+
+        &.swal2-cancel {
+            &:focus {
+                box-shadow: none !important;
+            }
+        }
+    }
 }

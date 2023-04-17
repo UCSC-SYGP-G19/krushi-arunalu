@@ -1,0 +1,42 @@
+@import "../partials/variables";
+
+.inquiry-wrapper {
+  background-color: $white;
+  border-radius: $base-border-radius;
+  box-shadow: 0 2px 4px rgba(21, 116, 45, 0.9) !important;
+
+  .product-name {
+    font-size: $base-font-size * 0.9;
+    font-weight: 300;
+    color: $grey-dark;
+    padding-top: 2px;
+  }
+
+  .responded {
+    background-color: $header-green;
+    border-radius: $base-border-radius-sm;
+  }
+
+  .btn-view-responses{
+    border: 1px solid $gold-light;
+    border-radius: $base-border-radius-sm;
+    background-color: $white;
+    color: $gold-light;
+    cursor: pointer;
+
+    &:hover{
+      background-color: $gold-light;
+      color: $white;
+    }
+  }
+
+  .response-card{
+    background-color: $selected-green-light;
+    border: none;
+    border-radius: $base-border-radius-sm;
+    width: 100%;
+  }
+
+}
+
+

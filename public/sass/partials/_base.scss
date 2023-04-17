@@ -1,3 +1,5 @@
+@import "variables";
+
 $axises: (x, y);
 $properties: (auto, hidden);
 
@@ -41,8 +43,6 @@ $properties: (auto, hidden);
 .content-wrapper {
   flex-grow: 1;
 }
-
-
 
 .form-wrapper {
     background-color: $white;
@@ -92,27 +92,6 @@ $properties: (auto, hidden);
   }
 }
 
-.crop-request-card-wrapper {
-  background-color: $white;
-  border-radius: $base-border-radius;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1) !important;
-
-  .fulfilled-quantity {
-    background-color: $selected-green;
-
-    .crop-response-card-content {
-      background-color: $background-grey;
-      border-radius: $base-border-radius;
-      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1) !important;
-
-      .accepted-quantity {
-        background-color: $selected-green;
-        border-radius: $base-border-radius-sm;
-      }
-    }
-  }
-}
-
 .inquiry-wrapper {
   background-color: $selected-green-light;
   border-radius: $base-border-radius;
@@ -129,31 +108,4 @@ $properties: (auto, hidden);
     background-color: $header-green;
     border-radius: $base-border-radius-sm;
   }
-}
-
-.request-card-wrapper {
-  background-color: $white;
-  border-radius: $base-border-radius;
-  box-shadow: 0 2px 4px rgba(21, 116, 45, 0.9) !important;
-
-  .user-location {
-    font-size: $base-font-size * 0.9;
-    font-weight: 300;
-    color: $grey-dark;
-    padding-top: 2px;
-  }
-}
-
-.user-profile-pic{
-  border-radius: 50%;
-}
-
- //producers view
-.active-page{
-  border-bottom: $primary-green-light 2px solid;
-  color: $primary-green-light;
-}
-
-.inactive-page{
-  color: $secondary-grey;
 }

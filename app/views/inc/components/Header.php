@@ -1,3 +1,8 @@
+<?php
+
+use app\helpers\Flash;
+
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -16,5 +21,17 @@
     <link rel="icon" type="image/png" sizes="16x16" href="<?php echo URL_ROOT ?>/public/favicons/favicon-16x16.png">
     <link rel="manifest" href="<?php echo URL_ROOT ?>/public/favicons/site.webmanifest">
 
+    <script>
+        const URL_ROOT = '<?php echo URL_ROOT ?>';
+        const SITE_NAME = '<?php echo SITE_NAME ?>';
+        let message = '<?php echo Flash::getMessage() ?>'
+        if(message === ''){
+          message = null;
+        } else {
+          message = JSON.parse(message);
+        }
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<!--    <script src="sweetalert2.all.min.js"></script>-->
     <script src="<?php echo URL_ROOT ?>/public/js/scripts.js" defer></script>
 </head>
