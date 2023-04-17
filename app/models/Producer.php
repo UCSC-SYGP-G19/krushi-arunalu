@@ -8,6 +8,8 @@
 
 namespace app\models;
 
+use app\core\Model;
+
 class Producer extends RegisteredUser
 {
     public function __construct(
@@ -22,7 +24,8 @@ class Producer extends RegisteredUser
         $password = null,
         private ?string $nicNumber = null,
         private ?int $district = null,
-    ) {
+    )
+    {
         parent::__construct($id, $role, $name, $address, $lastLogin, $imageUrl, $email, $contactNo, $password);
     }
 
@@ -59,6 +62,19 @@ class Producer extends RegisteredUser
             LEFT JOIN connection_request co ON co.sender_id = p.id OR co.receiver_id = p.id
             GROUP BY ru.id
             ", [])->fetchAll();
+    }
+
+    //Model function of Agri-Officer's Producer details.
+    public function getAllProducersDetailsForAgriOfficers($agriOfficerDistrictID): array
+    {
+        $stmt = Model::select(
+            table: "producer",
+            columns: ["producer.nic_number", "registered_user.name", "registered_user.address",
+                "registered_user.contact_no"],
+            where: ["producer.district_id" => $agriOfficerDistrictID],
+            joins: ["registered_user" => "producer.id"]
+        );
+        return [];
     }
 
     /**

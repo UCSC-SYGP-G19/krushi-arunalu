@@ -1002,7 +1002,7 @@ footer {
 
 .content-with-sidebar {
   display: flex;
-  height: 100%;
+  height: 100vh;
 }
 .content-with-sidebar aside.sidebar {
   transition: all 0.3s ease !important;
@@ -1770,6 +1770,41 @@ div.message-card {
   text-align: center;
   background-color: #FFFFFF;
   border-radius: 16px;
+}
+
+div.swal2-popup {
+  border-radius: 16px;
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+  background-color: #FFFFFF;
+  color: #555555;
+  padding: 0.5em 0 1.5em;
+}
+div.swal2-popup div.swal2-icon {
+  margin: 1.5em auto 0.2em;
+}
+div.swal2-popup div.swal2-html-container {
+  margin: 0.5em 1em 0.5em;
+}
+div.swal2-popup h2.swal2-title {
+  font-size: 1.6em;
+}
+div.swal2-popup div.swal2-actions {
+  margin: 1.2em auto 0;
+}
+div.swal2-popup button.swal2-styled {
+  border-radius: 8px;
+  color: #FFFFFF;
+  border: none !important;
+  outline: none !important;
+}
+div.swal2-popup button.swal2-styled.swal2-confirm {
+  background-color: #15742D;
+}
+div.swal2-popup button.swal2-styled.swal2-confirm:focus {
+  box-shadow: none !important;
+}
+div.swal2-popup button.swal2-styled.swal2-cancel:focus {
+  box-shadow: none !important;
 }
 
 .index {

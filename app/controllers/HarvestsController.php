@@ -8,10 +8,12 @@
 namespace app\controllers;
 
 use app\core\Controller;
+use app\helpers\Flash;
 use app\helpers\Logger;
 use app\helpers\Session;
 use app\helpers\Util;
 use app\models\Harvest;
+use Exception;
 
 class HarvestsController extends Controller
 {
@@ -53,8 +55,11 @@ class HarvestsController extends Controller
             ]);
 
             if ($this->model->addToDB()) {
+                Flash::setMessage(Flash::SUCCESS, "Success", "Harvest details saved successfully");
                 Util::redirect($this->base);
                 return;
+            } else {
+                Flash::setMessage(Flash::ERROR, "Error", "Failed to save harvest details");
             }
         }
 
@@ -91,7 +96,6 @@ class HarvestsController extends Controller
                 $this->view->fieldOptions["cultivation"] =
                     $this->model->getNamesByProducerIdFromDB(Session::getSession()->id);
 
-
                 $this->view->render();
                 return;
             }
@@ -106,12 +110,10 @@ class HarvestsController extends Controller
                 'expectedPrice' => $_POST['expected_price'],
             ]);
 
-            $res = $this->model->updateInDB();
-
-            if ($res == 1) {
-                echo "Updated";
+            if ($this->model->updateInDB()) {
+                Flash::setMessage(Flash::SUCCESS, "Success", "Harvest details updated successfully");
             } else {
-                echo("Not Updated");
+                Flash::setMessage(Flash::ERROR, "Error", "Failed to update harvest details");
             }
 
             Util::redirect($this->base);
@@ -125,10 +127,14 @@ class HarvestsController extends Controller
             'id' => (int)$harvestId,
         ]);
         try {
-            $this->model->deleteFromDB();
-        } catch (\Exception $e) {
+            if ($this->model->deleteFromDB()) {
+                Flash::setMessage(Flash::SUCCESS, "Success", "Harvest details deleted successfully");
+            } else {
+                Flash::setMessage(Flash::ERROR, "Error", "Failed to delete harvest details");
+            }
+        } catch (Exception $e) {
             Logger::log("ERROR", $e->getMessage());
-            echo "Cannot delete harvests with associated sales";
+            Flash::setMessage(Flash::ERROR, "Error", "Cannot delete harvests with associated sales");
         }
 
         Util::redirect($this->base);
