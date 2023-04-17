@@ -103,13 +103,13 @@ include APP_ROOT . "/views/inc/components/Header.php";
                         include APP_ROOT . "/views/inc/components/SearchFilterAndSort.php"; ?>
                     </div>
 
-                    <div class="category-selector row col-12">
+                    <div class="category-selector pb-2 d-flex">
                         <?php foreach ($this->data["productCategory"] as $productCategory) {
                             echo '<a href="#' . $productCategory->category_id . '">
-                             <div class="category-wrapper col-2 px-2 pt-2 d-flex">
+                             <div class="category-wrapper pr-2 pt-2">
                                 <div class="col-12 category p-2 align-items-center justify-content-center d-flex">
                                         <div class="text-center">
-                                            <span class="pt-2 pb-0 product-name fw-bold">
+                                            <span class="pt-2 pb-0 fw-bold">
                                             ' . $productCategory->category_name . ' </span>
                                         </div>
                                 </div>
@@ -120,23 +120,26 @@ include APP_ROOT . "/views/inc/components/Header.php";
                     </div>
 
                     <div class="products-wrapper">
-                        <br>
                         <?php
                         foreach ($this->data["productCategory"] as $productCategory) { ?>
-                            <section class="row pt-2" id="<?php echo $productCategory->category_id ?>">
-                            <span class="fw-bold text-justify text-primary-dark px-2 pt-3 fs-5">
-                                <?php echo $productCategory->category_name?>
-                                <br>
-                            </span>
+                            <section class="categorized-products row pt-2 d-flex"
+                                     id="<?php echo $productCategory->category_id ?>">
+                                <span class="category-name fw-bold text-justify text-primary-dark pt-3 fs-5">
+                                    <?php echo $productCategory->category_name?>
+                                </span>
                             </section>
-                            <div class="col-4 px-2 pt-1 pb-2 fw-bold text-primary-dark">
-                                <hr>
-                            </div>
-                            <div class="row">
+                            <div class="row pt-2">
                                 <?php foreach ($this->data["product"] as $product) {
                                     if ($product->category_id == $productCategory->category_id) {
                                         echo '<div class="col-2 text-center p-2">
                                     <div class="product-card p-3 pb-2">
+                                        <div class="rating-box px-1 d-flex">
+                                                <span class="rating-icon"> <img class="" alt="" src="
+                                                ' . URL_ROOT . '/public/img/icons/other/rating-icon.png" 
+                                                height="80%" width="80%"' . '>
+                                                </span>
+                                                <span class="rating-text fw-bold">' . $product->rating . '</span>
+                                            </div>
                                         <div class="image-window mb-1">
                                             ' .
                                             '<img alt="Product image" height="100%" width="100%" src="' . URL_ROOT .
@@ -144,7 +147,7 @@ include APP_ROOT . "/views/inc/components/Header.php";
                                             $product->image_url . '">'
                                             . '
                                         </div>
-                                        <div class="text-center">
+                                        <div class="text-center pt-2">
                                             <span class="pt-2 pb-0 product-name fw-bold">' .
                                             $product->product_name . '</span>
                                             <h4 class="product-price text-light-green py-1 pb-2">'
@@ -163,7 +166,7 @@ include APP_ROOT . "/views/inc/components/Header.php";
                     </div>
                 </div>
             </div>
-            <div class="p-4 text-right">
+            <div class="pr-3 text-right btn-go-to-top">
                 <?php echo '<a href="' . URL_ROOT . '/manufacturerStore">
                     <img class="up-arrow-icon" alt="Up" src="
                        ' . URL_ROOT . '/public/img/icons/other/up_arrow.png" 
