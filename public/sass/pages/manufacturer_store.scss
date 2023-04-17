@@ -1,19 +1,20 @@
 @import "../partials/variables";
 
 .manufacturer-store-wrapper{
-  padding: 0 10% 0 10%;
+  margin-top: 50px !important;
+  margin-bottom: 50px !important;
+  height: 100%;
+  width: 100%;
+  max-width: 1200px;
 }
 
-.store-info{
+.store-info-wrapper{
   border-radius: 0 0 $base-border-radius $base-border-radius;
+  background-color: $white;
 }
 
 .store-cover{
   border-radius: $base-border-radius $base-border-radius 0 0;
-}
-
-.store-info{
-  background-color: $white;
 }
 
 .product-count-wrapper{

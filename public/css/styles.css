@@ -102,22 +102,6 @@
 }
 .inquiry-wrapper .responded {
   background-color: #95C260;
-}
-.crop-request-card-wrapper {
-  background-color: #FFFFFF;
-  border-radius: 16px;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1) !important;
-}
-.crop-request-card-wrapper .fulfilled-quantity {
-  background-color: #D9F0BE;
-}
-.crop-request-card-wrapper .fulfilled-quantity .crop-response-card-content {
-  background-color: #F5F5F5;
-  border-radius: 16px;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1) !important;
-}
-.crop-request-card-wrapper .fulfilled-quantity .crop-response-card-content .accepted-quantity {
-  background-color: #D9F0BE;
   border-radius: 8px;
 }
 
@@ -2044,19 +2028,20 @@ div.message-card {
 }
 
 .manufacturer-store-wrapper {
-  padding: 0 10% 0 10%;
+  margin-top: 50px !important;
+  margin-bottom: 50px !important;
+  height: 100%;
+  width: 100%;
+  max-width: 1200px;
 }
 
-.store-info {
+.store-info-wrapper {
   border-radius: 0 0 16px 16px;
+  background-color: #FFFFFF;
 }
 
 .store-cover {
   border-radius: 16px 16px 0 0;
-}
-
-.store-info {
-  background-color: #FFFFFF;
 }
 
 .product-count-wrapper {
@@ -2167,6 +2152,7 @@ div.message-card {
 .connection-request-wrapper .sub-title-2 {
   font-size: 0.9rem;
 }
+
 .crop-request-card {
   background-color: #FFFFFF;
   border-radius: 16px;
@@ -2189,7 +2175,8 @@ div.message-card {
   background-color: #F5F5F5;
   border-radius: 16px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1) !important;
-=======
+}
+
 .inquiry-wrapper {
   background-color: #FFFFFF;
   border-radius: 16px;
