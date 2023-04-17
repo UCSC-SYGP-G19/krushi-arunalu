@@ -734,6 +734,10 @@
   color: #15742D;
 }
 
+button {
+  cursor: pointer;
+}
+
 button:disabled {
   cursor: not-allowed;
   opacity: 0.5;
@@ -1118,19 +1122,23 @@ tbody.isolated tr td {
 .table-controls input.with-search-icon:hover {
   background: #F5F5F5 url("../img/icons/other/search-icon.png") no-repeat scroll 20px 12px;
 }
-.table-controls select.with-filter-icon {
-  background: white url("../img/icons/other/filter-icon.png") no-repeat scroll 14px 12px;
-  padding-left: 48px;
+.table-controls button.with-filter-icon {
+  background: white;
 }
-.table-controls select.with-filter-icon:hover {
-  background: #F5F5F5 url("../img/icons/other/filter-icon.png") no-repeat scroll 14px 12px;
+.table-controls button.with-filter-icon[value=show] {
+  padding-bottom: 5px;
 }
-.table-controls select.with-sort-icon {
-  background: white url("../img/icons/other/sort-icon.png") no-repeat scroll 14px 12px;
-  padding-left: 48px;
+.table-controls button.with-filter-icon svg {
+  transform: translate(0, 5px);
 }
-.table-controls select.with-sort-icon:hover {
-  background: #F5F5F5 url("../img/icons/other/sort-icon.png") no-repeat scroll 14px 12px;
+.table-controls button.with-filter-icon:hover {
+  background: #F5F5F5;
+}
+.table-controls button.with-sort-icon {
+  background: white;
+}
+.table-controls button.with-sort-icon:hover {
+  background: #F5F5F5;
 }
 
 table {

@@ -49,22 +49,28 @@ tbody.isolated {
         background: $background-grey url("../img/icons/other/search-icon.png") no-repeat scroll 20px 12px;
     }
 
-    select.with-filter-icon {
-        background: white url("../img/icons/other/filter-icon.png") no-repeat scroll 14px 12px;
-        padding-left: 48px;
+    button.with-filter-icon {
+        background: white;
+
+        &[value="show"]{
+            padding-bottom: 5px;
+        }
+
+        svg {
+            transform: translate(0, 5px);
+        }
     }
 
-    select.with-filter-icon:hover {
-        background: $background-grey url("../img/icons/other/filter-icon.png") no-repeat scroll 14px 12px;
+    button.with-filter-icon:hover {
+        background: $background-grey;
     }
 
-    select.with-sort-icon {
-        background: white url("../img/icons/other/sort-icon.png") no-repeat scroll 14px 12px;
-        padding-left: 48px;
+    button.with-sort-icon {
+        background: white;
     }
 
-    select.with-sort-icon:hover {
-        background: $background-grey url("../img/icons/other/sort-icon.png") no-repeat scroll 14px 12px;
+    button.with-sort-icon:hover {
+        background: $background-grey;
     }
 }
 
