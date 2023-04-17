@@ -46,7 +46,7 @@ tbody.isolated {
     }
 
     input.with-search-icon:hover {
-        background: $background-grey url("../img/icons/other/search-icon.png") no-repeat scroll 20px 12px;
+        background: $selected-green-lighter url("../img/icons/other/search-icon.png") no-repeat scroll 20px 12px;
     }
 
     button.with-filter-icon {
@@ -108,6 +108,10 @@ table {
         &:hover {
             background-color: $background-grey;
         }
+
+        &.table-end {
+            border-radius: 0 0 $base-border-radius $base-border-radius;
+        }
     }
 
     tbody tr.no-content {
@@ -154,6 +158,20 @@ table {
                 cursor: pointer;
                 padding: 4px 4px 0;
                 margin-left: 5px;
+            }
+        }
+    }
+
+    span.sort-arrows {
+        cursor: pointer;
+        user-select: none;
+
+        svg {
+            transform: translate(0, -2px);
+            stroke: #AAA;
+
+            &.active {
+                stroke: black!important;
             }
         }
     }

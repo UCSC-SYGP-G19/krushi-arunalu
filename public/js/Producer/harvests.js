@@ -1,4 +1,5 @@
 let data = null;
+let table = {}
 
 const fetchHarvestsList = async () => {
   const res = await fetch(`${URL_ROOT}/harvests/getMyHarvestsAsJson`);
@@ -124,16 +125,32 @@ const renderHarvestsTable = (data) => {
   //     </td>
   // </tfoot></table>`
 
-  const tableHeaders = [
-    {key: "harvested_date", label: "Harvested date", class: "col-2"},
-    {key: "crop_name", label: "Crop name", class: "col-2"},
-    {key: "harvested_quantity", label: "Harvested quantity", class: "col-2"},
-    {key: "remaining_quantity", label: "Remaining quantity", class: "col-2"},
-    {key: "expected_price", label: "Expected price", class: "col-2"},
-    {key: "actions", label: "", class: "col-2"},
-  ];
+  table = {
+    headers: [
+      {key: "harvested_date", label: "Harvested date", class: "col-2", sortable: true},
+      {key: "crop_name", label: "Crop name", class: "col-2", sortable: true},
+      {key: "harvested_quantity", label: "Harvested quantity", class: "col-2", sortable: false},
+      {key: "remaining_quantity", label: "Remaining quantity", class: "col-2", sortable: false},
+      {key: "expected_price", label: "Expected price", class: "col-2", sortable: true},
+      {key: "actions", label: "", class: "col-2", sortable: false},
+    ],
+    data: data,
+    showSearchAndFilter: true,
+    showPagination: true,
+    showRowsPerPage: true,
+    showSort: true,
+    primaryKey: "harvest_id",
+    activeLink: "harvests",
+    rowsPerPage: 10,
+    activeSortField: "harvested_date",
+    activeSortOrder: "desc",
+    customBody: null,
+    noContentMessage: "No data available",
+    actionLabels: ["Edit", "Delete"],
+    actionUrls: ["edit", "delete"],
+  }
 
-  renderTable(harvestsSection, true, "harvests", tableHeaders, data, "harvest_id");
+  renderTable(harvestsSection, table);
 }
 
 const harvestsSection = document.querySelector("#harvests-section");

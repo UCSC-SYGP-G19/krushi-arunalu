@@ -1,40 +1,129 @@
-function renderTable(DOMElement,
-                     showSearchAndFilter = false,
-                     activeLink,
-                     tableHeaders,
-                     tableData, primaryKey = "id",
-                     noContentMessage = "No data available",
-                     actionLabels = ["Edit", "Delete"],
-                     actionUrls = ["edit", "delete"]) {
+function renderTable(DOMElement, table) {
 
   let html = "";
-  if (showSearchAndFilter) {
+  if (table.showSearchAndFilter) {
     html += generateSearchAndFilter();
   }
   html += "<table>";
-  html += "<thead>";
-  html += "<tr class='row'>";
-  for (const [key, value] of Object.entries(tableHeaders)) {
-    html += `<th class='${value.class}'>${value.label}</th>`;
+  html += generateTableHeader(table.headers);
+  if (table.customBody === null) {
+    html += generateTableBody(table);
+  } else {
+    html += table.customBody;
   }
-  html += "</tr>";
-  html += "</thead>";
-  html += generateTableBody(tableHeaders, tableData, activeLink, actionLabels, actionUrls, primaryKey);
-  if (tableData.length > 0) {
+  if (table.showPagination) {
+    html += generateTableFooter(table);
+  }
+  html += "</table>";
+  DOMElement.innerHTML = html;
+  if (!table.showPagination) {
+    DOMElement.querySelector("tbody tr:last-child").classList.add("table-end");
+  }
+  updateSortArrows(table.activeSortField, table.activeSortOrder);
+}
+
+function updateSortArrows(activeSortField, activeSortOrder) {
+  const activeSortArrows = document.querySelector(`#sort_${activeSortField}`);
+  if (activeSortArrows) {
+    const allSortArrowIcons = document.querySelectorAll(".sort-arrows svg");
+    allSortArrowIcons.forEach((icon) => {
+      icon.classList.remove("active");
+    });
+    if (activeSortOrder === "asc") {
+      activeSortArrows.setAttribute("datasrc", "asc");
+      activeSortArrows.querySelector(".up-arrow").classList.add("active");
+    } else {
+      activeSortArrows.setAttribute("datasrc", "desc");
+      activeSortArrows.querySelector(".down-arrow").classList.add("active");
+    }
+  }
+
+}
+
+function generateTableFooter(table) {
+  let html = "";
+  if (table.data.length > 0) {
     html += "<tfoot>";
     html += "<tr class='row justify-content-end pagination'>";
-    html += `<td class='col-3 text-right'><span>Rows per page:</span>
+    if (table.showRowsPerPage) {
+      html += `<td class='col-3 text-right'><span>Rows per page:</span>
                                         <label>
-                                            <select name='table_filter' id='table_filter'>
-                                                <option value=''>${tableData.length}</option>`;
-    html += "</select></label></td>";
-    html += `<td class='col-2'>1-${tableData.length} of ${tableData.length}</td>`;
+                                            <select name='table_filter' id='table_pagination_length_selector'>
+                                                <option value='${table.data.length}'>${table.data.length}</option>
+                                                <option value='5' disabled="${table.data.length < 5}">5</option>
+                                                <option value='10' disabled="${table.data.length < 10}">10</option>
+                                                <option value='25' disabled="${table.data.length < 25}">25</option>
+                                                <option value='50' disabled="${table.data.length < 50}">50</option>
+                                                <option value='100' disabled="${table.data.length < 100}">100</option>
+                                            </select>
+                                        </label>
+                                    </td>`;
+    }
+    html += `<td class='col-2'>1-${table.data.length} of ${table.data.length}</td>`;
     html += "</tr>";
     html += "</tfoot>";
   }
+  return html;
+}
 
-  html += "</table>";
-  DOMElement.innerHTML = html;
+function generateTableHeader(tableHeaders) {
+  let html = "<thead>";
+  html += "<tr class='row'>";
+  for (const [key, value] of Object.entries(tableHeaders)) {
+    html += `<th class='${value.class}'>${value.label}`;
+    html += generateSortArrows(value);
+    html += `</th>`;
+  }
+  html += "</tr>";
+  html += "</thead>";
+  return html;
+}
+
+function handleSortArrowsClick(key) {
+  const sortArrows = document.querySelector(`#sort_${key}`);
+  const sortDirection = sortArrows.getAttribute("datasrc");
+  const newSortDirection = sortDirection === "asc" ? "desc" : "asc";
+  sortArrows.setAttribute("datasrc", newSortDirection);
+  updateSortArrows(key, newSortDirection);
+  console.log(key, newSortDirection);
+  handleSort(key, newSortDirection);
+}
+
+function handleSortUsingArray(key, sortDirection) {
+  console.log(table.data);
+}
+
+function handleSort(key, sortDirection) {
+  const tableBody = document.querySelector("tbody");
+  const tableRows = tableBody.querySelectorAll("tr");
+  const sortedRows = Array.from(tableRows).sort((a, b) => {
+    const aVal = a.querySelector(`td[data-key=${key}]`).innerText;
+    const bVal = b.querySelector(`td[data-key=${key}]`).innerText;
+    if (sortDirection === "asc") {
+      return aVal.localeCompare(bVal);
+    } else {
+      return bVal.localeCompare(aVal);
+    }
+  });
+  tableBody.innerHTML = "";
+  sortedRows.forEach((row) => {
+    tableBody.appendChild(row);
+  });
+}
+
+function generateSortArrows(element) {
+  console.log(element);
+  if (element.sortable) {
+    return `<span class="sort-arrows mx-2" id="sort_${element.key}" datasrc="null" onclick="handleSortArrowsClick('${element.key}')">
+              <svg class="up-arrow" width="10" height="6" viewBox="0 0 10 6" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M9 5L5 1L1 5" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+              <svg class="down-arrow" width="10" height="6" viewBox="0 0 10 6" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M1 0.999999L5 5L9 1" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </span>`;
+  }
+  return "";
 }
 
 function generateEditDeleteActions(element, activeLink, actionLabels, actionUrls, primaryKey) {
@@ -85,19 +174,13 @@ function generateSearchAndFilter() {
 </div>`
 }
 
-// filter the data array and pass to generateTableBodyFunction
-// function handleTableSearchType() {
+//filter the data array and pass to generateTableBodyFunction
+// function handleTableSearchTypeUsingArray() {
 //   const searchBox = document.getElementById("table-search-box");
 //   const tableBody = document.querySelector("tbody");
 //   const tableHeaders = document.querySelectorAll("thead th");
-//   const tableData = JSON.parse(tableBody.dataset.tableData);
-//   const activeLink = tableBody.dataset.activeLink;
-//   const primaryKey = tableBody.dataset.primaryKey;
-//   const noContentMessage = tableBody.dataset.noContentMessage;
-//   const actionLabels = tableBody.dataset.actionLabels;
-//   const actionUrls = tableBody.dataset.actionUrls;
 //
-//   const filteredData = tableData.filter((row) => {
+//   const filteredData = table.data.filter((row) => {
 //     for (const [key, value] of Object.entries(row)) {
 //       if (value.toString().toLowerCase().includes(searchBox.value.toLowerCase())) {
 //         return true;
@@ -105,7 +188,7 @@ function generateSearchAndFilter() {
 //     }
 //     return false;
 //   });
-//   tableBody.innerHTML = generateTableBody(tableHeaders, filteredData, activeLink, actionLabels, actionUrls, primaryKey, noContentMessage);
+//   tableBody.innerHTML = generateTableBody(tableHeaders, filteredData);
 //
 // }
 
@@ -148,33 +231,33 @@ function handleTableSearchType() {
                                         </label>
                                     </td>
                                     <td class='col-2'>1-${resultCount} of ${resultCount}</td>`;
-  
+
 }
 
-function generateTableBody(tableHeaders, tableData, activeLink, actionLabels, actionUrls, primaryKey, noContentMessage) {
+function generateTableBody(table) {
   let html = "<tbody>";
-  if (tableData.length > 0) {
-    for (const row of tableData) {
+  if (table.data.length > 0) {
+    for (const row of table.data) {
       html += "<tr class='row'>";
-      for (const [key, value] of Object.entries(tableHeaders)) {
+      for (const [key, value] of Object.entries(table.headers)) {
         if (row.hasOwnProperty(value.key)) {
-          html += `<td class='${tableHeaders[key].class}'>${row[value.key]}</td>`;
+          html += `<td class='${table.headers[key].class}' data-key='${table.headers[key].key}'>${row[value.key]}</td>`;
         } else {
           if (value.key === "actions") {
-            html += `<td class='${tableHeaders[key].class}'>
+            html += `<td class='${table.headers[key].class}'>
                       <div class='row justify-content-center align-items-center gap-1'>
-                          ${generateEditDeleteActions(row, activeLink, actionLabels, actionUrls, primaryKey)}
+                          ${generateEditDeleteActions(row, table.activeLink, table.actionLabels, table.actionUrls, table.primaryKey)}
                       </div>
                     </td>`;
           } else {
-            html += `<td class='${tableHeaders[key].class}'></td>`;
+            html += `<td class='${table.headers[key].class}'></td>`;
           }
         }
       }
       html += "</tr>";
     }
   } else {
-    html += `<tr class='no-content'><td class='col-12 text-center py-4'>${noContentMessage}</td></tr>`;
+    html += `<tr class='no-content'><td class='col-12 text-center py-4'>${table.noContentMessage}</td></tr>`;
   }
   html += "</tbody>"
   return html;

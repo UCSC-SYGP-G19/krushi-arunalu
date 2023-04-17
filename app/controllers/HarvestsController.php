@@ -21,7 +21,7 @@ class HarvestsController extends Controller
     public function index(): void
     {
         $this->loadView("Producer/HarvestsPage", "Harvests", "harvests");
-        $this->view->data = Harvest::getAllByProducerIdFromDB(Session::getSession()->id);
+//        $this->view->data = Harvest::getAllByProducerIdFromDB(Session::getSession()->id);
         $this->view->render();
     }
 
