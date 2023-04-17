@@ -52,9 +52,19 @@ include APP_ROOT . "/views/inc/components/Header.php";
                                         ?>
                                         <div class="col-2">
                                             <div class="product-card pb-2 p-3">
+                                                <div class="rating-box px-1 d-flex">
+                                                    <span class="rating-icon">
+                                                    <?php echo '<img src="' . URL_ROOT . '
+                                                    /public/img/icons/other/rating-icon.png" height="80%" width="80%">'
+                                                    ?>
+                                                    </span>
+                                                    <span class="rating-text fw-bold">
+                                                        <?php echo $product->rating ?>
+                                                    </span>
+                                                </div>
                                                 <div class="image-window mb-1">
                                                     <?php echo '<div class="image-window mb-1">
-                                                        ' . '<img class="ml-2 mt-2 pr-3" alt="Product image" 
+                                                        ' . '<img class="ml-2 pr-3" alt="Product image" 
                                                         height="100%" width="100%" 
                                                         src="' . URL_ROOT . '/public/img/products/' .
                                                         $product->image_url . '">' . '
@@ -74,7 +84,7 @@ include APP_ROOT . "/views/inc/components/Header.php";
                                                             <span class="fs-3"><?php echo $product->stock_qty; ?></span>
                                                         </div>
                                                     </div>
-                                                    <div class="text-primary-light py-1">
+                                                    <div class="text-primary-light py-1 fw-bold">
                                                         <?php echo $product->unit_price; ?></div>
                                                     <div class="row justify-content-center align-items-center
                                                         gap-1 d-flex">
@@ -85,8 +95,7 @@ include APP_ROOT . "/views/inc/components/Header.php";
                                                                 $product->product_id . '">Edit</a>' ?>
                                                         </div>
 
-                                                        <div class="col">
-                                                            <?php echo '<a class="btn-xs btn-outlined-error
+                                                        <div class="col"><?php echo '<a class="btn-xs btn-outlined-error
                                                         text-center" 
                                                         href = "' . URL_ROOT . '/products/hide/' .
                                                                 $product->product_id . '">Hide</a>' ?>

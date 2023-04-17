@@ -757,6 +757,7 @@ button:disabled:hover {
   top: 0;
   background: #FFFFFF;
   height: 100px;
+  z-index: 100;
 }
 .navbar #btn-toggle-sidebar {
   transition: background-color 0.4s ease;
@@ -2039,14 +2040,40 @@ div.swal2-popup button.swal2-styled.swal2-cancel:focus {
   height: 42px;
 }
 
-.hidden-product-card, .product-card {
+.product-card, .hidden-product-card {
   background-color: #FFFFFF;
   border-radius: 16px;
+  position: relative;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
-
-.hidden-product-card {
+.product-card .image-window, .hidden-product-card .image-window {
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  width: 100%;
+  height: 150px;
+}
+.product-card .image-window img, .hidden-product-card .image-window img {
+  object-fit: cover;
+  border-radius: 8px;
+}
+.product-card .rating-box, .hidden-product-card .rating-box {
   background-color: #FFFFFF;
-  border-radius: 16px;
+  width: fit-content;
+  border-radius: 8px;
+  border: 2px solid #E7A811;
+  position: absolute;
+  right: 0;
+  margin: 100px 24px 0 0;
+  z-index: 1;
+}
+.product-card .rating-box .rating-icon, .hidden-product-card .rating-box .rating-icon {
+  padding: 2px 1px 0 0;
+}
+.product-card .rating-box .rating-text, .hidden-product-card .rating-box .rating-text {
+  padding-top: 1px;
+}
+.product-card:hover, .hidden-product-card:hover {
+  background-color: #D9F0BE;
 }
 
 .btn-hidden-products, .btn-hidden-categories {
@@ -2063,62 +2090,62 @@ div.swal2-popup button.swal2-styled.swal2-cancel:focus {
 }
 
 .manufacturer-store-wrapper {
-  padding: 0 10% 0 10%;
+  margin-top: 50px !important;
+  margin-bottom: 50px !important;
+  height: 100%;
+  width: 100%;
+  max-width: 1200px;
 }
-
-.store-info {
+.manufacturer-store-wrapper .store-info-wrapper {
   border-radius: 0 0 16px 16px;
-}
-
-.store-cover {
-  border-radius: 16px 16px 0 0;
-}
-
-.store-info {
   background-color: #FFFFFF;
 }
-
-.product-count-wrapper {
+.manufacturer-store-wrapper .store-cover {
+  border-radius: 16px 16px 0 0;
+}
+.manufacturer-store-wrapper .product-count-wrapper {
   border-radius: 50%;
   background-color: #B1B1B1;
 }
-
-.product-count {
+.manufacturer-store-wrapper .product-count {
   color: #185427;
   font-size: 2rem;
 }
-
-.company-logo {
+.manufacturer-store-wrapper .company-logo {
   height: 75%;
   width: 75%;
 }
-
-.company-name {
+.manufacturer-store-wrapper .company-name {
   font-size: 1.5rem;
 }
-
-.contact-info {
+.manufacturer-store-wrapper .contact-info {
   font-size: 1.25rem;
 }
-
-.description {
+.manufacturer-store-wrapper .description {
   font-size: 1rem;
 }
-
-.category {
+.manufacturer-store-wrapper .category {
   border-radius: 160px;
   border: 2px solid #185427;
 }
-.category:hover {
-  background-color: #E7F4D8;
+.manufacturer-store-wrapper .category:hover {
+  background-color: #D9F0BE;
+}
+.manufacturer-store-wrapper .category-name {
+  border-bottom: 2px solid #15742D;
+  width: 100%;
+  text-align: left;
+  padding: 5px;
+}
+.manufacturer-store-wrapper .category-selector {
+  white-space: nowrap;
+  overflow: auto;
+}
+.manufacturer-store-wrapper .categorized-products {
+  scroll-margin-top: 100px;
 }
 
-.product-card {
-  background-color: #FFFFFF;
-  border-radius: 16px;
-}
-
-.up-arrow-icon {
+.btn-go-to-top .up-arrow-icon {
   height: 30px;
   width: 30px;
 }
