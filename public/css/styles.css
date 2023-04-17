@@ -1201,14 +1201,23 @@ table .pagination .arrow-icons {
   margin: 0 12px;
   padding-top: 8px;
 }
-table .pagination .arrow-icons .left-arrow {
+table .pagination .arrow-icons span {
   cursor: pointer;
-  margin-right: 5px;
   padding: 4px 4px 0;
+  stroke: black;
+  user-select: none;
+}
+table .pagination .arrow-icons span:hover {
+  stroke: #15742D;
+}
+table .pagination .arrow-icons span.disabled {
+  stroke: #B1B1B1;
+  cursor: not-allowed;
+}
+table .pagination .arrow-icons .left-arrow {
+  margin-right: 5px;
 }
 table .pagination .arrow-icons .right-arrow {
-  cursor: pointer;
-  padding: 4px 4px 0;
   margin-left: 5px;
 }
 table span.sort-arrows {

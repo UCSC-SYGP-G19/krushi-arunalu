@@ -141,6 +141,7 @@ const renderHarvestsTable = (data) => {
     showSort: true,
     primaryKey: "harvest_id",
     activeLink: "harvests",
+    currentPage: 1,
     rowsPerPage: 10,
     activeSortField: "harvested_date",
     activeSortOrder: "desc",
