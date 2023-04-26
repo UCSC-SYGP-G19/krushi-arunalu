@@ -28,6 +28,54 @@ class CropRequest extends Model
     ) {
     }
 
+    public function getRequestById($requestId): ?object
+    {
+        $stmt = Model::select(
+            table: "crop_request",
+            columns: [
+                "crop_request.crop_id AS crop",
+                "crop_request.required_quantity AS required_quantity",
+                "crop_request.low_price AS low_price",
+                "crop_request.high_price AS high_price",
+                "crop_request.required_date AS required_date",
+                "crop_request.description AS description",
+                "crop_request.preferred_district AS preferred_district",
+                "crop_request.allow_multiple_producers AS allow_multiple_producers",
+                "crop.category_id AS crop_category"
+            ],
+            where: ["crop_request.id" => $requestId],
+            joins: ["crop" => "crop_request.crop_id"]
+        );
+        if ($stmt) {
+            return $stmt->fetch();
+        }
+        return null;
+    }
+
+    public function updateCropRequest($requestId): bool
+    {
+        return $this->update(
+            table: "crop_request",
+            data: [
+                "manufacturer_id" => $this->manufacturerId,
+                "crop_id" => $this->cropId,
+                "required_quantity" => $this->requiredQuantity,
+                "low_price" => $this->lowPrice,
+                "high_price" => $this->highPrice,
+                "required_date" => $this->requiredDate,
+                "description" => $this->description,
+                "preferred_district" => $this->preferredDistrict,
+                "allow_multiple_producers" => $this->allowMultipleProducers,
+            ],
+            where: ["id" => $requestId]
+        );
+    }
+
+    public function deleteRequest($requestId): bool
+    {
+        return $this->delete(table: "crop_request", where: ["id" => $requestId]) == 1;
+    }
+
     public function getCropRequestsForProducerFromDB($producerId): array
     {
         return $this->runQuery(
@@ -60,7 +108,8 @@ class CropRequest extends Model
     {
         return $this->runQuery(
             "SELECT 
-                        cr.id, cr.required_quantity,
+                        cr.id, 
+                        cr.required_quantity,
                         cr.fulfilled_quantity,
                         cr.low_price,
                         cr.high_price,
