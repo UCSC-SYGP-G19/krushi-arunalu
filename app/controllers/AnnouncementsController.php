@@ -18,7 +18,7 @@ class AnnouncementsController extends Controller
         if (Session::getSession()->role === "Agri Officer") {
             $this->loadView('AgriOfficer/AnnouncementsPage', 'Announcements', 'announcements');
         } else {
-            $this->loadView('Producer/AnnouncementsPage', 'Announcements', 'announcements');
+            $this->loadView('Producer/AnnouncementsPage', 'Announcements', 'announcements');    //vieewing producer's announcement page.
         }
 
         $this->loadModel('Announcement');
