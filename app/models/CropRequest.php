@@ -56,6 +56,36 @@ class CropRequest extends Model
         )->fetchAll();
     }
 
+    public function getCropRequestsForManufacturerFromDB($manufacturerId): array
+    {
+        return $this->runQuery(
+            "SELECT 
+                        cr.id, cr.required_quantity,
+                        cr.fulfilled_quantity,
+                        cr.low_price,
+                        cr.high_price,
+                        cr.required_date,
+                        cr.description,
+                        cr.allow_multiple_producers,
+                        cr.posted_date_time,
+                        crr.response_date_time,
+                        c.name AS crop_name,
+                        c.image_url AS image_url,
+                        ru.name AS producer_name,
+                        d.name AS district_name,
+                        COUNT(crr.id) AS response_count
+                    FROM crop_request cr
+                    LEFT JOIN crop_request_response crr ON cr.id = crr.crop_request_id
+                    INNER JOIN crop c ON cr.crop_id = c.id
+                    LEFT JOIN registered_user ru ON crr.producer_id = ru.id
+                    LEFT JOIN producer p ON ru.id = p.id
+                    LEFT JOIN district d ON p.district = d.id
+                    WHERE cr.manufacturer_id = ?
+                    GROUP BY cr.id;",
+            [$manufacturerId]
+        )->fetchAll();
+    }
+
     /**
      * @return int|null
      */
