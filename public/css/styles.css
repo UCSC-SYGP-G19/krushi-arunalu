@@ -61,6 +61,10 @@
   font-weight: 600;
 }
 
+.avatar {
+  border-radius: 50%;
+}
+
 .order-details-wrapper .order-details-container, .order-details-wrapper .delivery-address, .order-details-wrapper .order-summary {
   background-color: #E7F4D8;
 }
