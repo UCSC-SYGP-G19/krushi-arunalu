@@ -2,7 +2,6 @@ let cropRequests = null;
 let ResponseList = null;
 
 const fetchCropRequests = async () => {
-  console.log("A");
   const res = await fetch(`${URL_ROOT}/ManufacturerCropRequests/getRequestsAsJson`);
   if (res.status === 200) {
     cropRequests = await res.json();
@@ -10,23 +9,54 @@ const fetchCropRequests = async () => {
   }
 }
 
-// const fetchResponses = async (cropRequestId) => {
-//   const res = await fetch(`${URL_ROOT}/producerCropRequests/getMyResponsesAsJson/` + cropRequestId);
-//   if (res.status === 200) {
-//     ResponseList[cropRequestId] = await res.json();
-//   }
-// }
+const fetchResponses = async (cropRequestId) => {
+  const res = await fetch(`${URL_ROOT}/manufacturerCropRequests/getResponsesAsJson/` + cropRequestId);
+  if (res.status === 200) {
+    ResponseList[cropRequestId] = await res.json();
+  }
+}
 
-// const fetchAndRenderMyResponses = async (cropRequestId) => {
-//   const responsesListNode = document.querySelector(`#crop-request-${cropRequestId}`).querySelector('.request-responses-list');
-//   if (myResponsesList == null) {
-//     myResponsesList = {};
-//   }
-//   if (!(cropRequestId in myResponsesList)) {
-//     await fetchResponses(cropRequestId);
-//   }
-//   renderResponses(responsesListNode, myResponsesList[cropRequestId]);
-// }
+const fetchAndRenderResponses = async (cropRequestId) => {
+  const responsesListNode = document.querySelector(`#crop-request-${cropRequestId}`).querySelector('.request-responses-list');
+  if (myResponsesList == null) {
+    myResponsesList = {};
+  }
+  if (!(cropRequestId in myResponsesList)) {
+    await fetchResponses(cropRequestId);
+  }
+  renderResponses(responsesListNode, myResponsesList[cropRequestId]);
+}
+
+const renderPricesLine = (element) => `
+    <div>
+        <span class="pr-1">Expected price range: </span>
+        <span class="fw-bold">Rs. ${element.low_price} to Rs. ${element.high_price} per unit</span>
+    </div>`;
+
+const renderResponseInfoLine = (element) => `
+    <div class="fs-3"><span
+            class="text-primary-light fw-bold pr-1">${element.response_count} response${element.response_count !== 1 ? "s" : ""} - </span>
+        <span class="badge badge-light-green text-black fw-bold px-2 mt-0 mb-1">
+            ${element.fulfilled_quantity} KG fulfilled / ${element.required_quantity} KG required
+        </span>
+    </div>`;
+
+
+
+const viewCropRequestResponses = ($reqId) => {
+  console.log($reqId);
+  const cropRequestCard = document.querySelector(`#crop-request-${$reqId}`);
+  if (cropRequestCard.getAttribute("datatype") === "collapsed") {
+    cropRequestCard.setAttribute("datatype", "expanded");
+    const currentCropRequest = cropRequestsList.find(r => r.id === $reqId);
+    cropRequestCard.querySelector(".third-line").innerHTML = renderPricesLine(currentCropRequest);
+    fetchAndRenderResponses($reqId);
+  } else {
+    cropRequestCard.setAttribute("datatype", "collapsed");
+    cropRequestCard.querySelector(".third-line").innerHTML = renderResponseInfoLine(cropRequests.find(r => r.id === $reqId));
+    cropRequestCard.querySelector(".expanded-section").remove();
+  }
+}
 
 const renderCropRequests = (data) => {
   let output = "";
@@ -38,7 +68,7 @@ const renderCropRequests = (data) => {
       data.forEach((element) => {
         let row = `
             <div class="crop-request-card p-3 px-4 mb-3" id="crop-request-${element.id}" datatype="collapsed">
-                <div class="row clickable" onClick="handleCropRequestClick(${element.id})">
+                <div class="row clickable" onclick="viewCropRequestResponses(${element.id})">
                     <div class="col-1">
                         <div class="image-window">
                             <img alt="Image" height="100%" width="100%"
@@ -59,19 +89,21 @@ const renderCropRequests = (data) => {
                                 <span class="px-1"> | Required on: </span>
                                 <span class="fw-bold">${element.required_date}</span>
                             </div>
+                            
+                            <div class="col-12 pt-2 fs-3 third-line">
+                                ${renderResponseInfoLine(element)}
+                            </div>
 
                         </div>
 
                     </div>
-                    <div class="col-3 py-4 justify-content-end d-flex px-3">
+                    <div class="col-3 py-3 justify-content-end align-items-baseline d-flex px-3">
                             <a class="btn-xs btn-outlined-secondary mr-1 edit-button"
-                                href="${URL_ROOT}/manufacturerCropRequests/edit/${element.id}"
-                                onclick="handleResponseEditClick(${element.request_id}">
+                                href="${URL_ROOT}/manufacturerCropRequests/edit/${element.id}">
                                    Edit
                             </a>
                             <a class="btn-xs btn-outlined-error ml-1 delete-button"
-                                href="${URL_ROOT}/manufacturerCropRequests/delete/${element.id}"
-                                onclick="handleResponseDeleteClick(${element.request_id})">
+                                href="${URL_ROOT}/manufacturerCropRequests/delete/${element.id}">
                                     Delete
                             </a>
                     </div>
@@ -85,107 +117,60 @@ const renderCropRequests = (data) => {
   } else {
     output = renderMessageCard("Error fetching data");
   }
-  requestsList.innerHTML = output;
+  requestList.innerHTML = output;
 }
 
-// const renderResponses = (node, data) => {
-//   let output = "";
-//
-//   if (data != null) {
-//     if (data.length === 0) {
-//       output = renderMessageCard("No responses to show");
-//     } else {
-//       data.forEach((element) => {
-//         let row = `
-//             <div class="row mb-3 mt-1 px-2">
-//                 <div class="col-1 user-profile-pic text-center pr-3">
-//                     <img src="${URL_ROOT}/public/img/icons/navbar/user-avatar.webp"
-//                          alt="User profile icon" width="90%">
-//                 </div>
-//                 <div class="col-11 crop-response-card-content py-3 px-4" id="response-${element.response_id}">
-//                     <div class="row pb-1">
-//                         <div class="col-12">
-//                             <div class="row align-items-center">
-//                                 <div class="col-6 text-black fw-bold mb-1"><h3>${element.producer_name}</h3></div>
-//                                 <div class="col-6 text-primary-light fw-bold text-right">
-//                                     <span>${element.response_date_time}</span>
-//                                     <span class="ml-3">
-//                                       <button class="btn-xs btn-outlined-secondary mr-1 edit-button"
-//                                               onclick="handleResponseEditClick(${element.request_id}, ${element.response_id})">
-//                                         Edit
-//                                     </button>
-//                                     <button class="btn-xs btn-outlined-error ml-1 delete-button"
-//                                             onclick="handleResponseDeleteClick(${element.response_id})">
-//                                         Delete
-//                                     </button>
-//                                   </span>
-//                                 </div>
-//                             </div>
-//                         </div>
-//                         <div class="col-12 text-grey-dark pb-1">
-//                             <span class="pr-1 text-gold"><em>${element.producer_district}</em></span>
-//                         </div>
-//                         <div class="col-12 fs-3 text-grey-dark my-1">
-//                             <span class="pr-1">Accepted quantity : </span>
-//                             <span class="accepted-quantity fw-bold text-black">${element.accepted_quantity}</span>
-//                         </div>
-//                         <div class="col-6 d-flex fs-3 text-grey-dark">
-//                             <span class="pr-1">Accepted price : </span>
-//                             <span class="fw-bold text-black">Rs. ${element.accepted_price} per unit</span>
-//                         </div>
-//                         <div class="col-6 d-flex fs-3 text-grey-dark">
-//                             <span class="pr-1">Accepted delivery date : </span>
-//                             <span class="fw-bold text-black">${element.accepted_delivery_date}</span>
-//                         </div>
-//                     </div>
-//                 </div>
-//             </div>
-//         `;
-//         output += row;
-//       });
-//     }
-//   } else {
-//     output = renderMessageCard("Error fetching data");
-//   }
-//   node.innerHTML = output;
-// }
+const renderResponses = (node, data) => {
+  let output = "";
 
-
-
-// const renderPricesLine = (element) => `
-//     <div>
-//         <span class="pr-1">Expected price range: </span>
-//         <span class="fw-bold">Rs. ${element.low_price} to Rs. ${element.high_price} per unit</span>
-//     </div>`;
-//
-// const renderResponseInfoLine = (element) => `
-//     <div class="fs-3"><span
-//             class="text-primary-light fw-bold pr-1">${element.response_count} response${element.response_count !== 1 ? "s" : ""} - </span>
-//         <span class="badge badge-light-green text-black fw-bold px-2 mt-0 mb-1">
-//                                         ${element.fulfilled_quantity} KG fulfilled / ${element.required_quantity} KG required</span>
-//     </div>`;
-
-
-// <div className="col-12 pt-2 fs-3 third-line">
-//   ${renderResponseInfoLine(element)}
-// </div>
-
-
-// const handleCropRequestClick = (e) => {
-//   console.log(e);
-//   const cropRequestCard = document.querySelector(`#crop-request-${e}`);
-//   if (cropRequestCard.getAttribute("datatype") === "collapsed") {
-//     cropRequestCard.setAttribute("datatype", "expanded");
-//     const currentCropRequest = cropRequestsList.find(r => r.id === e);
-//     cropRequestCard.querySelector(".third-line").innerHTML = renderPricesLine(currentCropRequest);
-//     cropRequestCard.innerHTML += renderExpandedSection(currentCropRequest);
-//     fetchAndRenderMyResponses(e);
-//   } else {
-//     cropRequestCard.setAttribute("datatype", "collapsed");
-//     cropRequestCard.querySelector(".third-line").innerHTML = renderResponseInfoLine(cropRequestsList.find(r => r.id === e));
-//     cropRequestCard.querySelector(".expanded-section").remove();
-//   }
-// }
+  if (data != null) {
+    if (data.length === 0) {
+      output = renderMessageCard("No responses to show");
+    } else {
+      data.forEach((element) => {
+        let row = `
+            <div class="row mb-3 mt-1 px-2">
+                <div class="col-1 user-profile-pic text-center pr-3">
+                    <img src="${URL_ROOT}/public/img/icons/navbar/user-avatar.webp"
+                         alt="User profile icon" width="90%">
+                </div>
+                <div class="col-11 crop-response-card-content py-3 px-4" id="response-${element.response_id}">
+                    <div class="row pb-1">
+                        <div class="col-12">
+                            <div class="row align-items-center">
+                                <div class="col-6 text-black fw-bold mb-1"><h3>${element.producer_name}</h3></div>
+                                <div class="col-6 text-primary-light fw-bold text-right">
+                                    <span>${element.response_date_time}</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-12 text-grey-dark pb-1">
+                            <span class="pr-1 text-gold"><em>${element.producer_district}</em></span>
+                        </div>
+                        <div class="col-12 fs-3 text-grey-dark my-1">
+                            <span class="pr-1">Accepted quantity : </span>
+                            <span class="accepted-quantity fw-bold text-black">${element.accepted_quantity}</span>
+                        </div>
+                        <div class="col-6 d-flex fs-3 text-grey-dark">
+                            <span class="pr-1">Accepted price : </span>
+                            <span class="fw-bold text-black">Rs. ${element.accepted_price} per unit</span>
+                        </div>
+                        <div class="col-6 d-flex fs-3 text-grey-dark">
+                            <span class="pr-1">Accepted delivery date : </span>
+                            <span class="fw-bold text-black">${element.accepted_delivery_date}</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        `;
+        output += row;
+      });
+    }
+  } else {
+    output = renderMessageCard("Error fetching data");
+  }
+  node.innerHTML = output;
+}
 
 const requestList = document.querySelector("#crop-requests");
 

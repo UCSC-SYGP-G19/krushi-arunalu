@@ -95,6 +95,33 @@ class CropRequestResponse extends Model
         );
     }
 
+    public function getResponsesForRequestFromDB($cropRequestId): array
+    {
+        $stmt = Model::select(
+            table: "crop_request_response",
+            columns: [
+                "crop_request_response.id AS response_id", "crop_request_response.crop_request_id AS request_id",
+                "registered_user.name AS producer_name", "registered_user.image_url AS image_url",
+                "district.name AS producer_district", "crop_request_response.response_date_time AS response_date_time",
+                "crop_request_response.accepted_delivery_date AS accepted_delivery_date",
+                "crop_request_response.accepted_price AS accepted_price",
+                "crop_request_response.accepted_quantity AS accepted_quantity",
+                "crop_request_response.remarks AS remarks"
+            ],
+            where: ["crop_request_response.crop_request_id" => $cropRequestId],
+            joins: [
+                "registered_user" => "crop_request_response.producer_id",
+                "producer" => "crop_request_response.producer_id",
+                "district" => "producer.district",
+            ]
+        );
+
+        if ($stmt) {
+            return $stmt->fetchAll();
+        }
+        return [];
+    }
+
     /**
      * @return int|null
      */

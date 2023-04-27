@@ -25,6 +25,12 @@ class ManufacturerCropRequestsController extends Controller
         $this->sendJson($this->model->getCropRequestsForManufacturerFromDB(Session::getSession()->id));
     }
 
+    public function getResponsesAsJson($cropRequestId): void
+    {
+        $this->loadModel('CropRequestResponse');
+        $this->sendJson($this->model->getResponsesForRequestFromDB($cropRequestId));
+    }
+
     public function add(): void
     {
         $this->loadView('Manufacturer/PostCropRequestsPage', 'Post Crop Requests', 'manufacturer-crop-requests');
