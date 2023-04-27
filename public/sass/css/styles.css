@@ -1,22 +1,30 @@
-.connection-request-wrapper {
-  border-radius: 16px;
-  background-color: white;
-  border-bottom: 3px solid #15742D;
+.register_customer {
+  height: 100vh;
+  width: 100vw;
+  background-image: url("../img/login-bg.webp");
+  margin-top: -100px;
 }
-.connection-request-wrapper:hover {
-  background-color: #E7F4D8;
+.register_customer .wrapper {
+  background: rgba(255, 255, 255, 0.7);
+  box-shadow: 0 4px 50px rgba(0, 0, 0, 0.2);
+  border-radius: 24px;
+  width: 35%;
+  height: fit-content;
 }
-.connection-request-wrapper .avatar {
-  border-radius: 50%;
+.register_customer button {
+  width: 200px;
+  height: 50px;
+  font-size: 1.1rem;
+  border-radius: 8px;
 }
-.connection-request-wrapper .title {
-  font-size: large;
-}
-.connection-request-wrapper .sub-title-1 {
+.register_customer input {
+  height: 48px;
   font-size: 1rem;
+  margin-bottom: 1.5rem;
 }
-.connection-request-wrapper .sub-title-2 {
+.register_customer form .error {
   font-size: 0.9rem;
+  margin-top: -0.75rem;
 }
 
 /*# sourceMappingURL=styles.css.map */
