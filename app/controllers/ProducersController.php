@@ -22,12 +22,12 @@ class ProducersController extends Controller
     public function getAllProducersAsJson(): void
     {
         $this->loadModel("Producer");
-        $this->sendJson($this->model->getAllProducersForManufacturer(Session::getSession()->id));
+        $this->sendArrayAsJson($this->model->getAllProducersForManufacturer(Session::getSession()->id));
     }
 
     public function getConnectedProducersAsJson(): void
     {
         $this->loadModel("Producer");
-        $this->sendJson($this->model->getConnectedProducersForManufacturer(Session::getSession()->id));
+        $this->sendArrayAsJson($this->model->getConnectedProducersForManufacturer(Session::getSession()->id));
     }
 }

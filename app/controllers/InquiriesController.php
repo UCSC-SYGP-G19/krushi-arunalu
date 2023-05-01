@@ -21,7 +21,7 @@ class InquiriesController extends Controller
     public function getCustomerInquiries(): void
     {
         $this->loadModel('CustomerInquiry');
-        $this->sendJson($this->model->getInquiriesByManufacturerIdFromDB(Session::getSession()->id));
+        $this->sendArrayAsJson($this->model->getInquiriesByManufacturerIdFromDB(Session::getSession()->id));
     }
 
     public function addResponseToDb($inquiryId): bool
@@ -35,7 +35,7 @@ class InquiriesController extends Controller
 
         if ($this->model->addInquiryResponseToDb()){
             http_response_code(200);
-            $this->sendJson(["Message" => "Successfully Added to DB"]);
+            $this->sendArrayAsJson(["Message" => "Successfully Added to DB"]);
             return true;
         }
         else{
@@ -47,6 +47,6 @@ class InquiriesController extends Controller
     public function getInquiryResponses($inquiryId): void
     {
         $this->loadModel("CustomerInquiryResponse");
-        $this->sendJson($this->model->getInquiryResponsesFromDB($inquiryId));
+        $this->sendArrayAsJson($this->model->getInquiryResponsesFromDB($inquiryId));
     }
 }
