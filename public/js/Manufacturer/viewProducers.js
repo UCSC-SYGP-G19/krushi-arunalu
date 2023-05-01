@@ -144,7 +144,7 @@ const renderConnectedProducersList = (data) => {
                 <td class="col-2 pr-4">
                 <div class="row justify-content-end align-items-center gap-1">
                     <div class="col-6">
-                        <a href="${URL_ROOT}/messages/${element.producer_id}"
+                        <a href="${URL_ROOT}/chat"
                            class="btn-xs btn-outlined-primary-dark text-center">Message</a>
                     </div>
                     <div class="col-6">
@@ -197,7 +197,7 @@ const renderConnectedProducersList = (data) => {
 const renderConnectBtn = (element) => {
     let output = "";
     if (element.is_connected === "Accepted") {
-        output = ` <a href="${URL_ROOT}/messages/${element.producer_id}"
+        output = ` <a href="${URL_ROOT}/chat"
               class="btn-xs btn-outlined-primary-dark text-center">Message</a> `;
     } else if (element.is_connected === "Pending") {
         output = `Pending`;

@@ -42,6 +42,10 @@ $align_values: (flex-start, center, flex-end, stretch, baseline);
   display: inline !important;
 }
 
+.d-none {
+  display: none !important;
+}
+
 
 .row {
   display: flex;
