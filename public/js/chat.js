@@ -189,9 +189,19 @@ const renderChatList = (data) => {
     let output = "";
     data.forEach((element) => {
 
+        let sender = null;
+
+        if (element.sender_id === element.id) {
+            sender = element.name + ": ";
+        } else {
+            sender = "You: "
+        }
+
         if (element.last_message === null) {
             element.last_message = "No messages yet";
+            sender = "";
         }
+
         let chatBox = `
             <div class="chat-card px-2 py-2 d-flex" onclick="viewChat(${element.id})">
                 <div class="chat-avatar col-2 m-auto">
@@ -202,7 +212,7 @@ const renderChatList = (data) => {
                 <div class="col-10 pl-1">
                     <div class="fw-bold user-name">${element.name}</div>
                     <div class="last-message pr-1 text-grey-dark fs-2">
-                        <div class="text-left">${element.last_message}</div>
+                        <div class="text-left">${sender}${element.last_message}</div>
                         <div class="text-right">${generateDate(element.sent_date_time)}</div>
                     </div>
                 </div>
