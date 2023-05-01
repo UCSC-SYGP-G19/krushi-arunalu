@@ -14,7 +14,7 @@ class ChatController extends Controller
 {
     public function index(): void
     {
-        $this->loadView('Manufacturer/ChatPage', 'Chats');
+        $this->loadView('Common/ChatPage', 'Chats');
         $this->view->render();
     }
 

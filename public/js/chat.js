@@ -16,13 +16,13 @@ const renderChatHeader = (data) => {
     }
     console.log(data);
     chatHeader.innerHTML = `
-            <div class="chat-avatar col-1">
-                <img alt="User Avatar" class="avatar" src="${URL_ROOT}/public/img/user-avatars/${data.image_url}" 
-                 width="70%" height="85%">
+            <div class="chat-avatar col-1 m-auto text-center">
+                <img alt="User Avatar m-auto" class="avatar" src="${URL_ROOT}/public/img/user-avatars/${data.image_url}" 
+                 width="55%">
             </div>
-            <div class="col-11">
+            <div class="col-11 m-auto">
                 <div class="fw-bold fs-4">${data.name}</div>
-                <div class="active-status text-grey-dark fw-bold">Last active: ${data.last_login}</div>
+                <div class="active-status text-grey-dark fw-normal">Last active: ${data.last_login}</div>
             </div>
         `;
 }
@@ -199,7 +199,7 @@ const renderChatList = (data) => {
                     src="${URL_ROOT}/public/img/user-avatars/${element.image_url}"
                     width="85%">
                 </div>
-                <div class="col-10">
+                <div class="col-10 pl-1">
                     <div class="fw-bold user-name">${element.name}</div>
                     <div class="last-message pr-1 text-grey-dark fs-2">
                         <div class="text-left">${element.last_message}</div>

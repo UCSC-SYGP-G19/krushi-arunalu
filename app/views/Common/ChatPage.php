@@ -25,7 +25,7 @@ include APP_ROOT . "/views/inc/components/Header.php";
                                     </div>
 
                                     <!--                                Chat Header-->
-                                    <div class="chat-header col-9 row py-1 px-3 d-flex" id="chat-header">
+                                    <div class="chat-header col-9 row py-1 px-1 d-flex" id="chat-header">
                                     </div>
                                 </div>
 

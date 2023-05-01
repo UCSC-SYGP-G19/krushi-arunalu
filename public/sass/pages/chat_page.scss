@@ -34,6 +34,16 @@
 
     .chat-header-active {
       background-color: darken($background-grey, 10%);
+
+      .chat-avatar{
+        height: 100%;
+
+        img {
+          padding-top: 4px;
+          margin: auto;
+          display: inherit;
+        }
+      }
     }
   }
 
@@ -55,7 +65,11 @@
         }
 
         .chat-avatar {
-          padding-top: 0.1rem;
+          height: 100%;
+
+          img {
+            display: inherit;
+          }
         }
 
         border-bottom: 1px solid darken($background-grey, 10%);
