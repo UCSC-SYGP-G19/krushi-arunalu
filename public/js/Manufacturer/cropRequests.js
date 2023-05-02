@@ -1,5 +1,5 @@
 let cropRequests = null;
-let ResponseList = null;
+let responseList = null;
 
 const fetchCropRequests = async () => {
   const res = await fetch(`${URL_ROOT}/ManufacturerCropRequests/getRequestsAsJson`);
@@ -12,19 +12,19 @@ const fetchCropRequests = async () => {
 const fetchResponses = async (cropRequestId) => {
   const res = await fetch(`${URL_ROOT}/manufacturerCropRequests/getResponsesAsJson/` + cropRequestId);
   if (res.status === 200) {
-    ResponseList[cropRequestId] = await res.json();
+    responseList[cropRequestId] = await res.json();
   }
 }
 
 const fetchAndRenderResponses = async (cropRequestId) => {
   const responsesListNode = document.querySelector(`#crop-request-${cropRequestId}`).querySelector('.request-responses-list');
-  if (myResponsesList == null) {
-    myResponsesList = {};
+  if (responseList == null) {
+    responseList = {};
   }
-  if (!(cropRequestId in myResponsesList)) {
+  if (!(cropRequestId in responseList)) {
     await fetchResponses(cropRequestId);
   }
-  renderResponses(responsesListNode, myResponsesList[cropRequestId]);
+  renderResponses(responsesListNode, responseList[cropRequestId]);
 }
 
 const renderPricesLine = (element) => `
@@ -42,18 +42,18 @@ const renderResponseInfoLine = (element) => `
     </div>`;
 
 
-
-const viewCropRequestResponses = ($reqId) => {
-  console.log($reqId);
-  const cropRequestCard = document.querySelector(`#crop-request-${$reqId}`);
+const viewCropRequests = (e) => {
+  console.log(e);
+  const cropRequestCard = document.querySelector(`#crop-request-${e}`);
   if (cropRequestCard.getAttribute("datatype") === "collapsed") {
     cropRequestCard.setAttribute("datatype", "expanded");
-    const currentCropRequest = cropRequestsList.find(r => r.id === $reqId);
+    const currentCropRequest = cropRequests.find(r => r.id === e);
     cropRequestCard.querySelector(".third-line").innerHTML = renderPricesLine(currentCropRequest);
-    fetchAndRenderResponses($reqId);
+    cropRequestCard.innerHTML += renderExpandedSection(currentCropRequest);
+    fetchAndRenderResponses(e);
   } else {
     cropRequestCard.setAttribute("datatype", "collapsed");
-    cropRequestCard.querySelector(".third-line").innerHTML = renderResponseInfoLine(cropRequests.find(r => r.id === $reqId));
+    cropRequestCard.querySelector(".third-line").innerHTML = renderResponseInfoLine(cropRequests.find(r => r.id === e));
     cropRequestCard.querySelector(".expanded-section").remove();
   }
 }
@@ -68,7 +68,7 @@ const renderCropRequests = (data) => {
       data.forEach((element) => {
         let row = `
             <div class="crop-request-card p-3 px-4 mb-3" id="crop-request-${element.id}" datatype="collapsed">
-                <div class="row clickable" onclick="viewCropRequestResponses(${element.id})">
+                <div class="row clickable" onclick="viewCropRequests(${element.id})">
                     <div class="col-1">
                         <div class="image-window">
                             <img alt="Image" height="100%" width="100%"
@@ -171,6 +171,31 @@ const renderResponses = (node, data) => {
   }
   node.innerHTML = output;
 }
+
+const renderExpandedSection = (element) => `
+    <div class="row">
+        <div class="col-12 pt-2 mb-2 expanded-section">
+            <div class="row mt-1 mb-3">
+                <div class="col-12">
+                    ${renderResponseInfoLine(element)}
+                </div>
+
+            </div>
+
+            <div class="row mb-1">
+                <div class="col-12">
+                    <hr/>
+                </div>
+            </div>
+
+            <div class="request-responses-card row px-3 mt-3 mb-2 pb-1">
+                <div class="col-12 text-center text-primary-light pb-3 pt-1 fs-4"><h3>Responses</h3></div>
+                <div class="col-12 request-responses-list">
+                    ${renderMessageCard("Loading...")}
+                </div>
+            </div>
+        </div>
+    </div>`;
 
 const requestList = document.querySelector("#crop-requests");
 
