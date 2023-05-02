@@ -24,7 +24,7 @@ include APP_ROOT . "/views/inc/components/Header.php";
                     <div class="container-fluid px-2">
                         <div class="row px-1 pt-1 justify-content-space-between">
                             <div class="col-6">
-                                <h1 class="title">Sales</h1>
+                                <h1 class="title">My Orders</h1>
                             </div>
                         </div>
                         <div class="row px-1 pt-2">
@@ -35,78 +35,42 @@ include APP_ROOT . "/views/inc/components/Header.php";
                                     <tr class="row">
                                         <th class="col-2">Order ID</th>
                                         <th class="col-2">Products</th>
-                                        <th class="col-2">Order Date</th>
+                                        <th class="col-2">Order Date/Time</th>
                                         <th class="col-2">Order Total</th>
                                         <th class="col-2">Status</th>
+                                        <th class="col-2">
+                                        </th>
                                         <th class="col-2"></th>
                                     </tr>
                                     </thead>
+
+
                                     <tbody>
+                                    <?php
+                                    foreach ($this->data as $orderEntry) {
+                                        ?>
                                         <tr class="row">
-                                            <td class="col-2">1</td>
-                                            <td class="col-2 d-inline-flex justify-content-center">
-                                                <?php echo '<div class="mb-1">
-                                    ' . '<img alt="Product image" height="100%"
-                                                width="100%" src="' . URL_ROOT .
-                                                    '/public/img/products/hair_care_cool.jpg">' . '
-                                    </div>'
-                                                ?>
-                                                <?php echo '<div class="mb-1">
-                                    ' . '<img alt="Product image" height="100%"
-                                                width="100%" src="' . URL_ROOT .
-                                                    '/public/img/products/coconut_oil.jpg">' . '
-                                    </div>'
-                                                ?>
-                                                <?php echo '<div class="mb-1">
-                                    ' . '<img alt="Product image" height="100%"
-                                                width="100%" src="' . URL_ROOT .
-                                                    '/public/img/products/hanging-bowl.jpg">' . '
-                                    </div>'
-                                                ?>
-                                            </td>
-                                            <td class="col-2">12-01-2023</td>
-                                            <td class="col-2">4200.00</td>
-                                            <td class="col-2">Pending</td>
-                                            <td class="col-2 pr-3">
-                                                <div class="row align-items-center justify-content-center gap-1">
-                                                    <a href='orders/viewOrderDetails/'
-                                                       class="btn-xs btn-outlined-primary-dark text-center">
-                                                        View Details
-                                                    </a>
-                                                </div>
-                                            </td>
+<!--                                            <td class="col-1">-->
+<!--                                                --><?php //echo $orderEntry->id . '">' . '
+//                                            </div>' ?><!--</td>-->
+                                            <td class="col-2"><?php echo $orderEntry->order_id; ?></td>
+                                            <td class="col-2"><?php foreach ($this->data_1 as $orderEntry_2) {
+                                                echo '     ' . '<img alt="Product image" height="18%" width="18%"
+                                                             src="' . URL_ROOT .
+                                                '/public/img/products/' . $orderEntry_2->product_img . '">';
+                                                              } ?></td>
+                                            <td class="col-2"><?php echo $orderEntry->date_time; ?></td>
+                                            <td class="col-2"><?php echo $orderEntry->total_cost; ?></td>
+                                            <td class="col-2"><?php echo $orderEntry->status; ?></td>
+                                            <td class="col-2"><a class="btn-outlined-tertiary "
+                                                                 href=<?php echo "./marketplace/"?>>
+                                                    View details
+                                                </a></td>
                                         </tr>
-                                        <tr class="row">
-                                            <td class="col-2">2</td>
-                                            <td class="col-2 d-inline-flex justify-content-center">
-                                                <?php echo '<div class="mb-1">
-                                    ' . '<img alt="Product image" height="100%"
-                                                width="100%" src="' . URL_ROOT . '/public/img/products/fadna.jpg">' . '
-                                    </div>'
-                                                ?>
-                                                <?php echo '<div class="mb-1">
-                                    ' . '<img alt="Product image" height="100%"
-                                                width="100%" src="' . URL_ROOT . '/public/img/products/fadna.jpg">' . '
-                                    </div>'
-                                                ?>
-                                                <?php echo '<div class="mb-1">
-                                    ' . '<img alt="Product image" height="100%"
-                                                width="100%" src="' . URL_ROOT . '/public/img/products/sumudu.jpg">' . '
-                                    </div>'
-                                                ?>
-                                            </td>
-                                            <td class="col-2">31-12-2023</td>
-                                            <td class="col-2">400.00</td>
-                                            <td class="col-2">Pending</td>
-                                            <td class="col-2 pr-3">
-                                                <div class="row align-items-center justify-content-center gap-1">
-                                                    <a href='orders/viewOrderDetails/'
-                                                       class="btn-xs btn-outlined-primary-dark text-center">
-                                                        View Details
-                                                    </a>
-                                                </div>
-                                            </td>
-                                        </tr>
+
+                                        <?php
+                                    }
+                                    ?>
                                     </tbody>
                                     <tfoot>
                                     <tr class="row justify-content-end pagination">
