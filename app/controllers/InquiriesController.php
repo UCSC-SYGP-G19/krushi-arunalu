@@ -33,12 +33,11 @@ class InquiriesController extends Controller
             "inquiryId" => $inquiryId
         ]);
 
-        if ($this->model->addInquiryResponseToDb()){
+        if ($this->model->addInquiryResponseToDb()) {
             http_response_code(200);
             $this->sendArrayAsJson(["Message" => "Successfully Added to DB"]);
             return true;
-        }
-        else{
+        } else {
             http_response_code(500);
             return false;
         }

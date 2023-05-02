@@ -24,8 +24,7 @@ class Producer extends RegisteredUser
         $password = null,
         private ?string $nicNumber = null,
         private ?int $district = null,
-    )
-    {
+    ) {
         parent::__construct($id, $role, $name, $address, $lastLogin, $imageUrl, $email, $contactNo, $password);
     }
 

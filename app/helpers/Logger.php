@@ -22,7 +22,7 @@ class Logger
             $dt = new DateTime("now", new DateTimeZone($tz)); // first argument "must" be a string
             $dt->setTimestamp($timestamp); // adjust the object to correct timestamp
 
-            $filePath = '../logs/' . $dt->format('Y-m-d') . '.log';
+            $filePath = dirname(__DIR__, 2) . '/logs/' . $dt->format('Y-m-d') . '.log';
             if (file_exists($filePath)) {
                 $file = fopen($filePath, 'a');
             } else {

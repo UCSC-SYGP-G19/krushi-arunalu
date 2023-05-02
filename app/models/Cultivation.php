@@ -13,15 +13,14 @@ use app\core\Model;
 class Cultivation extends Model
 {
     public function __construct(
-        private ?int    $id = null,
-        private ?int    $cropId = null,
-        private ?int    $landId = null,
+        private ?int $id = null,
+        private ?int $cropId = null,
+        private ?int $landId = null,
         private ?string $cultivatedDate = null,
-        private ?float  $cultivatedQuantity = null,
+        private ?float $cultivatedQuantity = null,
         private ?string $status = null,
         private ?string $expectedHarvestDate = null,
-    )
-    {
+    ) {
     }
 
     public static function getByIdFromDB($cultivationId): ?object

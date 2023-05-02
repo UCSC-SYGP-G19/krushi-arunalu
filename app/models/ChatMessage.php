@@ -2,24 +2,23 @@
 
 /**
  * @file
- * Model to represent the Chat table in the database
- * Contains both attributes and methods related to the Chat entity
+ * Model to represent the ChatMessage table in the database
+ * Contains both attributes and methods related to the ChatMessage entity
  */
 
 namespace app\models;
 
 use app\core\Model;
 
-class Chat extends Model
+class ChatMessage extends Model
 {
     public function __construct(
-        private ?int    $id = null,
-        private ?int    $receiverId = null,
-        private ?int    $senderId = null,
+        private ?int $id = null,
+        private ?int $senderId = null,
+        private ?int $receiverId = null,
         private ?string $sentDateTime = null,
         private ?string $message = null,
-    )
-    {
+    ) {
     }
 
     public function getChatList($userId): array
@@ -72,7 +71,7 @@ class Chat extends Model
     {
         return $this->runQuery("SELECT
             message, receiver_id, sender_id,
-            TIME(sent_date_time) AS 'sent_time'
+            sent_date_time
             FROM chat_message
             WHERE (sender_id = ? AND
                     receiver_id = ?) OR 

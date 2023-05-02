@@ -20,19 +20,19 @@ class ChatController extends Controller
 
     public function getChatListAsJson(): void
     {
-        $this->loadModel('Chat');
+        $this->loadModel('ChatMessage');
         $this->sendArrayAsJson($this->model->getChatList(Session::getSession()->id));
     }
 
     public function getChatDetailsAsJson($producerId): void
     {
-        $this->loadModel('Chat');
+        $this->loadModel('ChatMessage');
         $this->sendObjectAsJson($this->model->getDetailsByProducerId($producerId));
     }
 
     public function sendMessage($receiverId): bool
     {
-        $this->loadModel('Chat');
+        $this->loadModel('ChatMessage');
 
         $this->model->fillData([
             "receiverId" => $receiverId,
@@ -52,13 +52,13 @@ class ChatController extends Controller
 
     public function getMessagesAsJson($receiverId): void
     {
-        $this->loadModel('Chat');
+        $this->loadModel('ChatMessage');
         $this->sendArrayAsJson($this->model->getMessagesFromDb($receiverId, Session::getSession()->id));
     }
 
     public function getLastMessageAsJson(): void
     {
-        $this->loadModel('Chat');
+        $this->loadModel('ChatMessage');
         $this->sendArrayAsJson($this->model->getLastMessageFromDb(Session::getSession()->id));
     }
 }

@@ -1,7 +1,8 @@
 <?php
 
-include APP_ROOT . "/views/inc/components/Header.php";
+use app\helpers\Session;
 
+include APP_ROOT . "/views/inc/components/Header.php";
 ?>
     <body class="overflow-hidden full-height">
     <div class="content-with-sidebar">
@@ -18,28 +19,28 @@ include APP_ROOT . "/views/inc/components/Header.php";
 
                                 <!--Upper Part-->
                                 <div class="col-12 header-row d-flex">
-                                    <div class="chat-title-wrapper col-3">
+                                    <div class="chat-title-wrapper col-4 col-3-lg">
                                         <div class="py-2 pl-3 justify-content-space-between">
                                             <h2 class="chat-title">Chats</h2>
                                         </div>
                                     </div>
 
                                     <!--                                Chat Header-->
-                                    <div class="chat-header col-9 row py-1 px-1 d-flex" id="chat-header">
+                                    <div class="chat-header col-8 col-9-lg row py-1 px-1 d-flex" id="chat-header">
                                     </div>
                                 </div>
 
                                 <!--                            Bottom Part-->
                                 <div class="col-12 d-flex bottom-row">
                                     <!--                                Chat List-->
-                                    <div class="col-3">
+                                    <div class="col-4 col-3-lg">
                                         <div class="search-bar p-2" id="search-bar">
                                         </div>
                                         <div class="chat-list" id="chat-list">
                                         </div>
                                     </div>
 
-                                    <div class="chat-background col-9" id="chat-background">
+                                    <div class="chat-background col-8 col-9-lg" id="chat-background">
                                         <div class="chat px-3 py-2" id="chat">
                                             <div class="align-items-center justify-content-center d-flex min-h-100">
                                                 <?php echo '<img alt="Background Image" class="chat-bg-image"
@@ -63,6 +64,11 @@ include APP_ROOT . "/views/inc/components/Header.php";
         </main>
 
     </div>
+
+    <script>
+      // This is the user's temporary hash. It is used to identify the user in realtime chats that use WebSockets.
+      const userTempHash = '<?php echo Session::getSession()->temp_hash ?>';
+    </script>
     <script src="<?php echo URL_ROOT ?>/public/js/chat.js" defer></script>
     </body>
 <?php
