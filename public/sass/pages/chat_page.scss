@@ -6,6 +6,7 @@
   max-width: 1320px;
   box-shadow: 0 2px 32px rgba(0, 0, 0, 0.05) !important;
   border-radius: $base-border-radius;
+  scroll-behavior: smooth;
 
   .header-row {
     max-height: 7vh;
@@ -39,7 +40,7 @@
         height: 100%;
 
         img {
-          padding-top: 4px;
+          padding-top: 6px;
           margin: auto;
           display: inherit;
         }
@@ -54,6 +55,7 @@
       border-right: 0.5px solid darken($background-grey, 10%);
       border-radius: 0 0 0 $base-border-radius;
       overflow-y: auto;
+      scroll-behavior: smooth;
       height: 68vh;
 
       .chat-card {
@@ -62,6 +64,10 @@
 
         &:hover {
           background-color: $selected-green-light;
+        }
+
+        &.active {
+          background-color: darken($background-grey, 10%);
         }
 
         .chat-avatar {
@@ -111,21 +117,32 @@
         min-height: 67vh;
 
         .chat-msg-sent, .chat-msg-received {
+          //padding-top: 0.5px;
+          text-align: left;
           width: fit-content;
-          word-break: break-all;
-          max-width: 40%;
+          word-break: break-word;
+          max-width: 60%;
 
           .sent-time {
-            font-size: $font-size-sm*1.1;
+            font-size: $font-size-sm*0.9;
+            font-weight: lighter;
           }
         }
 
+        .chat-msg-sent {
+          margin-left: auto;
+        }
+
         .chat-msg-received {
+          margin-right: auto;
+        }
+
+        .chat-msg-received > div {
           background-color: $background-grey;
           border-radius: 0 $base-border-radius $base-border-radius $base-border-radius;
         }
 
-        .chat-msg-sent {
+        .chat-msg-sent > div {
           background-color: $selected-green-light;
           border-radius: $base-border-radius $base-border-radius 0 $base-border-radius;
         }

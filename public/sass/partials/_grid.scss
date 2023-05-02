@@ -88,18 +88,20 @@ $align_values: (flex-start, center, flex-end, stretch, baseline);
   }
 }
 
-@include xs {
-  @for $i from 1 through $grid-columns {
-    .col-#{$i}-xs {
-      flex: 0 0 (100% / $grid-columns) * $i;
-    }
-  }
-}
+//@include xs {
+//  @for $i from 1 through $grid-columns {
+//    .col-#{$i}-xs {
+//      flex: 0 0 (100% / $grid-columns) * $i;
+//      max-width: (100% / $grid-columns) * $i;
+//    }
+//  }
+//}
 
 @include sm {
   @for $i from 1 through $grid-columns {
     .col-#{$i}-sm {
       flex: 0 0 (100% / $grid-columns) * $i;
+      max-width: (100% / $grid-columns) * $i;
     }
   }
 }
@@ -108,6 +110,7 @@ $align_values: (flex-start, center, flex-end, stretch, baseline);
   @for $i from 1 through $grid-columns {
     .col-#{$i}-md {
       flex: 0 0 (100% / $grid-columns) * $i;
+      max-width: (100% / $grid-columns) * $i;
     }
   }
 }
@@ -116,6 +119,7 @@ $align_values: (flex-start, center, flex-end, stretch, baseline);
   @for $i from 1 through $grid-columns {
     .col-#{$i}-lg {
       flex: 0 0 (100% / $grid-columns) * $i;
+      max-width: (100% / $grid-columns) * $i;
     }
   }
 }
@@ -124,6 +128,7 @@ $align_values: (flex-start, center, flex-end, stretch, baseline);
   @for $i from 1 through $grid-columns {
     .col-#{$i}-xl {
       flex: 0 0 (100% / $grid-columns) * $i;
+      max-width: (100% / $grid-columns) * $i;
     }
   }
 }
