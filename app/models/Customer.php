@@ -10,7 +10,7 @@ namespace app\models;
 
 use app\core\Model;
 
-class Customer extends Model
+class Customer extends RegisteredUser
 {
     public function __construct(
         private ?int $id = null,
