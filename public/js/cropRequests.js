@@ -2,77 +2,77 @@ let cropRequestsList = null;
 let myResponsesList = null;
 
 const fetchCropRequests = async () => {
-  const res = await fetch(`${URL_ROOT}/producerCropRequests/getRequestsAsJson`);
-  if (res.status === 200) {
-    cropRequestsList = await res.json();
-    console.log(cropRequestsList);
-  }
+    const res = await fetch(`${URL_ROOT}/producerCropRequests/getRequestsAsJson`);
+    if (res.status === 200) {
+        cropRequestsList = await res.json();
+        console.log(cropRequestsList);
+    }
 }
 
 const fetchMyResponses = async (cropRequestId) => {
-  const res = await fetch(`${URL_ROOT}/producerCropRequests/getMyResponsesAsJson/` + cropRequestId);
-  if (res.status === 200) {
-    myResponsesList[cropRequestId] = await res.json();
-    console.log(myResponsesList);
-  }
+    const res = await fetch(`${URL_ROOT}/producerCropRequests/getMyResponsesAsJson/` + cropRequestId);
+    if (res.status === 200) {
+        myResponsesList[cropRequestId] = await res.json();
+        console.log(myResponsesList);
+    }
 }
 
 const fetchAndRenderMyResponses = async (cropRequestId) => {
-  const responsesListNode = document.querySelector(`#crop-request-${cropRequestId}`).querySelector('.request-responses-list');
-  if (myResponsesList == null) {
-    myResponsesList = {};
-  }
-  if (!(cropRequestId in myResponsesList)) {
-    await fetchMyResponses(cropRequestId);
-  }
-  renderMyResponses(responsesListNode, myResponsesList[cropRequestId]);
+    const responsesListNode = document.querySelector(`#crop-request-${cropRequestId}`).querySelector('.request-responses-list');
+    if (myResponsesList == null) {
+        myResponsesList = {};
+    }
+    if (!(cropRequestId in myResponsesList)) {
+        await fetchMyResponses(cropRequestId);
+    }
+    renderMyResponses(responsesListNode, myResponsesList[cropRequestId]);
 }
 
 const handleResponseEditClick = (requestId, responseId) => {
-  const requestNode = document.querySelector(`#crop-request-${requestId}`)
-  const responseNode = requestNode.querySelector(`#response-${responseId}`);
-  requestNode.querySelectorAll(".edit-button").forEach((button) => button.disabled = false);
-  responseNode.querySelector(".edit-button").disabled = true;
-  requestNode.querySelector("form").action = `${URL_ROOT}/producerCropRequests/updateMyResponse/${responseId}`;
-
-  const responseData = myResponsesList[requestId].find((response) => response.response_id === responseId);
-  requestNode.querySelector(`#accepted_quantity_${requestId}`).value = responseData.accepted_quantity;
-  requestNode.querySelector(`#accepted_price_${requestId}`).value = responseData.accepted_price;
-  requestNode.querySelector(`#accepted_delivery_date_${requestId}`).value = responseData.accepted_delivery_date;
-  requestNode.querySelector(`#remarks_${requestId}`).value = responseData.remarks;
-  requestNode.querySelector("button[type='submit']").value = "Update";
-  requestNode.querySelector("button[type='submit']").innerText = "Update response";
-
-  requestNode.querySelector("button[type='reset']").addEventListener("click", () => {
-    requestNode.querySelector("form").action = `${URL_ROOT}/producerCropRequests/addResponse/${requestId}`;
-    requestNode.querySelector("button[type='submit']").value = "Submit";
-    requestNode.querySelector("button[type='submit']").innerText = "Submit response";
+    const requestNode = document.querySelector(`#crop-request-${requestId}`)
+    const responseNode = requestNode.querySelector(`#response-${responseId}`);
     requestNode.querySelectorAll(".edit-button").forEach((button) => button.disabled = false);
-    requestNode.querySelector("button[type='reset']").removeEventListener("click", () => {
+    responseNode.querySelector(".edit-button").disabled = true;
+    requestNode.querySelector("form").action = `${URL_ROOT}/producerCropRequests/updateMyResponse/${responseId}`;
+
+    const responseData = myResponsesList[requestId].find((response) => response.response_id === responseId);
+    requestNode.querySelector(`#accepted_quantity_${requestId}`).value = responseData.accepted_quantity;
+    requestNode.querySelector(`#accepted_price_${requestId}`).value = responseData.accepted_price;
+    requestNode.querySelector(`#accepted_delivery_date_${requestId}`).value = responseData.accepted_delivery_date;
+    requestNode.querySelector(`#remarks_${requestId}`).value = responseData.remarks;
+    requestNode.querySelector("button[type='submit']").value = "Update";
+    requestNode.querySelector("button[type='submit']").innerText = "Update response";
+
+    requestNode.querySelector("button[type='reset']").addEventListener("click", () => {
+        requestNode.querySelector("form").action = `${URL_ROOT}/producerCropRequests/addResponse/${requestId}`;
+        requestNode.querySelector("button[type='submit']").value = "Submit";
+        requestNode.querySelector("button[type='submit']").innerText = "Submit response";
+        requestNode.querySelectorAll(".edit-button").forEach((button) => button.disabled = false);
+        requestNode.querySelector("button[type='reset']").removeEventListener("click", () => {
+        });
     });
-  });
 }
 
 const handleResponseDeleteClick = async (responseId) => {
-  window.location.href = `${URL_ROOT}/producerCropRequests/deleteMyResponse/${responseId}`;
-  // const res = await fetch(`${URL_ROOT}/producer-crop-requests/delete-my-response/` + responseId);
-  // if (res.status === 200) {
-  //   const responseNode = document.querySelector(`#response-${responseId}`);
-  //   responseNode.remove();
-  // } else {
-  //   alert("Error deleting response");
-  // }
+    window.location.href = `${URL_ROOT}/producerCropRequests/deleteMyResponse/${responseId}`;
+    // const res = await fetch(`${URL_ROOT}/producer-crop-requests/delete-my-response/` + responseId);
+    // if (res.status === 200) {
+    //   const responseNode = document.querySelector(`#response-${responseId}`);
+    //   responseNode.remove();
+    // } else {
+    //   alert("Error deleting response");
+    // }
 }
 
 const renderCropRequests = (data) => {
-  let output = "";
+    let output = "";
 
-  if (data != null) {
-    if (data.length === 0) {
-      output = renderMessageCard("No crop requests to show");
-    } else {
-      data.forEach((element) => {
-        let row = `
+    if (data != null) {
+        if (data.length === 0) {
+            output = renderMessageCard("No crop requests to show");
+        } else {
+            data.forEach((element) => {
+                let row = `
             <div class="crop-request-card p-3 px-4 mb-3" id="crop-request-${element.id}" datatype="collapsed">
                 <div class="row clickable" onClick="handleCropRequestClick(${element.id})">
                     <div class="col-1">
@@ -116,24 +116,24 @@ const renderCropRequests = (data) => {
                 </div>
             </div>
         `;
-        output += row;
-      });
+                output += row;
+            });
+        }
+    } else {
+        output = renderMessageCard("Error fetching data");
     }
-  } else {
-    output = renderMessageCard("Error fetching data");
-  }
-  requestsList.innerHTML = output;
+    requestsList.innerHTML = output;
 }
 
 const renderMyResponses = (node, data) => {
-  let output = "";
+    let output = "";
 
-  if (data != null) {
-    if (data.length === 0) {
-      output = renderMessageCard("No responses to show");
-    } else {
-      data.forEach((element) => {
-        let row = `
+    if (data != null) {
+        if (data.length === 0) {
+            output = renderMessageCard("No responses to show");
+        } else {
+            data.forEach((element) => {
+                let row = `
             <div class="row mb-3 mt-1 px-2">
                 <div class="col-1 user-profile-pic text-center pr-3">
                     <img src="${URL_ROOT}/public/img/icons/navbar/user-avatar.webp"
@@ -178,13 +178,13 @@ const renderMyResponses = (node, data) => {
                 </div>
             </div>
         `;
-        output += row;
-      });
+                output += row;
+            });
+        }
+    } else {
+        output = renderMessageCard("Error fetching data");
     }
-  } else {
-    output = renderMessageCard("Error fetching data");
-  }
-  node.innerHTML = output;
+    node.innerHTML = output;
 }
 
 const renderPricesLine = (element) => `
@@ -197,7 +197,8 @@ const renderResponseInfoLine = (element) => `
     <div class="fs-3"><span
             class="text-primary-light fw-bold pr-1">${element.response_count} response${element.response_count !== 1 ? "s" : ""} - </span>
         <span class="badge badge-light-green text-black fw-bold px-2 mt-0 mb-1">
-                                        ${element.fulfilled_quantity} KG fulfilled / ${element.required_quantity} KG required</span>
+            ${element.fulfilled_quantity} KG fulfilled / ${element.required_quantity} KG required
+        </span>
     </div>`;
 const renderExpandedSection = (element) => `
     <div class="row">
@@ -275,26 +276,26 @@ const renderExpandedSection = (element) => `
     </div>`;
 
 const handleCropRequestClick = (e) => {
-  console.log(e);
-  const cropRequestCard = document.querySelector(`#crop-request-${e}`);
-  if (cropRequestCard.getAttribute("datatype") === "collapsed") {
-    cropRequestCard.setAttribute("datatype", "expanded");
-    const currentCropRequest = cropRequestsList.find(r => r.id === e);
-    cropRequestCard.querySelector(".third-line").innerHTML = renderPricesLine(currentCropRequest);
-    cropRequestCard.innerHTML += renderExpandedSection(currentCropRequest);
-    fetchAndRenderMyResponses(e);
-  } else {
-    cropRequestCard.setAttribute("datatype", "collapsed");
-    cropRequestCard.querySelector(".third-line").innerHTML = renderResponseInfoLine(cropRequestsList.find(r => r.id === e));
-    cropRequestCard.querySelector(".expanded-section").remove();
-  }
+    console.log(e);
+    const cropRequestCard = document.querySelector(`#crop-request-${e}`);
+    if (cropRequestCard.getAttribute("datatype") === "collapsed") {
+        cropRequestCard.setAttribute("datatype", "expanded");
+        const currentCropRequest = cropRequestsList.find(r => r.id === e);
+        cropRequestCard.querySelector(".third-line").innerHTML = renderPricesLine(currentCropRequest);
+        cropRequestCard.innerHTML += renderExpandedSection(currentCropRequest);
+        fetchAndRenderMyResponses(e);
+    } else {
+        cropRequestCard.setAttribute("datatype", "collapsed");
+        cropRequestCard.querySelector(".third-line").innerHTML = renderResponseInfoLine(cropRequestsList.find(r => r.id === e));
+        cropRequestCard.querySelector(".expanded-section").remove();
+    }
 }
 
 const requestsList = document.querySelector("#crop-requests-list");
 
 document.addEventListener("DOMContentLoaded", () => {
-  requestsList.innerHTML = renderMessageCard("Loading");
-  fetchCropRequests().then(r => {
-    renderCropRequests(cropRequestsList);
-  })
+    requestsList.innerHTML = renderMessageCard("Loading");
+    fetchCropRequests().then(r => {
+        renderCropRequests(cropRequestsList);
+    })
 });

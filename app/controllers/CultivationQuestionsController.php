@@ -2,7 +2,7 @@
 
 /**
  * @file
- * Controller which handles cultivation questions of Producers
+ * Controller which handles cultivation questions and responses of Producers and agriOfficer
  */
 
 namespace app\controllers;
@@ -12,19 +12,22 @@ use app\helpers\Logger;
 use app\helpers\Session;
 use app\helpers\Util;
 use app\models\CultivationQuestion;
+use app\models\CultivationQuestionResponse;
 use Exception;
 
 class CultivationQuestionsController extends Controller
 {
     public string $base = URL_ROOT . "/cultivation-questions";
+    public string $responseDirect = URL_ROOT . "/cultivation-questions/Details";
 
 
     public function index(): void
     {
         if (Session::getSession()->role === "Producer") {
             $this->loadView('Producer/CultivationQuestionsPage', 'Cultivation questions', 'cultivation-questions');
-        } else {
-            $this->loadView('AgriOfficer/CultivationQuestionsPage', 'Cultivation questions', 'cultivation-questions');    //loading AgriOfficer's cultivation-question page page.
+        } //loading AgriOfficer's cultivation-question page.
+        else {
+            $this->loadView('AgriOfficer/CultivationQuestionsPage', 'Cultivation questions', 'cultivation-questions');
         }
 
         $this->loadModel('CultivationQuestion');
@@ -107,8 +110,14 @@ class CultivationQuestionsController extends Controller
                 'cultivation-questions'
             );
         }
-
+        //storing data of model->cultivationQuestion class->getByIdFromDB static_method in the data["questionDetails"]
         $this->view->data["questionDetails"] = CultivationQuestion::getByIdFromDB($questionId);
+
+        if (Session::getSession()->role === "Agri Officer") {
+            //storing data of model->cultivationQuestion class->getByIdFromDB static_method in the data["questionDetails"]
+            $this->view->data["questionResponses"] = CultivationQuestionResponse::getByIdFromDB($questionId);
+        }
+
         $this->view->render();
     }
 
@@ -172,19 +181,83 @@ class CultivationQuestionsController extends Controller
         } catch (Exception $e) {
             Logger::log("ERROR", $e->getMessage());
         }
-
-        Util::redirect($this->base);
     }
 
-    public function response($questionId): void
+    public function respond($questionId): void
+    {
+        $this->loadModel("CultivationQuestionResponse");
+        //First you need to call this fillData() method and pass the key value pair as parameters
+        $this->model->fillData([
+            'questionId' => $questionId,
+            'agriOfficerId' => Session::getSession()->id,
+            'content' => $_POST['response-input']
+        ]);
+        //Secondly call the addToDB() function
+        $this->model->addToDB();
+        $responseDirect = URL_ROOT . "/cultivation-questions/Details/" . $questionId;
+        Util::redirect($responseDirect);
+    }
+
+    public function deleteResponse($responseId): void
+    {
+        $this->loadModel("CultivationQuestionResponse");
+        $this->model->fillData([
+            'id' => (int)$responseId,
+        ]);
+        try {
+            $this->model->deleteFromDB();
+//            if ($this->model->image) {
+//                unlink(UPLOADS_ROOT . '/cultivation-questions/' . $this->model->image);
+//            }
+        } catch (Exception $e) {
+            Logger::log("ERROR", $e->getMessage());
+        }
+        //$_SERVER['HTTP_REFERER'] use to redirect previous page.
+        Util::redirect($_SERVER['HTTP_REFERER']);
+    }
+//    public function respond($questionId): void
+//    {
+//        $this->loadView(
+//            'AgriOfficer/CultivationQuestionDetailsPage',
+//            'Question details',
+//            'cultivation-questions'
+//        );
+//        $this->view->data["questionResponses"] = CultivationQuestionResponse::getByIdFromDB($questionId);
+//
+//        echo($_POST['response-input']);
+//
+//
+//        if ($_SERVER["REQUEST_METHOD"] === "POST") {
+//            $required_fields = ["content"];
+//            $this->validateFields($required_fields);
+//
+//            if (!empty($this->view->fieldErrors)) {
+//                $this->refillValuesAndShowError();
+//                $this->view->render();
+//                return;
+//            }
+//
+//            $this->loadModel("CultivationQuestionResponse");
+//            $this->model->addToDB([
+//                'question_id' => (int)$questionId,
+//                'agri_officer_id' => Session::getSession()->id,
+//                'content' => $_POST['response-input']
+//            ]);
+//
+////            if ($this->model->addToDB()) {
+////                Util::redirect($this->base);
+////            }
+//        }
+//        $this->view->render();
+//    }
+
+    public function editResponse($responseId): void
     {
         $this->loadView(
             'AgriOfficer/CultivationQuestionResponsePage',
             'Responses',
             'cultivation-questions'
         );
-        $this->view->data["questionDetails"] = CultivationQuestion::getByIdFromDB($questionId);
-
         if ($_SERVER["REQUEST_METHOD"] === "POST") {
             $required_fields = ["content"];
             $this->validateFields($required_fields);
@@ -197,7 +270,7 @@ class CultivationQuestionsController extends Controller
 
             $this->loadModel("CultivationQuestionResponse");
             $this->model->fillData([
-                'question_id' => (int)$questionId,
+                'response_id' => (int)$responseId,
                 'agri_officer_id' => Session::getSession()->id,
                 'content' => $_POST['content'],
             ]);
@@ -208,4 +281,10 @@ class CultivationQuestionsController extends Controller
         }
         $this->view->render();
     }
+
+//    public function getResponsesAsJson($responseID): void
+//    {
+//        $this->loadModel("CultivationQuestionResponse");
+//        $this->sendJson($this->model->getResponseContent($responseID));
+//    }
 }
