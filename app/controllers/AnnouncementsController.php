@@ -75,6 +75,8 @@ class AnnouncementsController extends Controller
         $this->view->data = $this->model->getByAnnouncementId($announcementId);
 
         if ($_SERVER["REQUEST_METHOD"] === "POST") {
+            $required_fields = ["announcement_title", "announcement_content"];
+            $this->validateFields($required_fields);
             if (!empty($this->view->fieldErrors)) {
                 $this->refillValuesAndShowError();
                 $this->view->render();
