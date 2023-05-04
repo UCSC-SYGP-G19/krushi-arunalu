@@ -1,47 +1,107 @@
-const getDateTimeWithTimezone = () => {
-  let dt = new Date();
-  dt = new Date(dt.setMinutes(dt.getMinutes() - dt.getTimezoneOffset()));
-  return dt.toISOString().slice(0, 19).replace('T', ' ');
+const getDateTimeWithTimezone = (dtString) => {
+  let dt = new Date(dtString);
+  dt.setMinutes(dt.getMinutes() - dt.getTimezoneOffset());
+
+  let year = dt.getFullYear();
+  let month = dt.getMonth() + 1;
+  let day = dt.getDate();
+  let hour = dt.getHours();
+  let minute = dt.getMinutes();
+  let second = dt.getSeconds();
+
+  if (month < 10) {
+    month = `0${month}`;
+  }
+
+  if (day < 10) {
+    day = '0' + day;
+  }
+
+  if (hour < 10) {
+    hour = `0${hour}`;
+  }
+
+  if (minute < 10) {
+    minute = `0${minute}`;
+  }
+
+  if (second < 10) {
+    second = `0${second}`;
+  }
+
+  return `${year}-${month}-${day} ${hour}:${minute}:${second}`;
+
+  // return dt.toISOString().slice(0, 19).replace('T', ' ');
+  // dt.toLocaleString([], { hour:"2-digit", minute: "2-digit", second: "2-digit" });
 }
 
 // Realtime chat functionality
 let conn = null;
+
+const handleOnOpenConnection = (e) => {
+  console.log("Websocket connection established!");
+  const initData = {
+    "type": "INIT",
+    // "timestamp": getDateTimeWithTimezone(new Date()),
+    "tempHash": userTempHash,
+  }
+
+  conn.send(JSON.stringify(initData));
+}
+
+const handleOnReceiveMessage = (e) => {
+  {
+    data = JSON.parse(e.data);
+    console.log("Message received!");
+    console.log(data);
+
+    if (data.type === 'WARNING') {
+      Swal.fire({
+        title: "Warning",
+        text: data.message,
+        icon: "warning",
+        confirmButtonText: 'OK'
+      });
+      return;
+    }
+
+    // Render bubble if chat is active
+    if (selectedReceiverId === data.sender_id || selectedReceiverId === data.receiver_id) {
+      chat.innerHTML += generateChatBubble(data, selectedReceiverId);
+      chat.scrollBy(0, chat.scrollHeight);
+    }
+
+    // Update last received message in chat card
+    let chatCard = document.querySelector(`#chat-card-${data.sender_id}`);
+    if (chatCard) {
+      const chatCardParent = chatCard.parentElement;
+      chatCardParent.removeChild(chatCard);
+
+      chatCard.querySelector(".last-message .text-left").innerHTML = data.message;
+      chatCard.querySelector(".last-message .text-right").innerHTML = data.sent_date_time.split(' ')[1].substring(0, 5);
+      chatCardParent.prepend(chatCard);
+    }
+
+    // Update last sent message in chat card
+    chatCard = document.querySelector(`#chat-card-${data.receiver_id}`);
+    if (chatCard) {
+      const chatCardParent = chatCard.parentElement;
+      chatCardParent.removeChild(chatCard);
+
+      chatCard.querySelector(".last-message .text-left").innerHTML = "You: " + data.message;
+      chatCard.querySelector(".last-message .text-right").innerHTML = data.sent_date_time.split(' ')[1].substring(0, 5);
+      chatCardParent.prepend(chatCard);
+    }
+  }
+}
+
 const initWebSocket = () => {
   try {
     conn = new WebSocket(`ws://${window.location.host}:8080`);
 
-    conn.onopen = (e) => {
-      console.log("Websocket connection established!");
-      const initData = {
-        "type": "INIT",
-        "timestamp": getDateTimeWithTimezone(),
-        "tempHash": userTempHash,
-      }
+    conn.onopen = (e) => handleOnOpenConnection(e);
 
-      conn.send(JSON.stringify(initData));
-    };
-
-    conn.onmessage = (e) => {
-      data = JSON.parse(e.data);
-      console.log("Message received!");
-      console.log(data);
-
-      // Render bubble if chat is active
-      if (selectedReceiverId === data.sender_id || selectedReceiverId === data.receiver_id) {
-        chat.innerHTML += generateChatBubble(data, selectedReceiverId);
-        chat.scrollBy(0, chat.scrollHeight);
-      }
-
-      // Update last message in chat card
-      const chatCard = document.querySelector(`#chat-card-${data.sender_id}`);
-      if (chatCard) {
-        const chatCardParent = chatCard.parentElement;
-        chatCardParent.removeChild(chatCard);
-        chatCard.querySelector(".last-message .text-left").innerHTML = data.message;
-        chatCard.querySelector(".last-message .text-right").innerHTML = data.sent_date_time.split(' ')[1].substring(0, 5);
-        chatCardParent.prepend(chatCard);
-      }
-    };
+    conn.onmessage = (e) => handleOnReceiveMessage(e);
 
   } catch (e) {
     alert("Error establishing connection!");
@@ -147,6 +207,13 @@ const renderMessages = (data, receiverId) => {
   let output = "";
 
   data.forEach((element) => {
+    console.log(element.sent_date_time);
+    console.log("Modified");
+    element.sent_date_time = getDateTimeWithTimezone(element.sent_date_time);
+    console.log(element);
+
+    // modifiedElement.sent_date_time = getDateTimeWithTimezone(new Date(element.sent_date_time));
+    // console.log(modifiedElement);
     output += generateChatBubble(element, receiverId);
   });
   chat.innerHTML = output;
@@ -157,9 +224,9 @@ const renderMessages = (data, receiverId) => {
 const renderMessageBox = () => {
   messageBox.classList.add('message-input-box-active');
   messageBox.innerHTML = `
-        <input placeholder="Type a message" id="message-box" required onkeydown="">
+        <input placeholder="Type a message" id="message-box" value="">
         <div class="btn-wrapper pl-2">
-            <button class="btn-send fw-bold py-1 px-2">Send</button>
+            <button class="btn-send fw-bold py-1 px-2" disabled>Send</button>
         </div>
     `;
 }
@@ -167,28 +234,34 @@ const renderMessageBox = () => {
 //Send messages
 
 const sendMessage = async () => {
-  const messageBox = document.querySelector(`#message-box`).querySelector("input");
-  const messageText = messageBox.value
+  const messageBoxInput = messageBox.querySelector("input");
+  const messageText = messageBoxInput.value
+
+  if (messageText === "") {
+    return;
+  }
 
   sendWebSocketMessage({
     "type": "MESSAGE",
-    "sentDateTime": getDateTimeWithTimezone(),
+    // "sentDateTime": getDateTimeWithTimezone(new Date()),
     "tempHash": userTempHash,
     "receiverId": selectedReceiverId,
     "message": messageText
   });
 
-  messageBox.value = "";
+  messageBoxInput.value = "";
 
-  // let formData = new FormData;
-  // formData.append("message", messageText);
-  // const res = await fetch(`${URL_ROOT}/chat/sendMessage/` + receiverId, {
-  //     method: "POST",
-  //     body: formData
-  // });
-  // if (res.status === 200) {
-  //     messageBox.value = "";
-  // }
+  // Add to database
+  let formData = new FormData;
+  formData.append("message", messageText);
+  const res = await fetch(`${URL_ROOT}/chat/saveMessage/` + selectedReceiverId, {
+    method: "POST",
+    body: formData
+  });
+  if (res.status === 200) {
+    console.log("Saved to DB");
+    // messageBoxInput.value = "";
+  }
 }
 
 const viewChat = (id) => {
@@ -209,15 +282,22 @@ const viewChat = (id) => {
                 </svg>
             </div>
             `;
+
     renderMessageBox();
     fetchMessages(id);
-    document.querySelector(".btn-send").addEventListener("click", () => {
+
+    const btnSend = document.querySelector(".btn-send");
+    btnSend.addEventListener("click", () => {
       sendMessage();
     });
-    document.querySelector("#message-box").focus();
-    document.querySelector("#message-box").addEventListener("keydown", (e) => {
+
+    const messageBoxInput = document.querySelector("#message-box input");
+    messageBoxInput.focus();
+    messageBoxInput.addEventListener("keyup", (e) => {
+      btnSend.disabled = !(messageBoxInput.value.length > 0);
       if (e.key === "Enter") {
         sendMessage();
+        btnSend.disabled = true;
       }
     });
   });
@@ -235,9 +315,11 @@ const generateDate = (dateTimeString) => {
   const currentDate = new Date().toLocaleDateString();
 
   if (dateTime.toLocaleDateString() === currentDate) {
-    return dateTime.toLocaleTimeString([], {hour: '2-digit', minute: '2-digit'});
+    // return dateTime.toLocaleTimeString([], {hour: '2-digit', minute: '2-digit'});
+    return dateTimeString.substring(11, 16);
   } else {
-    return dateTime.toLocaleDateString([], {day: '2-digit', month: '2-digit', year: 'numeric'});
+    // return dateTime.toLocaleDateString([], {day: '2-digit', month: '2-digit', year: 'numeric'});
+    return dateTimeString.substring(0, 10);
   }
 
 }
@@ -287,15 +369,16 @@ const renderChatList = (data) => {
   let output = "";
   data.forEach((element) => {
 
-    let sender = null;
+    let sender = "";
 
-        if (element.sender_id === element.id) {
-            sender = element.name + ": ";
-        } else {
-            sender = "You: "
-        }if (element.last_message === null) {
-      element.last_message = "No messages yet";sender = "";
-        }
+    if (element.sender_id !== element.id) {
+      sender = "You: "
+    }
+
+    if (element.last_message === null) {
+      element.last_message = "No messages yet";
+      sender = "";
+    }
 
     let chatBox = `
             <div class="chat-card px-2 py-2 d-flex" onclick="viewChat(${element.id})" id="chat-card-${element.id}">
@@ -308,7 +391,7 @@ const renderChatList = (data) => {
                     <div class="fw-bold user-name">${element.name}</div>
                     <div class="last-message pr-1 text-grey-dark fs-2">
                         <div class="text-left">${sender}${element.last_message}</div>
-                        <div class="text-right">${generateDate(element.sent_date_time)}</div>
+                        <div class="text-right">${generateDate(getDateTimeWithTimezone(element.sent_date_time))}</div>
                     </div>
                 </div>
             </div>
