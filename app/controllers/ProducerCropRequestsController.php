@@ -26,7 +26,7 @@ class ProducerCropRequestsController extends Controller
     public function getRequestsAsJson(): void
     {
         $this->loadModel('CropRequest');
-        $this->sendJson($this->model->getCropRequestsForProducerFromDB(Session::getSession()->id));
+        $this->sendArrayAsJson($this->model->getCropRequestsForProducerFromDB(Session::getSession()->id));
     }
 
     public function addResponse(): void
@@ -51,7 +51,10 @@ class ProducerCropRequestsController extends Controller
     public function getMyResponsesAsJson($cropRequestId): void
     {
         $this->loadModel('CropRequestResponse');
-        $this->sendJson($this->model->getProducerResponsesForRequestFromDB($cropRequestId, Session::getSession()->id));
+        $this->sendArrayAsJson($this->model->getProducerResponsesForRequestFromDB(
+            $cropRequestId,
+            Session::getSession()->id
+        ));
     }
 
     public function updateMyResponse($responseId): void

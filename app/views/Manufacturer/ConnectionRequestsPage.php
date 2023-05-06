@@ -37,12 +37,9 @@ include APP_ROOT . "/views/inc/components/Header.php";
                             <div class="col-12 text-justify">
                                 <br>
                                 <?php
-                                include APP_ROOT . "/views/inc/components/SearchFilterAnd`Sort.php";
+                                include APP_ROOT . "/views/inc/components/SearchFilterAndSort.php";
                                 ?>
-                                <div class="connection-request-wrapper" id="requests-list">
-                                    <div class="text-center py-3">
-                                        <?php echo "Loading" ?>
-                                    </div>
+                                <div class="" id="requests-list">
                                 </div>
                             </div>
                         </div>

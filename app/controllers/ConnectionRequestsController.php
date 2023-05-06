@@ -37,13 +37,13 @@ class ConnectionRequestsController extends Controller
     public function getSentRequestsAsJson(): void
     {
         $this->loadModel('ConnectionRequest');
-        $this->sendJson($this->model->getSentConnectionRequestsFromDB(Session::getSession()->id));
+        $this->sendArrayAsJson($this->model->getSentConnectionRequestsFromDB(Session::getSession()->id));
     }
 
     public function getReceivedRequestsAsJson(): void
     {
         $this->loadModel('ConnectionRequest');
-        $this->sendJson($this->model->getReceivedConnectionRequestsFromDB(Session::getSession()->id));
+        $this->sendArrayAsJson($this->model->getReceivedConnectionRequestsFromDB(Session::getSession()->id));
     }
 
     public function send($receiverId): bool

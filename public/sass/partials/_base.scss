@@ -56,6 +56,10 @@ $properties: (auto, hidden);
 
 }
 
+.avatar {
+  border-radius: 50%;
+}
+
 .order-details-wrapper {
   .order-details-container, .delivery-address, .order-summary{
     background-color: $selected-green-light;

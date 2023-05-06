@@ -117,4 +117,61 @@ class RegisterController extends Controller
             $this->view->error = "Registration failed, please try again";
         }
     }
+
+    public function registerCustomer()
+    {
+        $this->loadView('Customer/RegisterPage', 'Register Customer');
+        if (isset($_POST['registerCustomer'])) {
+            $this->registerAsCustomer();
+        }
+        $this->view->render();
+    }
+
+    private function registerAsCustomer()
+    {
+        $required_fields = ['name', 'contact_no', 'email', 'password', 'confirm_password', 't&c'];
+
+        $this->validateFields($required_fields);
+
+        // Apply custom validations for special fields
+        if (!isset($_POST['t&c'])) {
+            $this->view->fieldErrors['t&c'] = "Please accept the Terms & Conditions";
+        }
+
+        $_POST['email'] = filter_var($_POST['email'], FILTER_VALIDATE_EMAIL);
+        if (!$_POST['email']) {
+            $this->view->fieldErrors['email'] = "Invalid email address";
+        }
+
+        if (isset($_POST['password']) && isset($_POST['confirm_password'])) {
+            if ($_POST['password'] !== $_POST['confirm_password']) {
+                $this->view->fieldErrors['confirm_password'] = "Passwords do not match";
+            }
+        }
+
+        if (!empty($this->view->fieldErrors)) {
+            $this->refillValuesAndShowError();
+            return;
+        }
+        $this->view->fields = $_POST;
+//        $this->view->error = "Invalid user role";
+
+        //fill data to Customer
+        $this->loadModel('Customer');
+        $this->model->fillData([
+            'name' => $_POST['name'],
+            'email' => $_POST['email'],
+            'contactNo' => $_POST['contact_no'],
+            'address' => '',
+            'password' => $_POST['password'],
+        ]);
+        if ($this->model->register()) {
+            $this->view->fields = [];
+            Logger::log("SUCCESS", "Customer registered with email " . $_POST['email']);
+            Util::redirect('./');
+        } else {
+            $this->view->fields = $_POST;
+            $this->view->error = "Registration failed, please try again";
+        }
+    }
 }

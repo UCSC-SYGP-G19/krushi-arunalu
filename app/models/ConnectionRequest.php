@@ -134,7 +134,7 @@ class ConnectionRequest extends Model
         return $this->update(
             table: "connection_request",
             data: [
-                    "status" => "Connected",
+                    "status" => "Accepted",
                 ],
             where: ["id" => $requestId, "receiver_id" => $receiverId],
         ) == 1;
