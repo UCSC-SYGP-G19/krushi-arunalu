@@ -21,7 +21,9 @@ class RegisteredUser extends Model
         private ?string $imageUrl = null,
         private ?string $email = null,
         private ?string $contactNo = null,
-        private ?string $password = null
+        private ?string $password = null,
+        private ?bool $isEmailVerified = null,
+        private ?string $tempHash = null,
     ) {
     }
 
@@ -69,11 +71,46 @@ class RegisteredUser extends Model
         if ($result) {
             $hash = $result->hashed_password;
             if (password_verify($password, $hash)) {
+                $this->updateLastLogin($result->id);
+                $this->updateTempHash($result->id);
+
                 $result->hashed_password = null;
+                $result->temp_hash = $this->runQuery(
+                    "SELECT temp_hash FROM registered_user WHERE id=?",
+                    [$result->id]
+                )->fetch()->temp_hash;
             } else {
                 $result->id = -1;
             }
+
             return $result;
+        }
+        return null;
+    }
+
+    protected function updateLastLogin($userId): bool
+    {
+        return $this->update(
+            table: "registered_user",
+            data: ["last_login" => date("Y-m-d H:i:s")],
+            where: ["id" => $userId]
+        );
+    }
+
+    protected function updateTempHash($userId): bool
+    {
+        return $this->update(
+            table: "registered_user",
+            data: ["temp_hash" => hash("sha256", $userId . date("Y-m-d H:i:s"))],
+            where: ["id" => $userId]
+        );
+    }
+
+    public static function getUserIdByTempHash($tempHash): ?int
+    {
+        $result = Model::select(table: 'registered_user', columns: ['id'], where: ['temp_hash' => $tempHash])->fetch();
+        if ($result) {
+            return $result->id;
         }
         return null;
     }
@@ -220,5 +257,37 @@ class RegisteredUser extends Model
     public function setPassword(?string $password): void
     {
         $this->password = $password;
+    }
+
+    /**
+     * @return bool|null
+     */
+    public function getIsEmailVerified(): ?bool
+    {
+        return $this->isEmailVerified;
+    }
+
+    /**
+     * @param bool|null $isEmailVerified
+     */
+    public function setIsEmailVerified(?bool $isEmailVerified): void
+    {
+        $this->isEmailVerified = $isEmailVerified;
+    }
+
+    /**
+     * @return string|null
+     */
+    public function getTempHash(): ?string
+    {
+        return $this->tempHash;
+    }
+
+    /**
+     * @param string|null $tempHash
+     */
+    public function setTempHash(?string $tempHash): void
+    {
+        $this->tempHash = $tempHash;
     }
 }

@@ -25,19 +25,6 @@ class Land extends Model
     ) {
     }
 
-    public function addToDB(): bool
-    {
-        $result = $this->runQuery(
-            "INSERT into land (owner_id, name, area_in_hectares, address, district, soil_condition, rainfall, 
-                  humidity)
-            VALUES (?,?,?,?,?,?,?,?)",
-            [$this->ownerId, $this->name, $this->areaInHectares, $this->address, $this->district,
-                $this->soilCondition, $this->rainfall, $this->humidity]
-        );
-
-        return $result == true;
-    }
-
     public static function getNamesByOwnerIdFromDB($ownerId): array
     {
         $stmt = Model::select(
@@ -51,6 +38,39 @@ class Land extends Model
         return [];
     }
 
+    public function addToDB(): bool
+    {
+        $result = $this->runQuery(
+            "INSERT into land (owner_id, name, area_in_hectares, address, district, soil_condition, rainfall, 
+                  humidity)
+            VALUES (?,?,?,?,?,?,?,?)",
+            [$this->ownerId, $this->name, $this->areaInHectares, $this->address, $this->district,
+                $this->soilCondition, $this->rainfall, $this->humidity]
+        );
+
+        return $result == true;
+    }
+
+    //Model function of Agri-Officer's Land details.
+
+    public function getAllLandDetailsForAgriOfficers($agriOfficerDistrictID): array
+    {
+        $stmt = Model::select(
+            table: "land",
+            columns: [
+                "land.id",
+                "registered_user.name",
+                "land.address",
+                "land.district",
+                "registered_user.contact_no"],
+            joins: [
+                "registered_user" => "land.id", //left side->table need to be joint and right side->table_name.fk
+                "district" => "land.district"
+            ],
+            where: ["land.district" => $agriOfficerDistrictID]
+        );
+        return [];
+    }
     // Getters and Setters
 
     /**

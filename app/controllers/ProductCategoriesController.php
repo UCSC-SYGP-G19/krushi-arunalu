@@ -24,7 +24,7 @@ class ProductCategoriesController extends Controller
     public function showHiddenCategories(): void
     {
         $this->loadModel("ProductCategory");
-        $this->sendJson($this->model->getHiddenCategoriesFromDB());
+        $this->sendArrayAsJson($this->model->getHiddenCategoriesFromDB());
     }
 
     public function add(): void
