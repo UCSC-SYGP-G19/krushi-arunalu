@@ -2019,7 +2019,7 @@ div.swal2-popup button.swal2-styled.swal2-cancel:focus {
   justify-content: center;
   flex-direction: row;
   row-gap: normal;
-  gap: 5px;
+  gap: 3px;
 }
 
 .marketplace .product-card {

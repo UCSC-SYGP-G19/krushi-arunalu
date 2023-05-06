@@ -142,7 +142,7 @@ include APP_ROOT . "/views/inc/components/Header.php";
 <!--                                    </div>-->
 <!--                                </div>-->
 <!--                            </div>-->
-<!--                        </div>-->
+                        <!--                        </div>-->
                     </div>
                 </div>
             </div>
@@ -151,7 +151,7 @@ include APP_ROOT . "/views/inc/components/Header.php";
             ?>
         </main>
     </div>
-    <script type="module" src="<?php echo URL_ROOT ?>/public/js/Manufacturer/cropRequests.js" defer></script>
+    <script src="<?php echo URL_ROOT ?>/public/js/Manufacturer/cropRequests.js" defer></script>
     </body>
 <?php
 include APP_ROOT . "/views/inc/components/EndingTag.php";
