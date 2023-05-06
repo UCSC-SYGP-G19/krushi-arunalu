@@ -140,36 +140,38 @@ const handleOnReceiveMessage = (e) => {
       return;
     }
 
-    // Render bubble if chat is active
-    if (selectedReceiverId === data.sender_id || selectedReceiverId === data.receiver_id) {
-      if (isSelectedReceiverTyping) {
-        isSelectedReceiverTyping = false;
-        chat.querySelector(".typing-bubble").remove();
+    if(data.type === 'MESSAGE') {
+      // Render bubble if chat is active
+      if (selectedReceiverId === data.sender_id || selectedReceiverId === data.receiver_id) {
+        if (isSelectedReceiverTyping) {
+          isSelectedReceiverTyping = false;
+          chat.querySelector(".typing-bubble").remove();
+        }
+        chat.innerHTML += generateChatBubble(data, selectedReceiverId);
+        chat.scrollBy(0, chat.scrollHeight);
       }
-      chat.innerHTML += generateChatBubble(data, selectedReceiverId);
-      chat.scrollBy(0, chat.scrollHeight);
-    }
 
-    // Update last received message in chat card
-    let chatCard = document.querySelector(`#chat-card-${data.sender_id}`);
-    if (chatCard) {
-      const chatCardParent = chatCard.parentElement;
-      chatCardParent.removeChild(chatCard);
+      // Update last received message in chat card
+      let chatCard = document.querySelector(`#chat-card-${data.sender_id}`);
+      if (chatCard) {
+        const chatCardParent = chatCard.parentElement;
+        chatCardParent.removeChild(chatCard);
 
-      chatCard.querySelector(".last-message .text-left").innerHTML = data.message;
-      chatCard.querySelector(".last-message .text-right").innerHTML = data.sentDateTime.split(' ')[1].substring(0, 5);
-      chatCardParent.prepend(chatCard);
-    }
+        chatCard.querySelector(".last-message .text-left").innerHTML = data.message;
+        chatCard.querySelector(".last-message .text-right").innerHTML = data.sent_date_time.split(' ')[1].substring(0, 5);
+        chatCardParent.prepend(chatCard);
+      }
 
-    // Update last sent message in chat card
-    chatCard = document.querySelector(`#chat-card-${data.receiver_id}`);
-    if (chatCard) {
-      const chatCardParent = chatCard.parentElement;
-      chatCardParent.removeChild(chatCard);
+      // Update last sent message in chat card
+      chatCard = document.querySelector(`#chat-card-${data.receiver_id}`);
+      if (chatCard) {
+        const chatCardParent = chatCard.parentElement;
+        chatCardParent.removeChild(chatCard);
 
-      chatCard.querySelector(".last-message .text-left").innerHTML = "You: " + data.message;
-      chatCard.querySelector(".last-message .text-right").innerHTML = data.sentDateTime.split(' ')[1].substring(0, 5);
-      chatCardParent.prepend(chatCard);
+        chatCard.querySelector(".last-message .text-left").innerHTML = "You: " + data.message;
+        chatCard.querySelector(".last-message .text-right").innerHTML = data.sent_date_time.split(' ')[1].substring(0, 5);
+        chatCardParent.prepend(chatCard);
+      }
     }
   }
 }
@@ -203,7 +205,7 @@ const sendWebSocketMessage = (data) => {
           conn.send(JSON.stringify(data));
           console.log("Message sent!");
         } else {
-          alert("Error sending message, connection not established!");
+          console.log("Error sending message, connection not established!");
         }
       }, 2000);
     } else {
@@ -211,7 +213,7 @@ const sendWebSocketMessage = (data) => {
         conn.send(JSON.stringify(data));
         console.log("Message sent!");
       } else {
-        alert("Error sending message, connection not established!");
+        console.log("Error sending message, connection not established!");
       }
     }
 
@@ -375,7 +377,7 @@ const sendMessage = async () => {
 
   sendWebSocketMessage({
     "type": "MESSAGE",
-    // "sentDateTime": getDateTimeWithTimezone(new Date()),
+    // "sent_date_time": getDateTimeWithTimezone(new Date()),
     "sender_hash": userTempHash,
     "receiver_id": selectedReceiverId,
     "message": messageText

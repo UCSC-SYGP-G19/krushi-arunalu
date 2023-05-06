@@ -179,7 +179,6 @@ class Chat implements MessageComponentInterface
 
         if ($msg['type'] === 'MESSAGE') {
             // Validate the message
-            print_r($msg);
             if (
                 !isset($msg['sender_hash']) ||
                 !isset($msg['receiver_id']) ||
