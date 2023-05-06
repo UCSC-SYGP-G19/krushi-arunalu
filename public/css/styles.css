@@ -810,6 +810,42 @@ button:disabled:hover {
   background-color: #95C260;
   box-shadow: 0 2px 16px rgba(0, 0, 0, 0.25) !important;
 }
+.logged-in-navbar #btn-toggle-notification-panel {
+  display: inline-block;
+  outline: none;
+  border: none;
+  background: transparent;
+}
+.logged-in-navbar #btn-toggle-notification-panel.active {
+  background-color: #185427 !important;
+  color: white;
+}
+.logged-in-navbar #btn-toggle-notification-panel.active svg {
+  fill: white;
+  stroke: white;
+}
+.logged-in-navbar .navbar-icons {
+  transition: all 0.4s ease-out;
+  cursor: pointer;
+  margin: auto;
+  width: 37px;
+  height: 37px;
+  border-radius: 50%;
+  background-color: #D9F0BE !important;
+}
+.logged-in-navbar .navbar-icons svg {
+  transition: all 0.2s ease-in-out;
+  padding: 2px;
+  margin-top: 7px;
+  stroke: #185427;
+}
+.logged-in-navbar .navbar-icons:hover {
+  background-color: #185427 !important;
+}
+.logged-in-navbar .navbar-icons:hover svg {
+  fill: white;
+  stroke: white;
+}
 .logged-in-navbar .user-name {
   font-size: 1.1rem;
   font-weight: 500;
@@ -871,6 +907,19 @@ button:disabled:hover {
 }
 .logged-in-navbar #navbar-options-panel ul li:last-child a {
   color: #CC3636;
+}
+.logged-in-navbar #notifications-panel {
+  display: none;
+  position: absolute;
+  background: #FFFFFF;
+  top: 100px;
+  right: 250px;
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.1);
+  min-width: 320px;
+  min-height: 10vh;
+}
+.logged-in-navbar #notifications-panel.visible {
+  display: block;
 }
 .logged-in-navbar .btn-shopping-cart {
   margin-top: -8px;

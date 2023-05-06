@@ -1,10 +1,14 @@
 <aside class="sidebar">
     <div class="row text-center brand-logo-container">
         <div class="col-12 brand-logo-large">
-            <img src="<?php echo URL_ROOT ?>/public/img/navbar-logo-large.webp" alt="logo" height="96px">
+            <a href="/krushi-arunalu/login">
+                <img src="<?php echo URL_ROOT ?>/public/img/navbar-logo-large.webp" alt="logo" height="96px">
+            </a>
         </div>
         <div class="col-12 brand-logo-small pt-2">
-            <img src="<?php echo URL_ROOT ?>/public/img/navbar-logo-small.webp" alt="logo" height="72px">
+            <a href="/krushi-arunalu/login">
+                <img src="<?php echo URL_ROOT ?>/public/img/navbar-logo-small.webp" alt="logo" height="72px">
+            </a>
         </div>
     </div>
     <div class="col-12">

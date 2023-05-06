@@ -27,6 +27,23 @@ if (btnToggleNavbarOptions) {
   });
 }
 
+// Allow to toggle navbar options dropdown
+const btnToggleNotificationPanel = document.querySelector('#btn-toggle-notification-panel');
+
+if (btnToggleNotificationPanel) {
+  btnToggleNotificationPanel.addEventListener('click', () => {
+    btnToggleNotificationPanel.classList.toggle('active');
+    document.querySelector('#notifications-panel').classList.toggle('visible');
+  });
+
+  document.addEventListener('click', (e) => {
+    if (e.target.closest('#btn-toggle-notification-panel') === null) {
+      btnToggleNotificationPanel.classList.remove('active');
+      document.querySelector('#notifications-panel').classList.remove('visible');
+    }
+  });
+}
+
 const renderMessageCard = (message) => {
   return `<div class="message-card p-3 mb-2">${message}</div>`;
 }
@@ -45,6 +62,10 @@ const handleDeleteClick = (path) => {
       location.href = path;
     }
   })
+}
+
+const handleNotificationBellClick = () => {
+  document.querySelector('#notifications-panel').classList.toggle('visible');
 }
 
 // Show flash messages sent by the server
