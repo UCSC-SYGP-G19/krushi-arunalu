@@ -18,7 +18,8 @@ class CultivationQuestionResponse extends Model
         private ?int    $agriOfficerId = null,
         private ?string $respondedDateTime = null,
         private ?string $content = null,
-    ) {
+    )
+    {
         //body of the constructor
     }
 
@@ -66,7 +67,6 @@ class CultivationQuestionResponse extends Model
         return $this->update(
             table: "question_response",
             data: [
-                "agri_officer_id" => $this->agriOfficerId,
                 "content" => $this->content
             ],
             where: ["id" => $this->id],
@@ -97,7 +97,6 @@ class CultivationQuestionResponse extends Model
         //returning empty array if $stmt is empty
         return [];
     }
-
 
     // setup getters and setters for private variables.
 

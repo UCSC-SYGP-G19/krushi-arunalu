@@ -92,7 +92,8 @@ include APP_ROOT . "/views/inc/components/Header.php";
                             <?php if (!empty($responses)) {
                                 foreach ($responses as $response) {
                                     ?>
-                                    <section class="question-details-wrapper pt-2 pb-2 px-4 mb-3">
+                                    <section class="question-details-wrapper pt-2 pb-2 px-4 mb-3"
+                                             id="response-card-<?php echo $response->response_id; ?>">
                                         <div class="row px-1 pt-1 heading">
                                             <div class="col-10 py-2 d-inline-flex">
                                                 <div class="user-avatar mr-2">
@@ -112,32 +113,32 @@ include APP_ROOT . "/views/inc/components/Header.php";
                                         </div>
                                         <div class="row py-1 px-1 justify-content-center body">
                                             <div class="col-12 mb-2">
-                                                <p id="myParagraph" class="question-content">
-                                                    <?php echo $response->response_content;
-                                                    //print_r($response) ?>
-
+                                                <p class="response-content">
+                                                    <?php echo $response->response_content; ?>
                                                 </p>
                                             </div>
                                         </div>
 
                                         <?php if ($response->agri_officer_id == Session::getSession()->id) { ?>
                                         <div class="text-right">
-                                            <button onclick="editResponse('<?php echo($response->response_content); ?>')"
+                                            <button onclick="handleOnEditClick(<?php echo($response->response_id); ?>)"
                                                     class="btn-xs btn-outlined-primary-dark text-center">
                                                 Edit
                                             </button>
-                                            '
-                                            <a href='<?php echo(URL_ROOT) ?>/cultivation-questions/deleteResponse/
-                                            <?php echo($response->response_id); ?>'
-                                               class="btn-xs btn-outlined-error-dark text-center">Delete</a>
-                                        <?php } ?>
+                                            <a href="<?php echo(URL_ROOT); ?>/cultivation-questions/deleteResponse/
+                                            <?php echo($response->response_id); ?>">
+                                                <button class="btn-xs btn-outlined-error-dark text-center">
+                                                    Delete
+                                                </button>
+                                            </a>
+                                            <?php } ?>
                                         </div>
                                     </section>
 
                                     <?php
                                 }
                             } else {
-                                echo '<h4>No Respons to Display</h4>';
+                                echo '<h4>No Response to Display</h4>';
                             }
                             ?>
 
@@ -152,8 +153,12 @@ include APP_ROOT . "/views/inc/components/Header.php";
                                         <textarea id="response-input" name="response-input" class="col-12"
                                         ></textarea>
                                     </div>
-                                    <div class="col-1">
-                                        <button class="btn-sm btn-primary-light mb-1 text-white" type="submit">Send
+                                    <div class="col-1 mb-1">
+                                        <button class="btn-sm btn-primary-light text-white" type="submit">Send
+                                        </button>
+
+                                        <button class="btn-sm btn-outlined-error" type="reset" style="display: none">
+                                            Cancel
                                         </button>
                                     </div>
                                 </div>
@@ -169,9 +174,9 @@ include APP_ROOT . "/views/inc/components/Header.php";
                 ?>
         </main>
     </div>
-    <script src="<?php echo URL_ROOT ?>/public/js/AgriOfficer/cultivationQuestionResponse.JS" defer></script>
+    <script src="<?php echo URL_ROOT ?>/public/js/AgriOfficer/cultivationQuestionResponse.js" defer></script>
     </body>
 
 <?php
-include APP_ROOT . " / views / inc / components / EndingTag . php";
+include APP_ROOT . "/views/inc/components/EndingTag.php";
 

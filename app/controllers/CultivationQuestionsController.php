@@ -2,7 +2,7 @@
 
 /**
  * @file
- * Controller which handles cultivation questions and responses of Producers and agriOfficer
+ * Controller which handles cultivation_questions and cultivation_question_responses of Producers and agri_Officer
  */
 
 namespace app\controllers;
@@ -29,7 +29,6 @@ class CultivationQuestionsController extends Controller
         else {
             $this->loadView('AgriOfficer/CultivationQuestionsPage', 'Cultivation questions', 'cultivation-questions');
         }
-
         $this->loadModel('CultivationQuestion');
         $this->view->data = CultivationQuestion::getAllFromDB();
         $this->view->render();
@@ -114,10 +113,9 @@ class CultivationQuestionsController extends Controller
         $this->view->data["questionDetails"] = CultivationQuestion::getByIdFromDB($questionId);
 
         if (Session::getSession()->role === "Agri Officer") {
-            //storing data of model->cultivationQuestion class->getByIdFromDB static_method in the data["questionDetails"]
+            //storing data of model->cultivationQuestionResponse class->getByIdFromDB static_method in the data["questionResponses"]
             $this->view->data["questionResponses"] = CultivationQuestionResponse::getByIdFromDB($questionId);
         }
-
         $this->view->render();
     }
 
@@ -185,17 +183,27 @@ class CultivationQuestionsController extends Controller
 
     public function respond($questionId): void
     {
-        $this->loadModel("CultivationQuestionResponse");
-        //First you need to call this fillData() method and pass the key value pair as parameters
-        $this->model->fillData([
-            'questionId' => $questionId,
-            'agriOfficerId' => Session::getSession()->id,
-            'content' => $_POST['response-input']
-        ]);
-        //Secondly call the addToDB() function
-        $this->model->addToDB();
-        $responseDirect = URL_ROOT . "/cultivation-questions/Details/" . $questionId;
-        Util::redirect($responseDirect);
+        if ($_SERVER["REQUEST_METHOD"] === "POST") {
+            $required_fields = ["content"];
+            $this->validateFields($required_fields);
+
+            if (!empty($this->view->fieldErrors)) {
+                $this->refillValuesAndShowError();
+                $this->view->render();
+                echo $this->view->fieldErrors;
+            }
+            $this->loadModel("CultivationQuestionResponse");
+            //First you need to call this fillData() method and pass the key value pair as parameters
+            $this->model->fillData([
+                'questionId' => $questionId,
+                'agriOfficerId' => Session::getSession()->id,
+                'content' => $_POST['response-input']
+            ]);
+            //Secondly call the addToDB() function
+            $this->model->addToDB();
+            $responseDirect = URL_ROOT . "/cultivation-questions/Details/" . $questionId;
+            Util::redirect($responseDirect);
+        }
     }
 
     public function deleteResponse($responseId): void
@@ -206,60 +214,17 @@ class CultivationQuestionsController extends Controller
         ]);
         try {
             $this->model->deleteFromDB();
-//            if ($this->model->image) {
-//                unlink(UPLOADS_ROOT . '/cultivation-questions/' . $this->model->image);
-//            }
         } catch (Exception $e) {
             Logger::log("ERROR", $e->getMessage());
         }
         //$_SERVER['HTTP_REFERER'] use to redirect previous page.
         Util::redirect($_SERVER['HTTP_REFERER']);
     }
-//    public function respond($questionId): void
-//    {
-//        $this->loadView(
-//            'AgriOfficer/CultivationQuestionDetailsPage',
-//            'Question details',
-//            'cultivation-questions'
-//        );
-//        $this->view->data["questionResponses"] = CultivationQuestionResponse::getByIdFromDB($questionId);
-//
-//        echo($_POST['response-input']);
-//
-//
-//        if ($_SERVER["REQUEST_METHOD"] === "POST") {
-//            $required_fields = ["content"];
-//            $this->validateFields($required_fields);
-//
-//            if (!empty($this->view->fieldErrors)) {
-//                $this->refillValuesAndShowError();
-//                $this->view->render();
-//                return;
-//            }
-//
-//            $this->loadModel("CultivationQuestionResponse");
-//            $this->model->addToDB([
-//                'question_id' => (int)$questionId,
-//                'agri_officer_id' => Session::getSession()->id,
-//                'content' => $_POST['response-input']
-//            ]);
-//
-////            if ($this->model->addToDB()) {
-////                Util::redirect($this->base);
-////            }
-//        }
-//        $this->view->render();
-//    }
 
     public function editResponse($responseId): void
     {
-        $this->loadView(
-            'AgriOfficer/CultivationQuestionResponsePage',
-            'Responses',
-            'cultivation-questions'
-        );
         if ($_SERVER["REQUEST_METHOD"] === "POST") {
-            $required_fields = ["content"];
+            $required_fields = ["response_content"];
             $this->validateFields($required_fields);
 
             if (!empty($this->view->fieldErrors)) {
@@ -270,21 +235,14 @@ class CultivationQuestionsController extends Controller
 
             $this->loadModel("CultivationQuestionResponse");
             $this->model->fillData([
-                'response_id' => (int)$responseId,
-                'agri_officer_id' => Session::getSession()->id,
-                'content' => $_POST['content'],
+                'id' => (int)$responseId,
+                'content' => $_POST['response-input'],
             ]);
 
-            if ($this->model->addToDB()) {
-                Util::redirect($this->base);
+            if ($this->model->updateInDB()) {
+                Util::redirect($_SERVER['HTTP_REFERER']);
             }
         }
         $this->view->render();
     }
-
-//    public function getResponsesAsJson($responseID): void
-//    {
-//        $this->loadModel("CultivationQuestionResponse");
-//        $this->sendJson($this->model->getResponseContent($responseID));
-//    }
 }
