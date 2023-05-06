@@ -22,19 +22,18 @@ class ManufacturerCropRequestsController extends Controller
     public function getRequestsAsJson(): void
     {
         $this->loadModel('CropRequest');
-        $this->sendJson($this->model->getCropRequestsForManufacturerFromDB(Session::getSession()->id));
+        $this->sendArrayAsJson($this->model->getCropRequestsForManufacturerFromDB(Session::getSession()->id));
     }
 
     public function getResponsesAsJson($cropRequestId): void
     {
         $this->loadModel('CropRequestResponse');
-        $this->sendJson($this->model->getResponsesForRequestFromDB($cropRequestId));
+        $this->sendArrayAsJson($this->model->getResponsesForRequestFromDB($cropRequestId));
     }
 
     public function add(): void
     {
         $this->loadView('Manufacturer/PostCropRequestsPage', 'Post Crop Requests', 'manufacturer-crop-requests');
-
         $this->view->render();
     }
 
