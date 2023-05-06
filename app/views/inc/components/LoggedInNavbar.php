@@ -12,7 +12,7 @@
         </button>
     </div>
 
-    <div class="col-6 col-3-lg text-center pt-1">
+    <div class="col-6 col-4-lg text-center pt-1">
         <div class="row">
             <div class="col-3 m-auto">
                 <div class="justify-content-center align-items-center">

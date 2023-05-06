@@ -1,7 +1,11 @@
 <?php
+
+use app\helpers\Session;
+
 include APP_ROOT . "/views/inc/components/Header.php";
 ?>
     <body class="overflow-hidden full-height">
+
     <div class="content-with-sidebar">
         <?php
         include APP_ROOT . "/views/inc/components/Sidebar.php"
@@ -38,6 +42,9 @@ include APP_ROOT . "/views/inc/components/Header.php";
 
         </main>
     </div>
+    <script>
+      toast("check","Hi <?php echo explode(" ", Session::getSession()->name)[0]?>!" ,"Welcome to Krushi Arunalu");
+    </script>
     </body>
 <?php
 include APP_ROOT . "/views/inc/components/EndingTag.php";

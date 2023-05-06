@@ -22,16 +22,44 @@ use app\helpers\Flash;
     <link rel="manifest" href="<?php echo URL_ROOT ?>/public/favicons/site.webmanifest">
 
     <script>
-        const URL_ROOT = '<?php echo URL_ROOT ?>';
-        const SITE_NAME = '<?php echo SITE_NAME ?>';
-        let message = '<?php echo Flash::getMessage() ?>'
-        if(message === ''){
-          message = null;
+      const URL_ROOT = '<?php echo URL_ROOT ?>';
+      const SITE_NAME = '<?php echo SITE_NAME ?>';
+      let message = '<?php echo Flash::getMessage() ?>'
+      if (message === '') {
+        message = null;
+      } else {
+        message = JSON.parse(message);
+      }
+
+      function toast(type, title = "", content, duration = 3000) {
+        const body = document.querySelector('body');
+        const toast = document.createElement('aside');
+
+        toast.classList.add('toast');
+        toast.classList.add('enter');
+
+        if (type === 'check') {
+          toast.innerHTML = `<div class="check"></div>`;
+        } else if (type === 'error') {
+          toast.innerHTML = `<div class="error"></div>`;
         } else {
-          message = JSON.parse(message);
+          toast.innerHTML = ``;
         }
+
+        toast.innerHTML += `<span> <strong>${title} </strong>${content} </span>`;
+
+        body.appendChild(toast);
+        setTimeout(() => {
+            toast.classList.remove('enter');
+            toast.classList.add('exit');
+          }
+          , duration);
+        setTimeout(() => {
+          toast.remove();
+        }, duration + 500);
+      }
     </script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-<!--    <script src="sweetalert2.all.min.js"></script>-->
+    <!--    <script src="sweetalert2.all.min.js"></script>-->
     <script src="<?php echo URL_ROOT ?>/public/js/scripts.js" defer></script>
 </head>
