@@ -19,6 +19,7 @@ class Chat implements MessageComponentInterface
     {
         $this->clients = new \SplObjectStorage();
         $this->connMappings = [];
+        $this->hashMappings = [];
     }
 
     public function onOpen(ConnectionInterface $conn)
