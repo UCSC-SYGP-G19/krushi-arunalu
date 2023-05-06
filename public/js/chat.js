@@ -40,13 +40,19 @@ let conn = null;
 
 const handleOnOpenConnection = (e) => {
   console.log("Websocket connection established!");
-  const initData = {
+
+  sendWebSocketMessage({
     "type": "INIT",
     // "timestamp": getDateTimeWithTimezone(new Date()),
-    "tempHash": userTempHash,
-  }
+    "sender_hash": userTempHash,
+  });
 
-  conn.send(JSON.stringify(initData));
+  sendWebSocketMessage({
+    "type": "STATUS",
+    "sender_hash": userTempHash,
+    "receiver_id": connectedUsers,
+    "message": "Came Online"
+  });
 }
 
 const handleOnReceiveMessage = (e) => {
@@ -65,8 +71,81 @@ const handleOnReceiveMessage = (e) => {
       return;
     }
 
+    if (data.type === 'STATUS') {
+      if (data.message === 'Typing') {
+        if (selectedReceiverId === data.sender_id) {
+
+          if (!isSelectedReceiverTyping) {
+            isSelectedReceiverTyping = true;
+            chat.innerHTML += generateTypingBubble();
+            chat.scrollBy(0, chat.scrollHeight);
+
+            setTimeout(() => {
+              if (isSelectedReceiverTyping) {
+                isSelectedReceiverTyping = false;
+                chat.querySelector(".typing-bubble").remove();
+              }
+            }, 3000);
+          }
+          //
+          // setTimeout(() => {
+          //   if (isSelectedReceiverTyping) {
+          //     chat.innerHTML += generateTypingBubble();
+          //     chat.scrollBy(0, chat.scrollHeight);
+          //   }
+          // }, 2000);
+        }
+      }
+
+      if (data.message === 'Came Online') {
+        if (selectedReceiverId === data.sender_id) {
+          // Mark user as online in chat header
+          const chatHeader = document.querySelector(".chat-header");
+          chatHeader.querySelector(".online-dot").style.visibility = "visible";
+          chatHeader.querySelector(".active-status").innerHTML = "Online";
+        }
+
+        // Update online status of user in chat cards
+        let chatCard = document.querySelector(`#chat-card-${data.sender_id}`);
+        if (chatCard) {
+          chatCard.querySelector(".online-dot").style.visibility = "visible";
+        }
+      }
+
+      if (data.message === 'Went Offline') {
+        if (selectedReceiverId === data.sender_id) {
+          // Mark user as offline in chat header
+          const chatHeader = document.querySelector(".chat-header");
+          chatHeader.querySelector(".online-dot").style.visibility = "hidden";
+          chatHeader.querySelector(".active-status").innerHTML = `Last active: ${getDateTimeWithTimezone(Date.now())}`;
+        }
+
+        // Update online status of user in chat cards
+        let chatCard = document.querySelector(`#chat-card-${data.sender_id}`);
+        if (chatCard) {
+          chatCard.querySelector(".online-dot").style.visibility = "hidden";
+        }
+      }
+
+      if (data.message === 'Online Users') {
+
+        // Update online status of users in chat cards
+        data.users.forEach(user => {
+          let chatCard = document.querySelector(`#chat-card-${user}`);
+          if (chatCard) {
+            chatCard.querySelector(".online-dot").style.visibility = "visible";
+          }
+        });
+      }
+      return;
+    }
+
     // Render bubble if chat is active
     if (selectedReceiverId === data.sender_id || selectedReceiverId === data.receiver_id) {
+      if (isSelectedReceiverTyping) {
+        isSelectedReceiverTyping = false;
+        chat.querySelector(".typing-bubble").remove();
+      }
       chat.innerHTML += generateChatBubble(data, selectedReceiverId);
       chat.scrollBy(0, chat.scrollHeight);
     }
@@ -78,7 +157,7 @@ const handleOnReceiveMessage = (e) => {
       chatCardParent.removeChild(chatCard);
 
       chatCard.querySelector(".last-message .text-left").innerHTML = data.message;
-      chatCard.querySelector(".last-message .text-right").innerHTML = data.sent_date_time.split(' ')[1].substring(0, 5);
+      chatCard.querySelector(".last-message .text-right").innerHTML = data.sentDateTime.split(' ')[1].substring(0, 5);
       chatCardParent.prepend(chatCard);
     }
 
@@ -89,10 +168,14 @@ const handleOnReceiveMessage = (e) => {
       chatCardParent.removeChild(chatCard);
 
       chatCard.querySelector(".last-message .text-left").innerHTML = "You: " + data.message;
-      chatCard.querySelector(".last-message .text-right").innerHTML = data.sent_date_time.split(' ')[1].substring(0, 5);
+      chatCard.querySelector(".last-message .text-right").innerHTML = data.sentDateTime.split(' ')[1].substring(0, 5);
       chatCardParent.prepend(chatCard);
     }
   }
+}
+
+const handleOnCloseConnection = (e) => {
+  console.log("Websocket connection closed!");
 }
 
 const initWebSocket = () => {
@@ -102,6 +185,8 @@ const initWebSocket = () => {
     conn.onopen = (e) => handleOnOpenConnection(e);
 
     conn.onmessage = (e) => handleOnReceiveMessage(e);
+
+    conn.onclose = (e) => handleOnCloseConnection(e);
 
   } catch (e) {
     alert("Error establishing connection!");
@@ -113,12 +198,21 @@ const sendWebSocketMessage = (data) => {
   try {
     if (conn === null) {
       initWebSocket();
-    }
-    if (conn.readyState === 1) {
-      conn.send(JSON.stringify(data));
-      console.log("Message sent!");
+      setTimeout(() => {
+        if (conn.readyState === 1) {
+          conn.send(JSON.stringify(data));
+          console.log("Message sent!");
+        } else {
+          alert("Error sending message, connection not established!");
+        }
+      }, 2000);
     } else {
-      alert("Error sending message, connection not established!");
+      if (conn.readyState === 1) {
+        conn.send(JSON.stringify(data));
+        console.log("Message sent!");
+      } else {
+        alert("Error sending message, connection not established!");
+      }
     }
 
   } catch (e) {
@@ -127,33 +221,59 @@ const sendWebSocketMessage = (data) => {
   }
 }
 
+const fetchOnlineStatusOfUsers = async (connectedUsers) => {
+  sendWebSocketMessage({
+    "type": "ONLINE_STATUS",
+    "sender_hash": userTempHash,
+    "message": connectedUsers
+  })
+}
+
 
 //Chat Header
 const fetchChatHeader = async (chatId) => {
   const res = await fetch(`${URL_ROOT}/chat/getChatDetailsAsJson/` + chatId);
   if (res.status === 200) {
     chatDetails = await res.json();
-    renderChatHeader(chatDetails);
+    let isOnline = false;
+    let chatCard = document.querySelector(`#chat-card-${selectedReceiverId}`);
+    if (chatCard) {
+      isOnline = chatCard.querySelector(".online-dot").style.visibility === "visible";
+    }
+    renderChatHeader(chatDetails, isOnline);
   }
 }
 
-const renderChatHeader = (data) => {
+const renderChatHeader = (data, isOnline) => {
   chatHeader.classList.add('chat-header-active');
   if (data == null) {
     chatHeader.innerHTML = renderMessageCard("Error fetching data");
     return;
   }
   console.log(data);
-  chatHeader.innerHTML = `
+  let chatCard = document.querySelector(`#chat-card-${selectedReceiverId}`);
+  if (chatCard) {
+    let header = `
             <div class="chat-avatar col-2 col-1-lg m-auto text-center">
                 <img alt="User Avatar m-auto" class="avatar" src="${URL_ROOT}/public/img/user-avatars/${data.image_url}" 
                  height="90%">
+            <div class="online-dot"></div>
             </div>
             <div class="col-10 col-11-lg m-auto">
-                <div class="fw-bold fs-4">${data.name}</div>
-                <div class="active-status text-grey-dark fw-normal">Last active: ${data.last_login}</div>
-            </div>
+                <div class="fw-bold fs-4">${data.name}</div>               
         `;
+    if (data.last_login !== null && data.last_login !== "") {
+      header += `<div class="active-status text-grey-dark fw-normal">Last active: ${generateDate(data.last_login)}</div>
+            </div>`;
+    } else {
+      header += `</div>`;
+    }
+    chatHeader.innerHTML = header;
+    if (isOnline) {
+      chatHeader.querySelector(".online-dot").style.visibility = "visible";
+      chatHeader.querySelector(".active-status").innerText = "Online";
+    }
+  }
 }
 
 //Messages
@@ -166,6 +286,18 @@ const fetchMessages = async (receiverId) => {
     renderMessages(messages, receiverId);
   }
 
+}
+
+const generateTypingBubble = () => {
+  return `
+            <div class="chat-msg-received typing-bubble">
+                <div class="pt-1 px-2 my-1">
+                    <div class="msg-content pt-1 px-1">  
+                        <svg opacity="0.3" width="20" height="20" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><style>.spinner_qM83{animation:spinner_8HQG 1.05s infinite}.spinner_oXPr{animation-delay:.1s}.spinner_ZTLf{animation-delay:.2s}@keyframes spinner_8HQG{0%,57.14%{animation-timing-function:cubic-bezier(0.33,.66,.66,1);transform:translate(0)}28.57%{animation-timing-function:cubic-bezier(0.33,0,.66,.33);transform:translateY(-6px)}100%{transform:translate(0)}}</style><circle class="spinner_qM83" cx="4" cy="12" r="3"/><circle class="spinner_qM83 spinner_oXPr" cx="12" cy="12" r="3"/><circle class="spinner_qM83 spinner_ZTLf" cx="20" cy="12" r="3"/></svg>
+                    </div>
+                </div>
+            </div>
+            `;
 }
 
 const generateChatBubble = (element, receiverId) => {
@@ -244,8 +376,8 @@ const sendMessage = async () => {
   sendWebSocketMessage({
     "type": "MESSAGE",
     // "sentDateTime": getDateTimeWithTimezone(new Date()),
-    "tempHash": userTempHash,
-    "receiverId": selectedReceiverId,
+    "sender_hash": userTempHash,
+    "receiver_id": selectedReceiverId,
     "message": messageText
   });
 
@@ -295,10 +427,19 @@ const viewChat = (id) => {
     messageBoxInput.focus();
     messageBoxInput.addEventListener("keyup", (e) => {
       btnSend.disabled = !(messageBoxInput.value.length > 0);
+
       if (e.key === "Enter") {
         sendMessage();
         btnSend.disabled = true;
+        return;
       }
+
+      sendWebSocketMessage({
+        "type": "STATUS",
+        "sender_hash": userTempHash,
+        "receiver_id": selectedReceiverId,
+        "message": "Typing"
+      });
     });
   });
 }
@@ -368,7 +509,7 @@ const renderChatList = (data) => {
 
   let output = "";
   data.forEach((element) => {
-
+    connectedUsers.push(element.id);
     let sender = "";
 
     if (element.sender_id !== element.id) {
@@ -386,6 +527,7 @@ const renderChatList = (data) => {
                     <img alt="User Avatar" class="avatar"
                     src="${URL_ROOT}/public/img/user-avatars/${element.image_url}"
                     width="85%">
+                                     <div class="online-dot"></div>
                 </div>
                 <div class="col-10 pl-1">
                     <div class="fw-bold user-name">${element.name}</div>
@@ -407,6 +549,8 @@ let chatList = null;
 let chatDetails = null
 let messages = null;
 let selectedReceiverId = null;
+let isSelectedReceiverTyping = false;
+let connectedUsers = [];
 
 const chatListColumn = document.querySelector("#chat-list");
 const chatHeader = document.querySelector("#chat-header");
@@ -415,9 +559,13 @@ const searchBar = document.querySelector("#search-bar");
 const messageBox = document.querySelector("#message-box");
 
 document.addEventListener('DOMContentLoaded', () => {
-  initWebSocket();
   if (chatList == null) {
-    fetchChatList();
+    fetchChatList().then(r => {
+      initWebSocket();
+      setTimeout(() => {
+        fetchOnlineStatusOfUsers(connectedUsers);
+      }, 500);
+    })
   } else {
     renderChatList();
   }

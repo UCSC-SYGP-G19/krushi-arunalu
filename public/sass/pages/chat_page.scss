@@ -8,6 +8,17 @@
   border-radius: $base-border-radius;
   scroll-behavior: smooth;
 
+  div.online-dot {
+    visibility: hidden;
+    position: absolute;
+    width: 12px;
+    height: 12px;
+    background-color: green;
+    border-radius: 50%;
+    right: 6px;
+    bottom: 2px;
+  }
+
   .header-row {
     max-height: 7vh;
 
@@ -38,6 +49,13 @@
 
       .chat-avatar{
         height: 100%;
+        position: relative!important;
+
+        .online-dot {
+          right: 18px;
+          bottom: 8px;
+        }
+
 
         img {
           padding-top: 6px;
@@ -71,6 +89,7 @@
         }
 
         .chat-avatar {
+          position: relative!important;
           height: 100%;
 
           img {

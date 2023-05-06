@@ -12,7 +12,7 @@ class Chat implements MessageComponentInterface
     protected \SplObjectStorage $clients;
     // Array to store the resource ids for a particular user id
     protected array $connMappings;
-    // Array to store the associated user id for a particular temp hash
+    // Array to store the associated user id for a particular sender hash
     protected array $hashMappings;
 
     public function __construct()
@@ -32,14 +32,22 @@ class Chat implements MessageComponentInterface
     public function onMessage(ConnectionInterface $from, $msg)
     {
         $msg = json_decode($msg, true);
+        print_r($msg);
 
+        // If msg does not contain type, discard it
+        if (!isset($msg['type'])) {
+            echo "Message type not specified, discarding message\n";
+            return;
+        }
+
+        // Initial message sent by the client as soon as the connection is established
         if ($msg['type'] === 'INIT') {
-            $userId = RegisteredUser::getUserIdByTempHash($msg['tempHash']);
+            $userId = RegisteredUser::getUserIdByTempHash($msg['sender_hash']);
 
             if (isset($userId)) {
                 echo "User {$userId} has connected\n";
-                // Store the temp hash and associated user id in the hash mappings
-                $this->hashMappings[$msg['tempHash']] = $userId;
+                // Store the sender hash and associated user id in the hash mappings
+                $this->hashMappings[$msg['sender_hash']] = $userId;
 
                 // If user is not already in the connection mappings, create an empty array for them
 //                if (!isset($this->connMappings[$userId])) {
@@ -66,7 +74,7 @@ class Chat implements MessageComponentInterface
 
                 $this->connMappings[$userId] = $from->resourceId;
             } else {
-                echo "Invalid temp hash, aborting connection\n";
+                echo "Invalid sender hash, discarding connection\n";
                 $this->onClose($from);
             }
 
@@ -74,43 +82,138 @@ class Chat implements MessageComponentInterface
             return;
         }
 
+        // Stats such as typing, came online, went offline etc.
+        if ($msg['type'] === 'STATUS') {
+            if (!isset($msg['sender_hash']) || !isset($msg['receiver_id']) || !isset($msg['message'])) {
+                echo "Invalid status message format, discarding message\n";
+                return;
+            }
+
+            $sender_id = $this->hashMappings[$msg['sender_hash']];
+            if (!isset($sender_id)) {
+                echo "Invalid sender hash, discarding message\n";
+                return;
+            }
+
+            $data = [
+                'type' => 'STATUS',
+                'sender_id' => $sender_id,
+                'message' => $msg['message']
+            ];
+
+            // If receiver_id is an array send to all the users in the array
+            if (is_array($msg['receiver_id'])) {
+                foreach ($msg['receiver_id'] as $receiver_id) {
+                    if (isset($this->connMappings[$receiver_id])) {
+                        $receiver = $this->connMappings[$receiver_id];
+                        foreach ($this->clients as $client) {
+                            if ($client->resourceId === $receiver) {
+                                $client->send(json_encode($data));
+                                break;
+                            }
+                        }
+                    }
+                }
+                return;
+            }
+
+            $data = [
+                'type' => 'STATUS',
+                'sender_id' => $sender_id,
+                'receiver_id' => $msg['receiver_id'],
+                'message' => $msg['message']
+            ];
+
+            // Send message to receiver if they are connected
+            if (isset($this->connMappings[$msg['receiver_id']])) {
+                $receiver = $this->connMappings[$msg['receiver_id']];
+                foreach ($this->clients as $client) {
+                    if ($client->resourceId === $receiver) {
+                        $client->send(json_encode($data));
+                        break;
+                    }
+                }
+            }
+
+            return;
+        }
+
+        // Requesting list of online users from server
+        if ($msg['type'] === 'ONLINE_STATUS') {
+            if (!isset($msg['sender_hash']) || !isset($msg['message'])) {
+                echo "Invalid status message format, discarding message\n";
+                return;
+            }
+
+            $sender_id = $this->hashMappings[$msg['sender_hash']];
+            if (!isset($sender_id)) {
+                echo "Invalid sender hash, discarding message\n";
+                return;
+            }
+
+            $users = $msg["message"];
+            $result = [];
+            foreach ($users as $user) {
+                if (isset($this->connMappings[$user])) {
+                    array_push($result, $user);
+                }
+            }
+
+            $data = [
+                'type' => 'STATUS',
+                'message' => 'Online Users',
+                'users' => $result
+            ];
+
+            $sender = $this->connMappings[$sender_id];
+            foreach ($this->clients as $client) {
+                if ($client->resourceId === $sender) {
+                    $client->send(json_encode($data));
+                    break;
+                }
+            }
+
+            return;
+        }
+
         if ($msg['type'] === 'MESSAGE') {
             // Validate the message
             print_r($msg);
             if (
-                !isset($msg['tempHash']) ||
-                !isset($msg['receiverId']) ||
+                !isset($msg['sender_hash']) ||
+                !isset($msg['receiver_id']) ||
                 !isset($msg['message']) ||
                 trim($msg['message']) === ""
             ) {
-                echo "Invalid message format, aborting message\n";
+                echo "Invalid message format, discarding message\n";
                 return;
             }
 
             // Get the sender id from the hash mappings
-            $senderId = $this->hashMappings[$msg['tempHash']];
-            if (!isset($senderId)) {
-                echo "Invalid user temp hash, aborting message\n";
+            $sender_id = $this->hashMappings[$msg['sender_hash']];
+            if (!isset($sender_id)) {
+                echo "Invalid sender hash, discarding message\n";
                 return;
             }
 
             // Send the message to the receiver and sender both
 //            $allConnectionsOfSenderAndReceiver = array_merge(
-//                $this->connMappings[$msg['receiverId']] ?? [],
-//                $this->connMappings[$senderId] ?? []
+//                $this->connMappings[$msg['receiver_id']] ?? [],
+//                $this->connMappings[$sender_id] ?? []
 //            );
 
             // in_array($client->resourceId, $allConnectionsOfSenderAndReceiver)
 
             $data = [
-                'sender_id' => $senderId,
-                'receiver_id' => $msg['receiverId'],
+                'type' => 'MESSAGE',
+                'sender_id' => $sender_id,
+                'receiver_id' => $msg['receiver_id'],
                 'sent_date_time' => \date('Y-m-d H:i:s'),
                 'message' => trim($msg['message'])
             ];
 
             // Send message back to sender
-            $sender = $this->connMappings[$senderId];
+            $sender = $this->connMappings[$sender_id];
             foreach ($this->clients as $client) {
                 if ($client->resourceId === $sender) {
                     $client->send(json_encode($data));
@@ -119,8 +222,8 @@ class Chat implements MessageComponentInterface
             }
 
             // Send message receiver if they are connected
-            if (isset($this->connMappings[$msg['receiverId']])) {
-                $receiver = $this->connMappings[$msg['receiverId']];
+            if (isset($this->connMappings[$msg['receiver_id']])) {
+                $receiver = $this->connMappings[$msg['receiver_id']];
                 foreach ($this->clients as $client) {
                     if ($client->resourceId === $receiver) {
                         $client->send(json_encode($data));
@@ -131,9 +234,9 @@ class Chat implements MessageComponentInterface
 
             // Add the message to the database
 //            $chatMessage = new ChatMessage(
-//                senderId: $senderId,
-//                receiverId: $msg['receiverId'],
-//                sentDateTime: $msg['sentDateTime'],
+//                sender_id: $sender_id,
+//                receiver_id: $msg['receiver_id'],
+//                sent_date_time: $msg['sent_date_time'],
 //                message: $msg['message'],
 //            );
 //
@@ -158,9 +261,31 @@ class Chat implements MessageComponentInterface
 //            }
 //        }
 
+        // Clear data about disconnected user from connMappings
+        $disconnectedUser = null;
+
         foreach ($this->connMappings as $userId => $resourceId) {
             if ($resourceId === $conn->resourceId) {
+                $disconnectedUser = $userId;
                 unset($this->connMappings[$userId]);
+                break;
+            }
+        }
+
+        // Send msg to all users saying this user has gone offline
+        $data = [
+            'type' => 'STATUS',
+            'message' => 'Went Offline',
+            'sender_id' => $disconnectedUser
+        ];
+        foreach ($this->clients as $client) {
+            $client->send(json_encode($data));
+        }
+
+        // Clear data about disconnected user from hashMappings
+        foreach ($this->hashMappings as $senderHash => $userId) {
+            if ($userId === $disconnectedUser) {
+                unset($this->hashMappings[$senderHash]);
                 break;
             }
         }

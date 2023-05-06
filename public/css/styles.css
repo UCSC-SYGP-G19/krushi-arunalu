@@ -2297,6 +2297,16 @@ div.swal2-popup button.swal2-styled.swal2-cancel:focus {
   border-radius: 16px;
   scroll-behavior: smooth;
 }
+.chat-page div.online-dot {
+  visibility: hidden;
+  position: absolute;
+  width: 12px;
+  height: 12px;
+  background-color: green;
+  border-radius: 50%;
+  right: 6px;
+  bottom: 2px;
+}
 .chat-page .header-row {
   max-height: 7vh;
 }
@@ -2323,6 +2333,11 @@ div.swal2-popup button.swal2-styled.swal2-cancel:focus {
 }
 .chat-page .header-row .chat-header-active .chat-avatar {
   height: 100%;
+  position: relative !important;
+}
+.chat-page .header-row .chat-header-active .chat-avatar .online-dot {
+  right: 18px;
+  bottom: 8px;
 }
 .chat-page .header-row .chat-header-active .chat-avatar img {
   padding-top: 6px;
@@ -2343,16 +2358,14 @@ div.swal2-popup button.swal2-styled.swal2-cancel:focus {
   border-bottom: 1px solid gainsboro;
   padding-bottom: 0.6rem;
 }
-
 .chat-page .bottom-row .chat-list .chat-card:hover {
   background-color: #E7F4D8;
 }
-
 .chat-page .bottom-row .chat-list .chat-card.active {
   background-color: gainsboro;
 }
-
 .chat-page .bottom-row .chat-list .chat-card .chat-avatar {
+  position: relative !important;
   height: 100%;
 }
 .chat-page .bottom-row .chat-list .chat-card .chat-avatar img {
@@ -2386,37 +2399,30 @@ div.swal2-popup button.swal2-styled.swal2-cancel:focus {
   background-color: #FFFFFF;
   min-height: 67vh;
 }
-
 .chat-page .bottom-row .chat-background .chat .chat-msg-sent, .chat-page .bottom-row .chat-background .chat .chat-msg-received {
   text-align: left;
   width: fit-content;
   word-break: break-word;
   max-width: 60%;
 }
-
 .chat-page .bottom-row .chat-background .chat .chat-msg-sent .sent-time, .chat-page .bottom-row .chat-background .chat .chat-msg-received .sent-time {
   font-size: 0.675rem;
   font-weight: lighter;
 }
-
 .chat-page .bottom-row .chat-background .chat .chat-msg-sent {
   margin-left: auto;
 }
-
 .chat-page .bottom-row .chat-background .chat .chat-msg-received {
   margin-right: auto;
 }
-
 .chat-page .bottom-row .chat-background .chat .chat-msg-received > div {
   background-color: #F5F5F5;
   border-radius: 0 16px 16px 16px;
 }
-
 .chat-page .bottom-row .chat-background .chat .chat-msg-sent > div {
   background-color: #E7F4D8;
   border-radius: 16px 16px 0 16px;
 }
-
 .chat-page .bottom-row .chat-background .chat-active {
   overflow-y: auto;
   height: 67vh;
