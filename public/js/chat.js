@@ -190,6 +190,15 @@ const initWebSocket = () => {
 
     conn.onclose = (e) => handleOnCloseConnection(e);
 
+    conn.onerror = (e) => {
+      Swal.fire({
+        title: "Error",
+        text: "Something went wrong while connecting to the WebSocket server, live chat will not work!",
+        icon: "error",
+        confirmButtonText: 'OK'
+      });
+    }
+
   } catch (e) {
     alert("Error establishing connection!");
     console.log(e);
