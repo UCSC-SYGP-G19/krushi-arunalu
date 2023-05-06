@@ -42,6 +42,8 @@ class Database
         $dsn = $dbType . ":host=$dbHost;dbname=$dbName;port=$dbPort";
 
         try {
+            return new PDO($dsn, $dbUser, $dbPassword, $options);
+
             if (!isset(self::$pdo)) {
                 self::$pdo = new PDO($dsn, $dbUser, $dbPassword, $options);
             }

@@ -25,19 +25,19 @@ class ManufacturersController extends Controller
     public function getAllManufacturersAsJson(): void
     {
         $this->loadModel("Manufacturer");
-        $this->sendJson($this->model->getAllManufacturersFromDB());
+        $this->sendArrayAsJson($this->model->getAllManufacturersFromDB());
     }
 
     public function getAllManufacturersForProducerAsJson(): void
     {
         $this->loadModel("Manufacturer");
-        $this->sendJson($this->model->getAllManufacturersForProducer(Session::getSession()->id));
+        $this->sendArrayAsJson($this->model->getAllManufacturersForProducer(Session::getSession()->id));
     }
 
     public function getConnectedManufacturersForProducerAsJson(): void
     {
         $this->loadModel("Manufacturer");
-        $this->sendJson($this->model->getConnectedManufacturersForProducer(Session::getSession()->id));
+        $this->sendArrayAsJson($this->model->getConnectedManufacturersForProducer(Session::getSession()->id));
     }
 
     private function renderManufacturersPageForProducer(): void

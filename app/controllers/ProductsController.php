@@ -24,7 +24,7 @@ class ProductsController extends Controller
     public function showHiddenProducts(): void
     {
         $this->loadModel("Product");
-        $this->sendJson($this->model->getHiddenProductsFromDB(Session::getSession()->id));
+        $this->sendArrayAsJson($this->model->getHiddenProductsFromDB(Session::getSession()->id));
     }
 
     public function add(): void

@@ -1,22 +1,24 @@
-.connection-request-wrapper {
+.hidden-product-card, .product-card {
+  background-color: #FFFFFF;
   border-radius: 16px;
-  background-color: white;
-  border-bottom: 3px solid #15742D;
 }
-.connection-request-wrapper:hover {
+
+.hidden-product-card {
+  background-color: #FFFFFF;
+  border-radius: 16px;
+}
+
+.btn-hidden-products, .btn-hidden-categories {
+  cursor: pointer;
+  border: none;
+  background-color: #F5F5F5;
+}
+
+.product-qty {
   background-color: #E7F4D8;
-}
-.connection-request-wrapper .avatar {
-  border-radius: 50%;
-}
-.connection-request-wrapper .title {
-  font-size: large;
-}
-.connection-request-wrapper .sub-title-1 {
-  font-size: 1rem;
-}
-.connection-request-wrapper .sub-title-2 {
-  font-size: 0.9rem;
+  border: none;
+  width: max-content;
+  border-radius: 8px;
 }
 
 /*# sourceMappingURL=styles.css.map */
