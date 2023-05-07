@@ -24,11 +24,19 @@ use app\helpers\Flash;
     <script>
       const URL_ROOT = '<?php echo URL_ROOT ?>';
       const SITE_NAME = '<?php echo SITE_NAME ?>';
+
       let message = '<?php echo Flash::getMessage() ?>'
       if (message === '') {
         message = null;
       } else {
         message = JSON.parse(message);
+      }
+
+      let toastMessage = '<?php echo Flash::getToastMessage() ?>'
+      if (toastMessage === '') {
+        toastMessage = null;
+      } else {
+        toastMessage = JSON.parse(toastMessage);
       }
 
       function toast(type, title = "", content, duration = 3000) {

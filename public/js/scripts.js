@@ -68,6 +68,34 @@ const handleNotificationBellClick = () => {
   document.querySelector('#notifications-panel').classList.toggle('visible');
 }
 
+function toast(type, title = "", content, duration = 3000) {
+  const body = document.querySelector('body');
+  const toast = document.createElement('aside');
+
+  toast.classList.add('toast');
+  toast.classList.add('enter');
+
+  if (type === 'success') {
+    toast.innerHTML = `<div class="check"></div>`;
+  } else if (type === 'error') {
+    toast.innerHTML = `<div class="error"></div>`;
+  } else {
+    toast.innerHTML = ``;
+  }
+
+  toast.innerHTML += `<span> <strong>${title} </strong>${content} </span>`;
+
+  body.appendChild(toast);
+  setTimeout(() => {
+      toast.classList.remove('enter');
+      toast.classList.add('exit');
+    }
+    , duration);
+  setTimeout(() => {
+    toast.remove();
+  }, duration + 500);
+}
+
 // Show flash messages sent by the server
 if (message != null) {
   Swal.fire({
@@ -76,4 +104,13 @@ if (message != null) {
     icon: message.type,
     confirmButtonText: 'OK'
   })
+}
+
+// Show toasts sent by the server
+if (toastMessage != null) {
+  toast(
+    toastMessage.type,
+    toastMessage.title,
+    toastMessage.content,
+  );
 }
