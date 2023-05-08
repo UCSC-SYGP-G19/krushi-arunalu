@@ -79,6 +79,8 @@ function toast(type, title = "", content, duration = 3000) {
     toast.innerHTML = `<div class="check"></div>`;
   } else if (type === 'error') {
     toast.innerHTML = `<div class="error"></div>`;
+  } else if (type === 'loading') {
+    toast.innerHTML = `<div class="loading"></div>`;
   } else {
     toast.innerHTML = ``;
   }
@@ -103,7 +105,7 @@ if (message != null) {
     text: message.content,
     icon: message.type,
     confirmButtonText: 'OK'
-  })
+  });
 }
 
 // Show toasts sent by the server
