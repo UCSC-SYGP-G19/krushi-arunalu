@@ -165,8 +165,12 @@ aside.toast {
 
     }
 
+    @keyframes spin {
+        to { transform: rotate(360deg); }
+    }
+
     z-index: 100;
-    position: absolute;
+    position: fixed;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -269,4 +273,14 @@ aside.toast {
         }
     }
 
+    .loading {
+        margin-right: 8px;
+        display: inline-block;
+        width: 20px;
+        height: 20px;
+        border: 2.5px solid darken($selected-green,15%);
+        border-radius: 50%;
+        border-top-color: darken($header-green,15%);
+        animation: spin 0.8s ease-in-out infinite;
+    }
 }

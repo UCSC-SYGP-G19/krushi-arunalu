@@ -46,10 +46,12 @@ use app\helpers\Flash;
         toast.classList.add('toast');
         toast.classList.add('enter');
 
-        if (type === 'check') {
+        if (type === 'success') {
           toast.innerHTML = `<div class="check"></div>`;
         } else if (type === 'error') {
           toast.innerHTML = `<div class="error"></div>`;
+        } else if (type === 'loading') {
+          toast.innerHTML = `<div class="loading"></div>`;
         } else {
           toast.innerHTML = ``;
         }
