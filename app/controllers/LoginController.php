@@ -34,7 +34,9 @@ class LoginController extends Controller
     private function redirectByUserRole(): void
     {
         $user = Session::getSession();
-
+        if ($user->isEmailVerified === 0) {
+            Util::redirect('verify-email');
+        }
         switch ($user->role) {
             case 'Customer':
                 Util::redirect('marketplace');

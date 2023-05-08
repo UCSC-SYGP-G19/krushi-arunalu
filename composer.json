@@ -28,6 +28,7 @@
   ],
   "require": {
     "ext-pdo": "*",
+    "phpmailer/phpmailer": "^v6.8.0",
     "vlucas/phpdotenv": "^5.5",
     "cboden/ratchet": "^0.4.4"
   },
