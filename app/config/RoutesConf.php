@@ -9,14 +9,14 @@
 const PROTECTED_ROUTES = [
     "Common" => ["Login", "Register", "ForgotPassword", "ResetPassword", "Logout", "Marketplace", "ManageProfile",
         "ManufacturerStore"],
-    "Producer" => ["AccountSetup","ProducerDashboard", "Cultivations", "Harvests", "Sales", "CultivationQuestions",
+    "Producer" => ["AccountSetup", "ProducerDashboard", "Cultivations", "Harvests", "Sales", "CultivationQuestions",
         "ProducerCropRequests", "Announcements", "Profile", "Manufacturers", "ConnectionRequests"],
     "Manufacturer" => ["ManufacturerDashboard", "Sales", "ManufacturerOrders", "Producers", "Stocks",
         "ProductCategories", "Products", "ManufacturerCropRequests", "Inquiries", "ManufacturerSales",
         "PurchasedStocks", "ConnectionRequests"],
     "Customer" => ["Marketplace", "ShoppingCart", "Orders", "Profile", "SendInquiry", "Checkout", "Manufacturers"],
-    "Agri Officer" => ["Dashboard", "Announcements", "Producers", "land-details",
-        "cultivation-details", "crop-prices", "crop-prices", "cultivation-questions"],
+    "Agri Officer" => ["Dashboard", "Announcements", "Producers", "LandDetails",
+        "CultivationDetails", "SetCropPrices", "CropPrices", "CultivationQuestions"],
     "Admin" => ["Dashboard", "AllProducts", "Crops", "Manufacturers", "Producers", "Announcements", "UserManagement"]
 ];
 
