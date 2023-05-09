@@ -32,7 +32,8 @@
 
                     <a href="./chat" class="mx-2">
                         <div id="chat-icon" class="navbar-icons">
-                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none"
+                                 xmlns="http://www.w3.org/2000/svg">
                                 <path d="M21 15C21 15.5304 20.7893 16.0391 20.4142 16.4142C20.0391 16.7893 19.5304 17 19 17H7L3 21V5C3 4.46957 3.21071 3.96086 3.58579 3.58579C3.96086 3.21071 4.46957 3 5 3H19C19.5304 3 20.0391 3.21071 20.4142 3.58579C20.7893 3.96086 21 4.46957 21 5V15Z"
                                       stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
                             </svg>
@@ -92,23 +93,23 @@
                     <span>Profile</span>
                 </a>
             </li>
-
-            <li>
-                <a href="<?php echo URL_ROOT ?>/manufacturerStore">
-                    <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M16.6668 17.5V15.8333C16.6668 14.9493 16.3156 14.1014 15.6905 13.4763C15.0654 12.8512
+            <?php if (\app\helpers\Session::getSession()->role === "Manufacturer") : ?>
+                <li>
+                    <a href="<?php echo URL_ROOT ?>/manufacturerStore">
+                        <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M16.6668 17.5V15.8333C16.6668 14.9493 16.3156 14.1014 15.6905 13.4763C15.0654 12.8512
                         14.2176 12.5 13.3335 12.5H6.66683C5.78277 12.5 4.93493 12.8512 4.30981 13.4763C3.68469 14.1014
                         3.3335 14.9493 3.3335 15.8333V17.5" stroke="black" stroke-width="2" stroke-linecap="round"
-                              stroke-linejoin="round"/>
-                        <path d="M9.99984 9.16667C11.8408 9.16667 13.3332 7.67428 13.3332 5.83333C13.3332 3.99238
+                                  stroke-linejoin="round"/>
+                            <path d="M9.99984 9.16667C11.8408 9.16667 13.3332 7.67428 13.3332 5.83333C13.3332 3.99238
                         11.8408 2.5 9.99984 2.5C8.15889 2.5 6.6665 3.99238 6.6665 5.83333C6.6665 7.67428 8.15889
                         9.16667 9.99984 9.16667Z" stroke="black" stroke-width="2" stroke-linecap="round"
-                              stroke-linejoin="round"/>
-                    </svg>
-                    <span>My Store</span>
-                </a>
-            </li>
-
+                                  stroke-linejoin="round"/>
+                        </svg>
+                        <span>My Store</span>
+                    </a>
+                </li>
+            <?php endif; ?>
             <li>
                 <a href="<?php echo URL_ROOT ?>/logout">
                     <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
