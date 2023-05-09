@@ -1011,6 +1011,7 @@ form .card-input {
   font-weight: 500;
 }
 form .card-input:hover {
+  background-color: #F9FCF5;
   cursor: pointer;
 }
 form .card-input-element:checked + .card-input {
