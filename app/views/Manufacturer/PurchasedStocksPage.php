@@ -31,32 +31,12 @@ include APP_ROOT . "/views/inc/components/Header.php";
                                     <tr class="row">
                                         <th class="col-2">Stock Item ID</th>
                                         <th class="col-2">Category</th>
-                                        <th class="col-2">Crop Name</th>
+                                        <th class="col-3">Crop Name</th>
                                         <th class="col-2">Quantity</th>
                                         <th class="col-3">Last Purchased Date</th>
-                                        <th class="col-1"></th>
                                     </tr>
                                     </thead>
-                                    <tbody>
-                                        <?php foreach ($this->data as $stockItem) { ?>
-                                        <tr class="row">
-                                            <td class="col-2"><?php echo $stockItem->crop_id ?></td>
-                                            <td class="col-2"><?php echo $stockItem->category_name ?></td>
-                                            <td class="col-2"><?php echo $stockItem->crop_name ?></td>
-                                            <td class="col-2"><?php echo $stockItem->purchased_qty ?></td>
-                                            <td class="col-3"><?php echo $stockItem->last_purchased_date ?></td>
-                                            <td class="col-1 pr-5">
-                                                <div class="row justify-content-end align-items-center gap-1">
-                                                    <div class="col">
-                                                        <a href='hide/<?php echo $stockItem->crop_id; ?>'
-                                                           class="btn-xs btn-outlined-error text-center">
-                                                            Hide
-                                                        </a>
-                                                    </div>
-                                                </div>
-                                            </td>
-                                        </tr>
-                                        <?php } ?>
+                                    <tbody id="purchased-stocks">
                                     </tbody>
                                     <tfoot>
                                     <tr class="row justify-content-end pagination">
@@ -88,6 +68,8 @@ include APP_ROOT . "/views/inc/components/Header.php";
                                         </td>
                                     </tfoot>
                                 </table>
+                                <div class="change-stock-quantity-modal" id="change-stock-quantity">
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -98,6 +80,8 @@ include APP_ROOT . "/views/inc/components/Header.php";
             ?>
         </main>
     </div>
+
+    <script src="<?php echo URL_ROOT ?>/public/js/Manufacturer/purchasedStocks.js" defer></script>
     </body>
 <?php
 include APP_ROOT . "/views/inc/components/EndingTag.php";

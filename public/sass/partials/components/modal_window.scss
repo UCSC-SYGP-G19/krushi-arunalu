@@ -1,0 +1,23 @@
+@import "../variables";
+
+.edit-icon {
+  cursor: pointer;
+}
+
+.change-stock-quantity-modal {
+  position: absolute;
+  top: 40%;
+  left: 37%;
+  transform: translate(-50%, -50%);
+
+  .modal-window-box {
+    width: 400px;
+    min-height: 25vh;
+    max-height: max-content;
+    background-color: $white;
+    border-radius: $base-border-radius;
+    box-shadow: 0 4px 50px rgba(0, 0, 0, 0.2);
+    border: none;
+  }
+
+}
