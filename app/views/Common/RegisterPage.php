@@ -22,7 +22,7 @@ include APP_ROOT . "/views/inc/components/LoggedOutNavbar.php"
             <form name="user_reg_form" action="" method="POST">
                 <!-- Role selection step -->
                 <section id="step-0" class="form-step">
-                    <h3 class="form-section-title text-center mb-1">Select your preferred role</h3>
+                    <h3 class="form-section-title text-center mb-2 pt-1">Select your preferred role</h3>
                     <div class="row gap-2 justify-content-center">
                         <div class="col-3">
                             <label class="px-2" title="Direct producers in the agri-sector, such as farmers">
@@ -48,11 +48,11 @@ include APP_ROOT . "/views/inc/components/LoggedOutNavbar.php"
                                 </div>
                             </label>
                         </div>
-                    </div m nam>
+                    </div>
                     <?php if (isset($this->fieldErrors['role'])) { ?>
                         <div class="error mb-3"><?php echo $this->fieldErrors['role'] ?></div>
                     <?php } ?>
-                    <div class="mt-2 text-center">
+                    <div class="mt-2 text-center mb-1">
                         <button class="button btn-navigate-form-step" type="button" id="next-btn-0">Next
                             <svg width="20" height="16" viewBox="0 0 20 16" fill="none"
                                  xmlns="http://www.w3.org/2000/svg">
@@ -293,7 +293,7 @@ include APP_ROOT . "/views/inc/components/LoggedOutNavbar.php"
                                     $this->generateFormFields($formData);
                                     ?>
                                 </div>
-
+                                <input type="checkbox" name="t&c" id="t&_checkbox" hidden>
                             </div>
                         </div>
                     </div>

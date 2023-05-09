@@ -310,14 +310,19 @@ document.addEventListener("DOMContentLoaded", () => {
     if (isSectionValid) {
       navigateToFormStep(12);
 
-      if (form.querySelector('input[name="email_otp"]').value === "") {
-        const enteredEmail = form.querySelector('input[name="p_email_address"]').value;
-        let emailOtpContainer = document.querySelector("#step-12 .otp-wrapper.email");
-        emailOtpContainer.querySelector(".loading").classList.remove("d-none");
-        emailOtpContainer.querySelector(".body strong").innerHTML = enteredEmail;
+      const enteredEmail = form.querySelector('input[name="p_email_address"]').value;
+      let emailOtpContainer = document.querySelector("#step-12 .otp-wrapper.email");
+      emailOtpContainer.querySelector(".body strong").innerHTML = enteredEmail;
 
+      if (form.querySelector('input[name="email_otp"]').value === "") {
+        emailOtpContainer.querySelector(".loading").classList.remove("d-none");
         toast("loading", "", "Sending OTP to email", 3000);
         sendOtpToEmail(enteredEmail);
+      } else {
+        emailOtpContainer.querySelector(".body").classList.remove("d-none");
+        for (let i = 0; i < emailOtpInputs.length; i++) {
+          emailOtpInputs[i].value = form.querySelector('input[name="email_otp"]').value[i];
+        }
       }
     }
 
@@ -383,11 +388,13 @@ document.addEventListener("DOMContentLoaded", () => {
     password.setAttribute("maxlength", "50");
     password.setAttribute("minlength", "8");
     password.setAttribute("title", "Password should contain at least 8 characters, at least 1 letter and 1 digit");
+    password.setAttribute("autocomplete", "new-password");
 
     // password.setCustomValidity("Password should contain at least 8 characters, at least 1 letter and 1 digit");
     confirmPassword.setAttribute("required", "required");
     confirmPassword.setAttribute("maxlength", "50");
     confirmPassword.setAttribute("minlength", "8");
+    confirmPassword.setAttribute("autocomplete", "new-password");
 
     if (!password.reportValidity() || !validatePassword(password.value)) {
       document.querySelector("#step-13 div.passwords").classList.add("shake");
@@ -417,10 +424,37 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     if (isSectionValid) {
-      toast("success", "", "Registration details submitted successfully", 1000);
-      window.onbeforeunload = () => {
-      };
-      form.submit();
+      // Open swal model box with checkbox for ticking
+      Swal.fire({
+        title: "One final step",
+        html: `
+          <section class="text-center px-4 py-0">
+            <p class="text-secondary fw-normal pt-2 pb-3">Please agree to the terms and conditions to proceed</p>
+            <div class="form-check d-flex justify-content-center">
+              <input class="form-check-input" type="checkbox" value="" id="popup_t&c_checkbox" name="popup_t&c">
+              <label class="pl-2 mb-0" for="t&c_checkbox" id="t&c_checkbox">I agree to the <a href="https://www.google.com" target="_blank">Terms and Conditions</a></label>
+            </div> 
+          </section>
+        `,
+        showCancelButton: true,
+        cancelButtonText: 'Cancel',
+        confirmButtonText: 'Submit',
+        showLoaderOnConfirm: true,
+        // if user clicks on confirm button
+        preConfirm: () => {
+          // if user has not checked the checkbox
+          if (!Swal.getPopup().querySelector('input').checked) {
+            Swal.showValidationMessage('Please check the checkbox to proceed');
+          }
+        }
+      }).then((result) => {
+        form.querySelector('input[name="t&c"]').checked = document.querySelector("#popup_t\\&c_checkbox").checked;
+        window.onbeforeunload = () => {
+        };
+        toast("success", "", "Registration details submitted successfully", 1000);
+        form.submit();
+      });
+
     }
 
   });
@@ -542,11 +576,11 @@ document.addEventListener("DOMContentLoaded", () => {
     const errorDivs = document.querySelectorAll("div.error");
     if (errorDivs.length > 0) {
       const sectionId = errorDivs[0].closest("section.form-step").getAttribute("id").split("-")[1];
-      if(sectionId !== "0") {
+      if (sectionId !== "0") {
         roleSelectionNextBtn.click();
       }
       navigateToFormStep(sectionId);
     }
-  },100);
+  }, 100);
 
 });

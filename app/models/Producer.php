@@ -22,18 +22,28 @@ class Producer extends RegisteredUser
         $email = null,
         $contactNo = null,
         $password = null,
+        $isEmailVerified = null,
         private ?string $nicNumber = null,
         private ?int $district = null,
     ) {
-        parent::__construct($id, $role, $name, $address, $lastLogin, $imageUrl, $email, $contactNo, $password);
+        parent::__construct($id, $role, $name, $address, $lastLogin, $imageUrl, $email, $contactNo, $password, $isEmailVerified);
     }
 
     public function register(): bool
     {
         if (parent::register()) {
-            $this->runQuery(
-                "INSERT INTO producer (id, nic_number, district) VALUES (?,?,?)",
-                [$this->getLastInsertedId(), $this->nicNumber, $this->district]
+//            $this->runQuery(
+//                "INSERT INTO producer (id, nic_number, district) VALUES (?,?,?)",
+//                [$this->getLastInsertedId(), $this->nicNumber, $this->district]
+//            );
+
+            $this->insert(
+                table: 'producer',
+                data: [
+                    'id' => $this->getLastInsertedId(),
+                    'nic_number' => $this->nicNumber,
+                    'district' => $this->district
+                ]
             );
             return true;
         }

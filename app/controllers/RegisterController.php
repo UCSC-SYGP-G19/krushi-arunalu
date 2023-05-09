@@ -38,6 +38,7 @@ class RegisterController extends Controller
             if (!$this->validateEmailOtp($email_otp, $email_otp_id)) {
                 $this->view->fieldErrors['email_otp'] = "Invalid email verification code, please try again";
                 $this->refillValuesAndShowError();
+                $this->view->fieldValues["email_otp"] = null;
                 Flash::setMessage(
                     Flash::ERROR,
                     "Registration failed",
@@ -122,6 +123,7 @@ class RegisterController extends Controller
 
     private function registerAsProducer()
     {
+        Logger::log("INFO", "Registering producer with email " . $_POST['p_email_address']);
         $this->loadModel('Producer');
         $this->model->fillData([
             'role' => $_POST['role'],
@@ -132,8 +134,9 @@ class RegisterController extends Controller
             'email' => $_POST['p_email_address'],
             'contactNo' => $_POST['p_contact_no'],
             'password' => $_POST['password'],
+            'isEmailVerified' => true,
             'nicNumber' => $_POST['p_nic'],
-            'district' => $_POST['p_district']
+            'district' => $_POST['p_district'],
         ]);
         if ($this->model->register()) {
             $this->view->fields = [];
@@ -147,8 +150,8 @@ class RegisterController extends Controller
             exit();
         } else {
             http_response_code(500);
-            $this->view->fields = $_POST;
-            Flash::setMessage(
+//            $this->view->fields = $_POST;
+            Flash::setToastMessage(
                 Flash::ERROR,
                 "Registration failed",
                 "Registration failed, please try again"
