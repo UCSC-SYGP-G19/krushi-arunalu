@@ -19,7 +19,7 @@ include APP_ROOT . "/views/inc/components/LoggedOutNavbar.php"
             <ul class="form-stepper form-stepper-horizontal text-center mx-auto pl-0 mb-4">
             </ul>
             <!-- Step Wise Form Content -->
-            <form id="userAccountSetupForm" name="userAccountSetupForm" enctype="multipart/form-data" method="POST">
+            <form name="user_reg_form" action="" method="POST">
                 <!-- Role selection step -->
                 <section id="step-0" class="form-step">
                     <h3 class="form-section-title text-center mb-1">Select your preferred role</h3>
@@ -27,7 +27,7 @@ include APP_ROOT . "/views/inc/components/LoggedOutNavbar.php"
                         <div class="col-3">
                             <label class="px-2" title="Direct producers in the agri-sector, such as farmers">
                                 <input type="radio" name="role" class="card-input-element" value="Producer" <?php
-                                if (isset($this->fields['role']) && $this->fields['role'] == 'Producer') {
+                                if (isset($this->fieldValues['role']) && $this->fieldValues['role'] == 'Producer') {
                                     echo 'checked';
                                 }
                                 ?>/>
@@ -39,7 +39,7 @@ include APP_ROOT . "/views/inc/components/LoggedOutNavbar.php"
                         <div class="col-3">
                             <label class="px-2" title="Value adding organisations and re-sellers in the agri-sector">
                                 <input type="radio" name="role" class="card-input-element" value="Manufacturer" <?php
-                                if (isset($this->fields['role']) && $this->fields['role'] == 'Manufacturer') {
+                                if (isset($this->fieldValues['role']) && $this->fieldValues['role'] == 'Manufacturer') {
                                     echo 'checked';
                                 }
                                 ?>/>
@@ -165,7 +165,7 @@ include APP_ROOT . "/views/inc/components/LoggedOutNavbar.php"
                             <div class="body d-none">
                                 <p class="mt-1 mb-2">We have sent a verification code to
                                     <br>
-                                    <strong>sandulrenuja@gmail.com</strong>
+                                    <strong></strong>
                                     <br>
                                     Please enter the code below to verify your email address.
                                 </p>
@@ -178,8 +178,10 @@ include APP_ROOT . "/views/inc/components/LoggedOutNavbar.php"
                                     <input type="text" maxlength="1"/>
                                     <input type="text" maxlength="1"/>
                                 </div>
-                                <input type="text" hidden disabled name="email_otp">
-                                <input type="number" hidden disabled name="email_otp_id">
+                                <input type="text" hidden name="email_otp" value="<?php if (isset($this->fieldValues['email_otp'])) {
+                                    echo $this->fieldValues['email_otp'];
+                                                                                  }?>">
+                                <input type="number" hidden name="email_otp_id">
                                 <button type="button" class="cancel-otp email d-none" onclick="clearEmailOtp()">Clear
                                 </button>
                             </div>
@@ -190,7 +192,7 @@ include APP_ROOT . "/views/inc/components/LoggedOutNavbar.php"
                             <br>
                             <p class="mt-1 mb-2">We have sent a verification code to
                                 <br>
-                                <strong>+94775415464</strong>
+                                <strong></strong>
                                 <br>
                                 Please enter the code below to verify your phone no.
                             </p>
@@ -258,6 +260,7 @@ include APP_ROOT . "/views/inc/components/LoggedOutNavbar.php"
 
                                 </button>
                             </div>
+                            <input type="text" name="avatar_url" value="" hidden>
                             <button class="btn-outlined-primary-dark btn-sm mt-4 py-1 px-2 avatar-upload">Upload
                             </button>
                         </div>
@@ -271,14 +274,14 @@ include APP_ROOT . "/views/inc/components/LoggedOutNavbar.php"
                                 <div class="passwords gap-2">
                                     <?php
                                     $formData = [
-                                        "p_password" => [
+                                        "password" => [
                                             "element" => InputField::class,
                                             "wrapperClass" => "col-12",
                                             "label" => "Password",
                                             "placeholder" => "Create a new password",
                                             "type" => "password",
                                         ],
-                                        "p_confirm_password" => [
+                                        "confirm_password" => [
                                             "element" => InputField::class,
                                             "wrapperClass" => "col-12",
                                             "label" => "Confirm password",
@@ -306,123 +309,17 @@ include APP_ROOT . "/views/inc/components/LoggedOutNavbar.php"
                             </svg>
                             Previous
                         </button>
-                        <button class="button btn-navigate-form-step fw-bold" type="button" id="next-btn-13">
+                        <button class="button btn-navigate-form-step fw-bold" id="submit-btn"
+                                name="register" value="register" type="button">
                             <svg class="pr-1" width="20" height="17" viewBox="0 0 20 14" fill="none"
                                  xmlns="http://www.w3.org/2000/svg">
                                 <path d="M17.3672 1.56592L6.36729 12.5659L1.36719 7.56592"/>
                             </svg>
-
                             Submit
                         </button>
                     </div>
                 </section>
                 <!-- Manufacturer steps -->
-                <section id="step-21" class="form-step d-none">
-                    <!-- <h3 class="form-section-title text-center mb-1">Personal / Company details</h3>-->
-                    <div class="row gap-2">
-                        <div class="col-6">
-                            <label for="name">Personal name / Company name</label>
-                            <input type="text" id="name" name="name" placeholder="Enter personal name / company name"
-                                   value="<?php
-                                    if (isset($this->fields['name'])) {
-                                        echo $this->fields['name'];
-                                    }
-                                    ?>">
-                            <?php if (isset($this->fieldErrors['name'])) { ?>
-                                <div class="error"><?php echo $this->fieldErrors['name']; ?></div>
-                            <?php } ?>
-                        </div>
-                        <div class="col-6">
-                            <label for="nic/br">NIC / Business Registration no.</label>
-                            <input type="text" id="nic/br" name="nic/br" placeholder="Enter NIC / BR no."
-                                   value="<?php
-                                    if (isset($this->fields['nic/br'])) {
-                                        echo $this->fields['nic/br'];
-                                    }
-                                    ?>">
-                            <?php if (isset($this->fieldErrors['nic/br'])) { ?>
-                                <div class="error"><?php echo $this->fieldErrors['nic/br']; ?></div>
-                            <?php } ?>
-                        </div>
-                    </div>
-                    <div class="row gap-2">
-                        <div class="col-9">
-                            <label for="address">Address</label>
-                            <input type="text" id="address" name="address"
-                                   placeholder="Enter personal address / company address"
-                                   value="<?php
-                                    if (isset($this->fields['address'])) {
-                                        echo $this->fields['address'];
-                                    }
-                                    ?>">
-                            <?php if (isset($this->fieldErrors['address'])) { ?>
-                                <div class="error"><?php echo $this->fieldErrors['address']; ?></div>
-                            <?php } ?>
-                        </div>
-                        <div class="col-3">
-                            <label for="district">District</label>
-                            <input type="text" id="district" name="district" placeholder="Enter district"
-                                   value="<?php
-                                    if (isset($this->fields['district'])) {
-                                        echo $this->fields['district'];
-                                    }
-                                    ?>">
-                            <?php if (isset($this->fieldErrors['district'])) { ?>
-                                <div class="error"><?php echo $this->fieldErrors['district']; ?></div>
-                            <?php } ?>
-                        </div>
-                    </div>
-                    <div class="row gap-2">
-                        <div class="col-4">
-                            <label for="contact_no">Contact no.</label>
-                            <input type="text" id="contact_no" name="contact_no"
-                                   placeholder="Enter contact no."
-                                   value="<?php
-                                    if (isset($this->fields['contact_no'])) {
-                                        echo $this->fields['contact_no'];
-                                    }
-                                    ?>">
-                            <?php if (isset($this->fieldErrors['contact_no'])) { ?>
-                                <div class="error"><?php echo $this->fieldErrors['contact_no']; ?></div>
-                            <?php } ?>
-                        </div>
-                        <div class="col-8">
-                            <label for="email">Email address</label>
-                            <input type="email" id="email" name="email" placeholder="Enter email address"
-                                   value="<?php
-                                    if (isset($this->fields['email'])) {
-                                        echo $this->fields['email'];
-                                    }
-                                    ?>">
-                            <?php if (isset($this->fieldErrors['email'])) { ?>
-                                <div class="error"><?php echo $this->fieldErrors['email']; ?></div>
-                            <?php } ?>
-                        </div>
-                    </div>
-                    <?php if (isset($this->fieldErrors['role'])) { ?>
-                        <div class="error mb-3"><?php echo $this->fieldErrors['role'] ?></div>
-                    <?php } ?>
-                    <div class="mt-3 text-center">
-                        <button class="button btn-navigate-form-step btn-outline prev-btn" type="button"
-                                step_number="0">Prev
-                        </button>
-                        <button class="button btn-navigate-form-step" type="button" step_number="22" id="next-btn-21">
-                            Next
-                        </button>
-                    </div>
-                </section>
-                <section id="step-22" class="form-step d-none">
-                    <h2 class="font-normal">Personal Details</h2>
-                    <!-- Step 3 input fields -->
-                    <div class="mt-3">
-                        Step 3 input fields goes here..
-                    </div>
-                    <div class="mt-3">
-                        <button class="button btn-navigate-form-step prev-btn" type="button" step_number="2">Prev
-                        </button>
-                        <button class="button submit-btn" type="submit" id="next-btn-22">Save</button>
-                    </div>
-                </section>
             </form>
         </div>
     </div>

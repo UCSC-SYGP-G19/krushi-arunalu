@@ -1,3 +1,4 @@
+let selectedRole = null;
 let formStepper = null;
 let defaultAvatar = null;
 const form = document.querySelector("form");
@@ -145,18 +146,18 @@ document.addEventListener("DOMContentLoaded", () => {
 
   formStepper = document.querySelector("ul.form-stepper");
 
-  const uploadBtn = document.querySelector("button.avatar-select");
+  const avatarSelectBtn = document.querySelector("button.avatar-select");
   const fileInput = document.querySelector("input.avatar-input");
   const avatar = document.querySelector(".avatar-preview .avatar");
+  const avatarUploadBtn = document.querySelector("button.avatar-upload");
 
   const roleSelectionNextBtn = document.querySelector("#next-btn-0");
 
   const producerStep2NextBtn = document.querySelector("#next-btn-11");
   const producerStep3NextBtn = document.querySelector("#next-btn-12");
-  const producerStep4NextBtn = document.querySelector("#next-btn-13");
+  const formSubmitBtn = document.querySelector("#submit-btn");
 
   roleSelectionNextBtn.addEventListener("click", () => {
-    let selectedRole = null;
     document.querySelectorAll("#step-0 input").forEach((input) => {
       if (input.checked) {
         selectedRole = input.value;
@@ -207,7 +208,7 @@ document.addEventListener("DOMContentLoaded", () => {
                         <div class="label text-muted">Login details</div>
                     </a>
                 </li>
-        `;11
+        `;
       navigateToFormStep(11);
 
     } else if (selectedRole === "Manufacturer") {
@@ -329,7 +330,14 @@ document.addEventListener("DOMContentLoaded", () => {
     const loadLastPage = () => {
       const userName = form.querySelector('input[name="p_name"]').value;
       const userInfo = form.querySelector('input[name="p_email_address"]').value + " | " + form.querySelector('input[name="p_contact_no"]').value;
-      defaultAvatar = "https://api.dicebear.com/6.x/initials/svg?seed=" + userName.replace(" ", "+");
+      const avatarUrlInput = form.querySelector('input[name="avatar_url"]');
+
+      defaultAvatar = "https://api.dicebear.com/6.x/initials/svg?seed=" + (userName.replaceAll(".", "").replaceAll(" ", "+"));
+
+      if (avatarUrlInput.value == null || avatarUrlInput.value === "") {
+        avatarUrlInput.setAttribute("value", defaultAvatar);
+      }
+
       document.querySelector("#step-13 .user-name").innerHTML = userName;
       document.querySelector("#step-13 .user-info").innerHTML = userInfo;
 
@@ -360,26 +368,28 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   });
 
-  producerStep4NextBtn.addEventListener("click", () => {
+  formSubmitBtn.addEventListener("click", (e) => {
+    e.preventDefault();
+
     // Validate personal details of producer
     let isSectionValid = true;
-    let pPassword = form.querySelector('input[name="p_password"]');
-    let pConfirmPassword = form.querySelector('input[name="p_confirm_password"]');
+    let password = form.querySelector('input[name="password"]');
+    let confirmPassword = form.querySelector('input[name="confirm_password"]');
 
-    pPassword.setAttribute("required", "required");
+    password.setAttribute("required", "required");
 
     // set regex pattern so that Password should contain at least 8 characters, at least 1 letter and 1 digit
-    pPassword.setAttribute("pattern", "(?=.*\\d)(?=.*[a-zA-Z]).{8,}");
-    pPassword.setAttribute("maxlength", "50");
-    pPassword.setAttribute("minlength", "8");
-    pPassword.setAttribute("title", "Password should contain at least 8 characters, at least 1 letter and 1 digit");
+    password.setAttribute("pattern", "(?=.*\\d)(?=.*[a-zA-Z]).{8,}");
+    password.setAttribute("maxlength", "50");
+    password.setAttribute("minlength", "8");
+    password.setAttribute("title", "Password should contain at least 8 characters, at least 1 letter and 1 digit");
 
-    // pPassword.setCustomValidity("Password should contain at least 8 characters, at least 1 letter and 1 digit");
-    pConfirmPassword.setAttribute("required", "required");
-    pConfirmPassword.setAttribute("maxlength", "50");
-    pConfirmPassword.setAttribute("minlength", "8");
+    // password.setCustomValidity("Password should contain at least 8 characters, at least 1 letter and 1 digit");
+    confirmPassword.setAttribute("required", "required");
+    confirmPassword.setAttribute("maxlength", "50");
+    confirmPassword.setAttribute("minlength", "8");
 
-    if (!pPassword.reportValidity() || !validatePassword(pPassword.value)) {
+    if (!password.reportValidity() || !validatePassword(password.value)) {
       document.querySelector("#step-13 div.passwords").classList.add("shake");
       setTimeout(() => {
         document.querySelector("#step-13 div.passwords").classList.remove("shake");
@@ -387,7 +397,7 @@ document.addEventListener("DOMContentLoaded", () => {
       return;
     }
 
-    if (!pConfirmPassword.reportValidity()) {
+    if (!confirmPassword.reportValidity()) {
       document.querySelector("#step-13 div.passwords").classList.add("shake");
       setTimeout(() => {
         document.querySelector("#step-13 div.passwords").classList.remove("shake");
@@ -395,9 +405,9 @@ document.addEventListener("DOMContentLoaded", () => {
       return;
     }
 
-    if (pPassword.value !== pConfirmPassword.value) {
+    if (password.value !== confirmPassword.value) {
       isSectionValid = false;
-      pConfirmPassword.setCustomValidity("Passwords do not match");
+      confirmPassword.setCustomValidity("Passwords do not match");
       Swal.fire({
         title: "Warning",
         text: "Passwords do not match",
@@ -407,11 +417,10 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     if (isSectionValid) {
-      Swal.fire({
-        title: "Success",
-        text: "Form submitted successfully",
-        icon: "success",
-      });
+      toast("success", "", "Registration details submitted successfully", 1000);
+      window.onbeforeunload = () => {
+      };
+      form.submit();
     }
 
   });
@@ -435,18 +444,22 @@ document.addEventListener("DOMContentLoaded", () => {
     input.addEventListener("paste", handleOnPasteEmailOtp);
   })
 
-  uploadBtn.addEventListener("click", () => {
+  avatarSelectBtn.addEventListener("click", () => {
     fileInput.click();
   });
 
   fileInput.addEventListener("change", event => {
     const file = event.target.files[0];
-    const avatarUploadBtn = document.querySelector("button.avatar-upload");
 
     if (file === undefined) {
       avatar.style.background = `url(${defaultAvatar}) center center/cover`;
+      avatarUploadBtn.innerHTML = "Upload";
       avatarUploadBtn.classList.add("disabled");
       avatarUploadBtn.setAttribute("disabled", "disabled");
+      formSubmitBtn.classList.remove("disabled");
+      formSubmitBtn.removeAttribute("disabled");
+      form.querySelector('input[name="avatar_url"]').setAttribute("value", defaultAvatar);
+
       return;
     }
 
@@ -468,12 +481,72 @@ document.addEventListener("DOMContentLoaded", () => {
         avatar.style.background = `url(${reader.result}) center center/cover`;
 
         avatarUploadBtn.classList.remove("disabled");
-        avatarUploadBtn.classList.add("btn-primary-dark", "text-white");
+        // avatarUploadBtn.classList.add("btn-primary-dark", "text-white");
         avatarUploadBtn.removeAttribute("disabled");
-        producerStep4NextBtn.classList.add("disabled");
-        producerStep4NextBtn.setAttribute("disabled", "disabled");
+        formSubmitBtn.classList.add("disabled");
+        formSubmitBtn.setAttribute("disabled", "disabled");
       };
     }
   });
+
+  avatarUploadBtn.addEventListener("click", () => {
+    if (fileInput.files.length === 0) {
+      Swal.fire({
+        title: "Error",
+        text: "Please select a file first",
+        icon: "error",
+        confirmButtonText: 'Ok',
+      });
+      return;
+    }
+
+    // upload image to server
+    const formData = new FormData();
+    formData.append("avatar", fileInput.files[0]);
+
+    toast("loading", "", "Uploading image...");
+    avatarUploadBtn.innerHTML = "Uploading...";
+
+    avatarUploadBtn.classList.add("disabled");
+    avatarUploadBtn.setAttribute("disabled", "disabled");
+
+    fetch(`${URL_ROOT}/register/upload-avatar`, {
+      method: "POST",
+      body: formData,
+    }).then(async (response) => {
+      if (response.status === 201) {
+        toast("success", "", "Image uploaded successfully");
+        avatarUploadBtn.innerHTML = "Image uploaded";
+        avatarUploadBtn.setAttribute("disabled", "disabled");
+        avatarUploadBtn.innerHTML = "Uploaded";
+        formSubmitBtn.classList.remove("disabled");
+        formSubmitBtn.removeAttribute("disabled");
+        const res = await response.json();
+        form.querySelector('input[name="avatar_url"]').value = res.file_path;
+      } else {
+        avatarUploadBtn.innerHTML = "Upload";
+        avatarUploadBtn.classList.remove("disabled");
+        avatarUploadBtn.removeAttribute("disabled");
+        Swal.fire({
+          title: "Error",
+          text: "Something went wrong while uploading your image. Please try again",
+          icon: "error",
+          confirmButtonText: 'Ok',
+        });
+      }
+    })
+  });
+
+  // find all divs with class error and then find the section containing that first div, then go to that section
+  setTimeout(() => {
+    const errorDivs = document.querySelectorAll("div.error");
+    if (errorDivs.length > 0) {
+      const sectionId = errorDivs[0].closest("section.form-step").getAttribute("id").split("-")[1];
+      if(sectionId !== "0") {
+        roleSelectionNextBtn.click();
+      }
+      navigateToFormStep(sectionId);
+    }
+  },100);
 
 });

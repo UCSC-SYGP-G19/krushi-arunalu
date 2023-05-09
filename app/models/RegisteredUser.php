@@ -108,7 +108,12 @@ class RegisteredUser extends Model
 
     public static function getUserIdByTempHash($tempHash): ?int
     {
-        $result = Model::select(table: 'registered_user', columns: ['id'], where: ['temp_hash' => $tempHash])->fetch();
+        $result = Model::select(
+            table: 'registered_user',
+            columns: ['id'],
+            where: ['temp_hash' => $tempHash],
+            useSingleton: false
+        )->fetch();
         if ($result) {
             return $result->id;
         }

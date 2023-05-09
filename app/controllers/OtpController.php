@@ -49,7 +49,6 @@ class OtpController extends Controller
 
             $this->loadModel('OtpEntry');
             $this->model->fillData([
-                "timestamp" => date("Y-m-d H:i:s"),
                 "type" => "email",
                 "otp" => $otp,
             ]);

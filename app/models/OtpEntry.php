@@ -9,6 +9,7 @@
 namespace app\models;
 
 use app\core\Model;
+use PDOStatement;
 
 class OtpEntry extends Model
 {
@@ -21,17 +22,24 @@ class OtpEntry extends Model
     ) {
     }
 
-    public function addToDB(): bool
+    public function addToDB(): bool|PDOStatement
     {
         return $this->insert(
             table: "generated_otp",
             data: [
                 "user_id" => $this->userId,
-                "timestamp" => $this->timestamp,
                 "type" => $this->type,
                 "otp" => $this->otp,
             ]
         );
+
+//        $result = $this->runQuery(
+//            "INSERT into generated_otp (user_id, timestamp, type, otp) VALUES (?,?,?,?)",
+//            [$this->userId, $this->timestamp, $this->type, $this->otp]
+//        );
+//        print_r($result);
+//        Logger::log("DEBUG", $result);
+//        return $result;
     }
 
     /**
