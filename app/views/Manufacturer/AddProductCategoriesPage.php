@@ -35,6 +35,7 @@ include APP_ROOT . "/views/inc/components/Header.php";
                     <h1 class="title">Add new category</h1>
                     <br>
                     <form class="mb-1 px-2" action="" method="post">
+                        <div class="fw-bold text-error">Need Admin Approval to add a new category</div>
                         <div class="row gap-2">
                             <?php
                             $this->formData = [
@@ -75,7 +76,7 @@ include APP_ROOT . "/views/inc/components/Header.php";
                         <?php } ?>
                         <div class="mb-3 text-center">
                             <button class="btn-lg btn-primary-light mt-3 text-center text-white" type="submit"
-                                    name="submit_purchase" value="submit">Submit
+                                    name="submit_purchase" value="submit">Request Approval
                             </button>
                             <button class="btn-lg btn-outlined-error mt-3 text-center text-error" type="reset"
                                     name="cancel_purchase" value="cancel">Cancel

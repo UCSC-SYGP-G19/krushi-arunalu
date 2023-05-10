@@ -25,7 +25,7 @@ include APP_ROOT . "/views/inc/components/Header.php";
                             <div class="col">
                                 <a href="<?php echo URL_ROOT ?>/product-categories/add"
                                    class="btn-md btn-primary-light text-center text-white">
-                                    Add category</a>
+                                    Add new category</a>
                             </div>
                         </div>
                         <div class="row px-1 pt-2">

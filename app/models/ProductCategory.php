@@ -23,8 +23,8 @@ class ProductCategory extends Model
     public function addToDB(): bool
     {
         $result = $this->runQuery(
-            "INSERT into product_category (name, description, hidden) VALUES (?,?,?)",
-            [$this->name, $this->description, 0]
+            "INSERT into product_category (name, description, status, hidden) VALUES (?,?,?,?)",
+            [$this->name, $this->description, "Pending", 0]
         );
         return $result == true;
     }
@@ -32,16 +32,16 @@ class ProductCategory extends Model
     public function getAllFromDB(): array
     {
         return $this->runQuery(
-            "SELECT * FROM product_category WHERE product_category.hidden != ?",
-            [1]
+            "SELECT * FROM product_category WHERE product_category.hidden != ? AND product_category.status = ?",
+            [1, "Approved"]
         )->fetchAll();
     }
 
     public function getCategoryById($categoryId): object
     {
         return $this->runQuery(
-            "SELECT name, description FROM product_category WHERE id = ? AND hidden != ?",
-            [$categoryId, 1]
+            "SELECT name, description FROM product_category WHERE id = ? AND hidden != ? AND status = ?",
+            [$categoryId, 1, "Approved"]
         )->fetch();
     }
 
@@ -71,8 +71,8 @@ class ProductCategory extends Model
     public function getNamesFromDB(): array
     {
         return $this->runQuery(
-            "SELECT id, name  FROM product_category WHERE hidden != ?",
-            [1]
+            "SELECT id, name  FROM product_category WHERE hidden != ? AND product_category.status = ?",
+            [1, "Approved"]
         )->fetchAll();
     }
 
@@ -82,15 +82,15 @@ class ProductCategory extends Model
             id as 'category_id',
             name as 'category_name'
             FROM product_category
-            WHERE product_category.hidden != ? 
-            ", [1])->fetchAll();
+            WHERE product_category.hidden != ? AND product_category.status = ?
+            ", [1, "Approved"])->fetchAll();
     }
 
     public function getHiddenCategoriesFromDB(): array
     {
         return $this->runQuery(
-            "SELECT * FROM product_category WHERE product_category.hidden = ?",
-            [1]
+            "SELECT * FROM product_category WHERE product_category.hidden = ? AND product_category.status = ?",
+            [1, "Approved"]
         )->fetchAll();
     }
 
