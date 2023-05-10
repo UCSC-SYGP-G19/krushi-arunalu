@@ -9,9 +9,17 @@ const fetchHiddenProducts = async() => {
 }
 
 const renderHiddenProducts = (data) => {
+
     let output = "";
 
-    if (data != null) {
+    if (data == null) {
+        hiddenProducts.innerHTML = renderMessageCard("Error fetching data");
+    }
+
+    if (data.length === 0) {
+        hiddenProducts.innerHTML = renderMessageCard("No hidden products to show");
+
+    } else {
         data.forEach((element) => {
             let product = `
             <div class="col-2 mb-4">
@@ -32,23 +40,24 @@ const renderHiddenProducts = (data) => {
                 </div>
             </div>
             `;
-
             output += product;
         });
         hiddenProducts.innerHTML = output;
+    }
         btnShowHiddenProducts.innerText = "Hide hidden products";
         btnShowHiddenProducts.value = "hide";
-
-    } else {
-        console.log("Error fetching data");
-    }
 }
 
 const btnShowHiddenProducts = document.querySelector("#hidden-products-toggle");
 
 btnShowHiddenProducts.addEventListener('click', () => {
     if (btnShowHiddenProducts.value === "show") {
-        fetchHiddenProducts();
+        if (data == null) {
+            hiddenProducts.innerHTML = renderMessageCard("Loading");
+            fetchHiddenProducts();
+        } else {
+            renderHiddenProducts(data);
+        }
     } else {
         hiddenProducts.innerHTML = '';
         btnShowHiddenProducts.innerText = 'Show hidden products';

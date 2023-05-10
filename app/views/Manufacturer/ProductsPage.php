@@ -189,16 +189,16 @@ include APP_ROOT . "/views/inc/components/Header.php";
 <!--                                                         xmlns="http://www.w3.org/2000/svg">-->
 <!--                                                    <path d="M1.854 13.3516L7.854 7.35156L1.854 1.35156"-->
 <!--                                                          stroke="#B1B1B1" stroke-width="2" stroke-linecap="round"-->
-<!--                                                          stroke-linejoin="round"/>-->
-<!--                                                </svg>-->
-<!--                                                </span>-->
-<!--                                            </span>-->
-<!--                    </td>-->
-<!--                </tfoot>-->
-<!--            </table>-->
+            <!--                                                          stroke-linejoin="round"/>-->
+            <!--                                                </svg>-->
+            <!--                                                </span>-->
+            <!--                                            </span>-->
+            <!--                    </td>-->
+            <!--                </tfoot>-->
+            <!--            </table>-->
 
             <div class="hidden-products-wrapper px-4 py-1">
-                <button class="btn-hidden-products text-primary-light fs-3 p-2 px-3 d-flex"
+                <button class="btn-hidden-products text-primary-light fs-3 p-2 d-flex fw-bold"
                         id="hidden-products-toggle" value="show">Show hidden products
                 </button>
                 <div class="d-flex mt-2 product-card-wrapper row col-12 gap-1 pl-3 mb-4" id="hidden-products"></div>
