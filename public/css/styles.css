@@ -734,6 +734,10 @@
   color: #15742D;
 }
 
+button {
+  cursor: pointer;
+}
+
 button:disabled {
   cursor: not-allowed;
   opacity: 0.5;
@@ -1117,21 +1121,25 @@ tbody.isolated tr td {
   padding-left: 56px;
 }
 .table-controls input.with-search-icon:hover {
-  background: #F5F5F5 url("../img/icons/other/search-icon.png") no-repeat scroll 20px 12px;
+  background: #F9FCF5 url("../img/icons/other/search-icon.png") no-repeat scroll 20px 12px;
 }
-.table-controls select.with-filter-icon {
-  background: white url("../img/icons/other/filter-icon.png") no-repeat scroll 14px 12px;
-  padding-left: 48px;
+.table-controls button.with-filter-icon {
+  background: white;
 }
-.table-controls select.with-filter-icon:hover {
-  background: #F5F5F5 url("../img/icons/other/filter-icon.png") no-repeat scroll 14px 12px;
+.table-controls button.with-filter-icon[value=show] {
+  padding-bottom: 5px;
 }
-.table-controls select.with-sort-icon {
-  background: white url("../img/icons/other/sort-icon.png") no-repeat scroll 14px 12px;
-  padding-left: 48px;
+.table-controls button.with-filter-icon svg {
+  transform: translate(0, 5px);
 }
-.table-controls select.with-sort-icon:hover {
-  background: #F5F5F5 url("../img/icons/other/sort-icon.png") no-repeat scroll 14px 12px;
+.table-controls button.with-filter-icon:hover {
+  background: #F5F5F5;
+}
+.table-controls button.with-sort-icon {
+  background: white;
+}
+.table-controls button.with-sort-icon:hover {
+  background: #F5F5F5;
 }
 
 table {
@@ -1164,6 +1172,9 @@ table tbody tr {
 table tbody tr:hover {
   background-color: #F5F5F5;
 }
+table tbody tr.table-end {
+  border-radius: 0 0 16px 16px;
+}
 table tbody tr.no-content {
   border-radius: 0 0 16px 16px;
 }
@@ -1191,15 +1202,35 @@ table .pagination .arrow-icons {
   margin: 0 12px;
   padding-top: 8px;
 }
-table .pagination .arrow-icons .left-arrow {
+table .pagination .arrow-icons span {
   cursor: pointer;
-  margin-right: 5px;
   padding: 4px 4px 0;
+  stroke: black;
+  user-select: none;
+}
+table .pagination .arrow-icons span:hover {
+  stroke: #15742D;
+}
+table .pagination .arrow-icons span.disabled {
+  stroke: #B1B1B1;
+  cursor: not-allowed;
+}
+table .pagination .arrow-icons .left-arrow {
+  margin-right: 5px;
 }
 table .pagination .arrow-icons .right-arrow {
-  cursor: pointer;
-  padding: 4px 4px 0;
   margin-left: 5px;
+}
+table span.sort-arrows {
+  cursor: pointer;
+  user-select: none;
+}
+table span.sort-arrows svg {
+  transform: translate(0, -2px);
+  stroke: #AAA;
+}
+table span.sort-arrows svg.active {
+  stroke: black !important;
 }
 
 .modal-window {
