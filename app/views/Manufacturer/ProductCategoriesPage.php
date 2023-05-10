@@ -66,10 +66,10 @@ include APP_ROOT . "/views/inc/components/Header.php";
                             </div>
                         </div>
                         <div class="hidden-categories-wrapper px-1 py-3">
-                            <button class="btn-hidden-categories text-primary-light fs-3 p-2 d-flex"
+                            <button class="btn-hidden-categories text-primary-light fs-3 p-1 d-flex fw-bold"
                                     id="hidden-categories-toggle" value="show">Show hidden categories
                             </button>
-                            <div class="mt-2 row gap-1" id="hidden-categories">
+                            <div class="mt-2 row gap-1 px-2" id="hidden-categories">
                             </div>
                         </div>
                     </div>
