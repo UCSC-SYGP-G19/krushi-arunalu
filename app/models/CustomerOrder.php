@@ -9,7 +9,6 @@
 namespace app\models;
 
 use app\core\Model;
-use app\helpers\Session;
 
 class CustomerOrder extends Model
 {
@@ -55,7 +54,7 @@ class CustomerOrder extends Model
             customer_order.payment_method as 'payment_method', 
             customer_order.total_cost as 'total_cost'
             FROM customer_order   
-            WHERE customer_order.customer_id = ?", [7]) ->fetchAll();
+            WHERE customer_order.customer_id = ?", [$customerId])->fetchAll();
     }
 
     public function getProductImgFromDB(): array

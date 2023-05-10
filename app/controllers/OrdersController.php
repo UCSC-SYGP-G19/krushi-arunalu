@@ -9,7 +9,6 @@ namespace app\controllers;
 
 use app\core\Controller;
 use app\helpers\Session;
-use app\helpers\Util;
 
 class OrdersController extends Controller
 {
@@ -17,7 +16,7 @@ class OrdersController extends Controller
     {
         $this->loadView('Customer/CustomerOrdersPage', 'My Orders', 'orders');
         $this->loadModel("CustomerOrder");
-        $customerId = Session::getSession();
+        $customerId = Session::getSession()->id;
         $this->view->data = $this->model->getAllFromDB($customerId);
         $this->view->data_1 = $this->model->getProductImgFromDB();
         $this->view->render();
