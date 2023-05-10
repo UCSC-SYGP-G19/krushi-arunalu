@@ -24,7 +24,7 @@ const renderProductCategoriesTable = (data) => {
 
     table = {
         headers: [
-            {key: "name", label: "Category name", class: "col-5", sortable: true},
+            {key: "name", label: "Category name", class: "col-5 py-2", sortable: true},
             {key: "description", label: "Description", class: "col-7", sortable: true},
         ],
         data: data,
@@ -38,7 +38,7 @@ const renderProductCategoriesTable = (data) => {
         rowsPerPage: 10,
         activeSortField: "name",
         activeSortOrder: "desc",
-        customBody: "",
+        customBody: null,
         noContentMessage: "No data available",
         actionLabels: [""],
         actionUrls: [""],

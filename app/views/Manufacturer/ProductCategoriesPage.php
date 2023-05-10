@@ -81,6 +81,7 @@ include APP_ROOT . "/views/inc/components/Header.php";
     </div>
     <script src="<?php echo URL_ROOT ?>/public/js/tables.js"></script>
     <script src="<?php echo URL_ROOT ?>/public/js/Manufacturer/productCategories.js" defer></script>
+    <script src="<?php echo URL_ROOT ?>/public/js/hiddenCategories.js"></script>
     </body>
 <?php
 include APP_ROOT . "/views/inc/components/EndingTag.php";
