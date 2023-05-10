@@ -13,18 +13,28 @@ use app\core\Model;
 class ProductCategory extends Model
 {
     public function __construct(
-        private ?int $id = null,
+        private ?int    $id = null,
         private ?string $name = null,
         private ?string $description = null,
-        private ?bool $hidden = null,
+        private ?string $status = null,
+        private ?bool   $hidden = null,
     ) {
+    }
+
+    public function addRequestToDb(): bool
+    {
+        $result = $this->runQuery(
+            "INSERT into product_category (name, description, status, hidden) VALUES (?,?,?,?)",
+            [$this->name, $this->description, "Pending", 0]
+        );
+        return $result == true;
     }
 
     public function addToDB(): bool
     {
         $result = $this->runQuery(
             "INSERT into product_category (name, description, status, hidden) VALUES (?,?,?,?)",
-            [$this->name, $this->description, "Pending", 0]
+            [$this->name, $this->description, $this->status, 0]
         );
         return $result == true;
     }
@@ -183,6 +193,22 @@ class ProductCategory extends Model
     public function setDescription(?string $description): void
     {
         $this->description = $description;
+    }
+
+    /**
+     * @return string|null
+     */
+    public function getStatus(): ?string
+    {
+        return $this->status;
+    }
+
+    /**
+     * @param string|null $status
+     */
+    public function setStatus(?string $status): void
+    {
+        $this->status = $status;
     }
 
     /**

@@ -59,7 +59,7 @@ class ProductCategoriesController extends Controller
                 'description' => $_POST['description'],
             ]);
 
-            if ($this->model->addToDB()) {
+            if ($this->model->addRequestToDB()) {
                 Util::redirect("./");
             }
         }
@@ -105,33 +105,34 @@ class ProductCategoriesController extends Controller
         return false;
     }
 
-//    public function add(): void
-//    {
-//        $this->loadView('Admin/AddProductCategoriesPage', 'Add Product Categories', 'product-categories');
-//
-//        if ($_SERVER["REQUEST_METHOD"] === "POST") {
-//            $required_fields = null;
-//            $this->validateFields($required_fields);
-//
-//            if (!empty($this->view->fieldErrors)) {
-//                $this->refillValuesAndShowError();
-//                $this->view->render();
-//                return;
-//            }
-//
-//            $this->loadModel("ProductCategory");
-//            $this->model->fillData([
-//                'name' => $_POST['name'],
-//                'description' => $_POST['description'],
-//            ]);
-//
-//            if ($this->model->addToDB()) {
-//                Util::redirect("./");
-//            }
-//        }
-//
-//        $this->view->render();
-//    }
+    public function add(): void
+    {
+        $this->loadView('Admin/AddProductCategoriesPage', 'Add Product Categories', 'product-categories');
+
+        if ($_SERVER["REQUEST_METHOD"] === "POST") {
+            $required_fields = null;
+            $this->validateFields($required_fields);
+
+            if (!empty($this->view->fieldErrors)) {
+                $this->refillValuesAndShowError();
+                $this->view->render();
+                return;
+            }
+
+            $this->loadModel("ProductCategory");
+            $this->model->fillData([
+                'name' => $_POST['name'],
+                'description' => $_POST['description'],
+                'status' => "Approved",
+            ]);
+
+            if ($this->model->addToDB()) {
+                Util::redirect("./");
+            }
+        }
+
+        $this->view->render();
+    }
 
     public function edit($id): bool
     {
