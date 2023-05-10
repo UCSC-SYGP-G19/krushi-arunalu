@@ -1,17 +1,17 @@
 @import "../variables";
 
-.edit-icon {
-  cursor: pointer;
-}
-
-.change-stock-quantity-modal {
+.modal-window {
   position: absolute;
-  top: 40%;
-  left: 37%;
+  margin: auto;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
   transform: translate(-50%, -50%);
 
   .modal-window-box {
-    width: 400px;
+    min-width: 400px;
+    max-width: max-content;
     min-height: 25vh;
     max-height: max-content;
     background-color: $white;

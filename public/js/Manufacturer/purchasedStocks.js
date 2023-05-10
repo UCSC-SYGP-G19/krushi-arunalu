@@ -22,8 +22,7 @@ const renderPurchasedStocks = (data) => {
                     <td class="col-1 text-left pl-3">
                         <img alt="Edit" class="edit-icon"
                         src="${URL_ROOT}/public/img/icons/other/edit-icon.png"
-                        onclick="updateStockQuantity(${element.stock_item_id},
-                        ${element.total_quantity})">
+                        onclick="updateStockQuantity(${element.stock_item_id}, ${element.total_quantity})">
                     </td>
                     <td class="col-3">${element.last_purchased_date}</td>
                 </tr>
@@ -51,7 +50,7 @@ const updateStockQuantity = async (cropId, totalQuantity) => {
                             value="${totalQuantity}">
                     </div>
                     <div class="text-right px-3 py-2">
-                        <button class="btn-sm btn-primary-light text-white" type="submit"
+                        <button class="btn-sm btn-primary-light text-white mr-1" type="submit"
                             onclick="updateQtyInDb(${cropId})">Update</button>
                         <button class="btn-close btn-sm btn-outlined-error" id="close-button" type="reset"
                             onclick="closeWindow()">

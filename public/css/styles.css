@@ -1202,18 +1202,18 @@ table .pagination .arrow-icons .right-arrow {
   margin-left: 5px;
 }
 
-.edit-icon {
-  cursor: pointer;
-}
-
-.change-stock-quantity-modal {
+.modal-window {
   position: absolute;
-  top: 40%;
-  left: 37%;
+  margin: auto;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
   transform: translate(-50%, -50%);
 }
-.change-stock-quantity-modal .modal-window-box {
-  width: 400px;
+.modal-window .modal-window-box {
+  min-width: 400px;
+  max-width: max-content;
   min-height: 25vh;
   max-height: max-content;
   background-color: #FFFFFF;
@@ -2289,6 +2289,27 @@ div.swal2-popup button.swal2-styled.swal2-cancel:focus {
   border: none;
   border-radius: 8px;
   width: 100%;
+}
+
+.edit-icon {
+  cursor: pointer;
+}
+
+.change-stock-quantity-modal {
+  position: absolute;
+  top: 40%;
+  left: 37%;
+  transform: translate(-50%, -50%);
+}
+.change-stock-quantity-modal .modal-window-box {
+  min-width: 400px;
+  max-width: max-content;
+  min-height: 25vh;
+  max-height: max-content;
+  background-color: #FFFFFF;
+  border-radius: 16px;
+  box-shadow: 0 4px 50px rgba(0, 0, 0, 0.2);
+  border: none;
 }
 
 * {
