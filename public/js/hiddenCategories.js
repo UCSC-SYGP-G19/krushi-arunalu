@@ -53,7 +53,7 @@ const hiddenCategoriesSection = document.querySelector("#hidden-categories");
 btnShowHiddenCategories.addEventListener('click', () => {
     if (btnShowHiddenCategories.value === "show") {
         if (data == null) {
-            producersTable.innerHTML = renderMessageCard("Loading");
+            hiddenCategoriesSection.innerHTML = renderMessageCard("Loading");
             fetchHiddenCategories();
         } else {
             renderHiddenCategories(data);

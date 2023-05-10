@@ -23,7 +23,10 @@ include APP_ROOT . "/views/inc/components/Header.php";
                                 <h1 class="title">Product Categories</h1>
                             </div>
                             <div class="col">
-                                <a href="<?php echo URL_ROOT ?>/product-categories/requestToAdd"
+                                <a href="<?php echo URL_ROOT ?>/product-categories/requests"
+                                   class="btn-md btn-primary-light text-center text-white">
+                                    Pending Approvals</a>
+                                <a href="<?php echo URL_ROOT ?>/product-categories/add"
                                    class="btn-md btn-primary-light text-center text-white">
                                     Add new category</a>
                             </div>

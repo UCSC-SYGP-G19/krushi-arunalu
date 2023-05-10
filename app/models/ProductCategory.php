@@ -105,6 +105,38 @@ class ProductCategory extends Model
         return $result == true;
     }
 
+    public function getPendingCategoryRequestsFromDB(): array
+    {
+        $stmt = Model::select(
+            table: "product_category",
+            columns: ["id", "name", "description"],
+            where: ["status" => "Pending"],
+        );
+        if ($stmt) {
+            return $stmt->fetchAll();
+        } else {
+            return [];
+        }
+    }
+
+    public function approveCategoryRequests($id): bool
+    {
+        return $this->update(
+            table: "product_category",
+            data: ["status" => "Approved"],
+            where: ["id" => $id],
+        );
+    }
+
+    public function declineCategoryRequests($id): bool
+    {
+        return $this->update(
+            table: "product_category",
+            data: ["status" => "Declined"],
+            where: ["id" => $id],
+        );
+    }
+
     /**
      * @return int|null
      */
