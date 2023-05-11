@@ -49,7 +49,7 @@ include APP_ROOT . "/views/inc/components/Header.php";
                                 echo '<div class="image-window mb-1">
                                     ' .
                                     '<img alt="Product image" height="150%" src="'
-                                    . URL_ROOT . '/public/img/products/' . $this->data->image_url .
+                                    . URL_ROOT . '/public/uploads/products/' . $this->data->image_url .
                                     '">' . '
                                     </div>'
                                 ?>

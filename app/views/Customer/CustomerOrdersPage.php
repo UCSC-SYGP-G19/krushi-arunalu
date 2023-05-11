@@ -81,17 +81,17 @@ include APP_ROOT . "/views/inc/components/Header.php";
                                             <td class="col-2 d-inline-flex justify-content-center">
                                                 <?php echo '<div class="mb-1">
                                     ' . '<img alt="Product image" height="100%"
-                                                width="100%" src="' . URL_ROOT . '/public/img/products/fadna.jpg">' . '
+                                                width="100%" src="' . URL_ROOT . '/public/uploads/products/fadna.jpg">' . '
                                     </div>'
                                                 ?>
                                                 <?php echo '<div class="mb-1">
                                     ' . '<img alt="Product image" height="100%"
-                                                width="100%" src="' . URL_ROOT . '/public/img/products/fadna.jpg">' . '
+                                                width="100%" src="' . URL_ROOT . '/public/uploads/products/fadna.jpg">' . '
                                     </div>'
                                                 ?>
                                                 <?php echo '<div class="mb-1">
                                     ' . '<img alt="Product image" height="100%"
-                                                width="100%" src="' . URL_ROOT . '/public/img/products/sumudu.jpg">' . '
+                                                width="100%" src="' . URL_ROOT . '/public/uploads/products/sumudu.jpg">' . '
                                     </div>'
                                                 ?>
                                             </td>

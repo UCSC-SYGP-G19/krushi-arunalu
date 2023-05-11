@@ -65,7 +65,7 @@ include APP_ROOT . "/views/inc/components/Header.php";
                                             <td class="col-1">
                                                 <?php echo '<div class="image-window mb-1">
                                     ' . '<img class="ml-2 mt-2 px-2" alt="Product image" height="100%" 
-                                                width="100%" src="' . URL_ROOT . '/public/img/products/' .
+                                                width="100%" src="' . URL_ROOT . '/public/uploads/products/' .
                                                     $cartEntry->product_image_url . '">' . '
                                     </div>'
                                                 ?></td>

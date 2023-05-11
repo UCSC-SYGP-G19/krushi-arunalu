@@ -52,7 +52,7 @@ include APP_ROOT . "/views/inc/components/Header.php";
                                     '<a href="marketplace/product-details/' . $product->id .
                                     '">' .
                                     '<img alt="Product image" height="100%" width="100%" src="' . URL_ROOT .
-                                    '/public/img/products/' .
+                                    '/public/uploads/products/' .
                                     $product->image_url . '">'
                                     . '</a>' .
                                     '

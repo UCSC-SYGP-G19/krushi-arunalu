@@ -43,7 +43,7 @@ include APP_ROOT . "/views/inc/components/Header.php";
                                         <div class="d-flex">
                                             <div class="product-img">
                                                 <?php echo '<img src="
-                                            ' . URL_ROOT . '/public/img/products/coconut_oil.jpg"
+                                            ' . URL_ROOT . '/public/uploads/products/coconut_oil.jpg"
                                             alt="User profile icon" height="56px">' ?>
                                             </div>
                                             <div class="d-block">
@@ -79,7 +79,7 @@ include APP_ROOT . "/views/inc/components/Header.php";
                                         <div class="d-flex">
                                             <div class="product-img">
                                                 <?php echo '<img src="
-                                            ' . URL_ROOT . '/public/img/products/hanging-bowl.jpg"
+                                            ' . URL_ROOT . '/public/uploads/products/hanging-bowl.jpg"
                                             alt="User profile icon" height="56px">' ?>
                                             </div>
                                             <div class="d-block">
@@ -116,7 +116,7 @@ include APP_ROOT . "/views/inc/components/Header.php";
                                         <div class="d-flex">
                                             <div class="product-img">
                                                 <?php echo '<img src="
-                                            ' . URL_ROOT . '/public/img/products/sumudu.jpg"
+                                            ' . URL_ROOT . '/public/uploads/products/sumudu.jpg"
                                             alt="User profile icon" height="56px">' ?>
                                             </div>
                                             <div class="d-block">

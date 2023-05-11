@@ -143,7 +143,7 @@ include APP_ROOT . "/views/inc/components/Header.php";
                                         <div class="image-window mb-1">
                                             ' .
                                             '<img alt="Product image" height="100%" width="100%" src="' . URL_ROOT .
-                                            '/public/img/products/' .
+                                            '/public/uploads/products/' .
                                             $product->image_url . '">'
                                             . '
                                         </div>
