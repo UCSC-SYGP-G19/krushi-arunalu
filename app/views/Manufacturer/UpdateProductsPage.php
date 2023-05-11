@@ -1,5 +1,6 @@
 <?php
 
+use app\views\inc\components\ImageUpload;
 use app\views\inc\components\InputField;
 use app\views\inc\components\SelectField;
 use app\views\inc\components\TextArea;
@@ -34,30 +35,27 @@ include APP_ROOT . "/views/inc/components/Header.php";
                 <div class="wrapper px-4 py-3">
                     <h1 class="title text-center">Update product details</h1>
                     <br>
-                    <form class="mt-2 mb-1 px-2" action="" method="post">
+                    <form class="mt-2 mb-1 px-2" action="" method="post" enctype="multipart/form-data">
                         <div class="row gap-2">
                             <?php
-                            $this->formData = [
+                            $formData = [
                                 "category" => [
                                     "element" => SelectField::class,
                                     "wrapperClass" => "col-4",
                                     "label" => "Category",
                                     "placeholder" => "Select Category",
-                                    "value" => $this->data->category
                                 ],
                                 "product_name" => [
                                     "element" => InputField::class,
                                     "wrapperClass" => "col-8",
                                     "label" => "Product Name",
                                     "placeholder" => "Enter product name",
-                                    "value" => $this->data->product_name
                                 ],
                                 "unit" => [
                                     "element" => InputField::class,
                                     "wrapperClass" => "col-6",
                                     "label" => "Unit of measurement",
                                     "placeholder" => "Enter unit of measurement",
-                                    "value" => $this->data->unit
                                 ],
                                 "weight" => [
                                     "element" => InputField::class,
@@ -65,7 +63,6 @@ include APP_ROOT . "/views/inc/components/Header.php";
                                     "label" => "Weight (KG)",
                                     "placeholder" => "Enter weight of the product",
                                     "type" => "number step=0.01",
-                                    "value" => $this->data->weight
                                 ],
                                 "unit_price" => [
                                     "element" => InputField::class,
@@ -73,7 +70,6 @@ include APP_ROOT . "/views/inc/components/Header.php";
                                     "label" => "Selling Price (per unit)",
                                     "placeholder" => "Enter selling price",
                                     "type" => "number",
-                                    "value" => $this->data->unit_price
                                 ],
                                 "stock_qty" => [
                                     "element" => InputField::class,
@@ -81,39 +77,22 @@ include APP_ROOT . "/views/inc/components/Header.php";
                                     "label" => "Initial Stock Quantity (KG)",
                                     "placeholder" => "Enter initial stock quantity",
                                     "type" => "number",
-                                    "value" => $this->data->stock_qty
                                 ],
-                                "image_url" => [
-                                    "element" => InputField::class,
-                                    "wrapperClass" => "col-12",
-                                    "label" => "Image URL",
-                                    "placeholder" => "Enter image URL",
-                                    "value" => $this->data->image_url
+                                "image" => [
+                                    "element" => ImageUpload::class,
+                                    "wrapperClass" => "col-3",
+                                    "label" => "Upload image",
+                                    "placeholder" => "",
                                 ],
                                 "description" => [
                                     "element" => TextArea::class,
-                                    "wrapperClass" => "col-12",
+                                    "wrapperClass" => "col-9",
                                     "label" => "Description",
                                     "placeholder" => "Add a description",
-                                    "value" => $this->data->description
+                                    "row" => 8,
                                 ],
                             ];
-                            foreach ($this->formData as $key => $value) {
-                                $formField = new $value["element"](
-                                    $key,
-                                    $value["label"],
-                                    $value["placeholder"],
-                                    $value["value"] ?? null,
-                                    $this->fieldErrors[$key] ?? null,
-                                    $value["wrapperClass"]
-                                );
-
-                                isset($this->fieldOptions[$key]) &&
-                                $formField->options = $this->fieldOptions[$key];
-
-                                isset($value["type"]) && $formField->type = $value["type"];
-                                $formField->render();
-                            }
+                            $this->generateFormFields($formData);
                             ?>
                         </div>
                         <?php if (isset($this->error)) { ?>

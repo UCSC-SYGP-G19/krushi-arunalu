@@ -34,8 +34,9 @@ class ProductsController extends Controller
         $this->view->fieldOptions["category"] = $this->model->getNamesFromDB();
 
         if ($_SERVER["REQUEST_METHOD"] === "POST") {
-            //$required_fields = null;
-            //$this->validateFields($required_fields);
+            $required_fields = ["name", "weight", "unit", "unitSel3lingPrice", "stockQuantity", "manufacturerId",
+                "categoryId"];
+            $this->validateFields($required_fields);
 
             if (!empty($this->view->fieldErrors)) {
                 $this->refillValuesAndShowError();
@@ -43,10 +44,12 @@ class ProductsController extends Controller
                 return;
             }
 
+            $uploaded_file_name = $this->uploadFileToDisk();
+
             $this->loadModel("Product");
             $this->model->fillData([
                 'name' => $_POST['product_name'],
-                'imageUrl' => $_POST['image_url'],
+                'imageUrl' => $uploaded_file_name,
                 'description' => $_POST['description'],
                 'weight' => $_POST['weight'],
                 'unit' => $_POST['unit'],
@@ -63,6 +66,33 @@ class ProductsController extends Controller
         $this->view->render();
     }
 
+    private function uploadFileToDisk(): ?string
+    {
+        $uploaded_file_name = null;
+
+        if (isset($_FILES["image"]) && $_FILES["image"]["error"] == 0) {
+            $file_name = $_FILES["image"]["name"];
+            $file_size = $_FILES["image"]["size"];
+            $file_tmp = $_FILES["image"]["tmp_name"];
+            $file_type = $_FILES["image"]["type"];
+
+            $array = explode('.', $_FILES["image"]["name"]);
+            $file_ext = strtolower(end($array));
+
+            $extensions = array("jpeg", "jpg", "png");
+
+            // Check if file is a valid image
+            if (in_array($file_ext, $extensions) && getimagesize($file_tmp)) {
+                $uploaded_file_name = md5(microtime()) . '.' . $file_ext;
+                move_uploaded_file($file_tmp, UPLOADS_ROOT . '/products/' . $uploaded_file_name);
+            } else {
+                // Display error message
+                echo "Invalid image file";
+            }
+        }
+        return $uploaded_file_name;
+    }
+
     public function edit($productId): bool
     {
         $this->loadView('Manufacturer/UpdateProductsPage', 'Update Products', 'products');
@@ -71,11 +101,25 @@ class ProductsController extends Controller
         $this->view->fieldOptions["category"] = $this->model->getNamesFromDB();
 
         $this->loadModel("Product");
-        $this->view->data = $this->model->getByProductId($productId);
+
+        if ($_SERVER["REQUEST_METHOD"] === "GET") {
+            $currentData = $this->model->getByProductId($productId);
+            $this->view->fieldValues["category"] = $currentData->category;
+            $this->view->fieldValues["product_name"] = $currentData->product_name;
+            $this->view->fieldValues["unit"] = $currentData->unit;
+            $this->view->fieldValues["weight"] = $currentData->weight;
+            $this->view->fieldValues["unit_price"] = $currentData->unit_price;
+            $this->view->fieldValues["stock_qty"] = $currentData->stock_qty;
+            $this->view->fieldValues["image"] = $currentData->image_url;
+            $this->view->fieldValues["description"] = $currentData->description;
+
+            $this->view->render();
+        }
 
         if ($_SERVER["REQUEST_METHOD"] === "POST") {
-            //$required_fields = null;
-            //$this->validateFields($required_fields);
+            $required_fields = ["name", "weight", "unit", "unitSel3lingPrice", "stockQuantity", "manufacturerId",
+                "categoryId"];
+            $this->validateFields($required_fields);
 
             if (!empty($this->view->fieldErrors)) {
                 $this->refillValuesAndShowError();
@@ -83,10 +127,12 @@ class ProductsController extends Controller
                 return true;
             }
 
+            $uploaded_file_name = $this->uploadFileToDisk();
+
             $this->loadModel("Product");
             $this->model->fillData([
                 'name' => $_POST['product_name'],
-                'imageUrl' => $_POST['image_url'],
+                'imageUrl' => $uploaded_file_name,
                 'description' => $_POST['description'],
                 'weight' => $_POST['weight'],
                 'unit' => $_POST['unit'],

@@ -52,25 +52,23 @@ include APP_ROOT . "/views/inc/components/Header.php";
                                         ?>
                                         <div class="col-2">
                                             <div class="product-card pb-2 p-3">
-                                                <div class="rating-box px-1 d-flex">
-                                                    <span class="rating-icon">
-                                                    <?php echo '<img src="' . URL_ROOT . '
-                                                    /public/img/icons/other/rating-icon.png" height="80%" width="80%">'
-                                                    ?>
-                                                    </span>
-                                                    <span class="rating-text fw-bold">
-                                                        <?php echo $product->rating ?>
-                                                    </span>
-                                                </div>
-                                                <div class="image-window mb-1">
-                                                    <?php echo '<div class="image-window mb-1">
-                                                        ' . '<img class="ml-2 pr-3" alt="Product image" 
+                                                <?php echo '<div class="image-window mb-1">
+                                                    <div class="rating-box px-1 d-flex">
+                                                        <span class="rating-icon">
+                                                            <img alt="rating" src="' . URL_ROOT . '
+                                                            /public/img/icons/other/rating-icon.png" height="80%" width="80%">
+                                                        </span>
+                                                        <span class="rating-text fw-bold">
+                                                            ' . $product->rating . '
+                                                        </span>
+                                                    </div>' . '
+                                                    <img class="ml-2 pr-3" alt="Product image" 
                                                         height="100%" width="100%" 
-                                                        src="' . URL_ROOT . '/public/img/products/' .
-                                                        $product->image_url . '">' . '
-                                                        </div>'
-                                                    ?>
-                                                </div>
+                                                        src="' . URL_ROOT . '/public/uploads/products/' .
+                                                    $product->image_url . '">' . '
+                                                </div>'
+                                                ?>
+
                                                 <div class="text-center">
                                                     <h4 class="pt-2 pb-0 product-name fw-bold">
                                                         <?php echo $product->product_name; ?>

@@ -1,5 +1,6 @@
 <?php
 
+use app\views\inc\components\ImageUpload;
 use app\views\inc\components\InputField;
 use app\views\inc\components\SelectField;
 use app\views\inc\components\TextArea;
@@ -37,20 +38,20 @@ include APP_ROOT . "/views/inc/components/Header.php";
                 <div class="wrapper px-4 py-3">
                     <h1 class="title text-center">Add new product</h1>
                     <br>
-                    <form class="mt-2 mb-1 px-2" action="" method="post">
+                    <form class="mt-2 mb-1 px-2" action="" method="post" enctype="multipart/form-data">
                         <div class="row gap-2">
-                        <?php
-                        $this->formData = [
-                            "category" => [
-                                "element" => SelectField::class,
-                                "wrapperClass" => "col-4",
-                                "label" => "Category",
-                                "placeholder" => "Select Category",
-                            ],
-                            "product_name" => [
-                                "element" => InputField::class,
-                                "wrapperClass" => "col-8",
-                                "label" => "Product Name",
+                            <?php
+                            $formData = [
+                                "category" => [
+                                    "element" => SelectField::class,
+                                    "wrapperClass" => "col-4",
+                                    "label" => "Category",
+                                    "placeholder" => "Select Category",
+                                ],
+                                "product_name" => [
+                                    "element" => InputField::class,
+                                    "wrapperClass" => "col-8",
+                                    "label" => "Product Name",
                                 "placeholder" => "Enter product name",
                             ],
                             "unit" => [
@@ -73,42 +74,28 @@ include APP_ROOT . "/views/inc/components/Header.php";
                                 "placeholder" => "Enter selling price",
                                 "type" => "number",
                             ],
-                            "stock_qty" => [
-                                "element" => InputField::class,
-                                "wrapperClass" => "col-6",
-                                "label" => "Initial Stock Quantity (KG)",
-                                "placeholder" => "Enter initial stock quantity",
-                                "type" => "number",
-                            ],
-                            "image_url" => [
-                                "element" => InputField::class,
-                                "wrapperClass" => "col-12",
-                                "label" => "Image URL",
-                                "placeholder" => "Enter image URL",
-                            ],
-                            "description" => [
-                                "element" => TextArea::class,
-                                "wrapperClass" => "col-12",
-                                "label" => "Description",
-                                "placeholder" => "Add a description",
-                            ],
-                        ];
-                        foreach ($this->formData as $key => $value) {
-                            $formField = new $value["element"](
-                                $key,
-                                $value["label"],
-                                $value["placeholder"],
-                                $this->fields[$key] ?? null,
-                                $this->fieldErrors[$key] ?? null,
-                                $value["wrapperClass"]
-                            );
-
-                            isset($this->fieldOptions[$key]) &&
-                            $formField->options = $this->fieldOptions[$key];
-
-                            isset($value["type"]) && $formField->type = $value["type"];
-                            $formField->render();
-                        }
+                                "stock_qty" => [
+                                    "element" => InputField::class,
+                                    "wrapperClass" => "col-6",
+                                    "label" => "Initial Stock Quantity (KG)",
+                                    "placeholder" => "Enter initial stock quantity",
+                                    "type" => "number",
+                                ],
+                                "image" => [
+                                    "element" => ImageUpload::class,
+                                    "wrapperClass" => "col-3",
+                                    "label" => "Upload image",
+                                    "placeholder" => "",
+                                ],
+                                "description" => [
+                                    "element" => TextArea::class,
+                                    "wrapperClass" => "col-9",
+                                    "label" => "Description",
+                                    "placeholder" => "Add a description",
+                                    "rows" => 8,
+                                ],
+                            ];
+                            $this->generateFormFields($formData);
                         ?>
                 </div>
                         <?php if (isset($this->error)) { ?>
