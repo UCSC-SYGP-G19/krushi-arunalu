@@ -13,20 +13,21 @@ use app\core\Model;
 class Crop extends Model
 {
     public function __construct(
-        private ?int $id = null,
-        private ?int $categoryId = null,
-        private ?array $cultivatableDistricts = null,
+        private ?int    $id = null,
+        private ?int    $categoryId = null,
+        private ?array  $cultivatableDistricts = null,
         private ?string $name = null,
         private ?string $description = null,
         private ?string $required_soil_condition = null,
         private ?string $required_rainfall = null,
         private ?string $required_humidity = null,
-    ) {
+    )
+    {
     }
 
     public static function getNamesFromDB(): array
     {
-        $stmt = Model::select("crop", array("crop.id", "crop.name"));
+        $stmt = Model::select("crop", array("crop.id", "crop.name"), order: "id DESC");
         if ($stmt) {
             return $stmt->fetchAll();
         }
