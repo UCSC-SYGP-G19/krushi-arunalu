@@ -13,12 +13,11 @@ const PROTECTED_ROUTES = [
         "ProducerCropRequests", "Announcements", "Profile", "Manufacturers", "ConnectionRequests"],
     "Manufacturer" => ["ManufacturerDashboard", "Sales", "ManufacturerOrders", "Producers", "Stocks",
         "ProductCategories", "Products", "ManufacturerCropRequests", "Inquiries", "ManufacturerSales",
-        "PurchasedStocks", "ConnectionRequests"],
-    "Customer" => ["Marketplace", "ShoppingCart", "CustomerOrders", "Profile", "SendInquiry", "Checkout", "Manufacturers"],
-    "Agri Officer" => ["Dashboard", "Announcements", "Producers", "LandDetails", "CultivationDetails", "CropPrices",
-                       "CultivationQuestions"],
-    "Admin" => ["Dashboard", "AllProducts", "ProductCategories", "Crops", "Manufacturers", "Producers", "Announcements",
-        "UserManagement"]
+        "PurchasedStocks", "ConnectionRequests", "Chat"],
+    "Customer" => ["Marketplace", "ShoppingCart", "Orders", "Profile", "SendInquiry", "Checkout", "Manufacturers"],
+    "Agri Officer" => ["Dashboard", "Announcements", "ProducerDetails", "LandDetails",
+        "CultivationDetails", "CropPrices", "CultivationQuestions"],
+    "Admin" => ["Dashboard", "AllProducts", "ProductCategories", "Crops", "Manufacturers", "Producers", "Announcements", "UserManagement"]
 ];
 
 const SIDEBAR_ROUTES = [
