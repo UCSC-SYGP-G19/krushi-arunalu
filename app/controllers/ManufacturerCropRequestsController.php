@@ -38,8 +38,8 @@ class ManufacturerCropRequestsController extends Controller
         $this->loadModel("CropCategory");
         $this->view->fieldOptions["crop_category"] = $this->model->getNamesFromDB();
 
-        $this->loadModel("Crop");
-        $this->view->fieldOptions["crop"] = $this->model->getNamesFromDB();
+//        $this->loadModel("Crop");
+//        $this->view->fieldOptions["crop"] = $this->model->getNamesFromDB();
 
         $this->loadModel("District");
         $this->view->fieldOptions["preferred_district"] = $this->model->getNamesFromDB();
@@ -74,6 +74,12 @@ class ManufacturerCropRequestsController extends Controller
             }
         }
         $this->view->render();
+    }
+
+    public function getCropsAsJson($categoryId): void
+    {
+        $this->loadModel('Crop');
+        $crops = $this->model->getCropsByCategoryId($categoryId);
     }
 
     public function edit($requestId): bool

@@ -200,6 +200,10 @@ const renderExpandedSection = (element) => `
 const requestList = document.querySelector("#crop-requests");
 
 document.addEventListener("DOMContentLoaded", () => {
-  requestList.innerHTML = renderMessageCard("Loading");
-  fetchCropRequests();
+  if (cropRequests == null) {
+    requestList.innerHTML = renderMessageCard("Loading");
+    fetchCropRequests();
+  } else {
+    renderCropRequests(data);
+  }
 });
