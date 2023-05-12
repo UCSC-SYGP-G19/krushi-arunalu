@@ -13,37 +13,15 @@ use app\core\Model;
 class Cultivation extends Model
 {
     public function __construct(
-        private ?int $id = null,
-        private ?int $cropId = null,
-        private ?int $landId = null,
+        private ?int    $id = null,
+        private ?int    $cropId = null,
+        private ?int    $landId = null,
         private ?string $cultivatedDate = null,
-        private ?float $cultivatedQuantity = null,
+        private ?float  $cultivatedQuantity = null,
         private ?string $status = null,
         private ?string $expectedHarvestDate = null,
-    ) {
-    }
-
-    public function addToDB(): bool
+    )
     {
-//        $result = $this->runQuery(
-//            "INSERT into cultivation (crop_id, land_id, cultivated_date, cultivated_quantity, status,
-//                         expected_harvest_date) VALUES (?,?,?,?,?,?)",
-//            [$this->cropId, $this->landId, $this->cultivatedDate, $this->cultivatedQuantity, $this->status,
-//                $this->expectedHarvestDate]
-//        );
-//        return $result == true;
-
-        return $this->insert(
-            table: "cultivation",
-            data: [
-                "crop_id" => $this->cropId,
-                "land_id" => $this->landId,
-                "cultivated_date" => $this->cultivatedDate,
-                "cultivated_quantity" => $this->cultivatedQuantity,
-                "status" => $this->status,
-                "expected_harvest_date" => $this->expectedHarvestDate,
-            ]
-        );
     }
 
     public static function getByIdFromDB($cultivationId): ?object
@@ -123,6 +101,29 @@ class Cultivation extends Model
         return [];
     }
 
+    public function addToDB(): bool
+    {
+//        $result = $this->runQuery(
+//            "INSERT into cultivation (crop_id, land_id, cultivated_date, cultivated_quantity, status,
+//                         expected_harvest_date) VALUES (?,?,?,?,?,?)",
+//            [$this->cropId, $this->landId, $this->cultivatedDate, $this->cultivatedQuantity, $this->status,
+//                $this->expectedHarvestDate]
+//        );
+//        return $result == true;
+
+        return $this->insert(
+            table: "cultivation",
+            data: [
+                "crop_id" => $this->cropId,
+                "land_id" => $this->landId,
+                "cultivated_date" => $this->cultivatedDate,
+                "cultivated_quantity" => $this->cultivatedQuantity,
+                "status" => $this->status,
+                "expected_harvest_date" => $this->expectedHarvestDate,
+            ]
+        );
+    }
+
     public function getNamesByProducerIdFromDB($producerId): array
     {
         return $this->runQuery("SELECT 
@@ -147,12 +148,30 @@ class Cultivation extends Model
                 "expected_harvest_date" => $this->expectedHarvestDate
             ],
             where: ["id" => $this->id]
-        ) == 1;
+        );
     }
 
     public function deleteFromDB(): bool
     {
         return $this->delete(table: "cultivation", where: ["id" => $this->id]) == 1;
+    }
+
+    public function getAllCultivationDetailsForAgriOfficers($agriOfficerDistrictID): array
+    {
+        $stmt = Model::select(
+            table: "cultivation",
+            columns: [
+                "crop.name",
+                "cultivation.land_id",
+                "land.area_in_hectares",
+                "cultivation.cultivated_quantity",
+                "cultivation.expected_harvest_date"],
+            where: ["land.district" => $agriOfficerDistrictID],
+            joins: ["crop" => "cultivation.id",
+                "land" => "cultivation.land_id",
+                "district" => "land.district"]
+        );
+        return [];
     }
 
     // Getters and Setters

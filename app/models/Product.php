@@ -48,7 +48,8 @@ class Product extends Model
             product_category.name as 'category_name',
             product.name as 'product_name',
             product.stock_quantity as stock_qty,
-            product.unit_selling_price as 'unit_price'
+            product.unit_selling_price as 'unit_price',
+            product.rating as 'rating'
             FROM product
             INNER JOIN product_category ON product.category_id = product_category.id 
             WHERE product.hidden != ? AND product.manufacturer_id = ?", [1, $manufacturerId])->fetchAll();
