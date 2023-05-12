@@ -30,7 +30,13 @@ include APP_ROOT . "/views/inc/components/Header.php";
                             <div class="col-12 text-justify">
                                 <br>
                                 <section id="product-categories"></section>
-                                <?php
+                            </div>
+                        </div>
+                        <div class="hidden-categories-wrapper px-1 py-3">
+                            <button class="btn-hidden-categories text-primary-light fs-3 p-1 d-flex fw-bold"
+                                    id="hidden-categories-toggle" value="show">Show hidden categories
+                            </button>
+                            <div class="mt-2 row gap-1 px-2" id="hidden-categories">
                                 //                                include APP_ROOT . "/views/inc/components/SearchFilterAndSort.php";
                                 //                                $this->tableHeaders = [
                                 //                                    "name" => [
@@ -81,7 +87,7 @@ include APP_ROOT . "/views/inc/components/Header.php";
     </div>
     <script src="<?php echo URL_ROOT ?>/public/js/tables.js"></script>
     <script src="<?php echo URL_ROOT ?>/public/js/Manufacturer/productCategories.js" defer></script>
-    <script src="<?php echo URL_ROOT ?>/public/js/hiddenCategories.js"></script>
+    <script src="<?php echo URL_ROOT ?>/public/js/hiddenCategories.js"></script
     </body>
 <?php
 include APP_ROOT . "/views/inc/components/EndingTag.php";

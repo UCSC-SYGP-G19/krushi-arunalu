@@ -13,13 +13,12 @@ use app\core\Model;
 class ProductCategory extends Model
 {
     public function __construct(
-        private ?int    $id = null,
+        private ?int $id = null,
         private ?string $name = null,
         private ?string $description = null,
         private ?string $status = null,
-        private ?bool   $hidden = null,
-    )
-    {
+        private ?bool $hidden = null,
+    ) {
     }
 
     public function addRequestToDb(): bool
