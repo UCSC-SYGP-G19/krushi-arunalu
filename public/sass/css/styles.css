@@ -1,22 +1,21 @@
-.connection-request-wrapper {
-  border-radius: 16px;
-  background-color: white;
-  border-bottom: 3px solid #15742D;
+/* Fading animation */
+.fade {
+  animation-name: fade;
+  animation-duration: 1.5s;
 }
-.connection-request-wrapper:hover {
-  background-color: #E7F4D8;
+
+.navbar-top {
+  justify-content: center;
+  overflow: hidden;
 }
-.connection-request-wrapper .avatar {
-  border-radius: 50%;
-}
-.connection-request-wrapper .title {
-  font-size: large;
-}
-.connection-request-wrapper .sub-title-1 {
-  font-size: 1rem;
-}
-.connection-request-wrapper .sub-title-2 {
-  font-size: 0.9rem;
+
+@keyframes fade {
+  from {
+    opacity: 0.4;
+  }
+  to {
+    opacity: 1;
+  }
 }
 
 /*# sourceMappingURL=styles.css.map */

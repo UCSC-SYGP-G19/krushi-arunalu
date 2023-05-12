@@ -11,7 +11,13 @@ const fetchHiddenCategories = async() => {
 const renderHiddenCategories = (data) => {
     let output = "";
 
-    if (data != null) {
+    if (data == null) {
+        hiddenCategoriesSection.innerHTML = renderMessageCard("Error fetching data");
+    }
+
+    if (data.length === 0) {
+        hiddenCategoriesSection.innerHTML = renderMessageCard("No hidden categories to show");
+    } else {
         data.forEach((element) => {
             let category = `
             <div class="col-2">
@@ -34,12 +40,11 @@ const renderHiddenCategories = (data) => {
         });
 
         hiddenCategoriesSection.innerHTML = output;
-        btnShowHiddenCategories.innerText = "Hide hidden categories";
-        btnShowHiddenCategories.value = "hide";
-
-    } else {
-        console.log("Error fetching data");
     }
+
+    btnShowHiddenCategories.innerText = "Hide hidden categories";
+    btnShowHiddenCategories.value = "hide";
+
 }
 
 const btnShowHiddenCategories = document.querySelector("#hidden-categories-toggle");
@@ -47,9 +52,14 @@ const hiddenCategoriesSection = document.querySelector("#hidden-categories");
 
 btnShowHiddenCategories.addEventListener('click', () => {
     if (btnShowHiddenCategories.value === "show") {
-        fetchHiddenCategories();
+        if (data == null) {
+            hiddenCategoriesSection.innerHTML = renderMessageCard("Loading");
+            fetchHiddenCategories();
+        } else {
+            renderHiddenCategories(data);
+        }
     } else {
-        hiddenCategoriesSection.innerHTML = '';
+        hiddenCategoriesSection.innerHTML = "";
         btnShowHiddenCategories.innerText = 'Show hidden categories';
         btnShowHiddenCategories.value = "show";
     }

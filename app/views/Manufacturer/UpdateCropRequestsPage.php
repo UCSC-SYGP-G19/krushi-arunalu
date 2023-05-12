@@ -1,6 +1,5 @@
 <?php
 
-use app\views\inc\components\Table;
 use app\views\inc\components\InputField;
 use app\views\inc\components\SelectField;
 
@@ -31,12 +30,14 @@ include APP_ROOT . "/views/inc/components/Header.php";
                                             "wrapperClass" => "col-4",
                                             "label" => "Category",
                                             "placeholder" => "Select Category",
+                                            "value" => $this->data->crop_category
                                         ],
                                         "crop" => [
                                             "element" => SelectField::class,
                                             "wrapperClass" => "col-8",
                                             "label" => "Crop(ingredient) name",
                                             "placeholder" => "Select crop",
+                                            "value" => $this->data->crop
                                         ],
                                         "required_quantity" => [
                                             "element" => InputField::class,
@@ -44,6 +45,7 @@ include APP_ROOT . "/views/inc/components/Header.php";
                                             "label" => "Set required quantity",
                                             "placeholder" => "Enter required quantity (KG)",
                                             "type" => "number",
+                                            "value" => $this->data->required_quantity
                                         ],
                                         "low_price" => [
                                             "element" => InputField::class,
@@ -51,6 +53,7 @@ include APP_ROOT . "/views/inc/components/Header.php";
                                             "label" => "Expected price range",
                                             "placeholder" => "Low price",
                                             "type" => "number",
+                                            "value" => $this->data->low_price
                                         ],
                                         "high_price" => [
                                             "element" => InputField::class,
@@ -58,12 +61,14 @@ include APP_ROOT . "/views/inc/components/Header.php";
                                             "label" => "",
                                             "placeholder" => "High price",
                                             "type" => "number",
+                                            "value" => $this->data->low_price
                                         ],
                                         "preferred_district" => [
                                             "element" => SelectField::class,
                                             "wrapperClass" => "col-6",
                                             "label" => "Preferred district",
                                             "placeholder" => "Select district",
+                                            "value" => $this->data->preferred_district
                                         ],
                                         "required_date" => [
                                             "element" => InputField::class,
@@ -71,6 +76,7 @@ include APP_ROOT . "/views/inc/components/Header.php";
                                             "label" => "Required date",
                                             "placeholder" => null,
                                             "type" => "date",
+                                            "value" => $this->data->required_date
                                         ],
                                         "description" => [
                                             "element" => InputField::class,
@@ -78,6 +84,7 @@ include APP_ROOT . "/views/inc/components/Header.php";
                                             "label" => "Description",
                                             "placeholder" => "Enter description",
                                             "type" => "text",
+                                            "value" => $this->data->description
                                         ],
                                         "allow_multiple_producers" => [
                                             "element" => InputField::class,
@@ -85,6 +92,7 @@ include APP_ROOT . "/views/inc/components/Header.php";
                                             "label" => "Allow multiple producers to fulfill request",
                                             "placeholder" => "",
                                             "type" => "checkbox",
+                                            "value" => $this->data->allow_multiple_producers
                                         ],
                                     ];
 
@@ -93,7 +101,7 @@ include APP_ROOT . "/views/inc/components/Header.php";
                                             $key,
                                             $value["label"],
                                             $value["placeholder"],
-                                            $this->fields[$key] ?? null,
+                                            $value["value"] ?? null,
                                             $this->fieldErrors[$key] ?? null,
                                             $value["wrapperClass"],
                                         );
@@ -111,7 +119,7 @@ include APP_ROOT . "/views/inc/components/Header.php";
                                 <div class="mb-3 text-center">
                                     <button class="btn-lg btn-primary-light mt-2 mx-2 text-center text-white"
                                             type="submit" name="submit_page_1"
-                                            value="register">Submit
+                                            value="register">Update
                                     </button>
                                     <button class="btn-lg btn-outlined-error mt-2 mx-2 text-center"
                                             type="reset" name="cancel"

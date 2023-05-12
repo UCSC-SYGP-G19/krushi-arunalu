@@ -22,17 +22,25 @@ class CustomerOrder extends Model
         private ?float $amountPaid = null,
         private ?string $email = null,
         private ?string $contactNo = null,
-        private ?string $status = null
+        private ?string $status = null,
+        private ?int $customerId = null
     ) {
     }
 
     public function getAllFromDB($customerId): array
     {
         return $this->runQuery("SELECT 
-            id AS 'order_id', 
-            date_time AS 'order_date_time',
-            status AS 'order_status',
-            order_total AS 'order_total'
+            customer_order.id as 'order_id', 
+            customer_order.date_time as 'date_time', 
+            customer_order.name as 'name', 
+            customer_order.delivery_address as 'delivery_address', 
+            customer_order.postal_code as 'postal_code', 
+            customer_order.delivery_instructions as 'delivery_instructions',
+            customer_order.email as 'email', 
+            customer_order.contact_no as 'contact_no', 
+            customer_order.status as 'status', 
+            customer_order.payment_method as 'payment_method', 
+            customer_order.total_cost as 'total_cost'
             FROM customer_order   
             WHERE customer_order.customer_id = ?", [$customerId])->fetchAll();
     }
@@ -90,6 +98,19 @@ class CustomerOrder extends Model
         );
         return $result == true;
     }
+
+//     public function getProductImgFromDB(): array
+//     {
+//         return $this->runQuery("SELECT 
+//         image_url as product_img
+//         FROM product 
+//         INNER JOIN cart_item 
+//         ON product.id = cart_item.product_id 
+//         INNER JOIN customer_order 
+//         ON cart_item.shopping_cart_id = customer_order.shopping_cart_id
+//         ORDER BY rand() limit 3
+//         ;")->fetchAll();
+//     }
 
     /**
      * @return int|null
@@ -249,5 +270,21 @@ class CustomerOrder extends Model
     public function setStatus(?string $status): void
     {
         $this->status = $status;
+    }
+
+    /**
+     * @return int|null
+     */
+    public function getCustomerId(): ?int
+    {
+        return $this->customerId;
+    }
+
+    /**
+     * @param int|null $customerId
+     */
+    public function setCustomerId(?int $customerId): void
+    {
+        $this->customerId = $customerId;
     }
 }
