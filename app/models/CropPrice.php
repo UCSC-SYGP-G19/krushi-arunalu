@@ -69,6 +69,24 @@ class CropPrice extends Model
         }
     }
 
+    public function getDataForCropAndMarket($cropId, $marketId): bool|array
+    {
+        $stmt = Model::select(
+            "crop_price",
+            array("crop_price.date AS date",
+                "crop_price.low_price AS low_price",
+                "crop_price.high_price AS high_price"),
+            where: [
+                "crop_price.crop_id" => $cropId,
+                "crop_price.market_id" => $marketId
+            ],
+        );
+        if ($stmt) {
+            return $stmt->fetchAll();
+        }
+        return [];
+    }
+
     /**
      * @return int|null
      */
