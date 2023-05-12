@@ -18,6 +18,7 @@ use Exception;
 class HarvestsController extends Controller
 {
     public string $base = URL_ROOT . "/harvests";
+
     public function index(): void
     {
         $this->loadView("Producer/HarvestsPage", "Harvests", "harvests");
@@ -102,7 +103,7 @@ class HarvestsController extends Controller
 
             $this->loadModel("Harvest");
             $this->model->fillData([
-                'id' => (int) $harvestId,
+                'id' => (int)$harvestId,
                 'cultivationId' => $_POST['cultivation'],
                 'harvestedDate' => $_POST['harvested_date'],
                 'harvestedQuantity' => $_POST['harvested_quantity'],
@@ -142,6 +143,6 @@ class HarvestsController extends Controller
 
     public function getMyHarvestsAsJson(): void
     {
-        $this->sendJson(Harvest::getAllByProducerIdFromDB(Session::getSession()->id));
+        $this->sendArrayAsJson(Harvest::getAllByProducerIdFromDB(Session::getSession()->id));
     }
 }
