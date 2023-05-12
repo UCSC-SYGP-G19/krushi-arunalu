@@ -44,34 +44,33 @@ include APP_ROOT . "/views/inc/components/Header.php";
                                     </tr>
                                     </thead>
 
-
                                     <tbody>
                                     <?php
-                                    foreach ($this->data as $orderEntry) {
+                                    foreach ($this->data["orders_list"] as $orderEntry) {
                                         ?>
                                         <tr class="row">
-<!--                                            <td class="col-1">-->
-<!--                                                --><?php //echo $orderEntry->id . '">' . '
-//                                            </div>' ?><!--</td>-->
                                             <td class="col-2"><?php echo $orderEntry->order_id; ?></td>
-                                            <td class="col-2"><?php foreach ($this->data_1 as $orderEntry_2) {
-                                                echo '     ' . '<img alt="Product image" height="18%" width="18%"
-                                                             src="' . URL_ROOT .
-                                                '/public/img/products/' . $orderEntry_2->product_img . '">';
-                                                              } ?></td>
-                                            <td class="col-2"><?php echo $orderEntry->date_time; ?></td>
-                                            <td class="col-2"><?php echo $orderEntry->total_cost; ?></td>
-                                            <td class="col-2"><?php echo $orderEntry->status; ?></td>
-                                            <td class="col-2"><a class="btn-outlined-tertiary "
-                                                                 href=<?php echo "./marketplace/"?>>
-                                                    View details
-                                                </a></td>
+                                            <td class="col-2 circular-img-set">
+                                                <?php foreach ($this->data["order_product_imgs"][$orderEntry->order_id] as $img) {
+                                                    echo '<div class="circular-img" title = "' . $img->name . '"
+                                                            style="background-image: url(' . URL_ROOT . '/public/img/products/' .
+                                                        $img->image_url . ')"></div>';
+                                                }
+                                                ?>
+                                            </td>
+                                            <td class="col-2"><?php echo $orderEntry->order_date_time; ?></td>
+                                            <td class="col-2"><?php echo $orderEntry->order_total; ?></td>
+                                            <td class="col-2"><?php echo $orderEntry->order_status; ?></td>
+                                            <td class="col-2"><a class="btn-outlined-primary-light btn-sm m-2"
+                                                                 href = "customer-orders/order-details/<?php echo $orderEntry->order_id?>">
+                                                    View details</a>
+                                            </td>
                                         </tr>
-
                                         <?php
                                     }
                                     ?>
                                     </tbody>
+                                  
                                     <tfoot>
                                     <tr class="row justify-content-end pagination">
                                         <td class="col-3 text-right"><span>Rows per page:</span><label>
