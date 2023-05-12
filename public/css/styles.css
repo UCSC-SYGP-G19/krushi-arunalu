@@ -109,31 +109,6 @@
   border-radius: 8px;
 }
 
-.request-card-wrapper {
-  background-color: #FFFFFF;
-  border-radius: 16px;
-  box-shadow: 0 2px 4px rgba(21, 116, 45, 0.9) !important;
-}
-.request-card-wrapper .user-location {
-  font-size: 0.9rem;
-  font-weight: 300;
-  color: #555555;
-  padding-top: 2px;
-}
-
-.user-profile-pic {
-  border-radius: 50%;
-}
-
-.active-page {
-  border-bottom: #15742D 2px solid;
-  color: #15742D;
-}
-
-.inactive-page {
-  color: #B1B1B1;
-}
-
 .container {
   width: 100%;
   max-width: 1200px;

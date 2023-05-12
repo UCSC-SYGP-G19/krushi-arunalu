@@ -35,14 +35,14 @@ class ShoppingCart extends Model
         return $result = true;
     }
 
-    public function addToDB(): bool
-    {
-        $result = $this->runQuery(
-            "INSERT into cart_item (shopping_cart_id, product_id, quantity, unit_selling_price) VALUES (?,?,?,?)",
-            [$this->shopping_cart_id, $this->product_id, $this->quantity, $this->unit_selling_price]
-        );
-        return $result == true;
-    }
+//    public function addToDB(): bool
+//    {
+//        $result = $this->runQuery(
+//            "INSERT into cart_item (shopping_cart_id, product_id, quantity, unit_selling_price) VALUES (?,?,?,?)",
+//            [$this->shopping_cart_id, $this->product_id, $this->quantity, $this->unit_selling_price]
+//        );
+//        return $result == true;
+//    }
 
     public function removeFromDB($id): bool
     {

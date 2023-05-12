@@ -60,7 +60,7 @@ class MarketplaceController extends Controller
     public function addToCartJson($productId)
     {
         $this->loadModel("ShoppingCart");
-        $this->sendJson($this->model->addItemToDb($_SESSION["id"], $productId, $_GET["quantity"]));
+        $this->sendObjectAsJson($this->model->addItemToDb($_SESSION["id"], $productId, $_GET["quantity"]));
     }
 
     public function sendInquiry($productId): void
