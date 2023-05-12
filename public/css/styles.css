@@ -1807,6 +1807,25 @@ div.swal2-popup button.swal2-styled.swal2-cancel:focus {
   box-shadow: none !important;
 }
 
+.circular-img-set {
+  padding-top: 8px;
+  padding-bottom: 6px;
+}
+.circular-img-set :not(:first-child) {
+  margin-left: -12px;
+}
+.circular-img-set div.circular-img {
+  width: 48px;
+  height: 48px;
+  border: 2px solid #fff;
+  border-radius: 50%;
+  box-shadow: 3px 3px 6px rgba(0, 0, 0, 0.2);
+  display: inline-block;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-color: white;
+}
+
 .index {
   height: 100vh;
   width: 100vw;
