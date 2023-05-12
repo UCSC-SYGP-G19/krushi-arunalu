@@ -2332,13 +2332,7 @@ div.swal2-popup button.swal2-styled.swal2-cancel:focus {
   width: 100%;
 }
 
-.modal-window {
-  top: 40%;
-  left: 45%;
-  transform: translate(-50%, -50%);
-  position: fixed;
-}
-.modal-window .modal-window-box {
+dialog.modal-window-box {
   min-width: 500px;
   max-width: max-content;
   min-height: 20vh;
@@ -2347,6 +2341,14 @@ div.swal2-popup button.swal2-styled.swal2-cancel:focus {
   border-radius: 16px;
   box-shadow: 0 4px 50px rgba(0, 0, 0, 0.2);
   border: none;
+  right: 0;
+  position: absolute;
+  margin: auto;
+}
+
+dialog::backdrop {
+  background-color: #F5F5F5;
+  opacity: 0.6;
 }
 
 .chat-page {

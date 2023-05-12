@@ -47,23 +47,26 @@
 
 }
 
-.modal-window {
-  top: 40%;
-  left: 45%;
-  transform: translate(-50%, -50%);
-  position: fixed;
 
-  .modal-window-box {
-    min-width: 500px;
-    max-width: max-content;
-    min-height: 20vh;
-    max-height: max-content;
-    background-color: $white;
-    border-radius: $base-border-radius;
-    box-shadow: 0 4px 50px rgba(0, 0, 0, 0.2);
-    border: none;
-  }
-
+dialog.modal-window-box {
+  min-width: 500px;
+  max-width: max-content;
+  min-height: 20vh;
+  max-height: max-content;
+  background-color: $white;
+  border-radius: $base-border-radius;
+  box-shadow: 0 4px 50px rgba(0, 0, 0, 0.2);
+  border: none;
+  right: 0;
+  position: absolute;
+  margin: auto;
 }
+
+dialog::backdrop {
+  background-color: $background-grey;
+  opacity: 0.6;
+}
+
+
 
 

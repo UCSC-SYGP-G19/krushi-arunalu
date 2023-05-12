@@ -104,27 +104,30 @@ const renderInquiryResponses = (data, inquiryId) => {
         }
         data.forEach((element) => {
             let response = `
-                <div class="row py-3 min-w-100" id="inquiry-card-${element.inquiry_id}">
-                    <div class="response-card-wrapper py-1 pl-3 d-flex">
+                <div class="col-12 py-3" id="inquiry-card-${element.inquiry_id}">
+                    <div class="response-card-wrapper py-1 px-3 row">
                         <div class="col-1">
                             <img src="../../krushi-arunalu/public/img/user-avatars/${element.company_logo}"
                             alt="ProfilePic" class="company-logo">
                         </div>
-                        <div class="response-card col-11 d-flex" id="response-${element.response_id}">
-                            <div class="col-10">
-                                <div class="response-content text-justify pt-2 px-3" id="response-content">
-                                    ${element.response}
+                        <div class="response-card col-11"
+                        id="response-${element.response_id}">
+                            <div class="row gap-1">
+                                <div class="col-10">
+                                    <div class="response-content text-justify pt-2 px-3" id="response-content">
+                                        ${element.response}
+                                    </div>
+                                    <div class="pr-3 text-right fw-bold py-1">
+                                        Responded on
+                                        <span>${element.responded_time}</span>
+                                    </div>
                                 </div>
-                                <div class="pr-3 text-right fw-bold py-1">
-                                    Responded on
-                                    <span>${element.responded_time}</span>
+                                <div class="col-2 d-flex align-items-center justify-content-space-around pr-3">
+                                    <button onclick="updateResponse(${element.response_id})" 
+                                        class="btn-sm fs-2 py-1 px-2 btn-primary-light text-white">Edit</button>
+                                    <a href="${URL_ROOT}/inquiries/deleteResponse/${element.response_id}"
+                                    class="btn-sm fs-2 py-1 px-2 btn-outlined-error">Delete</a>
                                 </div>
-                            </div>
-                            <div class="col-2 d-flex align-items-center justify-content-space-around pr-3">
-                                <button onclick="updateResponse(${element.response_id})" 
-                                    class="btn-sm fs-2 py-1 px-2 btn-primary-light text-white">Edit</button>
-                                <a href="${URL_ROOT}/inquiries/deleteResponse/${element.response_id}"
-                                class="btn-sm fs-2 py-1 px-2 btn-outlined-error">Delete</a>
                             </div>
                         </div>
                     </div>
@@ -174,25 +177,21 @@ const sendResponse = async (inquiryId) => {
 
 //Update a response
 
-const modalWindow = document.querySelector('#modal-window');
-const closeButton = modalWindow.querySelector('#close-button');
-const dialogBox = modalWindow.querySelector('#modal-window-box');
-
 const updateResponse = (responseId) => {
 
     const responseNode = document.querySelector(`#response-${responseId}`).querySelector(".response-content");
-    console.log(responseNode);
     const responseContent = responseNode.innerText;
 
-    modalWindow.innerHTML = `
-            <dialog open class="modal-window-box" id="modal-window-box">
+    //const modalWindowBox = document.querySelector('#modal-window-box');
+
+    document.querySelector("dialog").innerHTML = `
                 <div class="modal-content pt-1">
                     <div class="px-3 pb-2 modal-window-title">
                         <h4>Update Response</h4>
                     </div>
                     <hr>
-                    <div class="px-3 pt-2">
-                        <textarea class="px-1 min-w-100" id="response-box" name="response" rows="5">${responseContent}
+                    <div class="px-3 pt-3 pb-2">
+                        <textarea class="px-2 py-1 min-w-100" id="response-box" name="response" rows="5">${responseContent}
                         </textarea>
                     </div>
                     <div class="text-right px-3 py-2">
@@ -203,8 +202,8 @@ const updateResponse = (responseId) => {
                         Close</button>
                     </div>
                 </div>
-            </dialog>
             `;
+    document.querySelector('dialog').showModal();
 }
 
 const updateResponseInDb = async (responseId) => {
@@ -231,8 +230,8 @@ const updateResponseInDb = async (responseId) => {
 }
 
 const closeWindow = () => {
-    const modalWindow = document.querySelector('#modal-window');
-    modalWindow.querySelector('dialog').close();
+    //const modalWindowBox = document.querySelector('#modal-window-box');
+    document.querySelector('dialog').close();
 };
 
 
