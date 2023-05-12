@@ -15,6 +15,7 @@ include APP_ROOT . "/views/inc/components/Header.php";
 //}
 //
 
+
 ?>
 
     <body class="overflow-hidden full-height">
@@ -32,10 +33,9 @@ include APP_ROOT . "/views/inc/components/Header.php";
 
             <main class="register container-fluid d-flex align-items-center justify-content-center">
                 <div class="wrapper px-4 py-3">
-                    <h1 class="title text-center">Add new category</h1>
+                    <h1 class="title">Update category details</h1>
                     <br>
                     <form class="mb-1 px-2" action="" method="post">
-                        <div class="fw-bold text-error"><sup>*</sup> Need Admin Approval to add a new category</div>
                         <div class="row gap-2">
                             <?php
                             $this->formData = [
@@ -44,28 +44,30 @@ include APP_ROOT . "/views/inc/components/Header.php";
                                     "wrapperClass" => "col-12",
                                     "label" => "Category Name",
                                     "placeholder" => "Enter category name",
+                                    "value" => $this->data->name
                                 ],
                                 "description" => [
                                     "element" => InputField::class,
                                     "wrapperClass" => "col-12",
                                     "label" => "Description",
                                     "placeholder" => "Add a description",
+                                    "value" => $this->data->description
                                 ],
                             ];
                             foreach ($this->formData as $key => $value) {
                                 $formField = new $value["element"](
-                                    $key,  //name
+                                    $key,
                                     $value["label"],
                                     $value["placeholder"],
-                                    $this->fields[$key] ?? null,  //value
+                                    $value["value"] ?? null,
                                     $this->fieldErrors[$key] ?? null,
                                     $value["wrapperClass"]
                                 );
 
-//                                isset($this->fieldOptions[$key]) &&
-//                                $formField->options = $this->fieldOptions[$key];
-//
-//                                isset($value["type"]) && $formField->type = $value["type"];
+                                isset($this->fieldOptions[$key]) &&
+                                $formField->options = $this->fieldOptions[$key];
+
+                                isset($value["type"]) && $formField->type = $value["type"];
                                 $formField->render();
                             }
                             ?>
@@ -76,7 +78,7 @@ include APP_ROOT . "/views/inc/components/Header.php";
                         <?php } ?>
                         <div class="mb-3 text-center">
                             <button class="btn-lg btn-primary-light mt-3 text-center text-white" type="submit"
-                                    name="submit_purchase" value="submit">Request Approval
+                                    name="submit_purchase" value="submit">Submit
                             </button>
                             <button class="btn-lg btn-outlined-error mt-3 text-center text-error" type="reset"
                                     name="cancel_purchase" value="cancel">Cancel
