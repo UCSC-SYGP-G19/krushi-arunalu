@@ -1129,6 +1129,7 @@ footer {
 }
 .content-with-sidebar aside.sidebar-collapsed {
   flex: 0 0 5% !important;
+  min-width: 75px;
 }
 .content-with-sidebar aside.sidebar-collapsed .brand-logo-large {
   display: none;
@@ -3004,6 +3005,41 @@ aside.toast .loading {
 }
 .chat-page .bottom-row .message-input-box-active {
   background-color: gainsboro;
+}
+
+.producer-dashboard .dashboard-card {
+  background-color: white;
+  border-radius: 24px;
+  box-shadow: 0 2px 24px rgba(0, 0, 0, 0.05);
+}
+.producer-dashboard .dashboard-card h4 {
+  font-size: 1.1rem;
+  margin-bottom: 2px;
+}
+.producer-dashboard .dashboard-card h5 {
+  font-size: 0.9rem;
+  color: #B1B1B1;
+}
+.producer-dashboard hr.primary-color {
+  border: 1px solid #15742D;
+}
+.producer-dashboard .crop-pic-rounded {
+  width: 48px;
+  height: 48px;
+  border: 2px solid #FFFFFF;
+  border-radius: 50%;
+  box-shadow: 3px 3px 6px rgba(0, 0, 0, 0.25);
+  display: inline-block;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-color: #FFFFFF;
+}
+.producer-dashboard .data-courtesy-tag p {
+  color: #555555;
+}
+.producer-dashboard .data-courtesy-tag p a {
+  text-decoration: underline !important;
+  color: #B89130 !important;
 }
 
 * {

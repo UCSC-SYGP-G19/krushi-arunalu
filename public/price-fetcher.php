@@ -308,7 +308,7 @@ function generateDates($start, $end): array
 
 // Enter required start and end date here (returns in dd-mm-yyyy format)
 // (the filename is set as 2022 for 2023 files in HARTI)
-$dates = generateDates("2023-01-01", "2023-05-09");
+$dates = generateDates("2023-05-12", date("Y-m-d"));
 
 foreach ($dates as $date) {
     $year = date("Y", strtotime($date));
