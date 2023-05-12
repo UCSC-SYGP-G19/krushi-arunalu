@@ -68,8 +68,7 @@ include APP_ROOT . "/views/inc/components/Header.php";
                                         </td>
                                     </tfoot>
                                 </table>
-                                <div class="change-stock-quantity-modal" id="change-stock-quantity">
-                                </div>
+                                <dialog class="modal-window-box" id="modal-window-box"></dialog>
                             </div>
                         </div>
                     </div>

@@ -2693,21 +2693,45 @@ dialog::backdrop {
   padding-top: 0.2rem;
 }
 .chat-page .bottom-row .message-input-box .btn-wrapper .btn-send {
-  background-color: #F5F5F5;
-  border: 1px solid #555555;
-  border-radius: 8px;
-  cursor: pointer;
+    background-color: #F5F5F5;
+    border: 1px solid #555555;
+    border-radius: 8px;
+    cursor: pointer;
 }
+
 .chat-page .bottom-row .message-input-box-active {
-  background-color: gainsboro;
+    background-color: gainsboro;
+}
+
+.edit-icon {
+    cursor: pointer;
+}
+
+dialog.modal-window-box {
+    min-width: 500px;
+    max-width: max-content;
+    min-height: 20vh;
+    max-height: max-content;
+    background-color: #FFFFFF;
+    border-radius: 16px;
+    box-shadow: 0 4px 50px rgba(0, 0, 0, 0.2);
+    border: none;
+    right: 0;
+    position: absolute;
+    margin: auto;
+}
+
+dialog::backdrop {
+    background-color: #F5F5F5;
+    opacity: 0.6;
 }
 
 * {
-  box-sizing: border-box;
-  color: inherit;
-  margin: 0;
-  font-family: inherit;
-  transition: color 0.3s ease, background-color 0.3s ease, border-color 0.3s ease;
+    box-sizing: border-box;
+    color: inherit;
+    margin: 0;
+    font-family: inherit;
+    transition: color 0.3s ease, background-color 0.3s ease, border-color 0.3s ease;
 }
 
 body {

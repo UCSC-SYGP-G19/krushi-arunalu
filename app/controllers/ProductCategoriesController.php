@@ -79,10 +79,10 @@ class ProductCategoriesController extends Controller
 
     public function getApprovalRequestsAsJson(): void
     {
-        $this->loadView('Admin/ProductCategoriesPage', 'Product Categories', 'product-categories');
+        //$this->loadView('Admin/ProductCategoriesPage', 'Product Categories', 'product-categories');
         $this->loadModel("ProductCategory");
-        $this->view->data = $this->model->getAllFromDB();
-        $this->view->render();
+//        $this->view->data = $this->model->getAllFromDB();
+//        $this->view->render();
         $this->sendArrayAsJson($this->model->getPendingCategoryRequestsFromDB());
     }
 
