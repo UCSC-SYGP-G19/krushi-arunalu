@@ -24,17 +24,44 @@
     color: $gold-light;
     cursor: pointer;
 
-    &:hover{
+    &:hover {
       background-color: $gold-light;
       color: $white;
     }
   }
 
-  .response-card{
+  .response-card-wrapper {
+
+    .company-logo {
+      max-height: 80px;
+      max-width: 80px;
+    }
+  }
+
+  .response-card {
     background-color: $selected-green-light;
     border: none;
     border-radius: $base-border-radius-sm;
     width: 100%;
+  }
+
+}
+
+.modal-window {
+  top: 40%;
+  left: 45%;
+  transform: translate(-50%, -50%);
+  position: fixed;
+
+  .modal-window-box {
+    min-width: 500px;
+    max-width: max-content;
+    min-height: 20vh;
+    max-height: max-content;
+    background-color: $white;
+    border-radius: $base-border-radius;
+    box-shadow: 0 4px 50px rgba(0, 0, 0, 0.2);
+    border: none;
   }
 
 }

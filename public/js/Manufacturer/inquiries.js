@@ -42,8 +42,7 @@ const renderCustomerInquiries = (data) => {
                         </button>
                     </div>
                     <div class="py-2"><hr></div>
-                    <div class="row pl-4 inquiry-response-list">
-                    </div>
+                    <div class="row pl-4 inquiry-response-list"></div>
                     <div class="row pt-1 align-items-center justify-content-end gap-1 pl-3 pr-2">
                         <div class="col-1 text-center">
                             <img alt="CompanyLogo" class="user-profile-pic" src="./public/img/user-avatars/${element.company_logo}">
@@ -105,20 +104,31 @@ const renderInquiryResponses = (data, inquiryId) => {
         }
         data.forEach((element) => {
             let response = `
-                <div class="row col-12 py-3" id="inquiry-card-${element.inquiry_id}">
-                        <div class="py-1 px-4 d-flex gap-1">
-                            <img src="../../krushi-arunalu/public/img/user-avatars/${element.company_logo}" alt="ProfilePic" class="col-1">
-                            <div class="response-card">
-                                <div class="text-justify pt-2 px-3">
+                <div class="row py-3 min-w-100" id="inquiry-card-${element.inquiry_id}">
+                    <div class="response-card-wrapper py-1 pl-3 d-flex">
+                        <div class="col-1">
+                            <img src="../../krushi-arunalu/public/img/user-avatars/${element.company_logo}"
+                            alt="ProfilePic" class="company-logo">
+                        </div>
+                        <div class="response-card col-11 d-flex" id="response-${element.response_id}">
+                            <div class="col-10">
+                                <div class="response-content text-justify pt-2 px-3" id="response-content">
                                     ${element.response}
                                 </div>
                                 <div class="pr-3 text-right fw-bold py-1">
                                     Responded on
-                                    <span>${element.responded_time}</span
+                                    <span>${element.responded_time}</span>
                                 </div>
+                            </div>
+                            <div class="col-2 d-flex align-items-center justify-content-space-around pr-3">
+                                <button onclick="updateResponse(${element.response_id})" 
+                                    class="btn-sm fs-2 py-1 px-2 btn-primary-light text-white">Edit</button>
+                                <a href="${URL_ROOT}/inquiries/deleteResponse/${element.response_id}"
+                                class="btn-sm fs-2 py-1 px-2 btn-outlined-error">Delete</a>
                             </div>
                         </div>
                     </div>
+                </div>
             `;
             output += response;
         });
@@ -157,8 +167,72 @@ const sendResponse = async (inquiryId) => {
         body: formData
     });
     if (res.status === 200) {
-       responseBox.value = "";
+        responseBox.value = "";
+        fetchCustomerInquiries();
     }
 }
+
+//Update a response
+
+const modalWindow = document.querySelector('#modal-window');
+const closeButton = modalWindow.querySelector('#close-button');
+const dialogBox = modalWindow.querySelector('#modal-window-box');
+
+const updateResponse = (responseId) => {
+
+    const responseNode = document.querySelector(`#response-${responseId}`).querySelector(".response-content");
+    console.log(responseNode);
+    const responseContent = responseNode.innerText;
+
+    modalWindow.innerHTML = `
+            <dialog open class="modal-window-box" id="modal-window-box">
+                <div class="modal-content pt-1">
+                    <div class="px-3 pb-2 modal-window-title">
+                        <h4>Update Response</h4>
+                    </div>
+                    <hr>
+                    <div class="px-3 pt-2">
+                        <textarea class="px-1 min-w-100" id="response-box" name="response" rows="5">${responseContent}
+                        </textarea>
+                    </div>
+                    <div class="text-right px-3 py-2">
+                        <button class="btn-sm btn-primary-light text-white mr-1" type="submit"
+                            onclick="updateResponseInDb(${responseId})">Update</button>
+                        <button class="btn-close btn-sm btn-outlined-error" id="close-button" type="reset"
+                            onclick="closeWindow()">
+                        Close</button>
+                    </div>
+                </div>
+            </dialog>
+            `;
+}
+
+const updateResponseInDb = async (responseId) => {
+
+    const responseBox = document.querySelector('#response-box');
+    const response = responseBox.value;
+    let formData = new FormData();
+    formData.append("totalQuantity", response);
+    const res = await fetch('http://localhost/krushi-arunalu/inquiries/sendUpdatedResponse/' + responseId, {
+        method: "POST",
+        body: formData
+    });
+    if (res.status === 200) {
+        closeWindow();
+        fetchCustomerInquiries();
+        Swal.fire({
+            icon: 'success',
+            title: 'Success',
+            text: 'Successfully Updated the Response',
+            confirmButtonText: 'OK',
+        });
+    }
+
+}
+
+const closeWindow = () => {
+    const modalWindow = document.querySelector('#modal-window');
+    modalWindow.querySelector('dialog').close();
+};
 
 
