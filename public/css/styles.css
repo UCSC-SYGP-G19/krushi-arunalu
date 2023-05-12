@@ -752,6 +752,10 @@
   color: #15742D;
 }
 
+button {
+  cursor: pointer;
+}
+
 button:disabled {
   cursor: not-allowed;
   opacity: 0.5;
@@ -804,6 +808,13 @@ button:disabled:hover {
 }
 .navbar a.nav-link {
   text-decoration: none;
+}
+
+.logged-out-navbar {
+  background-color: #FFFFFF;
+  display: flex;
+  align-items: center;
+  box-shadow: 0 2px 16px rgba(0, 0, 0, 0.25) !important;
 }
 
 .logged-in-navbar {
@@ -1135,21 +1146,25 @@ tbody.isolated tr td {
   padding-left: 56px;
 }
 .table-controls input.with-search-icon:hover {
-  background: #F5F5F5 url("../img/icons/other/search-icon.png") no-repeat scroll 20px 12px;
+  background: #F9FCF5 url("../img/icons/other/search-icon.png") no-repeat scroll 20px 12px;
 }
-.table-controls select.with-filter-icon {
-  background: white url("../img/icons/other/filter-icon.png") no-repeat scroll 14px 12px;
-  padding-left: 48px;
+.table-controls button.with-filter-icon {
+  background: white;
 }
-.table-controls select.with-filter-icon:hover {
-  background: #F5F5F5 url("../img/icons/other/filter-icon.png") no-repeat scroll 14px 12px;
+.table-controls button.with-filter-icon[value=show] {
+  padding-bottom: 5px;
 }
-.table-controls select.with-sort-icon {
-  background: white url("../img/icons/other/sort-icon.png") no-repeat scroll 14px 12px;
-  padding-left: 48px;
+.table-controls button.with-filter-icon svg {
+  transform: translate(0, 5px);
 }
-.table-controls select.with-sort-icon:hover {
-  background: #F5F5F5 url("../img/icons/other/sort-icon.png") no-repeat scroll 14px 12px;
+.table-controls button.with-filter-icon:hover {
+  background: #F5F5F5;
+}
+.table-controls button.with-sort-icon {
+  background: white;
+}
+.table-controls button.with-sort-icon:hover {
+  background: #F5F5F5;
 }
 
 table {
@@ -1182,6 +1197,9 @@ table tbody tr {
 table tbody tr:hover {
   background-color: #F5F5F5;
 }
+table tbody tr.table-end {
+  border-radius: 0 0 16px 16px;
+}
 table tbody tr.no-content {
   border-radius: 0 0 16px 16px;
 }
@@ -1209,15 +1227,55 @@ table .pagination .arrow-icons {
   margin: 0 12px;
   padding-top: 8px;
 }
-table .pagination .arrow-icons .left-arrow {
+table .pagination .arrow-icons span {
   cursor: pointer;
-  margin-right: 5px;
   padding: 4px 4px 0;
+  stroke: black;
+  user-select: none;
+}
+table .pagination .arrow-icons span:hover {
+  stroke: #15742D;
+}
+table .pagination .arrow-icons span.disabled {
+  stroke: #B1B1B1;
+  cursor: not-allowed;
+}
+table .pagination .arrow-icons .left-arrow {
+  margin-right: 5px;
 }
 table .pagination .arrow-icons .right-arrow {
-  cursor: pointer;
-  padding: 4px 4px 0;
   margin-left: 5px;
+}
+table span.sort-arrows {
+  cursor: pointer;
+  user-select: none;
+}
+table span.sort-arrows svg {
+  transform: translate(0, -2px);
+  stroke: #AAA;
+}
+table span.sort-arrows svg.active {
+  stroke: black !important;
+}
+
+.modal-window {
+  position: absolute;
+  margin: auto;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  transform: translate(-50%, -50%);
+}
+.modal-window .modal-window-box {
+  min-width: 400px;
+  max-width: max-content;
+  min-height: 25vh;
+  max-height: max-content;
+  background-color: #FFFFFF;
+  border-radius: 16px;
+  box-shadow: 0 4px 50px rgba(0, 0, 0, 0.2);
+  border: none;
 }
 
 .m-0 {
@@ -1825,6 +1883,25 @@ div.swal2-popup button.swal2-styled.swal2-cancel:focus {
   box-shadow: none !important;
 }
 
+.circular-img-set {
+  padding-top: 8px;
+  padding-bottom: 6px;
+}
+.circular-img-set :not(:first-child) {
+  margin-left: -12px;
+}
+.circular-img-set div.circular-img {
+  width: 48px;
+  height: 48px;
+  border: 2px solid #fff;
+  border-radius: 50%;
+  box-shadow: 3px 3px 6px rgba(0, 0, 0, 0.2);
+  display: inline-block;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-color: white;
+}
+
 .index {
   height: 100vh;
   width: 100vw;
@@ -2022,6 +2099,62 @@ div.swal2-popup button.swal2-styled.swal2-cancel:focus {
   gap: 3px;
 }
 
+.marketplace {
+  /* Slideshow container */
+  /* Hide the images by default */
+  /* Next & previous buttons */
+  /* Position the "next button" to the right */
+  /* On hover, add a black background color with a little bit see-through */
+  /* Caption text */
+  /* Number text (1/3 etc) */
+  /* The dots/bullets/indicators */
+}
+.marketplace .carousel {
+  position: relative;
+  width: 100%;
+  height: 500px;
+  overflow-x: hidden;
+}
+@keyframes display {
+  0% {
+    transform: translateX(200px);
+    opacity: 0;
+  }
+  10% {
+    transform: translateX(0);
+    opacity: 1;
+  }
+  20% {
+    transform: translateX(0);
+    opacity: 1;
+  }
+  30% {
+    transform: translateX(-200px);
+    opacity: 0;
+  }
+  100% {
+    transform: translateX(-200px);
+    opacity: 0;
+  }
+}
+.marketplace .carousel > img {
+  position: absolute;
+  top: 0;
+  opacity: 0;
+  animation: display 20s infinite;
+}
+.marketplace .carousel img:nth-child(2) {
+  animation-delay: 4s;
+}
+.marketplace .carousel img:nth-child(3) {
+  animation-delay: 8s;
+}
+.marketplace .carousel img:nth-child(4) {
+  animation-delay: 12s;
+}
+.marketplace .carousel img:nth-child(5) {
+  animation-delay: 16s;
+}
 .marketplace .product-card {
   border-radius: 8px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
@@ -2061,6 +2194,67 @@ div.swal2-popup button.swal2-styled.swal2-cancel:focus {
 .marketplace .product-card button {
   border-radius: 8px;
   height: 42px;
+}
+.marketplace * {
+  box-sizing: border-box;
+}
+.marketplace .slideshow-container {
+  max-width: 1000px;
+  position: relative;
+  margin: auto;
+}
+.marketplace .mySlides {
+  display: none;
+}
+.marketplace .prev, .marketplace .next {
+  cursor: pointer;
+  position: absolute;
+  top: 50%;
+  width: auto;
+  margin-top: -22px;
+  padding: 16px;
+  color: white;
+  font-weight: bold;
+  font-size: 18px;
+  transition: 0.6s ease;
+  border-radius: 0 3px 3px 0;
+  user-select: none;
+}
+.marketplace .next {
+  right: 0;
+  border-radius: 3px 0 0 3px;
+}
+.marketplace .prev:hover, .marketplace .next:hover {
+  background-color: rgba(0, 0, 0, 0.8);
+}
+.marketplace .text {
+  color: #f2f2f2;
+  font-size: 15px;
+  padding: 8px 12px;
+  position: absolute;
+  bottom: 8px;
+  width: 100%;
+  text-align: center;
+}
+.marketplace .numbertext {
+  color: #f2f2f2;
+  font-size: 12px;
+  padding: 8px 12px;
+  position: absolute;
+  top: 0;
+}
+.marketplace .dot {
+  cursor: pointer;
+  height: 15px;
+  width: 15px;
+  margin: 0 2px;
+  background-color: #bbb;
+  border-radius: 50%;
+  display: inline-block;
+  transition: background-color 0.6s ease;
+}
+.marketplace .active, .marketplace .dot:hover {
+  background-color: #717171;
 }
 
 .product-details {
@@ -2321,11 +2515,34 @@ div.swal2-popup button.swal2-styled.swal2-cancel:focus {
   background-color: #B89130;
   color: #FFFFFF;
 }
+.inquiry-wrapper .response-card-wrapper .company-logo {
+  max-height: 80px;
+  max-width: 80px;
+}
 .inquiry-wrapper .response-card {
   background-color: #E7F4D8;
   border: none;
   border-radius: 8px;
   width: 100%;
+}
+
+dialog.modal-window-box {
+  min-width: 500px;
+  max-width: max-content;
+  min-height: 20vh;
+  max-height: max-content;
+  background-color: #FFFFFF;
+  border-radius: 16px;
+  box-shadow: 0 4px 50px rgba(0, 0, 0, 0.2);
+  border: none;
+  right: 0;
+  position: absolute;
+  margin: auto;
+}
+
+dialog::backdrop {
+  background-color: #F5F5F5;
+  opacity: 0.6;
 }
 
 .chat-page {

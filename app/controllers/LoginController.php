@@ -34,7 +34,7 @@ class LoginController extends Controller
         $user = Session::getSession();
         switch ($user->role) {
             case 'Customer':
-                Util::redirect('marketplace');
+                Util::redirect('./marketplace');
                 break;
             case 'Producer':
                 Util::redirect('producer-dashboard');

@@ -21,7 +21,7 @@ class HarvestsController extends Controller
     public function index(): void
     {
         $this->loadView("Producer/HarvestsPage", "Harvests", "harvests");
-        $this->view->data = Harvest::getAllByProducerIdFromDB(Session::getSession()->id);
+//        $this->view->data = Harvest::getAllByProducerIdFromDB(Session::getSession()->id);
         $this->view->render();
     }
 
@@ -138,5 +138,10 @@ class HarvestsController extends Controller
         }
 
         Util::redirect($this->base);
+    }
+
+    public function getMyHarvestsAsJson(): void
+    {
+        $this->sendJson(Harvest::getAllByProducerIdFromDB(Session::getSession()->id));
     }
 }

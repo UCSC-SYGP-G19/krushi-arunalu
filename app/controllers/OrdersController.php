@@ -8,19 +8,23 @@
 namespace app\controllers;
 
 use app\core\Controller;
-use app\helpers\Util;
+use app\helpers\Session;
 
 class OrdersController extends Controller
 {
     public function index(): void
     {
         $this->loadView('Customer/CustomerOrdersPage', 'My Orders', 'orders');
+        $this->loadModel("CustomerOrder");
+        $customerId = Session::getSession()->id;
+        $this->view->data = $this->model->getAllFromDB($customerId);
+        $this->view->data_1 = $this->model->getProductImgFromDB();
         $this->view->render();
     }
 
-    public function viewOrderDetails(): void
-    {
-        $this->loadView('Customer/CustomerOrderDetailsPage', 'Order Details', 'orders');
-        $this->view->render();
-    }
+//    public function viewOrderDetails(): void
+//    {
+//        $this->loadView('Customer/CustomerOrderDetailsPage', 'Order Details', 'orders');
+//        $this->view->render();
+//    }
 }

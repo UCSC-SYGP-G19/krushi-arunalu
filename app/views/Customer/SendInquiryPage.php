@@ -50,5 +50,6 @@ include APP_ROOT . "/views/inc/components/LoggedOutNavbar.php"
                         value="cancel">cancel
                 </button>
             </div>
-
-            <div class="row gap-2">
+        </form>
+    </div>
+</main>
