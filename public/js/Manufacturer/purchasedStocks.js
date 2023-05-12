@@ -31,14 +31,13 @@ const renderPurchasedStocks = (data) => {
         });
         purchasedStocksList.innerHTML = output;
     } else {
-        renderMessageCard("Error fetching data")
+        purchasedStocksList.innerHTML = renderMessageCard("Error fetching data")
     }
 }
 
 const updateStockQuantity = async (cropId, totalQuantity) => {
 
-    modalWindow.innerHTML = `
-            <dialog open class="modal-window-box" id="modal-window-box">
+    document.querySelector('dialog').innerHTML = `
                 <div class="modal-content pt-1">
                     <div class="px-3 pb-2 modal-window-title">
                         <h4>Update Purchased Stock Quantity</h4>
@@ -57,8 +56,9 @@ const updateStockQuantity = async (cropId, totalQuantity) => {
                         Close</button>
                     </div>
                 </div>
-            </dialog>
             `;
+
+    document.querySelector('dialog').showModal();
 }
 
 const updateQtyInDb = async (id) => {
@@ -85,19 +85,16 @@ const updateQtyInDb = async (id) => {
 }
 
 const closeWindow = () => {
-    const modalWindow = document.querySelector('#change-stock-quantity');
-    modalWindow.querySelector('dialog').close();
+    document.querySelector('dialog').close();
 };
 
 document.addEventListener("DOMContentLoaded", () => {
     if (data == null) {
         purchasedStocksList.innerHTML = renderMessageCard("Loading");
         fetchPurchasedStocks();
+    } else {
+        renderPurchasedStocks(data);
     }
-    renderPurchasedStocks();
 });
 
 const purchasedStocksList = document.querySelector("#purchased-stocks");
-const modalWindow = document.querySelector('#change-stock-quantity');
-const closeButton = modalWindow.querySelector('#close-button');
-const dialogBox = modalWindow.querySelector('#modal-window-box');
