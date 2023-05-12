@@ -1,25 +1,21 @@
-.crop-request-card {
-  background-color: #FFFFFF;
-  border-radius: 16px;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1) !important;
-  border-bottom: 3px solid #15742D;
+/* Fading animation */
+.fade {
+  animation-name: fade;
+  animation-duration: 1.5s;
 }
-.crop-request-card div.clickable {
-  cursor: pointer;
+
+.navbar-top {
+  justify-content: center;
+  overflow: hidden;
 }
-.crop-request-card:hover {
-  background-color: #F9FCF5;
-}
-.crop-request-card .badge {
-  font-size: 0.9rem;
-}
-.crop-request-card .company-info {
-  font-size: 1.1rem;
-}
-.crop-request-card .crop-response-card-content {
-  background-color: #F5F5F5;
-  border-radius: 16px;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1) !important;
+
+@keyframes fade {
+  from {
+    opacity: 0.4;
+  }
+  to {
+    opacity: 1;
+  }
 }
 
 /*# sourceMappingURL=styles.css.map */

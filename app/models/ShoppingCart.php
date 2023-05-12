@@ -14,20 +14,35 @@ class ShoppingCart extends Model
 {
     public function __construct(
         private ?int $id = null,
-        private ?int $customer_id = null,
-        private ?int $product_id = null,
+        private ?int $customerId = null,
+        private ?int $productId = null,
         private ?float $quantity = null,
     ) {
     }
 
-    public function addToDB(): bool
+    public function checkExistedCart($customer_id): bool
+    {
+        $result = $this->runQuery("SELECT * from shopping_cart WHERE customer_id = ?", [$customer_id])->fetch();
+        return (bool) $result;
+    }
+
+    public function createShoppingCart($customer_id): bool
     {
         $result = $this->runQuery(
-            "INSERT into shopping_cart (customer_id, product_id, quantity) VALUES (?,?,?)",
-            [$this->customer_id, $this->product_id, $this->quantity]
+            "INSERT INTO shopping_cart (customer_id) VALUES (?)",
+            [$customer_id]
         );
-        return $result == true;
+        return $result = true;
     }
+
+//    public function addToDB(): bool
+//    {
+//        $result = $this->runQuery(
+//            "INSERT into cart_item (shopping_cart_id, product_id, quantity, unit_selling_price) VALUES (?,?,?,?)",
+//            [$this->shopping_cart_id, $this->product_id, $this->quantity, $this->unit_selling_price]
+//        );
+//        return $result == true;
+//    }
 
     public function removeFromDB($id): bool
     {
@@ -48,6 +63,14 @@ class ShoppingCart extends Model
             FROM shopping_cart
             INNER JOIN product ON shopping_cart.product_id = product.id
             WHERE shopping_cart.customer_id = ?", [$customerId])->fetchAll();
+    }
+
+    public function getCartId($customerId): int
+    {
+        return $this->runQuery(
+            "SELECT id FROM shopping_cart WHERE customer_id = ?",
+            [$customerId]
+        )->fetch();
     }
 
     /**
@@ -71,15 +94,15 @@ class ShoppingCart extends Model
      */
     public function getCustomerId(): ?int
     {
-        return $this->customer_id;
+        return $this->customerId;
     }
 
     /**
-     * @param int|null $customer_id
+     * @param int|null $customerId
      */
-    public function setCustomerId(?int $customer_id): void
+    public function setCustomerId(?int $customerId): void
     {
-        $this->customer_id = $customer_id;
+        $this->customerId = $customerId;
     }
 
     /**
@@ -87,15 +110,15 @@ class ShoppingCart extends Model
      */
     public function getProductId(): ?int
     {
-        return $this->product_id;
+        return $this->productId;
     }
 
     /**
-     * @param int|null $product_id
+     * @param int|null $productId
      */
-    public function setProductId(?int $product_id): void
+    public function setProductId(?int $productId): void
     {
-        $this->product_id = $product_id;
+        $this->productId = $productId;
     }
 
     /**
@@ -113,13 +136,4 @@ class ShoppingCart extends Model
     {
         $this->quantity = $quantity;
     }
-
-//    public function getProductDetails($id): Product
-//    {
-//        $result = $this->runQuery("SELECT * FROM product WHERE id = ?", [$id])->fetch();
-//        return new Product(
-//            $result["id"],
-//            $result["total"]
-//        );
-//    }
 }

@@ -71,9 +71,10 @@ class Product extends Model
     public function getByProductId($productId): object
     {
         return $this->runQuery("SELECT
+            p.id as 'id',
             p.image_url as 'image_url',
-            p.name as 'product_name',
-            pc.id as 'category',
+            p.name as 'name',
+            pc.name as 'category',
             p.unit as 'unit',
             p.weight as 'weight',
             p.stock_quantity as stock_qty,
