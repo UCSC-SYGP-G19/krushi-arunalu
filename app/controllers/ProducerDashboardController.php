@@ -60,4 +60,19 @@ class ProducerDashboardController extends Controller
         $this->loadModel("CropPrice");
         $this->sendArrayAsJson($this->model->getAgriOfficerPricesForDistrictOnDate($_POST['districtId'], $_POST['date']));
     }
+
+    public function fetchLandUtilisationData(): void
+    {
+        $this->loadModel("Land");
+        $output = [];
+        $myLands = $this->model->getNamesByOwnerIdFromDB(Session::getSession()->id);
+        $this->loadModel("Cultivation");
+        foreach ($myLands as $myLand) {
+            $output[] = [
+                "landDetails" => $myLand,
+                "currentCultivations" => $this->model->getCurrentCultivationData($myLand->id)
+            ];
+        }
+        $this->sendArrayAsJson($output);
+    }
 }

@@ -180,7 +180,31 @@ class Cultivation extends Model
                 "land" => "cultivation.land_id",
                 "district" => "land.district"]
         );
-        return [];
+        if ($stmt) {
+            return $stmt->fetchAll();
+        } else {
+            return [];
+        }
+    }
+
+    public function getCurrentCultivationData($landId): array
+    {
+        $stmt = Model::select(
+            table: "cultivation",
+            columns: [
+                "crop.name",
+                "cultivation.cultivated_area"],
+            where: ["land.id" => $landId,
+                "cultivation.status" => "Past"
+            ],
+            joins: ["land" => "cultivation.land_id",
+                "crop" => "cultivation.crop_id"]
+        );
+        if ($stmt) {
+            return $stmt->fetchAll();
+        } else {
+            return [];
+        }
     }
 
     // Getters and Setters

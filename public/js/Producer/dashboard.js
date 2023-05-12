@@ -33,6 +33,7 @@ const bestCultivationsContainer = document.querySelector("#best-cultivations-con
 const agriOfficerSetPricesContainer = document.querySelector("#agri-officer-set-prices-container");
 const priceDistrictDropdown = document.querySelector("#agri_officer_prices_district_dropdown");
 const priceDatePicker = document.querySelector("#agri_officer_prices_date_picker");
+const landChartsContainer = document.querySelector("#land-charts-container");
 
 const fetchDataForSelectedCropAndMarket = async (cropId, marketId) => {
   let formData = new FormData();
@@ -95,6 +96,18 @@ const fetchAgriOfficerSetCropPricesForDistrictOnDate = async (districtId, date) 
     return await res.json();
   } else {
     toast("error", "", "Error fetching agri-officer crop prices data");
+    return null;
+  }
+}
+
+const fetchLandUtilisationData = async () => {
+
+  const res = await fetch(`${URL_ROOT}/producerDashboard/fetchLandUtilisationData`);
+
+  if (res.status === 200) {
+    return await res.json();
+  } else {
+    toast("error", "", "Error fetching land utilisation data");
     return null;
   }
 }
@@ -335,6 +348,72 @@ const renderChartUsingChartJs = (node, data, chartTitle) => {
   chartHints.classList.add("d-none");
 }
 
+const updateLandUtilizationCharts = async () => {
+  landChartsContainer.innerHTML = spinnerHtml();
+  const data = await fetchLandUtilisationData();
+  if (data != null && data.length > 0) {
+    console.log(data);
+    landChartsContainer.innerHTML = "";
+
+    data.forEach(row => {
+      landChartsContainer.innerHTML += `<div class="col-12 col-6-md col-4-lg">
+                                 <div class="dashboard-card px-4 py-4 m-auto">
+                                        <div class="row">
+                                            <div class="col-12">
+                                                <div class="canvas-wrapper pb-2 px-2">
+                                                    <canvas id="land-utilisation-chart-${row.landDetails.id}"></canvas>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>`;
+
+      const chartCanvas = landChartsContainer.querySelector(`#land-utilisation-chart-${row.landDetails.id}`);
+      const chartTitle = `${row.landDetails.name} - ${row.landDetails.area_in_acres} acres`;
+      let totalCultivatedArea = 0;
+      totalCultivatedArea = row.currentCultivations.reduce((total, cultivation) => {
+        return total + parseFloat(cultivation.cultivation_cultivated_area);
+      }, 0);
+
+      row.currentCultivations.push({
+        crop_name: "Remaining area",
+        cultivation_cultivated_area: row.landDetails.area_in_acres - totalCultivatedArea
+      });
+
+      new Chart(chartCanvas, {
+        type: 'pie',
+        data: {
+          labels: row.currentCultivations.map(e => {
+            return e.crop_name;
+          }),
+          datasets: [{
+            data: row.currentCultivations.map(e => {
+              return parseFloat(e.cultivation_cultivated_area);
+            }),
+            hoverOffset: 4
+          }]
+        },
+        options: {
+          plugins: {
+            title: {
+              display: true,
+              text: chartTitle
+            }
+          }
+        }
+      });
+    });
+
+  } else {
+    landChartsContainer.innerHTML = `
+    <div class="col-12 py-1">
+       <p class="text-center">
+          You have not added any land details yet. Please add land details to view charts.
+        </p>                                         
+    </div>`;
+  }
+}
+
 cropDropdown.addEventListener("change", async (e) => {
   selectedCrop.id = e.target.value;
   selectedCrop.name = e.target.options[e.target.selectedIndex].text;
@@ -413,3 +492,5 @@ if (priceDistrictDropdown.options.length > 0) {
 priceDatePicker.valueAsDate = new Date();
 priceDatePicker.dispatchEvent(new Event("change"));
 priceDatePicker.max = new Date().toISOString().split("T")[0];
+
+updateLandUtilizationCharts();
