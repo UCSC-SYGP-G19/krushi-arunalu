@@ -31,7 +31,7 @@ class Cultivation extends Model
 //            land.name as 'land_name',
 //            crop.id as 'crop_id',
 //            crop.name as 'crop_name',
-//            cultivation.cultivated_quantity as 'cultivated_quantity',
+//            cultivation.cultivated_area as 'cultivated_area',
 //            cultivation.cultivated_date as 'cultivated_date',
 //            cultivation.expected_harvest_date as 'expected_harvest_date',
 //            cultivation.status as 'status'
@@ -44,7 +44,7 @@ class Cultivation extends Model
             table: "cultivation",
             columns: [
                 "cultivation.id", "land.id", "land.name", "crop.id", "crop.name", "crop.category_id",
-                "cultivation.cultivated_quantity AS cultivated_quantity",
+                "cultivation.cultivated_area AS cultivated_area",
                 "cultivation.cultivated_date AS cultivated_date",
                 "cultivation.expected_harvest_date AS expected_harvest_date",
                 "cultivation.status AS status"
@@ -70,7 +70,7 @@ class Cultivation extends Model
 //            land.name as 'land_name',
 //            crop.id as 'crop_id',
 //            crop.name as 'crop_name',
-//            cultivation.cultivated_quantity as 'cultivated_quantity',
+//            cultivation.cultivated_area as 'cultivated_area',
 //            cultivation.cultivated_date as 'cultivated_date',
 //            cultivation.expected_harvest_date as 'expected_harvest_date',
 //            cultivation.status as 'status'
@@ -83,7 +83,7 @@ class Cultivation extends Model
             table: "cultivation",
             columns: [
                 "cultivation.id", "land.id", "land.name", "crop.id", "crop.name",
-                "cultivation.cultivated_quantity AS cultivated_quantity",
+                "cultivation.cultivated_area AS cultivated_area",
                 "cultivation.cultivated_date AS cultivated_date",
                 "cultivation.expected_harvest_date AS expected_harvest_date",
                 "cultivation.status AS status"
@@ -103,7 +103,7 @@ class Cultivation extends Model
     public function addToDB(): bool
     {
 //        $result = $this->runQuery(
-//            "INSERT into cultivation (crop_id, land_id, cultivated_date, cultivated_quantity, status,
+//            "INSERT into cultivation (crop_id, land_id, cultivated_date, cultivated_area, status,
 //                         expected_harvest_date) VALUES (?,?,?,?,?,?)",
 //            [$this->cropId, $this->landId, $this->cultivatedDate, $this->cultivatedQuantity, $this->status,
 //                $this->expectedHarvestDate]
@@ -116,7 +116,7 @@ class Cultivation extends Model
                 "crop_id" => $this->cropId,
                 "land_id" => $this->landId,
                 "cultivated_date" => $this->cultivatedDate,
-                "cultivated_quantity" => $this->cultivatedQuantity,
+                "cultivated_area" => $this->cultivatedQuantity,
                 "status" => $this->status,
                 "expected_harvest_date" => $this->expectedHarvestDate,
             ]
@@ -142,7 +142,7 @@ class Cultivation extends Model
                 "crop_id" => $this->cropId,
                 "land_id" => $this->landId,
                 "cultivated_date" => $this->cultivatedDate,
-                "cultivated_quantity" => $this->cultivatedQuantity,
+                "cultivated_area" => $this->cultivatedQuantity,
                 "status" => $this->status,
                 "expected_harvest_date" => $this->expectedHarvestDate
             ],
@@ -163,7 +163,7 @@ class Cultivation extends Model
                 "crop.name",
                 "cultivation.land_id",
                 "land.area_in_hectares",
-                "cultivation.cultivated_quantity",
+                "cultivation.cultivated_area",
                 "cultivation.expected_harvest_date"],
             where: ["land.district" => $agriOfficerDistrictID],
             joins: ["crop" => "cultivation.id",
