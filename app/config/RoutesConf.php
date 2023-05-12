@@ -15,8 +15,8 @@ const PROTECTED_ROUTES = [
         "ProductCategories", "Products", "ManufacturerCropRequests", "Inquiries", "ManufacturerSales",
         "PurchasedStocks", "ConnectionRequests", "Chat"],
     "Customer" => ["Marketplace", "ShoppingCart", "Orders", "Profile", "SendInquiry", "Checkout", "Manufacturers"],
-    "Agri Officer" => ["Dashboard", "Announcements", "ProducerDetails", "land-details",
-        "cultivation-details", "crop-prices", "crop-prices", "cultivation-questions"],
+    "Agri Officer" => ["Dashboard", "Announcements", "ProducerDetails", "LandDetails",
+        "CultivationDetails", "CropPrices", "CropPrices", "CultivationQuestions"],
     "Admin" => ["Dashboard", "AllProducts", "Crops", "Manufacturers", "Producers", "Announcements", "UserManagement"]
 ];
 
