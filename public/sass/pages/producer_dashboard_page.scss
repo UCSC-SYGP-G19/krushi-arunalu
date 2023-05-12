@@ -19,6 +19,11 @@
 
         }
 
+        input, select {
+            height: unset!important;
+            width: unset!important;
+            padding: 6px 10px!important;
+        }
     }
 
     hr.primary-color {

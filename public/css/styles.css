@@ -3020,6 +3020,11 @@ aside.toast .loading {
   font-size: 0.9rem;
   color: #B1B1B1;
 }
+.producer-dashboard .dashboard-card input, .producer-dashboard .dashboard-card select {
+  height: unset !important;
+  width: unset !important;
+  padding: 6px 10px !important;
+}
 .producer-dashboard hr.primary-color {
   border: 1px solid #15742D;
 }

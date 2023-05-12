@@ -72,10 +72,10 @@ class CropPrice extends Model
     public function getDataForCropAndMarket($cropId, $marketId): bool|array
     {
         $stmt = Model::select(
-            "crop_price",
-            array("crop_price.date AS date",
+            table: "crop_price",
+            columns: ["crop_price.date AS date",
                 "crop_price.low_price AS low_price",
-                "crop_price.high_price AS high_price"),
+                "crop_price.high_price AS high_price"],
             where: [
                 "crop_price.crop_id" => $cropId,
                 "crop_price.market_id" => $marketId
@@ -85,6 +85,62 @@ class CropPrice extends Model
             return $stmt->fetchAll();
         }
         return [];
+    }
+
+    public function getDataForCropAndDistrict($cropId, $districtId): bool|array
+    {
+        $stmt = Model::select(
+            table: "crop_price",
+            columns: ["crop_price.date AS date",
+                "crop_price.low_price AS low_price",
+                "crop_price.high_price AS high_price"],
+            where: [
+                "crop_price.crop_id" => $cropId,
+                "agri_officer.district" => $districtId
+            ],
+            joins: [
+                "agri_officer" => "crop_price.agri_officer_id",
+            ],
+        );
+        if ($stmt) {
+            return $stmt->fetchAll();
+        }
+        return [];
+    }
+
+    public function getAgriOfficerSetPricesForCrops($cropIds, $date): bool|array
+    {
+        $res = $this->runQuery(
+            "SELECT crop_price.crop_id, crop_price.low_price, crop_price.high_price, crop.name AS crop_name
+            FROM crop_price
+            INNER JOIN crop ON crop_price.crop_id = crop.id
+            WHERE crop_price.date = ? AND crop_price.crop_id IN (" . implode(",", $cropIds) . ")",
+            [$date]
+        )->fetchAll();
+
+        if ($res) {
+            return $res;
+        } else {
+            return [];
+        }
+    }
+
+    public function getAgriOfficerPricesForDistrictOnDate($districtId, $date): bool|array
+    {
+        $res = $this->runQuery(
+            "SELECT crop_price.crop_id, crop.name AS crop_name, crop_price.low_price, crop_price.high_price
+            FROM crop_price
+            INNER JOIN crop ON crop_price.crop_id = crop.id
+            INNER JOIN agri_officer ON crop_price.agri_officer_id = agri_officer.id
+            WHERE crop_price.date = ? AND agri_officer.district = ?",
+            [$date, $districtId]
+        )->fetchAll();
+
+        if ($res) {
+            return $res;
+        } else {
+            return [];
+        }
     }
 
     /**

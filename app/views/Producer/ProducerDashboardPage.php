@@ -5,6 +5,7 @@ include APP_ROOT . "/views/inc/components/Header.php";
     <script src="https://cdn.jsdelivr.net/npm/chart.js@4.3.0/dist/chart.umd.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/date-fns/1.30.1/date_fns.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/chartjs-adapter-date-fns/dist/chartjs-adapter-date-fns.bundle.min.js"></script>
+
     </script>
     <body class="overflow-hidden full-height">
 
@@ -27,106 +28,60 @@ include APP_ROOT . "/views/inc/components/Header.php";
                         </div>
                         <div class="row px-1 py-3 gap-3">
                             <div class="col-12 col-6-md">
-                                <div class="dashboard-card px-4 py-3 m-auto">
-                                    <h3 class="pb-2 pt-1 text-center fw-normal">Best cultivations for your land 1</h3>
-                                    <hr class="primary-color">
-                                    <div class="pt-3 pb-0 px-3">
-                                        <ul>
-                                            <li class="py-1 row">
-                                                <div class="col-2">
-                                                    <div class="crop-pic-rounded"
-                                                         style="background-image: url('<?php echo URL_ROOT ?>/public/img/crops/pepper.jpg')">
-                                                    </div>
-                                                </div>
-                                                <div class="col-10 pl-2 m-auto">
-                                                    <h4 class="fw-bold">Heading</h4>
-                                                    <h5 class="fw-normal">Subheading</h5>
-                                                </div>
-                                            </li>
-
-                                            <li class="py-1 row">
-                                                <div class="col-2">
-                                                    <div class="crop-pic-rounded"
-                                                         style="background-image: url('<?php echo URL_ROOT ?>/public/img/crops/pepper.jpg')">
-                                                    </div>
-                                                </div>
-                                                <div class="col-10 pl-2 m-auto">
-                                                    <h4 class="fw-bold">Heading</h4>
-                                                    <h5 class="fw-normal">Subheading</h5>
-                                                </div>
-                                            </li>
-
-                                            <li class="py-1 row">
-                                                <div class="col-2">
-                                                    <div class="crop-pic-rounded"
-                                                         style="background-image: url('<?php echo URL_ROOT ?>/public/img/crops/pepper.jpg')">
-                                                    </div>
-                                                </div>
-                                                <div class="col-10 pl-2 m-auto">
-                                                    <h4 class="fw-bold">Heading</h4>
-                                                    <h5 class="fw-normal">Subheading</h5>
-                                                </div>
-                                            </li>
-                                        </ul>
+                                <div class="dashboard-card px-4 py-4 m-auto min-h-100">
+                                    <h3 class="pb-2 text-center fw-normal">Best cultivations for your land:&ensp;
+                                        <select name="land" id="land_dropdown"
+                                                data-selected-id="<?php if (isset($this->fields['land'])) {
+                                                    echo $this->fields['land'];
+                                                                  } ?>">
+                                            <?php foreach ($this->fieldOptions["land"] as $option) {
+                                                echo '<option value="' . $option->id . '"'
+//                                                    ((isset($this->fields['crop']) &&
+//                                                        $this->fields['crop'] == $option->id) ? 'selected' : '')
+                                                    . '>' . $option->name . '</option>';
+                                            }
+                                            ?>
+                                        </select>
+                                    </h3>
+                                    <hr class="primary-color my-1">
+                                    <div class="pt-3 pb-0 px-3" id="best-cultivations-container">
+                                        <?php if (!isset($this->fieldOptions['land']) || $this->fieldOptions['land'] == []) {
+                                            echo '<div class="m-4"><h5>
+                                            You have not entered any land details yet</h5></div>';
+                                        } ?>
                                     </div>
                                 </div>
                             </div>
 
                             <div class="col-12 col-6-md">
-                                <div class="dashboard-card p-4">
-                                    <ul class="pl-2">
-                                        <li class="py-1 row">
-                                            <div class="col-6">
-                                                <h4 class="fw-bold">Heading</h4>
-                                                <h5 class="fw-normal">Subheading</h5>
-                                            </div>
-                                            <div class="col-6">
-                                                <h4 class="fw-bold text-primary-light">Rs. XXX - Rs. XXX</h4>
-                                                <h5 class="fw-normal">Per KG</h5>
-                                            </div>
-                                        </li>
-
-                                        <li class="py-1 row">
-                                            <div class="col-6">
-                                                <h4 class="fw-bold">Heading</h4>
-                                                <h5 class="fw-normal">Subheading</h5>
-                                            </div>
-                                            <div class="col-6">
-                                                <h4 class="fw-bold text-primary-light">Rs. XXX - Rs. XXX</h4>
-                                                <h5 class="fw-normal">Per KG</h5>
-                                            </div>
-                                        </li>
-                                        <li class="py-1 row">
-                                            <div class="col-6">
-                                                <h4 class="fw-bold">Heading</h4>
-                                                <h5 class="fw-normal">Subheading</h5>
-                                            </div>
-                                            <div class="col-6">
-                                                <h4 class="fw-bold text-primary-light">Rs. XXX - Rs. XXX</h4>
-                                                <h5 class="fw-normal">Per KG</h5>
-                                            </div>
-                                        </li>
-
-                                        <li class="py-1 row">
-                                            <div class="col-6">
-                                                <h4 class="fw-bold">Heading</h4>
-                                                <h5 class="fw-normal">Subheading</h5>
-                                            </div>
-                                            <div class="col-6">
-                                                <h4 class="fw-bold text-primary-light">Rs. XXX - Rs. XXX</h4>
-                                                <h5 class="fw-normal">Per KG</h5>
-                                            </div>
-                                        </li>
-                                    </ul>
+                                <div class="dashboard-card p-4 m-auto min-h-100">
+                                    <h4 class="pb-2 text-center fw-normal">Prices for&ensp;
+                                        <select name="agri_officer_prices_district"
+                                                id="agri_officer_prices_district_dropdown"
+                                                data-selected-id="">
+                                            <?php foreach ($this->fieldOptions["district"] as $option) {
+                                                echo '<option value="' . $option->id . '"'
+                                                    . '>' . $option->name . '</option>';
+                                            }
+                                            ?>
+                                        </select>
+                                        &ensp;on:&ensp;
+                                        <input type="date" name="agri_officer_prices_date"
+                                               id="agri_officer_prices_date_picker">
+                                    </h4>
+                                    <hr class="primary-color my-1">
+                                    <p class="text-center text-secondary fs-2 mt-2 mb-1">(Prices set by
+                                        agri-officers)</p>
+                                    <div class="pt-2 pb-0 px-3" id="agri-officer-set-prices-container">
+                                    </div>
                                 </div>
                             </div>
                         </div>
 
-                        <div class="row px-1 py-3">
+                        <div class="row px-1 py-2">
                             <h2 class="col-12 text-center fw-normal mb-1">Crop Analytics</h2>
 
                             <div class="col-12 mb-2">
-
                                 <div class="row gap-2 mb-2 justify-content-center">
                                     <div class="col-12 col-8-sm col-6-md col-4-lg">
                                         <label for="crop_dropdown">Crop</label>
@@ -220,13 +175,14 @@ include APP_ROOT . "/views/inc/components/Header.php";
                                 </div>
                             </div>
                         </div>
+                        
                     </div>
                 </div>
             </div>
+
             <?php
             include APP_ROOT . "/views/inc/components/Footer.php";
             ?>
-
         </main>
     </div>
     <script src="<?php echo URL_ROOT ?>/public/js/Producer/dashboard.js" defer></script>

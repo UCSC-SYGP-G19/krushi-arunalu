@@ -134,6 +134,16 @@ class Cultivation extends Model
             WHERE land.owner_id = ?", [$producerId])->fetchAll();
     }
 
+    public function getCurrentCropIdsByProducerIdFromDB($producerId): array
+    {
+        return $this->runQuery("SELECT 
+            crop.id AS 'id'
+            FROM cultivation
+            INNER JOIN land ON cultivation.land_id = land.id
+            INNER JOIN crop ON cultivation.crop_id = crop.id
+            WHERE land.owner_id = ? AND cultivation.status = 'Current'", [$producerId])->fetchAll();
+    }
+
     public function updateInDB(): bool
     {
         return $this->update(

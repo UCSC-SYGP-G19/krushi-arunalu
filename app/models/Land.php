@@ -63,12 +63,15 @@ class Land extends Model
                 "land.address",
                 "land.district",
                 "registered_user.contact_no"],
+            where: ["land.district" => $agriOfficerDistrictID],
             joins: [
                 "registered_user" => "land.id", //left side->table need to be joint and right side->table_name.fk
                 "district" => "land.district"
-            ],
-            where: ["land.district" => $agriOfficerDistrictID]
+            ]
         );
+        if ($stmt) {
+            return $stmt->fetchAll();
+        }
         return [];
     }
     // Getters and Setters
