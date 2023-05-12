@@ -17,8 +17,7 @@ class PurchasedStock extends Model
         private ?int $totalQuantity = null,
         private ?int $cropId = null,
         private ?int $manufacturerId = null,
-    )
-    {
+    ) {
     }
 
     public function getByOrderStatus($manufacturerId): array
@@ -114,8 +113,4 @@ class PurchasedStock extends Model
     {
         $this->manufacturerId = $manufacturerId;
     }
-
 }
-
-
-
