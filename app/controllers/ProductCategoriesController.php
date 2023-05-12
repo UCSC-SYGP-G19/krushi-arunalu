@@ -29,18 +29,18 @@ class ProductCategoriesController extends Controller
         $this->view->render();
     }
 
-    public function getAllCategoriesAsJson(): void
-    {
-        $this->loadModel('ProductCategory');
-        $this->sendArrayAsJson($this->model->getAllFromDb());
-    }
-
     public function renderProductCategoriesPageForAdmin(): void
     {
         $this->loadView('Admin/ProductCategoriesPage', 'Product Categories', 'product-categories');
         $this->loadModel("ProductCategory");
         $this->view->data = $this->model->getAllFromDB();
         $this->view->render();
+    }
+
+    public function getAllCategoriesAsJson(): void
+    {
+        $this->loadModel('ProductCategory');
+        $this->sendArrayAsJson($this->model->getAllFromDb());
     }
 
     public function requestToAdd(): void

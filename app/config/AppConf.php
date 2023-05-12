@@ -26,3 +26,5 @@ if ($_ENV['APP_ENV'] == 'production') {
 const ERROR_LOG = "/tmp/php-error.log";
 
 const SITE_NAME = 'කෘෂි අරුණලු | Krushi Arunalu';
+
+date_default_timezone_set('Asia/Kolkata');

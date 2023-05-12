@@ -13,17 +13,16 @@ use app\core\Model;
 class Land extends Model
 {
     public function __construct(
-        private ?int    $id = null,
-        private ?int    $ownerId = null,
+        private ?int $id = null,
+        private ?int $ownerId = null,
         private ?string $name = null,
-        private ?float  $areaInHectares = null,
+        private ?float $areaInHectares = null,
         private ?string $address = null,
         private ?string $district = null,
         private ?string $soilCondition = null,
         private ?string $rainfall = null,
         private ?string $humidity = null
-    )
-    {
+    ) {
     }
 
     public static function getNamesByOwnerIdFromDB($ownerId): array
