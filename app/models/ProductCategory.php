@@ -30,6 +30,15 @@ class ProductCategory extends Model
         return $result == true;
     }
 
+    public function addRequestToDb(): bool
+    {
+        $result = $this->runQuery(
+            "INSERT into product_category (name, description, status, hidden) VALUES (?,?,?,?)",
+            [$this->name, $this->description, "Pending", 0]
+        );
+        return $result == true;
+    }
+
     public function addToDB(): bool
     {
         $result = $this->runQuery(

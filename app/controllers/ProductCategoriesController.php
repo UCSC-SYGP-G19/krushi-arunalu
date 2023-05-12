@@ -26,8 +26,6 @@ class ProductCategoriesController extends Controller
     public function renderProductCategoriesPageForManufacturer(): void
     {
         $this->loadView('Manufacturer/ProductCategoriesPage', 'Product Categories', 'product-categories');
-        $this->loadModel("ProductCategory");
-        $this->view->data = $this->model->getAllFromDB();
         $this->view->render();
     }
 
@@ -37,6 +35,12 @@ class ProductCategoriesController extends Controller
         $this->loadModel("ProductCategory");
         $this->view->data = $this->model->getAllFromDB();
         $this->view->render();
+    }
+  
+    public function getAllCategoriesAsJson(): void
+    {
+        $this->loadModel('ProductCategory');
+        $this->sendArrayAsJson($this->model->getAllFromDb());
     }
 
     public function requestToAdd(): void
@@ -57,6 +61,76 @@ class ProductCategoriesController extends Controller
             $this->model->fillData([
                 'name' => $_POST['name'],
                 'description' => $_POST['description'],
+            ]);
+
+            if ($this->model->addRequestToDB()) {
+                Util::redirect("./");
+            }
+        }
+
+        $this->view->render();
+    }
+
+    public function requests(): void
+    {
+        $this->loadView('Admin/PendingProductCategoriesPage', 'Product Category Requests', 'product-categories');
+        $this->view->render();
+    }
+
+    public function getApprovalRequestsAsJson(): void
+    {
+        $this->loadView('Admin/ProductCategoriesPage', 'Product Categories', 'product-categories');
+        $this->loadModel("ProductCategory");
+        $this->view->data = $this->model->getAllFromDB();
+        $this->view->render();
+        $this->sendArrayAsJson($this->model->getPendingCategoryRequestsFromDB());
+    }
+
+    public function approve($id): bool
+    {
+        $this->loadView('Admin/PendingProductCategoriesPage', 'Pending Approvals', 'product-categories');
+        $this->loadModel("ProductCategory");
+
+        if ($this->model->approveCategoryRequests($id)) {
+            Util::redirect("../requests");
+            return true;
+        }
+        $this->view->render();
+        return false;
+    }
+
+    public function decline($id): bool
+    {
+        $this->loadView('Admin/PendingProductCategoriesPage', 'Pending Approvals', 'product-categories');
+        $this->loadModel("ProductCategory");
+
+        if ($this->model->declineCategoryRequests($id)) {
+            Util::redirect("../requests");
+            return true;
+        }
+        $this->view->render();
+        return false;
+    }
+
+    public function requestToAdd(): void
+    {
+        $this->loadView('Admin/AddProductCategoriesPage', 'Add Product Categories', 'product-categories');
+
+        if ($_SERVER["REQUEST_METHOD"] === "POST") {
+            $required_fields = null;
+            $this->validateFields($required_fields);
+
+            if (!empty($this->view->fieldErrors)) {
+                $this->refillValuesAndShowError();
+                $this->view->render();
+                return;
+            }
+
+            $this->loadModel("ProductCategory");
+            $this->model->fillData([
+                'name' => $_POST['name'],
+                'description' => $_POST['description'],
+                'status' => "Approved",
             ]);
 
             if ($this->model->addRequestToDB()) {
@@ -136,7 +210,7 @@ class ProductCategoriesController extends Controller
 
     public function edit($id): bool
     {
-        $this->loadView('Manufacturer/UpdateProductCategoriesPage', 'Update Product Categories', 'product-categories');
+        $this->loadView('Admin/UpdateProductCategoriesPage', 'Update Product Categories', 'product-categories');
 
         $this->loadModel("ProductCategory");
         $this->view->data = $this->model->getCategoryById($id);
