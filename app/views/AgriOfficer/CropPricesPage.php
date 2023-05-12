@@ -25,7 +25,8 @@ include APP_ROOT . "/views/inc/components/Header.php";
                                     <div class="col-3">
                                         <form class="px-2 py-2">
                                             <label for="Date">Date:</label>
-                                            <input type="date" id="Date" name="Date">
+                                            <input type="date" id="Date" name="Date" onchange="updateUrl()"
+                                                   max="<?php echo date('Y-m-d'); ?>">
                                         </form>
                                     </div>
                                 </div>
@@ -70,6 +71,13 @@ include APP_ROOT . "/views/inc/components/Header.php";
                 ?>
         </main>
     </div>
+    <script>
+        function updateUrl() {
+            let date = document.getElementById("datepicker").value;
+            let url = "search.php?date=" + encodeURIComponent(date);
+            window.history.replaceState(null, null, url);
+        }
+    </script>
     <script src="<?php echo URL_ROOT ?>/public/js/AgriOfficer/cropPrices.js" defer></script>
     </body>
 <?php
