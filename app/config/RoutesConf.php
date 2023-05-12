@@ -13,7 +13,7 @@ const PROTECTED_ROUTES = [
         "ProducerCropRequests", "Announcements", "Profile", "Manufacturers", "ConnectionRequests"],
     "Manufacturer" => ["ManufacturerDashboard", "Sales", "ManufacturerOrders", "Producers", "Stocks",
         "ProductCategories", "Products", "ManufacturerCropRequests", "Inquiries", "ManufacturerSales",
-        "PurchasedStocks", "ConnectionRequests"],
+"PurchasedStocks", "ConnectionRequests"],
     "Customer" => ["Marketplace", "ShoppingCart", "Orders", "CustomerOrderDetails", "Profile", "SendInquiry", "Checkout",
         "Manufacturers"],
     "Agri Officer" => ["Dashboard", "Announcements", "Producers", "LandDetails", "CultivationDetails", "CropPrices",
@@ -124,7 +124,7 @@ const SIDEBAR_ROUTES = [
         ],
         "Producer Details" => [
             "icon" => "producer-details",
-            "link" => "producers",
+            "link" => "producer-details",
         ],
         "Land Details" => [
             "icon" => "land-details",
