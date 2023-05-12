@@ -22,8 +22,69 @@ class CustomerOrder extends Model
         private ?float $amountPaid = null,
         private ?string $email = null,
         private ?string $contactNo = null,
-        private ?string $status = null
+        private ?string $status = null,
+        private ?int $customerId = null
     ) {
+    }
+
+    public function getAllFromDB($customerId): array
+    {
+        return $this->runQuery("SELECT 
+            customer_order.id as 'order_id', 
+            customer_order.date_time as 'date_time', 
+            customer_order.name as 'name', 
+            customer_order.delivery_address as 'delivery_address', 
+            customer_order.postal_code as 'postal_code', 
+            customer_order.delivery_instructions as 'delivery_instructions',
+            customer_order.email as 'email', 
+            customer_order.contact_no as 'contact_no', 
+            customer_order.status as 'status', 
+            customer_order.payment_method as 'payment_method', 
+            customer_order.total_cost as 'total_cost'
+            FROM customer_order   
+            WHERE customer_order.customer_id = ?", [$customerId])->fetchAll();
+    }
+
+    public function getOrderDetails($orderId): object
+    {
+        return $this->runQuery("SELECT
+            customer_order.id AS 'order_id',
+            customer_order.recipient_name AS 'order_recipient_name',
+            customer_order.date_time AS 'order_date_time',
+            customer_order.delivery_address AS 'delivery_address',
+            customer_order.postal_code AS 'postal_code',
+            customer_order.delivery_instructions AS 'delivery_instructions',
+            customer_order.contact_no AS 'contact_no',
+            customer_order.email AS email,
+            customer_order.status AS 'status',
+            customer_order.payment_method AS 'payment_method'
+            FROM customer_order
+            WHERE customer_order.id = ?", [$orderId])->fetch();
+    }
+
+    public function getOrderProducts($orderId): array
+    {
+        return $this->runQuery("
+        SELECT
+        customer_order_item.product_id AS 'product_id',
+            product.image_url AS 'product_img_url',
+            product.name AS 'product_name',
+            product.description AS 'product_description',
+            customer_order_item.unit_selling_price AS 'unit_price',
+            customer_order_item.quantity AS 'quantity'
+            FROM customer_order_item
+            INNER JOIN product ON customer_order_item.product_id = product.id   
+            WHERE customer_order_item.order_id = ?
+            ", [$orderId])->fetchAll();
+    }
+
+    public function getProductImagesOfOrderFromDB($orderId): array
+    {
+        return $this->runQuery("SELECT product_id, product.name, product.image_url
+        FROM customer_order_item
+        INNER JOIN product ON customer_order_item.id = product.id
+        WHERE customer_order_item.order_id = $orderId
+        ORDER BY quantity DESC LIMIT 3;")->fetchAll();
     }
 
     public function addToDB(): bool
@@ -37,6 +98,19 @@ class CustomerOrder extends Model
         );
         return $result == true;
     }
+
+//     public function getProductImgFromDB(): array
+//     {
+//         return $this->runQuery("SELECT 
+//         image_url as product_img
+//         FROM product 
+//         INNER JOIN cart_item 
+//         ON product.id = cart_item.product_id 
+//         INNER JOIN customer_order 
+//         ON cart_item.shopping_cart_id = customer_order.shopping_cart_id
+//         ORDER BY rand() limit 3
+//         ;")->fetchAll();
+//     }
 
     /**
      * @return int|null
@@ -196,5 +270,21 @@ class CustomerOrder extends Model
     public function setStatus(?string $status): void
     {
         $this->status = $status;
+    }
+
+    /**
+     * @return int|null
+     */
+    public function getCustomerId(): ?int
+    {
+        return $this->customerId;
+    }
+
+    /**
+     * @param int|null $customerId
+     */
+    public function setCustomerId(?int $customerId): void
+    {
+        $this->customerId = $customerId;
     }
 }

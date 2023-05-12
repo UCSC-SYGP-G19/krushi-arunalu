@@ -9,15 +9,15 @@
 const PROTECTED_ROUTES = [
     "Common" => ["Login", "Register", "ForgotPassword", "ResetPassword", "Logout", "Marketplace", "ManageProfile",
         "ManufacturerStore"],
-    "Producer" => ["AccountSetup", "ProducerDashboard", "Cultivations", "Harvests", "Sales", "CultivationQuestions",
-        "ProducerCropRequests", "Announcements", "Profile", "Manufacturers", "ConnectionRequests", "Chat"],
+    "Producer" => ["AccountSetup","ProducerDashboard", "Cultivations", "Harvests", "Sales", "CultivationQuestions",
+        "ProducerCropRequests", "Announcements", "Profile", "Manufacturers", "ConnectionRequests"],
     "Manufacturer" => ["ManufacturerDashboard", "Sales", "ManufacturerOrders", "Producers", "Stocks",
         "ProductCategories", "Products", "ManufacturerCropRequests", "Inquiries", "ManufacturerSales",
         "PurchasedStocks", "ConnectionRequests", "Chat"],
     "Customer" => ["Marketplace", "ShoppingCart", "Orders", "Profile", "SendInquiry", "Checkout", "Manufacturers"],
     "Agri Officer" => ["Dashboard", "Announcements", "ProducerDetails", "LandDetails",
-        "CultivationDetails", "CropPrices", "CropPrices", "CultivationQuestions"],
-    "Admin" => ["Dashboard", "AllProducts", "Crops", "Manufacturers", "Producers", "Announcements", "UserManagement"]
+        "CultivationDetails", "CropPrices", "CultivationQuestions"],
+    "Admin" => ["Dashboard", "AllProducts", "ProductCategories", "Crops", "Manufacturers", "Producers", "Announcements", "UserManagement"]
 ];
 
 const SIDEBAR_ROUTES = [
@@ -154,15 +154,19 @@ const SIDEBAR_ROUTES = [
             "icon" => "crops",
             "link" => "crops",
         ],
-        "manufacturers" => [
-            "icon" => "crops",
-            "link" => "crops",
+        "Product Categories" => [
+            "icon" => "product-categories",
+            "link" => "product-categories",
         ],
-        "producers" => [
+        "Manufacturers" => [
+            "icon" => "manufacturers",
+            "link" => "manufacturers",
+        ],
+        "Producers" => [
             "icon" => "producers",
             "link" => "producers",
         ],
-        "announcements" => [
+        "Announcements" => [
             "icon" => "announcements",
             "link" => "announcements",
         ],

@@ -1,6 +1,5 @@
 <?php
 
-use app\views\inc\components\Table;
 use app\views\inc\components\InputField;
 use app\views\inc\components\SelectField;
 
