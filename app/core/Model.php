@@ -163,14 +163,13 @@ class Model
     }
 
     // Function to update data in the database
-
     /**
      * @param string $table
      * @param array $data
-     * @param string $where
+     * @param array $where
      * @return bool
      */
-    public function update(string $table, array $data, string $where): bool
+    public function update(string $table, array $data, array $where): bool
     {
         $pdo = Database::getCon();
         if (!$pdo) {
@@ -185,27 +184,51 @@ class Model
             $query .= "$key = ?, ";
         }
         $query = rtrim($query, ', ');
-        $query .= " WHERE $where";
-        return Database::prepareAndExecute($pdo, $query, $values) != false;
+//        $query .= " WHERE $where";
+
+        $where_values = array();
+        if (!empty($where)) {
+            $where_conditions = array();
+
+            foreach ($where as $column => $value) {
+                $where_conditions[] = "$column = ?";
+                $where_values[] = $value;
+            }
+
+            $query .= " WHERE " . implode(" AND ", $where_conditions);
+        }
+
+        return Database::prepareAndExecute($pdo, $query, array_merge($values, $where_values)) != false;
     }
 
     // Function to delete data from a table
-
     /**
      * @param string $table
-     * @param string $where
+     * @param array $where
      * @return bool
      */
-    public function delete(string $table, string $where): bool
+    public function delete(string $table, array $where): bool
     {
         $pdo = Database::getCon();
         if (!$pdo) {
             return false;
         }
 
-        $query = "DELETE FROM $table WHERE $where";
+        $query = "DELETE FROM $table";
 
-        return Database::prepareAndExecute($pdo, $query) == 1;
+        $where_values = array();
+        if (!empty($where)) {
+            $where_conditions = array();
+
+            foreach ($where as $column => $value) {
+                $where_conditions[] = "$column = ?";
+                $where_values[] = $value;
+            }
+
+            $query .= " WHERE " . implode(" AND ", $where_conditions);
+        }
+
+        return Database::prepareAndExecute($pdo, $query, $where_values) != false;
     }
 
     // Function to get the last inserted ID

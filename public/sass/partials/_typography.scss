@@ -5,6 +5,7 @@ $colors: (
         "primary-dark": $primary-green-dark,
         "light-green": $header-green,
         "secondary" : $secondary-grey,
+        "gold" : $gold-light,
         "white" : $white,
         "black" : $black,
         "error" : $error-red,
@@ -105,6 +106,10 @@ h1.title {
 
     &.badge-secondary {
         background-color: $grey-dark;
+    }
+
+    &.badge-light-green {
+        background-color: $selected-green;
     }
 }
 

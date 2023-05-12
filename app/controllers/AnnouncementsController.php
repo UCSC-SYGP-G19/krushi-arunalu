@@ -29,15 +29,24 @@ class AnnouncementsController extends Controller
 
     public function publish(): void
     {
+        //loading page view
         $this->loadView(
-            'AgriOfficer/PublishAnnouncementPage',
+            'AgriOfficer/AnnouncementsPublishPage',
             'Publish Announcement',
             'announcements'
-        );//loading page view
+        );
 
         if ($_SERVER["REQUEST_METHOD"] === "POST") {
-            $this->loadModel("Announcement");
+            $required_fields = ["announcement_title", "announcement_content"];
+            $this->validateFields($required_fields);
 
+            if (!empty($this->view->fieldErrors)) {
+                $this->refillValuesAndShowError();
+                $this->view->render();
+                return;
+            }
+
+            $this->loadModel("Announcement");
             $this->model->fillData([
                 'agriOfficerId' => Session::getSession()->id,
                 'title' => $_POST['announcement_title'],
@@ -82,6 +91,18 @@ class AnnouncementsController extends Controller
                 Util::redirect("../");
                 return true;
             }
+        }
+        $this->view->render();
+        return false;
+    }
+
+    public function delete($announcementId): bool
+    {
+        $this->loadView('AgriOfficer/AnnouncementPage', 'Announcement', 'announcements');
+        $this->loadModel("Announcement");
+        if ($this->model->deleteRecord($announcementId)) {
+            Util::redirect("../");
+            return true;
         }
         $this->view->render();
         return false;

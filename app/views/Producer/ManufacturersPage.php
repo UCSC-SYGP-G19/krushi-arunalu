@@ -1,7 +1,5 @@
 <?php
 
-use app\views\inc\components\Table;
-
 include APP_ROOT . "/views/inc/components/Header.php";
 
 ?>
@@ -22,54 +20,27 @@ include APP_ROOT . "/views/inc/components/Header.php";
                             <div class="col-6">
                                 <h1 class="title">Manufacturers</h1>
                             </div>
-                            <div class="col">
-                                <a href="manufacturers/connection-requests"
-                                   class="btn-md btn-primary-light text-center text-white">
-                                    Connection Requests</a>
+                            <div class="">
+                                <?php echo '<a class="btn-md btn-primary-light text-center text-white" href = "
+                                 ' . URL_ROOT . '/connection-requests">
+                                 Connection Requests</a>' ?>
                             </div>
                         </div>
                         <div class="row d-flex">
-                            <span class="text-primary-light px-1 pt-3 fs-4 fw-bold"><u>All</u></span>
-                            <span class="text-secondary px-1 pt-3 fs-4 fw-bold mx-4">Connected</span>
+                            <span class="px-1 pt-3 fs-4 fw-bold">
+                                <button class="tab-btn active-tab" id="btn-all-manufacturers">All</button>
+                            </span>
+                            <span class="px-1 pt-3 fs-4 fw-bold mx-4">
+                                <button class="tab-btn" id="btn-connected-manufacturers">Connected</button>
+                            </span>
                         </div>
                         <div class="row px-1 pt-2">
                             <div class="col-12 text-justify">
                                 <br>
                                 <?php
-                                include APP_ROOT . "/views/inc/components/SearchFilterAndSort.php";
-                                $this->tableHeaders = [
-                                    "manufacturer_id" => [
-                                        "label" => "ID",
-                                        "sortable" => true,
-                                        "sortKey" => "id",
-                                        "class" => "col-3",
-                                    ],
-                                    "manufacturer_name" => [
-                                        "label" => "Name",
-                                        "sortable" => true,
-                                        "sortKey" => "name",
-                                        "class" => "col-3",
-                                    ],
-                                    "interested_crops" => [
-                                        "label" => "Interested Crops",
-                                        "sortable" => true,
-                                        "sortKey" => "interested_crops",
-                                        "class" => "col-3",
-                                    ],
-                                    "" => [
-                                        "label" => "",
-                                        "sortable" => false,
-                                        "class" => "col-3"
-                                    ]
-                                ];
-                                $manufacturersTable = new Table(
-                                    "manufacturers",
-                                    $this->tableHeaders,
-                                    $this->data,
-                                    "manufacturer_id"
-                                );
-                                $manufacturersTable->render();
-                                ?>
+                                include APP_ROOT . "/views/inc/components/SearchFilterAndSort.php";?>
+                                <table id="manufacturers-table">
+                                </table>
                             </div>
                         </div>
                     </div>
@@ -81,6 +52,7 @@ include APP_ROOT . "/views/inc/components/Header.php";
         </main>
 
     </div>
+    <script src="<?php echo URL_ROOT ?>/public/js/Producer/viewManufacturers.js" defer></script>
     </body>
 <?php
 include APP_ROOT . "/views/inc/components/EndingTag.php";

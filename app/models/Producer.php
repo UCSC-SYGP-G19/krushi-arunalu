@@ -8,6 +8,8 @@
 
 namespace app\models;
 
+use app\core\Model;
+
 class Producer extends RegisteredUser
 {
     public function __construct(
@@ -44,21 +46,65 @@ class Producer extends RegisteredUser
             ->fetchAll();
     }
 
-    public function getAllProducersFromDB(): array
+    public function getAllProducersForManufacturer($manufacturerId): array
     {
         return $this->runQuery("SELECT 
+            ru.image_url as 'image_url',
+            p.id as 'producer_id',
+            ru.name as 'producer_name',
+            d.name as 'district',
+            GROUP_CONCAT(DISTINCT cr.name SEPARATOR ',\n') as 'crop_names',
+            co.status as 'is_connected'
+            FROM producer p
+            INNER JOIN registered_user ru ON p.id = ru.id
+            INNER JOIN district d ON d.id = p.district
+            INNER JOIN land l ON p.id = l.owner_id
+            INNER JOIN cultivation c ON l.id = c.land_id
+            INNER JOIN crop cr ON c.crop_id = cr.id
+            LEFT JOIN connection_request co ON
+                (co.sender_id = ? AND
+                    co.receiver_id = p.id) OR 
+                (co.sender_id = p.id AND
+                    co.receiver_id = ?)
+            GROUP BY ru.id
+            ", [$manufacturerId, $manufacturerId])->fetchAll();
+    }
+
+    public function getConnectedProducersForManufacturer($manufacturerId): array
+    {
+        return $this->runQuery("SELECT
+            ru.image_url as 'image_url',
             p.id as 'producer_id',
             ru.name as 'producer_name',
             GROUP_CONCAT(DISTINCT cr.name SEPARATOR ', ') as 'crop_names',
-            co.status as 'is_connected'
+            ru.address as 'address',
+            ru.contact_no as 'contact_no'
             FROM producer p
             INNER JOIN registered_user ru on p.id = ru.id
             INNER JOIN land l on p.id = l.owner_id
             INNER JOIN cultivation c on l.id = c.land_id
             INNER JOIN crop cr on c.crop_id = cr.id
-            LEFT JOIN connection_request co ON co.sender_id = p.id OR co.receiver_id = p.id
+            INNER JOIN connection_request co ON 
+                (co.sender_id = ? AND
+                    co.receiver_id = p.id) OR 
+                (co.sender_id = p.id AND
+                    co.receiver_id = ?)
+            WHERE co.status = 'Accepted'
             GROUP BY ru.id
-            ", [])->fetchAll();
+            ", [$manufacturerId, $manufacturerId])->fetchAll();
+    }
+
+    //Model function of Agri-Officer's Producer details.
+    public function getAllProducersDetailsForAgriOfficers($agriOfficerDistrictID): array
+    {
+        $stmt = Model::select(
+            table: "producer",
+            columns: ["producer.nic_number", "registered_user.name", "registered_user.address",
+                "registered_user.contact_no"],
+            where: ["producer.district_id" => $agriOfficerDistrictID],
+            joins: ["registered_user" => "producer.id"]
+        );
+        return [];
     }
 
     /**

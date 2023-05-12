@@ -45,15 +45,15 @@ include APP_ROOT . "/views/inc/components/Header.php";
                         <br>
                         <div class="row px-1">
                             <?php foreach ($this->data as $element) {
-                                echo '<div class="col-3 text-center p-2">
+                                echo '<div class="col-3 text-center p-3">
                                 <div class="product-card  p-3 pb-2">
                                     <div class="image-window mb-1">
                                     ' .
                                     '<a href="marketplace/product-details/' . $element->manufacturer_id .
                                     '">' .
                                     '<img alt="Manufacturer image" height="100%" width="100%" src="' . URL_ROOT .
-                                    '/public/img/manufacturers/' . "Manufacturer.png"
-                                     . '">'
+                                    '/public/img/user-avatars/' .
+                                    $element->manufacturer_image_url . '">'
                                     . '</a>' .
                                     '
                                     </div>

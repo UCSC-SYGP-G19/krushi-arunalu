@@ -1,62 +1,21 @@
-.manufacturer-store-wrapper {
-  padding: 0 10% 0 10%;
+/* Fading animation */
+.fade {
+  animation-name: fade;
+  animation-duration: 1.5s;
 }
 
-.store-info {
-  border-radius: 0 0 16px 16px;
+.navbar-top {
+  justify-content: center;
+  overflow: hidden;
 }
 
-.store-cover {
-  border-radius: 16px 16px 0 0;
-}
-
-.store-info {
-  background-color: #FFFFFF;
-}
-
-.product-count-wrapper {
-  border-radius: 50%;
-  background-color: #B1B1B1;
-}
-
-.product-count {
-  color: #185427;
-  font-size: 2rem;
-}
-
-.company-logo {
-  height: 75%;
-  width: 75%;
-}
-
-.company-name {
-  font-size: 1.5rem;
-}
-
-.contact-info {
-  font-size: 1.25rem;
-}
-
-.description {
-  font-size: 1rem;
-}
-
-.category {
-  border-radius: 160px;
-  border: 2px solid #185427;
-}
-.category:hover {
-  background-color: #E7F4D8;
-}
-
-.product-card {
-  background-color: #FFFFFF;
-  border-radius: 16px;
-}
-
-.up-arrow-icon {
-  height: 30px;
-  width: 30px;
+@keyframes fade {
+  from {
+    opacity: 0.4;
+  }
+  to {
+    opacity: 1;
+  }
 }
 
 /*# sourceMappingURL=styles.css.map */

@@ -39,7 +39,7 @@ class Manufacturer extends RegisteredUser
         return false;
     }
 
-    public function getAllFromDB(): array
+    public function getAllManufacturersFromDB(): array
     {
         return $this->runQuery("SELECT 
             manufacturer.id as 'manufacturer_id',
@@ -68,64 +68,44 @@ class Manufacturer extends RegisteredUser
         )->fetch();
     }
 
-    public function getConnectionRequestsFromProducers($manufacturerId): array
+    public function getAllManufacturersForProducer($producerId): array
     {
-        return $this->runQuery("SELECT
-        ru.name as 'sender_name',
-        d.name as 'location',
-        ru.image_url as 'profile_pic',
-        cr.sender_id as 'sender_id',
-        cr.id as 'request_id'
-        FROM connection_request cr
-        INNER JOIN registered_user ru ON ru.id = cr.sender_id
-        INNER JOIN producer p on p.id = cr.sender_id
-        INNER JOIN district d on p.district = d.id
-        WHERE cr.receiver_id = ? AND cr.status = ?
-        ", [$manufacturerId, "Pending"])->fetchAll();
+        return $this->runQuery(
+            "SELECT 
+            manufacturer.id as 'manufacturer_id',
+            registered_user.image_url as 'manufacturer_image_url',
+            registered_user.name as 'manufacturer_name',
+            manufacturer.description as 'manufacturer_description',
+            connection_request.status as 'request_status'
+            FROM manufacturer
+            INNER JOIN registered_user ON manufacturer.id = registered_user.id
+            LEFT JOIN connection_request ON (connection_request.sender_id = ? AND
+            connection_request.receiver_id = manufacturer.id) OR
+        (connection_request.sender_id = manufacturer.id AND
+            connection_request.receiver_id = ?)",
+            [$producerId, $producerId]
+        )->fetchAll();
     }
 
-    public function sendRequestsToProducers($manufacturerId, $producerId): bool
+    public function getConnectedManufacturersForProducer($producerId): array
     {
-        $result = $this->runQuery(
-            "INSERT INTO
-                connection_request(sender_id, receiver_id) VALUES (?,?)",
-            [$manufacturerId, $producerId]
-        );
-        return $result = true;
-    }
-
-    public function getSentConnectionRequests($manufacturerId): array
-    {
-        return $this->runQuery("SELECT
-        ru.name as 'receiver_name',
-        d.name as 'location',
-        ru.image_url as 'profile_pic',
-        cr.receiver_id as 'receiver_id',
-        cr.id as 'request_id'
-        FROM connection_request cr
-        INNER JOIN registered_user ru ON ru.id = cr.receiver_id
-        INNER JOIN producer p on p.id = cr.receiver_id
-        INNER JOIN district d on p.district = d.id
-        WHERE cr.sender_id = ? AND cr.status = ?
-        ", [$manufacturerId, "Pending"])->fetchAll();
-    }
-
-    public function acceptConnectionRequests($requestId): bool
-    {
-        $result = $this->runQuery("
-        UPDATE connection_request SET status = ?
-        WHERE connection_request.id = ?
-        ", ["Connected", $requestId]);
-        return $result = true;
-    }
-
-    public function declineConnectionRequests($requestId): bool
-    {
-        $result = $this->runQuery("
-        DELETE from connection_request
-        WHERE connection_request.id = ?
-        ", [$requestId]);
-        return $result = true;
+        return $this->runQuery(
+            "SELECT 
+            manufacturer.id as 'manufacturer_id',
+            registered_user.image_url as 'manufacturer_image_url',
+            registered_user.name as 'manufacturer_name',
+            manufacturer.description as 'manufacturer_description',
+            registered_user.address as 'manufacturer_address',
+            registered_user.contact_no as 'manufacturer_contact_no'
+            FROM manufacturer
+            INNER JOIN registered_user ON manufacturer.id = registered_user.id
+            INNER JOIN connection_request ON (connection_request.sender_id = ? AND
+                                             connection_request.receiver_id = manufacturer.id) OR 
+                                            (connection_request.sender_id = manufacturer.id AND
+                                                connection_request.receiver_id = ?)
+            WHERE connection_request.status = 'Accepted'",
+            [$producerId, $producerId]
+        )->fetchAll();
     }
 
     public function getManufacturerByProductId($productId): object

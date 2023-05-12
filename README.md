@@ -4,7 +4,7 @@
 
 Purchase and Sales Management System for Agri and Crop Products
 
-_Current version: v0.3_
+_Current version: v0.4_
 
 [🌐 Visit deployment](http://ec2-52-221-197-118.ap-southeast-1.compute.amazonaws.com/krushi-arunalu/)
 <hr/>

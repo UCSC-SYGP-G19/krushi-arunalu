@@ -27,10 +27,10 @@ include APP_ROOT . "/views/inc/components/Header.php";
                         </div>
                         <div class="row d-flex">
                             <span class="px-1 pt-3 fs-4 fw-bold">
-                                <a href="#" class="active-page" id="btn-received">Received</a>
+                                <button class="tab-btn active-tab" id="btn-received-requests">Received</button>
                             </span>
                             <span class="px-1 pt-3 fs-4 fw-bold mx-4">
-                                <a href="#" class="inactive-page" id="btn-sent">Sent</a>
+                                <button class="tab-btn" id="btn-sent-requests">Sent</button>
                             </span>
                         </div>
                         <div class="row px-1 pt-2">
@@ -39,10 +39,7 @@ include APP_ROOT . "/views/inc/components/Header.php";
                                 <?php
                                 include APP_ROOT . "/views/inc/components/SearchFilterAndSort.php";
                                 ?>
-                                <div class="connection-request-wrapper" id="requests">
-                                    <div class="text-center py-3">
-                                        <?php echo "Loading" ?>
-                                    </div>
+                                <div class="" id="requests-list">
                                 </div>
                             </div>
                         </div>
@@ -55,7 +52,7 @@ include APP_ROOT . "/views/inc/components/Header.php";
         </main>
 
     </div>
-    <script src="<?php echo URL_ROOT ?>/public/js/Manufacturer/connectionRequests.js" defer></script>
+    <script src="<?php echo URL_ROOT ?>/public/js/connectionRequests.js" defer></script>
     </body>
 <?php
 include APP_ROOT . "/views/inc/components/EndingTag.php";

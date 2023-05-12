@@ -1,63 +1,76 @@
 @import "../partials/variables";
 
 .manufacturer-store-wrapper{
-  padding: 0 10% 0 10%;
-}
+  margin-top: 50px !important;
+  margin-bottom: 50px !important;
+  height: 100%;
+  width: 100%;
+  max-width: 1200px;
 
-.store-info{
-  border-radius: 0 0 $base-border-radius $base-border-radius;
-}
+  .store-info-wrapper{
+    border-radius: 0 0 $base-border-radius $base-border-radius;
+    background-color: $white;
+  }
 
-.store-cover{
-  border-radius: $base-border-radius $base-border-radius 0 0;
-}
+  .store-cover{
+    border-radius: $base-border-radius $base-border-radius 0 0;
+  }
 
-.store-info{
-  background-color: $white;
-}
+  .product-count-wrapper{
+    border-radius: 50%;
+    background-color: $secondary-grey;
+  }
 
-.product-count-wrapper{
-  border-radius: 50%;
-  background-color: $secondary-grey;
-}
+  .product-count{
+    color: $primary-green-dark;
+    font-size: $font-size-xl;
+  }
 
-.product-count{
-  color: $primary-green-dark;
-  font-size: $font-size-xl;
-}
+  .company-logo{
+    height: 75%;
+    width: 75%;
+  }
 
-.company-logo{
-  height: 75%;
-  width: 75%;
-}
+  .company-name{
+    font-size: $font-size-lg;
+  }
 
-.company-name{
-  font-size: $font-size-lg;
-}
+  .contact-info{
+    font-size: $font-size-md;
+  }
 
-.contact-info{
-  font-size: $font-size-md;
-}
+  .description{
+    font-size: $base-font-size;
+  }
 
-.description{
-  font-size: $base-font-size;
-}
+  .category{
+    border-radius: $base-border-radius*10;
+    border: 2px solid $primary-green-dark;
 
-.category{
-  border-radius: $base-border-radius*10;
-  border: 2px solid $primary-green-dark;
+    &:hover {
+      background-color: $selected-green;
+    }
+  }
 
-  &:hover {
-    background-color: $selected-green-light;
+  .category-name{
+    border-bottom: 2px solid $primary-green-light;
+    width: 100%;
+    text-align: left;
+    padding: 5px;
+  }
+
+  .category-selector{
+    white-space: nowrap;
+    overflow: auto;
+  }
+
+  .categorized-products{
+    scroll-margin-top: 100px;
   }
 }
-
-.product-card {
-  background-color: $white;
-  border-radius: $base-border-radius;
-}
-
-.up-arrow-icon{
-  height: 30px;
-  width: 30px;
+.btn-go-to-top{
+  .up-arrow-icon{
+    height: 30px;
+    width: 30px;
+  }
 }

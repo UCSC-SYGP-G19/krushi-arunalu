@@ -44,12 +44,12 @@ include APP_ROOT . "/views/inc/components/Header.php";
                                             </a>
                                         </div>
                                         <div class="col-2 question-actions text-right">
-                                            <a class="btn-xs btn-outlined-tertiary mr-1 px-2 fs-3"
+                                            <a class="btn-xs btn-outlined-secondary mr-1 px-2 fs-3"
                                                href="<?php echo('cultivation-questions/edit/' . $question->id) ?>">
                                                 Edit
                                             </a>
 
-                                            <a class="btn-xs btn-outlined-tertiary ml-1 px-2 fs-3"
+                                            <a class="btn-xs btn-outlined-error ml-1 px-2 fs-3"
                                                href="<?php echo('cultivation-questions/delete/' . $question->id) ?>">
                                                 Delete
                                             </a>

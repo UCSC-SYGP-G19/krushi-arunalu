@@ -42,6 +42,8 @@ class Database
         $dsn = $dbType . ":host=$dbHost;dbname=$dbName;port=$dbPort";
 
         try {
+            return new PDO($dsn, $dbUser, $dbPassword, $options);
+
             if (!isset(self::$pdo)) {
                 self::$pdo = new PDO($dsn, $dbUser, $dbPassword, $options);
             }
@@ -61,7 +63,7 @@ class Database
 
         $stmt = $pdo->prepare($query);
         Logger::log("PDOStatement", $stmt->queryString);
-
+        Logger::log("PDOValues", implode(", ", $values));
         if (!$stmt) {
             return false;
         }

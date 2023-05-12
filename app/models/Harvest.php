@@ -59,7 +59,8 @@ class Harvest extends Model
                 "cultivation" => "harvest.cultivation_id",
                 "crop" => "cultivation.crop_id",
                 "land" => "cultivation.land_id",
-            ]
+            ],
+            order: "harvest.harvested_date DESC",
         );
         if ($stmt) {
             return $stmt->fetchAll();
@@ -100,13 +101,13 @@ class Harvest extends Model
                 "expected_price" => $this->expectedPrice,
                 "remaining_quantity" => $this->remainingQuantity,
             ],
-            where: "id = $this->id"
-        ) == 1;
+            where: ["id" => $this->id],
+        );
     }
 
     public function deleteFromDB(): bool
     {
-        return $this->delete(table: "harvest", where: "id = $this->id") == 1;
+        return $this->delete(table: "harvest", where: ["id" => $this->id]);
     }
 
     // Getters and Setters
