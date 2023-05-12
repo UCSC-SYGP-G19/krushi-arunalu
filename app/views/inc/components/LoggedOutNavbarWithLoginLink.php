@@ -5,6 +5,6 @@
     </div>
     <div class="pt-1">
         <a class="nav-link mx-3" href="<?php echo URL_ROOT ?>">Home</a>
-        <a class="nav-link mx-3" href="<?php echo URL_ROOT ?>/login">Login/Register</a>
+        <a class="nav-link mx-3" href="<?php echo URL_ROOT ?>/register/registerCustomer">Login/Register</a>
     </div>
 </nav>
