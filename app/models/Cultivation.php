@@ -31,7 +31,7 @@ class Cultivation extends Model
 //            land.name as 'land_name',
 //            crop.id as 'crop_id',
 //            crop.name as 'crop_name',
-//            cultivation.cultivated_quantity as 'cultivated_quantity',
+//            cultivation.cultivated_area as 'cultivated_area',
 //            cultivation.cultivated_date as 'cultivated_date',
 //            cultivation.expected_harvest_date as 'expected_harvest_date',
 //            cultivation.status as 'status'
@@ -165,7 +165,7 @@ class Cultivation extends Model
         return $this->delete(table: "cultivation", where: ["id" => $this->id]) == 1;
     }
 
-    public static function getAllCultivationDetailsForAgriOfficers($agriOfficerDistrictID): array
+    public function getAllCultivationDetailsForAgriOfficers($agriOfficerDistrictID): array
     {
         $stmt = Model::select(
             table: "cultivation",

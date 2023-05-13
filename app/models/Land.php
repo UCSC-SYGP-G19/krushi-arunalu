@@ -29,7 +29,7 @@ class Land extends Model
     {
         $stmt = Model::select(
             table: "land",
-            columns: ["land.id", "land.name"],
+            columns: ["land.id", "land.name", "area_in_acres"],
             where: ["land.owner_id" => $ownerId]
         );
         if ($stmt) {
@@ -74,7 +74,6 @@ class Land extends Model
 
         return $result == true;
     }
-
 
     // Getters and Setters
 

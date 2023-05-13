@@ -360,7 +360,7 @@ const updateLandUtilizationCharts = async () => {
                                  <div class="dashboard-card px-4 py-4 m-auto">
                                         <div class="row">
                                             <div class="col-12">
-                                                <div class="canvas-wrapper pb-2 px-2">
+                                                <div class="canvas-wrapper py-1 px-2">
                                                     <canvas id="land-utilisation-chart-${row.landDetails.id}"></canvas>
                                                 </div>
                                             </div>
@@ -445,7 +445,7 @@ districtDropdown.addEventListener("change", async (e) => {
     cropMarketDropdown.selectedIndex = 0;
   }
 
-  handleAgriOfficerPricesDistrictChange();
+  handlePriceVariationDropdownChange();
 });
 
 // if (cropDropdown.selectedIndex !== 0) {
