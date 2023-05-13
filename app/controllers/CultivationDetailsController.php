@@ -23,6 +23,6 @@ class CultivationDetailsController extends Controller
     public function getCultivationDetailsAsJson(): void
     {
         $districtId = AgriOfficer::getAgriOfficerDistrictId(Session::getSession()->id)->district;
-        $this->sendArrayAsJson(Cultivation::getAllCultivationDetailsForAgriOfficers($districtId));
+        $this->sendArrayAsJson(Cultivation::getAllCultivationsDetailsForAgriOfficers($districtId));
     }
 }
