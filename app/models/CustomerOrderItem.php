@@ -31,10 +31,15 @@ class CustomerOrderItem extends Model
         return $result == true;
     }
 
-    public function getProductImagesFromDB($orderId, $manufacturerId): array
+    public function getProductsFromDb($orderId, $manufacturerId): array
     {
         return $this->runQuery("SELECT
-        p.image_url AS 'image_url'
+        p.image_url AS 'image_url',
+        p.name AS 'product_name',
+        p.description AS 'description',
+        coi.unit_selling_price AS 'unit_price',
+        coi.quantity AS 'quantity',
+        (coi.unit_selling_price * coi.quantity) AS 'total_amount'
         FROM customer_order_item coi
         INNER JOIN customer_order co ON coi.order_id = co.id
         INNER JOIN product p ON coi.product_id = p.id

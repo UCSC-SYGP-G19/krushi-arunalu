@@ -51,7 +51,7 @@ include APP_ROOT . "/views/inc/components/Header.php";
                                         <tr class="row">
                                             <td class="col-2"><?php echo $order->order_id ?></td>
                                             <td class="col-2 d-inline-flex justify-content-center">
-                                                <?php foreach ($this->data["products"][$order->order_id] as $orderItems) {
+                                                <?php foreach ($this->data["order-items"][$order->order_id] as $orderItems) {
                                                     echo '<div class="mb-1 product-image">
                                                         <img alt="Product image" height="100%"
                                                         width="100%" src="' . URL_ROOT . '/public/img/products/' . $orderItems->image_url . '">
@@ -63,7 +63,7 @@ include APP_ROOT . "/views/inc/components/Header.php";
                                             <td class="col-2"><?php echo $order->order_status ?></td>
                                             <td class="col-2 pr-3">
                                                 <div class="row align-items-center justify-content-center gap-1">
-                                                    <a href='manufacturer-sales/viewOrderDetails/'
+                                                    <a href='manufacturer-sales/orderDetails/<?php echo $order->order_id ?>'
                                                        class="btn-xs btn-outlined-primary-dark text-center">
                                                         View Details
                                                     </a>
