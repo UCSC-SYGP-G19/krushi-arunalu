@@ -47,31 +47,20 @@ include APP_ROOT . "/views/inc/components/Header.php";
                                     </tr>
                                     </thead>
                                     <tbody>
+                                    <?php foreach ($this->data["order_details"] as $order) { ?>
                                         <tr class="row">
-                                            <td class="col-2">1</td>
+                                            <td class="col-2"><?php echo $order->order_id ?></td>
                                             <td class="col-2 d-inline-flex justify-content-center">
-                                                <?php echo '<div class="mb-1">
-                                    ' . '<img alt="Product image" height="100%" 
-                                                width="100%" src="' . URL_ROOT .
-                                                    '/public/img/products/hair_care_cool.jpg">' . '
-                                    </div>'
-                                                ?>
-                                                <?php echo '<div class="mb-1">
-                                    ' . '<img alt="Product image" height="100%" 
-                                                width="100%" src="' . URL_ROOT .
-                                                    '/public/img/products/coconut_oil.jpg">' . '
-                                    </div>'
-                                                ?>
-                                                <?php echo '<div class="mb-1">
-                                    ' . '<img alt="Product image" height="100%" 
-                                                width="100%" src="' . URL_ROOT .
-                                                    '/public/img/products/hanging-bowl.jpg">' . '
-                                    </div>'
-                                                ?>
+                                                <?php foreach ($this->data["products"][$order->order_id] as $orderItems) {
+                                                    echo '<div class="mb-1 product-image">
+                                                        <img alt="Product image" height="100%"
+                                                        width="100%" src="' . URL_ROOT . '/public/img/products/' . $orderItems->image_url . '">
+                                                    </div>';
+                                                } ?>
                                             </td>
-                                            <td class="col-2">12-01-2023</td>
-                                            <td class="col-2">4200.00</td>
-                                            <td class="col-2">Pending</td>
+                                            <td class="col-2"><?php echo $order->order_date ?></td>
+                                            <td class="col-2"><?php echo $order->order_total ?></td>
+                                            <td class="col-2"><?php echo $order->order_status ?></td>
                                             <td class="col-2 pr-3">
                                                 <div class="row align-items-center justify-content-center gap-1">
                                                     <a href='manufacturer-sales/viewOrderDetails/'
@@ -81,37 +70,7 @@ include APP_ROOT . "/views/inc/components/Header.php";
                                                 </div>
                                             </td>
                                         </tr>
-                                        <tr class="row">
-                                            <td class="col-2">2</td>
-                                            <td class="col-2 d-inline-flex justify-content-center">
-                                                <?php echo '<div class="mb-1">
-                                    ' . '<img alt="Product image" height="100%" 
-                                                width="100%" src="' . URL_ROOT . '/public/img/products/fadna.jpg">' . '
-                                    </div>'
-                                                ?>
-                                                <?php echo '<div class="mb-1">
-                                    ' . '<img alt="Product image" height="100%" 
-                                                width="100%" src="' . URL_ROOT . '/public/img/products/fadna.jpg">' . '
-                                    </div>'
-                                                ?>
-                                                <?php echo '<div class="mb-1">
-                                    ' . '<img alt="Product image" height="100%" 
-                                                width="100%" src="' . URL_ROOT . '/public/img/products/sumudu.jpg">' . '
-                                    </div>'
-                                                ?>
-                                            </td>
-                                            <td class="col-2">31-12-2023</td>
-                                            <td class="col-2">400.00</td>
-                                            <td class="col-2">Pending</td>
-                                            <td class="col-2 pr-3">
-                                                <div class="row align-items-center justify-content-center gap-1">
-                                                    <a href='manufacturer-sales/viewOrderDetails/'
-                                                       class="btn-xs btn-outlined-primary-dark text-center">
-                                                        View Details
-                                                    </a>
-                                                </div>
-                                            </td>
-                                        </tr>
+                                    <?php } ?>
                                     </tbody>
                                     <tfoot>
                                     <tr class="row justify-content-end pagination">

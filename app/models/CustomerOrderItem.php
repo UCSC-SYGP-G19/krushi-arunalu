@@ -10,24 +10,36 @@ namespace app\models;
 
 use app\core\Model;
 
-class CustomerOrderEntry extends Model
+class CustomerOrderItem extends Model
 {
     public function __construct(
-        private ?int $id = null,
+        private ?int   $id = null,
         private ?float $quantity = null,
         private ?float $unitPrice = null,
-        private ?int $productId = null,
-        private ?int $orderId = null
-    ) {
+        private ?int   $productId = null,
+        private ?int   $orderId = null
+    )
+    {
     }
 
     public function addToDB(): bool
     {
         $result = $this->runQuery(
-            "INSERT into customer_order_entry (quantity, unit_price, product_id, order_id) VALUES (?,?,?,?)",
+            "INSERT into customer_order_item (quantity, unit_price, product_id, order_id) VALUES (?,?,?,?)",
             [$this->quantity, $this->unitPrice, $this->productId, $this->orderId]
         );
         return $result == true;
+    }
+
+    public function getProductImagesFromDB($orderId, $manufacturerId): array
+    {
+        return $this->runQuery("SELECT
+        p.image_url AS 'image_url'
+        FROM customer_order_item coi
+        INNER JOIN customer_order co ON coi.order_id = co.id
+        INNER JOIN product p ON coi.product_id = p.id
+        WHERE coi.order_id = ? AND p.manufacturer_id = ?
+        ", [$orderId, $manufacturerId])->fetchAll();
     }
 
     /**

@@ -112,6 +112,21 @@ class CustomerOrder extends Model
 //         ;")->fetchAll();
 //     }
 
+    public function getSalesByManufacturerId($manufacturerId): ?array
+    {
+        return $this->runQuery("SELECT
+        co.id AS 'order_id',
+        DATE(co.date_time) AS 'order_date',
+        SUM(coi.unit_selling_price * coi.quantity) AS 'order_total',
+        co.status AS 'order_status'
+        FROM customer_order co
+        INNER JOIN customer_order_item coi ON co.id = coi.order_id
+        INNER JOIN product p ON coi.product_id = p.id
+        WHERE p.manufacturer_id = ?
+        GROUP BY co.id
+        ", [$manufacturerId])->fetchAll();
+    }
+
     /**
      * @return int|null
      */
