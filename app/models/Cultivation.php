@@ -165,7 +165,7 @@ class Cultivation extends Model
         return $this->delete(table: "cultivation", where: ["id" => $this->id]) == 1;
     }
 
-    public function getAllCultivationDetailsForAgriOfficers($agriOfficerDistrictID): array
+    public static function getAllCultivationDetailsForAgriOfficers($agriOfficerDistrictID): array
     {
         $stmt = Model::select(
             table: "cultivation",
