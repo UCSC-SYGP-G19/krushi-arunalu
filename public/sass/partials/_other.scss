@@ -68,6 +68,29 @@ div.swal2-popup {
     }
 }
 
+.circular-img-set {
+    padding-top: 8px;
+    padding-bottom: 6px;
+
+    :not(:first-child) {
+        margin-left: -12px;
+    }
+
+    div.circular-img {
+        width: 48px;
+        height: 48px;
+        border: 2px solid #fff;
+        border-radius: 50%;
+        box-shadow: 3px 3px 6px rgba(0, 0, 0, .2);
+        display: inline-block;
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-color: lighten($background-grey, 25%);
+
+    }
+}
+
+
 aside.toast {
 
     @keyframes enterAnimation {

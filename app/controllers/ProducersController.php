@@ -9,7 +9,6 @@ namespace app\controllers;
 
 use app\core\Controller;
 use app\helpers\Session;
-use app\helpers\Util;
 
 class ProducersController extends Controller
 {

@@ -104,17 +104,24 @@ class Producer extends RegisteredUser
             ", [$manufacturerId, $manufacturerId])->fetchAll();
     }
 
-    //Model function of Agri-Officer's Producer details.
-    public function getAllProducersDetailsForAgriOfficers($agriOfficerDistrictID): array
+    public static function getAllProducersDetailsForAgriOfficers($agriOfficerDistrictID): ?array
     {
         $stmt = Model::select(
             table: "producer",
-            columns: ["producer.nic_number", "registered_user.name", "registered_user.address",
-                "registered_user.contact_no"],
-            where: ["producer.district_id" => $agriOfficerDistrictID],
-            joins: ["registered_user" => "producer.id"]
+            columns: [
+                "producer.nic_number AS nic_number",
+                "registered_user.name AS name",
+                "registered_user.address AS address",
+                "registered_user.contact_no AS contact_no"],
+            where: ["land.district" => $agriOfficerDistrictID],
+            joins: [
+                "land" => "land.owner_id",
+                "registered_user" => "land.owner_id"]
         );
-        return [];
+        if ($stmt) {
+            return $stmt->fetchAll();
+        }
+        return null;
     }
 
     /**

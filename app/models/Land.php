@@ -38,6 +38,8 @@ class Land extends Model
         return [];
     }
 
+    //Model function of Agri-Officer's Land details.
+
     public function addToDB(): bool
     {
         $result = $this->runQuery(
@@ -53,7 +55,7 @@ class Land extends Model
 
     //Model function of Agri-Officer's Land details.
 
-    public function getAllLandDetailsForAgriOfficers($agriOfficerDistrictID): array
+    public static function getAllLandDetailsForAgriOfficers($agriOfficerDistrictID): array
     {
         $stmt = Model::select(
             table: "land",
@@ -75,7 +77,7 @@ class Land extends Model
         return [];
     }
 
-    public function getLandUtilisationData($ownerId): array
+    public static function getLandUtilisationData($ownerId): array
     {
         $stmt = Model::select(
             table: "land",

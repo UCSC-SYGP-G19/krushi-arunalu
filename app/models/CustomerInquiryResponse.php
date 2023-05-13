@@ -35,6 +35,7 @@ class CustomerInquiryResponse extends Model
     {
         return $this->runQuery(
             "SELECT 
+        cir.id as 'response_id',
         cir.inquiry_id as 'inquiry_id',
         cir.response_content as 'response',
         cir.response_date_time as 'responded_time',
@@ -46,6 +47,24 @@ class CustomerInquiryResponse extends Model
         WHERE cir.inquiry_id = ?",
             [$inquiryId]
         )->fetchAll();
+    }
+
+    public function updateResponse(): bool
+    {
+        return $this->update(
+            table: "customer_inquiry_response",
+            data: ["response_content" => $this->responseContent],
+            where: ["id" => $this->id]
+        );
+    }
+
+
+    public function deleteResponseFromDb($responseId): bool
+    {
+        return $this->delete(
+            table: "customer_inquiry_response",
+            where: ["id" => $responseId]
+        ) == 1;
     }
 
     /**

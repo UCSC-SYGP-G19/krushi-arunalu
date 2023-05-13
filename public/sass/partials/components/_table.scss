@@ -46,25 +46,31 @@ tbody.isolated {
     }
 
     input.with-search-icon:hover {
-        background: $background-grey url("../img/icons/other/search-icon.png") no-repeat scroll 20px 12px;
+        background: $selected-green-lighter url("../img/icons/other/search-icon.png") no-repeat scroll 20px 12px;
     }
 
-    select.with-filter-icon {
-        background: white url("../img/icons/other/filter-icon.png") no-repeat scroll 14px 12px;
-        padding-left: 48px;
+    button.with-filter-icon {
+        background: white;
+
+        &[value="show"] {
+            padding-bottom: 5px;
+        }
+
+        svg {
+            transform: translate(0, 5px);
+        }
     }
 
-    select.with-filter-icon:hover {
-        background: $background-grey url("../img/icons/other/filter-icon.png") no-repeat scroll 14px 12px;
+    button.with-filter-icon:hover {
+        background: $background-grey;
     }
 
-    select.with-sort-icon {
-        background: white url("../img/icons/other/sort-icon.png") no-repeat scroll 14px 12px;
-        padding-left: 48px;
+    button.with-sort-icon {
+        background: white;
     }
 
-    select.with-sort-icon:hover {
-        background: $background-grey url("../img/icons/other/sort-icon.png") no-repeat scroll 14px 12px;
+    button.with-sort-icon:hover {
+        background: $background-grey;
     }
 }
 
@@ -102,6 +108,10 @@ table {
         &:hover {
             background-color: $background-grey;
         }
+
+        &.table-end {
+            border-radius: 0 0 $base-border-radius $base-border-radius;
+        }
     }
 
     tbody tr.no-content {
@@ -138,16 +148,43 @@ table {
             margin: 0 12px;
             padding-top: 8px;
 
-            .left-arrow {
+            span {
                 cursor: pointer;
-                margin-right: 5px;
                 padding: 4px 4px 0;
+                stroke: black;
+                user-select: none;
+
+                &:hover {
+                    stroke: $primary-green-light;
+                }
+
+                &.disabled {
+                    stroke: $secondary-grey;
+                    cursor: not-allowed;
+                }
+            }
+
+
+            .left-arrow {
+                margin-right: 5px;
             }
 
             .right-arrow {
-                cursor: pointer;
-                padding: 4px 4px 0;
                 margin-left: 5px;
+            }
+        }
+    }
+
+    span.sort-arrows {
+        cursor: pointer;
+        user-select: none;
+
+        svg {
+            transform: translate(0, -2px);
+            stroke: #AAA;
+
+            &.active {
+                stroke: black !important;
             }
         }
     }

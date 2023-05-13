@@ -42,15 +42,22 @@
     max-width: 100%;
   }
 
-  .brand-logo-large {
-    background-color: white;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    border-radius: $base-border-radius*0.5;
-  }
+    .brand-logo-large {
+        background-color: white;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        border-radius: $base-border-radius*0.5;
+    }
 
-  a.nav-link {
-    text-decoration: none;
-  }
+    a.nav-link {
+        text-decoration: none;
+    }
+}
+
+.logged-out-navbar {
+    background-color: $white;
+    display: flex;
+    align-items: center;
+    box-shadow: 0 2px 16px rgba(0, 0, 0, 0.25) !important;
 }
 
 .logged-in-navbar {
