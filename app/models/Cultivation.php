@@ -100,6 +100,28 @@ class Cultivation extends Model
         return [];
     }
 
+    public static function getAllCultivationDetailsForAgriOfficers($agriOfficerDistrictID): array
+    {
+        $stmt = Model::select(
+            table: "cultivation",
+            columns: [
+                "crop.name",
+                "cultivation.land_id",
+                "land.area_in_acres",
+                "cultivation.cultivated_area",
+                "cultivation.expected_harvest_date"],
+            where: ["land.district_id" => $agriOfficerDistrictID],
+            joins: ["crop" => "cultivation.id",
+                "land" => "cultivation.land_id",
+                "district" => "land.district_id"]
+        );
+        if ($stmt) {
+            return $stmt->fetchAll();
+        } else {
+            return [];
+        }
+    }
+
     public function addToDB(): bool
     {
 //        $result = $this->runQuery(
@@ -163,28 +185,6 @@ class Cultivation extends Model
     public function deleteFromDB(): bool
     {
         return $this->delete(table: "cultivation", where: ["id" => $this->id]) == 1;
-    }
-
-    public static function getAllCultivationDetailsForAgriOfficers($agriOfficerDistrictID): array
-    {
-        $stmt = Model::select(
-            table: "cultivation",
-            columns: [
-                "crop.name",
-                "cultivation.land_id",
-                "land.area_in_hectares",
-                "cultivation.cultivated_area",
-                "cultivation.expected_harvest_date"],
-            where: ["land.district" => $agriOfficerDistrictID],
-            joins: ["crop" => "cultivation.id",
-                "land" => "cultivation.land_id",
-                "district" => "land.district"]
-        );
-        if ($stmt) {
-            return $stmt->fetchAll();
-        } else {
-            return [];
-        }
     }
 
     public function getCurrentCultivationData($landId): array

@@ -16,9 +16,9 @@ class Land extends Model
         private ?int $id = null,
         private ?int $ownerId = null,
         private ?string $name = null,
-        private ?float $areaInHectares = null,
+        private ?float $areaInAcres = null,
         private ?string $address = null,
-        private ?string $district = null,
+        private ?int $district_id = null,
         private ?string $soilCondition = null,
         private ?string $rainfall = null,
         private ?string $humidity = null
@@ -29,8 +29,23 @@ class Land extends Model
     {
         $stmt = Model::select(
             table: "land",
-            columns: ["land.id", "land.name", "area_in_acres"],
+            columns: ["land.id", "land.name", "land.area_in_acres"],
             where: ["land.owner_id" => $ownerId]
+        );
+        if ($stmt) {
+            return $stmt->fetchAll();
+        }
+        return [];
+    }
+
+    public static function getAllDetailsByOwnerIdFromDB($ownerId): array
+    {
+        $stmt = Model::select(
+            table: "land",
+            columns: ["land.id", "land.name", "land.area_in_acres", "land.address", "land.district_id", "district.name",
+                "land.soil_condition", "land.rainfall", "land.humidity"],
+            where: ["land.owner_id" => $ownerId],
+            joins: ["district" => "land.district_id"]
         );
         if ($stmt) {
             return $stmt->fetchAll();
@@ -46,12 +61,12 @@ class Land extends Model
                 "land.id AS id",
                 "registered_user.name AS name",
                 "land.address AS address",
-                "land.district AS district",
+                "land.district_id AS district",
                 "registered_user.contact_no AS contact_no"],
-            where: ["land.district" => $agriOfficerDistrictID],
+            where: ["land.district_id" => $agriOfficerDistrictID],
             joins: [
                 "registered_user" => "land.owner_id", //left side->table need to be joint and right side->table_name.fk
-                "district" => "land.district"
+                "district" => "land.district_id"
             ]
         );
         if ($stmt) {
@@ -60,22 +75,34 @@ class Land extends Model
         return null;
     }
 
-    //Model function of Agri-Officer's Land details.
-
     public function addToDB(): bool
     {
         $result = $this->runQuery(
-            "INSERT into land (owner_id, name, area_in_hectares, address, district, soil_condition, rainfall, 
+            "INSERT into land (owner_id, name, area_in_acres, address, district_id, soil_condition, rainfall, 
                   humidity)
             VALUES (?,?,?,?,?,?,?,?)",
-            [$this->ownerId, $this->name, $this->areaInHectares, $this->address, $this->district,
+            [$this->ownerId, $this->name, $this->areaInAcres, $this->address, $this->district_id,
                 $this->soilCondition, $this->rainfall, $this->humidity]
         );
 
         return $result == true;
     }
 
-    // Getters and Setters
+    public function updateInDB(): bool
+    {
+        return $this->update(
+            table: "land",
+            data: ["name" => $this->name, "area_in_acres" => $this->areaInAcres, "address" => $this->address,
+                    "district_id" => $this->district_id, "soil_condition" => $this->soilCondition,
+                    "rainfall" => $this->rainfall, "humidity" => $this->humidity],
+            where: ["id" => $this->id, "owner_id" => $this->ownerId]
+        ) == 1;
+    }
+
+    public function deleteFromDB(): bool
+    {
+        return $this->delete(table: "land", where: ["id" => $this->id, "owner_id" => $this->ownerId]) == 1;
+    }
 
     /**
      * @return int|null
@@ -128,17 +155,17 @@ class Land extends Model
     /**
      * @return float|null
      */
-    public function getAreaInHectares(): ?float
+    public function getAreaInAcres(): ?float
     {
-        return $this->areaInHectares;
+        return $this->areaInAcres;
     }
 
     /**
-     * @param float|null $areaInHectares
+     * @param float|null $areaInAcres
      */
-    public function setAreaInHectares(?float $areaInHectares): void
+    public function setAreaInAcres(?float $areaInAcres): void
     {
-        $this->areaInHectares = $areaInHectares;
+        $this->areaInAcres = $areaInAcres;
     }
 
     /**
@@ -158,19 +185,19 @@ class Land extends Model
     }
 
     /**
-     * @return string|null
+     * @return int|null
      */
-    public function getDistrict(): ?string
+    public function getDistrictId(): ?int
     {
-        return $this->district;
+        return $this->district_id;
     }
 
     /**
-     * @param string|null $district
+     * @param int|null $district_id
      */
-    public function setDistrict(?string $district): void
+    public function setDistrictId(?int $district_id): void
     {
-        $this->district = $district;
+        $this->district_id = $district_id;
     }
 
     /**

@@ -120,7 +120,6 @@ class RegisteredUser extends Model
             if (password_verify($password, $hash)) {
                 $this->updateLastLogin($result->id);
                 $this->updateTempHash($result->id);
-
                 $result->hashed_password = null;
                 $result->temp_hash = $this->runQuery(
                     "SELECT temp_hash FROM registered_user WHERE id=?",

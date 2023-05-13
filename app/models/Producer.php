@@ -37,7 +37,7 @@ class Producer extends RegisteredUser
                 "registered_user.name AS name",
                 "registered_user.address AS address",
                 "registered_user.contact_no AS contact_no"],
-            where: ["land.district" => $agriOfficerDistrictID],
+            where: ["land.district_id" => $agriOfficerDistrictID],
             joins: [
                 "producer" => "land.owner_id",
                 "registered_user" => "land.owner_id"]
