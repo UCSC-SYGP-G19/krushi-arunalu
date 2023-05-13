@@ -80,7 +80,7 @@ include APP_ROOT . "/views/inc/components/Header.php";
                                             "expected_harvest_date" => [
                                                 "element" => InputField::class,
                                                 "wrapperClass" => "col-4",
-                                                "label" => "Cultivated date",
+                                                "label" => "Expected harvest date",
                                                 "placeholder" => null,
                                                 "type" => "date",
                                             ],

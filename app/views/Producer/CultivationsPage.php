@@ -36,8 +36,11 @@ include APP_ROOT . "/views/inc/components/Header.php";
                                 <h1 class="title">My cultivations</h1>
                             </div>
                             <div class="col">
+                                <a href='<?php echo(URL_ROOT . "/my-cultivations") ?>'
+                                   class="btn-md btn-outlined-primary-dark text-center mr-2">
+                                    Graphical view</a>
                                 <a href='<?php echo(URL_ROOT . "/cultivations/add") ?>'
-                                   class="btn-md btn-primary-light text-center text-white">
+                                   class="btn-md btn-primary-light text-center text-white ml-2">
                                     Add cultivation</a>
                             </div>
                         </div>

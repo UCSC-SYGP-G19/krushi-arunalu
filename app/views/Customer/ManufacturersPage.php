@@ -46,7 +46,7 @@ include APP_ROOT . "/views/inc/components/Header.php";
                         <div class="row px-1">
                             <?php foreach ($this->data as $element) {
                                 echo '<div class="col-3 text-center p-3">
-                                <div class="product-card  p-3 pb-2">
+                                <div class="crop-card  p-3 pb-2">
                                     <div class="image-window mb-1">
                                     ' .
                                     '<a href="marketplace/product-details/' . $element->manufacturer_id .

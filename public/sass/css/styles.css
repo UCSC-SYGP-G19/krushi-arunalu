@@ -1,0 +1,30 @@
+.bg-grey {
+    background-color: #F5F5F5;
+}
+
+.my-cultivations-page {
+    min-height: calc(100vh - 161.5px);
+}
+
+.my-cultivations-page .section-wrapper {
+    background-color: #FFFFFF;
+    border-radius: 16px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1) !important;
+    border-bottom: 3px solid #15742D;
+}
+
+.my-cultivations-page .section-wrapper .badge {
+    font-size: 0.9rem;
+}
+
+.my-cultivations-page .section-wrapper .company-info {
+    font-size: 1.1rem;
+}
+
+.my-cultivations-page .section-wrapper .card-content {
+    background-color: #F5F5F5;
+    border-radius: 16px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1) !important;
+}
+
+/*# sourceMappingURL=styles.css.map */

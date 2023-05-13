@@ -51,7 +51,7 @@ include APP_ROOT . "/views/inc/components/Header.php";
                                     foreach ($this->data as $product) {
                                         ?>
                                         <div class="col-2">
-                                            <div class="product-card pb-2 p-3">
+                                            <div class="crop-card pb-2 p-3">
                                                 <div class="rating-box px-1 d-flex">
                                                     <span class="rating-icon">
                                                     <?php echo '<img src="' . URL_ROOT . '

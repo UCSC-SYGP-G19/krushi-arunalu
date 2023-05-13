@@ -375,6 +375,8 @@ const updateLandUtilizationCharts = async () => {
         return total + parseFloat(cultivation.cultivation_cultivated_area);
       }, 0);
 
+      console.log(row.currentCultivations);
+
       row.currentCultivations.push({
         crop_name: "Remaining area",
         cultivation_cultivated_area: row.landDetails.area_in_acres - totalCultivatedArea

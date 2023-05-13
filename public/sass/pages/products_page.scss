@@ -1,16 +1,16 @@
 @import "../partials/variables";
 
-.product-card, .hidden-product-card {
-  background-color: $white;
-  border-radius: $base-border-radius;
-  position: relative;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+.crop-card, .hidden-product-card {
+    background-color: $white;
+    border-radius: $base-border-radius;
+    position: relative;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 
-  .image-window {
-    border-radius: $base_border-radius-sm;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
-    width: 100%;
-    height: 150px;
+    .image-window {
+        border-radius: $base_border-radius-sm;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+        width: 100%;
+        height: 150px;
 
     img {
       object-fit: cover;
@@ -26,19 +26,20 @@
     position: absolute;
     right: 0;
     margin: 100px 24px 0 0;
-    z-index: 1;
+      z-index: 1;
 
-    .rating-icon{
-      padding: 2px 1px 0 0;
-    }
+      .rating-icon {
+          padding: 2px 1px 0 0;
+      }
 
-    .rating-text{
-      padding-top: 1px;
+      .rating-text {
+          padding-top: 1px;
+      }
+  }
+
+    &:hover {
+        background-color: $selected-green-light;
     }
-  }
-  &:hover{
-    background-color: $selected-green;
-  }
 }
 
 .btn-hidden-products, .btn-hidden-categories{

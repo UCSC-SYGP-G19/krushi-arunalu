@@ -8,6 +8,7 @@
 namespace app\controllers;
 
 use app\core\Controller;
+use app\helpers\Flash;
 use app\helpers\Logger;
 use app\helpers\Session;
 use app\helpers\Util;
@@ -19,6 +20,7 @@ use app\models\Land;
 class CultivationsController extends Controller
 {
     public string $base = URL_ROOT . "/cultivations";
+
     public function index(): void
     {
         $this->loadView("Producer/CultivationsPage", "Cultivations", "cultivations");
@@ -110,9 +112,9 @@ class CultivationsController extends Controller
             $res = $this->model->updateInDB();
 
             if ($res == 1) {
-                echo "Updated";
+                Flash::setMessage("success", "Success", "Cultivation updated successfully");
             } else {
-                echo("Not Updated");
+                Flash::setMessage("error", "Error", "Sorry, something went wrong");
             }
 
             Util::redirect($this->base);
@@ -127,11 +129,13 @@ class CultivationsController extends Controller
         ]);
         try {
             $this->model->deleteFromDB();
+            Flash::setMessage("success", "Success", "Cultivation deleted successfully");
         } catch (\Exception $e) {
             Logger::log("ERROR", $e->getMessage());
             echo "Cannot delete cultivations with associated harvests";
         }
 
+//        Util::redirect($_SERVER['HTTP_REFERER']);
         Util::redirect($this->base);
     }
 }

@@ -23,11 +23,6 @@ class MyLandsController extends Controller
 
     public function index(): void
     {
-        Util::redirect("my-lands/page1");
-    }
-
-    public function page1(): void
-    {
         $this->loadView('Producer/MyLandsPage', 'My Lands');
         $this->loadModel("District");
         $this->view->fieldOptions["district"] = $this->model->getNamesFromDB();

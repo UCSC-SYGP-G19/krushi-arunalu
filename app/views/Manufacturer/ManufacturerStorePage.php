@@ -132,7 +132,7 @@ include APP_ROOT . "/views/inc/components/Header.php";
                                 <?php foreach ($this->data["product"] as $product) {
                                     if ($product->category_id == $productCategory->category_id) {
                                         echo '<div class="col-2 text-center p-2">
-                                    <div class="product-card p-3 pb-2">
+                                    <div class="crop-card p-3 pb-2">
                                         <div class="rating-box px-1 d-flex">
                                                 <span class="rating-icon"> <img class="" alt="" src="
                                                 ' . URL_ROOT . '/public/img/icons/other/rating-icon.png" 
