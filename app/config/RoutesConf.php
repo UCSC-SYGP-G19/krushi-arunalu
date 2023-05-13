@@ -10,7 +10,7 @@ const PROTECTED_ROUTES = [
     "Common" => ["Login", "Register", "ForgotPassword", "ResetPassword", "Logout", "Marketplace", "ManageProfile",
         "ManufacturerStore"],
     "Producer" => ["AccountSetup", "ProducerDashboard", "Cultivations", "Harvests", "Sales", "CultivationQuestions",
-        "ProducerCropRequests", "Announcements", "Profile", "Manufacturers", "ConnectionRequests", "Chat"],
+        "ProducerCropRequests", "Announcements", "Profile", "Manufacturers", "ConnectionRequests", "Chat", "MyLands"],
     "Manufacturer" => ["ManufacturerDashboard", "Sales", "ManufacturerOrders", "Producers", "Stocks",
         "ProductCategories", "Products", "ManufacturerCropRequests", "Inquiries", "ManufacturerSales",
         "PurchasedStocks", "ConnectionRequests", "Chat"],

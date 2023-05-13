@@ -100,6 +100,13 @@ class LoginController extends Controller
                 Session::createSession($user);
                 Flash::setToastMessage(Flash::SUCCESS, "Login successful", "Welcome back " .
                     explode(" ", Session::getSession()->name)[0] . "!");
+                if (Session::getSession()->last_login === null && Session::getSession()->role === "Producer") {
+                    Flash::setMessage(
+                        "warning",
+                        "",
+                        "Please enter your land and cultivation details to start using Krushi-Arunalu"
+                    );
+                }
                 $this->redirectByUserRole();
             } else {
                 $this->view->error = "Password incorrect";

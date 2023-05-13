@@ -3285,22 +3285,49 @@ dialog::backdrop {
   display: inline-block;
   background-size: cover;
   background-repeat: no-repeat;
-  background-color: #FFFFFF;
+    background-color: #FFFFFF;
 }
+
 .producer-dashboard .data-courtesy-tag p {
-  color: #555555;
+    color: #555555;
 }
+
 .producer-dashboard .data-courtesy-tag p a {
-  text-decoration: underline !important;
-  color: #B89130 !important;
+    text-decoration: underline !important;
+    color: #B89130 !important;
+}
+
+.bg-grey {
+    background-color: #F5F5F5;
+}
+
+.my-lands-page .section-wrapper {
+    background-color: #FFFFFF;
+    border-radius: 16px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1) !important;
+    border-bottom: 3px solid #15742D;
+}
+
+.my-lands-page .section-wrapper .badge {
+    font-size: 0.9rem;
+}
+
+.my-lands-page .section-wrapper .company-info {
+    font-size: 1.1rem;
+}
+
+.my-lands-page .section-wrapper .card-content {
+    background-color: #F5F5F5;
+    border-radius: 16px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1) !important;
 }
 
 * {
-  box-sizing: border-box;
-  color: inherit;
-  margin: 0;
-  font-family: inherit;
-  transition: color 0.3s ease, background-color 0.3s ease, border-color 0.3s ease;
+    box-sizing: border-box;
+    color: inherit;
+    margin: 0;
+    font-family: inherit;
+    transition: color 0.3s ease, background-color 0.3s ease, border-color 0.3s ease;
 }
 
 body {
