@@ -138,14 +138,14 @@ const renderResponses = (node, data) => {
                         <div class="col-12">
                             <div class="row align-items-center">
                                 <div class="col-6 text-black fw-bold mb-1"><h3>${element.producer_name}</h3></div>
-                                <div class="col-4 text-primary-light fw-bold">
-                                    <span>Responded on ${element.response_date_time}</span>
-                                </div>
-                                <div class="col-2 px-3 text-right align-items-center d-flex" id="btn-${element.response_id}">
-                                    <button class="btn-sm btn-gold" id="btn-purchase" onclick="placeCropOrder(${element.response_id})">Purchase</button>
+                                  <div class="col-4 text-primary-light fw-bold">
+                                      <span>Responded on ${element.response_date_time}</span>
+                                  </div>
+                                  <div class="col-2 px-3 text-right align-items-center d-flex">
+                                    ${renderPurchaseButton(element)}
+                                  </div>
                                 </div>
                             </div>
-                        </div>
                         <div class="col-12 text-grey-dark pb-1">
                             <span class="pr-1 text-gold"><em>${element.producer_district}</em></span>
                         </div>
@@ -199,12 +199,30 @@ const renderExpandedSection = (element) => `
         </div>
     </div>`;
 
+const renderPurchaseButton = (element) => {
+  let output = "";
+
+  if (element.status === "Pending") {
+    output = `
+          <button class="btn-sm btn-gold" id="btn-purchase" onclick="placeCropOrder(${element.response_id})">
+              Purchase
+          </button>
+      `;
+  } else {
+    output = `
+          <button class="btn-purchase badge badge-primary">
+              Order Placed
+          </button>
+      `;
+  }
+  return output;
+}
+
 const requestList = document.querySelector("#crop-requests");
 
 const placeCropOrder = async (responseId) => {
   const buttonPurchase = document.querySelector('#btn-purchase');
   window.location.href = URL_ROOT + '/manufacturer-orders/placeOrder/' + responseId;
-  console.log(buttonPurchase);
   buttonPurchase.innerHTML = "Order Placed";
   buttonPurchase.setAttribute("disabled", "disabled");
 }

@@ -38,7 +38,7 @@ include APP_ROOT . "/views/inc/components/Header.php";
                                         "label" => "Order ID",
                                         "sortable" => true,
                                         "sortKey" => "order_id",
-                                        "class" => "col-1",
+                                        "class" => "col-1 py-2",
                                     ],
                                     "date" => [
                                         "label" => "Date",

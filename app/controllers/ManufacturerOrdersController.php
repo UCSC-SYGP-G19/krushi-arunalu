@@ -79,8 +79,11 @@ class ManufacturerOrdersController extends Controller
         ]);
 
         if ($this->model->addToDB(Session::getSession()->id)) {
-            Util::redirect(URL_ROOT . "/manufacturer-orders");
-            return true;
+            $this->loadModel("CropRequestResponse");
+            if ($this->model->updateStatusInDb($cropRequestResponseId)) {
+                Util::redirect(URL_ROOT . "/manufacturer-orders");
+                return true;
+            }
         }
         $this->view->render();
         return false;

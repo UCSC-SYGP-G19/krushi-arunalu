@@ -29,7 +29,7 @@ class ManufacturerOrder extends Model
     {
         return $this->runQuery("SELECT 
             mo.id as 'order_id', 
-            mo.date as 'date', 
+            DATE(mo.date) as 'date', 
             mo.quantity as 'quantity', 
             mo.unit_selling_price as 'unit_selling_price', 
             mo.status as 'status',
