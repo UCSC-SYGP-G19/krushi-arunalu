@@ -16,18 +16,13 @@ include APP_ROOT . "/views/inc/components/Header.php";
             <div class="content-wrapper">
                 <div class="content p-4 mt-1">
                     <div class="container-fluid px-2">
-                        <div class="row pb-2">
-                            <?php echo '<a class="btn-md btn-outlined-secondary text-center text-black" href = "
+                        <div class="row py-2 align-items-center">
+                            <?php echo '<a class="btn-sm btn-outlined-black text-center" href = "
                                  ' . URL_ROOT . '/manufacturer-sales">Back to all orders</a>' ?>
                         </div>
                         <div class="row px-1 pt-1 justify-content-space-between pb-3">
                             <div class="col-6">
                                 <h1 class="title">Order details</h1>
-                            </div>
-                            <div class="col" hidden>
-                                <a href="producers/connectionRequests"
-                                   class="btn-md btn-outlined-primary-light text-center text-primary-light">
-                                    ✓ Accepted</a>
                             </div>
                         </div>
                         <div class="order-details-wrapper col-12 d-block">
@@ -50,7 +45,7 @@ include APP_ROOT . "/views/inc/components/Header.php";
                                                 <div class="product-img">
                                                     <?php echo '<img src="
                                             ' . URL_ROOT . '/public/img/products/' . $product->image_url . '"
-                                            alt="User profile icon" height="56px">' ?>
+                                            alt="product image" height="56px">' ?>
                                                 </div>
                                                 <div class="d-block">
                                                     <div class="product-name-name px-4 pt-1 fw-bold fs-3">

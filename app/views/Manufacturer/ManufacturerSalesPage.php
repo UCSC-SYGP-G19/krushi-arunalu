@@ -38,39 +38,16 @@ include APP_ROOT . "/views/inc/components/Header.php";
                                 <table>
                                     <thead>
                                     <tr class="row">
-                                        <th class="col-2">Order ID</th>
+                                        <th class="col-1">Order ID</th>
                                         <th class="col-2">Products</th>
                                         <th class="col-2">Order Date</th>
                                         <th class="col-2">Order Total</th>
-                                        <th class="col-2">Status</th>
+                                        <th class="col-1">Status</th>
+                                        <th class="col-2"></th>
                                         <th class="col-2"></th>
                                     </tr>
                                     </thead>
-                                    <tbody>
-                                    <?php foreach ($this->data["order_details"] as $order) { ?>
-                                        <tr class="row">
-                                            <td class="col-2"><?php echo $order->order_id ?></td>
-                                            <td class="col-2 d-inline-flex justify-content-center">
-                                                <?php foreach ($this->data["order-items"][$order->order_id] as $orderItems) {
-                                                    echo '<div class="mb-1 product-image">
-                                                        <img alt="Product image" height="100%"
-                                                        width="100%" src="' . URL_ROOT . '/public/img/products/' . $orderItems->image_url . '">
-                                                    </div>';
-                                                } ?>
-                                            </td>
-                                            <td class="col-2"><?php echo $order->order_date ?></td>
-                                            <td class="col-2"><?php echo $order->order_total ?></td>
-                                            <td class="col-2"><?php echo $order->order_status ?></td>
-                                            <td class="col-2 pr-3">
-                                                <div class="row align-items-center justify-content-center gap-1">
-                                                    <a href='manufacturer-sales/orderDetails/<?php echo $order->order_id ?>'
-                                                       class="btn-xs btn-outlined-primary-dark text-center">
-                                                        View Details
-                                                    </a>
-                                                </div>
-                                            </td>
-                                        </tr>
-                                    <?php } ?>
+                                    <tbody id="sales">
                                     </tbody>
                                     <tfoot>
                                     <tr class="row justify-content-end pagination">
@@ -113,6 +90,7 @@ include APP_ROOT . "/views/inc/components/Header.php";
         </main>
     </div>
     </body>
+    <script src="<?php echo URL_ROOT ?>/public/js/Manufacturer/sales.js" defer></script>
 <?php
 include APP_ROOT . "/views/inc/components/EndingTag.php";
 
