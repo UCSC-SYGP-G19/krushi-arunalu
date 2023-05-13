@@ -2,7 +2,7 @@
 const btnToggleSidebar = document.querySelector('#btn-toggle-sidebar');
 
 if (localStorage.getItem("sidebarCollapsed") === "true") {
-    document.querySelector('aside.sidebar').classList.toggle('sidebar-collapsed');
+  document.querySelector('aside.sidebar').classList.toggle('sidebar-collapsed');
 }
 
 if (btnToggleSidebar) {
@@ -23,6 +23,23 @@ if (btnToggleNavbarOptions) {
   document.addEventListener('click', (e) => {
     if (e.target.closest('#btn-toggle-navbar-options') === null) {
       document.querySelector('#navbar-options-panel').classList.remove('visible');
+    }
+  });
+}
+
+// Allow to toggle notifications panel
+const btnToggleNotificationPanel = document.querySelector('#btn-toggle-notification-panel');
+
+if (btnToggleNotificationPanel) {
+  btnToggleNotificationPanel.addEventListener('click', () => {
+    btnToggleNotificationPanel.classList.toggle('active');
+    document.querySelector('#notifications-panel').classList.toggle('visible');
+  });
+
+  document.addEventListener('click', (e) => {
+    if (e.target.closest('#btn-toggle-notification-panel') === null) {
+      btnToggleNotificationPanel.classList.remove('active');
+      document.querySelector('#notifications-panel').classList.remove('visible');
     }
   });
 }
@@ -56,5 +73,11 @@ if (message != null) {
     confirmButtonText: 'OK'
   })
 }
+
+// Show toast messages sent by the server
+if (toastMessage != null) {
+  toast(toastMessage.type, toastMessage.title, toastMessage.content);
+}
+
 
 
