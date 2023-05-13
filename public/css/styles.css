@@ -756,6 +756,10 @@ button {
   cursor: pointer;
 }
 
+button {
+  cursor: pointer;
+}
+
 button:disabled {
   cursor: not-allowed;
   opacity: 0.5;
@@ -808,6 +812,13 @@ button:disabled:hover {
 }
 .navbar a.nav-link {
   text-decoration: none;
+}
+
+.logged-out-navbar {
+  background-color: #FFFFFF;
+  display: flex;
+  align-items: center;
+  box-shadow: 0 2px 16px rgba(0, 0, 0, 0.25) !important;
 }
 
 .logged-out-navbar {
@@ -1251,9 +1262,6 @@ table tbody tr {
 }
 table tbody tr:hover {
   background-color: #F5F5F5;
-}
-table tbody tr.table-end {
-  border-radius: 0 0 16px 16px;
 }
 table tbody tr.no-content {
   border-radius: 0 0 16px 16px;

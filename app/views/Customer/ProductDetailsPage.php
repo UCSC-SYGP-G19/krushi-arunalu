@@ -69,7 +69,7 @@ include APP_ROOT . "/views/inc/components/Header.php";
                                     '</h6>' .
                                     '</div>'
                                 ?>
-                                <form action="../../shopping-cart/add/<?= $this->data->id?>" method="get">
+                                <form action="../../shopping-cart/add/<?= $this->data->id ?>" method="get">
                                     <div class="row pt-2 mt-2">
                                         <label class="col-2 pr-2">
                                             <input type="number" name="quantity" value="1" min="1">

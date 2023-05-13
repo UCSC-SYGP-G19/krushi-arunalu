@@ -271,20 +271,4 @@ class CustomerOrder extends Model
     {
         $this->status = $status;
     }
-
-    /**
-     * @return int|null
-     */
-    public function getCustomerId(): ?int
-    {
-        return $this->customerId;
-    }
-
-    /**
-     * @param int|null $customerId
-     */
-    public function setCustomerId(?int $customerId): void
-    {
-        $this->customerId = $customerId;
-    }
 }

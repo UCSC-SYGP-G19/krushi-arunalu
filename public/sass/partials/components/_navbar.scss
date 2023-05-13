@@ -60,14 +60,21 @@
     box-shadow: 0 2px 16px rgba(0, 0, 0, 0.25) !important;
 }
 
-.logged-in-navbar {
-  background-color: $header-green;
-  box-shadow: 0 2px 16px rgba(0, 0, 0, 0.25) !important;
+.logged-out-navbar {
+    background-color: $white;
+    display: flex;
+    align-items: center;
+    box-shadow: 0 2px 16px rgba(0, 0, 0, 0.25) !important;
+}
 
-  #btn-toggle-notification-panel {
-    display: inline-block;
-    outline: none;
-    border: none;
+.logged-in-navbar {
+    background-color: $header-green;
+    box-shadow: 0 2px 16px rgba(0, 0, 0, 0.25) !important;
+
+    #btn-toggle-notification-panel {
+        display: inline-block;
+        outline: none;
+        border: none;
     background: transparent;
 
     &.active {

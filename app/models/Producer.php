@@ -22,28 +22,38 @@ class Producer extends RegisteredUser
         $email = null,
         $contactNo = null,
         $password = null,
-        $isEmailVerified = null,
         private ?string $nicNumber = null,
         private ?int $district = null,
     ) {
-        parent::__construct($id, $role, $name, $address, $lastLogin, $imageUrl, $email, $contactNo, $password, $isEmailVerified);
+        parent::__construct($id, $role, $name, $address, $lastLogin, $imageUrl, $email, $contactNo, $password);
+    }
+
+    public static function getAllProducersDetailsForAgriOfficers($agriOfficerDistrictID): ?array
+    {
+        $stmt = Model::select(
+            table: "land",
+            columns: [
+                "producer.nic_number AS nic_number",
+                "registered_user.name AS name",
+                "registered_user.address AS address",
+                "registered_user.contact_no AS contact_no"],
+            where: ["land.district" => $agriOfficerDistrictID],
+            joins: [
+                "producer" => "land.owner_id",
+                "registered_user" => "land.owner_id"]
+        );
+        if ($stmt) {
+            return $stmt->fetchAll();
+        }
+        return null;
     }
 
     public function register(): bool
     {
         if (parent::register()) {
-//            $this->runQuery(
-//                "INSERT INTO producer (id, nic_number, district) VALUES (?,?,?)",
-//                [$this->getLastInsertedId(), $this->nicNumber, $this->district]
-//            );
-
-            $this->insert(
-                table: 'producer',
-                data: [
-                    'id' => $this->getLastInsertedId(),
-                    'nic_number' => $this->nicNumber,
-                    'district' => $this->district
-                ]
+            $this->runQuery(
+                "INSERT INTO producer (id, nic_number, district) VALUES (?,?,?)",
+                [$this->getLastInsertedId(), $this->nicNumber, $this->district]
             );
             return true;
         }
@@ -80,6 +90,8 @@ class Producer extends RegisteredUser
             ", [$manufacturerId, $manufacturerId])->fetchAll();
     }
 
+    //Model function of Agri-Officer's Producer details.
+
     public function getConnectedProducersForManufacturer($manufacturerId): array
     {
         return $this->runQuery("SELECT
@@ -102,26 +114,6 @@ class Producer extends RegisteredUser
             WHERE co.status = 'Accepted'
             GROUP BY ru.id
             ", [$manufacturerId, $manufacturerId])->fetchAll();
-    }
-
-    public static function getAllProducersDetailsForAgriOfficers($agriOfficerDistrictID): ?array
-    {
-        $stmt = Model::select(
-            table: "producer",
-            columns: [
-                "producer.nic_number AS nic_number",
-                "registered_user.name AS name",
-                "registered_user.address AS address",
-                "registered_user.contact_no AS contact_no"],
-            where: ["land.district" => $agriOfficerDistrictID],
-            joins: [
-                "land" => "land.owner_id",
-                "registered_user" => "land.owner_id"]
-        );
-        if ($stmt) {
-            return $stmt->fetchAll();
-        }
-        return null;
     }
 
     /**

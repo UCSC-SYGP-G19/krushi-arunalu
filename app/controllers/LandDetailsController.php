@@ -23,7 +23,7 @@ class LandDetailsController extends Controller
     public function getLandDetailsAsJson(): void
     {
         $districtId = AgriOfficer::getAgriOfficerDistrictId(Session::getSession()->id)->district;
-        $test = Land::getAllLandDetailsForAgriOfficers($districtId);
+        $test = land::getAllLandDetailsForAgriOfficers($districtId);
         //print_r($test);
         $this->sendArrayAsJson($test);
     }

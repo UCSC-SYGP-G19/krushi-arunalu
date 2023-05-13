@@ -2,7 +2,7 @@ let data = null;
 let table = {}
 
 const fetchCultivationDetailsList = async () => {
-  const res = await fetch(`${URL_ROOT}/cultivation-details/getCultivationDetailsAsJson`);
+    const res = await fetch(`${URL_ROOT}/cultivation-details/getCultivationDetailsAsJson`);
   if (res.status === 200) {
     data = await res.json();
   } else {
