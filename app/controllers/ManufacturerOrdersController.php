@@ -142,4 +142,16 @@ class ManufacturerOrdersController extends Controller
         $this->view->render();
         return false;
     }
+
+    public function changeStatus($orderId): bool
+    {
+        $this->loadView('Manufacturer/ManufacturerOrdersPage', 'Manufacturer Orders', 'manufacturer-orders');
+        $this->loadModel('ManufacturerOrder');
+        if ($this->model->updateStatusAsDelivered($orderId)) {
+            Util::redirect("../");
+            return true;
+        }
+        $this->view->render();
+        return false;
+    }
 }

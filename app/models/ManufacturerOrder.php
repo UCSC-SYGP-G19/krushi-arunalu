@@ -137,7 +137,7 @@ class ManufacturerOrder extends Model
                           WHERE manufacturer_order.id = ?",
             [$this->quantity, $this->date, $this->unitPrice, $this->cropCategoryId, $this->cropId,
             $this->producerId,
-            $id]
+                $id]
         );
         return $result == true;
     }
@@ -146,6 +146,15 @@ class ManufacturerOrder extends Model
     {
         $result = $this->runQuery("DELETE FROM manufacturer_order WHERE manufacturer_order.id = ?", [$id]);
         return $result == true;
+    }
+
+    public function updateStatusAsDelivered($orderId): bool
+    {
+        return $this->update(
+                table: "manufacturer_order",
+                data: ["status" => "Delivered"],
+                where: ["id" => $orderId]
+            ) == 1;
     }
 
     /**
