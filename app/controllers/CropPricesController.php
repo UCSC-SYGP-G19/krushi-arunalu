@@ -8,9 +8,20 @@
 namespace app\controllers;
 
 use app\core\Controller;
+use app\helpers\Session;
 
 class CropPricesController extends Controller
 {
+    public function index()
+    {
+        $this->loadView(
+            'AgriOfficer/CropPricesPage',
+            'Crop Prices',
+            'crop-prices'
+        );
+        $this->view->render();
+    }
+
     public function publish($date): void
     {
         $this->loadView(
@@ -37,5 +48,54 @@ class CropPricesController extends Controller
 //        $this->view->data = $this->model->getByDate($date);
 //        print_r($this->view->data);
         $this->view->render();
+    }
+
+    public function getDataAsJson($date)
+    {
+        $this->loadModel('Crop');
+        $output = [];
+        $cropsList = $this->model->getNamesFromDB();
+
+        $this->loadModel('CropPrice');
+        foreach ($cropsList as $crop) {
+            $marketPricesForCrop = $this->model->getMarketPricesByCropAndDate(
+                $crop->id,
+                $date,
+                Session::getSession()->id);
+            $output[$crop->id] = $marketPricesForCrop;
+        }
+
+        $response = [];
+        $response["crops"] = $cropsList;
+        $response["marketPrices"] = $output;
+
+        $this->sendJson($response);
+    }
+
+    public function setPrice()
+    {
+        $this->loadModel('CropPrice');
+        $this->model->fillData(
+            [
+                "cropId" => $_POST["cropId"],
+                "agriOfficerId" => Session::getSession()->id,
+                "date" => $_POST["date"],
+                "lowPrice" => $_POST["minPrice"],
+                "highPrice" => $_POST["maxPrice"],
+            ]
+        );
+
+        $res = $this->model->addAgriOfficerPriceToDB();
+        if ($res) {
+            http_response_code(201);
+            $this->sendJson(
+                ["message" => "Price added successfully"]
+            );
+        } else {
+            http_response_code(500);
+            $this->sendJson(
+                ["message" => "Operation failed"]
+            );
+        }
     }
 }

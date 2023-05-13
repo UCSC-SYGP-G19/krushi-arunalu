@@ -134,7 +134,7 @@ const SIDEBAR_ROUTES = [
         ],
         "Crop Prices" => [
             "icon" => "crop-prices",
-            "link" => "CropPrices/publish/2023-04-06",
+            "link" => "crop-prices",
         ],
         "Cultivation Questions" => [
             "icon" => "cultivation-questions",
