@@ -29,6 +29,10 @@ input[type="checkbox"] {
   width: 16px;
 }
 
+input[type="checkbox"]{
+  height: unset!important;
+}
+
   input:hover, input:focus, textarea:hover, textarea:focus {
     border: 1.5px solid $primary-green-light;
   }
@@ -81,6 +85,7 @@ form {
   }
 
   .card-input:hover {
+    background-color: $selected-green-lighter;
     cursor: pointer;
   }
 

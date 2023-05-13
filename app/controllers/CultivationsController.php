@@ -54,7 +54,7 @@ class CultivationsController extends Controller
                 'landId' => $_POST['land'],
                 'cropId' => $_POST['crop'],
                 'cultivatedDate' => $_POST['cultivated_date'],
-                'cultivatedQuantity' => $_POST['cultivated_quantity'],
+                'cultivatedQuantity' => $_POST['cultivated_area'],
                 'status' => $_POST['remarks'],
                 'expectedHarvestDate' => $_POST['expected_harvest_date'],
             ]);
@@ -79,7 +79,7 @@ class CultivationsController extends Controller
             $this->view->fieldValues["category"] = $current->crop_category_id;
             $this->view->fieldValues["crop"] = $current->crop_id;
             $this->view->fieldValues["cultivated_date"] = $current->cultivated_date;
-            $this->view->fieldValues["cultivated_quantity"] = $current->cultivated_quantity;
+            $this->view->fieldValues["cultivated_area"] = $current->cultivated_area;
             $this->view->fieldValues["remarks"] = $current->status;
             $this->view->fieldValues["expected_harvest_date"] = $current->expected_harvest_date;
 
@@ -102,7 +102,7 @@ class CultivationsController extends Controller
                 'landId' => $_POST['land'],
                 'cropId' => $_POST['crop'],
                 'cultivatedDate' => $_POST['cultivated_date'],
-                'cultivatedQuantity' => $_POST['cultivated_quantity'],
+                'cultivatedQuantity' => $_POST['cultivated_area'],
                 'status' => $_POST['remarks'],
                 'expectedHarvestDate' => $_POST['expected_harvest_date'],
             ]);

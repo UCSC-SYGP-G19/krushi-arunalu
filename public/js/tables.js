@@ -32,12 +32,12 @@ function renderTable(DOMElement, table) {
 
 // Updater functions
 function updatePagination(table, rowCount) {
-  if(rowCount === undefined) {
+  if (rowCount === undefined) {
     rowCount = table.data.length;
   }
-  if(rowCount < table.rowsPerPage) {
+  if (rowCount < table.rowsPerPage) {
     document.querySelector("#table-pagination-length-selector").disabled = true;
-  }else{
+  } else {
     document.querySelector("#table-pagination-length-selector").disabled = false;
   }
   const paginationCurrentRange = document.querySelector("#pagination-current-range");
@@ -69,7 +69,7 @@ function updatePagination(table, rowCount) {
     if (index < start - 1 || index > end - 1) {
       row.style.display = "none";
     } else {
-      if(row.getAttribute("data-filtered") !== "true") {
+      if (row.getAttribute("data-filtered") !== "true") {
         row.style.display = "";
       }
     }

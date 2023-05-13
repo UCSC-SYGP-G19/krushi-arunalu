@@ -26,5 +26,6 @@ if ($_ENV['APP_ENV'] == 'production') {
 const ERROR_LOG = "/tmp/php-error.log";
 
 const SITE_NAME = 'කෘෂි අරුණලු | Krushi Arunalu';
-
-date_default_timezone_set('Asia/Kolkata');
+const EMAIL_FROM = 'krushi.arunalu@gmail.com';
+const EMAIL_NAME = 'Krushi Arunalu';
+const EMAIL_APP_PASSWORD = 'edbzxhlssrzvetmd';

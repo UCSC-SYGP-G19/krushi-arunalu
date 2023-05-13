@@ -79,7 +79,7 @@ class AccountSetupController extends Controller
                 'landId' => $_POST['land'],
                 'cropId' => $_POST['crop'],
                 'cultivatedDate' => $_POST['cultivated_date'],
-                'cultivatedQuantity' => $_POST['cultivated_quantity'],
+                'cultivatedQuantity' => $_POST['cultivated_area'],
                 'status' => $_POST['status'],
                 'expectedHarvestDate' => $_POST['expected_harvest_date'],
             ]);

@@ -59,14 +59,14 @@ include APP_ROOT . "/views/inc/components/Header.php";
                                     </div>
                                     <div class="text-center">
                                             <div class="fw-bold pt-2 pb-1 manufacturer-name">' . $element->
-                                                    manufacturer_name . '
+                                    manufacturer_name . '
                                             </div>
                                             <div class="row gap-1">
                                                 ' .
-                                                '<a class="col-7 btn-lg btn-outlined-primary-light text-center" 
+                                    '<a class="col-7 btn-lg btn-outlined-primary-light text-center" 
                                                 href="./manufacturers/manufacturerStore/' . $element->manufacturer_id .
                                     '">' .
-                                                'Visit Store' . '</a>' . '
+                                    'Visit Store' . '</a>' . '
                                             </div>
                                             </div>
                                     </div>

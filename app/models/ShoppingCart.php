@@ -23,7 +23,7 @@ class ShoppingCart extends Model
     public function checkExistedCart($customer_id): bool
     {
         $result = $this->runQuery("SELECT * from shopping_cart WHERE customer_id = ?", [$customer_id])->fetch();
-        return (bool) $result;
+        return (bool)$result;
     }
 
     public function createShoppingCart($customer_id): bool

@@ -76,16 +76,16 @@ include APP_ROOT . "/views/inc/components/LoggedInNavbarWithoutSidebar.php"
             <!--            </div>-->
             <div class="row gap-2">
                 <div class="col-4">
-                    <label for="cultivated_quantity">Cultivated quantity</label>
-                    <input type="number" id="cultivated_quantity" name="cultivated_quantity"
-                           placeholder="Enter quantity"
+                    <label for="cultivated_area">Cultivated area</label>
+                    <input type="number" id="cultivated_area" name="cultivated_area"
+                           placeholder="Enter cultivated area (Acres)"
                            value="<?php
-                            if (isset($this->fields['cultivated_quantity'])) {
-                                echo $this->fields['cultivated_quantity'];
+                            if (isset($this->fields['cultivated_area'])) {
+                                echo $this->fields['cultivated_area'];
                             }
                             ?>">
-                    <?php if (isset($this->fieldErrors['cultivated_quantity'])) { ?>
-                        <div class="error"><?php echo $this->fieldErrors['cultivated_quantity']; ?></div>
+                    <?php if (isset($this->fieldErrors['cultivated_area'])) { ?>
+                        <div class="error"><?php echo $this->fieldErrors['cultivated_area']; ?></div>
                     <?php } ?>
                 </div>
                 <div class="col-4">

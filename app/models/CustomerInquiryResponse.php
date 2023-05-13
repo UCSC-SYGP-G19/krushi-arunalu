@@ -62,9 +62,9 @@ class CustomerInquiryResponse extends Model
     public function deleteResponseFromDb($responseId): bool
     {
         return $this->delete(
-                table: "customer_inquiry_response",
-                where: ["id" => $responseId]
-            ) == 1;
+            table: "customer_inquiry_response",
+            where: ["id" => $responseId]
+        ) == 1;
     }
 
     /**

@@ -12,11 +12,31 @@ use app\core\Model;
 class AgriOfficer extends RegisteredUser
 {
     public function __construct(
-        private ?int  $id = null,
-        private ?int  $districttId = null,
+        $id = null,
+        $role = null,
+        $name = null,
+        $address = null,
+        $lastLogin = null,
+        $imageUrl = null,
+        $email = null,
+        $contactNo = null,
+        $password = null,
+        $isEmailVerified = null,
+        private ?int $districttId = null,
         private ?bool $isDefaultPassword = null,
-    )
-    {
+    ) {
+        parent::__construct(
+            $id,
+            $role,
+            $name,
+            $address,
+            $lastLogin,
+            $imageUrl,
+            $email,
+            $contactNo,
+            $password,
+            $isEmailVerified
+        );
     }
 
     public static function hasDefaultPassword($userId): bool

@@ -2,11 +2,11 @@ let responses = null;
 let inquiries = null;
 
 const fetchCustomerInquiries = async () => {
-    const res = await fetch('http://localhost/krushi-arunalu/inquiries/getCustomerInquiries');
-    if (res.status === 200) {
-        inquiries = await res.json();
-        renderCustomerInquiries(inquiries);
-    }
+  const res = await fetch('http://localhost/krushi-arunalu/inquiries/getCustomerInquiries');
+  if (res.status === 200) {
+    inquiries = await res.json();
+    renderCustomerInquiries(inquiries);
+  }
 }
 
 const renderCustomerInquiries = (data) => {
@@ -58,52 +58,52 @@ const renderCustomerInquiries = (data) => {
 </div>
                 </div>
             `;
-            output += inquiryCard;
+          output += inquiryCard;
         });
-        inquiriesSection.innerHTML = output;
+      inquiriesSection.innerHTML = output;
     } else {
-        inquiriesSection.innerHTML = "No Inquiries";
+      inquiriesSection.innerHTML = "No Inquiries";
     }
 }
 
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 const viewResponses = (inquiryId) => {
-    const inquiryCard = document.querySelector(`#inquiry-${inquiryId}-card`);
-    const responsesList = inquiryCard.querySelector(".inquiry-response-list");
-    const btnViewResponses = inquiryCard.querySelector(".btn-view-responses");
+  const inquiryCard = document.querySelector(`#inquiry-${inquiryId}-card`);
+  const responsesList = inquiryCard.querySelector(".inquiry-response-list");
+  const btnViewResponses = inquiryCard.querySelector(".btn-view-responses");
 
-    if (btnViewResponses.value === "show") {
-        fetchResponses(inquiryId);
-    } else {
-        responsesList.innerHTML = "";
-        btnViewResponses.innerHTML = "View Responses";
-        btnViewResponses.value = "show";
-    }
+  if (btnViewResponses.value === "show") {
+    fetchResponses(inquiryId);
+  } else {
+    responsesList.innerHTML = "";
+    btnViewResponses.innerHTML = "View Responses";
+    btnViewResponses.value = "show";
+  }
 }
 
 const fetchResponses = async (id) => {
-    const res = await fetch('http://localhost/krushi-arunalu/inquiries/getInquiryResponses/' + id);
-    if (res.status === 200) {
-        responses = await res.json();
-        renderInquiryResponses(responses, id);
-    }
+  const res = await fetch('http://localhost/krushi-arunalu/inquiries/getInquiryResponses/' + id);
+  if (res.status === 200) {
+    responses = await res.json();
+    renderInquiryResponses(responses, id);
+  }
 }
 
 const renderInquiryResponses = (data, inquiryId) => {
 
-    const inquiryCard = document.querySelector(`#inquiry-${inquiryId}-card`);
-    const responsesList = inquiryCard.querySelector(".inquiry-response-list");
-    const btnViewResponses = inquiryCard.querySelector(".btn-view-responses");
+  const inquiryCard = document.querySelector(`#inquiry-${inquiryId}-card`);
+  const responsesList = inquiryCard.querySelector(".inquiry-response-list");
+  const btnViewResponses = inquiryCard.querySelector(".btn-view-responses");
 
-    let output = "";
+  let output = "";
 
-    if (data != null) {
-        if (data.length === 0) {
-            output = renderMessageCard("No responses yet");
-        }
-        data.forEach((element) => {
-            let response = `
+  if (data != null) {
+    if (data.length === 0) {
+      output = renderMessageCard("No responses yet");
+    }
+    data.forEach((element) => {
+      let response = `
                 <div class="col-12 py-3" id="inquiry-card-${element.inquiry_id}">
                     <div class="response-card-wrapper py-1 px-3 row">
                         <div class="col-1">
@@ -133,14 +133,14 @@ const renderInquiryResponses = (data, inquiryId) => {
                     </div>
                 </div>
             `;
-            output += response;
-        });
-        responsesList.innerHTML = output;
-    } else {
-        responsesList.innerHTML = renderMessageCard("No responses");
-    }
-    btnViewResponses.innerHTML = "Hide Responses";
-    btnViewResponses.value = "hide";
+      output += response;
+    });
+    responsesList.innerHTML = output;
+  } else {
+    responsesList.innerHTML = renderMessageCard("No responses");
+  }
+  btnViewResponses.innerHTML = "Hide Responses";
+  btnViewResponses.value = "hide";
 
 }
 
@@ -149,42 +149,42 @@ const inquiriesSection = document.querySelector('#inquiries');
 //fetch and customer inquiries
 
 document.addEventListener("DOMContentLoaded", () => {
-    if (inquiries == null) {
-        inquiriesSection.innerHTML = renderMessageCard("Loading");
-        fetchCustomerInquiries();
-    } else {
-        renderCustomerInquiries(inquiries);
-    }
+  if (inquiries == null) {
+    inquiriesSection.innerHTML = renderMessageCard("Loading");
+    fetchCustomerInquiries();
+  } else {
+    renderCustomerInquiries(inquiries);
+  }
 });
 
 
 // Send a response
 
 const sendResponse = async (inquiryId) => {
-    const responseBox = document.querySelector(`#inquiry-${inquiryId}-card`).querySelector("textarea");
-    const responseText = responseBox.value;
-    let formData = new FormData;
-    formData.append("responseMessage", responseText)
-    const res = await fetch('http://localhost/krushi-arunalu/inquiries/addResponseToDb/' + inquiryId, {
-        method: "POST",
-        body: formData
-    });
-    if (res.status === 200) {
-        responseBox.value = "";
-        fetchCustomerInquiries();
-    }
+  const responseBox = document.querySelector(`#inquiry-${inquiryId}-card`).querySelector("textarea");
+  const responseText = responseBox.value;
+  let formData = new FormData;
+  formData.append("responseMessage", responseText)
+  const res = await fetch('http://localhost/krushi-arunalu/inquiries/addResponseToDb/' + inquiryId, {
+    method: "POST",
+    body: formData
+  });
+  if (res.status === 200) {
+    responseBox.value = "";
+    fetchCustomerInquiries();
+  }
 }
 
 //Update a response
 
 const updateResponse = (responseId) => {
 
-    const responseNode = document.querySelector(`#response-${responseId}`).querySelector(".response-content");
-    const responseContent = responseNode.innerText;
+  const responseNode = document.querySelector(`#response-${responseId}`).querySelector(".response-content");
+  const responseContent = responseNode.innerText;
 
-    //const modalWindowBox = document.querySelector('#modal-window-box');
+  //const modalWindowBox = document.querySelector('#modal-window-box');
 
-    document.querySelector("dialog").innerHTML = `
+  document.querySelector("dialog").innerHTML = `
                 <div class="modal-content pt-1">
                     <div class="px-3 pb-2 modal-window-title">
                         <h4>Update Response</h4>
@@ -203,35 +203,35 @@ const updateResponse = (responseId) => {
                     </div>
                 </div>
             `;
-    document.querySelector('dialog').showModal();
+  document.querySelector('dialog').showModal();
 }
 
 const updateResponseInDb = async (responseId) => {
 
-    const responseBox = document.querySelector('#response-box');
-    const response = responseBox.value;
-    let formData = new FormData();
-    formData.append("totalQuantity", response);
-    const res = await fetch('http://localhost/krushi-arunalu/inquiries/sendUpdatedResponse/' + responseId, {
-        method: "POST",
-        body: formData
+  const responseBox = document.querySelector('#response-box');
+  const response = responseBox.value;
+  let formData = new FormData();
+  formData.append("totalQuantity", response);
+  const res = await fetch('http://localhost/krushi-arunalu/inquiries/sendUpdatedResponse/' + responseId, {
+    method: "POST",
+    body: formData
+  });
+  if (res.status === 200) {
+    closeWindow();
+    fetchCustomerInquiries();
+    Swal.fire({
+      icon: 'success',
+      title: 'Success',
+      text: 'Successfully Updated the Response',
+      confirmButtonText: 'OK',
     });
-    if (res.status === 200) {
-        closeWindow();
-        fetchCustomerInquiries();
-        Swal.fire({
-            icon: 'success',
-            title: 'Success',
-            text: 'Successfully Updated the Response',
-            confirmButtonText: 'OK',
-        });
-    }
+  }
 
 }
 
 const closeWindow = () => {
-    //const modalWindowBox = document.querySelector('#modal-window-box');
-    document.querySelector('dialog').close();
+  //const modalWindowBox = document.querySelector('#modal-window-box');
+  document.querySelector('dialog').close();
 };
 
 

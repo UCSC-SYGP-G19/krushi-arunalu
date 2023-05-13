@@ -67,7 +67,6 @@ class InquiriesController extends Controller
             http_response_code(500);
             return false;
         }
-
     }
 
     public function deleteResponse($responseId): bool
@@ -82,5 +81,4 @@ class InquiriesController extends Controller
         $this->view->render();
         return false;
     }
-
 }

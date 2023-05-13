@@ -52,7 +52,7 @@ tbody.isolated {
     button.with-filter-icon {
         background: white;
 
-        &[value="show"]{
+        &[value="show"] {
             padding-bottom: 5px;
         }
 
@@ -108,10 +108,6 @@ table {
         &:hover {
             background-color: $background-grey;
         }
-
-        &.table-end {
-            border-radius: 0 0 $base-border-radius $base-border-radius;
-        }
     }
 
     tbody tr.no-content {
@@ -165,7 +161,6 @@ table {
             }
 
 
-
             .left-arrow {
                 margin-right: 5px;
             }
@@ -185,7 +180,7 @@ table {
             stroke: #AAA;
 
             &.active {
-                stroke: black!important;
+                stroke: black !important;
             }
         }
     }

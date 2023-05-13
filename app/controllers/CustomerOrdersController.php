@@ -9,9 +9,6 @@ namespace app\controllers;
 
 use app\core\Controller;
 use app\helpers\Session;
-use app\helpers\Util;
-use app\models\CultivationQuestion;
-use app\models\CustomerOrder;
 
 class CustomerOrdersController extends Controller
 {
@@ -29,6 +26,7 @@ class CustomerOrdersController extends Controller
         $this->view->data = ["orders_list" => $ordersList, "order_product_imgs" => $orderProductImgs];
         $this->view->render();
     }
+
     public function orderDetails($orderId): void
     {
         $this->loadView(

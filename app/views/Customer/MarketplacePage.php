@@ -2,7 +2,7 @@
 include APP_ROOT . "/views/inc/components/Header.php";
 
 ?>
-<!--    <div class="navbar-section container-fluid">-->
+    <!--    <div class="navbar-section container-fluid">-->
 
 <?php
 
@@ -22,11 +22,11 @@ include APP_ROOT . "/views/inc/components/Header.php";
     //include APP_ROOT . "/views/inc/components/LoggedOutNavbar.php"
     ?>
     <div class="content-with-sidebar">
-<!--        --><?php
-//        if (isset($this->user)) {
-//            include APP_ROOT . "/views/inc/components/Sidebar.php";
-//        }
-//        ?>
+        <!--        --><?php
+        //        if (isset($this->user)) {
+        //            include APP_ROOT . "/views/inc/components/Sidebar.php";
+        //        }
+        //        ?>
         <main class="content overflow-y-auto">
             <?php
             if (isset($this->user)) {
@@ -36,14 +36,19 @@ include APP_ROOT . "/views/inc/components/Header.php";
             }
             ?>
             <div class="content-wrapper marketplace">
-                    <div class="container-fluid px-0">
-                        <div class="carousel">
-                            <img src="<?php echo URL_ROOT . '/public/img/manufacturers/covers/banner_02.jpg'?>" alt="" class="pic" height="100%">
-                            <img src="<?php echo URL_ROOT . '/public/img/manufacturers/covers/banner_03.jpg'?>" alt="" class="pic" height="100%">
-                            <img src="<?php echo URL_ROOT . '/public/img/manufacturers/covers/banner_04.jpg'?>" alt="" class="pic" height="100%">
-                            <img src="<?php echo URL_ROOT . '/public/img/manufacturers/covers/banner_05.jpg'?>" alt="" class="pic" height="100%">
-                            <img src="<?php echo URL_ROOT . '/public/img/manufacturers/covers/banner_06.jpg'?>" alt="" class="pic" height="100%">
-                        </div>
+                <div class="container-fluid px-0">
+                    <div class="carousel">
+                        <img src="<?php echo URL_ROOT . '/public/img/manufacturers/covers/banner_02.jpg' ?>" alt=""
+                             class="pic" height="100%">
+                        <img src="<?php echo URL_ROOT . '/public/img/manufacturers/covers/banner_03.jpg' ?>" alt=""
+                             class="pic" height="100%">
+                        <img src="<?php echo URL_ROOT . '/public/img/manufacturers/covers/banner_04.jpg' ?>" alt=""
+                             class="pic" height="100%">
+                        <img src="<?php echo URL_ROOT . '/public/img/manufacturers/covers/banner_05.jpg' ?>" alt=""
+                             class="pic" height="100%">
+                        <img src="<?php echo URL_ROOT . '/public/img/manufacturers/covers/banner_06.jpg' ?>" alt=""
+                             class="pic" height="100%">
+                    </div>
                 </div>
                 <div class="content p-4 mt-1">
                     <div class="container px-2">
@@ -80,7 +85,7 @@ include APP_ROOT . "/views/inc/components/Header.php";
                                                 </label>
                                             </div>
                                             <div class="col-7">
-                                                <button onClick="addItemToCart(' . $product->id . ')" class="btn-add-to-cart btn-primary-light text-white p-0" value="' . $product->id  . '"><svg class="py-1" width="45" height="44" viewBox="0 0 44 44" fill="none" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+                                                <button onClick="addItemToCart(' . $product->id . ')" class="btn-add-to-cart btn-primary-light text-white p-0" value="' . $product->id . '"><svg class="py-1" width="45" height="44" viewBox="0 0 44 44" fill="none" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
                                             </div>
                                         </div>
                                     </div>

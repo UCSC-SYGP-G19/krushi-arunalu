@@ -36,6 +36,7 @@ include APP_ROOT . "/views/inc/components/Header.php";
                     </div>
                 </div>
             </div>
+
             <?php
             include APP_ROOT . "/views/inc/components/Footer.php";
             ?>

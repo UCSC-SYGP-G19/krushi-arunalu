@@ -13,24 +13,23 @@ use app\core\Model;
 class Land extends Model
 {
     public function __construct(
-        private ?int    $id = null,
-        private ?int    $ownerId = null,
+        private ?int $id = null,
+        private ?int $ownerId = null,
         private ?string $name = null,
-        private ?float  $areaInHectares = null,
+        private ?float $areaInHectares = null,
         private ?string $address = null,
         private ?string $district = null,
         private ?string $soilCondition = null,
         private ?string $rainfall = null,
         private ?string $humidity = null
-    )
-    {
+    ) {
     }
 
     public static function getNamesByOwnerIdFromDB($ownerId): array
     {
         $stmt = Model::select(
             table: "land",
-            columns: ["land.id", "land.name"],
+            columns: ["land.id", "land.name", "area_in_acres"],
             where: ["land.owner_id" => $ownerId]
         );
         if ($stmt) {
@@ -75,6 +74,7 @@ class Land extends Model
 
         return $result == true;
     }
+
     // Getters and Setters
 
     /**
