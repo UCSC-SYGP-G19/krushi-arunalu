@@ -61,6 +61,31 @@ class ManufacturerOrdersController extends Controller
         return false;
     }
 
+    public function placeOrder($cropRequestResponseId): bool
+    {
+        $this->loadView('Manufacturer/CropRequestsPage', 'Crop Requests', 'manufacturer-crop-requests');
+
+        $this->loadModel("CropRequestResponse");
+        $responseDetails = $this->model->getResponseDetailsById($cropRequestResponseId);
+
+        $this->loadModel("ManufacturerOrder");
+        $this->model->fillData([
+            'manufacturerId' => Session::getSession()->id,
+            'cropCategoryId' => $responseDetails->category_id,
+            'cropId' => $responseDetails->crop_id,
+            'quantity' => $responseDetails->quantity,
+            'unitPrice' => $responseDetails->price,
+            'producerId' => $responseDetails->producer_id
+        ]);
+
+        if ($this->model->addToDB(Session::getSession()->id)) {
+            Util::redirect(URL_ROOT . "/manufacturer-orders");
+            return true;
+        }
+        $this->view->render();
+        return false;
+    }
+
     public function edit($orderId): bool
     {
         $this->loadView('Manufacturer/UpdateManufacturerOrdersPage', 'Update Order Details', 'manufacturer-orders');

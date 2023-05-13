@@ -2,7 +2,7 @@ let cropRequests = null;
 let responseList = null;
 
 const fetchCropRequests = async () => {
-  const res = await fetch(`${URL_ROOT}/ManufacturerCropRequests/getRequestsAsJson`);
+  const res = await fetch(`${URL_ROOT}/manufacturer-crop-requests/getRequestsAsJson`);
   if (res.status === 200) {
     cropRequests = await res.json();
     renderCropRequests(cropRequests);
@@ -10,7 +10,7 @@ const fetchCropRequests = async () => {
 }
 
 const fetchResponses = async (cropRequestId) => {
-  const res = await fetch(`${URL_ROOT}/manufacturerCropRequests/getResponsesAsJson/` + cropRequestId);
+  const res = await fetch(`${URL_ROOT}/manufacturer-crop-requests/getResponsesAsJson/` + cropRequestId);
   if (res.status === 200) {
     responseList[cropRequestId] = await res.json();
   }
@@ -43,7 +43,6 @@ const renderResponseInfoLine = (element) => `
 
 
 const viewCropRequests = (e) => {
-  console.log(e);
   const cropRequestCard = document.querySelector(`#crop-request-${e}`);
   if (cropRequestCard.getAttribute("datatype") === "collapsed") {
     cropRequestCard.setAttribute("datatype", "expanded");
@@ -139,8 +138,11 @@ const renderResponses = (node, data) => {
                         <div class="col-12">
                             <div class="row align-items-center">
                                 <div class="col-6 text-black fw-bold mb-1"><h3>${element.producer_name}</h3></div>
-                                <div class="col-6 text-primary-light fw-bold text-right">
-                                    <span>${element.response_date_time}</span>
+                                <div class="col-4 text-primary-light fw-bold">
+                                    <span>Responded on ${element.response_date_time}</span>
+                                </div>
+                                <div class="col-2 px-3 text-right align-items-center d-flex" id="btn-${element.response_id}">
+                                    <button class="btn-sm btn-gold" id="btn-purchase" onclick="placeCropOrder(${element.response_id})">Purchase</button>
                                 </div>
                             </div>
                         </div>
@@ -199,7 +201,15 @@ const renderExpandedSection = (element) => `
 
 const requestList = document.querySelector("#crop-requests");
 
+const placeCropOrder = async (responseId) => {
+  const buttonPurchase = document.querySelector('#btn-purchase');
+  window.location.href = URL_ROOT + '/manufacturer-orders/placeOrder/' + responseId;
+  console.log(buttonPurchase);
+  buttonPurchase.innerHTML = "Order Placed";
+  buttonPurchase.setAttribute("disabled", "disabled");
+}
+
 document.addEventListener("DOMContentLoaded", () => {
-  requestList.innerHTML = renderMessageCard("Loading");
+  requestList.innerHTML = renderMessageCard("Loading...");
   fetchCropRequests();
 });

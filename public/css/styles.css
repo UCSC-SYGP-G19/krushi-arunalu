@@ -752,6 +752,17 @@
   color: #15742D;
 }
 
+.btn-gold {
+  border: 1px solid #B89130;
+  border-radius: 8px;
+  background-color: #B89130;
+  color: #FFFFFF;
+  cursor: pointer;
+}
+.btn-gold:hover {
+  background-color: #b48e2f;
+}
+
 button {
   cursor: pointer;
 }

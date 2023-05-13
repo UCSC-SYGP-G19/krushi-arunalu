@@ -116,9 +116,9 @@ class ManufacturerOrder extends Model
     public function addToDB($manufacturerId): bool
     {
         $result = $this->runQuery(
-            "INSERT INTO manufacturer_order (quantity, date, unit_selling_price, crop_category_id, crop_id, 
-                                producer_id, manufacturer_id) VALUES (?,?,?,?,?,?,?)",
-            [$this->quantity, $this->date, $this->unitPrice, $this->cropCategoryId, $this->cropId, $this->producerId,
+            "INSERT INTO manufacturer_order (quantity, unit_selling_price, crop_category_id, crop_id, 
+                                producer_id, manufacturer_id) VALUES (?,?,?,?,?,?)",
+            [$this->quantity, $this->unitPrice, $this->cropCategoryId, $this->cropId, $this->producerId,
                 $manufacturerId]
         );
         return $result == true;
