@@ -80,6 +80,7 @@ class ManufacturerCropRequestsController extends Controller
     {
         $this->loadModel('Crop');
         $crops = $this->model->getCropsByCategoryId($categoryId);
+        $this->sendJson($crops);
     }
 
     public function edit($requestId): bool
