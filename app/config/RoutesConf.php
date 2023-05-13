@@ -9,12 +9,12 @@
 const PROTECTED_ROUTES = [
     "Common" => ["Login", "Register", "ForgotPassword", "ResetPassword", "Logout", "Marketplace", "ManageProfile",
         "ManufacturerStore"],
-    "Producer" => ["AccountSetup","ProducerDashboard", "Cultivations", "Harvests", "Sales", "CultivationQuestions",
+    "Producer" => ["AccountSetup", "ProducerDashboard", "Cultivations", "Harvests", "Sales", "CultivationQuestions",
         "ProducerCropRequests", "Announcements", "Profile", "Manufacturers", "ConnectionRequests"],
     "Manufacturer" => ["ManufacturerDashboard", "Sales", "ManufacturerOrders", "Producers", "Stocks",
         "ProductCategories", "Products", "ManufacturerCropRequests", "Inquiries", "ManufacturerSales",
         "PurchasedStocks", "ConnectionRequests", "Chat"],
-    "Customer" => ["Marketplace", "ShoppingCart", "Orders", "Profile", "SendInquiry", "Checkout", "Manufacturers"],
+    "Customer" => ["Marketplace", "ShoppingCart", "CustomerOrders", "Profile", "SendInquiry", "Checkout", "Manufacturers"],
     "Agri Officer" => ["Dashboard", "Announcements", "ProducerDetails", "LandDetails",
         "CultivationDetails", "CropPrices", "CultivationQuestions"],
     "Admin" => ["Dashboard", "AllProducts", "ProductCategories", "Crops", "Manufacturers", "Producers", "Announcements", "UserManagement"]
@@ -107,7 +107,7 @@ const SIDEBAR_ROUTES = [
         ],
         "My Orders" => [
             "icon" => "orders",
-            "link" => "orders",
+            "link" => "customer-orders",
         ],
     ],
 

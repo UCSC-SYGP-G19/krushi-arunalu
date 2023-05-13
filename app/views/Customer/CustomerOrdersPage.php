@@ -58,11 +58,11 @@ include APP_ROOT . "/views/inc/components/Header.php";
                                                 }
                                                 ?>
                                             </td>
-                                            <td class="col-2"><?php echo $orderEntry->order_date_time; ?></td>
-                                            <td class="col-2"><?php echo $orderEntry->order_total; ?></td>
-                                            <td class="col-2"><?php echo $orderEntry->order_status; ?></td>
+                                            <td class="col-2"><?php echo $orderEntry->date_time; ?></td>
+                                            <td class="col-2"><?php echo $orderEntry->total_cost; ?></td>
+                                            <td class="col-2"><?php echo $orderEntry->status; ?></td>
                                             <td class="col-2"><a class="btn-outlined-primary-light btn-sm m-2"
-                                                                 href = "customer-orders/order-details/<?php echo $orderEntry->order_id?>">
+                                                                 href="customer-orders/order-details/<?php echo $orderEntry->order_id ?>">
                                                     View details</a>
                                             </td>
                                         </tr>
