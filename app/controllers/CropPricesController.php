@@ -69,7 +69,7 @@ class CropPricesController extends Controller
         $response["crops"] = $cropsList;
         $response["marketPrices"] = $output;
 
-        $this->sendJson($response);
+        $this->sendArrayAsJson($response);
     }
 
     public function setPrice()
