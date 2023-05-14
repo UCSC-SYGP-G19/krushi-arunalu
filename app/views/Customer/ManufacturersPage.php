@@ -45,31 +45,30 @@ include APP_ROOT . "/views/inc/components/Header.php";
                         <br>
                         <div class="row px-1">
                             <?php foreach ($this->data as $element) {
-                                echo '<div class="col-3 text-center p-3">
+                                echo '<div class="col-3 text-center p-2">
                                 <div class="product-card  p-3 pb-2">
                                     <div class="image-window mb-1">
                                     ' .
                                     '<a href="marketplace/product-details/' . $element->manufacturer_id .
                                     '">' .
                                     '<img alt="Manufacturer image" height="100%" width="100%" src="' . URL_ROOT .
-                                    '/public/img/user-avatars/' .
+                                    '/public/img/manufacturers/' .
                                     $element->manufacturer_image_url . '">'
                                     . '</a>' .
                                     '
                                     </div>
                                     <div class="text-center">
-                                            <div class="fw-bold pt-2 pb-1 manufacturer-name">' . $element->
-                                    manufacturer_name . '
-                                            </div>
-                                            <div class="row gap-1">
-                                                ' .
-                                    '<a class="col-7 btn-lg btn-outlined-primary-light text-center" 
-                                                href="./manufacturers/manufacturerStore/' . $element->manufacturer_id .
-                                    '">' .
-                                    'Visit Store' . '</a>' . '
-                                            </div>
-                                            </div>
+                                        <h4 class="pt-2 pb-0 manufacturer-name">' . $element->
+                                    manufacturer_name . '</h4>
+                                        <h4 class="manufacturer-description text-light-green py-1 pb-2">'
+                                    . $element->manufacturer_description . '</h4>
+                                        <div class="row gap-1">
+                                                <button class="btn-outlined-primary-light">
+                                                Visit store
+                                                </button>
+                                        </div>
                                     </div>
+                                </div>
                             </div>';
                             }
                             ?>

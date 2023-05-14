@@ -8,7 +8,6 @@
 namespace app\controllers;
 
 use app\core\Controller;
-use app\helpers\Flash;
 use app\helpers\Logger;
 use app\helpers\Session;
 use app\helpers\Util;
@@ -19,7 +18,6 @@ class LoginController extends Controller
     {
         if (Session::isSessionSet()) {
             $this->redirectByUserRole();
-            return;
         } else {
             $this->loadView('Common/LoginPage', 'Login');
         }
@@ -31,12 +29,9 @@ class LoginController extends Controller
         $this->view->render();
     }
 
-    private function redirectByUserRole(): void
+    private function redirectByUserRole()
     {
         $user = Session::getSession();
-        if ($user->isEmailVerified === 0) {
-            Util::redirect('verify-email');
-        }
         switch ($user->role) {
             case 'Customer':
                 Util::redirect('./marketplace');
@@ -57,8 +52,6 @@ class LoginController extends Controller
                 Util::redirect('dashboard');
                 break;
         }
-
-        exit;
     }
 
     private function login(): void
@@ -98,8 +91,6 @@ class LoginController extends Controller
         if ($user) {
             if ($user->id !== -1) {
                 Session::createSession($user);
-                Flash::setToastMessage(Flash::SUCCESS, "Login successful", "Welcome back " .
-                    explode(" ", Session::getSession()->name)[0] . "!");
                 $this->redirectByUserRole();
             } else {
                 $this->view->error = "Password incorrect";
