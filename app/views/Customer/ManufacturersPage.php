@@ -28,7 +28,7 @@ include APP_ROOT . "/views/inc/components/Header.php";
         <main class="content overflow-y-auto">
             <?php
             if (isset($this->user)) {
-                include APP_ROOT . "/views/inc/components/LoggedInNavbar.php";
+                include APP_ROOT . "/views/inc/components/CustomerLoggedInNavbar.php";
             } else {
                 include APP_ROOT . "/views/inc/components/LoggedOutNavbarWithLoginLink.php";
             }
@@ -49,10 +49,9 @@ include APP_ROOT . "/views/inc/components/Header.php";
                                 <div class="product-card  p-3 pb-2">
                                     <div class="image-window mb-1">
                                     ' .
-                                    '<a href="marketplace/product-details/' . $element->manufacturer_id .
-                                    '">' .
-                                    '<img alt="Manufacturer image" height="100%" width="100%" src="' . URL_ROOT .
-                                    '/public/img/manufacturers/' .
+                                    '<a href=" ' . URL_ROOT . '/marketplace/manufacturerStore/' . $element->manufacturer_id . '">' .
+                                    '<img alt="Manufacturer logo" height="100%" width="100%" src="' . URL_ROOT .
+                                    '/public/img/user-avatars/' .
                                     $element->manufacturer_image_url . '">'
                                     . '</a>' .
                                     '
@@ -62,10 +61,9 @@ include APP_ROOT . "/views/inc/components/Header.php";
                                     manufacturer_name . '</h4>
                                         <h4 class="manufacturer-description text-light-green py-1 pb-2">'
                                     . $element->manufacturer_description . '</h4>
-                                        <div class="row gap-1">
-                                                <button class="btn-outlined-primary-light">
-                                                Visit store
-                                                </button>
+                                        <div class="row gap-1 justify-content-center pt-2 pb-2">
+                                                <a class="fw-bold btn-outlined-primary-light" href=" ' . URL_ROOT . '/marketplace/manufacturerStore/' .
+                                    $element->manufacturer_id . '">Visit store</a>
                                         </div>
                                     </div>
                                 </div>
