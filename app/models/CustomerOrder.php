@@ -132,28 +132,28 @@ class CustomerOrder extends Model
     public function acceptOrders($orderId): bool
     {
         return $this->update(
-                table: "customer_order",
-                data: ["status" => "Accepted"],
-                where: ["id" => $orderId]
-            ) == 1;
+            table: "customer_order",
+            data: ["status" => "Accepted"],
+            where: ["id" => $orderId]
+        ) == 1;
     }
 
     public function rejectOrders($orderId): bool
     {
         return $this->update(
-                table: "customer_order",
-                data: ["status" => "Rejected"],
-                where: ["id" => $orderId]
-            ) == 1;
+            table: "customer_order",
+            data: ["status" => "Rejected"],
+            where: ["id" => $orderId]
+        ) == 1;
     }
 
     public function shipOrders($orderId): bool
     {
         return $this->update(
-                table: "customer_order",
-                data: ["status" => "Shipped"],
-                where: ["id" => $orderId]
-            ) == 1;
+            table: "customer_order",
+            data: ["status" => "Shipped"],
+            where: ["id" => $orderId]
+        ) == 1;
     }
 
     /**

@@ -142,10 +142,10 @@ class CropRequestResponse extends Model
     public function updateStatusInDb($responseId): bool
     {
         return $this->update(
-                table: "crop_request_response",
-                data: ["status" => "Accepted"],
-                where: ["id" => $responseId]
-            ) == 1;
+            table: "crop_request_response",
+            data: ["status" => "Accepted"],
+            where: ["id" => $responseId]
+        ) == 1;
     }
 
     /**

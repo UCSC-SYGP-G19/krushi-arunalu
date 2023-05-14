@@ -69,6 +69,47 @@ class CropPrice extends Model
         }
     }
 
+    public function getByDate($date): array
+    {
+        return $this->runQuery(
+            "SELECT
+            crop_price.id,
+            crop.name AS 'crop_name',
+            crop_price.low_price,
+            crop_price.high_price,
+            crop_market.name AS 'market_name',
+            crop_price.agri_officer_id AS 'agri_officer_id'
+            FROM crop_price
+            INNER JOIN crop ON crop_price.crop_id = crop.id
+            LEFT JOIN crop_market ON crop_market.id = crop_price.market_id
+            Where crop_price.date=?",
+            [$date]
+        )->fetchAll();
+    }
+
+    public function getMarketPricesByCropAndDate($cropId, $date, $agriOfficerId)
+    {
+        return $this->runQuery(
+            "SELECT crop_market.name AS market_name,
+            agri_officer.id, low_price, high_price FROM crop_price
+            LEFT JOIN crop_market ON crop_price.market_id = crop_market.id
+            LEFT JOIN agri_officer ON crop_price.agri_officer_id = agri_officer.id
+            WHERE (crop_price.crop_id = ? AND crop_price.date = ? AND agri_officer.id IS NULL)
+                  OR (crop_price.crop_id = ? AND crop_price.date = ? AND agri_officer.id = ?);",
+            [$cropId, $date, $cropId, $date, $agriOfficerId]
+        )->fetchAll();
+    }
+
+    public function addAgriOfficerPriceToDB(): bool
+    {
+        $result = $this->runQuery(
+            "INSERT INTO crop_price (crop_id, agri_officer_id, date,low_price, high_price) 
+    VALUES(?,?,?,?,?)",
+            [$this->cropId, $this->agriOfficerId, $this->date, $this->lowPrice, $this->highPrice]
+        );
+        return $result = true;
+    }
+
     public function getDataForCropAndMarket($cropId, $marketId): bool|array
     {
         $stmt = Model::select(

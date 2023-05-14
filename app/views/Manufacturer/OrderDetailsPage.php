@@ -120,7 +120,6 @@ include APP_ROOT . "/views/inc/components/Header.php";
                                                 $itemCount = 0;
                                                 foreach ($this->data['order-items'] as $orderItem) {
                                                     $itemCount += $orderItem->quantity;
-
                                                 }
                                                 echo $itemCount;
                                                 ?>
@@ -133,7 +132,6 @@ include APP_ROOT . "/views/inc/components/Header.php";
                                                 $Total = 0;
                                                 foreach ($this->data['order-items'] as $orderItem) {
                                                     $Total += $orderItem->total_amount;
-
                                                 }
                                                 echo $Total;
                                                 ?>
@@ -150,7 +148,6 @@ include APP_ROOT . "/views/inc/components/Header.php";
                                                 $Total = 0;
                                                 foreach ($this->data['order-items'] as $orderItem) {
                                                     $Total += $orderItem->total_amount;
-
                                                 }
                                                 echo $Total;
                                                 ?>
