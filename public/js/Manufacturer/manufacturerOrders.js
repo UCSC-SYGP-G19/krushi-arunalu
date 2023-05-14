@@ -2,11 +2,14 @@ let cropCategories = null;
 let crops = null;
 
 const producerDropdown = document.querySelector("#producer_dropdown");
-const cropCategoryDropdown = document.querySelector("#crop_category_dropdown");
+const cropCategoryDropdown = document.querySelector("#crop_category_name_dropdown");
 const cropDropdown = document.querySelector("#crop_dropdown");
+const buttonSubmit = document.querySelector("#btn-submit");
+const buttonUpdate = document.querySelector("#btn-update");
 
 const getCropCategoriesForSelectedProducer = () => {
     producerDropdown.addEventListener("change", (e) => {
+        buttonUpdate.setAttribute("disabled", "disabled");
         const selectedProducer = e.target.value;
         console.log(selectedProducer);
         fetchOptionsForCropCategorySelection(selectedProducer);
@@ -39,7 +42,7 @@ const setOptionsForCropCategorySelection = (data, producerId) => {
         data.forEach((element) => {
             let option = document.createElement("option");
             option.text = element.category_name;
-            option.value = element.crop_category;
+            option.value = element.crop_category_name;
             cropCategoryDropdown.add(option);
         });
         getCropsOfSelectedCategory(producerId);
@@ -85,6 +88,7 @@ const setOptionsForCropSelection = (data) => {
             option.value = element.crop;
             cropDropdown.add(option);
         });
+        buttonSubmit.removeAttribute("disabled");
     }
 }
 
@@ -94,3 +98,4 @@ document.addEventListener("DOMContentLoaded", () => {
 
 cropDropdown.setAttribute("disabled", "disabled");
 cropCategoryDropdown.setAttribute("disabled", "disabled");
+buttonSubmit.setAttribute("disabled", "disabled");

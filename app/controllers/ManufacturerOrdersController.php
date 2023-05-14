@@ -46,7 +46,7 @@ class ManufacturerOrdersController extends Controller
 
             $this->loadModel("ManufacturerOrder");
             $this->model->fillData([
-                'cropCategoryId' => $_POST['crop_category'],
+                'cropCategoryId' => $_POST['crop_category_name'],
                 'quantity' => $_POST['quantity'],
                 'unitPrice' => $_POST['unit_selling_price'],
                 'cropId' => $_POST['crop'],
@@ -119,12 +119,11 @@ class ManufacturerOrdersController extends Controller
 
             $this->loadModel("ManufacturerOrder");
             $this->model->fillData([
-                'cropCategoryId' => $_POST['crop_category'],
+                'cropCategoryId' => $_POST['crop_category_name'],
                 'quantity' => $_POST['quantity'],
                 'unitPrice' => $_POST['unit_selling_price'],
                 'cropId' => $_POST['crop'],
                 'producerId' => $_POST['producer'],
-                'date' => $_POST['date']
             ]);
 
             if ($this->model->updateDB($orderId)) {

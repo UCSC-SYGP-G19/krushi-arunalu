@@ -57,6 +57,20 @@ include APP_ROOT . "/views/inc/components/Header.php";
                                                     Mark As Delivered
                                                     </a>';
                                                 break;
+                                            case "Pending":
+                                                echo '<div class="px-1">
+                                                        <a class="btn-xs btn-outlined-primary-dark" 
+                                                        href = "' . URL_ROOT . '/manufacturer-orders/edit/' . $orderId . '">
+                                                        Edit
+                                                        </a>
+                                                      </div>';
+                                                echo '<div class="px-1">
+                                                        <a class="btn-xs btn-outlined-error" 
+                                                        href = "' . URL_ROOT . '/manufacturer-orders/delete/' . $orderId . '">
+                                                        Delete
+                                                        </a>
+                                                      </div>';
+                                                break;
                                             default:
                                                 break;
                                         }
@@ -90,7 +104,7 @@ include APP_ROOT . "/views/inc/components/Header.php";
                                             <td class="col-2 text-center"><?php echo $order->producer_name; ?></td>
                                             <td class="col-1"><?php renderStatus($order->status); ?></td>
                                             <td class="col-2 px-1 py-1">
-                                                <div class="row justify-content-center align-items-center p-1">
+                                                <div class="row justify-content-center align-items-center ">
                                                     <?php generateActions($order->order_id, $order->status) ?>
                                                 </div>
                                             </td>

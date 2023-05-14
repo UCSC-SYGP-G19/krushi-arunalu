@@ -30,7 +30,7 @@ class CropCategory extends Model
     public function getCropCategoriesByProducerId($producerId): array
     {
         return $this->runQuery("SELECT
-        cc.id AS crop_category,
+        cc.id AS crop_category_name,
         cc.name AS 'category_name'
         FROM crop_category cc
         INNER JOIN crop c ON cc.id = c.category_id

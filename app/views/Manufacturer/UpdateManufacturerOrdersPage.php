@@ -43,7 +43,6 @@ if (!isset($this->user)) {
                                                         "wrapperClass" => "col-4",
                                                         "label" => "Order Date",
                                                         "placeholder" => "Select order date",
-                                                        "type" => "date",
                                                         "value" => $this->data->order_date
                                                     ],
                                                     "crop_category_name" => [
@@ -102,6 +101,7 @@ if (!isset($this->user)) {
                                         <?php } ?>
                                         <div class="mb-3 text-center">
                                             <button class="btn-lg btn-primary-light mt-3 mx-2 text-center text-white"
+                                                    id="btn-update"
                                                     type="submit" name="submit_order" value="">Update
                                             </button>
                                             <button class="btn-lg btn-outlined-error mt-3 mx-2 text-center"
@@ -116,6 +116,7 @@ if (!isset($this->user)) {
                 </div>
             </main>
         </div>
-    </body>
+        <script src="<?php echo URL_ROOT ?>/public/js/Manufacturer/manufacturerOrders.js" defer></script>
+</body>
 
 

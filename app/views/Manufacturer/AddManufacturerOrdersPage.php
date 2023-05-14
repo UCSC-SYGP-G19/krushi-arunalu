@@ -44,7 +44,7 @@ if (!isset($this->user)) {
                                                         "placeholder" => "Select order date",
                                                         "type" => "date",
                                                     ],
-                                                    "crop_category" => [
+                                                    "crop_category_name" => [
                                                         "element" => SelectField::class,
                                                         "wrapperClass" => "col-6",
                                                         "label" => "Category",
@@ -96,6 +96,7 @@ if (!isset($this->user)) {
                                         <?php } ?>
                                         <div class="mb-3 text-center">
                                             <button class="btn-lg btn-primary-light mt-3 mx-2 text-center text-white"
+                                                    id="btn-submit"
                                                     type="submit" name="submit_order" value="">Submit
                                             </button>
                                             <button class="btn-lg btn-outlined-error mt-3 mx-2 text-center"

@@ -104,7 +104,7 @@ class ManufacturerOrder extends Model
         return $this->runQuery("SELECT 
             id as 'order_id', 
             producer_id as 'producer_id', 
-            date as 'order_date', 
+            DATE (date) as 'order_date', 
             crop_category_id as 'crop_category_id', 
             crop_id as 'crop_id',
             unit_selling_price as 'crop_unit_price',
@@ -129,14 +129,13 @@ class ManufacturerOrder extends Model
         $result = $this->runQuery(
             "UPDATE manufacturer_order SET 
                               quantity = ?,
-                              date = ?,
                               unit_selling_price = ?,
                               crop_category_id = ?,
                               crop_id = ?,
                               producer_id = ? 
                           WHERE manufacturer_order.id = ?",
-            [$this->quantity, $this->date, $this->unitPrice, $this->cropCategoryId, $this->cropId,
-            $this->producerId,
+            [$this->quantity, $this->unitPrice, $this->cropCategoryId, $this->cropId,
+                $this->producerId,
                 $id]
         );
         return $result == true;
