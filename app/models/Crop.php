@@ -47,6 +47,23 @@ class Crop extends Model
         return [];
     }
 
+    public function getCropsByCategoryIdForOrders($categoryId, $producerId): array
+    {
+        return $this->runQuery("SELECT
+        c.id AS crop,
+        c.name AS 'crop_name',
+        h.expected_price AS 'unit_price',
+        h.remaining_quantity AS 'remaining_qty'
+        FROM crop c
+        INNER JOIN crop_category cc ON cc.id = c.category_id
+        INNER JOIN cultivation cu ON c.id = cu.crop_id
+        INNER JOIN land l ON cu.land_id = l.id
+        INNER JOIN harvest h ON h.cultivation_id = cu.id
+        INNER JOIN producer p ON l.owner_id = p.id
+        WHERE cc.id = ? AND cu.status = ? AND p.id = ?
+        ", [$categoryId, "current", $producerId])->fetchAll();
+    }
+
     /**
      * @return int|null
      */

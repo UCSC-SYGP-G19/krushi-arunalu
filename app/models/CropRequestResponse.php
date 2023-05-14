@@ -106,7 +106,8 @@ class CropRequestResponse extends Model
                 "crop_request_response.accepted_delivery_date AS accepted_delivery_date",
                 "crop_request_response.accepted_price AS accepted_price",
                 "crop_request_response.accepted_quantity AS accepted_quantity",
-                "crop_request_response.remarks AS remarks"
+                "crop_request_response.remarks AS remarks",
+                "crop_request_response.status AS status"
             ],
             where: ["crop_request_response.crop_request_id" => $cropRequestId],
             joins: [
@@ -120,6 +121,31 @@ class CropRequestResponse extends Model
             return $stmt->fetchAll();
         }
         return [];
+    }
+
+    public function getResponseDetailsById($responseId): ?object
+    {
+        return $this->runQuery("SELECT
+        crr.producer_id AS 'producer_id',
+        crr.accepted_price AS 'price',
+        crr.accepted_quantity AS 'quantity',
+        crr.status AS 'status',
+        cr.crop_id AS 'crop_id',
+        c.category_id AS 'category_id'
+        FROM crop_request_response crr
+        INNER JOIN crop_request cr ON crr.crop_request_id = cr.id
+        INNER JOIN crop c ON cr.crop_id = c.id
+        WHERE crr.id = ?
+        ", [$responseId])->fetch();
+    }
+
+    public function updateStatusInDb($responseId): bool
+    {
+        return $this->update(
+            table: "crop_request_response",
+            data: ["status" => "Accepted"],
+            where: ["id" => $responseId]
+        ) == 1;
     }
 
     /**
