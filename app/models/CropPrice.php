@@ -13,14 +13,15 @@ use app\core\Model;
 class CropPrice extends Model
 {
     public function __construct(
-        private ?int $id = null,
-        private ?int $cropId = null,
-        private ?int $marketId = null,
-        private ?int $agriOfficerId = null,
+        private ?int    $id = null,
+        private ?int    $cropId = null,
+        private ?int    $marketId = null,
+        private ?int    $agriOfficerId = null,
         private ?string $date = null,
-        private ?float $lowPrice = null,
-        private ?float $highPrice = null,
-    ) {
+        private ?float  $lowPrice = null,
+        private ?float  $highPrice = null,
+    )
+    {
     }
 
     public function batchInsertSingleMarketPricesToDb($marketId, $date, $data)
@@ -105,6 +106,7 @@ class CropPrice extends Model
             [$this->cropId, $this->agriOfficerId, $this->date, $this->lowPrice, $this->highPrice]
         );
         return $result = true;
+    }
 
     public function getDataForCropAndMarket($cropId, $marketId): bool|array
     {
@@ -183,7 +185,6 @@ class CropPrice extends Model
     /**
      * @return int|null
      */
-
     public function getId(): ?int
     {
         return $this->id;
@@ -192,7 +193,6 @@ class CropPrice extends Model
     /**
      * @param int|null $id
      */
-
     public function setId(?int $id): void
     {
         $this->id = $id;
@@ -201,7 +201,6 @@ class CropPrice extends Model
     /**
      * @return int|null
      */
-
     public function getCropId(): ?int
     {
         return $this->cropId;
@@ -210,7 +209,6 @@ class CropPrice extends Model
     /**
      * @param int|null $cropId
      */
-
     public function setCropId(?int $cropId): void
     {
         $this->cropId = $cropId;

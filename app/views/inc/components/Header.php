@@ -21,7 +21,7 @@ use app\helpers\Flash;
     <link rel="icon" type="image/png" sizes="16x16" href="<?php echo URL_ROOT ?>/public/favicons/favicon-16x16.png">
     <link rel="manifest" href="<?php echo URL_ROOT ?>/public/favicons/site.webmanifest">
 
-    <script>          
+    <script>
       const URL_ROOT = '<?php echo URL_ROOT ?>';
       const SITE_NAME = '<?php echo SITE_NAME ?>';
 
