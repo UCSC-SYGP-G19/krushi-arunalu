@@ -13,13 +13,12 @@ use app\core\Model;
 class CultivationQuestionResponse extends Model
 {
     public function __construct(
-        private ?int    $id = null,
-        private ?int    $questionId = null,
-        private ?int    $agriOfficerId = null,
+        private ?int $id = null,
+        private ?int $questionId = null,
+        private ?int $agriOfficerId = null,
         private ?string $respondedDateTime = null,
         private ?string $content = null,
-    )
-    {
+    ) {
         //body of the constructor
     }
 

@@ -150,10 +150,10 @@ class ManufacturerOrder extends Model
     public function updateStatusAsDelivered($orderId): bool
     {
         return $this->update(
-                table: "manufacturer_order",
-                data: ["status" => "Delivered"],
-                where: ["id" => $orderId]
-            ) == 1;
+            table: "manufacturer_order",
+            data: ["status" => "Delivered"],
+            where: ["id" => $orderId]
+        ) == 1;
     }
 
     /**

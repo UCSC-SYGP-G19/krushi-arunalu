@@ -61,7 +61,8 @@ class CropPricesController extends Controller
             $marketPricesForCrop = $this->model->getMarketPricesByCropAndDate(
                 $crop->id,
                 $date,
-                Session::getSession()->id);
+                Session::getSession()->id
+            );
             $output[$crop->id] = $marketPricesForCrop;
         }
 
@@ -88,12 +89,12 @@ class CropPricesController extends Controller
         $res = $this->model->addAgriOfficerPriceToDB();
         if ($res) {
             http_response_code(201);
-            $this->sendJson(
+            $this->sendArrayAsJson(
                 ["message" => "Price added successfully"]
             );
         } else {
             http_response_code(500);
-            $this->sendJson(
+            $this->sendArrayAsJson(
                 ["message" => "Operation failed"]
             );
         }

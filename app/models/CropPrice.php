@@ -13,15 +13,14 @@ use app\core\Model;
 class CropPrice extends Model
 {
     public function __construct(
-        private ?int    $id = null,
-        private ?int    $cropId = null,
-        private ?int    $marketId = null,
-        private ?int    $agriOfficerId = null,
+        private ?int $id = null,
+        private ?int $cropId = null,
+        private ?int $marketId = null,
+        private ?int $agriOfficerId = null,
         private ?string $date = null,
-        private ?float  $lowPrice = null,
-        private ?float  $highPrice = null,
-    )
-    {
+        private ?float $lowPrice = null,
+        private ?float $highPrice = null,
+    ) {
     }
 
     public function batchInsertSingleMarketPricesToDb($marketId, $date, $data)
@@ -83,7 +82,9 @@ class CropPrice extends Model
             FROM crop_price
             INNER JOIN crop ON crop_price.crop_id = crop.id
             LEFT JOIN crop_market ON crop_market.id = crop_price.market_id
-            Where crop_price.date=?", [$date])->fetchAll();
+            Where crop_price.date=?",
+            [$date]
+        )->fetchAll();
     }
 
     public function getMarketPricesByCropAndDate($cropId, $date, $agriOfficerId)
@@ -95,7 +96,8 @@ class CropPrice extends Model
             LEFT JOIN agri_officer ON crop_price.agri_officer_id = agri_officer.id
             WHERE (crop_price.crop_id = ? AND crop_price.date = ? AND agri_officer.id IS NULL)
                   OR (crop_price.crop_id = ? AND crop_price.date = ? AND agri_officer.id = ?);",
-            [$cropId, $date, $cropId, $date, $agriOfficerId])->fetchAll();
+            [$cropId, $date, $cropId, $date, $agriOfficerId]
+        )->fetchAll();
     }
 
     public function addAgriOfficerPriceToDB(): bool

@@ -131,7 +131,7 @@ include APP_ROOT . "/views/inc/components/Header.php";
                                                     Delete
                                                 </button>
                                             </a>
-                                            <?php } ?>
+                                        <?php } ?>
                                         </div>
                                     </section>
 

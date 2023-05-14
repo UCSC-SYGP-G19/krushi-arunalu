@@ -13,13 +13,12 @@ use app\core\Model;
 class CustomerOrderItem extends Model
 {
     public function __construct(
-        private ?int   $id = null,
+        private ?int $id = null,
         private ?float $quantity = null,
         private ?float $unitPrice = null,
-        private ?int   $productId = null,
-        private ?int   $orderId = null
-    )
-    {
+        private ?int $productId = null,
+        private ?int $orderId = null
+    ) {
     }
 
     public function addToDB(): bool
