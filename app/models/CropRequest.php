@@ -28,6 +28,24 @@ class CropRequest extends Model
     ) {
     }
 
+    public function addCropRequestsToDb(): bool
+    {
+        return $this->insert(
+            table: "crop_request",
+            data: [
+                "manufacturer_id" => $this->manufacturerId,
+                "crop_id" => $this->cropId,
+                "required_quantity" => $this->requiredQuantity,
+                "low_price" => $this->lowPrice,
+                "high_price" => $this->highPrice,
+                "required_date" => $this->requiredDate,
+                "description" => $this->description,
+                "preferred_district" => $this->preferredDistrict,
+                "allow_multiple_producers" => $this->allowMultipleProducers,
+            ]
+        );
+    }
+
     public function getRequestById($requestId): ?object
     {
         $stmt = Model::select(

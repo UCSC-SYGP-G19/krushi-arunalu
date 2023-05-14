@@ -33,6 +33,18 @@ class Crop extends Model
         return [];
     }
 
+    public function getCropsByCategoryId($categoryId): ?array
+    {
+        $stmt = Model::select(
+            table: "crop",
+            columns: ["id", "name"],
+            where: ["category_id" => $categoryId]
+        );
+        if ($stmt) {
+            return $stmt->fetchAll();
+        }
+        return null;
+  
     public function getCultivableCropsForLand($landId): array
     {
 

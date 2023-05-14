@@ -228,6 +228,12 @@ const placeCropOrder = async (responseId) => {
 }
 
 document.addEventListener("DOMContentLoaded", () => {
+  if (cropRequests == null) {
+    requestList.innerHTML = renderMessageCard("Loading");
+    fetchCropRequests();
+  } else {
+    renderCropRequests(data);
+  }
   requestList.innerHTML = renderMessageCard("Loading...");
   fetchCropRequests();
 });
