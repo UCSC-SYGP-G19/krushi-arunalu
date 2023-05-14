@@ -101,10 +101,31 @@ class Cultivation extends Model
         return [];
     }
 
+    public static function getAllCultivationsDetailsForAgriOfficers($agriOfficerDistrictID): ?array
+    {
+        $stmt = Model::select(
+            table: "cultivation",
+            columns: [
+                "crop.name AS crop_name",
+                "cultivation.land_id AS land_id",
+                "cultivation.cultivated_area AS cultivated_area",
+                "cultivation.cultivated_date AS cultivated_date",
+                "cultivation.expected_harvest_date AS expected_harvest_date"],
+            where: ["land.district" => $agriOfficerDistrictID],
+            joins: ["crop" => "cultivation.id",
+                "land" => "cultivation.land_id",
+                "district" => "land.district"]
+        );
+        if ($stmt) {
+            return $stmt->fetchAll();
+        }
+        return null;
+    }
+
     public function addToDB(): bool
     {
 //        $result = $this->runQuery(
-//            "INSERT into cultivation (crop_id, land_id, cultivated_date, cultivated_quantity, status,
+//            "INSERT into cultivation (crop_id, land_id, cultivated_date, cultivated_area, status,
 //                         expected_harvest_date) VALUES (?,?,?,?,?,?)",
 //            [$this->cropId, $this->landId, $this->cultivatedDate, $this->cultivatedQuantity, $this->status,
 //                $this->expectedHarvestDate]
@@ -154,24 +175,6 @@ class Cultivation extends Model
     public function deleteFromDB(): bool
     {
         return $this->delete(table: "cultivation", where: ["id" => $this->id]) == 1;
-    }
-
-    public function getAllCultivationDetailsForAgriOfficers($agriOfficerDistrictID): array
-    {
-        $stmt = Model::select(
-            table: "cultivation",
-            columns: [
-                "crop.name",
-                "cultivation.land_id",
-                "land.area_in_hectares",
-                "cultivation.cultivated_quantity",
-                "cultivation.expected_harvest_date"],
-            where: ["land.district" => $agriOfficerDistrictID],
-            joins: ["crop" => "cultivation.id",
-                "land" => "cultivation.land_id",
-                "district" => "land.district"]
-        );
-        return [];
     }
 
     // Getters and Setters

@@ -63,11 +63,11 @@ include APP_ROOT . "/views/inc/components/Header.php";
                                     <div class="row gap-2">
                                         <?php
                                         $formData = [
-                                            "cultivated_quantity" => [
+                                            "cultivated_area" => [
                                                 "element" => InputField::class,
                                                 "wrapperClass" => "col-4",
-                                                "label" => "Cultivated quantity",
-                                                "placeholder" => "Enter cultivated quantity (KG)",
+                                                "label" => "Cultivated area",
+                                                "placeholder" => "Enter cultivated area (Acres)",
                                                 "type" => "number",
                                             ],
                                             "cultivated_date" => [

@@ -66,11 +66,19 @@ class Controller
     protected function refillValuesAndShowError($alertMessage = "Please correct the errors in the form"): void
     {
         $this->view->fieldValues = $_POST;
+        $this->view->fieldValues["password"] = null;
+        $this->view->fieldValues["confirm_password"] = null;
         $this->view->error = $alertMessage;
     }
 
     // Return a JSON response to the client
-    protected function sendJson(array $data): void
+    protected function sendArrayAsJson(array $data): void
+    {
+        header('Content-Type: application/json');
+        echo json_encode($data);
+    }
+
+    protected function sendObjectAsJson(object $data): void
     {
         header('Content-Type: application/json');
         echo json_encode($data);

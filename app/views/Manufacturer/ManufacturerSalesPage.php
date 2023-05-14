@@ -38,80 +38,16 @@ include APP_ROOT . "/views/inc/components/Header.php";
                                 <table>
                                     <thead>
                                     <tr class="row">
-                                        <th class="col-2">Order ID</th>
+                                        <th class="col-1">Order ID</th>
                                         <th class="col-2">Products</th>
                                         <th class="col-2">Order Date</th>
                                         <th class="col-2">Order Total</th>
-                                        <th class="col-2">Status</th>
+                                        <th class="col-1">Status</th>
+                                        <th class="col-2"></th>
                                         <th class="col-2"></th>
                                     </tr>
                                     </thead>
-                                    <tbody>
-                                        <tr class="row">
-                                            <td class="col-2">1</td>
-                                            <td class="col-2 d-inline-flex justify-content-center">
-                                                <?php echo '<div class="mb-1">
-                                    ' . '<img alt="Product image" height="100%" 
-                                                width="100%" src="' . URL_ROOT .
-                                                    '/public/img/products/hair_care_cool.jpg">' . '
-                                    </div>'
-                                                ?>
-                                                <?php echo '<div class="mb-1">
-                                    ' . '<img alt="Product image" height="100%" 
-                                                width="100%" src="' . URL_ROOT .
-                                                    '/public/img/products/coconut_oil.jpg">' . '
-                                    </div>'
-                                                ?>
-                                                <?php echo '<div class="mb-1">
-                                    ' . '<img alt="Product image" height="100%" 
-                                                width="100%" src="' . URL_ROOT .
-                                                    '/public/img/products/hanging-bowl.jpg">' . '
-                                    </div>'
-                                                ?>
-                                            </td>
-                                            <td class="col-2">12-01-2023</td>
-                                            <td class="col-2">4200.00</td>
-                                            <td class="col-2">Pending</td>
-                                            <td class="col-2 pr-3">
-                                                <div class="row align-items-center justify-content-center gap-1">
-                                                    <a href='manufacturer-sales/viewOrderDetails/'
-                                                       class="btn-xs btn-outlined-primary-dark text-center">
-                                                        View Details
-                                                    </a>
-                                                </div>
-                                            </td>
-                                        </tr>
-                                        <tr class="row">
-                                            <td class="col-2">2</td>
-                                            <td class="col-2 d-inline-flex justify-content-center">
-                                                <?php echo '<div class="mb-1">
-                                    ' . '<img alt="Product image" height="100%" 
-                                                width="100%" src="' . URL_ROOT . '/public/img/products/fadna.jpg">' . '
-                                    </div>'
-                                                ?>
-                                                <?php echo '<div class="mb-1">
-                                    ' . '<img alt="Product image" height="100%" 
-                                                width="100%" src="' . URL_ROOT . '/public/img/products/fadna.jpg">' . '
-                                    </div>'
-                                                ?>
-                                                <?php echo '<div class="mb-1">
-                                    ' . '<img alt="Product image" height="100%" 
-                                                width="100%" src="' . URL_ROOT . '/public/img/products/sumudu.jpg">' . '
-                                    </div>'
-                                                ?>
-                                            </td>
-                                            <td class="col-2">31-12-2023</td>
-                                            <td class="col-2">400.00</td>
-                                            <td class="col-2">Pending</td>
-                                            <td class="col-2 pr-3">
-                                                <div class="row align-items-center justify-content-center gap-1">
-                                                    <a href='manufacturer-sales/viewOrderDetails/'
-                                                       class="btn-xs btn-outlined-primary-dark text-center">
-                                                        View Details
-                                                    </a>
-                                                </div>
-                                            </td>
-                                        </tr>
+                                    <tbody id="sales">
                                     </tbody>
                                     <tfoot>
                                     <tr class="row justify-content-end pagination">
@@ -154,6 +90,7 @@ include APP_ROOT . "/views/inc/components/Header.php";
         </main>
     </div>
     </body>
+    <script src="<?php echo URL_ROOT ?>/public/js/Manufacturer/sales.js" defer></script>
 <?php
 include APP_ROOT . "/views/inc/components/EndingTag.php";
 
