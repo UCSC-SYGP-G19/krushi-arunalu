@@ -13,14 +13,15 @@ use app\core\Model;
 class Cultivation extends Model
 {
     public function __construct(
-        private ?int $id = null,
-        private ?int $cropId = null,
-        private ?int $landId = null,
+        private ?int    $id = null,
+        private ?int    $cropId = null,
+        private ?int    $landId = null,
         private ?string $cultivatedDate = null,
-        private ?float $cultivatedQuantity = null,
+        private ?float  $cultivatedQuantity = null,
         private ?string $status = null,
         private ?string $expectedHarvestDate = null,
-    ) {
+    )
+    {
     }
 
     public static function getByIdFromDB($cultivationId): ?object
@@ -31,7 +32,7 @@ class Cultivation extends Model
 //            land.name as 'land_name',
 //            crop.id as 'crop_id',
 //            crop.name as 'crop_name',
-//            cultivation.cultivated_area as 'cultivated_area',
+//            cultivation.cultivated_quantity as 'cultivated_quantity',
 //            cultivation.cultivated_date as 'cultivated_date',
 //            cultivation.expected_harvest_date as 'expected_harvest_date',
 //            cultivation.status as 'status'
@@ -44,7 +45,7 @@ class Cultivation extends Model
             table: "cultivation",
             columns: [
                 "cultivation.id", "land.id", "land.name", "crop.id", "crop.name", "crop.category_id",
-                "cultivation.cultivated_area AS cultivated_area",
+                "cultivation.cultivated_quantity AS cultivated_quantity",
                 "cultivation.cultivated_date AS cultivated_date",
                 "cultivation.expected_harvest_date AS expected_harvest_date",
                 "cultivation.status AS status"
@@ -70,7 +71,7 @@ class Cultivation extends Model
 //            land.name as 'land_name',
 //            crop.id as 'crop_id',
 //            crop.name as 'crop_name',
-//            cultivation.cultivated_area as 'cultivated_area',
+//            cultivation.cultivated_quantity as 'cultivated_quantity',
 //            cultivation.cultivated_date as 'cultivated_date',
 //            cultivation.expected_harvest_date as 'expected_harvest_date',
 //            cultivation.status as 'status'
@@ -83,7 +84,7 @@ class Cultivation extends Model
             table: "cultivation",
             columns: [
                 "cultivation.id", "land.id", "land.name", "crop.id", "crop.name",
-                "cultivation.cultivated_area AS cultivated_area",
+                "cultivation.cultivated_quantity AS cultivated_quantity",
                 "cultivation.cultivated_date AS cultivated_date",
                 "cultivation.expected_harvest_date AS expected_harvest_date",
                 "cultivation.status AS status"
@@ -98,6 +99,27 @@ class Cultivation extends Model
             return $stmt->fetchAll();
         }
         return [];
+    }
+
+    public static function getAllCultivationsDetailsForAgriOfficers($agriOfficerDistrictID): ?array
+    {
+        $stmt = Model::select(
+            table: "cultivation",
+            columns: [
+                "crop.name AS crop_name",
+                "cultivation.land_id AS land_id",
+                "cultivation.cultivated_area AS cultivated_area",
+                "cultivation.cultivated_date AS cultivated_date",
+                "cultivation.expected_harvest_date AS expected_harvest_date"],
+            where: ["land.district" => $agriOfficerDistrictID],
+            joins: ["crop" => "cultivation.id",
+                "land" => "cultivation.land_id",
+                "district" => "land.district"]
+        );
+        if ($stmt) {
+            return $stmt->fetchAll();
+        }
+        return null;
     }
 
     public function addToDB(): bool
@@ -116,7 +138,7 @@ class Cultivation extends Model
                 "crop_id" => $this->cropId,
                 "land_id" => $this->landId,
                 "cultivated_date" => $this->cultivatedDate,
-                "cultivated_area" => $this->cultivatedQuantity,
+                "cultivated_quantity" => $this->cultivatedQuantity,
                 "status" => $this->status,
                 "expected_harvest_date" => $this->expectedHarvestDate,
             ]
@@ -134,16 +156,6 @@ class Cultivation extends Model
             WHERE land.owner_id = ?", [$producerId])->fetchAll();
     }
 
-    public function getCurrentCropIdsByProducerIdFromDB($producerId): array
-    {
-        return $this->runQuery("SELECT 
-            crop.id AS 'id'
-            FROM cultivation
-            INNER JOIN land ON cultivation.land_id = land.id
-            INNER JOIN crop ON cultivation.crop_id = crop.id
-            WHERE land.owner_id = ? AND cultivation.status = 'Current'", [$producerId])->fetchAll();
-    }
-
     public function updateInDB(): bool
     {
         return $this->update(
@@ -152,7 +164,7 @@ class Cultivation extends Model
                 "crop_id" => $this->cropId,
                 "land_id" => $this->landId,
                 "cultivated_date" => $this->cultivatedDate,
-                "cultivated_area" => $this->cultivatedQuantity,
+                "cultivated_quantity" => $this->cultivatedQuantity,
                 "status" => $this->status,
                 "expected_harvest_date" => $this->expectedHarvestDate
             ],
@@ -163,48 +175,6 @@ class Cultivation extends Model
     public function deleteFromDB(): bool
     {
         return $this->delete(table: "cultivation", where: ["id" => $this->id]) == 1;
-    }
-
-    public static function getAllCultivationDetailsForAgriOfficers($agriOfficerDistrictID): array
-    {
-        $stmt = Model::select(
-            table: "cultivation",
-            columns: [
-                "crop.name",
-                "cultivation.land_id",
-                "land.area_in_hectares",
-                "cultivation.cultivated_area",
-                "cultivation.expected_harvest_date"],
-            where: ["land.district" => $agriOfficerDistrictID],
-            joins: ["crop" => "cultivation.id",
-                "land" => "cultivation.land_id",
-                "district" => "land.district"]
-        );
-        if ($stmt) {
-            return $stmt->fetchAll();
-        } else {
-            return [];
-        }
-    }
-
-    public function getCurrentCultivationData($landId): array
-    {
-        $stmt = Model::select(
-            table: "cultivation",
-            columns: [
-                "crop.name",
-                "cultivation.cultivated_area"],
-            where: ["land.id" => $landId,
-                "cultivation.status" => "Past"
-            ],
-            joins: ["land" => "cultivation.land_id",
-                "crop" => "cultivation.crop_id"]
-        );
-        if ($stmt) {
-            return $stmt->fetchAll();
-        } else {
-            return [];
-        }
     }
 
     // Getters and Setters
