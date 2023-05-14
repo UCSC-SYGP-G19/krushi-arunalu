@@ -62,7 +62,6 @@ use app\helpers\Flash;
         setTimeout(() => {
             toast.classList.remove('enter');
             toast.classList.add('exit');
-            z
           }
           , duration);
         setTimeout(() => {

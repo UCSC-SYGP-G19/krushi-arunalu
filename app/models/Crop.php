@@ -44,14 +44,15 @@ class Crop extends Model
             return $stmt->fetchAll();
         }
         return null;
-  
+    }
+
     public function getCultivableCropsForLand($landId): array
     {
 
         $stmt = $this->runQuery("
                 SELECT DISTINCT crop.id AS crop_id, crop.name AS crop_name, crop.image_url AS crop_image_url FROM `crop`
                 INNER JOIN crop_district on crop.id = crop_district.crop_id
-                INNER JOIN land ON land.district = crop_district.district_id
+                INNER JOIN land ON land.district_id = crop_district.district_id
                 WHERE land.id = ?", [$landId]);
         if ($stmt) {
             return $stmt->fetchAll();
