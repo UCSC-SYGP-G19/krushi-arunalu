@@ -1,5 +1,6 @@
 <?php
 
+use app\views\inc\components\ImageUpload;
 use app\views\inc\components\InputField;
 use app\views\inc\components\SelectField;
 use app\views\inc\components\TextArea;
@@ -544,6 +545,12 @@ include APP_ROOT . "/views/inc/components/LoggedOutNavbar.php"
                                             "label" => "Confirm password",
                                             "placeholder" => "Re-enter new password",
                                             "type" => "password",
+                                        ],
+                                        "cover_image" => [
+                                            "element" => ImageUpload::class,
+                                            "wrapperClass" => "col-12",
+                                            "label" => "Company Cover",
+                                            "placeholder" => "Upload company cover",
                                         ],
                                     ];
 
