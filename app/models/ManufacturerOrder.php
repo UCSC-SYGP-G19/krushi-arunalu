@@ -29,7 +29,7 @@ class ManufacturerOrder extends Model
     {
         return $this->runQuery("SELECT 
             mo.id as 'order_id', 
-            mo.date as 'date', 
+            DATE(mo.date) as 'date', 
             mo.quantity as 'quantity', 
             mo.unit_selling_price as 'unit_selling_price', 
             mo.status as 'status',
@@ -104,7 +104,7 @@ class ManufacturerOrder extends Model
         return $this->runQuery("SELECT 
             id as 'order_id', 
             producer_id as 'producer_id', 
-            date as 'order_date', 
+            DATE (date) as 'order_date', 
             crop_category_id as 'crop_category_id', 
             crop_id as 'crop_id',
             unit_selling_price as 'crop_unit_price',
@@ -113,28 +113,12 @@ class ManufacturerOrder extends Model
             WHERE id = ?", [$orderId]) ->fetch();
     }
 
-    public function getByOrderStatus($manufacturerId): array
-    {
-        return $this->runQuery("SELECT
-        mo.crop_id as 'crop_id',
-        c.name as 'crop_name',
-        cc.name as 'category_name',
-        (SELECT SUM(mo.quantity)) as 'purchased_qty',
-        (SELECT MAX(mo.date)) as 'last_purchased_date'
-        FROM manufacturer_order mo       
-        INNER JOIN crop c ON c.id = mo.crop_id
-        INNER JOIN crop_category cc ON cc.id = mo.crop_category_id
-        WHERE mo.status = ? AND mo.manufacturer_id = ? 
-        GROUP BY mo.crop_id
-        ", ["Received", $manufacturerId])->fetchAll();
-    }
-
     public function addToDB($manufacturerId): bool
     {
         $result = $this->runQuery(
-            "INSERT INTO manufacturer_order (quantity, date, unit_selling_price, crop_category_id, crop_id, 
-                                producer_id, manufacturer_id) VALUES (?,?,?,?,?,?,?)",
-            [$this->quantity, $this->date, $this->unitPrice, $this->cropCategoryId, $this->cropId, $this->producerId,
+            "INSERT INTO manufacturer_order (quantity, unit_selling_price, crop_category_id, crop_id, 
+                                producer_id, manufacturer_id) VALUES (?,?,?,?,?,?)",
+            [$this->quantity, $this->unitPrice, $this->cropCategoryId, $this->cropId, $this->producerId,
                 $manufacturerId]
         );
         return $result == true;
@@ -145,15 +129,14 @@ class ManufacturerOrder extends Model
         $result = $this->runQuery(
             "UPDATE manufacturer_order SET 
                               quantity = ?,
-                              date = ?,
                               unit_selling_price = ?,
                               crop_category_id = ?,
                               crop_id = ?,
                               producer_id = ? 
                           WHERE manufacturer_order.id = ?",
-            [$this->quantity, $this->date, $this->unitPrice, $this->cropCategoryId, $this->cropId,
-            $this->producerId,
-            $id]
+            [$this->quantity, $this->unitPrice, $this->cropCategoryId, $this->cropId,
+                $this->producerId,
+                $id]
         );
         return $result == true;
     }
@@ -162,6 +145,15 @@ class ManufacturerOrder extends Model
     {
         $result = $this->runQuery("DELETE FROM manufacturer_order WHERE manufacturer_order.id = ?", [$id]);
         return $result == true;
+    }
+
+    public function updateStatusAsDelivered($orderId): bool
+    {
+        return $this->update(
+                table: "manufacturer_order",
+                data: ["status" => "Delivered"],
+                where: ["id" => $orderId]
+            ) == 1;
     }
 
     /**

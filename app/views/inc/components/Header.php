@@ -22,17 +22,56 @@ use app\helpers\Flash;
     <link rel="manifest" href="<?php echo URL_ROOT ?>/public/favicons/site.webmanifest">
 
     <script>
-        const URL_ROOT = '<?php echo URL_ROOT ?>';
-        const SITE_NAME = '<?php echo SITE_NAME ?>';
-        let message = '<?php echo Flash::getMessage() ?>'
-        if (message === '') {
-            message = null;
+      const URL_ROOT = '<?php echo URL_ROOT ?>';
+      const SITE_NAME = '<?php echo SITE_NAME ?>';
+
+      let message = '<?php echo Flash::getMessage() ?>'
+      if (message === '') {
+        message = null;
+      } else {
+        message = JSON.parse(message);
+      }
+
+      let toastMessage = '<?php echo Flash::getToastMessage() ?>'
+      if (toastMessage === '') {
+        toastMessage = null;
+      } else {
+        toastMessage = JSON.parse(toastMessage);
+      }
+
+      function toast(type, title = "", content, duration = 3000) {
+        const body = document.querySelector('body');
+        const toast = document.createElement('aside');
+
+        toast.classList.add('toast');
+        toast.classList.add('enter');
+
+        if (type === 'success') {
+          toast.innerHTML = `<div class="check"></div>`;
+        } else if (type === 'error') {
+          toast.innerHTML = `<div class="error"></div>`;
+        } else if (type === 'loading') {
+          toast.innerHTML = `<div class="loading"></div>`;
         } else {
-            message = JSON.parse(message);
+          toast.innerHTML = ``;
         }
 
-        function spinnerHtml() {
-            return `
+        toast.innerHTML += `<span> <strong>${title} </strong>${content} </span>`;
+
+        body.appendChild(toast);
+        setTimeout(() => {
+            toast.classList.remove('enter');
+            toast.classList.add('exit');
+            z
+          }
+          , duration);
+        setTimeout(() => {
+          toast.remove();
+        }, duration + 500);
+      }
+
+      function spinnerHtml() {
+        return `
             <div class="justify-content-center align-items-center d-flex min-h-100 p-4">
                 <svg width="48" height="48" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                     <style>.spinner_7mtw{transform-origin:center;animation:spinner_jgYN .6s linear infinite}@keyframes spinner_jgYN{100%{transform:rotate(360deg)}}</style>
@@ -40,7 +79,7 @@ use app\helpers\Flash;
                 </svg>
             </div>
             `;
-        }
+      }
     </script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <!--    <script src="sweetalert2.all.min.js"></script>-->

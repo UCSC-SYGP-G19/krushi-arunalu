@@ -31,7 +31,8 @@ class Database
         string $dbName = DB_NAME,
         string $dbUser = DB_USER,
         string $dbPassword = DB_PASSWORD,
-        array $options = []
+        array $options = [],
+        bool $useSingleton = true
     ): ?PDO {
         $default_options = [
             PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_OBJ,
@@ -42,6 +43,10 @@ class Database
         $dsn = $dbType . ":host=$dbHost;dbname=$dbName;port=$dbPort";
 
         try {
+            if (!$useSingleton) {
+                return new PDO($dsn, $dbUser, $dbPassword, $options);
+            }
+
             if (!isset(self::$pdo)) {
                 self::$pdo = new PDO($dsn, $dbUser, $dbPassword, $options);
             }

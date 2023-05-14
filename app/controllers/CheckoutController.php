@@ -44,7 +44,7 @@ class CheckoutController extends Controller
                 $shoppingCart = $this->model->getAllByCustomerIdFromDB(Session::getSession()->id);
 
                 foreach ($shoppingCart as $cartEntry) {
-                    $this->loadModel("CustomerOrderEntry");
+                    $this->loadModel("CustomerOrderItem");
                     $this->model->fillData([
                         'quantity' => $cartEntry->quantity,
                         'unitPrice' => $cartEntry->product_unit_selling_price,

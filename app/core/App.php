@@ -86,7 +86,7 @@ class App
             if (!in_array($this->url[0], PROTECTED_ROUTES["Common"])) {
                 $user = Session::getSession();
                 if ($user == null) {
-                    Util::redirect('login');
+                    Util::redirect(URL_ROOT . '/login');
                     exit;
                 } else {
                     if (!in_array($this->url[0], PROTECTED_ROUTES[$user->role] ?? [])) {

@@ -209,7 +209,7 @@ include APP_ROOT . "/views/inc/components/Header.php";
             ?>
         </main>
     </div>
-    <script src="<?php echo URL_ROOT ?>/public/js/hiddenProducts.js" defer></script>
+    <script src="<?php echo URL_ROOT ?>/public/js/Manufacturer/hiddenProducts.js" defer></script>
     </body>
 <?php
 include APP_ROOT . "/views/inc/components/EndingTag.php";

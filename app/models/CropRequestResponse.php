@@ -95,6 +95,59 @@ class CropRequestResponse extends Model
         );
     }
 
+    public function getResponsesForRequestFromDB($cropRequestId): array
+    {
+        $stmt = Model::select(
+            table: "crop_request_response",
+            columns: [
+                "crop_request_response.id AS response_id", "crop_request_response.crop_request_id AS request_id",
+                "registered_user.name AS producer_name", "registered_user.image_url AS image_url",
+                "district.name AS producer_district", "crop_request_response.response_date_time AS response_date_time",
+                "crop_request_response.accepted_delivery_date AS accepted_delivery_date",
+                "crop_request_response.accepted_price AS accepted_price",
+                "crop_request_response.accepted_quantity AS accepted_quantity",
+                "crop_request_response.remarks AS remarks",
+                "crop_request_response.status AS status"
+            ],
+            where: ["crop_request_response.crop_request_id" => $cropRequestId],
+            joins: [
+                "registered_user" => "crop_request_response.producer_id",
+                "producer" => "crop_request_response.producer_id",
+                "district" => "producer.district",
+            ]
+        );
+
+        if ($stmt) {
+            return $stmt->fetchAll();
+        }
+        return [];
+    }
+
+    public function getResponseDetailsById($responseId): ?object
+    {
+        return $this->runQuery("SELECT
+        crr.producer_id AS 'producer_id',
+        crr.accepted_price AS 'price',
+        crr.accepted_quantity AS 'quantity',
+        crr.status AS 'status',
+        cr.crop_id AS 'crop_id',
+        c.category_id AS 'category_id'
+        FROM crop_request_response crr
+        INNER JOIN crop_request cr ON crr.crop_request_id = cr.id
+        INNER JOIN crop c ON cr.crop_id = c.id
+        WHERE crr.id = ?
+        ", [$responseId])->fetch();
+    }
+
+    public function updateStatusInDb($responseId): bool
+    {
+        return $this->update(
+                table: "crop_request_response",
+                data: ["status" => "Accepted"],
+                where: ["id" => $responseId]
+            ) == 1;
+    }
+
     /**
      * @return int|null
      */

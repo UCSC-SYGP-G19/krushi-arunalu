@@ -107,12 +107,85 @@ class CropPrice extends Model
         );
         return $result = true;
     }
+      
+    public function getDataForCropAndMarket($cropId, $marketId): bool|array
+    {
+        $stmt = Model::select(
+            table: "crop_price",
+            columns: ["crop_price.date AS date",
+                "crop_price.low_price AS low_price",
+                "crop_price.high_price AS high_price"],
+            where: [
+                "crop_price.crop_id" => $cropId,
+                "crop_price.market_id" => $marketId
+            ],
+        );
+        if ($stmt) {
+            return $stmt->fetchAll();
+        }
+        return [];
+    }
+
+    public function getDataForCropAndDistrict($cropId, $districtId): bool|array
+    {
+        $stmt = Model::select(
+            table: "crop_price",
+            columns: ["crop_price.date AS date",
+                "crop_price.low_price AS low_price",
+                "crop_price.high_price AS high_price"],
+            where: [
+                "crop_price.crop_id" => $cropId,
+                "agri_officer.district" => $districtId
+            ],
+            joins: [
+                "agri_officer" => "crop_price.agri_officer_id",
+            ],
+        );
+        if ($stmt) {
+            return $stmt->fetchAll();
+        }
+        return [];
+    }
+
+    public function getAgriOfficerSetPricesForCrops($cropIds, $date): bool|array
+    {
+        $res = $this->runQuery(
+            "SELECT crop_price.crop_id, crop_price.low_price, crop_price.high_price, crop.name AS crop_name
+            FROM crop_price
+            INNER JOIN crop ON crop_price.crop_id = crop.id
+            WHERE crop_price.date = ? AND crop_price.crop_id IN (" . implode(",", $cropIds) . ")",
+            [$date]
+        )->fetchAll();
+
+        if ($res) {
+            return $res;
+        } else {
+            return [];
+        }
+    }
+
+    public function getAgriOfficerPricesForDistrictOnDate($districtId, $date): bool|array
+    {
+        $res = $this->runQuery(
+            "SELECT crop_price.crop_id, crop.name AS crop_name, crop_price.low_price, crop_price.high_price
+            FROM crop_price
+            INNER JOIN crop ON crop_price.crop_id = crop.id
+            INNER JOIN agri_officer ON crop_price.agri_officer_id = agri_officer.id
+            WHERE crop_price.date = ? AND agri_officer.district = ?",
+            [$date, $districtId]
+        )->fetchAll();
+
+        if ($res) {
+            return $res;
+        } else {
+            return [];
+        }
+    }
 
     /**
      * @return int|null
      */
-    public
-    function getId(): ?int
+    public function getId(): ?int
     {
         return $this->id;
     }
@@ -120,8 +193,7 @@ class CropPrice extends Model
     /**
      * @param int|null $id
      */
-    public
-    function setId(?int $id): void
+    public function setId(?int $id): void
     {
         $this->id = $id;
     }
@@ -129,8 +201,7 @@ class CropPrice extends Model
     /**
      * @return int|null
      */
-    public
-    function getCropId(): ?int
+    public function getCropId(): ?int
     {
         return $this->cropId;
     }
@@ -138,8 +209,7 @@ class CropPrice extends Model
     /**
      * @param int|null $cropId
      */
-    public
-    function setCropId(?int $cropId): void
+    public function setCropId(?int $cropId): void
     {
         $this->cropId = $cropId;
     }
@@ -147,8 +217,7 @@ class CropPrice extends Model
     /**
      * @return int|null
      */
-    public
-    function getMarketId(): ?int
+    public function getMarketId(): ?int
     {
         return $this->marketId;
     }
@@ -156,8 +225,7 @@ class CropPrice extends Model
     /**
      * @param int|null $marketId
      */
-    public
-    function setMarketId(?int $marketId): void
+    public function setMarketId(?int $marketId): void
     {
         $this->marketId = $marketId;
     }
@@ -165,8 +233,7 @@ class CropPrice extends Model
     /**
      * @return int|null
      */
-    public
-    function getAgriOfficerId(): ?int
+    public function getAgriOfficerId(): ?int
     {
         return $this->agriOfficerId;
     }
@@ -174,8 +241,7 @@ class CropPrice extends Model
     /**
      * @param int|null $agriOfficerId
      */
-    public
-    function setAgriOfficerId(?int $agriOfficerId): void
+    public function setAgriOfficerId(?int $agriOfficerId): void
     {
         $this->agriOfficerId = $agriOfficerId;
     }
@@ -183,8 +249,7 @@ class CropPrice extends Model
     /**
      * @return string|null
      */
-    public
-    function getDate(): ?string
+    public function getDate(): ?string
     {
         return $this->date;
     }
@@ -192,8 +257,7 @@ class CropPrice extends Model
     /**
      * @param string|null $date
      */
-    public
-    function setDate(?string $date): void
+    public function setDate(?string $date): void
     {
         $this->date = $date;
     }
@@ -201,8 +265,7 @@ class CropPrice extends Model
     /**
      * @return float|null
      */
-    public
-    function getLowPrice(): ?float
+    public function getLowPrice(): ?float
     {
         return $this->lowPrice;
     }
@@ -210,8 +273,7 @@ class CropPrice extends Model
     /**
      * @param float|null $lowPrice
      */
-    public
-    function setLowPrice(?float $lowPrice): void
+    public function setLowPrice(?float $lowPrice): void
     {
         $this->lowPrice = $lowPrice;
     }
@@ -219,8 +281,7 @@ class CropPrice extends Model
     /**
      * @return float|null
      */
-    public
-    function getHighPrice(): ?float
+    public function getHighPrice(): ?float
     {
         return $this->highPrice;
     }
@@ -228,8 +289,7 @@ class CropPrice extends Model
     /**
      * @param float|null $highPrice
      */
-    public
-    function setHighPrice(?float $highPrice): void
+    public function setHighPrice(?float $highPrice): void
     {
         $this->highPrice = $highPrice;
     }

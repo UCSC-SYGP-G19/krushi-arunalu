@@ -64,9 +64,10 @@ class Model
         string $order = "",
         int $limit = 0,
         int $offset = 0,
+        bool $useSingleton = true
     ): bool|PDOStatement {
 
-        $pdo = Database::getCon();
+        $pdo = Database::getCon(useSingleton: $useSingleton);
         if (!$pdo) {
             return false;
         }

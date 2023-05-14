@@ -67,3 +67,243 @@ div.swal2-popup {
         }
     }
 }
+
+.circular-img-set {
+    padding-top: 8px;
+    padding-bottom: 6px;
+
+    :not(:first-child) {
+        margin-left: -12px;
+    }
+
+    div.circular-img {
+        width: 48px;
+        height: 48px;
+        border: 2px solid #fff;
+        border-radius: 50%;
+        box-shadow: 3px 3px 6px rgba(0, 0, 0, .2);
+        display: inline-block;
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-color: lighten($background-grey, 25%);
+
+    }
+}
+
+
+aside.toast {
+
+    @keyframes enterAnimation {
+        0% {
+            transform: translate3d(0, -300%, 0) scale(.6);
+            opacity: 0;
+        }
+        100% {
+            transform: translate3d(0, 0, 0) scale(1);
+            opacity: 1;
+        }
+    }
+
+    @keyframes exitAnimation {
+        0% {
+            transform: translate3d(0, 0, -1px) scale(1);
+            opacity: 1;
+        }
+        100% {
+            transform: translate3d(0, -50%, -1px) scale(.6);
+            opacity: 0;
+        }
+    }
+
+    @keyframes slideDownAnimation {
+        0% {
+            opacity: 0;
+            transform: translate3d(0, -200%, 0);
+        }
+        100% {
+            opacity: 1;
+            transform: translate3d(0, 0, 0);
+        }
+    }
+
+    @keyframes slideUpAnimation {
+        0% {
+            opacity: 1;
+            transform: translate3d(0, 0, 0);
+        }
+        100% {
+            opacity: 0;
+            transform: translate3d(0, -200%, 0);
+        }
+    }
+
+    @keyframes circleAnimation {
+        from {
+            transform: scale(0) rotate(45deg);
+            opacity: 0;
+        }
+        to {
+            transform: scale(1) rotate(45deg);
+            opacity: 1;
+        }
+    }
+
+    @keyframes checkmarkAnimation {
+        0% {
+            height: 0;
+            width: 0;
+            opacity: 0;
+        }
+        40% {
+            height: 0;
+            width: 6px;
+            opacity: 1;
+        }
+        100% {
+            opacity: 1;
+            height: 10px;
+        }
+    }
+
+    @keyframes firstLineAnimation {
+        from {
+            transform: scale(0);
+            opacity: 0;
+        }
+        to {
+            transform: scale(1);
+            opacity: 1;
+        }
+    }
+
+    @keyframes secondLineAnimation {
+        from {
+            transform: scale(0) rotate(90deg);
+            opacity: 0;
+        }
+        to {
+            transform: scale(1) rotate(90deg);
+            opacity: 1;
+        }
+
+    }
+
+    @keyframes spin {
+        to { transform: rotate(360deg); }
+    }
+
+    z-index: 100;
+    position: fixed;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    top: 28px;
+    left: 0;
+    right: 0;
+    text-align: center;
+    background-color: white;
+    width: fit-content;
+    max-width: 500px;
+    height: 42px;
+    border-radius: $base-border-radius*0.6;
+    padding: $base-padding*0.25 $base-padding*0.75;
+    margin: auto;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1) !important;
+    font-size: $base-font-size*0.9;
+    line-height: 2.1;
+    overflow: hidden;
+    text-overflow: ellipsis;
+
+    &.enter {
+        animation: slideDownAnimation 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+    }
+
+    &.exit {
+        animation: slideUpAnimation 0.5s cubic-bezier(0.6, -0.28, 0.735, 0.045) forwards;
+    }
+
+    div {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-right: 0.5em;
+    }
+
+    span {
+        white-space: nowrap;
+    }
+
+    .check {
+        width: 20px;
+        opacity: 0;
+        height: 20px;
+        border-radius: 10px;
+        background: #61d345;
+        position: relative;
+        transform: rotate(45deg);
+
+        animation: circleAnimation 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+        animation-delay: 100ms;
+
+        &:after {
+            content: '';
+            box-sizing: border-box;
+            animation: checkmarkAnimation 0.3s ease-out forwards;
+            opacity: 0;
+            animation-delay: 200ms;
+            position: absolute;
+            border-right: 2px solid;
+            border-bottom: 2px solid;
+            border-color: #fff;
+            bottom: 6px;
+            left: 6px;
+            height: 10px;
+            width: 6px;
+        }
+    }
+
+    .error {
+        width: 20px;
+        opacity: 0;
+        height: 20px;
+        border-radius: 10px;
+        background: #ff4b4b;
+        position: relative;
+        transform: rotate(45deg);
+
+        animation: circleAnimation 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+        animation-delay: 100ms;
+
+        &:after,
+        &:before {
+            content: '';
+            animation: firstLineAnimation 0.25s ease-out forwards;
+            animation-delay: 150ms;
+            position: absolute;
+            border-radius: 3px;
+            opacity: 0;
+            background: #fff;
+            bottom: 9px;
+            left: 4px;
+            height: 2px;
+            width: 12px;
+        }
+
+        &:before {
+            animation: secondLineAnimation 0.25s ease-out forwards;
+            animation-delay: 180ms;
+            transform: rotate(90deg);
+        }
+    }
+
+    .loading {
+        margin-right: 8px;
+        display: inline-block;
+        width: 20px;
+        height: 20px;
+        border: 2.5px solid darken($selected-green,15%);
+        border-radius: 50%;
+        border-top-color: darken($header-green,15%);
+        animation: spin 0.8s ease-in-out infinite;
+    }
+}

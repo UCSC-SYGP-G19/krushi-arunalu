@@ -22,6 +22,14 @@ class Flash
         $_SESSION['message'] = ["type" => $type, "title" => $title, "content" => $content];
     }
 
+    public static function setToastMessage($type, $title, $content): void
+    {
+        if (!isset($_SESSION)) {
+            session_start();
+        }
+        $_SESSION['toast_message'] = ["type" => $type, "title" => $title, "content" => $content];
+    }
+
     public static function getMessage(): ?string
     {
         if (!isset($_SESSION)) {
@@ -30,6 +38,19 @@ class Flash
         if (isset($_SESSION['message'])) {
             $message = $_SESSION['message'];
             unset($_SESSION['message']);
+            return json_encode($message);
+        }
+        return null;
+    }
+
+    public static function getToastMessage(): ?string
+    {
+        if (!isset($_SESSION)) {
+            session_start();
+        }
+        if (isset($_SESSION['toast_message'])) {
+            $message = $_SESSION['toast_message'];
+            unset($_SESSION['toast_message']);
             return json_encode($message);
         }
         return null;
