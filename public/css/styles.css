@@ -1332,26 +1332,6 @@ table span.sort-arrows svg.active {
   stroke: black !important;
 }
 
-.modal-window {
-  position: absolute;
-  margin: auto;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  transform: translate(-50%, -50%);
-}
-.modal-window .modal-window-box {
-  min-width: 400px;
-  max-width: max-content;
-  min-height: 25vh;
-  max-height: max-content;
-  background-color: #FFFFFF;
-  border-radius: 16px;
-  box-shadow: 0 4px 50px rgba(0, 0, 0, 0.2);
-  border: none;
-}
-
 .m-0 {
   margin: 0 !important;
 }
@@ -2292,8 +2272,7 @@ aside.toast .loading {
 }
 
 .register {
-  min-height: calc(100vh - 161.5px);
-  height: fit-content;
+  height: 100%;
   width: 100%;
   background-color: #F5F5F5;
 }
@@ -2329,277 +2308,8 @@ aside.toast .loading {
 .register form .error {
   font-size: 0.9rem;
 }
-.register .button {
-  font-weight: 600;
-  margin: 0 0.6rem;
-  padding: 0.6rem 1.5rem;
-  border: 1px solid #27963C;
-  background-color: #27963C;
-  color: #FFFFFF;
-  border-radius: 8px;
-  cursor: pointer;
-}
-.register .button svg {
-  padding-top: 6px;
-  stroke: #FFFFFF;
-  stroke-linecap: round;
-  stroke-linejoin: round;
-  stroke-width: 2.5;
-}
-.register .btn-outline {
-  background-color: #FFFFFF;
-  border: 1px solid #27963C;
-  color: #27963C;
-}
-.register .btn-outline svg {
-  stroke: #27963C;
-}
-.register .button:hover {
-  background-color: #185427;
-  border: 1px solid #185427;
-}
-.register .btn-outline:hover {
-  border: 1px solid #185427;
-  background-color: #185427;
-  color: #FFFFFF;
-}
-.register .btn-outline:hover svg {
-  stroke: #FFFFFF;
-}
-.register .submit-btn {
-  border: 1px solid #185427;
-  background-color: #185427;
-}
-.register .d-none {
-  display: none;
-}
-.register .form-step {
-  padding: 2.025rem 3rem;
-  border: 1px solid rgba(0, 0, 0, 0.1);
-  border-radius: 20px;
-}
-.register ul.form-stepper {
-  display: none;
-  counter-reset: section;
-  margin-bottom: 3rem;
-}
-.register ul.form-stepper .form-stepper-circle {
-  position: relative;
-}
-.register ul.form-stepper .form-stepper-circle span {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translateY(-50%) translateX(-50%);
-}
-.register ul.form-stepper > li:not(:last-of-type) {
-  margin-bottom: 0.625rem;
-  -webkit-transition: margin-bottom 0.4s;
-  -o-transition: margin-bottom 0.4s;
-  transition: margin-bottom 0.4s;
-}
-.register ul.form-stepper li a .form-stepper-circle {
-  display: inline-block;
-  width: 40px;
-  height: 40px;
-  margin-right: 0;
-  line-height: 1.7rem;
-  text-align: center;
-  background: rgba(0, 0, 0, 0.38);
-  border-radius: 50%;
-}
-.register .form-stepper-horizontal {
-  position: relative;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-pack: justify;
-  -ms-flex-pack: justify;
-  justify-content: space-between;
-}
-.register .form-stepper-horizontal > li:not(:last-of-type) {
-  margin-bottom: 0 !important;
-}
-.register .form-stepper-horizontal li {
-  position: relative;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-flex: 1;
-  -ms-flex: 1;
-  flex: 1;
-  -webkit-box-align: start;
-  -ms-flex-align: start;
-  align-items: start;
-  -webkit-transition: 0.5s;
-  transition: 0.5s;
-}
-.register .form-stepper-horizontal li:not(:last-child):after {
-  position: relative;
-  -webkit-box-flex: 1;
-  -ms-flex: 1;
-  flex: 1;
-  height: 1px;
-  content: "";
-  top: 32%;
-}
-.register .form-stepper-horizontal li:after {
-  background-color: #dee2e6;
-}
-.register .form-stepper-horizontal li:last-child {
-  flex: unset;
-}
-.register .form-stepper-horizontal li.form-stepper-completed:after {
-  background-color: #95C260;
-}
-.register .form-stepper .form-stepper-active .form-stepper-circle {
-  background-color: #E7A811 !important;
-  color: white;
-}
-.register .form-stepper .form-stepper-active .form-stepper-circle:hover {
-  background-color: #B89130 !important;
-  color: white !important;
-}
-.register .form-stepper .form-stepper-active .label {
-  color: #E7A811 !important;
-}
-.register .form-stepper .form-stepper-active span.text-muted {
-  color: white !important;
-}
-.register .form-stepper .form-stepper-unfinished .form-stepper-circle {
-  background-color: #E7F4D8;
-}
-.register .form-stepper .form-stepper-unfinished .form-stepper-circle .label {
-  color: #E7F4D8 !important;
-}
-.register .form-stepper .form-stepper-completed .form-stepper-circle {
-  background-color: #15742D !important;
-  color: white;
-}
-.register .form-stepper .form-stepper-completed .form-stepper-circle:hover {
-  background-color: #15742D !important;
-  color: white !important;
-}
-.register .form-stepper .form-stepper-completed .label {
-  color: #15742D !important;
-}
-.register .form-stepper .form-stepper-completed span.text-muted {
-  color: white !important;
-}
-.register .form-stepper .label {
-  font-size: 1rem;
-  margin-top: 0.5rem;
-  color: #B1B1B1;
-  opacity: 0.9;
-}
-.register .form-stepper a {
-  cursor: default;
-}
-@keyframes horizontal-shaking {
-  0% {
-    transform: translateX(0);
-  }
-  25% {
-    transform: translateX(10px);
-  }
-  50% {
-    transform: translateX(-10px);
-  }
-  75% {
-    transform: translateX(10px);
-  }
-  100% {
-    transform: translateX(0);
-  }
-}
-.register .shake {
-  animation: horizontal-shaking 0.3s;
-}
-.register .otp-field {
-  display: flex;
-  justify-content: center;
-}
-.register .otp-field input {
-  width: 40px;
-  font-size: 24px;
-  padding: 8px;
-  text-align: center;
-  margin: 4px;
-  border: 2px solid #cbcbcb;
-  outline: none;
-  transition: all 0.2s ease-in-out;
-}
-.register .otp-field input:focus {
-  border: 2px solid #15742D;
-}
-.register .otp-wrapper {
-  justify-content: center;
-  align-items: center;
-  text-align: center;
-}
-.register .otp-wrapper p {
-  color: #989898;
-  font-size: 0.9rem;
-}
-.register .border-left {
-  border-left: 1px solid #B1B1B1;
-}
-.register .disabled {
-  opacity: 0.25;
-}
-.register button.cancel-otp {
-  background: none;
-  border: none;
-  padding: 0;
-  font-size: 0.75rem;
-  cursor: pointer;
-  outline: inherit;
-  color: #000000;
-  text-decoration: underline;
-  margin-top: 1.5rem;
-  opacity: 0.8;
-}
-.register .avatar-preview .avatar {
-  background-color: #F5F5F5;
-  height: 210px;
-  width: 210px;
-  border: 4px solid #d7d7d7;
-  border-radius: 50%;
-  transition: background ease-out 0.3s;
-  box-shadow: 0 1px 20px rgba(0, 0, 0, 0.1);
-}
-.register .avatar-preview {
-  width: fit-content;
-  position: relative;
-  margin: auto;
-  text-align: center;
-}
-.register input.avatar-input {
-  display: none;
-}
-.register button.avatar-select {
-  width: 48px;
-  height: 48px;
-  padding: 8px;
-  border-radius: 50%;
-  border: none;
-  cursor: pointer;
-  background-color: #E7A811;
-  box-shadow: 0 1px 20px rgba(0, 0, 0, 0.2);
-  transition: background-color ease-out 0.2s;
-  position: absolute;
-  right: 0;
-  bottom: 10%;
-}
-.register button.avatar-select svg {
-  padding-top: 4px;
-}
-.register button.avatar-select:hover {
-  background-color: #B89130;
-}
 
 .register_customer {
-  background-color: #F5F5F5;
   height: 100vh;
   width: 100vw;
   margin-top: -100px;
@@ -2609,8 +2319,9 @@ aside.toast .loading {
 }
 .register_customer .wrapper {
   background: rgba(255, 255, 255, 0.7);
-  box-shadow: 0 8px 50px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 4px 50px rgba(0, 0, 0, 0.2);
   border-radius: 24px;
+  width: 35%;
   height: fit-content;
   box-sizing: border-box;
 }
@@ -2624,9 +2335,6 @@ aside.toast .loading {
   height: 48px;
   font-size: 1rem;
   margin-bottom: 1.5rem;
-}
-.register_customer input[type=checkbox] {
-  height: unset !important;
 }
 .register_customer form .error {
   font-size: 0.9rem;
@@ -2649,6 +2357,7 @@ aside.toast .loading {
   /* Caption text */
   /* Number text (1/3 etc) */
   /* The dots/bullets/indicators */
+  /* Fading animation */
 }
 .marketplace .carousel {
   position: relative;
@@ -2796,6 +2505,22 @@ aside.toast .loading {
 }
 .marketplace .active, .marketplace .dot:hover {
   background-color: #717171;
+}
+.marketplace .fade {
+  animation-name: fade;
+  animation-duration: 1.5s;
+}
+.marketplace .navbar-top {
+  justify-content: center;
+  overflow: hidden;
+}
+@keyframes fade {
+  from {
+    opacity: 0.4;
+  }
+  to {
+    opacity: 1;
+  }
 }
 
 .product-details {
@@ -3241,75 +2966,6 @@ dialog::backdrop {
 }
 .chat-page .bottom-row .message-input-box-active {
   background-color: gainsboro;
-}
-
-.edit-icon {
-  cursor: pointer;
-}
-
-dialog.modal-window-box {
-  min-width: 500px;
-  max-width: max-content;
-  min-height: 20vh;
-  max-height: max-content;
-  background-color: #FFFFFF;
-  border-radius: 16px;
-  box-shadow: 0 4px 50px rgba(0, 0, 0, 0.2);
-  border: none;
-  right: 0;
-  position: absolute;
-  margin: auto;
-}
-
-dialog::backdrop {
-  background-color: #F5F5F5;
-  opacity: 0.6;
-}
-
-.product-image {
-  max-width: 60px;
-  max-height: 60px;
-}
-
-.producer-dashboard .dashboard-card {
-  background-color: white;
-  border-radius: 24px;
-  box-shadow: 0 2px 24px rgba(0, 0, 0, 0.05);
-}
-
-.producer-dashboard .dashboard-card h4 {
-  font-size: 1.1rem;
-  margin-bottom: 2px;
-}
-.producer-dashboard .dashboard-card h5 {
-  font-size: 0.9rem;
-  color: #B1B1B1;
-}
-.producer-dashboard .dashboard-card input, .producer-dashboard .dashboard-card select {
-  height: unset !important;
-  width: unset !important;
-  padding: 6px 10px !important;
-}
-.producer-dashboard hr.primary-color {
-  border: 1px solid #15742D;
-}
-.producer-dashboard .crop-pic-rounded {
-  width: 48px;
-  height: 48px;
-  border: 2px solid #FFFFFF;
-  border-radius: 50%;
-  box-shadow: 3px 3px 6px rgba(0, 0, 0, 0.25);
-  display: inline-block;
-  background-size: cover;
-  background-repeat: no-repeat;
-  background-color: #FFFFFF;
-}
-.producer-dashboard .data-courtesy-tag p {
-  color: #555555;
-}
-.producer-dashboard .data-courtesy-tag p a {
-  text-decoration: underline !important;
-  color: #B89130 !important;
 }
 
 * {
