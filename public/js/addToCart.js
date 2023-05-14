@@ -1,6 +1,11 @@
 let data = null;
 
 const addItemToCart = async (productId) => {
+  if (isLoggedIn === 0) {
+    toast("error", "", "Please login to add products to cart");
+    // location.href = `${URL_ROOT}/login`;
+    return;
+  }
   const productCard = document.querySelector(`#product-card-${productId}`);
   const quantity = productCard.querySelector(`input[name = "quantity"]`).value;
   const addToCartBtn = productCard.querySelector(`.btn-add-to-cart`);
