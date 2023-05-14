@@ -34,6 +34,8 @@ class ManufacturerOrdersController extends Controller
         $this->loadModel('Crop');
         $this->view->fieldOptions["crop"] = $this->model->getNamesFromDB();
 
+        $required_fields = ["crop", "quantity", "unit_selling_price"];
+        $this->validateFields($required_fields);
 
         if ($_SERVER["REQUEST_METHOD"] === "POST") {
             if (!empty($this->view->fielfErrors)) {
@@ -44,7 +46,7 @@ class ManufacturerOrdersController extends Controller
 
             $this->loadModel("ManufacturerOrder");
             $this->model->fillData([
-                'cropCategoryId' => $_POST['crop_category_name'],
+                'cropCategoryId' => $_POST['crop_category'],
                 'quantity' => $_POST['quantity'],
                 'unitPrice' => $_POST['unit_selling_price'],
                 'cropId' => $_POST['crop'],
@@ -105,6 +107,9 @@ class ManufacturerOrdersController extends Controller
         $this->loadModel('ManufacturerOrder');
         $this->view->data = $this->model->getByOrderId($orderId);
 
+        $required_fields = ["crop", "quantity", "unit_selling_price"];
+        $this->validateFields($required_fields);
+
         if ($_SERVER["REQUEST_METHOD"] === "POST") {
             if (!empty($this->view->fieldErrors)) {
                 $this->refillValuesAndShowError();
@@ -114,7 +119,7 @@ class ManufacturerOrdersController extends Controller
 
             $this->loadModel("ManufacturerOrder");
             $this->model->fillData([
-                'cropCategoryId' => $_POST['crop_category_name'],
+                'cropCategoryId' => $_POST['crop_category'],
                 'quantity' => $_POST['quantity'],
                 'unitPrice' => $_POST['unit_selling_price'],
                 'cropId' => $_POST['crop'],
@@ -153,5 +158,19 @@ class ManufacturerOrdersController extends Controller
         }
         $this->view->render();
         return false;
+    }
+
+    public function getCropCategoriesAsJson($producerId): void
+    {
+        $this->loadModel('CropCategory');
+        $cropCategories = $this->model->getCropCategoriesByProducerId($producerId);
+        $this->sendArrayAsJson($cropCategories);
+    }
+
+    public function getCropsAsJson($categoryId, $producerId): void
+    {
+        $this->loadModel('Crop');
+        $crops = $this->model->getCropsByCategoryIdForOrders($categoryId, $producerId);
+        $this->sendArrayAsJson($crops);
     }
 }

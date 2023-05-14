@@ -27,6 +27,21 @@ class CropCategory extends Model
         return [];
     }
 
+    public function getCropCategoriesByProducerId($producerId): array
+    {
+        return $this->runQuery("SELECT
+        cc.id AS crop_category,
+        cc.name AS 'category_name'
+        FROM crop_category cc
+        INNER JOIN crop c ON cc.id = c.category_id
+        INNER JOIN cultivation cu ON c.id = cu.crop_id
+        INNER JOIN land l ON cu.land_id = l.id
+        INNER JOIN producer p ON l.owner_id = p.id
+        WHERE p.id = ?
+        GROUP BY cc.id
+        ", [$producerId])->fetchAll();
+    }
+
     /**
      * @return int|null
      */

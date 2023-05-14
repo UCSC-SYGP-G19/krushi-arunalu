@@ -44,7 +44,7 @@ if (!isset($this->user)) {
                                                         "placeholder" => "Select order date",
                                                         "type" => "date",
                                                     ],
-                                                    "crop_category_name" => [
+                                                    "crop_category" => [
                                                         "element" => SelectField::class,
                                                         "wrapperClass" => "col-6",
                                                         "label" => "Category",
@@ -110,6 +110,7 @@ if (!isset($this->user)) {
                 </div>
             </main>
         </div>
-    </body>
+        <script src="<?php echo URL_ROOT ?>/public/js/Manufacturer/manufacturerOrders.js" defer></script>
+</body>
 
 
