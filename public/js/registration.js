@@ -155,7 +155,12 @@ document.addEventListener("DOMContentLoaded", () => {
 
   const producerStep2NextBtn = document.querySelector("#next-btn-11");
   const producerStep3NextBtn = document.querySelector("#next-btn-12");
+
+  const manufacturerStep2NextBtn = document.querySelector("#next-btn-21");
+  const manufacturerStep3NextBtn = document.querySelector("#next-btn-22");
+
   const formSubmitBtn = document.querySelector("#submit-btn");
+  //const manufacturerFormSubmitBtn = document.querySelector("#submit-btn-manufacturer");
 
   roleSelectionNextBtn.addEventListener("click", () => {
     document.querySelectorAll("#step-0 input").forEach((input) => {
@@ -226,29 +231,29 @@ document.addEventListener("DOMContentLoaded", () => {
                     <span class="form-stepper-circle text-muted">
                         <span>2</span>
                     </span>
-                        <div class="label text-muted">Personal details</div>
+                        <div class="label text-muted">Company details</div>
                     </a>
                 </li>
+<!--                <li class="form-stepper-unfinished text-center form-stepper-list" step="22">-->
+<!--                    <a class="mx-2">-->
+<!--                    <span class="form-stepper-circle text-muted">-->
+<!--                        <span>3</span>-->
+<!--                    </span>-->
+<!--                        <div class="label text-muted">Company details</div>-->
+<!--                    </a>-->
+<!--                </li>-->
                 <li class="form-stepper-unfinished text-center form-stepper-list" step="22">
                     <a class="mx-2">
                     <span class="form-stepper-circle text-muted">
                         <span>3</span>
                     </span>
-                        <div class="label text-muted">Company details</div>
+                        <div class="label text-muted">Verification</div>
                     </a>
                 </li>
                 <li class="form-stepper-unfinished text-center form-stepper-list" step="23">
                     <a class="mx-2">
                     <span class="form-stepper-circle text-muted">
                         <span>4</span>
-                    </span>
-                        <div class="label text-muted">Verification</div>
-                    </a>
-                </li>
-                <li class="form-stepper-unfinished text-center form-stepper-list" step="24">
-                    <a class="mx-2">
-                    <span class="form-stepper-circle text-muted">
-                        <span>5</span>
                     </span>
                         <div class="label text-muted">Login details</div>
                     </a>
@@ -373,6 +378,122 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   });
 
+
+  manufacturerStep2NextBtn.addEventListener("click", () => {
+    // Validate personal details of producer
+    let isSectionValid = true;
+    let name = form.querySelector('input[name="name"]');
+    let br = form.querySelector('input[name="br"]');
+    let address = form.querySelector('input[name="address"]');
+    let contactNo = form.querySelector('input[name="contact_no"]');
+    let email = form.querySelector('input[name="email"]');
+    let description = form.querySelector('input[name="description"]');
+
+
+    // Set all fields in section as required
+
+    document.querySelectorAll("#step-21 input").forEach((input) => {
+      input.setAttribute("required", "required");
+    });
+
+    // Apply custom validation for form fields
+
+    name.setAttribute("pattern", ".{5,}");
+    name.setAttribute("maxlength", "50");
+    name.setAttribute("minlength", "5");
+    name.setAttribute("title", "Name should contain at least 5 characters");
+
+    br.setAttribute("pattern", "[0-9]{3,12}");
+    br.setAttribute("maxlength", "12");
+    br.setAttribute("minlength", "3");
+    br.setAttribute("title", "Business Registration number should contain at least 3 characters");
+    // pNic.setCustomValidity("Please enter a valid NIC number");
+
+    address.setAttribute("pattern", ".{5,}");
+    address.setAttribute("maxlength", "100");
+    address.setAttribute("minlength", "5");
+    address.setAttribute("title", "Address should contain at least 5 characters");
+
+    contactNo.setAttribute("pattern", "[+94]{3}[0-9]{9}");
+    contactNo.setAttribute("maxlength", "12");
+    contactNo.setAttribute("minlength", "12");
+    contactNo.setAttribute("title", "+94XXXXXXXXX");
+
+    if (!name.reportValidity() || !br.reportValidity() || !address.reportValidity() || !contactNo.reportValidity() || !email.reportValidity()) {
+      document.querySelector("#step-21 div").classList.add("shake");
+      setTimeout(() => {
+        document.querySelector("#step-21 div").classList.remove("shake");
+      }, 1000);
+      isSectionValid = false;
+    }
+
+    if (isSectionValid) {
+      navigateToFormStep(22);
+
+      const enteredEmail = form.querySelector('input[name="email"]').value;
+      let emailOtpContainer = document.querySelector("#step-22 .otp-wrapper.email");
+      emailOtpContainer.querySelector(".body strong").innerHTML = enteredEmail;
+
+      if (form.querySelector('input[name="email_otp"]').value === "") {
+        emailOtpContainer.querySelector(".loading").classList.remove("d-none");
+        toast("loading", "", "Sending OTP to email", 3000);
+        sendOtpToEmail(enteredEmail);
+      } else {
+        emailOtpContainer.querySelector(".body").classList.remove("d-none");
+        for (let i = 0; i < emailOtpInputs.length; i++) {
+          emailOtpInputs[i].value = form.querySelector('input[name="email_otp"]').value[i];
+        }
+      }
+    }
+
+  });
+
+  manufacturerStep3NextBtn.addEventListener("click", () => {
+    // Validate OTP fields
+    let emailOtp = form.querySelector("input[name='email_otp']");
+    console.log(emailOtp.value);
+
+    const loadLastPage = () => {
+      const userName = form.querySelector('input[name="name"]').value;
+      const userInfo = form.querySelector('input[name="email"]').value + " | " + form.querySelector('input[name="contact_no"]').value;
+      const avatarUrlInput = form.querySelector('input[name="avatar_url"]');
+
+      defaultAvatar = "https://api.dicebear.com/6.x/initials/svg?seed=" + (userName.replaceAll(".", "").replaceAll(" ", "+"));
+
+      if (avatarUrlInput.value == null || avatarUrlInput.value === "") {
+        avatarUrlInput.setAttribute("value", defaultAvatar);
+      }
+
+      document.querySelector("#step-23 .user-name").innerHTML = userName;
+      document.querySelector("#step-23 .user-info").innerHTML = userInfo;
+
+      navigateToFormStep(13);
+
+      avatar.style.background = `url(${defaultAvatar}) center center/cover`;
+
+      const avatarUploadBtn = document.querySelector("button.avatar-upload");
+      avatarUploadBtn.setAttribute("disabled", "disabled");
+      avatarUploadBtn.setAttribute("title", "Please pick a new image first before uploading");
+    }
+
+    if (emailOtp.value.length !== 6) {
+      Swal.fire({
+        title: "Warning",
+        text: "Are you sure you want to continue without confirming your email?",
+        icon: "warning",
+        showCancelButton: true,
+        cancelButtonText: 'No',
+        confirmButtonText: 'Yes',
+      }).then((result) => {
+        if (result.isConfirmed) {
+          loadLastPage();
+        }
+      });
+    } else {
+      loadLastPage();
+    }
+  });
+
   formSubmitBtn.addEventListener("click", (e) => {
     e.preventDefault();
 
@@ -396,20 +517,38 @@ document.addEventListener("DOMContentLoaded", () => {
     confirmPassword.setAttribute("minlength", "8");
     confirmPassword.setAttribute("autocomplete", "new-password");
 
-    if (!password.reportValidity() || !validatePassword(password.value)) {
-      document.querySelector("#step-13 div.passwords").classList.add("shake");
-      setTimeout(() => {
-        document.querySelector("#step-13 div.passwords").classList.remove("shake");
-      }, 1000);
-      return;
-    }
+    if (selectedRole === "Producer") {
+      if (!password.reportValidity() || !validatePassword(password.value)) {
+        document.querySelector("#step-13 div.passwords").classList.add("shake");
+        setTimeout(() => {
+          document.querySelector("#step-13 div.passwords").classList.remove("shake");
+        }, 1000);
+        return;
+      }
 
-    if (!confirmPassword.reportValidity()) {
-      document.querySelector("#step-13 div.passwords").classList.add("shake");
-      setTimeout(() => {
-        document.querySelector("#step-13 div.passwords").classList.remove("shake");
-      }, 1000);
-      return;
+      if (!confirmPassword.reportValidity()) {
+        document.querySelector("#step-13 div.passwords").classList.add("shake");
+        setTimeout(() => {
+          document.querySelector("#step-13 div.passwords").classList.remove("shake");
+        }, 1000);
+        return;
+      }
+    } else if (selectedRole === "Manufacturer") {
+      if (!password.reportValidity() || !validatePassword(password.value)) {
+        document.querySelector("#step-23 div.passwords").classList.add("shake");
+        setTimeout(() => {
+          document.querySelector("#step-23 div.passwords").classList.remove("shake");
+        }, 1000);
+        return;
+      }
+
+      if (!confirmPassword.reportValidity()) {
+        document.querySelector("#step-23 div.passwords").classList.add("shake");
+        setTimeout(() => {
+          document.querySelector("#step-23 div.passwords").classList.remove("shake");
+        }, 1000);
+        return;
+      }
     }
 
     if (password.value !== confirmPassword.value) {

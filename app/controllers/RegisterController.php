@@ -82,9 +82,24 @@ class RegisterController extends Controller
             }
 
             $this->registerAsProducer();
+
         } elseif ($_POST['role'] === 'Manufacturer') {
             $this->view->fieldValues['role'] = 'Manufacturer';
             // Validate fields specific to Manufacturer role
+            $required_fields = ['name', 'br', 'address', 'contact_no', 'email'];
+
+            $this->validateFields($required_fields);
+
+            $_POST['email'] = filter_var($_POST['email'], FILTER_VALIDATE_EMAIL);
+            if (!$_POST['email']) {
+                $this->view->fieldErrors['email'] = "Invalid email address";
+            }
+
+            if (!empty($this->view->fieldErrors)) {
+                $this->refillValuesAndShowError();
+                return;
+            }
+
             $this->registerAsManufacturer();
         } else {
             $this->view->fields = $_POST;
@@ -172,7 +187,7 @@ class RegisterController extends Controller
             'email' => $_POST['email'],
             'contactNo' => $_POST['contact_no'],
             'password' => $_POST['password'],
-            'brNumber' => $_POST['nic/br'],
+            'brNumber' => $_POST['br'],
             'coverImageUrl' => null,
             'description' => null,
         ]);

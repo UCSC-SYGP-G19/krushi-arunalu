@@ -2,6 +2,7 @@
 
 use app\views\inc\components\InputField;
 use app\views\inc\components\SelectField;
+use app\views\inc\components\TextArea;
 
 include APP_ROOT . "/views/inc/components/Header.php"
 ?>
@@ -320,6 +321,261 @@ include APP_ROOT . "/views/inc/components/LoggedOutNavbar.php"
                     </div>
                 </section>
                 <!-- Manufacturer steps -->
+                <section id="step-21" class="form-step d-none">
+                    <!--                    <h3 class="form-section-title text-center mb-1">Personal / Company details</h3>-->
+                    <div class="row gap-2">
+                        <?php
+                        $formData = [
+                            "name" => [
+                                "element" => InputField::class,
+                                "wrapperClass" => "col-8",
+                                "label" => "Name",
+                                "placeholder" => "Enter your name",
+                                "type" => "text",
+                            ],
+                            "br" => [
+                                "element" => InputField::class,
+                                "wrapperClass" => "col-4",
+                                "label" => "Business Registration no.",
+                                "placeholder" => "Enter your BR no.",
+                                "type" => "number",
+                            ],
+                            "address" => [
+                                "element" => InputField::class,
+                                "wrapperClass" => "col-12",
+                                "label" => "Address",
+                                "placeholder" => "Enter your company address",
+                                "type" => "text",
+                            ],
+                            "contact_no" => [
+                                "element" => InputField::class,
+                                "wrapperClass" => "col-4",
+                                "label" => "Contact no.",
+                                "placeholder" => "Enter mobile no. with +94",
+                                "type" => "text",
+                            ],
+                            "email" => [
+                                "element" => InputField::class,
+                                "wrapperClass" => "col-8",
+                                "label" => "Email address",
+                                "placeholder" => "Enter your email address",
+                                "type" => "email",
+                            ],
+                            "description" => [
+                                "element" => TextArea::class,
+                                "wrapperClass" => "col-12",
+                                "label" => "Company Description",
+                                "placeholder" => "Add a description",
+                            ],
+                        ];
+
+                        $this->generateFormFields($formData);
+                        ?>
+                    </div>
+                    <div class="mt-3 text-center">
+                        <button class="button btn-navigate-form-step btn-outline prev-btn" type="button"
+                                step_number="0">
+                            <svg class="pr-1" width="20" height="17" viewBox="0 0 20 17" fill="none"
+                                 xmlns="http://www.w3.org/2000/svg">
+                                <path d="M1.53282 8.71365H19.0328" stroke-width="2.5" stroke-linecap="round"
+                                      stroke-linejoin="round"/>
+                                <path d="M8.53282 1.71365L1.53282 8.71365L8.53282 15.7137" stroke-width="2.5"
+                                      stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
+                            Previous
+                        </button>
+                        <button class="button btn-navigate-form-step" type="button" step_number="22" id="next-btn-21">
+                            Next
+                            <svg class="pl-1" width="20" height="16" viewBox="0 0 20 16" fill="none"
+                                 xmlns="http://www.w3.org/2000/svg">
+                                <path d="M18.75 8H1.25" stroke-width="2.5" stroke-linecap="round"
+                                      stroke-linejoin="round"/>
+                                <path d="M11.75 15L18.75 8L11.75 1" stroke-width="2.5" stroke-linecap="round"
+                                      stroke-linejoin="round"/>
+                            </svg>
+                        </button>
+                    </div>
+                </section>
+                <section id="step-22" class="form-step d-none">
+                    <!--                    <h3 class="form-section-title text-center mb-1">Personal / Company details</h3>-->
+                    <div class="row gap-2 mb-2 pb-1 justify-content-center">
+                        <div class="otp-wrapper email col-12 col-6-lg px-4 mb-1">
+                            <h3 class="fw-bold">Verify your email address</h3>
+                            <br>
+                            <div class="loading justify-content-center align-items-center d-flex mt-3 mb-2 d-none">
+                                <svg width="48" height="48" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                    <style>.spinner_7mtw {
+                                            transform-origin: center;
+                                            animation: spinner_jgYN .6s linear infinite
+                                        }
+
+                                        @keyframes spinner_jgYN {
+                                            100% {
+                                                transform: rotate(360deg)
+                                            }
+                                        }</style>
+                                    <path class="spinner_7mtw"
+                                          d="M2,12A11.2,11.2,0,0,1,13,1.05C12.67,1,12.34,1,12,1a11,11,0,0,0,0,22c.34,0,.67,0,1-.05C6,23,2,17.74,2,12Z"/>
+                                </svg>
+                            </div>
+                            <div class="body d-none">
+                                <p class="mt-1 mb-2">We have sent a verification code to
+                                    <br>
+                                    <strong></strong>
+                                    <br>
+                                    Please enter the code below to verify your email address.
+                                </p>
+                                <br>
+                                <div class="otp-field email-otp text-center">
+                                    <input type="text" maxlength="1"/>
+                                    <input type="text" maxlength="1"/>
+                                    <input type="text" maxlength="1"/>
+                                    <input type="text" maxlength="1"/>
+                                    <input type="text" maxlength="1"/>
+                                    <input type="text" maxlength="1"/>
+                                </div>
+                                <input type="text" hidden name="email_otp"
+                                       value="<?php if (isset($this->fieldValues['email_otp'])) {
+                                           echo $this->fieldValues['email_otp'];
+                                       } ?>">
+                                <input type="number" hidden name="email_otp_id">
+                                <button type="button" class="cancel-otp email d-none" onclick="clearEmailOtp()">Clear
+                                </button>
+                            </div>
+                        </div>
+
+                        <div class="otp-wrapper phone col-12 col-6-lg px-4 mb-1 border-left d-none">
+                            <h3 class="fw-bold">Verify your phone number</h3>
+                            <br>
+                            <p class="mt-1 mb-2">We have sent a verification code to
+                                <br>
+                                <strong></strong>
+                                <br>
+                                Please enter the code below to verify your phone no.
+                            </p>
+                            <br>
+                            <div class="otp-field phone-otp text-center">
+                                <input type="text" maxlength="1"/>
+                                <input type="text" maxlength="1"/>
+                                <input type="text" maxlength="1"/>
+                                <input type="text" maxlength="1"/>
+                                <input type="text" maxlength="1"/>
+                                <input type="text" maxlength="1"/>
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="mt-3 text-center">
+                        <button class="button btn-navigate-form-step btn-outline prev-btn" type="button"
+                                step_number="21">
+                            <svg class="pr-1" width="20" height="17" viewBox="0 0 20 17" fill="none"
+                                 xmlns="http://www.w3.org/2000/svg">
+                                <path d="M1.53282 8.71365H19.0328" stroke-width="2.5" stroke-linecap="round"
+                                      stroke-linejoin="round"/>
+                                <path d="M8.53282 1.71365L1.53282 8.71365L8.53282 15.7137" stroke-width="2.5"
+                                      stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
+                            Previous
+                        </button>
+                        <button class="button btn-navigate-form-step" type="button" step_number="23" id="next-btn-22">
+                            Next
+                            <svg class="pl-1" width="20" height="16" viewBox="0 0 20 16" fill="none"
+                                 xmlns="http://www.w3.org/2000/svg">
+                                <path d="M18.75 8H1.25" stroke-width="2.5" stroke-linecap="round"
+                                      stroke-linejoin="round"/>
+                                <path d="M11.75 15L18.75 8L11.75 1" stroke-width="2.5" stroke-linecap="round"
+                                      stroke-linejoin="round"/>
+                            </svg>
+                        </button>
+                    </div>
+                </section>
+                <section id="step-23" class="form-step d-none">
+                    <!-- <h3 class="form-section-title text-center mb-1">Personal / Company details</h3>-->
+                    <div class="row gap-2 py-2">
+                        <div class="col-6 col-lg-6 justify-content-center align-items-center m-auto text-center pt-4">
+                            <input type="file" name="image" class="avatar-input" accept="image/*"/>
+                            <div class="avatar-preview mb-2">
+                                <div class="avatar"></div>
+                                <button
+                                        type="button"
+                                        class="avatar-select"
+                                        aria-labelledby="image"
+                                        aria-describedby="image"
+                                >
+                                    <svg width="26" height="26" viewBox="0 0 26 26" fill="none"
+                                         xmlns="http://www.w3.org/2000/svg">
+                                        <path d="M20.5833 3.25H5.41667C4.22005 3.25 3.25 4.22005 3.25 5.41667V20.5833C3.25 21.78 4.22005 22.75 5.41667 22.75H20.5833C21.78 22.75 22.75 21.78 22.75 20.5833V5.41667C22.75 4.22005 21.78 3.25 20.5833 3.25Z"
+                                              stroke="white" stroke-width="2" stroke-linecap="round"
+                                              stroke-linejoin="round"/>
+                                        <path d="M9.20837 10.8333C10.1058 10.8333 10.8334 10.1057 10.8334 9.20825C10.8334 8.31079 10.1058 7.58325 9.20837 7.58325C8.31091 7.58325 7.58337 8.31079 7.58337 9.20825C7.58337 10.1057 8.31091 10.8333 9.20837 10.8333Z"
+                                              stroke="white" stroke-width="2" stroke-linecap="round"
+                                              stroke-linejoin="round"/>
+                                        <path d="M22.75 16.2499L17.3333 10.8333L5.41663 22.7499" stroke="white"
+                                              stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                    </svg>
+
+
+                                </button>
+                            </div>
+                            <input type="text" name="avatar_url" value="" hidden>
+                            <button class="btn-outlined-primary-dark btn-sm mt-4 py-1 px-2 avatar-upload">Upload
+                            </button>
+                        </div>
+
+                        <div class="col-6 col-lg-6 px-4 pt-2 pb-3 m-auto border-left">
+                            <div class="pl-4 pr-2">
+                                <div class="mt-1">
+                                    <h3 class="fw-bold mb-1 user-name"></h3>
+                                    <h4 class="fw-bold text-secondary user-info"></h4>
+                                </div>
+                                <div class="passwords gap-2">
+                                    <?php
+                                    $formData = [
+                                        "password" => [
+                                            "element" => InputField::class,
+                                            "wrapperClass" => "col-12",
+                                            "label" => "Password",
+                                            "placeholder" => "Create a new password",
+                                            "type" => "password",
+                                        ],
+                                        "confirm_password" => [
+                                            "element" => InputField::class,
+                                            "wrapperClass" => "col-12",
+                                            "label" => "Confirm password",
+                                            "placeholder" => "Re-enter new password",
+                                            "type" => "password",
+                                        ],
+                                    ];
+
+                                    $this->generateFormFields($formData);
+                                    ?>
+                                </div>
+                                <input type="checkbox" name="t&c" id="t&_checkbox" hidden>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="mt-3 text-center">
+                        <button class="button btn-navigate-form-step btn-outline prev-btn" type="button"
+                                step_number="22">
+                            <svg class="pr-1" width="20" height="17" viewBox="0 0 20 17" fill="none"
+                                 xmlns="http://www.w3.org/2000/svg">
+                                <path d="M1.53282 8.71365H19.0328" stroke-width="2.5" stroke-linecap="round"
+                                      stroke-linejoin="round"/>
+                                <path d="M8.53282 1.71365L1.53282 8.71365L8.53282 15.7137" stroke-width="2.5"
+                                      stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
+                            Previous
+                        </button>
+                        <button class="button btn-navigate-form-step fw-bold" id="submit-btn"
+                                name="register" value="register" type="button">
+                            <svg class="pr-1" width="20" height="17" viewBox="0 0 20 14" fill="none"
+                                 xmlns="http://www.w3.org/2000/svg">
+                                <path d="M17.3672 1.56592L6.36729 12.5659L1.36719 7.56592"/>
+                            </svg>
+                            Submit
+                        </button>
+                    </div>
+                </section>
             </form>
         </div>
     </div>
