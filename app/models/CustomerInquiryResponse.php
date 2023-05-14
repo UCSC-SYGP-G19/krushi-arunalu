@@ -13,12 +13,11 @@ use app\core\Model;
 class CustomerInquiryResponse extends Model
 {
     public function __construct(
-        private ?int    $id = null,
+        private ?int $id = null,
         private ?string $responseContent = null,
         private ?string $responseDateTime = null,
-        private ?int    $inquiryId = null,
-    )
-    {
+        private ?int $inquiryId = null,
+    ) {
     }
 
     public function addInquiryResponseToDb(): bool
@@ -34,7 +33,9 @@ class CustomerInquiryResponse extends Model
 
     public function getInquiryResponsesFromDB($inquiryId): array
     {
-        return $this->runQuery("SELECT 
+        return $this->runQuery(
+            "SELECT 
+        cir.id as 'response_id',
         cir.inquiry_id as 'inquiry_id',
         cir.response_content as 'response',
         cir.response_date_time as 'responded_time',
@@ -44,7 +45,26 @@ class CustomerInquiryResponse extends Model
         INNER JOIN product p ON ci.product_id = p.id
         INNER JOIN registered_user ru ON p.manufacturer_id = ru.id
         WHERE cir.inquiry_id = ?",
-        [$inquiryId])->fetchAll();
+            [$inquiryId]
+        )->fetchAll();
+    }
+
+    public function updateResponse(): bool
+    {
+        return $this->update(
+            table: "customer_inquiry_response",
+            data: ["response_content" => $this->responseContent],
+            where: ["id" => $this->id]
+        );
+    }
+
+
+    public function deleteResponseFromDb($responseId): bool
+    {
+        return $this->delete(
+            table: "customer_inquiry_response",
+            where: ["id" => $responseId]
+        ) == 1;
     }
 
     /**

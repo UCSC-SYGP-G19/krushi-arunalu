@@ -25,19 +25,19 @@ class ManufacturersController extends Controller
     public function getAllManufacturersAsJson(): void
     {
         $this->loadModel("Manufacturer");
-        $this->sendJson($this->model->getAllManufacturersFromDB());
+        $this->sendArrayAsJson($this->model->getAllManufacturersFromDB());
     }
 
     public function getAllManufacturersForProducerAsJson(): void
     {
         $this->loadModel("Manufacturer");
-        $this->sendJson($this->model->getAllManufacturersForProducer(Session::getSession()->id));
+        $this->sendArrayAsJson($this->model->getAllManufacturersForProducer(Session::getSession()->id));
     }
 
     public function getConnectedManufacturersForProducerAsJson(): void
     {
         $this->loadModel("Manufacturer");
-        $this->sendJson($this->model->getConnectedManufacturersForProducer(Session::getSession()->id));
+        $this->sendArrayAsJson($this->model->getConnectedManufacturersForProducer(Session::getSession()->id));
     }
 
     private function renderManufacturersPageForProducer(): void
@@ -53,6 +53,14 @@ class ManufacturersController extends Controller
         $this->loadView('Customer/ManufacturersPage', 'All Manufacturers', 'manufacturers');
         $this->loadModel("Manufacturer");
         $this->view->data = $this->model->getAllManufacturersFromDB();
+        $this->view->render();
+    }
+
+    public function manufacturerStore($id): void
+    {
+        $this->loadView('Customer/ManufacturerStorePage', 'Manufacturer Store', 'manufacturers');
+        $this->loadModel("Manufacturer");
+        $this->view->data = $this->model->getManufacturerDetails($id);
         $this->view->render();
     }
 }

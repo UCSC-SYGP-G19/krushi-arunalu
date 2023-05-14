@@ -1,0 +1,198 @@
+@import "../partials/variables";
+
+.chat-page {
+  height: 100%;
+  width: 100%;
+  max-width: 1320px;
+  box-shadow: 0 2px 32px rgba(0, 0, 0, 0.05) !important;
+  border-radius: $base-border-radius;
+  scroll-behavior: smooth;
+
+  div.online-dot {
+    visibility: hidden;
+    position: absolute;
+    width: 12px;
+    height: 12px;
+    background-color: green;
+    border-radius: 50%;
+    right: 6px;
+    bottom: 2px;
+  }
+
+  .header-row {
+    max-height: 7vh;
+
+    .chat-title-wrapper {
+      background-color: darken($background-grey, 10%);
+      border-bottom: 0.5px solid darken($background-grey, 10%);
+      border-right: 0.5px solid $white;
+      border-radius: $base-border-radius 0 0 0;
+
+      .chat-title {
+        font-size: $font-size-lg*1.2;
+        font-weight: 600;
+        color: $grey-dark;
+      }
+    }
+
+    .chat-header {
+      background-color: $white;
+      border-radius: 0 $base-border-radius 0 0;
+
+      .active-status {
+        font-size: $font-size-sm*1.2;
+      }
+    }
+
+    .chat-header-active {
+      background-color: darken($background-grey, 10%);
+
+      .chat-avatar{
+        height: 100%;
+        position: relative!important;
+
+        .online-dot {
+          right: 18px;
+          bottom: 8px;
+        }
+
+
+        img {
+          padding-top: 6px;
+          margin: auto;
+          display: inherit;
+        }
+      }
+    }
+  }
+
+  .bottom-row {
+
+    .chat-list {
+      background-color: $white;
+      border-right: 0.5px solid darken($background-grey, 10%);
+      border-radius: 0 0 0 $base-border-radius;
+      overflow-y: auto;
+      scroll-behavior: smooth;
+      height: 68vh;
+
+      .chat-card {
+        cursor: pointer;
+        width: 100%;
+
+        &:hover {
+          background-color: $selected-green-light;
+        }
+
+        &.active {
+          background-color: darken($background-grey, 10%);
+        }
+
+        .chat-avatar {
+          position: relative!important;
+          height: 100%;
+
+          img {
+            display: inherit;
+          }
+        }
+
+        border-bottom: 1px solid darken($background-grey, 10%);
+        padding-bottom: 0.6rem;
+
+        .last-message {
+          width: 100%;
+
+          div:nth-of-type(1) {
+            text-overflow: ellipsis;
+            white-space: nowrap;
+            overflow: hidden;
+            max-width: 100%;
+          }
+
+          div:nth-of-type(2) {
+            font-size: $font-size-sm*0.95;
+            font-weight: lighter;
+          }
+        }
+      }
+    }
+
+    .search-input-field {
+      height: 32px;
+    }
+
+    .chat-background {
+      background-color: $white;
+      border-radius: 0 0 $base-border-radius 0;
+
+      .chat-background-image {
+        background-size: cover;
+        background-repeat: no-repeat;
+      }
+
+      .chat {
+        background-color: $white;
+        min-height: 67vh;
+
+        .chat-msg-sent, .chat-msg-received {
+          //padding-top: 0.5px;
+          text-align: left;
+          width: fit-content;
+          word-break: break-word;
+          max-width: 60%;
+
+          .sent-time {
+            font-size: $font-size-sm*0.9;
+            font-weight: lighter;
+          }
+        }
+
+        .chat-msg-sent {
+          margin-left: auto;
+        }
+
+        .chat-msg-received {
+          margin-right: auto;
+        }
+
+        .chat-msg-received > div {
+          background-color: $background-grey;
+          border-radius: 0 $base-border-radius $base-border-radius $base-border-radius;
+        }
+
+        .chat-msg-sent > div {
+          background-color: $selected-green-light;
+          border-radius: $base-border-radius $base-border-radius 0 $base-border-radius;
+        }
+      }
+
+      .chat-active {
+        overflow-y: auto;
+        height: 67vh;
+      }
+    }
+
+    .message-input-box {
+      background-color: $white;
+      bottom: 0;
+      min-height: 7vh;
+      border-radius: 0 0 $base-border-radius 0;
+
+      .btn-wrapper {
+        padding-top: 0.2rem;
+
+        .btn-send {
+          background-color: $background-grey;
+          border: 1px solid $grey-dark;
+          border-radius: $base-border-radius-sm;
+          cursor: pointer;
+        }
+      }
+    }
+
+    .message-input-box-active {
+      background-color: darken($background-grey, 10%);
+    }
+  }
+}

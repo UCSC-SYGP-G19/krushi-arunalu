@@ -32,6 +32,8 @@ include APP_ROOT . "/views/inc/components/Header.php";
                         <div class="px-1 text-center" id="inquiries">
                             Loading
                         </div>
+                        <dialog class="modal-window-box" id="modal-window-box">
+                            <dialog>
                     </div>
                 </div>
             </div>

@@ -65,10 +65,10 @@ include APP_ROOT . "/views/inc/components/Header.php";
                                         "sortKey" => "crop_name",
                                         "class" => "col-2",
                                     ],
-                                    "cultivated_quantity" => [
-                                        "label" => "Cultivated quantity",
+                                    "cultivated_area" => [
+                                        "label" => "Cultivated area",
                                         "sortable" => true,
-                                        "sortKey" => "cultivated_quantity",
+                                        "sortKey" => "cultivated_area",
                                         "class" => "col-1",
                                     ],
                                     "cultivated_date" => [
