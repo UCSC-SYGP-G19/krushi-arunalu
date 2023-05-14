@@ -25,15 +25,7 @@ class MarketplaceController extends Controller
     {
         $this->loadView('Customer/ProductDetailsPage', 'Product Details', 'marketplace');
         $this->loadModel("Product");
-        $this->view->data = $this->model->getByProductId($id);
-        $this->view->render();
-    }
-
-    public function manufacturerStore($id): void
-    {
-        $this->loadView('Customer/ManufacturerStorePage', 'Manufacturer Store', 'marketplace');
-        $this->loadModel("Manufacturer");
-        $this->view->data = $this->model->getManufacturerByProductId($id);
+        $this->view->data = $this->model->getDetailsFromDB($id);
         $this->view->render();
     }
 
@@ -42,7 +34,7 @@ class MarketplaceController extends Controller
         $this->loadView('Customer/ShoppingCartPage', 'Shopping Cart', 'marketplace');
 
         if ($_SERVER["REQUEST_METHOD"] === "POST") {
-            $this->loadModel("ShoppingCart");
+            $this->loadModel("Product");
             $this->model->fillData([
                 'dateTime' => date('d-m-y h:i:s'),
                 'content' => $_POST['content'],
@@ -56,12 +48,6 @@ class MarketplaceController extends Controller
         }
 
         $this->view->render();
-    }
-
-    public function addToCartJson($productId)
-    {
-        $this->loadModel("ShoppingCart");
-        $this->sendObjectAsJson($this->model->addItemToDb($_SESSION["id"], $productId, $_GET["quantity"]));
     }
 
     public function sendInquiry($productId): void

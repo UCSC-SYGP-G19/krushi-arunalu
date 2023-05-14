@@ -6,14 +6,14 @@ include APP_ROOT . "/views/inc/components/Header.php"
 include APP_ROOT . "/views/inc/components/LoggedOutNavbar.php"
 ?>
 <main class="register_customer row d-flex align-items-center justify-content-center">
-    <section class="col-11 col-6-lg wrapper px-4 py-3 mt-5 checkbox d-flex align-items-center">
+    <form class="col-6 wrapper px-4 py-3 mt-5 checkbox d-flex align-items-center">
         <div class="col-5 justify-content-center">
-            <img src="<?php echo URL_ROOT ?>/public/img/register-customer-page/reg-customer.png"
-                 alt="Customer registration graphic"
-                 height="auto" class="p-3">
+            <img src="<?php echo URL_ROOT ?>
+            /public/img/register-customer-page/reg-customer.png" alt="Customer-reg graphic"
+                 height="auto" class="p-">
         </div>
         <div class="col-7 px-4 mt-2 ml-2">
-            <h1 class="title text-center mb-2 mt-1">Register</h1>
+            <h1 class="title text-center">Register</h1>
             <br>
             <form class="mb-1" action="" method="post">
                 <div class="form__group">
@@ -52,7 +52,7 @@ include APP_ROOT . "/views/inc/components/LoggedOutNavbar.php"
                     <?php } ?>
                 </div>
                 <div class="checkbox d-flex align-items-center justify-content-center ">
-                    <div class="col-6 pr-1">
+                    <div class="col-6">
                         <input type="password" id="password" name="password" placeholder="Create a new password"
                                value="<?php
                                 if (isset($this->fields['password'])) {
@@ -63,7 +63,7 @@ include APP_ROOT . "/views/inc/components/LoggedOutNavbar.php"
                             <div class="error"><?php echo $this->fieldErrors['password']; ?></div>
                         <?php } ?>
                     </div>
-                    <div class="col-6 pl-1">
+                    <div class="col-6 ">
                         <input type="password" id="confirm_password" name="confirm_password" placeholder="Re-enter password"
                                value="<?php
                                 if (isset($this->fields['confirm_password'])) {
@@ -75,12 +75,12 @@ include APP_ROOT . "/views/inc/components/LoggedOutNavbar.php"
                         <?php } ?>
                     </div>
                 </div>
-                <div class="mt-1">
+                <div>
                         <input type="checkbox" id="t&c" name="t&c" value="t&c_accepted">
                         <?php if (isset($this->fields['t&c']) && $this->fields['t&c'] == 't&c_accepted') {
                             echo 'checked';
                         } ?>
-                        <label for="t&c" class="check pl-1"> I agree to the <a href="#">Terms and Conditions</a>
+                        <label for="t&c" class="check"> I agree to the <a href="#">Terms and Conditions</a>
                         </label>
                         <?php if (isset($this->fieldErrors['t&c'])) { ?>
                             <div class="error"><?php echo $this->fieldErrors['t&c']; ?></div>
@@ -88,13 +88,13 @@ include APP_ROOT . "/views/inc/components/LoggedOutNavbar.php"
                             <div class="alert"><?php echo $this->error; ?></div>
                         <?php } ?>
                 </div>
-                    <div class="mb-3 text-center">
+                    <div class="mt-2 mb-3 text-center">
                         <button class="btn-primary-light mt-3 text-center text-white" type="submit" name="register"
                                 value="register">REGISTER
                         </button>
                     </div>
                 </div>
-            </section>
+            </form>
 </main>
 </body>
 <?php

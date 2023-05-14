@@ -18,7 +18,6 @@
 @import "partials/components/footer";
 @import "partials/components/sidebar";
 @import "partials/components/table";
-@import "partials/components/modal";
 
 // utilities (spacing, typography, etc)
 @import "partials/_utilities";
@@ -42,9 +41,6 @@
 @import "pages/crop_requests_page";
 @import "pages/inquiries_page";
 @import "pages/chat_page";
-@import "pages/purchased_stocks_page";
-@import "pages/manufacturer_sales_page";
-@import "pages/producer_dashboard_page";
 
 // reset styles
 * {
