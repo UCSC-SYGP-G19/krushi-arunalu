@@ -1,25 +1,25 @@
 let requestsList = null;
 
 const fetchApprovalRequests = async () => {
-    const res = await fetch(`${URL_ROOT}/product-categories/getApprovalRequestsAsJson`);
-    if (res.status === 200) {
-        requestsList = await res.json();
-        renderApprovalRequests(requestsList);
-    }
+  const res = await fetch(`${URL_ROOT}/product-categories/getApprovalRequestsAsJson`);
+  if (res.status === 200) {
+    requestsList = await res.json();
+    renderApprovalRequests(requestsList);
+  }
 }
 
 const renderApprovalRequests = (data) => {
-    let output = "";
+  let output = "";
 
-    if (data == null) {
-        pendingApprovalList.innerHTML = renderMessageCard("Error fetching data");
-    }
+  if (data == null) {
+    pendingApprovalList.innerHTML = renderMessageCard("Error fetching data");
+  }
 
-    if (data.length === 0) {
-        pendingApprovalList.innerHTML = renderMessageCard("No pending approvals to show");
-    } else {
-        data.forEach((element) => {
-            let row = `
+  if (data.length === 0) {
+    pendingApprovalList.innerHTML = renderMessageCard("No pending approvals to show");
+  } else {
+    data.forEach((element) => {
+      let row = `
             <div class="connection-request-wrapper px-3 py-2 row mb-3">
                 <div class="col-12 justify-content-space-between">
                     <div class="row pt-1">
@@ -55,14 +55,14 @@ const renderApprovalRequests = (data) => {
                 </div>
             </div>
         `;
-            output += row;
-        });
-        pendingApprovalList.innerHTML = output;
-    }
+      output += row;
+    });
+    pendingApprovalList.innerHTML = output;
+  }
 }
 
 document.addEventListener("DOMContentLoaded", () => {
-    pendingApprovalList.innerHTML = renderMessageCard("Loading");
-    fetchApprovalRequests();
+  pendingApprovalList.innerHTML = renderMessageCard("Loading");
+  fetchApprovalRequests();
 });
 const pendingApprovalList = document.querySelector("#pending-approval-list");

@@ -125,7 +125,7 @@ include APP_ROOT . "/views/inc/components/Header.php";
                             <section class="categorized-products row pt-2 d-flex"
                                      id="<?php echo $productCategory->category_id ?>">
                                 <span class="category-name fw-bold text-justify text-primary-dark pt-3 fs-5">
-                                    <?php echo $productCategory->category_name?>
+                                    <?php echo $productCategory->category_name ?>
                                 </span>
                             </section>
                             <div class="row pt-2">

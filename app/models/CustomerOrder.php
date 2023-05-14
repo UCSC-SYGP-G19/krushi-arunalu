@@ -103,12 +103,12 @@ class CustomerOrder extends Model
 
 //     public function getProductImgFromDB(): array
 //     {
-//         return $this->runQuery("SELECT 
+//         return $this->runQuery("SELECT
 //         image_url as product_img
-//         FROM product 
-//         INNER JOIN cart_item 
-//         ON product.id = cart_item.product_id 
-//         INNER JOIN customer_order 
+//         FROM product
+//         INNER JOIN cart_item
+//         ON product.id = cart_item.product_id
+//         INNER JOIN customer_order
 //         ON cart_item.shopping_cart_id = customer_order.shopping_cart_id
 //         ORDER BY rand() limit 3
 //         ;")->fetchAll();
@@ -314,21 +314,5 @@ class CustomerOrder extends Model
     public function setStatus(?string $status): void
     {
         $this->status = $status;
-    }
-
-    /**
-     * @return int|null
-     */
-    public function getCustomerId(): ?int
-    {
-        return $this->customerId;
-    }
-
-    /**
-     * @param int|null $customerId
-     */
-    public function setCustomerId(?int $customerId): void
-    {
-        $this->customerId = $customerId;
     }
 }

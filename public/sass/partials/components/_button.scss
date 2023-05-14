@@ -63,27 +63,44 @@ $colors: (
 
 
 .tab-btn {
-    border: none;
-    background-color: transparent;
-    font-size: large;
-    font-weight: 600;
-    color: $secondary-grey;
-    padding: 0;
-    margin: 0;
-    cursor: pointer;
-    outline: none;
+  border: none;
+  background-color: transparent;
+  font-size: large;
+  font-weight: 600;
+  color: $secondary-grey;
+  padding: 0;
+  margin: 0;
+  cursor: pointer;
+  outline: none;
 
-    &:hover {
-        color: $primary-green-light;
-    }
+  &:hover {
+    color: $primary-green-light;
+  }
 
-    &.active-tab {
-        border-bottom: $primary-green-light 2px solid;
-        color: $primary-green-light;
-    }
+  &.active-tab {
+    border-bottom: $primary-green-light 2px solid;
+    color: $primary-green-light;
+  }
 }
+
+.btn-gold {
+  border: 1px solid $gold-light;
+  border-radius: $base-border-radius-sm;
+  background-color: $gold-light;
+  color: $white;
+  cursor: pointer;
+
+  &:hover {
+    background-color: darken($gold-light, 1%)
+  }
+}
+
 button {
-    cursor: pointer;
+  cursor: pointer;
+}
+
+button {
+  cursor: pointer;
 }
 
 button:disabled {

@@ -1,19 +1,19 @@
 let data = null;
 
 const fetchPurchasedStocks = async () => {
-    const res = await fetch(`${URL_ROOT}/purchased-stocks/getJsonForPurchasedStocks`);
-    if (res.status === 200) {
-        data = await res.json();
-        renderPurchasedStocks(data);
-    }
+  const res = await fetch(`${URL_ROOT}/purchased-stocks/getJsonForPurchasedStocks`);
+  if (res.status === 200) {
+    data = await res.json();
+    renderPurchasedStocks(data);
+  }
 }
 
 const renderPurchasedStocks = (data) => {
-    let output = "";
+  let output = "";
 
-    if (data != null) {
-        data.forEach((element) => {
-            let row = `
+  if (data != null) {
+    data.forEach((element) => {
+      let row = `
                 <tr class="row py-2" id="stock-item-${element.stock_item_id}">
                     <td class="col-2">${element.crop_id}</td>
                     <td class="col-2">${element.category_name}</td>
@@ -27,17 +27,17 @@ const renderPurchasedStocks = (data) => {
                     <td class="col-3">${element.last_purchased_date}</td>
                 </tr>
              `;
-            output += row;
-        });
-        purchasedStocksList.innerHTML = output;
-    } else {
-        purchasedStocksList.innerHTML = renderMessageCard("Error fetching data")
-    }
+      output += row;
+    });
+    purchasedStocksList.innerHTML = output;
+  } else {
+    purchasedStocksList.innerHTML = renderMessageCard("Error fetching data")
+  }
 }
 
 const updateStockQuantity = async (cropId, totalQuantity) => {
 
-    document.querySelector('dialog').innerHTML = `
+  document.querySelector('dialog').innerHTML = `
                 <div class="modal-content pt-1">
                     <div class="px-3 pb-2 modal-window-title">
                         <h4>Update Purchased Stock Quantity</h4>
@@ -58,43 +58,43 @@ const updateStockQuantity = async (cropId, totalQuantity) => {
                 </div>
             `;
 
-    document.querySelector('dialog').showModal();
+  document.querySelector('dialog').showModal();
 }
 
 const updateQtyInDb = async (id) => {
 
-    const quantityBox = document.querySelector('#quantity-box');
-    const quantity = quantityBox.value;
-    let formData = new FormData();
-    formData.append("totalQuantity", quantity);
-    const res = await fetch('http://localhost/krushi-arunalu/purchased-stocks/sendUpdatedQuantity/' + id, {
-        method: "POST",
-        body: formData
+  const quantityBox = document.querySelector('#quantity-box');
+  const quantity = quantityBox.value;
+  let formData = new FormData();
+  formData.append("totalQuantity", quantity);
+  const res = await fetch('http://localhost/krushi-arunalu/purchased-stocks/sendUpdatedQuantity/' + id, {
+    method: "POST",
+    body: formData
+  });
+  if (res.status === 200) {
+    closeWindow();
+    fetchPurchasedStocks();
+    Swal.fire({
+      icon: 'success',
+      title: 'Success',
+      text: 'Quantity Successfully Updated',
+      confirmButtonText: 'OK',
     });
-    if (res.status === 200) {
-        closeWindow();
-        fetchPurchasedStocks();
-        Swal.fire({
-            icon: 'success',
-            title: 'Success',
-            text: 'Quantity Successfully Updated',
-            confirmButtonText: 'OK',
-        });
-    }
+  }
 
 }
 
 const closeWindow = () => {
-    document.querySelector('dialog').close();
+  document.querySelector('dialog').close();
 };
 
 document.addEventListener("DOMContentLoaded", () => {
-    if (data == null) {
-        purchasedStocksList.innerHTML = renderMessageCard("Loading");
-        fetchPurchasedStocks();
-    } else {
-        renderPurchasedStocks(data);
-    }
+  if (data == null) {
+    purchasedStocksList.innerHTML = renderMessageCard("Loading");
+    fetchPurchasedStocks();
+  } else {
+    renderPurchasedStocks(data);
+  }
 });
 
 const purchasedStocksList = document.querySelector("#purchased-stocks");

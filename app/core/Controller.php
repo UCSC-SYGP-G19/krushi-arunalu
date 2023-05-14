@@ -66,6 +66,8 @@ class Controller
     protected function refillValuesAndShowError($alertMessage = "Please correct the errors in the form"): void
     {
         $this->view->fieldValues = $_POST;
+        $this->view->fieldValues["password"] = null;
+        $this->view->fieldValues["confirm_password"] = null;
         $this->view->error = $alertMessage;
     }
 

@@ -18,9 +18,9 @@ class District extends Model
     ) {
     }
 
-    public function getNamesFromDB(): array
+    public static function getNamesFromDB(): array
     {
-        return $this->runQuery("SELECT id, name FROM district")->fetchAll();
+        return Model::select(table: "district", columns: ["id", "name"])->fetchAll();
     }
 
     /**

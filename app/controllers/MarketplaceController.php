@@ -57,6 +57,7 @@ class MarketplaceController extends Controller
 
         $this->view->render();
     }
+
     public function addToCartJson($productId)
     {
         $this->loadModel("ShoppingCart");

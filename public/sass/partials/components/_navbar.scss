@@ -42,26 +42,85 @@
     max-width: 100%;
   }
 
-  .brand-logo-large {
-    background-color: white;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    border-radius: $base-border-radius*0.5;
-  }
+    .brand-logo-large {
+        background-color: white;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        border-radius: $base-border-radius*0.5;
+    }
 
-  a.nav-link {
-    text-decoration: none;
-  }
+    a.nav-link {
+        text-decoration: none;
+    }
 }
+
 .logged-out-navbar {
-  background-color: $white;
-  display: flex;
-  align-items: center;
-  box-shadow: 0 2px 16px rgba(0, 0, 0, 0.25) !important;
+    background-color: $white;
+    display: flex;
+    align-items: center;
+    box-shadow: 0 2px 16px rgba(0, 0, 0, 0.25) !important;
+}
+
+.logged-out-navbar {
+    background-color: $white;
+    display: flex;
+    align-items: center;
+    box-shadow: 0 2px 16px rgba(0, 0, 0, 0.25) !important;
 }
 
 .logged-in-navbar {
-  background-color: $header-green;
-  box-shadow: 0 2px 16px rgba(0, 0, 0, 0.25) !important;
+    background-color: $header-green;
+    box-shadow: 0 2px 16px rgba(0, 0, 0, 0.25) !important;
+
+    #btn-toggle-notification-panel {
+        display: inline-block;
+        outline: none;
+        border: none;
+    background: transparent;
+
+    &.active {
+      background-color: $primary-green-dark!important;
+      color: white;
+      //transform: scale(1.1);
+
+      svg {
+        fill: white;
+        stroke: white;
+      }
+    }
+  }
+
+  .navbar-icons {
+    transition: all 0.4s ease-out;
+    cursor: pointer;
+    margin: auto;
+    width: 37px;
+    height: 37px;
+    border-radius: 50%;
+    background-color: $selected-green!important;
+
+    svg {
+      transition: all 0.2s ease-in-out;
+      padding: 2px;
+      margin-top: 7px;
+      stroke: $primary-green-dark;
+    }
+    //
+    //&#chat-icon {
+    //    svg {
+    //      margin-top: 7px;
+    //    }
+    //}
+
+    &:hover {
+      background-color: $primary-green-dark!important;
+      //transform: scale(1.1);
+
+      svg {
+        fill: white;
+        stroke: white;
+      }
+    }
+  }
 
   .user-name {
     font-size: $base-font-size * 1.1;
@@ -133,6 +192,21 @@
 
     ul li:last-child a {
       color: $error-red;
+    }
+  }
+
+  #notifications-panel {
+    display: none;
+    position: absolute;
+    background: $white;
+    top: 66px;
+    left: -128px;
+    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.1);
+    min-width: 320px;
+    min-height: 10vh;
+
+    &.visible {
+      display: block;
     }
   }
 

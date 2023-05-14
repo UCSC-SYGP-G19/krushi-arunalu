@@ -70,7 +70,7 @@ include APP_ROOT . "/views/inc/components/Header.php";
                                     }
                                     ?>
                                     </tbody>
-                                  
+
                                     <tfoot>
                                     <tr class="row justify-content-end pagination">
                                         <td class="col-3 text-right"><span>Rows per page:</span><label>

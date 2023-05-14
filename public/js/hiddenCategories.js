@@ -9,17 +9,17 @@ const fetchHiddenCategories = async() => {
 }
 
 const renderHiddenCategories = (data) => {
-    let output = "";
+  let output = "";
 
-    if (data == null) {
-        hiddenCategoriesSection.innerHTML = renderMessageCard("Error fetching data");
-    }
+  if (data == null) {
+    hiddenCategoriesSection.innerHTML = renderMessageCard("Error fetching data");
+  }
 
-    if (data.length === 0) {
-        hiddenCategoriesSection.innerHTML = renderMessageCard("No hidden categories to show");
-    } else {
-        data.forEach((element) => {
-            let category = `
+  if (data.length === 0) {
+    hiddenCategoriesSection.innerHTML = renderMessageCard("No hidden categories to show");
+  } else {
+    data.forEach((element) => {
+      let category = `
             <div class="col-2">
                 <div class="hidden-product-card pb-2 p-3">
                      <div class="text-center">
@@ -36,14 +36,14 @@ const renderHiddenCategories = (data) => {
             </div>
              `;
 
-            output += category;
-        });
+      output += category;
+    });
 
-        hiddenCategoriesSection.innerHTML = output;
-    }
+    hiddenCategoriesSection.innerHTML = output;
+  }
 
-    btnShowHiddenCategories.innerText = "Hide hidden categories";
-    btnShowHiddenCategories.value = "hide";
+  btnShowHiddenCategories.innerText = "Hide hidden categories";
+  btnShowHiddenCategories.value = "hide";
 
 }
 
@@ -51,18 +51,18 @@ const btnShowHiddenCategories = document.querySelector("#hidden-categories-toggl
 const hiddenCategoriesSection = document.querySelector("#hidden-categories");
 
 btnShowHiddenCategories.addEventListener('click', () => {
-    if (btnShowHiddenCategories.value === "show") {
-        if (data == null) {
-            hiddenCategoriesSection.innerHTML = renderMessageCard("Loading");
-            fetchHiddenCategories();
-        } else {
-            renderHiddenCategories(data);
-        }
+  if (btnShowHiddenCategories.value === "show") {
+    if (data == null) {
+      hiddenCategoriesSection.innerHTML = renderMessageCard("Loading");
+      fetchHiddenCategories();
     } else {
-        hiddenCategoriesSection.innerHTML = "";
-        btnShowHiddenCategories.innerText = 'Show hidden categories';
-        btnShowHiddenCategories.value = "show";
+      renderHiddenCategories(data);
     }
+  } else {
+    hiddenCategoriesSection.innerHTML = "";
+    btnShowHiddenCategories.innerText = 'Show hidden categories';
+    btnShowHiddenCategories.value = "show";
+  }
 });
 
 

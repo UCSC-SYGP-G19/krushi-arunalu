@@ -9,6 +9,8 @@
 namespace app\models;
 
 use app\core\Model;
+use app\helpers\Flash;
+use app\helpers\Logger;
 
 class RegisteredUser extends Model
 {
@@ -27,22 +29,67 @@ class RegisteredUser extends Model
     ) {
     }
 
+    public static function getUserIdByTempHash($tempHash): ?int
+    {
+        $result = Model::select(
+            table: 'registered_user',
+            columns: ['id'],
+            where: ['temp_hash' => $tempHash],
+            useSingleton: false
+        )->fetch();
+        if ($result) {
+            return $result->id;
+        }
+        return null;
+    }
+
     public function register(): bool
     {
-        if ($this->emailExists() || $this->phoneExists()) {
+        if ($this->emailExists()) {
+            Flash::setMessage(
+                Flash::ERROR,
+                "Registration failed",
+                "Email address already exists",
+            );
+            Logger::log("ERROR", "Email address already exists");
+            return false;
+        }
+
+        if ($this->phoneExists()) {
+            Flash::setMessage(
+                Flash::ERROR,
+                "Registration failed",
+                "Phone number already exists",
+            );
+            Logger::log("ERROR", "Phone number already exists");
             return false;
         }
 
         $hash = password_hash($this->password, PASSWORD_DEFAULT);
         unset($this->password);
 
-        $result = $this->runQuery(
-            "INSERT into registered_user (role, name, address, last_login, image_url, email, contact_no, 
-                             hashed_password)
-            VALUES (?,?,?,?,?,?,?,?)",
-            [$this->role, $this->name, $this->address, $this->lastLogin, $this->imageUrl, $this->email,
-                $this->contactNo, $hash]
+//        $result = $this->runQuery(
+//            "INSERT INTO registered_user (role, name, address, last_login, image_url, email, contact_no,
+//                             hashed_password)
+//            VALUES (?,?,?,?,?,?,?,?)",
+//            [$this->role, $this->name, $this->address, $this->lastLogin, $this->imageUrl, $this->email,
+//                $this->contactNo, $hash]
+//        );
+
+        $result = $this->insert(
+            table: 'registered_user',
+            data: [
+                'role' => $this->role,
+                'name' => $this->name,
+                'address' => $this->address,
+                'last_login' => $this->lastLogin,
+                'image_url' => $this->imageUrl,
+                'email' => $this->email,
+                'contact_no' => $this->contactNo,
+                'hashed_password' => $hash
+            ]
         );
+
         return $result == true;
     }
 
@@ -104,15 +151,6 @@ class RegisteredUser extends Model
             data: ["temp_hash" => hash("sha256", $userId . date("Y-m-d H:i:s"))],
             where: ["id" => $userId]
         );
-    }
-
-    public static function getUserIdByTempHash($tempHash): ?int
-    {
-        $result = Model::select(table: 'registered_user', columns: ['id'], where: ['temp_hash' => $tempHash])->fetch();
-        if ($result) {
-            return $result->id;
-        }
-        return null;
     }
 
     /**

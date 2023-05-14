@@ -31,46 +31,46 @@ include APP_ROOT . "/views/inc/components/Header.php";
                                 <br>
                                 <section id="harvests-section"></section>
                                 <?php
-//                                include APP_ROOT . "/views/inc/components/SearchFilterAndSort.php";
-//                                $this->tableHeaders = [
-//                                    "harvested_date" => [
-//                                        "label" => "Harvested date",
-//                                        "sortable" => true,
-//                                        "sortKey" => "harvested_date",
-//                                        "class" => "col-2",
-//                                    ],
-//                                    "crop_name" => [
-//                                        "label" => "Crop name",
-//                                        "sortable" => true,
-//                                        "sortKey" => "crop_name",
-//                                        "class" => "col-2",
-//                                    ],
-//                                    "harvested_quantity" => [
-//                                        "label" => "Harvested quantity",
-//                                        "sortable" => true,
-//                                        "sortKey" => "harvested_quantity",
-//                                        "class" => "col-2",
-//                                    ],
-//                                    "remaining_quantity" => [
-//                                        "label" => "Remaining quantity",
-//                                        "sortable" => true,
-//                                        "sortKey" => "remaining_quantity",
-//                                        "class" => "col-2",
-//                                    ],
-//                                    "expected_price" => [
-//                                        "label" => "Expected price",
-//                                        "sortable" => true,
-//                                        "sortKey" => "price",
-//                                        "class" => "col-2"
-//                                    ],
-//                                    "actions" => [
-//                                        "label" => "",
-//                                        "sortable" => false,
-//                                        "class" => "col-2"
-//                                    ]
-//                                ];
-//                                $harvestsTable = new Table("harvests", $this->tableHeaders, $this->data, "harvest_id");
-//                                $harvestsTable->render();
+                                //                                include APP_ROOT . "/views/inc/components/SearchFilterAndSort.php";
+                                //                                $this->tableHeaders = [
+                                //                                    "harvested_date" => [
+                                //                                        "label" => "Harvested date",
+                                //                                        "sortable" => true,
+                                //                                        "sortKey" => "harvested_date",
+                                //                                        "class" => "col-2",
+                                //                                    ],
+                                //                                    "crop_name" => [
+                                //                                        "label" => "Crop name",
+                                //                                        "sortable" => true,
+                                //                                        "sortKey" => "crop_name",
+                                //                                        "class" => "col-2",
+                                //                                    ],
+                                //                                    "harvested_quantity" => [
+                                //                                        "label" => "Harvested quantity",
+                                //                                        "sortable" => true,
+                                //                                        "sortKey" => "harvested_quantity",
+                                //                                        "class" => "col-2",
+                                //                                    ],
+                                //                                    "remaining_quantity" => [
+                                //                                        "label" => "Remaining quantity",
+                                //                                        "sortable" => true,
+                                //                                        "sortKey" => "remaining_quantity",
+                                //                                        "class" => "col-2",
+                                //                                    ],
+                                //                                    "expected_price" => [
+                                //                                        "label" => "Expected price",
+                                //                                        "sortable" => true,
+                                //                                        "sortKey" => "price",
+                                //                                        "class" => "col-2"
+                                //                                    ],
+                                //                                    "actions" => [
+                                //                                        "label" => "",
+                                //                                        "sortable" => false,
+                                //                                        "class" => "col-2"
+                                //                                    ]
+                                //                                ];
+                                //                                $harvestsTable = new Table("harvests", $this->tableHeaders, $this->data, "harvest_id");
+                                //                                $harvestsTable->render();
                                 ?>
                             </div>
                         </div>

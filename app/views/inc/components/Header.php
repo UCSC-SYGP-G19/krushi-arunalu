@@ -22,16 +22,66 @@ use app\helpers\Flash;
     <link rel="manifest" href="<?php echo URL_ROOT ?>/public/favicons/site.webmanifest">
 
     <script>
-        const URL_ROOT = '<?php echo URL_ROOT ?>';
-        const SITE_NAME = '<?php echo SITE_NAME ?>';
-        let message = '<?php echo Flash::getMessage() ?>'
-        if(message === ''){
-          message = null;
+      const URL_ROOT = '<?php echo URL_ROOT ?>';
+      const SITE_NAME = '<?php echo SITE_NAME ?>';
+
+      let message = '<?php echo Flash::getMessage() ?>'
+      if (message === '') {
+        message = null;
+      } else {
+        message = JSON.parse(message);
+      }
+
+      let toastMessage = '<?php echo Flash::getToastMessage() ?>'
+      if (toastMessage === '') {
+        toastMessage = null;
+      } else {
+        toastMessage = JSON.parse(toastMessage);
+      }
+
+      function toast(type, title = "", content, duration = 3000) {
+        const body = document.querySelector('body');
+        const toast = document.createElement('aside');
+
+        toast.classList.add('toast');
+        toast.classList.add('enter');
+
+        if (type === 'success') {
+          toast.innerHTML = `<div class="check"></div>`;
+        } else if (type === 'error') {
+          toast.innerHTML = `<div class="error"></div>`;
+        } else if (type === 'loading') {
+          toast.innerHTML = `<div class="loading"></div>`;
         } else {
-          message = JSON.parse(message);
+          toast.innerHTML = ``;
         }
+
+        toast.innerHTML += `<span> <strong>${title} </strong>${content} </span>`;
+
+        body.appendChild(toast);
+        setTimeout(() => {
+            toast.classList.remove('enter');
+            toast.classList.add('exit');
+            z
+          }
+          , duration);
+        setTimeout(() => {
+          toast.remove();
+        }, duration + 500);
+      }
+
+      function spinnerHtml() {
+        return `
+            <div class="justify-content-center align-items-center d-flex min-h-100 p-4">
+                <svg width="48" height="48" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <style>.spinner_7mtw{transform-origin:center;animation:spinner_jgYN .6s linear infinite}@keyframes spinner_jgYN{100%{transform:rotate(360deg)}}</style>
+                    <path class="spinner_7mtw" d="M2,12A11.2,11.2,0,0,1,13,1.05C12.67,1,12.34,1,12,1a11,11,0,0,0,0,22c.34,0,.67,0,1-.05C6,23,2,17.74,2,12Z"/>
+                </svg>
+            </div>
+            `;
+      }
     </script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-<!--    <script src="sweetalert2.all.min.js"></script>-->
+    <!--    <script src="sweetalert2.all.min.js"></script>-->
     <script src="<?php echo URL_ROOT ?>/public/js/scripts.js" defer></script>
 </head>

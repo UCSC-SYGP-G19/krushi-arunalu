@@ -29,7 +29,7 @@ class Land extends Model
     {
         $stmt = Model::select(
             table: "land",
-            columns: ["land.id", "land.name"],
+            columns: ["land.id", "land.name", "area_in_acres"],
             where: ["land.owner_id" => $ownerId]
         );
         if ($stmt) {
@@ -37,6 +37,30 @@ class Land extends Model
         }
         return [];
     }
+
+    public static function getAllLandDetailsForAgriOfficers($agriOfficerDistrictID): ?array
+    {
+        $stmt = Model::select(
+            table: "land",
+            columns: [
+                "land.id AS id",
+                "registered_user.name AS name",
+                "land.address AS address",
+                "land.district AS district",
+                "registered_user.contact_no AS contact_no"],
+            where: ["land.district" => $agriOfficerDistrictID],
+            joins: [
+                "registered_user" => "land.owner_id", //left side->table need to be joint and right side->table_name.fk
+                "district" => "land.district"
+            ]
+        );
+        if ($stmt) {
+            return $stmt->fetchAll();
+        }
+        return null;
+    }
+
+    //Model function of Agri-Officer's Land details.
 
     public function addToDB(): bool
     {
@@ -51,26 +75,6 @@ class Land extends Model
         return $result == true;
     }
 
-    //Model function of Agri-Officer's Land details.
-
-    public function getAllLandDetailsForAgriOfficers($agriOfficerDistrictID): array
-    {
-        $stmt = Model::select(
-            table: "land",
-            columns: [
-                "land.id",
-                "registered_user.name",
-                "land.address",
-                "land.district",
-                "registered_user.contact_no"],
-            joins: [
-                "registered_user" => "land.id", //left side->table need to be joint and right side->table_name.fk
-                "district" => "land.district"
-            ],
-            where: ["land.district" => $agriOfficerDistrictID]
-        );
-        return [];
-    }
     // Getters and Setters
 
     /**

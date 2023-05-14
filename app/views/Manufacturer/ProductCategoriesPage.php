@@ -37,37 +37,37 @@ include APP_ROOT . "/views/inc/components/Header.php";
                                     id="hidden-categories-toggle" value="show">Show hidden categories
                             </button>
                             <div class="mt-2 row gap-1 px-2" id="hidden-categories">
-                                //                                include APP_ROOT . "/views/inc/components/SearchFilterAndSort.php";
-                                //                                $this->tableHeaders = [
-                                //                                    "name" => [
-                                //                                        "label" => "Category Name",
-                                //                                        "sortable" => true,
-                                //                                        "sortKey" => "category_name",
-                                //                                        "class" => "col-4",
-                                //                                    ],
-                                //                                    "description" => [
-                                //                                        "label" => "Description",
-                                //                                        "sortable" => true,
-                                //                                        "sortKey" => "status",
-                                //                                        "class" => "col-6",
-                                //                                    ],
-                                //                                    "actions" => [
-                                //                                        "label" => "",
-                                //                                        "sortable" => false,
-                                //                                        "class" => "col-2"
-                                //                                    ]
-                                //                                ];
-                                //                                $productCategoriesTable = new Table(
-                                //                                    "product-categories",
-                                //                                    $this->tableHeaders,
-                                //                                    $this->data,
-                                //                                    "id",
-                                //                                    "",
-                                //                                    ["Edit", "Hide"],
-                                //                                    ["edit", "hide"],
-                                //                                );
-                                //                                $productCategoriesTable->render();
-                                //                                ?>
+                                // include APP_ROOT . "/views/inc/components/SearchFilterAndSort.php";
+                                // $this->tableHeaders = [
+                                // "name" => [
+                                // "label" => "Category Name",
+                                // "sortable" => true,
+                                // "sortKey" => "category_name",
+                                // "class" => "col-4",
+                                // ],
+                                // "description" => [
+                                // "label" => "Description",
+                                // "sortable" => true,
+                                // "sortKey" => "status",
+                                // "class" => "col-6",
+                                // ],
+                                // "actions" => [
+                                // "label" => "",
+                                // "sortable" => false,
+                                // "class" => "col-2"
+                                // ]
+                                // ];
+                                // $productCategoriesTable = new Table(
+                                // "product-categories",
+                                // $this->tableHeaders,
+                                // $this->data,
+                                // "id",
+                                // "",
+                                // ["Edit", "Hide"],
+                                // ["edit", "hide"],
+                                // );
+                                // $productCategoriesTable->render();
+                                // ?>
                             </div>
                         </div>
                         <!--                        <div class="hidden-categories-wrapper px-1 py-3">-->

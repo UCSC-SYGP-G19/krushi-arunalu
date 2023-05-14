@@ -37,7 +37,7 @@ class ManufacturerCropRequestsController extends Controller
         $this->view->render();
     }
 
-    public function edit($requestId): bool
+    public function edit($cropRequestId): bool
     {
         $this->loadView('Manufacturer/UpdateCropRequestsPage', 'Update Crop Requests', 'manufacturer-crop-requests');
 
@@ -51,7 +51,7 @@ class ManufacturerCropRequestsController extends Controller
         $this->view->fieldOptions["preferred_district"] = $this->model->getNamesFromDB();
 
         $this->loadModel("CropRequest");
-        $this->view->data = $this->model->getRequestById($requestId);
+        $this->view->data = $this->model->getRequestById($cropRequestId);
 
         if ($_SERVER["REQUEST_METHOD"] === "POST") {
             if (!empty($this->view->fieldErrors)) {
@@ -78,7 +78,7 @@ class ManufacturerCropRequestsController extends Controller
                 'allowMultipleProducers' => $_POST['allow_multiple_producers'],
             ]);
 
-            if ($this->model->updateCropRequest($requestId)) {
+            if ($this->model->updateCropRequest($cropRequestId)) {
                 Util::redirect("../");
                 return true;
             }
@@ -87,12 +87,12 @@ class ManufacturerCropRequestsController extends Controller
         return false;
     }
 
-    public function delete($requestId): bool
+    public function delete($cropRequestId): bool
     {
         $this->loadView('Manufacturer/CropRequestsPage', 'Crop Requests', 'manufacturer-crop-requests');
         $this->loadModel("CropRequest");
 
-        if ($this->model->deleteRequest($requestId)) {
+        if ($this->model->deleteRequest($cropRequestId)) {
             Util::redirect("../");
             return true;
         }

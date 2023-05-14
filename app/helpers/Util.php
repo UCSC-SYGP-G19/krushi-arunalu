@@ -18,4 +18,9 @@ class Util
     {
         header("Location: $location");
     }
+
+    public static function generateOtp(): string
+    {
+        return strval(rand(100000, 999999));
+    }
 }

@@ -1,7 +1,8 @@
 @import "../partials/variables";
 
 .register {
-    height: 100%;
+    min-height: calc(100vh - 161.5px);
+    height: fit-content;
     width: 100%;
     background-color: $background-grey;
 
@@ -45,4 +46,346 @@
             font-size: $base-font-size*0.9;
         }
     }
+
+    .button {
+        font-weight: 600;
+        margin: 0 $base-margin*0.4;
+        padding: $base-padding*0.4 $base-padding;
+        border: 1px solid $sidebar-green;
+        background-color: $sidebar-green;
+        color: $white;
+        border-radius: $base-border-radius-sm;
+        cursor: pointer;
+
+        svg {
+            padding-top: 6px;
+            stroke: $white;
+            stroke-linecap: round;
+            stroke-linejoin: round;
+            stroke-width: 2.5;
+        }
+    }
+
+    .btn-outline {
+        background-color: $white;
+        border: 1px solid $sidebar-green;
+        color: $sidebar-green;
+
+        svg {
+            stroke: $sidebar-green;
+        }
+    }
+
+    .button:hover {
+        background-color: $primary-green-dark;
+        border: 1px solid $primary-green-dark;
+    }
+
+    .btn-outline:hover {
+        border: 1px solid $primary-green-dark;
+        background-color: $primary-green-dark;
+        color: $white;
+
+        svg {
+            stroke: $white;
+        }
+    }
+
+    .submit-btn {
+        border: 1px solid $primary-green-dark;
+        background-color: $primary-green-dark;
+    }
+
+    .d-none {
+        display: none;
+    }
+
+    .form-step {
+        padding: $base-padding*1.35 $base-padding*2;
+        border: 1px solid rgba(0, 0, 0, 0.1);
+        border-radius: 20px;
+    }
+
+    ul.form-stepper {
+        display: none;
+        counter-reset: section;
+        margin-bottom: 3rem;
+
+        .form-stepper-circle {
+            position: relative;
+
+            span {
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                transform: translateY(-50%) translateX(-50%);
+            }
+        }
+
+        > li {
+            &:not(:last-of-type) {
+                margin-bottom: 0.625rem;
+                -webkit-transition: margin-bottom 0.4s;
+                -o-transition: margin-bottom 0.4s;
+                transition: margin-bottom 0.4s;
+            }
+        }
+
+        li {
+            a {
+                .form-stepper-circle {
+                    display: inline-block;
+                    width: 40px;
+                    height: 40px;
+                    margin-right: 0;
+                    line-height: 1.7rem;
+                    text-align: center;
+                    background: rgba(0, 0, 0, 0.38);
+                    border-radius: 50%;
+                }
+            }
+        }
+    }
+
+    .form-stepper-horizontal {
+        position: relative;
+        display: -webkit-box;
+        display: -ms-flexbox;
+        display: flex;
+        -webkit-box-pack: justify;
+        -ms-flex-pack: justify;
+        justify-content: space-between;
+
+        > li {
+            &:not(:last-of-type) {
+                margin-bottom: 0 !important;
+            }
+        }
+
+        li {
+            position: relative;
+            display: -webkit-box;
+            display: -ms-flexbox;
+            display: flex;
+            -webkit-box-flex: 1;
+            -ms-flex: 1;
+            flex: 1;
+            -webkit-box-align: start;
+            -ms-flex-align: start;
+            align-items: start;
+            -webkit-transition: 0.5s;
+            transition: 0.5s;
+
+            &:not(:last-child) {
+                &:after {
+                    position: relative;
+                    -webkit-box-flex: 1;
+                    -ms-flex: 1;
+                    flex: 1;
+                    height: 1px;
+                    content: "";
+                    top: 32%;
+                }
+            }
+
+            &:after {
+                background-color: #dee2e6;
+            }
+
+            &:last-child {
+                flex: unset;
+            }
+        }
+
+        li.form-stepper-completed {
+            &:after {
+                background-color: $header-green;
+            }
+        }
+    }
+
+    .form-stepper {
+        .form-stepper-active {
+            .form-stepper-circle {
+                background-color: $gold-dark !important;
+                color: white;
+
+                &:hover {
+                    background-color: $gold-light !important;
+                    color: white !important;
+                }
+            }
+
+            .label {
+                color: $gold-dark !important;
+            }
+
+            span.text-muted {
+                color: white !important;
+            }
+        }
+
+        .form-stepper-unfinished {
+            .form-stepper-circle {
+                background-color: $selected-green-light;
+
+                .label {
+                    color: $selected-green-light !important;
+                }
+            }
+        }
+
+        .form-stepper-completed {
+            .form-stepper-circle {
+                background-color: $primary-green-light !important;
+                color: white;
+
+                &:hover {
+                    background-color: $primary-green-light !important;
+                    color: white !important;
+                }
+            }
+
+            .label {
+                color: $primary-green-light !important;
+            }
+
+            span.text-muted {
+                color: white !important;
+            }
+        }
+
+        .label {
+            font-size: 1rem;
+            margin-top: 0.5rem;
+            color: $secondary-grey;
+            opacity: 0.9;
+        }
+
+        a {
+            cursor: default;
+        }
+    }
+
+
+    @keyframes horizontal-shaking {
+        0% {
+            transform: translateX(0)
+        }
+        25% {
+            transform: translateX(10px)
+        }
+        50% {
+            transform: translateX(-10px)
+        }
+        75% {
+            transform: translateX(10px)
+        }
+        100% {
+            transform: translateX(0)
+        }
+    }
+
+    .shake {
+        animation: horizontal-shaking 0.3s;
+    }
+
+    .otp-field {
+        display: flex;
+        justify-content: center;
+
+        input {
+            width: 40px;
+            font-size: 24px;
+            padding: 8px;
+            text-align: center;
+            margin: 4px;
+            border: 2px solid lighten($secondary-grey, 10%);
+            outline: none;
+            transition: all 0.2s ease-in-out;
+
+            &:focus {
+                border: 2px solid $primary-green-light;
+            }
+        }
+    }
+
+    .otp-wrapper {
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+
+        p {
+            color: darken($secondary-grey, 10%);
+            font-size: $base-font-size*0.9;
+
+        }
+    }
+
+    .border-left {
+        border-left: 1px solid $secondary-grey;
+    }
+
+    .disabled {
+        opacity: 0.25;
+    }
+
+    button.cancel-otp{
+        // text like button with underline
+        background: none;
+        border: none;
+        padding: 0;
+        font-size: $font-size-sm;
+        cursor: pointer;
+        outline: inherit;
+        color: $black;
+        text-decoration: underline;
+        margin-top: $base-margin;
+        opacity: 0.8;
+    }
+
+    .avatar-preview .avatar {
+        background-color: $background-grey;
+        height: 210px;
+        width: 210px;
+        border: 4px solid lighten($secondary-grey, 15%);
+        border-radius: 50%;
+        transition: background ease-out 0.3s;
+        box-shadow: 0 1px 20px rgba(0, 0, 0, 0.1);
+    }
+
+    .avatar-preview {
+        width: fit-content;
+        position: relative;
+        margin: auto;
+        text-align: center;
+    }
+
+    input.avatar-input {
+        display: none;
+    }
+
+    button.avatar-select {
+        width: 48px;
+        height: 48px;
+        padding: 8px;
+        border-radius: 50%;
+        border: none;
+        cursor: pointer;
+        background-color: $gold-dark;
+        box-shadow: 0 1px 20px rgba(0, 0, 0, 0.2);
+        transition: background-color ease-out 0.2s;
+        position: absolute;
+        right: 0;
+        bottom: 10%;
+
+        svg {
+            padding-top: 4px;
+        }
+    }
+
+    button.avatar-select:hover {
+        background-color: $gold-light;
+    }
+
 }

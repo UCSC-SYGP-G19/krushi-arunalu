@@ -5,11 +5,12 @@ namespace app\helpers;
 use app\models\RegisteredUser;
 use Ratchet\ConnectionInterface;
 use Ratchet\MessageComponentInterface;
+use SplObjectStorage;
 
 class Chat implements MessageComponentInterface
 {
     // Store all the connected clients
-    protected \SplObjectStorage $clients;
+    protected SplObjectStorage $clients;
     // Array to store the resource ids for a particular user id
     protected array $connMappings;
     // Array to store the associated user id for a particular sender hash
@@ -17,7 +18,7 @@ class Chat implements MessageComponentInterface
 
     public function __construct()
     {
-        $this->clients = new \SplObjectStorage();
+        $this->clients = new SplObjectStorage();
         $this->connMappings = [];
         $this->hashMappings = [];
     }

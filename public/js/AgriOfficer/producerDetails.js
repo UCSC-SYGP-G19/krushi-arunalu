@@ -127,7 +127,7 @@ const renderProducerDetailsTable = (data) => {
 
     table = {
         headers: [
-            {key: "nic_number", label: "NIC", class: "col-3", sortable: true},
+            {key: "nic_number", label: "NIC", class: "col-3 p-2", sortable: true},
             {key: "name", label: "Name", class: "col-3", sortable: true},
             {key: "address", label: "Address", class: "col-3", sortable: true},
             {key: "contact_no", label: "Contact no", class: "col-3", sortable: false},
@@ -137,8 +137,8 @@ const renderProducerDetailsTable = (data) => {
         showPagination: true,
         showRowsPerPage: true,
         showSort: true,
-        primaryKey: "nic_number",
-        activeLink: "harvests",
+        // primaryKey: "nic_number",
+        // activeLink: "harvests",
         currentPage: 1,
         rowsPerPage: 10,
         activeSortField: "address",

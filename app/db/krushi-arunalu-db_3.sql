@@ -77,23 +77,24 @@ INSERT INTO `crop_category` (`id`, `name`) VALUES
 -- Table structure for table `cultivation`
 --
 
-CREATE TABLE `cultivation` (
-  `id` int(11) NOT NULL,
-  `crop_id` int(11) NOT NULL,
-  `land_id` int(11) NOT NULL,
-  `cultivated_date` date NOT NULL,
-  `cultivated_quantity` float NOT NULL,
-  `status` varchar(255) NOT NULL,
-  `expected_harvest_date` date NOT NULL
+CREATE TABLE `cultivation`(
+                              `id`                    int(11)      NOT NULL,
+                              `crop_id`               int(11)      NOT NULL,
+                              `land_id`               int(11)      NOT NULL,
+                              `cultivated_date`       date         NOT NULL,
+                              `cultivated_area`       float        NOT NULL,
+                              `status`                varchar(255) NOT NULL,
+                              `expected_harvest_date` date         NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `cultivation`
 --
 
-INSERT INTO `cultivation` (`id`, `crop_id`, `land_id`, `cultivated_date`, `cultivated_quantity`, `status`, `expected_harvest_date`) VALUES
-(1, 1, 1, '2022-12-05', 100, '', '2023-01-04'),
-(2, 1, 1, '2022-12-08', 50, '', '2023-01-05');
+INSERT INTO `cultivation` (`id`, `crop_id`, `land_id`, `cultivated_date`, `cultivated_area`, `status`,
+                           `expected_harvest_date`)
+VALUES (1, 1, 1, '2022-12-05', 100, '', '2023-01-04'),
+       (2, 1, 1, '2022-12-08', 50, '', '2023-01-05');
 
 -- --------------------------------------------------------
 
