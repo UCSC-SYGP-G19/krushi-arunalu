@@ -156,6 +156,17 @@ class ManufacturerOrder extends Model
             ) == 1;
     }
 
+    public function getMostPurchasingMaterials(): array
+    {
+        return $this->runQuery("SELECT
+        c.name AS 'crop_name',
+        SUM(mo.quantity)AS 'total_purchases'
+        FROM manufacturer_order mo
+        INNER JOIN crop c ON mo.crop_id = c.id
+        GROUP BY mo.crop_id
+        ")->fetchAll();
+    }
+
     /**
      * @return int|null
      */
