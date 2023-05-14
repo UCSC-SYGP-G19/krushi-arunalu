@@ -1,6 +1,17 @@
 @import "../partials/variables";
 
 .marketplace {
+    .shopping-cart {
+        .remove-icon {
+            cursor: pointer;
+
+
+        }
+
+        .remove-icon:hover {
+            background-color: $background-grey !important;
+        }
+    }
 
     .carousel {
         //.pic-ctn {

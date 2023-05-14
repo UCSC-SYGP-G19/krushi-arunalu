@@ -58,26 +58,11 @@ class CustomerOrder extends Model
             co.contact_no AS 'contact_no',
             co.email AS email,
             co.status AS 'status',
-            co.payment_method AS 'payment_method'
+            co.payment_method AS 'payment_method',
+            co.order_total AS 'order_total'
             FROM customer_order co
             INNER JOIN registered_user ru ON co.customer_id = ru.id
             WHERE co.id = ?", [$orderId])->fetch();
-    }
-
-    public function getOrderProducts($orderId): array
-    {
-        return $this->runQuery("
-        SELECT
-        customer_order_item.product_id AS 'product_id',
-            product.image_url AS 'product_img_url',
-            product.name AS 'product_name',
-            product.description AS 'product_description',
-            customer_order_item.unit_selling_price AS 'unit_price',
-            customer_order_item.quantity AS 'quantity'
-            FROM customer_order_item
-            INNER JOIN product ON customer_order_item.product_id = product.id   
-            WHERE customer_order_item.order_id = ?
-            ", [$orderId])->fetchAll();
     }
 
     public function getProductImagesOfOrderFromDB($orderId): array

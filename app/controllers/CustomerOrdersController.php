@@ -36,7 +36,9 @@ class CustomerOrdersController extends Controller
         );
         $this->loadModel("CustomerOrder");
         $this->view->data["order-details"] = $this->model->getOrderDetails($orderId);
-        $this->view->data["order-items"] = $this->model->getOrderProducts($orderId);
+
+        $this->loadModel("CustomerOrderItem");
+        $this->view->data["order-items"] = $this->model->getItemsByOrderId($orderId);
         $this->view->render();
     }
 }

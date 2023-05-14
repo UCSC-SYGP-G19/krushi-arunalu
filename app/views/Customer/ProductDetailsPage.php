@@ -28,7 +28,7 @@ include APP_ROOT . "/views/inc/components/Header.php";
         <main class="content overflow-y-auto">
             <?php
             if (isset($this->user)) {
-                include APP_ROOT . "/views/inc/components/LoggedInNavbar.php";
+                include APP_ROOT . "/views/inc/components/CustomerLoggedInNavbar.php";
             } else {
                 include APP_ROOT . "/views/inc/components/LoggedOutNavbarWithLoginLink.php";
             }
@@ -58,7 +58,7 @@ include APP_ROOT . "/views/inc/components/Header.php";
                                 <?php
                                 echo '<div class="product-data">
                                     ' . '<h1 class="product-name">' .
-                                    $this->data->name
+                                    $this->data->product_name
                                     . '</h1>' .
                                     '<br><p class="product-description">' .
                                     $this->data->description .
@@ -69,7 +69,8 @@ include APP_ROOT . "/views/inc/components/Header.php";
                                     '</h6>' .
                                     '</div>'
                                 ?>
-                                <form action="../../shopping-cart/add/<?= $this->data->id ?>" method="get">
+                                <form action="<?php echo URL_ROOT ?>/shopping-cart/addProductToCart/<?= $this->data->product_id ?>"
+                                      method="get">
                                     <div class="row pt-2 mt-2">
                                         <label class="col-2 pr-2">
                                             <input type="number" name="quantity" value="1" min="1">
@@ -79,7 +80,7 @@ include APP_ROOT . "/views/inc/components/Header.php";
                                 </form>
                                 <div class="row py-2">
                                     <a class="col-7 btn-lg btn-outlined-primary-light text-center"
-                                       href=<?php echo "../send-inquiry/" . $this->data->id ?>>
+                                       href=<?php echo "../send-inquiry/" . $this->data->product_id ?>>
                                         Inquire Now
                                     </a>
                                 </div>
@@ -135,11 +136,11 @@ include APP_ROOT . "/views/inc/components/Header.php";
                                     </svg>
                                 </div>
                                 <div class="row px-3 pt-2 mt-1 mb-1">
-                                    Company name
+                                    <?php echo $this->data->manufacturer_name ?>
                                 </div>
                                 <div class="row px-2 pt-2 mt-2">
                                     <a class="pl-2 col-8 btn-outlined-primary-light text text-center"
-                                       href=<?php echo "../manufacturerStore/" . $this->data->id ?>>
+                                       href=<?php echo "../manufacturerStore/" . $this->data->manufacturer_id ?>>
                                         Visit Store
                                     </a>
                                 </div>

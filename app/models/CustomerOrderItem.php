@@ -13,11 +13,12 @@ use app\core\Model;
 class CustomerOrderItem extends Model
 {
     public function __construct(
-        private ?int $id = null,
+        private ?int   $id = null,
         private ?float $quantity = null,
-        private ?float $unitPrice = null,
-        private ?int $productId = null,
-        private ?int $orderId = null
+        private ?float $unitSellingPrice = null,
+        private ?int   $productId = null,
+        private ?int   $orderId = null,
+        private ?int   $rating = null,
     ) {
     }
 
@@ -44,6 +45,23 @@ class CustomerOrderItem extends Model
         INNER JOIN product p ON coi.product_id = p.id
         WHERE coi.order_id = ? AND p.manufacturer_id = ?
         ", [$orderId, $manufacturerId])->fetchAll();
+    }
+
+    public function getItemsByOrderId($orderId): array
+    {
+        return $this->runQuery("
+        SELECT
+        customer_order_item.product_id AS 'product_id',
+            product.image_url AS 'product_img_url',
+            product.name AS 'product_name',
+            product.description AS 'product_description',
+            customer_order_item.unit_selling_price AS 'unit_price',
+            customer_order_item.quantity AS 'quantity',
+            customer_order_item.rating AS 'rating'
+            FROM customer_order_item
+            INNER JOIN product ON customer_order_item.product_id = product.id   
+            WHERE customer_order_item.order_id = ?
+            ", [$orderId])->fetchAll();
     }
 
     /**
@@ -81,17 +99,17 @@ class CustomerOrderItem extends Model
     /**
      * @return float|null
      */
-    public function getUnitPrice(): ?float
+    public function getUnitSellingPrice(): ?float
     {
-        return $this->unitPrice;
+        return $this->unitSellingPrice;
     }
 
     /**
-     * @param float|null $unitPrice
+     * @param float|null $unitSellingPrice
      */
-    public function setUnitPrice(?float $unitPrice): void
+    public function setUnitSellingPrice(?float $unitSellingPrice): void
     {
-        $this->unitPrice = $unitPrice;
+        $this->unitSellingPrice = $unitSellingPrice;
     }
 
     /**
@@ -124,5 +142,21 @@ class CustomerOrderItem extends Model
     public function setOrderId(?int $orderId): void
     {
         $this->orderId = $orderId;
+    }
+
+    /**
+     * @return int|null
+     */
+    public function getRating(): ?int
+    {
+        return $this->rating;
+    }
+
+    /**
+     * @param int|null $rating
+     */
+    public function setRating(?int $rating): void
+    {
+        $this->rating = $rating;
     }
 }
