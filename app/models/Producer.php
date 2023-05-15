@@ -116,6 +116,25 @@ class Producer extends RegisteredUser
             ", [$manufacturerId, $manufacturerId])->fetchAll();
     }
 
+    public function getProducersForAdmin(): array
+    {
+        return $this->runQuery("SELECT 
+            ru.image_url as 'image_url',
+            p.id as 'producer_id',
+            ru.name as 'producer_name',
+            d.name as 'district',
+            ru.contact_no as 'contact_no',
+            GROUP_CONCAT(DISTINCT cr.name SEPARATOR ', ') as 'crop_names'
+            FROM producer p
+            INNER JOIN registered_user ru ON p.id = ru.id
+            LEFT JOIN district d ON d.id = p.district
+            LEFT JOIN land l ON p.id = l.owner_id
+            LEFT JOIN cultivation c ON l.id = c.land_id
+            LEFT JOIN crop cr ON c.crop_id = cr.id
+            GROUP BY p.id
+            ", [])->fetchAll();
+    }
+
     /**
      * @return string|null
      */

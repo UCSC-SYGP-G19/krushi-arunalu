@@ -144,9 +144,13 @@ const SIDEBAR_ROUTES = [
         ],
     ],
     "Admin" => [
-        "Dashboard" => [
-            "icon" => "dashboard",
-            "link" => "Dashboard",
+        "User Management" => [
+            "icon" => "user-management",
+            "link" => "user-management",
+        ],
+        "Product Categories" => [
+            "icon" => "product-categories",
+            "link" => "product-categories",
         ],
         "All Products" => [
             "icon" => "all-products",
@@ -155,10 +159,6 @@ const SIDEBAR_ROUTES = [
         "Crops" => [
             "icon" => "crops",
             "link" => "crops",
-        ],
-        "Product Categories" => [
-            "icon" => "product-categories",
-            "link" => "product-categories",
         ],
         "Manufacturers" => [
             "icon" => "manufacturers",
@@ -171,9 +171,5 @@ const SIDEBAR_ROUTES = [
         "Announcements" => [
             "icon" => "announcements",
             "link" => "announcements",
-        ],
-        "User Management" => [
-            "icon" => "user-management",
-            "link" => "user-management",
         ],
     ],];

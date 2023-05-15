@@ -14,8 +14,20 @@ class ProducersController extends Controller
 {
     public function index(): void
     {
-        $this->loadView('Manufacturer/ProducersPage', 'Producers', 'producers');
-        $this->view->render();
+        $user = Session::getSession()->role;
+        if ($user === "Manufacturer") {
+            $this->loadView('Manufacturer/ProducersPage', 'Producers', 'producers');
+            $this->view->render();
+        } elseif ($user === "Admin") {
+            $this->loadView('Admin/ProducersPage', 'Producers', 'producers');
+            $this->view->render();
+        }
+    }
+
+    public function getProducersAsJson(): void
+    {
+        $this->loadModel("Producer");
+        $this->sendArrayAsJson($this->model->getProducersForAdmin());
     }
 
     public function getAllProducersAsJson(): void
