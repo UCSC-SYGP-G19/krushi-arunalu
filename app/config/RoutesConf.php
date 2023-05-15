@@ -148,14 +148,6 @@ const SIDEBAR_ROUTES = [
             "icon" => "dashboard",
             "link" => "Dashboard",
         ],
-        "All Products" => [
-            "icon" => "all-products",
-            "link" => "all-products",
-        ],
-        "Crops" => [
-            "icon" => "crops",
-            "link" => "crops",
-        ],
         "Product Categories" => [
             "icon" => "product-categories",
             "link" => "product-categories",
