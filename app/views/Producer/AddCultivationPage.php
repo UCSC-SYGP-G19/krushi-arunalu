@@ -66,7 +66,7 @@ include APP_ROOT . "/views/inc/components/Header.php";
                                             "cultivated_area" => [
                                                 "element" => InputField::class,
                                                 "wrapperClass" => "col-4",
-                                                "label" => "Cultivated area (Acres)",
+                                                "label" => "Cultivated area (acres)",
                                                 "placeholder" => "Enter cultivated area",
                                                 "type" => "number",
                                             ],

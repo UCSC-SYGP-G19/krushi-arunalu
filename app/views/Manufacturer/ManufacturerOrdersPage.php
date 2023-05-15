@@ -1,7 +1,5 @@
 <?php
 
-use app\views\inc\components\Table;
-
 include APP_ROOT . "/views/inc/components/Header.php";
 
 ?>
@@ -23,7 +21,7 @@ include APP_ROOT . "/views/inc/components/Header.php";
                                 <h1 class="title">Manufacturer Orders</h1>
                             </div>
                             <div class="col">
-                                <a href="<?php echo URL_ROOT;?>/manufacturer-orders/add"
+                                <a href="<?php echo URL_ROOT; ?>/manufacturer-orders/add"
                                    class="btn-md btn-primary-light text-center text-white">
                                     Add new order</a>
                             </div>
@@ -33,63 +31,117 @@ include APP_ROOT . "/views/inc/components/Header.php";
                                 <br>
                                 <?php
                                 include APP_ROOT . "/views/inc/components/SearchFilterAndSort.php";
-                                $this->tableHeaders = [
-                                    "order_id" => [
-                                        "label" => "Order ID",
-                                        "sortable" => true,
-                                        "sortKey" => "order_id",
-                                        "class" => "col-1",
-                                    ],
-                                    "date" => [
-                                        "label" => "Date",
-                                        "sortable" => true,
-                                        "sortKey" => "date",
-                                        "class" => "col-1",
-                                    ],
-                                    "crop_name" => [
-                                        "label" => "Crop Name",
-                                        "sortable" => true,
-                                        "sortKey" => "crop_name",
-                                        "class" => "col-2",
-                                    ],
-                                    "quantity" => [
-                                        "label" => "Quantity",
-                                        "sortable" => false,
-                                        "sortKey" => "quantity",
-                                        "class" => "col-1",
-                                    ],
-                                    "unit_selling_price" => [
-                                        "label" => "Unit Price",
-                                        "sortable" => false,
-                                        "sortKey" => "unit_selling_price",
-                                        "class" => "col-1",
-                                    ],
-                                    "producer_name" => [
-                                        "label" => "Producer",
-                                        "sortable" => true,
-                                        "sortKey" => "producer",
-                                        "class" => "col-2",
-                                    ],
-                                    "status" => [
-                                        "label" => "Status",
-                                        "sortable" => true,
-                                        "sortKey" => "status",
-                                        "class" => "col-2",
-                                    ],
-                                    "actions" => [
-                                        "label" => "",
-                                        "sortable" => false,
-                                        "class" => "col-2"
-                                    ]
-                                ];
-                                $manufacturerOrderTable = new Table(
-                                    "manufacturer-orders",
-                                    $this->tableHeaders,
-                                    $this->data,
-                                    "order_id"
-                                );
-                                $manufacturerOrderTable->render();
                                 ?>
+                                <table>
+                                    <thead>
+                                    <tr class="row">
+                                        <th class="col-1">Order ID</th>
+                                        <th class="col-1">Date</th>
+                                        <th class="col-2">Crop Name</th>
+                                        <th class="col-1">Quantity</th>
+                                        <th class="col-2">Unit Price</th>
+                                        <th class="col-2">Producer</th>
+                                        <th class="col-1">Order Status</th>
+                                        <th class="col-2"></th>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                    <?php
+                                    function generateActions($orderId, $orderStatus): void
+                                    {
+                                        switch ($orderStatus) {
+                                            case "Shipped":
+                                                echo '<a class="btn-xs btn-outlined-primary-dark" 
+                                                    href = "' . URL_ROOT . '/manufacturer-orders/changeStatus/' . $orderId . '">
+                                                    Mark As Delivered
+                                                    </a>';
+                                                break;
+                                            case "Pending":
+                                                echo '<div class="px-1">
+                                                        <a class="btn-xs btn-outlined-primary-dark" 
+                                                        href = "' . URL_ROOT . '/manufacturer-orders/edit/' . $orderId . '">
+                                                        Edit
+                                                        </a>
+                                                      </div>';
+                                                echo '<div class="px-1">
+                                                        <a class="btn-xs btn-outlined-error" 
+                                                        href = "' . URL_ROOT . '/manufacturer-orders/delete/' . $orderId . '">
+                                                        Delete
+                                                        </a>
+                                                      </div>';
+                                                break;
+                                            default:
+                                                break;
+                                        }
+                                    }
+
+                                    function renderStatus($orderStatus): void
+                                    {
+                                        echo match ($orderStatus) {
+                                            "Pending" => '<span class="badge badge-warning">' . $orderStatus .
+                                                '</span>',
+                                            "Accepted" => '<span class="badge badge-primary">' . $orderStatus .
+                                                '</span>',
+                                            "Rejected" => '<span class="badge badge-danger">' . $orderStatus .
+                                                '</span>',
+                                            "Delivered" => '<span class="badge badge-success">' . $orderStatus .
+                                                '</span>',
+                                            "Shipped" => '<span class="badge badge-secondary">' . $orderStatus .
+                                                '</span>',
+                                            default => '<span>' . $orderStatus . '</span>',
+                                        };
+                                    }
+
+                                    foreach ($this->data as $order) {
+                                        ?>
+                                        <tr class="row py-2">
+                                            <td class="col-1"><?php echo $order->order_id; ?></td>
+                                            <td class="col-1"><?php echo $order->date; ?></td>
+                                            <td class="col-2"><?php echo $order->crop_name; ?></td>
+                                            <td class="col-1"><?php echo $order->quantity; ?></td>
+                                            <td class="col-2"><?php echo $order->unit_selling_price; ?></td>
+                                            <td class="col-2 text-center"><?php echo $order->producer_name; ?></td>
+                                            <td class="col-1"><?php renderStatus($order->status); ?></td>
+                                            <td class="col-2 px-1 py-1">
+                                                <div class="row justify-content-center align-items-center ">
+                                                    <?php generateActions($order->order_id, $order->status) ?>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                        <?php
+                                    }
+                                    ?>
+                                    </tbody>
+                                    <tfoot>
+                                    <tr class="row justify-content-end pagination">
+                                        <td class="col-3 text-right"><span>Rows per page:</span><label>
+                                                <select name="table_filter" id="table_filter">
+                                                    <option value="">10</option>
+                                                </select>
+                                            </label></td>
+                                        <td class="col-2">1-2 of 25
+                                            <span class="arrow-icons">
+                                                <span class="left-arrow">
+                                                    <svg width="9" height="15" viewBox="0 0 9 15" fill="none"
+                                                         xmlns="http://www.w3.org/2000/svg">
+                                                    <path d="M7.10107 13.4121L1.10107 7.41211L7.10107 1.41211"
+                                                          stroke="#B1B1B1" stroke-width="2" stroke-linecap="round"
+                                                          stroke-linejoin="round"/>
+                                                </svg>
+                                                </span>
+
+                                                <span class="right-arrow">
+                                                    <svg width="9" height="15" viewBox="0 0 9 15" fill="none"
+                                                         xmlns="http://www.w3.org/2000/svg">
+                                                    <path d="M1.854 13.3516L7.854 7.35156L1.854 1.35156"
+                                                          stroke="#B1B1B1" stroke-width="2" stroke-linecap="round"
+                                                          stroke-linejoin="round"/>
+                                                </svg>
+                                                </span>
+                                            </span>
+                                        </td>
+                                    </tfoot>
+                                </table>
                             </div>
                         </div>
                     </div>

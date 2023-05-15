@@ -28,19 +28,19 @@
                     </svg>
                 </a>
             </div>
-            <div class="col-1 m-auto">
-                <div class="justify-content-center align-items-center">
-                    <?php echo '<img src="' . URL_ROOT . '/public/img/icons/other/lang-icon.png" 
-                alt="Lang icon" height="20px">' ?>
-
-                    <span class="fs-3 fw-bold text-primary-dark pb-2 position-absolute">&ensp;English&nbsp;
-                        <svg width="12" height="7" viewBox="0 0 12 7" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M1 1L6 6L11 1" stroke="#185427" stroke-width="1.2" stroke-linecap="round"
-                              stroke-linejoin="round"/>
-                        </svg>
-                    </span>
-                </div>
-            </div>
+            <!--            <div class="col-1 m-auto">-->
+            <!--                <div class="justify-content-center align-items-center">-->
+            <!--                    --><?php //echo '<img src="' . URL_ROOT . '/public/img/icons/other/lang-icon.png"
+            //                alt="Lang icon" height="20px">' ?>
+            <!---->
+            <!--                    <span class="fs-3 fw-bold text-primary-dark pb-2 position-absolute">&ensp;English&nbsp;-->
+            <!--                        <svg width="12" height="7" viewBox="0 0 12 7" fill="none" xmlns="http://www.w3.org/2000/svg">-->
+            <!--                        <path d="M1 1L6 6L11 1" stroke="#185427" stroke-width="1.2" stroke-linecap="round"-->
+            <!--                              stroke-linejoin="round"/>-->
+            <!--                        </svg>-->
+            <!--                    </span>-->
+            <!--                </div>-->
+            <!--            </div>-->
 
             <div class="col-6 text-right pb-1 px-2 m-auto">
                 <?php

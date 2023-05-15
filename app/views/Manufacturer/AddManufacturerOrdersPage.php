@@ -110,6 +110,7 @@ if (!isset($this->user)) {
                 </div>
             </main>
         </div>
-    </body>
+        <script src="<?php echo URL_ROOT ?>/public/js/Manufacturer/manufacturerOrders.js" defer></script>
+</body>
 
 

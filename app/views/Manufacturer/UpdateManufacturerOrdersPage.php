@@ -58,24 +58,24 @@ if (!isset($this->user)) {
                                                         "wrapperClass" => "col-6",
                                                         "label" => "Crop name",
                                                         "placeholder" => "Select crop",
-                                                        "value" => $this->data->crop_id
-                                                    ],
-                                                    "unit_selling_price" => [
-                                                        "element" => InputField::class,
-                                                        "wrapperClass" => "col-6",
-                                                        "label" => "Unit Price",
-                                                        "placeholder" => "Set unit price",
-                                                        "type" => "number",
-                                                        "value" => $this->data->crop_unit_price
-                                                    ],
-                                                    "quantity" => [
-                                                        "element" => InputField::class,
-                                                        "wrapperClass" => "col-6",
-                                                        "label" => "Purchased Quantity",
-                                                        "placeholder" => "Enter purchased quantity",
-                                                        "type" => "number",
-                                                        "value" => $this->data->order_quantity
-                                                    ],
+                                                    "value" => $this->data->crop_id
+                                                ],
+                                                "unit_selling_price" => [
+                                                    "element" => InputField::class,
+                                                    "wrapperClass" => "col-6",
+                                                    "label" => "Unit Price",
+                                                    "placeholder" => "Set unit price",
+                                                    "type" => "number",
+                                                    "value" => $this->data->crop_unit_price
+                                                ],
+                                                "quantity" => [
+                                                    "element" => InputField::class,
+                                                    "wrapperClass" => "col-6",
+                                                    "label" => "Purchased Quantity",
+                                                    "placeholder" => "Enter purchased quantity",
+                                                    "type" => "number",
+                                                    "value" => $this->data->order_quantity
+                                                ],
                                             ];
                                             foreach ($this->formData as $key => $value) {
                                                 $formField = new $value["element"](
@@ -102,6 +102,7 @@ if (!isset($this->user)) {
                                         <?php } ?>
                                         <div class="mb-3 text-center">
                                             <button class="btn-lg btn-primary-light mt-3 mx-2 text-center text-white"
+                                                    id="btn-update"
                                                     type="submit" name="submit_order" value="">Update
                                             </button>
                                             <button class="btn-lg btn-outlined-error mt-3 mx-2 text-center"

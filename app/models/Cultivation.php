@@ -131,6 +131,7 @@ class Cultivation extends Model
                 "cultivation.land_id",
                 "land.area_in_acres",
                 "cultivation.cultivated_area",
+                "cultivation.cultivated_date",
                 "cultivation.expected_harvest_date"],
             where: ["land.district_id" => $agriOfficerDistrictID],
             joins: ["crop" => "cultivation.id",

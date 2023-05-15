@@ -71,9 +71,27 @@ class Product extends Model
     public function getByProductId($productId): object
     {
         return $this->runQuery("SELECT
-            p.id as 'id',
             p.image_url as 'image_url',
-            p.name as 'name',
+            p.name as 'product_name',
+            pc.id as 'category',
+            p.unit as 'unit',
+            p.weight as 'weight',
+            p.stock_quantity as stock_qty,
+            p.unit_selling_price as 'unit_price',
+            p.description as description
+            FROM product p
+            INNER JOIN product_category pc ON p.category_id = pc.id
+            WHERE p.id = ?", [$productId])->fetch();
+    }
+
+    public function getDetailsForCustomerFromDB($productId): object
+    {
+        return $this->runQuery("SELECT
+            p.id as 'product_id',
+            p.image_url as 'image_url',
+            p.name as 'product_name',
+            ru.id as 'manufacturer_id',
+            ru.name as 'manufacturer_name',
             pc.name as 'category',
             p.unit as 'unit',
             p.weight as 'weight',
@@ -82,6 +100,7 @@ class Product extends Model
             p.description as description
             FROM product p
             INNER JOIN product_category pc ON p.category_id = pc.id
+            INNER JOIN registered_user ru ON p.manufacturer_id = ru.id
             WHERE p.id = ?", [$productId])->fetch();
     }
 

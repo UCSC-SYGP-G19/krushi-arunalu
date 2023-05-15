@@ -43,7 +43,7 @@ class Manufacturer extends RegisteredUser
     {
         return $this->runQuery("SELECT 
             manufacturer.id as 'manufacturer_id',
-            registered_user.image_url as 'o',
+            registered_user.image_url as 'manufacturer_image_url',
             registered_user.name as 'manufacturer_name',
             manufacturer.description as 'manufacturer_description'
             FROM manufacturer

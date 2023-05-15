@@ -13,18 +13,28 @@ use app\core\Model;
 class CustomerOrder extends Model
 {
     public function __construct(
-        private ?int $id = null,
+        private ?int    $id = null,
+        private ?int    $customerId = null,
         private ?string $dateTime = null,
-        private ?string $name = null,
+        private ?string $recipientName = null,
         private ?string $deliveryAddress = null,
         private ?string $postalCode = null,
         private ?string $deliveryInstructions = null,
-        private ?float $amountPaid = null,
         private ?string $email = null,
         private ?string $contactNo = null,
         private ?string $status = null,
-        private ?int $customerId = null
-    ) {
+        private ?string $paymentMethod = null,
+        private ?float  $orderTotal = null,
+        private ?float  $amountPaid = null,
+    )
+    {
+    }
+
+    public function getOrderTotalByCustomerId($customerId): float
+    {
+        return $this->runQuery("SELECT SUM(product.unit_selling_price) AS 'total' FROM shopping_cart_item
+                                                        INNER JOIN product ON shopping_cart_item.product_id = product.id
+                                                        WHERE customer_id = ?", [$customerId])->fetch()->total;
     }
 
     public function getAllFromDB($customerId): array
@@ -58,26 +68,11 @@ class CustomerOrder extends Model
             co.contact_no AS 'contact_no',
             co.email AS email,
             co.status AS 'status',
-            co.payment_method AS 'payment_method'
+            co.payment_method AS 'payment_method',
+            co.order_total AS 'order_total'
             FROM customer_order co
             INNER JOIN registered_user ru ON co.customer_id = ru.id
             WHERE co.id = ?", [$orderId])->fetch();
-    }
-
-    public function getOrderProducts($orderId): array
-    {
-        return $this->runQuery("
-        SELECT
-        customer_order_item.product_id AS 'product_id',
-            product.image_url AS 'product_img_url',
-            product.name AS 'product_name',
-            product.description AS 'product_description',
-            customer_order_item.unit_selling_price AS 'unit_price',
-            customer_order_item.quantity AS 'quantity'
-            FROM customer_order_item
-            INNER JOIN product ON customer_order_item.product_id = product.id   
-            WHERE customer_order_item.order_id = ?
-            ", [$orderId])->fetchAll();
     }
 
     public function getProductImagesOfOrderFromDB($orderId): array
@@ -91,14 +86,23 @@ class CustomerOrder extends Model
 
     public function addToDB(): bool
     {
-        $result = $this->runQuery(
-            "INSERT into customer_order (name, delivery_address, postal_code, 
-                         delivery_instructions,amount_paid, email, contact_no, status) VALUES (?,?,?,?,?,?,?,?)",
-            [$this->name, $this->deliveryAddress,
-                $this->postalCode, $this->deliveryInstructions,
-                $this->amountPaid, $this->email, $this->contactNo, $this->status]
+        return $this->insert(
+            table: "customer_order",
+            data: [
+                "customer_id" => $this->customerId,
+                "date_time" => $this->dateTime,
+                "recipient_name" => $this->recipientName,
+                "delivery_address" => $this->deliveryAddress,
+                "postal_code" => $this->postalCode,
+                "delivery_instructions" => $this->deliveryInstructions,
+                "email" => $this->email,
+                "contact_no" => $this->contactNo,
+                "status" => $this->status,
+                "payment_method" => $this->paymentMethod,
+                "order_total" => $this->orderTotal,
+                "amount_paid" => $this->amountPaid
+            ]
         );
-        return $result == true;
     }
 
 //     public function getProductImgFromDB(): array
@@ -173,6 +177,22 @@ class CustomerOrder extends Model
     }
 
     /**
+     * @return int|null
+     */
+    public function getCustomerId(): ?int
+    {
+        return $this->customerId;
+    }
+
+    /**
+     * @param int|null $customerId
+     */
+    public function setCustomerId(?int $customerId): void
+    {
+        $this->customerId = $customerId;
+    }
+
+    /**
      * @return string|null
      */
     public function getDateTime(): ?string
@@ -191,17 +211,17 @@ class CustomerOrder extends Model
     /**
      * @return string|null
      */
-    public function getName(): ?string
+    public function getRecipientName(): ?string
     {
-        return $this->name;
+        return $this->recipientName;
     }
 
     /**
-     * @param string|null $name
+     * @param string|null $recipientName
      */
-    public function setName(?string $name): void
+    public function setRecipientName(?string $recipientName): void
     {
-        $this->name = $name;
+        $this->recipientName = $recipientName;
     }
 
     /**
@@ -253,22 +273,6 @@ class CustomerOrder extends Model
     }
 
     /**
-     * @return float|null
-     */
-    public function getAmountPaid(): ?float
-    {
-        return $this->amountPaid;
-    }
-
-    /**
-     * @param float|null $amountPaid
-     */
-    public function setAmountPaid(?float $amountPaid): void
-    {
-        $this->amountPaid = $amountPaid;
-    }
-
-    /**
      * @return string|null
      */
     public function getEmail(): ?string
@@ -314,5 +318,53 @@ class CustomerOrder extends Model
     public function setStatus(?string $status): void
     {
         $this->status = $status;
+    }
+
+    /**
+     * @return string|null
+     */
+    public function getPaymentMethod(): ?string
+    {
+        return $this->paymentMethod;
+    }
+
+    /**
+     * @param string|null $paymentMethod
+     */
+    public function setPaymentMethod(?string $paymentMethod): void
+    {
+        $this->paymentMethod = $paymentMethod;
+    }
+
+    /**
+     * @return float|null
+     */
+    public function getOrderTotal(): ?float
+    {
+        return $this->orderTotal;
+    }
+
+    /**
+     * @param float|null $orderTotal
+     */
+    public function setOrderTotal(?float $orderTotal): void
+    {
+        $this->orderTotal = $orderTotal;
+    }
+
+    /**
+     * @return float|null
+     */
+    public function getAmountPaid(): ?float
+    {
+        return $this->amountPaid;
+    }
+
+    /**
+     * @param float|null $amountPaid
+     */
+    public function setAmountPaid(?float $amountPaid): void
+    {
+        $this->amountPaid = $amountPaid;
     }
 }

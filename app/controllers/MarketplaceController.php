@@ -25,15 +25,23 @@ class MarketplaceController extends Controller
     {
         $this->loadView('Customer/ProductDetailsPage', 'Product Details', 'marketplace');
         $this->loadModel("Product");
-        $this->view->data = $this->model->getByProductId($id);
+        $this->view->data = $this->model->getDetailsForCustomerFromDB($id);
         $this->view->render();
     }
 
     public function manufacturerStore($id): void
     {
-        $this->loadView('Customer/ManufacturerStorePage', 'Manufacturer Store', 'marketplace');
-        $this->loadModel("Manufacturer");
-        $this->view->data = $this->model->getManufacturerByProductId($id);
+        $this->loadView('Customer/ManufacturerStorePage', 'Manufacturer Store', '');
+
+        $this->loadModel('Manufacturer');
+        $this->view->data["manufacturer"] = $this->model->getManufacturerDetails($id);
+
+        $this->loadModel('Product');
+        $this->view->data["product"] = $this->model->getByManufacturerIdFromDB($id);
+
+        $this->loadModel('ProductCategory');
+        $this->view->data["productCategory"] = $this->model->getCategoriesFromDB();
+
         $this->view->render();
     }
 

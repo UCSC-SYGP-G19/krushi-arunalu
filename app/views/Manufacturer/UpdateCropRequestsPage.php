@@ -135,7 +135,7 @@ include APP_ROOT . "/views/inc/components/Header.php";
             include APP_ROOT . "/views/inc/components/Footer.php";
             ?>
         </main>
-
+        <script src="<?php echo URL_ROOT ?>/public/js/Manufacturer/postCropRequests.js" defer></script>
     </div>
     </body>
 <?php

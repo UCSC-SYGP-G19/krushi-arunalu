@@ -26,8 +26,8 @@ const renderLandDetailsTable = (data) => {
   table = {
     headers: [
       {key: "id", label: "Land Id", class: "col-3", sortable: true},
-      {key: "name", label: "Owner name", class: "col-3", sortable: true},
-      {key: "address", label: "Address", class: "col-3", sortable: true},
+      {key: "name", label: "Owner name", class: "col-3 p-2", sortable: true},
+      {key: "address", label: "Address", class: "col-3", sortable: false},
       {key: "contact_no", label: "Contact no", class: "col-3", sortable: false},
     ],
     data: data,
@@ -35,8 +35,6 @@ const renderLandDetailsTable = (data) => {
     showPagination: true,
     showRowsPerPage: true,
     showSort: true,
-    primaryKey: "id",
-    activeLink: "harvests",
     currentPage: 1,
     rowsPerPage: 10,
     activeSortField: "address",

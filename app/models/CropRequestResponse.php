@@ -123,6 +123,31 @@ class CropRequestResponse extends Model
         return [];
     }
 
+    public function getResponseDetailsById($responseId): ?object
+    {
+        return $this->runQuery("SELECT
+        crr.producer_id AS 'producer_id',
+        crr.accepted_price AS 'price',
+        crr.accepted_quantity AS 'quantity',
+        crr.status AS 'status',
+        cr.crop_id AS 'crop_id',
+        c.category_id AS 'category_id'
+        FROM crop_request_response crr
+        INNER JOIN crop_request cr ON crr.crop_request_id = cr.id
+        INNER JOIN crop c ON cr.crop_id = c.id
+        WHERE crr.id = ?
+        ", [$responseId])->fetch();
+    }
+
+    public function updateStatusInDb($responseId): bool
+    {
+        return $this->update(
+                table: "crop_request_response",
+                data: ["status" => "Accepted"],
+                where: ["id" => $responseId]
+            ) == 1;
+    }
+
     /**
      * @return int|null
      */

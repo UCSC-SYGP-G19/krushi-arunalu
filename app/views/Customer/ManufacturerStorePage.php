@@ -131,8 +131,8 @@ include APP_ROOT . "/views/inc/components/Header.php";
                             <div class="row pt-2">
                                 <?php foreach ($this->data["product"] as $product) {
                                     if ($product->category_id == $productCategory->category_id) {
-                                        echo '<div class="col-2 text-center p-2">
-                                    <div class="product-card p-3 pb-2">
+                                        echo '<div class="col-3 text-center p-2">
+                                    <div class="product-card p-2 pb-2">
                                         <div class="rating-box px-1 d-flex">
                                                 <span class="rating-icon"> <img class="" alt="" src="
                                                 ' . URL_ROOT . '/public/img/icons/other/rating-icon.png" 
@@ -142,10 +142,10 @@ include APP_ROOT . "/views/inc/components/Header.php";
                                             </div>
                                         <div class="image-window mb-1">
                                             ' .
-                                            '<img alt="Product image" height="100%" width="100%" src="' . URL_ROOT .
+                                            '  <a href="' . URL_ROOT . '/marketplace/product-details/' . $product->product_id . '"><img alt="Product image" height="100%" width="100%" src="' . URL_ROOT .
                                             '/public/img/products/' .
                                             $product->image_url . '">'
-                                            . '
+                                            . '</a>
                                         </div>
                                         <div class="text-center pt-2">
                                             <span class="pt-2 pb-0 product-name fw-bold">' .
@@ -153,6 +153,18 @@ include APP_ROOT . "/views/inc/components/Header.php";
                                             <h4 class="product-price text-light-green py-1 pb-2">'
                                             . $product->unit_price . '</h4>
                                             
+                                        </div>
+                                        <div class="row gap-1 px-2 justify-content-center align-items-center">
+                                            <div class="col-5 align-items-center">
+                                            
+                                                <label class="m-auto">
+                                                    <input type="number" name="quantity" value="1" min="1">
+                                                </label>
+                                            </div>
+                                            <div class="col-7">
+                                                <button onClick="addItemToCart(' . $product->product_id . ')" class="btn-add-to-cart btn-primary-light text-white btn-md py-2" value="' . $product->product_id . '">
+                                                Add
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
@@ -167,7 +179,7 @@ include APP_ROOT . "/views/inc/components/Header.php";
                 </div>
             </div>
             <div class="pr-3 text-right btn-go-to-top">
-                <?php echo '<a href="' . URL_ROOT . '/manufacturerStore">
+                <?php echo '<a href="' . URL_ROOT . '/manufacturer-store">
                     <img class="up-arrow-icon" alt="Up" src="
                        ' . URL_ROOT . '/public/img/icons/other/up_arrow.png" 
                        height="100%" width="100%"> </a>'
