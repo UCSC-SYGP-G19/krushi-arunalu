@@ -106,7 +106,8 @@ class CropRequestResponse extends Model
                 "crop_request_response.accepted_delivery_date AS accepted_delivery_date",
                 "crop_request_response.accepted_price AS accepted_price",
                 "crop_request_response.accepted_quantity AS accepted_quantity",
-                "crop_request_response.remarks AS remarks"
+                "crop_request_response.remarks AS remarks",
+                "crop_request_response.status AS status"
             ],
             where: ["crop_request_response.crop_request_id" => $cropRequestId],
             joins: [

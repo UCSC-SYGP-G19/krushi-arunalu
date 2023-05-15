@@ -8,6 +8,7 @@
 namespace app\controllers;
 
 use app\core\Controller;
+use app\helpers\Flash;
 use app\helpers\Logger;
 use app\helpers\Session;
 use app\helpers\Util;
@@ -19,11 +20,17 @@ use app\models\Land;
 class CultivationsController extends Controller
 {
     public string $base = URL_ROOT . "/cultivations";
+
     public function index(): void
     {
         $this->loadView("Producer/CultivationsPage", "Cultivations", "cultivations");
-        $this->view->data = Cultivation::getAllByProducerIdFromDB(Session::getSession()->id);
+//        $this->view->data = Cultivation::getAllByProducerIdFromDB(Session::getSession()->id);
         $this->view->render();
+    }
+
+    public function getMyCultivationsAsJson(): void
+    {
+        $this->sendArrayAsJson(Cultivation::getAllByProducerIdFromDB(Session::getSession()->id));
     }
 
     public function add(): void
@@ -43,7 +50,17 @@ class CultivationsController extends Controller
             $required_fields = ["land", "crop", "cultivated_qty", "cultivated_date"];
             $this->validateFields($required_fields);
 
+            // Custom validations
+            if ($_POST['cultivated_area'] <= 0) {
+                $this->view->fieldErrors['cultivated_area'] = "Land area must be greater than 0";
+            }
+
+            if ($_POST['cultivated_date'] >= $_POST['expected_harvest_date']) {
+                $this->view->fieldErrors['cultivated_area'] = "Cultivation must be greater than 0";
+            }
+
             if (!empty($this->view->fieldErrors)) {
+                Flash::setMessage(Flash::WARNING, "Validation error", "Please correct the errors in the form");
                 $this->refillValuesAndShowError();
                 $this->view->render();
                 return;
@@ -80,7 +97,7 @@ class CultivationsController extends Controller
             $this->view->fieldValues["crop"] = $current->crop_id;
             $this->view->fieldValues["cultivated_date"] = $current->cultivated_date;
             $this->view->fieldValues["cultivated_area"] = $current->cultivated_area;
-            $this->view->fieldValues["remarks"] = $current->status;
+            $this->view->fieldValues["status"] = $current->status;
             $this->view->fieldValues["expected_harvest_date"] = $current->expected_harvest_date;
 
             $this->view->render();
@@ -103,16 +120,16 @@ class CultivationsController extends Controller
                 'cropId' => $_POST['crop'],
                 'cultivatedDate' => $_POST['cultivated_date'],
                 'cultivatedQuantity' => $_POST['cultivated_area'],
-                'status' => $_POST['remarks'],
+                'status' => $_POST['status'],
                 'expectedHarvestDate' => $_POST['expected_harvest_date'],
             ]);
 
             $res = $this->model->updateInDB();
 
             if ($res == 1) {
-                echo "Updated";
+                Flash::setToastMessage(FLASH::SUCCESS, "Success", "Cultivation updated successfully");
             } else {
-                echo("Not Updated");
+                Flash::setToastMessage(FLASH::WARNING, "Failed", "Sorry, something went wrong");
             }
 
             Util::redirect($this->base);
@@ -127,9 +144,10 @@ class CultivationsController extends Controller
         ]);
         try {
             $this->model->deleteFromDB();
+            Flash::setToastMessage(FLASH::SUCCESS, "Success", "Cultivation deleted successfully");
         } catch (\Exception $e) {
             Logger::log("ERROR", $e->getMessage());
-            echo "Cannot delete cultivations with associated harvests";
+            Flash::setMessage(FLASH::ERROR, "Failed", "Cannot delete cultivations with associated harvests");
         }
 
         Util::redirect($this->base);

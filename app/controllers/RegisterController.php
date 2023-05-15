@@ -144,7 +144,7 @@ class RegisterController extends Controller
             Flash::setToastMessage(
                 Flash::SUCCESS,
                 "Registration successful",
-                "Please login using either your email or phone number"
+                "Please login using either email or phone"
             );
             Util::redirect('login');
             exit();

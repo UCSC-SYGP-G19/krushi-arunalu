@@ -58,6 +58,7 @@ $properties: (auto, hidden);
 
 .avatar {
   border-radius: 50%;
+  object-fit: cover;
 }
 
 .order-details-wrapper {

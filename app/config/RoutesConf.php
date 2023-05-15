@@ -8,17 +8,16 @@
 // Names of controllers relevant to each user role without the Controller suffix
 const PROTECTED_ROUTES = [
     "Common" => ["Login", "Register", "ForgotPassword", "ResetPassword", "Logout", "Marketplace", "ManageProfile",
-        "ManufacturerStore"],
+        "ManufacturerStore", "Otp"],
     "Producer" => ["AccountSetup", "ProducerDashboard", "Cultivations", "Harvests", "Sales", "CultivationQuestions",
-        "ProducerCropRequests", "Announcements", "Profile", "Manufacturers", "ConnectionRequests", "Chat", "MyLands"],
+        "ProducerCropRequests", "Announcements", "Profile", "Manufacturers", "ConnectionRequests", "Chat", "MyLands", "MyCultivations"],
     "Manufacturer" => ["ManufacturerDashboard", "Sales", "ManufacturerOrders", "Producers", "Stocks",
         "ProductCategories", "Products", "ManufacturerCropRequests", "Inquiries", "ManufacturerSales",
         "PurchasedStocks", "ConnectionRequests", "Chat"],
     "Customer" => ["Marketplace", "ShoppingCart", "Orders", "Profile", "SendInquiry", "Checkout", "Manufacturers"],
     "Agri Officer" => ["Dashboard", "Announcements", "ProducerDetails", "LandDetails",
         "CultivationDetails", "CropPrices", "CultivationQuestions"],
-    "Admin" => ["Dashboard", "AllProducts", "ProductCategories", "Crops", "Manufacturers", "Producers", "Announcements",
-        "UserManagement"]
+    "Admin" => ["Dashboard", "AllProducts", "ProductCategories", "Crops", "Manufacturers", "Producers", "Announcements", "UserManagement"]
 ];
 
 const SIDEBAR_ROUTES = [

@@ -13,19 +13,38 @@ use app\core\Model;
 class CropRequest extends Model
 {
     public function __construct(
-        private ?int $id = null,
-        private ?int $manufacturerId = null,
-        private ?int $cropId = null,
+        private ?int    $id = null,
+        private ?int    $manufacturerId = null,
+        private ?int    $cropId = null,
         private ?string $postedDateTime = null,
         private ?string $requiredQuantity = null,
         private ?string $fulfilledQuantity = null,
-        private ?float $lowPrice = null,
-        private ?float $highPrice = null,
+        private ?float  $lowPrice = null,
+        private ?float  $highPrice = null,
         private ?string $requiredDate = null,
         private ?string $description = null,
-        private ?int $preferredDistrict = null,
-        private ?bool $allowMultipleProducers = null,
-    ) {
+        private ?int    $preferredDistrict = null,
+        private ?bool   $allowMultipleProducers = null,
+    )
+    {
+    }
+
+    public function addCropRequestsToDb(): bool
+    {
+        return $this->insert(
+            table: "crop_request",
+            data: [
+                "manufacturer_id" => $this->manufacturerId,
+                "crop_id" => $this->cropId,
+                "required_quantity" => $this->requiredQuantity,
+                "low_price" => $this->lowPrice,
+                "high_price" => $this->highPrice,
+                "required_date" => $this->requiredDate,
+                "description" => $this->description,
+                "preferred_district" => $this->preferredDistrict,
+                "allow_multiple_producers" => $this->allowMultipleProducers,
+            ]
+        );
     }
 
     public function getRequestById($requestId): ?object

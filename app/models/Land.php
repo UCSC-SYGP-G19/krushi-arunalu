@@ -13,23 +13,24 @@ use app\core\Model;
 class Land extends Model
 {
     public function __construct(
-        private ?int $id = null,
-        private ?int $ownerId = null,
+        private ?int    $id = null,
+        private ?int    $ownerId = null,
         private ?string $name = null,
-        private ?float $areaInAcres = null,
+        private ?float  $areaInAcres = null,
         private ?string $address = null,
-        private ?int $district_id = null,
+        private ?int    $districtId = null,
         private ?string $soilCondition = null,
         private ?string $rainfall = null,
         private ?string $humidity = null
-    ) {
+    )
+    {
     }
 
     public static function getNamesByOwnerIdFromDB($ownerId): array
     {
         $stmt = Model::select(
             table: "land",
-            columns: ["land.id", "land.name", "land.area_in_acres"],
+            columns: ["land.id", "land.name", "area_in_acres"],
             where: ["land.owner_id" => $ownerId]
         );
         if ($stmt) {
@@ -77,15 +78,29 @@ class Land extends Model
 
     public function addToDB(): bool
     {
-        $result = $this->runQuery(
-            "INSERT into land (owner_id, name, area_in_acres, address, district_id, soil_condition, rainfall, 
-                  humidity)
-            VALUES (?,?,?,?,?,?,?,?)",
-            [$this->ownerId, $this->name, $this->areaInAcres, $this->address, $this->district_id,
-                $this->soilCondition, $this->rainfall, $this->humidity]
-        );
+//        $result = $this->runQuery(
+//            "INSERT into land (owner_id, name, area_in_acres, address, district_id, soil_condition, rainfall,
+//                  humidity)
+//            VALUES (?,?,?,?,?,?,?,?)",
+//            [$this->ownerId, $this->name, $this->areaInAcres, $this->address, $this->district_id,
+//                $this->soilCondition, $this->rainfall, $this->humidity]
+//        );
+//
+//        return $result == true;
 
-        return $result == true;
+        return $this->insert(
+            table: "land",
+            data: [
+                "owner_id" => $this->ownerId,
+                "name" => $this->name,
+                "area_in_acres" => $this->areaInAcres,
+                "district_id" => $this->districtId,
+                "address" => $this->address,
+                "soil_condition" => $this->soilCondition,
+                "rainfall" => $this->rainfall,
+                "humidity" => $this->humidity
+            ]
+        );
     }
 
     public function updateInDB(): bool
@@ -99,9 +114,12 @@ class Land extends Model
         ) == 1;
     }
 
-    public function deleteFromDB(): bool
+    public function deleteFromDb(): bool
     {
-        return $this->delete(table: "land", where: ["id" => $this->id, "owner_id" => $this->ownerId]) == 1;
+        return $this->delete(
+                table: "land",
+                where: ["id" => $this->id, "owner_id" => $this->ownerId]
+            ) == 1;
     }
 
     /**
@@ -189,15 +207,15 @@ class Land extends Model
      */
     public function getDistrictId(): ?int
     {
-        return $this->district_id;
+        return $this->districtId;
     }
 
     /**
-     * @param int|null $district_id
+     * @param int|null $districtId
      */
-    public function setDistrictId(?int $district_id): void
+    public function setDistrictId(?int $districtId): void
     {
-        $this->district_id = $district_id;
+        $this->districtId = $districtId;
     }
 
     /**

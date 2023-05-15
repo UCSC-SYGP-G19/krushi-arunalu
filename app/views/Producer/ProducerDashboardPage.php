@@ -178,7 +178,7 @@ include APP_ROOT . "/views/inc/components/Header.php";
 
                         <div class="row justify-content-center py-2 gap-3">
                             <h2 class="col-12 text-center fw-normal mt-1 py-2">Current land utilisation</h2>
-                            <div class="min-w-100 d-flex justify-content-center" id="land-charts-container">
+                            <div class="min-w-100 d-flex justify-content-center gap-2" id="land-charts-container">
                             </div>
                         </div>
                     </div>

@@ -63,6 +63,7 @@
 
 .avatar {
   border-radius: 50%;
+  object-fit: cover;
 }
 
 .order-details-wrapper .order-details-container, .order-details-wrapper .delivery-address, .order-details-wrapper .order-summary {
@@ -752,6 +753,17 @@
   color: #15742D;
 }
 
+.btn-gold {
+  border: 1px solid #B89130;
+  border-radius: 8px;
+  background-color: #B89130;
+  color: #FFFFFF;
+  cursor: pointer;
+}
+.btn-gold:hover {
+  background-color: #b48e2f;
+}
+
 button {
   cursor: pointer;
 }
@@ -879,14 +891,7 @@ button:disabled:hover {
   color: #555555;
   padding-top: 2px;
 }
-.logged-in-navbar .user-profile-pic {
-  border-radius: 50%;
-  width: 56px;
-  height: 56px;
-  padding: 0;
-  margin: auto;
-}
-.logged-in-navbar .user-profile-pic button.overlay {
+.logged-in-navbar button.overlay {
   cursor: pointer;
   position: absolute;
   outline: none;
@@ -897,7 +902,7 @@ button:disabled:hover {
   height: 56px;
   background: transparent;
 }
-.logged-in-navbar .user-profile-pic button.overlay:hover, .logged-in-navbar .user-profile-pic button.overlay:active, .logged-in-navbar .user-profile-pic button.overlay:focus {
+.logged-in-navbar button.overlay:hover, .logged-in-navbar button.overlay:active, .logged-in-navbar button.overlay:focus {
   background-color: #000000;
   opacity: 0.3;
 }
@@ -3285,49 +3290,141 @@ dialog::backdrop {
   display: inline-block;
   background-size: cover;
   background-repeat: no-repeat;
-    background-color: #FFFFFF;
+  background-color: #FFFFFF;
 }
-
 .producer-dashboard .data-courtesy-tag p {
-    color: #555555;
+  color: #555555;
 }
-
 .producer-dashboard .data-courtesy-tag p a {
-    text-decoration: underline !important;
-    color: #B89130 !important;
+  text-decoration: underline !important;
+  color: #B89130 !important;
 }
 
 .bg-grey {
-    background-color: #F5F5F5;
+  background-color: #F5F5F5;
 }
 
 .my-lands-page .section-wrapper {
-    background-color: #FFFFFF;
-    border-radius: 16px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1) !important;
-    border-bottom: 3px solid #15742D;
+  background-color: #FFFFFF;
+  border-radius: 16px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1) !important;
+  border-bottom: 3px solid #15742D;
 }
-
 .my-lands-page .section-wrapper .badge {
-    font-size: 0.9rem;
+  font-size: 0.9rem;
 }
-
 .my-lands-page .section-wrapper .company-info {
-    font-size: 1.1rem;
+  font-size: 1.1rem;
+}
+.my-lands-page .section-wrapper .card-content {
+  background-color: #F5F5F5;
+  border-radius: 16px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1) !important;
 }
 
-.my-lands-page .section-wrapper .card-content {
-    background-color: #F5F5F5;
-    border-radius: 16px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1) !important;
+.bg-grey {
+  background-color: #F5F5F5;
+}
+
+.my-cultivations-page {
+  min-height: calc(100vh - 161.5px);
+}
+.my-cultivations-page .section-wrapper {
+  background-color: #FFFFFF;
+  border-radius: 16px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1) !important;
+  border-bottom: 3px solid #15742D;
+}
+.my-cultivations-page .section-wrapper .badge {
+  font-size: 0.9rem;
+}
+.my-cultivations-page .section-wrapper .company-info {
+  font-size: 1.1rem;
+}
+.my-cultivations-page .section-wrapper .card-content {
+  background-color: #F5F5F5;
+  border-radius: 16px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1) !important;
+}
+.my-cultivations-page .hr-primary {
+  border-color: #15742D;
+}
+.my-cultivations-page .crop-card {
+  background-color: #FFFFFF;
+  border-radius: 16px;
+  position: relative;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+.my-cultivations-page .crop-card:hover {
+  background-color: #E7F4D8;
+}
+.my-cultivations-page .crop-card.faded {
+  box-shadow: none;
+  background: transparent;
+  height: 100%;
+}
+.my-cultivations-page a.add-icon {
+  margin: auto;
+  background-color: transparent;
+  border: none;
+  outline: none;
+}
+@keyframes progress {
+  0% {
+    --percentage: 0;
+  }
+  100% {
+    --percentage: var(--value);
+  }
+}
+@property --percentage {
+  .my-cultivations-page {
+    syntax: "<number>";
+    inherits: true;
+    initial-value: 0;
+  }
+}
+.my-cultivations-page [role=progressbar] {
+  --percentage: var(--value);
+  --primary: #E7A811;
+  --secondary: #DDD;
+  --size: 90px;
+  animation: progress 2s 0.5s forwards;
+  width: var(--size);
+  aspect-ratio: 1;
+  border-radius: 50%;
+  position: relative;
+  overflow: hidden;
+  display: grid;
+  place-items: center;
+}
+.my-cultivations-page [role=progressbar]::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: conic-gradient(var(--primary) calc(var(--percentage) * 1%), var(--secondary) 0);
+  mask: radial-gradient(white 55%, transparent 0);
+  mask-mode: alpha;
+  -webkit-mask: radial-gradient(rgba(0, 0, 0, 0) 55%, #000 0);
+  -webkit-mask-mode: alpha;
+}
+.my-cultivations-page [role=progressbar]::after {
+  counter-reset: percentage var(--value);
+  content: counter(percentage) "%";
+  font-family: Helvetica, Arial, sans-serif;
+  font-size: calc(var(--size) / 6);
+  color: var(--primary);
 }
 
 * {
-    box-sizing: border-box;
-    color: inherit;
-    margin: 0;
-    font-family: inherit;
-    transition: color 0.3s ease, background-color 0.3s ease, border-color 0.3s ease;
+  box-sizing: border-box;
+  color: inherit;
+  margin: 0;
+  font-family: inherit;
+  transition: color 0.3s ease, background-color 0.3s ease, border-color 0.3s ease;
 }
 
 body {

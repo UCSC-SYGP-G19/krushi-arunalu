@@ -26,6 +26,12 @@ include APP_ROOT . "/views/inc/components/Header.php";
                                     <h3 class="form-section-title">Land details</h3>
                                     <div class="row gap-2">
                                         <?php
+
+                                        $this->fieldOptions["status"] = [
+                                            (object)["id" => "Past", "name" => "Past"],
+                                            (object)["id" => "Current", "name" => "Current"],
+                                        ];
+
                                         $formData = [
                                             "land" => [
                                                 "element" => SelectField::class,
@@ -84,11 +90,11 @@ include APP_ROOT . "/views/inc/components/Header.php";
                                                 "placeholder" => null,
                                                 "type" => "date",
                                             ],
-                                            "remarks" => [
-                                                "element" => InputField::class,
+                                            "status" => [
+                                                "element" => SelectField::class,
                                                 "wrapperClass" => "col-12",
-                                                "label" => "Remarks",
-                                                "placeholder" => "Enter remarks about cultivation (if any)",
+                                                "label" => "Status",
+                                                "placeholder" => "Select status of cultivation",
                                                 "type" => "text",
                                             ],
                                         ];

@@ -8,7 +8,7 @@ const emailOtpInputs = document.querySelectorAll(".email-otp input");
 const sendOtpToEmail = async (email) => {
   let formData = new FormData;
   formData.append("email", email);
-  const res = await fetch(`${URL_ROOT}/otp/sendOtpToEmail/`, {
+  const res = await fetch(`${URL_ROOT}/otp/sendOtpToEmail`, {
     method: "POST",
     body: formData
   });
@@ -289,6 +289,8 @@ document.addEventListener("DOMContentLoaded", () => {
     pNic.setAttribute("title", "9 digits with V/X at the end or 12 digits");
     // pNic.setCustomValidity("Please enter a valid NIC number");
 
+    pDistrict.setAttribute("required", "required");
+
     pAddress.setAttribute("pattern", ".{5,}");
     pAddress.setAttribute("maxlength", "100");
     pAddress.setAttribute("minlength", "5");
@@ -414,7 +416,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     if (password.value !== confirmPassword.value) {
       isSectionValid = false;
-      confirmPassword.setCustomValidity("Passwords do not match");
+      // confirmPassword.setCustomValidity("Passwords do not match");
       Swal.fire({
         title: "Warning",
         text: "Passwords do not match",
@@ -432,7 +434,7 @@ document.addEventListener("DOMContentLoaded", () => {
             <p class="text-secondary fw-normal pt-2 pb-3">Please agree to the terms and conditions to proceed</p>
             <div class="form-check d-flex justify-content-center">
               <input class="form-check-input" type="checkbox" value="" id="popup_t&c_checkbox" name="popup_t&c">
-              <label class="pl-2 mb-0" for="t&c_checkbox" id="t&c_checkbox">I agree to the <a href="https://www.google.com" target="_blank">Terms and Conditions</a></label>
+              <label class="pl-2 mb-0" for="t&c_checkbox" id="popup_t&c_checkbox">I agree to the <a href="https://www.google.com" target="_blank">Terms and Conditions</a></label>
             </div> 
           </section>
         `,
@@ -448,11 +450,14 @@ document.addEventListener("DOMContentLoaded", () => {
           }
         }
       }).then((result) => {
-        form.querySelector('input[name="t&c"]').checked = document.querySelector("#popup_t\\&c_checkbox").checked;
-        window.onbeforeunload = () => {
-        };
-        toast("success", "", "Registration details submitted successfully", 1000);
-        form.submit();
+        // if user has checked the checkbox
+        if (result.isConfirmed) {
+          form.querySelector('input[name="t&c"]').checked = document.querySelector("#popup_t\\&c_checkbox").checked;
+          window.onbeforeunload = () => {
+          };
+          toast("success", "", "Registration details submitted successfully", 1000);
+          form.submit();
+        }
       });
 
     }

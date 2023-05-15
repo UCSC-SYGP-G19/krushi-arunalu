@@ -199,7 +199,8 @@ const renderResponseInfoLine = (element) => `
         <span class="badge badge-light-green text-black fw-bold px-2 mt-0 mb-1">
                                         ${element.fulfilled_quantity} KG fulfilled / ${element.required_quantity} KG required</span>
     </div>`;
-const renderExpandedSection = (element) => `
+const renderExpandedSection = (element) => {
+  let output = `
     <div class="row">
         <div class="col-12 pt-2 mb-2 expanded-section">
             <div class="row mt-1 mb-3">
@@ -222,7 +223,10 @@ const renderExpandedSection = (element) => `
                 </div>
             </div>
 
-            <div class="row mb-1">
+`
+
+  if (new Date(element.required_date) >= new Date()) {
+    output += `            <div class="row mb-1">
                 <div class="col-12">
                     <hr/>
                 </div>
@@ -270,9 +274,17 @@ const renderExpandedSection = (element) => `
                         </div>
                     </form>
                 </div>
-            </div>
-        </div>
-    </div>`;
+            </div>`;
+
+  }
+
+  output += `
+  </div>
+    </div>
+  `;
+
+  return output;
+};
 
 const handleCropRequestClick = (e) => {
   console.log(e);

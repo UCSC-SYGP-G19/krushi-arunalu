@@ -2,7 +2,7 @@ let cropRequests = null;
 let responseList = null;
 
 const fetchCropRequests = async () => {
-  const res = await fetch(`${URL_ROOT}/ManufacturerCropRequests/getRequestsAsJson`);
+  const res = await fetch(`${URL_ROOT}/manufacturer-crop-requests/getRequestsAsJson`);
   if (res.status === 200) {
     cropRequests = await res.json();
     renderCropRequests(cropRequests);
@@ -10,7 +10,7 @@ const fetchCropRequests = async () => {
 }
 
 const fetchResponses = async (cropRequestId) => {
-  const res = await fetch(`${URL_ROOT}/manufacturerCropRequests/getResponsesAsJson/` + cropRequestId);
+  const res = await fetch(`${URL_ROOT}/manufacturer-crop-requests/getResponsesAsJson/` + cropRequestId);
   if (res.status === 200) {
     responseList[cropRequestId] = await res.json();
   }
@@ -139,11 +139,14 @@ const renderResponses = (node, data) => {
                         <div class="col-12">
                             <div class="row align-items-center">
                                 <div class="col-6 text-black fw-bold mb-1"><h3>${element.producer_name}</h3></div>
-                                <div class="col-6 text-primary-light fw-bold text-right">
-                                    <span>${element.response_date_time}</span>
+                                  <div class="col-4 text-primary-light fw-bold">
+                                      <span>Responded on ${element.response_date_time}</span>
+                                  </div>
+                                  <div class="col-2 px-3 text-right align-items-center d-flex">
+                                    ${renderPurchaseButton(element)}
+                                  </div>
                                 </div>
                             </div>
-                        </div>
                         <div class="col-12 text-grey-dark pb-1">
                             <span class="pr-1 text-gold"><em>${element.producer_district}</em></span>
                         </div>
@@ -197,9 +200,41 @@ const renderExpandedSection = (element) => `
         </div>
     </div>`;
 
+const renderPurchaseButton = (element) => {
+  let output = "";
+
+  if (element.status === "Pending") {
+    output = `
+          <button class="btn-sm btn-gold" id="btn-purchase" onclick="placeCropOrder(${element.response_id})">
+              Purchase
+          </button>
+      `;
+  } else {
+    output = `
+          <button class="btn-purchase badge badge-primary">
+              Order Placed
+          </button>
+      `;
+  }
+  return output;
+}
+
 const requestList = document.querySelector("#crop-requests");
 
+const placeCropOrder = async (responseId) => {
+  const buttonPurchase = document.querySelector('#btn-purchase');
+  window.location.href = URL_ROOT + '/manufacturer-orders/placeOrder/' + responseId;
+  buttonPurchase.innerHTML = "Order Placed";
+  buttonPurchase.setAttribute("disabled", "disabled");
+}
+
 document.addEventListener("DOMContentLoaded", () => {
-  requestList.innerHTML = renderMessageCard("Loading");
+  if (cropRequests == null) {
+    requestList.innerHTML = renderMessageCard("Loading");
+    fetchCropRequests();
+  } else {
+    renderCropRequests(data);
+  }
+  requestList.innerHTML = renderMessageCard("Loading...");
   fetchCropRequests();
 });

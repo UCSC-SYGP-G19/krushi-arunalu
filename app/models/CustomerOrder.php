@@ -32,7 +32,7 @@ class CustomerOrder extends Model
         return $this->runQuery("SELECT 
             customer_order.id as 'order_id', 
             customer_order.date_time as 'date_time', 
-            customer_order.name as 'name', 
+            customer_order.recipient_name as 'name', 
             customer_order.delivery_address as 'delivery_address', 
             customer_order.postal_code as 'postal_code', 
             customer_order.delivery_instructions as 'delivery_instructions',
@@ -40,7 +40,7 @@ class CustomerOrder extends Model
             customer_order.contact_no as 'contact_no', 
             customer_order.status as 'status', 
             customer_order.payment_method as 'payment_method', 
-            customer_order.total_cost as 'total_cost'
+            customer_order.order_total as 'total_cost'
             FROM customer_order   
             WHERE customer_order.customer_id = ?", [$customerId])->fetchAll();
     }
@@ -48,18 +48,20 @@ class CustomerOrder extends Model
     public function getOrderDetails($orderId): object
     {
         return $this->runQuery("SELECT
-            customer_order.id AS 'order_id',
-            customer_order.recipient_name AS 'order_recipient_name',
-            customer_order.date_time AS 'order_date_time',
-            customer_order.delivery_address AS 'delivery_address',
-            customer_order.postal_code AS 'postal_code',
-            customer_order.delivery_instructions AS 'delivery_instructions',
-            customer_order.contact_no AS 'contact_no',
-            customer_order.email AS email,
-            customer_order.status AS 'status',
-            customer_order.payment_method AS 'payment_method'
-            FROM customer_order
-            WHERE customer_order.id = ?", [$orderId])->fetch();
+            co.id AS 'order_id',
+            ru.name AS 'customer_name',
+            co.recipient_name AS 'order_recipient_name',
+            co.date_time AS 'order_date_time',
+            co.delivery_address AS 'delivery_address',
+            co.postal_code AS 'postal_code',
+            co.delivery_instructions AS 'delivery_instructions',
+            co.contact_no AS 'contact_no',
+            co.email AS email,
+            co.status AS 'status',
+            co.payment_method AS 'payment_method'
+            FROM customer_order co
+            INNER JOIN registered_user ru ON co.customer_id = ru.id
+            WHERE co.id = ?", [$orderId])->fetch();
     }
 
     public function getOrderProducts($orderId): array
@@ -111,6 +113,48 @@ class CustomerOrder extends Model
 //         ORDER BY rand() limit 3
 //         ;")->fetchAll();
 //     }
+
+    public function getSalesByManufacturerId($manufacturerId): ?array
+    {
+        return $this->runQuery("SELECT
+        co.id AS 'order_id',
+        DATE(co.date_time) AS 'order_date',
+        SUM(coi.unit_selling_price * coi.quantity) AS 'order_total',
+        co.status AS 'order_status'
+        FROM customer_order co
+        INNER JOIN customer_order_item coi ON co.id = coi.order_id
+        INNER JOIN product p ON coi.product_id = p.id
+        WHERE p.manufacturer_id = ?
+        GROUP BY co.id
+        ", [$manufacturerId])->fetchAll();
+    }
+
+    public function acceptOrders($orderId): bool
+    {
+        return $this->update(
+                table: "customer_order",
+                data: ["status" => "Accepted"],
+                where: ["id" => $orderId]
+            ) == 1;
+    }
+
+    public function rejectOrders($orderId): bool
+    {
+        return $this->update(
+                table: "customer_order",
+                data: ["status" => "Rejected"],
+                where: ["id" => $orderId]
+            ) == 1;
+    }
+
+    public function shipOrders($orderId): bool
+    {
+        return $this->update(
+                table: "customer_order",
+                data: ["status" => "Shipped"],
+                where: ["id" => $orderId]
+            ) == 1;
+    }
 
     /**
      * @return int|null

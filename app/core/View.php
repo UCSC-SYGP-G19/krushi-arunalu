@@ -38,16 +38,6 @@ class View
     }
 
     // Function to render the view which was specified before, when needed
-    public function render(): void
-    {
-        $path = '../app/views/' . $this->viewName . '.php';
-
-        if (file_exists($path)) {
-            require_once $path;
-        } else {
-            require_once '../app/views/other/404Page.php';
-        }
-    }
 
     public function generateFormFields($formData): void
     {
@@ -65,7 +55,21 @@ class View
             isset($value["type"]) && $formField->type = $value["type"];
             isset($value["rows"]) && $formField->rows = $value["rows"];
             isset($value["cols"]) && $formField->cols = $value["cols"];
+            isset($value["min"]) && $formField->min = $value["min"];
+            isset($value["max"]) && $formField->max = $value["max"];
+            isset($value["required"]) && $formField->required = $value["required"];
             $formField->render();
+        }
+    }
+
+    public function render(): void
+    {
+        $path = '../app/views/' . $this->viewName . '.php';
+
+        if (file_exists($path)) {
+            require_once $path;
+        } else {
+            require_once '../app/views/other/404Page.php';
         }
     }
 }

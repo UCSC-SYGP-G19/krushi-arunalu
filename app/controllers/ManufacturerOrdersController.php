@@ -34,6 +34,8 @@ class ManufacturerOrdersController extends Controller
         $this->loadModel('Crop');
         $this->view->fieldOptions["crop"] = $this->model->getNamesFromDB();
 
+        $required_fields = ["crop", "quantity", "unit_selling_price"];
+        $this->validateFields($required_fields);
 
         if ($_SERVER["REQUEST_METHOD"] === "POST") {
             if (!empty($this->view->fielfErrors)) {

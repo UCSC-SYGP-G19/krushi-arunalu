@@ -177,7 +177,6 @@ include APP_ROOT . "/views/inc/components/LoggedInNavbarWithoutSidebar.php"
                                 ?>
                             </div>
                             <div class="row gap-2 mt-4 mb-2 justify-content-center">
-                                <input type="hidden" name="crop_request_id" value="2">
                                 <button class="mr-2 btn-lg btn-primary-light text-center text-white fs-3" type="submit"
                                         name="submit_response" value="submit">Submit
                                 </button>
@@ -202,8 +201,9 @@ include APP_ROOT . "/views/inc/components/LoggedInNavbarWithoutSidebar.php"
 
                 <div class="row justify-content-center pt-3">
                     <div class="col-12 justify-content-center text-center">
-                        <button class="mr-2 btn-lg btn-outlined-primary-light text-center fs-3" type="button"
-                                name="submit_response" value="submit">Go to cultivations&ensp;
+                        <a href="<?php echo URL_ROOT ?>/my-cultivations"
+                           class="mr-2 btn-lg btn-outlined-primary-light text-center fs-3">
+                            Go to cultivations&ensp;
 
                             <svg width="15" height="12" viewBox="0 0 20 16" fill="none"
                                  xmlns="http://www.w3.org/2000/svg">
@@ -213,7 +213,7 @@ include APP_ROOT . "/views/inc/components/LoggedInNavbarWithoutSidebar.php"
                                       stroke="#15742D"
                                       stroke-linejoin="round"/>
                             </svg>
-                        </button>
+                        </a>
 
                     </div>
                 </div>

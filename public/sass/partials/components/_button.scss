@@ -83,6 +83,18 @@ $colors: (
     }
 }
 
+.btn-gold {
+    border: 1px solid $gold-light;
+    border-radius: $base-border-radius-sm;
+    background-color: $gold-light;
+    color: $white;
+    cursor: pointer;
+
+    &:hover {
+        background-color: darken($gold-light, 1%)
+    }
+}
+
 button {
     cursor: pointer;
 }

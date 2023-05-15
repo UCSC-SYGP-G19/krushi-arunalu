@@ -1,7 +1,5 @@
 <?php
 
-use app\views\inc\components\Table;
-
 include APP_ROOT . "/views/inc/components/Header.php";
 
 ?>
@@ -44,59 +42,60 @@ include APP_ROOT . "/views/inc/components/Header.php";
                         <div class="row px-1 pt-2">
                             <div class="col-12 text-justify">
                                 <br>
-                                <?php
-                                include APP_ROOT . "/views/inc/components/SearchFilterAndSort.php";
-                                $this->tableHeaders = [
-                                    "land_name" => [
-                                        "label" => "Land name",
-                                        "sortable" => true,
-                                        "sortKey" => "land_name",
-                                        "class" => "col-2",
-                                    ],
-                                    "status" => [
-                                        "label" => "Remarks",
-                                        "sortable" => false,
-                                        "sortKey" => "status",
-                                        "class" => "col-1",
-                                    ],
-                                    "crop_name" => [
-                                        "label" => "Crop name",
-                                        "sortable" => true,
-                                        "sortKey" => "crop_name",
-                                        "class" => "col-2",
-                                    ],
-                                    "cultivated_area" => [
-                                        "label" => "Cultivated area",
-                                        "sortable" => true,
-                                        "sortKey" => "cultivated_area",
-                                        "class" => "col-1",
-                                    ],
-                                    "cultivated_date" => [
-                                        "label" => "Cultivated date",
-                                        "sortable" => true,
-                                        "sortKey" => "cultivated_date",
-                                        "class" => "col-2"
-                                    ],
-                                    "expected_harvest_date" => [
-                                        "label" => "Expected harvest date",
-                                        "sortable" => true,
-                                        "sortKey" => "expected_harvest_date",
-                                        "class" => "col-2"
-                                    ],
-                                    "actions" => [
-                                        "label" => "",
-                                        "sortable" => false,
-                                        "class" => "col-2"
-                                    ]
-                                ];
-                                $cultivationsTable = new Table(
-                                    "cultivations",
-                                    $this->tableHeaders,
-                                    $this->data,
-                                    "cultivation_id"
-                                );
-                                $cultivationsTable->render();
-                                ?>
+                                <section id="cultivations-section"></section>
+                                <!--                                --><?php
+                                //                                include APP_ROOT . "/views/inc/components/SearchFilterAndSort.php";
+                                //                                $this->tableHeaders = [
+                                //                                    "land_name" => [
+                                //                                        "label" => "Land name",
+                                //                                        "sortable" => true,
+                                //                                        "sortKey" => "land_name",
+                                //                                        "class" => "col-2 p-2",
+                                //                                    ],
+                                //                                    "status" => [
+                                //                                        "label" => "Remarks",
+                                //                                        "sortable" => false,
+                                //                                        "sortKey" => "status",
+                                //                                        "class" => "col-1",
+                                //                                    ],
+                                //                                    "crop_name" => [
+                                //                                        "label" => "Crop name",
+                                //                                        "sortable" => true,
+                                //                                        "sortKey" => "crop_name",
+                                //                                        "class" => "col-2",
+                                //                                    ],
+                                //                                    "cultivated_area" => [
+                                //                                        "label" => "Cultivated area",
+                                //                                        "sortable" => true,
+                                //                                        "sortKey" => "cultivated_area",
+                                //                                        "class" => "col-1",
+                                //                                    ],
+                                //                                    "cultivated_date" => [
+                                //                                        "label" => "Cultivated date",
+                                //                                        "sortable" => true,
+                                //                                        "sortKey" => "cultivated_date",
+                                //                                        "class" => "col-2"
+                                //                                    ],
+                                //                                    "expected_harvest_date" => [
+                                //                                        "label" => "Expected harvest date",
+                                //                                        "sortable" => true,
+                                //                                        "sortKey" => "expected_harvest_date",
+                                //                                        "class" => "col-2"
+                                //                                    ],
+                                //                                    "actions" => [
+                                //                                        "label" => "",
+                                //                                        "sortable" => false,
+                                //                                        "class" => "col-2"
+                                //                                    ]
+                                //                                ];
+                                //                                $cultivationsTable = new Table(
+                                //                                    "cultivations",
+                                //                                    $this->tableHeaders,
+                                //                                    $this->data,
+                                //                                    "cultivation_id"
+                                //                                );
+                                //                                $cultivationsTable->render();
+                                //                                ?>
                             </div>
                         </div>
                     </div>
@@ -108,6 +107,8 @@ include APP_ROOT . "/views/inc/components/Header.php";
 
         </main>
     </div>
+    <script src="<?php echo URL_ROOT ?>/public/js/tables.js"></script>
+    <script src="<?php echo URL_ROOT ?>/public/js/producer/cultivations.js" defer></script>
     </body>
 <?php
 include APP_ROOT . "/views/inc/components/EndingTag.php";

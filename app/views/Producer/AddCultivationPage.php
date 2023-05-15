@@ -66,8 +66,8 @@ include APP_ROOT . "/views/inc/components/Header.php";
                                             "cultivated_area" => [
                                                 "element" => InputField::class,
                                                 "wrapperClass" => "col-4",
-                                                "label" => "Cultivated area",
-                                                "placeholder" => "Enter cultivated area (Acres)",
+                                                "label" => "Cultivated area (Acres)",
+                                                "placeholder" => "Enter cultivated area",
                                                 "type" => "number",
                                             ],
                                             "cultivated_date" => [
@@ -80,7 +80,7 @@ include APP_ROOT . "/views/inc/components/Header.php";
                                             "expected_harvest_date" => [
                                                 "element" => InputField::class,
                                                 "wrapperClass" => "col-4",
-                                                "label" => "Cultivated date",
+                                                "label" => "Expected harvest date",
                                                 "placeholder" => null,
                                                 "type" => "date",
                                             ],

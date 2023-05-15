@@ -2,7 +2,7 @@
 
 /**
  * @file
- * Register controller with register functionality
+ * Checkout controller with checkout functionality for customers
  */
 
 namespace app\controllers;
@@ -44,7 +44,7 @@ class CheckoutController extends Controller
                 $shoppingCart = $this->model->getAllByCustomerIdFromDB(Session::getSession()->id);
 
                 foreach ($shoppingCart as $cartEntry) {
-                    $this->loadModel("CustomerOrderEntry");
+                    $this->loadModel("CustomerOrderItem");
                     $this->model->fillData([
                         'quantity' => $cartEntry->quantity,
                         'unitPrice' => $cartEntry->product_unit_selling_price,

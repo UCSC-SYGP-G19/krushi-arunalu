@@ -178,7 +178,7 @@ include APP_ROOT . "/views/inc/components/LoggedInNavbarWithoutSidebar.php"
                                         name="update_land" value="submit">Update
                                 </button>
                                 <button class="ml-2 btn-lg btn-outlined-error text-center text-error fs-3" type="reset"
-                                        name="cancel" value="cancel">Cancel
+                                        name="cancel" value="cancel" onclick="history.back()">Cancel
                                 </button>
                             </div>
                         </form>

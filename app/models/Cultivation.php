@@ -62,6 +62,27 @@ class Cultivation extends Model
         return null;
     }
 
+    public static function getAllCultivationsDetailsForAgriOfficers($agriOfficerDistrictID): ?array
+    {
+        $stmt = Model::select(
+            table: "cultivation",
+            columns: [
+                "crop.name AS crop_name",
+                "cultivation.land_id AS land_id",
+                "cultivation.cultivated_area AS cultivated_area",
+                "cultivation.cultivated_date AS cultivated_date",
+                "cultivation.expected_harvest_date AS expected_harvest_date"],
+            where: ["land.district_id" => $agriOfficerDistrictID],
+            joins: ["crop" => "cultivation.id",
+                "land" => "cultivation.land_id",
+                "district_id" => "land.district_id"]
+        );
+        if ($stmt) {
+            return $stmt->fetchAll();
+        }
+        return null;
+    }
+
     public static function getAllByProducerIdFromDB($producerId): array
     {
 //        return $this->runQuery("SELECT
@@ -92,7 +113,8 @@ class Cultivation extends Model
             joins: [
                 "land" => "cultivation.land_id",
                 "crop" => "cultivation.crop_id",
-            ]
+            ],
+            order: "cultivation.cultivated_date DESC"
         );
         if ($stmt) {
             return $stmt->fetchAll();

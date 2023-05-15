@@ -37,7 +37,7 @@
                         </div>
                     </div>
 
-                    <a href="./chat" class="mx-2">
+                    <a href="<?php echo URL_ROOT ?>/chat" class="mx-2">
                         <div id="chat-icon" class="navbar-icons">
                             <svg width="24" height="24" viewBox="0 0 24 24" fill="none"
                                  xmlns="http://www.w3.org/2000/svg">
@@ -76,8 +76,12 @@
 
             <div class="col-3 m-auto user-profile-pic">
                 <button id="btn-toggle-navbar-options" class="overlay"></button>
-                <?php echo '<img src="' . URL_ROOT . '/public/img/icons/navbar/user-avatar.webp" 
-                alt="User profile icon" height="56px">' ?>
+                <?php if (str_contains($this->user->image_url, "//")) {
+                    echo '<img class="avatar" src="' . $this->user->image_url . '" alt="User profile icon" height="56px">';
+                } else {
+                    echo '<img class="avatar" src="' . URL_ROOT . '/public/uploads/user-avatars/' . $this->user->image_url . '" 
+                alt="User profile icon" height="56px">';
+                } ?>
             </div>
         </div>
 
