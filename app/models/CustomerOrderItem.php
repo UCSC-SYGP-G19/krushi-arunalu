@@ -65,6 +65,28 @@ class CustomerOrderItem extends Model
             ", [$orderId])->fetchAll();
     }
 
+    public function getSalesAsMonth(): array
+    {
+        return $this->runQuery("SELECT
+        MONTH(co.date_time) AS month,
+        COUNT(coi.product_id) AS monthly_sales 
+        FROM customer_order_item coi
+        INNER JOIN customer_order co ON coi.order_id = co.id
+        GROUP BY MONTH(co.date_time)
+        ")->fetchAll();
+    }
+
+    public function getMostSellingProducts(): array
+    {
+        return $this->runQuery("SELECT
+        p.name AS 'product_name',
+        SUM(coi.quantity) AS 'total_sales' 
+        FROM customer_order_item coi
+        INNER JOIN product p ON coi.product_id = p.id
+        GROUP BY coi.product_id
+        ")->fetchAll();
+    }
+
     /**
      * @return int|null
      */

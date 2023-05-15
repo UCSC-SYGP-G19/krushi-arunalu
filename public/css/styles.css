@@ -2645,22 +2645,18 @@ aside.toast .loading {
   /* The dots/bullets/indicators */
   /* Fading animation */
 }
-
 .marketplace .shopping-cart .remove-icon {
   cursor: pointer;
 }
-
 .marketplace .shopping-cart .remove-icon:hover {
   background-color: #F5F5F5 !important;
 }
-
 .marketplace .carousel {
   position: relative;
   width: 100%;
   height: 500px;
   overflow-x: hidden;
 }
-
 @keyframes display {
   0% {
     transform: translateX(200px);
@@ -2799,21 +2795,17 @@ aside.toast .loading {
   display: inline-block;
   transition: background-color 0.6s ease;
 }
-
 .marketplace .active, .marketplace .dot:hover {
   background-color: #717171;
 }
-
 .marketplace .fade {
   animation-name: fade;
   animation-duration: 1.5s;
 }
-
 .marketplace .navbar-top {
   justify-content: center;
   overflow: hidden;
 }
-
 @keyframes fade {
   from {
     opacity: 0.4;
@@ -2829,7 +2821,6 @@ aside.toast .loading {
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   background-color: white;
 }
-
 .product-details .image-window {
   border-radius: 8px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
@@ -3292,28 +3283,33 @@ dialog::backdrop {
   opacity: 0.6;
 }
 
-.producer-dashboard .dashboard-card {
+.producer-dashboard .dashboard-card, .manufacturer-dashboard .dashboard-card {
   background-color: white;
   border-radius: 24px;
   box-shadow: 0 2px 24px rgba(0, 0, 0, 0.05);
 }
-.producer-dashboard .dashboard-card h4 {
+
+.producer-dashboard .dashboard-card h4, .manufacturer-dashboard .dashboard-card h4 {
   font-size: 1.1rem;
   margin-bottom: 2px;
 }
-.producer-dashboard .dashboard-card h5 {
+
+.producer-dashboard .dashboard-card h5, .manufacturer-dashboard .dashboard-card h5 {
   font-size: 0.9rem;
   color: #B1B1B1;
 }
-.producer-dashboard .dashboard-card input, .producer-dashboard .dashboard-card select {
+
+.producer-dashboard .dashboard-card input, .producer-dashboard .dashboard-card select, .manufacturer-dashboard .dashboard-card input, .manufacturer-dashboard .dashboard-card select {
   height: unset !important;
   width: unset !important;
   padding: 6px 10px !important;
 }
-.producer-dashboard hr.primary-color {
+
+.producer-dashboard hr.primary-color, .manufacturer-dashboard hr.primary-color {
   border: 1px solid #15742D;
 }
-.producer-dashboard .crop-pic-rounded {
+
+.producer-dashboard .crop-pic-rounded, .manufacturer-dashboard .crop-pic-rounded {
   width: 48px;
   height: 48px;
   border: 2px solid #FFFFFF;
@@ -3324,10 +3320,12 @@ dialog::backdrop {
   background-repeat: no-repeat;
   background-color: #FFFFFF;
 }
-.producer-dashboard .data-courtesy-tag p {
+
+.producer-dashboard .data-courtesy-tag p, .manufacturer-dashboard .data-courtesy-tag p {
   color: #555555;
 }
-.producer-dashboard .data-courtesy-tag p a {
+
+.producer-dashboard .data-courtesy-tag p a, .manufacturer-dashboard .data-courtesy-tag p a {
   text-decoration: underline !important;
   color: #B89130 !important;
 }
