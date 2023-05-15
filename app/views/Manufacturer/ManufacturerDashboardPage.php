@@ -2,9 +2,9 @@
 
 include APP_ROOT . "/views/inc/components/Header.php";
 ?>
-    <!--    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.3.0/dist/chart.umd.min.js"></script>-->
-    <!--    <script src="https://cdnjs.cloudflare.com/ajax/libs/date-fns/1.30.1/date_fns.js"></script>-->
-    <!--    <script src="https://cdn.jsdelivr.net/npm/chartjs-adapter-date-fns/dist/chartjs-adapter-date-fns.bundle.min.js"></script>-->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.3.0/dist/chart.umd.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/date-fns/1.30.1/date_fns.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chartjs-adapter-date-fns/dist/chartjs-adapter-date-fns.bundle.min.js"></script>
     <body class="overflow-hidden full-height">
 
     <div class="content-with-sidebar">
@@ -79,8 +79,8 @@ include APP_ROOT . "/views/inc/components/Header.php";
                                         <h3 class="col-12 text-center fw-bold mb-2 text-primary-light py-2">
                                             Monthly Sales</h3>
                                     </div>
-                                    <div class="pt-2 pb-0 px-3" id="">
-                                        <?php echo print_r($this->data['products']) ?>
+                                    <div class="pt-2 pb-0 px-3" id="monthly_sales_container">
+                                        <div class="canvas-wrapper py-1 px-2" id="canvas-wrapper"></div>
                                     </div>
                                 </div>
                             </div>
@@ -94,6 +94,7 @@ include APP_ROOT . "/views/inc/components/Header.php";
             ?>
         </main>
     </div>
+    <script src="<?php echo URL_ROOT ?>/public/js/Manufacturer/dashboard.js" defer></script>
     </body>
 <?php
 include APP_ROOT . "/views/inc/components/EndingTag.php";
