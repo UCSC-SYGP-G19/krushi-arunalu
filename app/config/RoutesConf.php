@@ -112,10 +112,6 @@ const SIDEBAR_ROUTES = [
     ],
 
     "Agri Officer" => [
-        "Dashboard" => [
-            "icon" => "dashboard",
-            "link" => "index",
-        ],
         "Announcements" => [
             "icon" => "announcements",
             "link" => "announcements",
