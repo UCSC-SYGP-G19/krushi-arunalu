@@ -126,6 +126,19 @@ class Manufacturer extends RegisteredUser
         )->fetch();
     }
 
+    public function getManufacturersFromDB(): array
+    {
+        return $this->runQuery("SELECT 
+            manufacturer.id as 'manufacturer_id',
+            registered_user.image_url as 'image_url',
+            registered_user.name as 'manufacturer_name',
+            registered_user.address as 'address',
+            registered_user.contact_no as 'contact_no'
+            FROM manufacturer
+            INNER JOIN registered_user ON manufacturer.id = registered_user.id
+        ", [])->fetchAll();
+    }
+
     /**
      * @return string|null
      */

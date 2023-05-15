@@ -19,6 +19,8 @@ class ManufacturersController extends Controller
             $this->renderManufacturersPageForProducer();
         } elseif ($user->role == 'Customer') {
             $this->renderManufacturersPageForCustomer();
+        } elseif ($user->role == 'Admin') {
+            $this->renderManufacturersPageForAdmin();
         }
     }
 
@@ -62,5 +64,17 @@ class ManufacturersController extends Controller
         $this->loadModel("Manufacturer");
         $this->view->data = $this->model->getManufacturerDetails($id);
         $this->view->render();
+    }
+
+    public function renderManufacturersPageForAdmin(): void
+    {
+        $this->loadView('Admin/ManufacturersPage', 'Manufacturers', 'manufacturers');
+        $this->view->render();
+    }
+
+    public function getManufacturersAsJson(): void
+    {
+        $this->loadModel("Manufacturer");
+        $this->sendArrayAsJson($this->model->getManufacturersFromDB());
     }
 }
